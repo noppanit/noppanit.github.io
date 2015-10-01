@@ -22,23 +22,17 @@ In Agile world, everybody is talking about fail fast and faster feedback. If you
 
 For example, I wrote this piece of code to learn about dynamic programming.
 
-<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="python codecolorer">
-          <span class="kw1">import</span> <span class="kw3">sys</span><br /> coins <span class="sy0">=</span> <span class="br0">&#91;</span><span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">3</span><span class="sy0">,</span> <span class="nu0">5</span><span class="br0">&#93;</span><br /> min_coin <span class="sy0">=</span> <span class="br0">&#91;</span><span class="kw3">sys</span>.<span class="me1">maxint</span><span class="br0">&#93;</span> * <span class="nu0">20</span><br /> min_coin<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="nu0"></span><br /> <br /> <span class="kw1">for</span> min_of_i <span class="kw1">in</span> <span class="kw2">range</span><span class="br0">&#40;</span><span class="nu0">20</span><span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; <span class="kw1">for</span> c <span class="kw1">in</span> coins:<br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> c <span class="sy0"><=</span> min_of_i <span class="kw1">and</span> <span class="br0">&#40;</span>min_coin<span class="br0">&#91;</span>min_of_i - c<span class="br0">&#93;</span> + <span class="nu0">1</span> <span class="sy0"><</span> min_coin<span class="br0">&#91;</span>min_of_i<span class="br0">&#93;</span><span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; min_coin<span class="br0">&#91;</span>min_of_i<span class="br0">&#93;</span> <span class="sy0">=</span> min_coin<span class="br0">&#91;</span>min_of_i - c<span class="br0">&#93;</span> + <span class="nu0">1</span><br /> <br /> <br /> <span class="kw1">print</span> min_coin
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` python
+import sys
+coins = [1, 3, 5]
+min_coin = [sys.maxint] * 20
+min_coin[] = 
+
+for min_of_i in range(20):
+    for c in coins:
+        if c <= min_of_i and (min_coin[min_of_i - c] + 1 < min_coin[min_of_i]):
+                min_coin[min_of_i] = min_coin[min_of_i - c] + 1
+```
 
 I know that my code is not bad (or maybe is really bad), but let&#8217;s see what I get out of it from this [thread][2]. From within a day I have at least 2-3 points to make my code a lot better. Not only that I learn more about Python, I also learn how to optimize the script. 
 
