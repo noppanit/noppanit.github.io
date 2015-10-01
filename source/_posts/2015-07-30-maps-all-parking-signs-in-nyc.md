@@ -70,45 +70,44 @@ Walla! Now you have something you can build an application on top of it. The nex
 
 I&#8217;ve tried using [Proj4][11] on both R and Python to convert X,Y WGS84 to Lat, Long. Here&#8217;s my little snippet.
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          data = read.csv('./parking_regulation.csv')<br /> <br /> library(proj4)<br /> proj4string <- "+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs"<br /> latlong_list<-list()<br /> calculate_long_lat <- function(x,y) {<br /> &nbsp; <br /> &nbsp; # Source data<br /> &nbsp; xy <- data.frame(x=x, y=y)<br /> &nbsp; <br /> &nbsp; # Transformed data<br /> &nbsp; pj <- project(xy, proj4string, inverse=TRUE)<br /> &nbsp; latlon <- data.frame(lat=pj$y, lon=pj$x)<br /> &nbsp; latlong_list[['latlong']] <- latlon<br /> }<br /> <br /> apply(data[,c('x','y')], 1, function(y) calculate_long_lat(y['x'], y['y']))
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` R
+data = read.csv('./parking_regulation.csv')
+
+library(proj4)
+proj4string <- "+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs"
+latlong_list<-list()
+calculate_long_lat <- function(x,y) {
+  
+  # Source data
+  xy <- data.frame(x=x, y=y)
+  
+  # Transformed data
+  pj <- project(xy, proj4string, inverse=TRUE)
+  latlon <- data.frame(lat=pj$y, lon=pj$x)
+  latlong_list[['latlong']] <- latlon
+}
+
+apply(data[,c('x','y')], 1, function(y) calculate_long_lat(y['x'], y['y']))
+```
 
 The result is not quite accurate which I think it&#8217;s because I need to find a correct **proj4string**.
 
 Python has the same wrapper which is quite what I want as well.
 
-<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="python codecolorer">
-          <span class="kw1">from</span> pyproj <span class="kw1">import</span> Proj<br /> <span class="kw1">import</span> pandas <span class="kw1">as</span> pd<br /> <br /> data <span class="sy0">=</span> pd.<span class="me1">read_csv</span><span class="br0">&#40;</span><span class="st0">'parking_regulation.csv'</span><span class="br0">&#41;</span><br /> <br /> p <span class="sy0">=</span> Proj<span class="br0">&#40;</span>r<span class="st0">'+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs'</span><span class="br0">&#41;</span><br /> <br /> <span class="kw1">def</span> cal_long_lat<span class="br0">&#40;</span>row<span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; <span class="kw1">return</span> p<span class="br0">&#40;</span>row<span class="br0">&#91;</span><span class="st0">'x'</span><span class="br0">&#93;</span><span class="sy0">,</span> row<span class="br0">&#91;</span><span class="st0">'y'</span><span class="br0">&#93;</span><span class="sy0">,</span>inverse<span class="sy0">=</span><span class="kw2">True</span><span class="br0">&#41;</span><br /> <br /> data<span class="br0">&#91;</span><span class="st0">'lon'</span><span class="br0">&#93;</span><span class="sy0">,</span> data<span class="br0">&#91;</span><span class="st0">'lat'</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="kw2">zip</span><span class="br0">&#40;</span>data.<span class="me1">apply</span> <span class="br0">&#40;</span><span class="kw1">lambda</span> row: cal_long_lat <span class="br0">&#40;</span>row<span class="br0">&#41;</span><span class="sy0">,</span>axis<span class="sy0">=</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> data.<span class="me1">head</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` python
+from pyproj import Proj
+import pandas as pd
+
+data = pd.read_csv('parking_regulation.csv')
+
+p = Proj(r'+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs')
+
+def cal_long_lat(row):
+    return p(row['x'], row['y'],inverse=True)
+
+data['lon'], data['lat'] = zip(data.apply (lambda row: cal_long_lat (row),axis=1))
+data.head()
+```
 
 I will need to learn more about State Pane and what is the correct format.
 
