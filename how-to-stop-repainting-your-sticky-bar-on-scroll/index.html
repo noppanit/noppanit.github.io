@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How to Stop Repainting Your Sticky Bar on Scroll? - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="Everybody loves sticky bar. Or I should say every UX loves sticky bar. You probable have seen that from almost all major websites. Twitter or &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/how-to-stop-repainting-your-sticky-bar-on-scroll/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How to Stop Repainting Your Sticky Bar on Scroll?</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-04-14T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Everybody loves sticky bar. Or I should say every UX loves sticky bar. You probable have seen that from almost all major websites. Twitter or Facebook all has the top nav bar which sticks to the top and follows you when you scroll down the page. However, there&#8217;s one thing that I have noticed if you use Google Chrome Dev Tool to see the paint area. You will see that the nav bar gets repaint every time you scroll up and down.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png" alt="Screenshot_2015-04-14_01_13_55" width="2304" height="803" class="aligncenter size-full wp-image-1383" /></a></p>
+
+<p>Also, if you use Timeline to record the activity you will notice a lot of Repaint happening which leads to bad scrolling performance.</p>
+
+<p>The easy fix would be to put</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          backface-visibility: hidden;
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>on your navbar which will stop the repaint on scroll.</p>
+
+<h3>Why that fixes it?</h3>
+
+<p>I don&#8217;t want to try answer this myself as this <a href="http://benfrain.com/improving-css-performance-fixed-position-elements/">article</a> answers everything.</p>
+
+<h3>Try it yourself</h3>
+
+<p><a href="http://noppanit.com/navbar-repaint.html">http://noppanit.com/navbar-repaint.html</a> If you put</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          backface-visibility: hidden;
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>to the navbar and you can measure the performance by using Timeline again you will notice the difference.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png" alt="Screenshot 2015-04-14 01.20.04" width="2297" height="805" class="aligncenter size-full wp-image-1384" /></a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Noppanit Charassinvichai</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-04-14T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://noppanit.github.io/how-to-stop-repainting-your-sticky-bar-on-scroll/" data-via="" data-counturl="http://noppanit.github.io/how-to-stop-repainting-your-sticky-bar-on-scroll/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/you-should-check-in-your-dependencies/" title="Previous Post: You should check in your dependencies.">&laquo; You should check in your dependencies.</a>
+      
+      
+        <a class="basic-alignment right" href="/what-should-you-expect-for-salkantay-trek-to-machu-picchu/" title="Next Post: What should you expect for Salkantay trek to Machu Picchu">What should you expect for Salkantay trek to Machu Picchu &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

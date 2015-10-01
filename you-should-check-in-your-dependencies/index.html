@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>You Should Check in Your Dependencies. - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="I&#8217;m not sure who started this pattern so I can&#8217;t really refer back but if you know please comment below and I will update the post. I&# &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/you-should-check-in-your-dependencies/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">You Should Check in Your Dependencies.</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-28T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I&#8217;m not sure who started this pattern so I can&#8217;t really refer back but if you know please comment below and I will update the post. I&#8217;m sure all of you have heard that you should not check in anything that can be generated to Source control. It&#8217;s long been a common pattern. However, lately I have been checking in my dependencies into my source control and it works really well for small to medium project. Here&#8217;s why.</p>
+
+<h3>Isolate you from any network failures.</h3>
+
+<p>I know you might say that it rarely happens to me so why should I care about this. I hear you. It rarely happens to me as well but when it did happen I got really frustrated. Especially, when your CI failed without any reason and you found out that one of your dependencies doesn&#8217;t get downloaded properly.</p>
+
+<h3>CI failure</h3>
+
+<p>This frustrates me the most and it&#8217;s one of the reasons why I started doing this. More than often that my CI failed and it&#8217;s because of dependencies didn&#8217;t get resolved or compiled properly and people just kept running it over and over again. To eliminate this problem and let CI just run the tests save me a lot of pulling my hair time.</p>
+
+<h3>Check out and Go!</h3>
+
+<p>This pattern I have learnt while I was working with ThoughtWorks that it&#8217;s so frustrated when you are joining a project and you spend almost half a day just to get your machine up and running and run the build script to download all the dependencies. I believed that&#8217;s one of the reasons why Chef and Puppet exist. It&#8217;s so easy when you checkout a project from your source control and you can start coding right away or even run all the tests.</p>
+
+<p>I also have this support from my <a href="http://scottmuc.com/" title="Scott Muc">friend</a></p>
+
+<blockquote class="twitter-tweet" lang="en">
+  <p>
+    <a href="https://twitter.com/noppanit">@noppanit</a> I've been a fan of that technique for a long time now.
+  </p>
+  
+  <p>
+    &mdash; Scott Myц (@ScottMuc) <a href="https://twitter.com/ScottMuc/status/579739745921724416">March 22, 2015</a>
+  </p>
+</blockquote>
+
+
+<p>Srini also pointed out that you shouldn&#8217;t do that for internal project dependencies</p>
+
+<blockquote class="twitter-tweet" lang="en">
+  <p>
+    <a href="https://twitter.com/ScottMuc">@ScottMuc</a> <a href="https://twitter.com/noppanit">@noppanit</a> agree. It's good for external libraries and toolset libraries. Not good for internal project dependencies.
+  </p>
+  
+  <p>
+    &mdash; Srinivasan Raguraman (@sragu) <a href="https://twitter.com/sragu/status/579762369041186816">March 22, 2015</a>
+  </p>
+</blockquote>
+
+
+<h3>Conclusion</h3>
+
+<p>I know people might argue that it doesn&#8217;t really work for big project because of the size of the repository. That&#8217;s why I mention small to medium project. It works really well with small projects. Another point to mention is that every developer might have different environment for example, Windows VS Linux which node_modules might not work for both environments. I solve that problem by using Vagrant so everybody has the same environment.</p>
+
+<p>Inspiration<br/>
+<a href="https://www.dzombak.com/blog/2014/03/including-pods-in-source-control.html">https://www.dzombak.com/blog/2014/03/including-pods-in-source-control.html</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Noppanit Charassinvichai</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-03-28T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://noppanit.github.io/you-should-check-in-your-dependencies/" data-via="" data-counturl="http://noppanit.github.io/you-should-check-in-your-dependencies/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2015/" title="Previous Post: My 2015">&laquo; My 2015</a>
+      
+      
+        <a class="basic-alignment right" href="/how-to-stop-repainting-your-sticky-bar-on-scroll/" title="Next Post: How to stop repainting your sticky bar on scroll?">How to stop repainting your sticky bar on scroll? &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

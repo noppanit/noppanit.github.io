@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Seo | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/seo/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Experimenting With Microdata to Satisfy Google]]></title>
+    <link href="http://noppanit.github.io/experimenting-with-microdata-to-satisfy-google/"/>
+    <updated>2011-10-09T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/experimenting-with-microdata-to-satisfy-google</id>
+    <content type="html"><![CDATA[<p>I think Semantic Web has been introduced to us for quite a long time, but we still haven&#8217;t seen a practical example before. So, I&#8217;m trying to experiment a little bit with my new website that I&#8217;ve just created for my friend. It&#8217;s <a href="http://www.siripachai.com" title="Siripachai Agency">Siripachai Agency</a>. Basically, It&#8217;s a website for any students that want to study aboard in London. Firstly, I will use microdata on <a href="http://www.siripachai.com/abouts">http://www.siripachai.com/abouts</a> first. by following this example. <a href="http://www.google.com/support/webmasters/bin/answer.py?answer=146861">http://www.google.com/support/webmasters/bin/answer.py?answer=146861</a></p>
+
+<p>And this is the before that I get out of Google search result.<br/>
+<a href="http://www.noppanit.com/wp-content/uploads/2011/10/Screen-shot-2011-10-09-at-23.43.08.png"><img src="http://www.noppanit.com/wp-content/uploads/2011/10/Screen-shot-2011-10-09-at-23.43.08-300x37.png" alt="" title="Google aboutus search result" width="300" height="37" class="alignnone size-medium wp-image-788" /></a></p>
+
+<p>Will upload as soon as google picks up the new microdata that I&#8217;ve just uploaded. Hope it works!</p>
+]]></content>
+  </entry>
+  
+</feed>

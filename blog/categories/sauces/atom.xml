@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Sauces | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/sauces/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Korean Sauce]]></title>
+    <link href="http://noppanit.github.io/korean-sauce/"/>
+    <updated>2008-03-29T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/korean-sauce</id>
+    <content type="html"><![CDATA[<p>This is my first dish in the UK. My Korea friend told me how to cook it. It was fantastic. This sauce can go with everything that grilled.</p>
+
+<p>Ingredients<br/>
+1. Korea hot paste<br/>
+2. Ketchup &frac12; tablespoon<br/>
+3. Wooster Sauce 1 teaspoon, you can use Brown Sauce instead<br/>
+4. Strawberry Jam 2 teaspoons<br/>
+5. Chopped onion<br/>
+6. Chopped garlic<br/>
+7. a little bit of water</p>
+
+<ol>
+<li>pour vegetable oil 1 teaspoon followed by the chopped garlic and the chopped onion, fry them until golden</li>
+<li>and add the others ingredients into the pan and fry them for 5 minutes</li>
+</ol>
+
+
+<p><a href="http://www.noppanit.com/cooking/wp-content/uploads/2007/12/img_0979-1.jpg" title="Direct link to file"><img src="http://www.noppanit.com/cooking/wp-content/uploads/2007/12/img_0979-1.thumbnail.jpg" alt="The Ingredients" height="128" width="131" /></a></p>
+]]></content>
+  </entry>
+  
+</feed>

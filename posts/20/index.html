@@ -1,0 +1,844 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="Have you ever had a problem using somebody method with the same name. Well, Have you ever thought why javascript don&#8217;t have package or &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/posts/20/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tutorial-namespaces-for-javascript/">Tutorial : Namespaces for Javascript</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-01-27T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Have you ever had a problem using somebody method with the same name. Well, Have you ever thought why javascript don&#8217;t have package or namespaces like other languages. Well, change your mind. This is how you will be implementing namespaces for javascript.</p>
+
+<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="sy0"><</span>script type<span class="sy0">=</span><span class="st0">"text/javascript"</span><span class="sy0">></span><br /> <span class="kw1">if</span> <span class="br0">&#40;</span> com <span class="sy0">==</span> <span class="kw2">null</span> <span class="sy0">||</span> <span class="kw1">typeof</span><span class="br0">&#40;</span> com <span class="br0">&#41;</span> <span class="sy0">!=</span> <span class="st0">"object"</span> <span class="br0">&#41;</span> <br /> <span class="br0">&#123;</span><br /> &nbsp; <span class="kw2">var</span> com <span class="sy0">=</span> <span class="kw2">new</span> Object<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span><br /> <br /> <span class="kw1">if</span> <span class="br0">&#40;</span> com.<span class="me1">noppanit</span> <span class="sy0">==</span> <span class="kw2">null</span> <span class="sy0">||</span> <span class="kw1">typeof</span><span class="br0">&#40;</span> com.<span class="me1">noppanit</span> <span class="br0">&#41;</span> <span class="sy0">!=</span> <span class="st0">"object"</span> <span class="br0">&#41;</span> <br /> <span class="br0">&#123;</span><br /> &nbsp; com.<span class="me1">noppanit</span> <span class="sy0">=</span> <span class="kw2">new</span> Object<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <br /> <span class="br0">&#125;</span><br /> <br /> com.<span class="me1">noppanit</span> <span class="sy0">=</span> <br /> <span class="br0">&#123;</span> <br /> &nbsp; message <span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <br /> &nbsp; <span class="br0">&#123;</span> <br /> &nbsp; &nbsp; <span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">'test'</span><span class="br0">&#41;</span><span class="sy0">;</span> <br /> &nbsp; <span class="br0">&#125;</span><span class="sy0">,</span> <br /> &nbsp; message1 <span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <br /> &nbsp; <span class="br0">&#123;</span> <br /> &nbsp; &nbsp; <span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">'test1'</span><span class="br0">&#41;</span><span class="sy0">;</span> <br /> &nbsp; <span class="br0">&#125;</span> <br /> <span class="sy0">;</span> <br /> <br /> com.<span class="me1">noppanit</span>.<span class="me1">message</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <br /> com.<span class="me1">noppanit</span>.<span class="me1">message1</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <br /> <br /> <span class="sy0"></</span>script<span class="sy0">></span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/css-i-love-css/">CSS : I Love CSS !!!!.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-11-27T00:00:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Well, recently I have been trained about CSS class. I haven&#8217;t know about CSS before. Usually, I just use classes that somebody provide me. But this class I have to create myself.</p>
+
+<p>Why I love CSS.I don&#8217;t know. But I can tell you if you start to know about it. You will love it.</p>
+
+<p>These are the links that I would like to remember.</p>
+
+<p><a href="http://www.alistapart.com/articles/cssdropshadows/">CSS Level3 </a><strong>&lt;&#8211; This about testing CSS level3</strong></p>
+
+<p><a href="http://www.csszengarden.com/">The beauty in CSS design</a> <strong>&lt;&#8211; The beauty of CSS design, just click on some design and you will feel the different.</strong></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/css-how-to-drop-shadow-with-css/">CSS: How to Drop Shadow With CSS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-11-26T00:00:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is the website I have found, It&#8217;s very useful.</p>
+
+<p><a href="http://www.alistapart.com/articles/cssdropshadows/">Try this</a></p>
+
+<div style="margin: 10px 0pt 0pt 10px ! important; background: transparent url(http://www.alistapart.com/d/cssdropshadows/img/shadowAlpha.png) no-repeat scroll right bottom ! important; width: 90%; float: left;">
+  <div style=" background: none !important; background: url(http://www.alistapart.com/d/cssdropshadows/img/shadow.gif) no-repeat left top; padding: 0 !important; padding: 0 6px 6px 0;">
+    <p style="color: #777; background-color: #fff; font: italic 1em georgia, serif; border: 1px solid #a9a9a9; padding: 4px; margin: -6px 6px 6px -6px !important; margin: 0;">
+      The Example
+    </p>
+  </div>
+</div>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/lightbox-2-a-nice-way-to-implement-pop-up-image/">LightBox 2: A Nice Way to Implement Pop-up Image</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-11-25T00:00:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I was developing a website that can view a pop-up image, but I only implement it myself. Today, I have found something that&#8217;s quite useful. It&#8217;s <a href="http://www.lokeshdhakar.com/projects/lightbox2/">lightBox2</a>.</p>
+
+<p>&#8220;Lightbox is a <em>simple, unobtrusive</em> script used to overlay images on the current page. It&#8217;s a <em>snap to setup</em> and works on <em>all modern browsers</em>.&#8221;</p>
+
+<p>It&#8217;s authentic!!!!.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/playing-with-google-sketchup/">Playing With Google SketchUp</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-11-18T00:00:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I having a dream about having a English-style home with my girlfriend. So, I decided to sketch the structure myself. As I am not a archiecture and not familar with any sophisticated tools such as Auto CAD or something like that. But this application is just right for an amature like me. <a href="http://sketchup.google.com/">http://sketchup.google.com/</a> .</p>
+
+<p>It&#8217;s easy to sketch something up like the name and is totally free. But if you need a little more extra you have to pay.</p>
+
+<p>These are the video tutorials that you can learn how to use the software. As google said, no matter how good the application is, if you don&#8217;t know how to use it. It&#8217;s just useless. I like that.</p>
+
+<p><a href="http://sketchup.google.com/training/videos.html">http://sketchup.google.com/training/videos.html</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/improve-mysql-performance-with-mysql-tuner/">Improve MySQL Performance With MySQL Tuner</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-11-18T00:00:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.zdnetasia.com/techguide/opensource/0,39044899,62048294,00.htm?scid=nl_z_ntnd">Tech Guild</a></p>
+
+<p>This is some other ways to improve performance of you famous Database</p>
+
+<p><a href="http://wiki.mysqltuner.com/MySQLTuner">MySQL Tuner</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tutorial-c-build-web-service-from-scratch-in-c-express/">Tutorial C# : Build Web Service From Scratch in C# Express</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-11-10T00:00:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have a very serious problem. I wanted to create a web service in C#, but my company won&#8217;t allow be to install illegal products. So, I have to install C# express edition, and one thing led to another. C# express doesn&#8217;t provide me a WebService template. Therefore, let&#8217;s roll up my sleeves and get it done.</p>
+
+<p>The first thing you need to do is register the v2 .NET framework with IIS.<br/>
+Run &#8220;aspnet_regiis.exe&#8221; found in &#8220;C:\WINDOWS\Microsoft.NET\Framework\v2.0.40607&#8221;</p>
+
+<p>Now make a new Class Library project in C# express.<br/>
+Add the System.Web.Services reference to the project</p>
+
+<p>Create a new class that you want to be your web service.<br/>
+Add &#8220;using System.Web.Services;&#8221; to the top of the .cs file<br/>
+Make your class inherit from &#8220;System.Web.Services.WebService&#8221;<br/>
+Add the [WebMethod] attribute to any methods you want to expose via the web service</p>
+
+<p>e.g.</p>
+
+<div class="codecolorer-container csharp blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="csharp codecolorer">
+          <span class="kw1">using</span> <span class="co3">System</span><span class="sy0">;</span><br /> <span class="kw1">using</span> <span class="co3">System.Web.Services</span><span class="sy0">;</span><br /> <br /> <span class="kw1">namespace</span> Examples<br /> <span class="br0">&#123;</span><br /> &nbsp; <span class="kw1">public</span> <span class="kw4">class</span> MyWebService <span class="sy0">:</span> WebService<br /> &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="br0">&#91;</span>WebMethod<span class="br0">&#93;</span><br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw4">string</span> SayHello<span class="br0">&#40;</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> <span class="st0">"Hello World"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span> <br /> &nbsp; <span class="br0">&#125;</span><br /> <br /> <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Save and compile the project.</p>
+
+<p>Make a new directory in c:\inetpub\wwwroot (or where ever you put you web pages). Call it &#8220;MyWebServices&#8221; or something. Create a sub-directory called &#8220;bin&#8221;.</p>
+
+<p>Next add a new virtual directory to IIS that points to the &#8220;MyWebServices&#8221; directory you just made.</p>
+
+<p>In the &#8220;MyWebServices&#8221; directory create a new file called &#8220;MyWebService.asmx&#8221;. Add the following line:</p>
+
+<div class="codecolorer-container xml blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="xml codecolorer">
+          <span class="sc3"><%@ WebService <span class="re0">Language</span>=<span class="st0">"c#"</span> <span class="re0">Codebehind</span>=<span class="st0">"MyWebService.cs"</span> <span class="re0">Class</span>=<span class="st0">"Examples.MyWebService"</span> %<span class="re2">></span></span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Create a &#8220;web.config&#8221; file, add the following lines:</p>
+
+<div class="codecolorer-container xml blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="xml codecolorer">
+          <span class="sc3"><span class="re1"><?xml</span> <span class="re0">version</span>=<span class="st0">"1.0"</span> <span class="re0">encoding</span>=<span class="st0">"utf-8"</span><span class="re2">?></span></span><br /> <span class="sc3"><span class="re1"><configuration<span class="re2">></span></span></span><br /> &nbsp; <span class="sc3"><span class="re1"><system.web<span class="re2">></span></span></span><br /> &nbsp; &nbsp; <span class="sc3"><span class="re1"><compilation</span> <span class="re0">defaultLanguage</span>=<span class="st0">"c#"</span> <span class="re2">/></span></span><br /> &nbsp; &nbsp; <span class="sc3"><span class="re1"><authentication</span> <span class="re0">mode</span>=<span class="st0">"None"</span> <span class="re2">/></span></span><br /> &nbsp; <span class="sc3"><span class="re1"></system.web<span class="re2">></span></span></span><br /> <span class="sc3"><span class="re1"></configuration<span class="re2">></span></span></span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Copy the .cs file, that contains the class, from the C# project to the &#8220;MyWebServices&#8221; directory</p>
+
+<p>Copy the compiled DLL that C# has created into the &#8220;bin&#8221; sub-directory or &#8220;MyWebServices&#8221;</p>
+
+<p>Phew, a bit of leg work but that&#8217;s the basics done.<br/>
+Load your web browser and navigate to &#8220;<a href="http://localhost/MyWebServices/MyWebService.asmx">http://localhost/MyWebServices/MyWebService.asmx</a>&#8220;.<br/>
+You should see the &#8220;SayHello&#8221; method listed. Follow the hyperlink, then click &#8220;Invoke&#8221; to test.<br/>
+It should return an XML file with containing the &#8220;Hello World&#8221; message.</p>
+
+<p>That&#8217;s it short and sweet.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tutorial-java-simply-singleton-class/">Tutorial : Java Simply Singleton Class</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-10-24T00:00:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you want to create a class that can instantitate once. This is the right document for you. Or those who don&#8217;t want to fall into the trap of singleton class.</p>
+
+<p><a href="http://www.javaworld.com/javaworld/jw-04-2003/jw-0425-designpatterns.html?page=1" target="_blank"><a href="http://www.javaworld.com/javaworld/jw-04-2003/jw-0425-designpatterns.html?page=1">http://www.javaworld.com/javaworld/jw-04-2003/jw-0425-designpatterns.html?page=1</a></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/weblogic-503-service-unavailable/">WebLogic : 503&#8211;Service Unavailable</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-10-02T00:00:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><span style="font-weight: bold;">Error 503&#8211;Service Unavailable</span><br/>
+<span style="font-weight: bold;">From RFC 2068 Hypertext Transfer Protocol &#8212; HTTP/1.1:</span><br/>
+<span style="font-weight: bold;">10.5.4 503 Service Unavailable</span></p>
+
+<p><span style="font-weight: bold; font-style: italic;">The server is currently unable to handle the request due to a temporary overloading or maintenance of the server. The implication is that this is a temporary condition which will be alleviated after some delay. If known, the length of the delay may be indicated in a Retry-After header. If no Retry-After is given, the client SHOULD handle the response as it would for a 500 response.</span></p>
+
+<p><span style="font-weight: bold; font-style: italic;">Note: The existence of the 503 status code does not imply that a server must use it when becoming overloaded. Some servers may wish to simply refuse the connection.</span></p>
+
+<p>The Application has to be started after the deployment. It means whatever you do, you must start the application. And not just start the admin server.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/oracle-with-guid/">Oracle With GUID</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-09-11T00:00:00-04:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Have you ever wanted to know that how Oracle generate GUID?</p>
+
+<p>This is the answer. I found this website shows how to use Oracle to generate GUID for us.<br/>
+<a href="http://feuerthoughts.blogspot.com/2006/02/watch-out-for-sequential-oracle-guids.html">http://feuerthoughts.blogspot.com/2006/02/watch-out-for-sequential-oracle-guids.html</a></p>
+
+<p>This is the code</p>
+
+<div class="codetop">
+  SQL Package
+</div>
+
+
+
+
+<div class="codemain">
+  CREATE OR REPLACE PACKAGE guid_pkg</p> 
+  
+  <p>
+    IS
+  </p>
+  
+  <p>
+    SUBTYPE guid_t IS RAW (16);
+  </p>
+  
+  <p>
+    SUBTYPE formatted_guid_t IS VARCHAR2 (38);
+  </p>
+  
+  <p>
+    &#8212; Example: {34DC3EA7-21E4-4C8A-BAA1-7C2F21911524}
+  </p>
+  
+  <p>
+    c_mask CONSTANT formatted_guid_t
+  </p>
+  
+  <p>
+    := &#8216;{________-____-____-____-____________}&#8217;;
+  </p>
+  
+  <p>
+    FUNCTION is_formatted_guid (string_in IN VARCHAR2)
+  </p>
+  
+  <p>
+    RETURN BOOLEAN;
+  </p>
+  
+  <p>
+    FUNCTION formatted_guid (guid_in IN VARCHAR2)
+  </p>
+  
+  <p>
+    RETURN formatted_guid_t;
+  </p>
+  
+  <p>
+    FUNCTION formatted_guid
+  </p>
+  
+  <p>
+    RETURN formatted_guid_t;
+  </p>
+  
+  <p>
+    END guid_pkg;
+  </p>
+  
+  <p>
+    /
+  </p>
+</div>
+
+
+
+
+<div class="codetop">
+  SQL Body
+</div>
+
+
+
+
+<div class="codemain">
+  <p>
+    CREATE OR REPLACE PACKAGE BODY guid_pkg
+  </p>
+  
+  <p>
+    IS
+  </p>
+  
+  <p>
+    FUNCTION is_formatted_guid (string_in IN VARCHAR2)
+  </p>
+  
+  <p>
+    RETURN BOOLEAN
+  </p>
+  
+  <p>
+    IS
+  </p>
+  
+  <p>
+    BEGIN
+  </p>
+  
+  <p>
+    RETURN string_in LIKE c_mask;
+  </p>
+  
+  <p>
+    END is_formatted_guid;
+  </p>
+  
+  <p>
+    FUNCTION formatted_guid (guid_in IN VARCHAR2)
+  </p>
+  
+  <p>
+    RETURN formatted_guid_t
+  </p>
+  
+  <p>
+    IS
+  </p>
+  
+  <p>
+    BEGIN
+  </p>
+  
+  <p>
+    &#8212; If not already in the 8-4-4-4-rest format, then make it so.
+  </p>
+  
+  <p>
+    IF is_formatted_guid (guid_in)
+  </p>
+  
+  <p>
+    THEN
+  </p>
+  
+  <p>
+    RETURN guid_in;
+  </p>
+  
+  <p>
+    &#8212; Is it only missing those squiggly brackets?
+  </p>
+  
+  <p>
+    ELSIF is_formatted_guid (&#8216;{&#8216; || guid_in || &#8216;}&#8217;)
+  </p>
+  
+  <p>
+    THEN
+  </p>
+  
+  <p>
+    RETURN formatted_guid (&#8216;{&#8216; || guid_in || &#8216;}&#8217;);
+  </p>
+  
+  <p>
+    ELSE
+  </p>
+  
+  <p>
+    RETURN &#8216;{&#8216;
+  </p>
+  
+  <p>
+    || SUBSTR (guid_in, 1, 8 )
+  </p>
+  
+  <p>
+    || &#8216;-&#8216;
+  </p>
+  
+  <p>
+    || SUBSTR (guid_in, 9, 4)
+  </p>
+  
+  <p>
+    || &#8216;-&#8216;
+  </p>
+  
+  <p>
+    || SUBSTR (guid_in, 13, 4)
+  </p>
+  
+  <p>
+    || &#8216;-&#8216;
+  </p>
+  
+  <p>
+    || SUBSTR (guid_in, 17, 4)
+  </p>
+  
+  <p>
+    || &#8216;-&#8216;
+  </p>
+  
+  <p>
+    || SUBSTR (guid_in, 21)
+  </p>
+  
+  <p>
+    || &#8216;}&#8217;;
+  </p>
+  
+  <p>
+    END IF;
+  </p>
+  
+  <p>
+    END formatted_guid;
+  </p>
+  
+  <p>
+    FUNCTION formatted_guid
+  </p>
+  
+  <p>
+    RETURN formatted_guid_t
+  </p>
+  
+  <p>
+    IS
+  </p>
+  
+  <p>
+    BEGIN
+  </p>
+  
+  <p>
+    RETURN formatted_guid (SYS_GUID);
+  </p>
+  
+  <p>
+    END formatted_guid;
+  </p>
+  
+  <p>
+    END guid_pkg;
+  </p>
+  
+  <p>
+    /
+  </p>
+</div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/21">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/19">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

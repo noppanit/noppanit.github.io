@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Python | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Python to Import Your Dumped Tweets to MongoDb]]></title>
+    <link href="http://noppanit.github.io/python-import-dumped-tweets-mongodb/"/>
+    <updated>2013-09-04T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/python-import-dumped-tweets-mongodb</id>
+    <content type="html"><![CDATA[<p>I&#8217;m playing around with my tweets. Just so you&#8217;re aware that you could download your entire tweets and play around with it. The format is JSON so I think it makes perfect sense to dump this to MongoDB. But you can&#8217;t just import that straight away it needs some manipulation. I&#8217;m not good at Python so the code here might be tedious for python dudes. I&#8217;m going to use this data in my analysis, which will be captured in the next blog post.</p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="kw1">import</span> pymongo<br /> <span class="kw1">from</span> <span class="kw3">pprint</span> <span class="kw1">import</span> <span class="kw3">pprint</span><br /> <br /> path <span class="sy0">=</span> <span class="st0">'./data'</span><br /> client <span class="sy0">=</span> pymongo.<span class="me1">MongoClient</span><span class="br0">&#40;</span><span class="st0">'localhost'</span><span class="sy0">,</span> <span class="nu0">27017</span><span class="br0">&#41;</span><br /> db <span class="sy0">=</span> client.<span class="me1">tweets</span><br /> <span class="kw1">def</span> main<span class="br0">&#40;</span><span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> infile <span class="kw1">in</span> <span class="kw3">glob</span>.<span class="kw3">glob</span><span class="br0">&#40;</span> <span class="kw3">os</span>.<span class="me1">path</span>.<span class="me1">join</span><span class="br0">&#40;</span>path<span class="sy0">,</span> <span class="st0">"*.js"</span><span class="br0">&#41;</span><span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; content <span class="sy0">=</span> <span class="kw2">open</span><span class="br0">&#40;</span>infile<span class="br0">&#41;</span>.<span class="me1">read</span><span class="br0">&#40;</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; indexOfFirstEqualSign <span class="sy0">=</span> content.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">"="</span><span class="br0">&#41;</span> + <span class="nu0">1</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pureJson <span class="sy0">=</span> content<span class="br0">&#91;</span>indexOfFirstEqualSign:<span class="br0">&#93;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; jsonifedData <span class="sy0">=</span> json.<span class="me1">loads</span><span class="br0">&#40;</span>pureJson<span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; db.<span class="me1">tweets_collection</span>.<span class="me1">insert</span><span class="br0">&#40;</span>jsonifedData<span class="br0">&#41;</span><br /> <br /> <span class="kw1">if</span> __name__ <span class="sy0">==</span> <span class="st0">"__main__"</span>:<br /> &nbsp; &nbsp; &nbsp; &nbsp; main<span class="br0">&#40;</span><span class="br0">&#41;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>The data is kept in <strong>data</strong> folder.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Flask and RQ Example for Heroku]]></title>
+    <link href="http://noppanit.github.io/flask-and-rq-example-for-heroku/"/>
+    <updated>2013-03-08T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/flask-and-rq-example-for-heroku</id>
+    <content type="html"><![CDATA[<p>I have been struggling to find any example on the Internet on how to do long polling on Heroku with Flask and RQ. I know it&#8217;s relatively easy, but I just want to make it clear for my future self.</p>
+
+<p>It&#8217;s really simple.</p>
+
+<pre><div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="sy0">@</span>app.<span class="me1">route</span><span class="br0">&#40;</span><span class="st0">'/get_word_count'</span><span class="sy0">,</span> methods<span class="sy0">=</span><span class="br0">&#91;</span><span class="st0">'POST'</span><span class="br0">&#93;</span><span class="br0">&#41;</span><br />
+          <span class="kw1">def</span> get_word_count<span class="br0">&#40;</span><span class="br0">&#41;</span>:<br />
+          &nbsp; &nbsp; data_json <span class="sy0">=</span> json.<span class="me1">loads</span><span class="br0">&#40;</span>request.<span class="me1">data</span><span class="br0">&#41;</span><br />
+          &nbsp; &nbsp; job <span class="sy0">=</span> q.<span class="me1">enqueue</span><span class="br0">&#40;</span>word_counter.<span class="me1">count_words</span><span class="sy0">,</span> data_json<span class="br0">&#91;</span><span class="st0">"sentence"</span><span class="br0">&#93;</span><span class="br0">&#41;</span><br />
+          &nbsp; &nbsp; <span class="kw1">return</span> job.<span class="me1">key</span><br />
+          <br />
+          <span class="sy0">@</span>app.<span class="me1">route</span><span class="br0">&#40;</span><span class="st0">"/get_word_count_result/&lt;job_key&gt;"</span><span class="sy0">,</span> methods<span class="sy0">=</span><span class="br0">&#91;</span><span class="st0">'GET'</span><span class="br0">&#93;</span><span class="br0">&#41;</span><br />
+          <span class="kw1">def</span> get_word_count_result<span class="br0">&#40;</span>job_key<span class="br0">&#41;</span>:<br />
+          &nbsp; &nbsp; job_key <span class="sy0">=</span> job_key.<span class="me1">replace</span><span class="br0">&#40;</span><span class="st0">"rq:job:"</span><span class="sy0">,</span> <span class="st0">""</span><span class="br0">&#41;</span><br />
+          &nbsp; &nbsp; job <span class="sy0">=</span> Job.<span class="me1">fetch</span><span class="br0">&#40;</span>job_key<span class="sy0">,</span> connection<span class="sy0">=</span>conn<span class="br0">&#41;</span><br />
+          <br />
+          &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span><span class="kw1">not</span> job.<span class="me1">is_finished</span><span class="br0">&#41;</span>:<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> <span class="st0">"Not yet"</span><span class="sy0">,</span> <span class="nu0">202</span><br />
+          &nbsp; &nbsp; <span class="kw1">else</span>:<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw2">str</span><span class="br0">&#40;</span>job.<span class="me1">result</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="nu0">200</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>The key is here</p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          job <span class="sy0">=</span> Job.<span class="me1">fetch</span><span class="br0">&#40;</span>job_key<span class="sy0">,</span> connection<span class="sy0">=</span>conn<span class="br0">&#41;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>The fetch command is used to get the job by job_id, you can also use</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          get_current_job()
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>as well, but I just want to make it clear that if there are more concurrent requests coming in, I&#8217;ll get the right result back.</p>
+
+<p>I posted an example here. <a href="https://github.com/noppanit/heroku-flask-rq-worker" title="Python with RQ on Heroku">https://github.com/noppanit/heroku-flask-rq-worker</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Second Sentiment Analysis Experiment on Naive Bayes With NLTK : Bigrams]]></title>
+    <link href="http://noppanit.github.io/second-sentiment-analysis-experiment-on-naive-bayes-with-nltk-bigrams/"/>
+    <updated>2012-12-30T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/second-sentiment-analysis-experiment-on-naive-bayes-with-nltk-bigrams</id>
+    <content type="html"><![CDATA[<p>From my <a href="http://www.noppanit.com/first-experiment-on-naive-bayes-with-nltk/" title="first experiment on naive bayes with sentiment analysis">last post</a> I experimented with some of the techniques such as stopwords and bag-of-words model. I yielded some acceptable results. This post, I&#8217;m going to try with bigrams to see if I can increase the accuracy.</p>
+
+<p>I changed the code a little bit to be</p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="kw1">from</span> nltk.<span class="me1">collocations</span> <span class="kw1">import</span> *<br /> <br /> tokenized_text <span class="sy0">=</span> nltk.<span class="me1">wordpunct_tokenize</span><span class="br0">&#40;</span>words<span class="br0">&#41;</span><br /> tokenized_text <span class="sy0">=</span> <span class="br0">&#91;</span>word.<span class="me1">lower</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">for</span> word <span class="kw1">in</span> tokenized_text<span class="br0">&#93;</span><br /> <br /> finder <span class="sy0">=</span> BigramCollocationFinder.<span class="me1">from_words</span><span class="br0">&#40;</span>tokenized_text<span class="br0">&#41;</span><br /> bigrammed_words <span class="sy0">=</span> <span class="kw2">sorted</span><span class="br0">&#40;</span>finder.<span class="me1">nbest</span><span class="br0">&#40;</span>bigram_measures.<span class="me1">chi_sq</span><span class="sy0">,</span> <span class="nu0">200</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>I decided to use <strong>chi_sq</strong> as suggested in <a href="http://streamhacker.com/tag/bigrams/" title="stream hacker bigrams">this post</a>. However, the accuracy has gone down significantly to <strong>19.7530864198%</strong>. I guess this might be that my document (~100 document for each sentiment) is not large enough to use bigrams. But this is just my conclusion. I&#8217;m going to try to increase the dataset and test it again.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[First Experiment on Naive Bayes With NLTK]]></title>
+    <link href="http://noppanit.github.io/first-experiment-on-naive-bayes-with-nltk/"/>
+    <updated>2012-12-30T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/first-experiment-on-naive-bayes-with-nltk</id>
+    <content type="html"><![CDATA[<p>I have been experimenting with Natural Language Processing on Text classification for a while now. So, I&#8217;m going to write a little journal on my blog. There are lots of academic papers or event commercial API on the Internet for sentiment analysis. But most of them only classify sentiment into <strong>negative</strong>, <strong>positive</strong> and <strong>neutral</strong>. My experiment will be based on <a href="http://en.wikipedia.org/wiki/Plutchik%27s_Wheel_of_Emotions#Plutchik.27s_wheel_of_emotions" title="Plutchik wheel of emotions">Plutchik&#8217;s wheel of emotions</a> which will classify a text into one of the eight emotions.</p>
+
+<p>For the purpose to get things done really fast, I use the example from <a href="http://www.laurentluce.com/posts/twitter-sentiment-analysis-using-python-and-nltk/" title="twitter sentiment analysis">Laurent&#8217;s blog</a>. But you can use <a href="https://github.com/japerk/nltk-trainer" title="nltk trainer">nltk-trainer</a> to train the classifier without a single line of python code.</p>
+
+<p>Most papers suggest that <a href="http://en.wikipedia.org/wiki/Bag-of-words_model" title="bag of words model">bag-of-words model</a> is one of the best techniques o classify text. So, I decided to use this method. However, this is about sentiment analysis so I used only Adjectives for feature extraction. The result is unacceptable with only <strong>19.7530864198 %</strong></p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="kw1">for</span> word<span class="sy0">,</span> pos_tag <span class="kw1">in</span> nltk.<span class="me1">pos_tag</span><span class="br0">&#40;</span>words<span class="br0">&#41;</span>:<br /> &nbsp; &nbsp;<span class="kw1">if</span> pos_tag <span class="sy0">==</span> <span class="st0">'ADJ'</span>:<br /> &nbsp; &nbsp; &nbsp; filtered_words.<span class="me1">append</span><span class="br0">&#40;</span>word.<span class="me1">lower</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>The second attempt I decided to fall back to bag-of-words model, and the result has gone up to <strong>61.316872428 %</strong></p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          filtered_words <span class="sy0">=</span> <span class="br0">&#91;</span>e.<span class="me1">lower</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">for</span> e <span class="kw1">in</span> words.<span class="me1">split</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">if</span> <span class="kw2">len</span><span class="br0">&#40;</span>e<span class="br0">&#41;</span> <span class="sy0">>=</span> <span class="nu0">3</span><span class="br0">&#93;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>So, I moved on and try to clean up the text a bit by cleaning stopwords, stripping &#8216;RT&#8217; or &#8216;rt&#8217; for retweet, deleting @peoplename and tokenise word by whitespace. So, &#8220;i&#8217;m&#8221; stays as one word and not [&#8220;i&#8221;, &#8220;&#8216;m&#8221;]. The result has gone up to <strong>69.9588477366 %</strong>.</p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="co1"># stripping and cleaning.</span><br /> <span class="co1"># this is for stripping out the stopwords by using <a href="http://nltk.googlecode.com/svn/trunk/doc/book/ch02.html" title="NLTK Text Corpora">NLTK Text Corpora</a></span><br /> stripped_words <span class="sy0">=</span> <span class="br0">&#91;</span>w <span class="kw1">for</span> w <span class="kw1">in</span> tokenized_text <span class="kw1">if</span> <span class="kw1">not</span> w <span class="kw1">in</span> stopwords.<span class="me1">words</span><span class="br0">&#40;</span><span class="st0">'english'</span><span class="br0">&#41;</span><span class="br0">&#93;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>I&#8217;ll keep experimenting and post some more techniques to see if I could get something out of this.</p>
+]]></content>
+  </entry>
+  
+</feed>

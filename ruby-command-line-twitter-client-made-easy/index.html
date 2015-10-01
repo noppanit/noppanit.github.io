@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ruby : Command-line Twitter Client Made Easy - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="Have you every told off that you&#8217;re playing in your work? Why do you have to open a browser twitter.com to be so obvious that you&#8217;re not &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/ruby-command-line-twitter-client-made-easy/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Ruby : Command-line Twitter Client Made Easy</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-02-27T00:00:00-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Have you every told off that you&#8217;re playing in your work? Why do you have to open a browser twitter.com to be so obvious that you&#8217;re not doing your job well. Well, you can build a command-line twitter client very easy. So, you will be one of the geeks who use terminal all the time and your boss won&#8217;t know that you&#8217;re on twitter all the time.</p>
+
+<p>I will start with installing Ruby and Gem, because I wanted to save time building this program from scratch as much as possible. So, a couples of useful gems would be really helpful.</p>
+
+<p>if you&#8217;re new to ruby and use mac same as me, I suggest you install ruby by following this great article.<br/>
+<a href="http://hivelogic.com/articles/ruby-rails-leopard">http://hivelogic.com/articles/ruby-rails-leopard</a></p>
+
+<p>You can use a great application of all time like MacPort.</p>
+
+<p>Ok! gem installed, ruby installed. Let&#8217;s start with installing some gems</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          gem install twitter_oauth
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>If you need to know what OAuth is, I suggest you read this great article <a href="http://hueniverse.com/2007/10/beginners-guide-to-oauth-part-i-overview/">http://hueniverse.com/2007/10/beginners-guide-to-oauth-part-i-overview/</a></p>
+
+<p>Basically, OAuth is a helper to help you login to twitter.com without exposing or sending your login details over the Internet. It&#8217;s like public and private key. But If you&#8217;re doing for a single-user like me, then you don&#8217;t have to worry anything about this. You just need 4 keys to access twitter APIs.</p>
+
+<p>First, you will need to register your app with Twitter. Go to this page and follow the steps. <a href="http://twitter.com/apps">http://twitter.com/apps</a></p>
+
+<p>Now you will need four keys to work, go to this page to get all those keys.<br/>
+<a href="https://dev.twitter.com/apps">https://dev.twitter.com/apps</a></p>
+
+<p>You will want, consumer_key, consumer_secret. You can get them from your application setting page, then click on My Access Token on the right-hand sided bar. Note down Access Token and Access Token Secret. Then you&#8217;re good to go.</p>
+
+<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />32<br />33<br />34<br />35<br />36<br />37<br />38<br />39<br />40<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          <span class="co1">#!/usr/bin/env ruby</span><br /> <br /> <span class="kw3">require</span> <span class="st0">'rubygems'</span><br /> <span class="kw3">require</span> <span class="st0">'twitter_oauth'</span><br /> <br /> TWITTER_CONSUMER_KEY = <span class="st0">'Your Consumer Key'</span><br /> TWITTER_CONSUMER_SECRET = <span class="st0">'Your Consumer Secret'</span><br /> TWITTER_ACCESS_TOKEN = <span class="st0">'Your Access Token'</span><br /> TWITTER_ACCESS_SECRET = <span class="st0">'Your Access Token Secret'</span><br /> <br /> client = <span class="re2">TwitterOAuth::Client</span>.<span class="me1">new</span><span class="br0">&#40;</span><br /> &nbsp; <span class="re3">:consumer_key</span> <span class="sy0">=></span> TWITTER_CONSUMER_KEY,<br /> &nbsp; <span class="re3">:consumer_secret</span> <span class="sy0">=></span> TWITTER_CONSUMER_SECRET,<br /> &nbsp; <span class="re3">:token</span> <span class="sy0">=></span> TWITTER_ACCESS_TOKEN,<br /> &nbsp; <span class="re3">:secret</span> <span class="sy0">=></span> TWITTER_ACCESS_SECRET<span class="br0">&#41;</span><br /> <br /> <span class="kw1">case</span> ARGV<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span><br /> &nbsp;<span class="kw1">when</span> <span class="st0">"-l"</span><br /> &nbsp; timeline = client.<span class="me1">home_timeline</span><span class="br0">&#40;</span><span class="br0">&#41;</span><br /> &nbsp; timeline = timeline.<span class="me1">reverse</span><br /> &nbsp; timeline.<span class="me1">each</span><span class="br0">&#123;</span> <span class="sy0">|</span>tweet<span class="sy0">|</span> <br /> &nbsp; &nbsp; <span class="kw3">puts</span> tweet<span class="br0">&#91;</span><span class="st0">'text'</span><span class="br0">&#93;</span> <span class="sy0">+</span> <span class="st0">" @FROM #{tweet['user']['name']}"</span><br /> &nbsp; &nbsp; <span class="kw3">puts</span> <span class="st0">"<span class="es0">\n</span>"</span><br /> &nbsp; <span class="br0">&#125;</span><br /> &nbsp;<span class="kw1">when</span> <span class="st0">"-u"</span><br /> &nbsp; <span class="kw1">if</span> ARGV<span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span>.<span class="kw2">nil</span>?<br /> &nbsp; &nbsp; <span class="kw3">puts</span> <span class="st0">"Please enter your status:"</span><br /> &nbsp; &nbsp; status = STDIN.<span class="kw3">readline</span>.<span class="kw3">chomp</span><br /> &nbsp; &nbsp; client.<span class="me1">update</span><span class="br0">&#40;</span><span class="st0">"#{status}"</span><span class="br0">&#41;</span><br /> &nbsp; <span class="kw1">else</span><br /> &nbsp; &nbsp; client.<span class="me1">update</span><span class="br0">&#40;</span><span class="st0">"#{ARGV[1]}"</span><span class="br0">&#41;</span><br /> &nbsp; <span class="kw1">end</span><br /> &nbsp;<span class="kw1">when</span> <span class="st0">"-m"</span><br /> &nbsp; mentions = client.<span class="me1">mentions</span><span class="br0">&#40;</span><span class="br0">&#41;</span><br /> &nbsp; mentions = mentions.<span class="me1">reverse</span><br /> &nbsp; mentions.<span class="me1">each</span><span class="br0">&#123;</span> <span class="sy0">|</span>tweet<span class="sy0">|</span> <br /> &nbsp; &nbsp; <span class="kw3">puts</span> tweet<span class="br0">&#91;</span><span class="st0">'text'</span><span class="br0">&#93;</span> <span class="sy0">+</span> <span class="st0">" @FROM #{tweet['user']['name']}"</span><br /> &nbsp; &nbsp; <span class="kw3">puts</span> <span class="st0">"<span class="es0">\n</span>"</span><br /> &nbsp; <span class="br0">&#125;</span><br /> <span class="kw1">end</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>This is just an example of my application which I use it on terminal. You can run the app by typing</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          ruby thenameofthisapplication.rb
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>or you can use symbolic link to /usr/bin and type</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          ./thenameofthisapplication
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>It&#8217;s totally up to you.</p>
+
+<p>The Ruby API I used in this example is from this <a href="https://github.com/moomerman/twitter_oauth">https://github.com/moomerman/twitter_oauth</a></p>
+
+<p>And this is the Twitter API that you can have a look.<br/>
+<a href="http://apiwiki.twitter.com/w/page/22554679/Twitter-API-Documentation">http://apiwiki.twitter.com/w/page/22554679/Twitter-API-Documentation</a></p>
+
+<p>In this way, you can design your application to be whatever you want and when you&#8217;re at work, you&#8217;ll be on terminal on the time.</p>
+
+<p>Good luck!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Noppanit Charassinvichai</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2011-02-27T00:00:00-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ruby/'>ruby</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://noppanit.github.io/ruby-command-line-twitter-client-made-easy/" data-via="" data-counturl="http://noppanit.github.io/ruby-command-line-twitter-client-made-easy/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/linux-easier-way-to-copy-to-clipboard-in-terminal/" title="Previous Post: Linux : Easier way to copy to clipboard in terminal">&laquo; Linux : Easier way to copy to clipboard in terminal</a>
+      
+      
+        <a class="basic-alignment right" href="/how-to-java-capture-output-from-console/" title="Next Post: How to : Java capture output from console">How to : Java capture output from console &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

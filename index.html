@@ -9,7 +9,7 @@
   <meta name="author" content="Your Name">
 
   
-  <meta name="description" content=" Blog Archives Recent Posts ">
+  <meta name="description" content="TL;DR If you don&#8217;t know Code Review Stackoverflow you gotta get on it now. It works and it&#8217;s awesome. Longer version In Agile world, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,7 +66,1263 @@
       <div class="blog-index">
   
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/code-review-with-the-world/">Code Review With the World</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-22T00:00:00-04:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>TL;DR</h2>
+
+<p>If you don&#8217;t know <a href="http://codereview.stackexchange.com/">Code Review Stackoverflow</a> you gotta get on it now. It works and it&#8217;s awesome.</p>
+
+<h2>Longer version</h2>
+
+<p>In Agile world, everybody is talking about fail fast and faster feedback. If you&#8217;re a serious coder then code review and feedback are just as important. If you&#8217;re like me (maybe I&#8217;m alone), I used to hate code review so much because I don&#8217;t want someone to criticize my work, coding is like an art. You spent a lot of time on a piece of code and somebody just come in and say it sucks or why would you do something like that?. Not everybody is a great coder like Linus Torvalds or Ryan Dahl. Especially me, Because of rigorous code review I came from the worst coder every to bad coder (I&#8217;m still bad and I&#8217;m still learning). I believe the best way to learn any skill is first you have to be wrong and learn from your mistakes. The quickest way to do that is to code a lot and get your code reviewed by someone who&#8217;s a stronger coder than you, which you will have a lot on the Internet. If you work with some of the best programmers in your life then you&#8217;re lucky. But not everybody is that fortunate. I&#8217;ve found a better solution. <a href="http://codereview.stackexchange.com/">http://codereview.stackexchange.com/</a></p>
+
+<h2>Let&#8217;s get to the meat</h2>
+
+<p>For example, I wrote this piece of code to learn about dynamic programming.</p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="kw1">import</span> <span class="kw3">sys</span><br /> coins <span class="sy0">=</span> <span class="br0">&#91;</span><span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">3</span><span class="sy0">,</span> <span class="nu0">5</span><span class="br0">&#93;</span><br /> min_coin <span class="sy0">=</span> <span class="br0">&#91;</span><span class="kw3">sys</span>.<span class="me1">maxint</span><span class="br0">&#93;</span> * <span class="nu0">20</span><br /> min_coin<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="nu0"></span><br /> <br /> <span class="kw1">for</span> min_of_i <span class="kw1">in</span> <span class="kw2">range</span><span class="br0">&#40;</span><span class="nu0">20</span><span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; <span class="kw1">for</span> c <span class="kw1">in</span> coins:<br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> c <span class="sy0"><=</span> min_of_i <span class="kw1">and</span> <span class="br0">&#40;</span>min_coin<span class="br0">&#91;</span>min_of_i - c<span class="br0">&#93;</span> + <span class="nu0">1</span> <span class="sy0"><</span> min_coin<span class="br0">&#91;</span>min_of_i<span class="br0">&#93;</span><span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; min_coin<span class="br0">&#91;</span>min_of_i<span class="br0">&#93;</span> <span class="sy0">=</span> min_coin<span class="br0">&#91;</span>min_of_i - c<span class="br0">&#93;</span> + <span class="nu0">1</span><br /> <br /> <br /> <span class="kw1">print</span> min_coin
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>I know that my code is not bad (or maybe is really bad), but let&#8217;s see what I get out of it from this <a href="http://codereview.stackexchange.com/questions/92811/find-the-minimum-number-of-coins">thread</a>. From within a day I have at least 2-3 points to make my code a lot better. Not only that I learn more about Python, I also learn how to optimize the script.</p>
+
+<p>If you want to learn a new language fast, you need to learn from the expert. In just a few days I improved my code substantially. The best thing about the Internet is, you will have someone to review the reviewer as well. So, you can be sure to some extent that the one who answered your question is trustworthy.</p>
+
+<p>Now you might wonder, how about <a href="http://stackoverflow.com/">http://stackoverflow.com/</a>? I use Stackoverflow too but Stackoverflow has its own purpose. If you&#8217;re stuck in some problem and you can&#8217;t really wrap your head around it posting to Stackoverflow will give you answer in no time. However, if you ask somebody on Stackoverflow to review your code, it&#8217;s likely that your thread will be voted down or closed.</p>
+
+<h2>What about if you only have an idea.</h2>
+
+<p>I always have new idea and somehow I want experts to review or confirm my idea so I don&#8217;t waste time building something that somebody has done it before. Then, Stackoverflow or codereview.stackoverflow.com is not really the place you&#8217;d go for. That&#8217;s what I love about <a href="http://Quora.com">Quora.com</a>.</p>
+
+<p>For example, I wanted to understand more about machine learning and I couldn&#8217;t really ask on <a href="http://stats.stackexchange.com">stats.stackexchange.com</a>. That&#8217;s why I turned to Quora. For example, this <a href="https://www.quora.com/How-do-I-start-if-I-want-to-build-a-model-to-predict-if-a-tweet-will-go-viral/answer/Shankar-Iyer-5?__snids__=1350032536&amp;__nsrc__=2">thread</a>, I got a really detailed response from whom I can trust because of the number of upvotes.</p>
+
+<h2>Some note</h2>
+
+<p>I have one bad habit of just copying and pasting someone else&#8217;s code. Once you received the feedback, don&#8217;t just copy and paste that. Or if you get feedback from Github don&#8217;t just merge that right away. You will not fully understand the concept behind that. In the book I read recently, <a href="http://www.amazon.com/o/ASIN/039916524X/sciencefriday/">A Mind For Numbers</a>, Barbara taught us about how we can master in math and science and she explains that we have two modes of learning, focused and diffuse mode. If you just copy and paste someone else&#8217;s work, then you just imagine that you understand what&#8217;s going on. The best way to learn that is to actually do it and go into diffuse mode which is just close your eyes and think about it and go back to focused mode to do that again. I made a big mistake as an Engineer (I still do) that I just copy someone else&#8217;s code and I think that I understand that fully which I don&#8217;t. So, don&#8217;t just copy the feedback and commit that make sure you fully understand the code and actually type it. Barbara also suggested that writing is better than just typing but I think it might be difficult for us programmers.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-30T00:00:00-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post might be too easy for any Data-viz people but as a beginner tapping in this area. It took me quite a long time to figure it out so I just want to share this hoping that it might save people&#8217;s time.</p>
+
+<p>Parking in NYC is really a pain, especially street parking where there&#8217;re lots of signs and regulations. There are some apps on Android and iPhone that you can download and see signs but I haven&#8217;t been able to find the one that suits my needs. I want an application that can tell me where to circle arounds on which day and time to find parking spot. For example, I parked my car on a Tuesday which has street cleaning on Wednesday and Friday from 8:30 to 9:30. That means I have to move the car on Wednesday morning to find a spot for Friday. The problem is I don&#8217;t know what&#8217;s around me. The closest application I find is <a href="http://www.nycparklife.com/streetparker/">http://www.nycparklife.com/streetparker/</a> which it doesn&#8217;t have Manhattan.</p>
+
+<h2>Getting the data</h2>
+
+<p>So, I googled and thank NYC.gov that provides the <a href="http://www.nyc.gov/html/dot/html/about/datafeeds.shtml#parking">data</a> for us. First, I played around with the csv files but they don&#8217;t have coordinates that I can place location on the map. And I have no experience dealing with shapefiles.</p>
+
+<h2>Extracting the data</h2>
+
+<p>After a few hours of mangling and munching the csv with Pandas and R. I would not be able to get the exact locations of all the signs. So I turned to shapefile hoping that I might get lucky. And I found this <a href="http://www.shpescape.com/">http://www.shpescape.com/</a> which promised to transform shapefile to <a href="https://support.google.com/fusiontables/answer/2571232?hl=en">Google Fusion Table</a>. Awesome! I went ahead and tried it. It works great! but it only gives you the first 100,000 rows. So dug deeper. After another few hours of googling I found <a href="http://www.qgis.org/en/site/">qGis</a> which is a opensource project that you can use to open and view shapefile.</p>
+
+<p>Here&#8217;s the example.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.png" alt="Parking signs on Qgis" width="1008" height="734" class="aligncenter size-full wp-image-1466" /></a></p>
+
+<p>One thing I learnt was that you cannot just click <strong>Open</strong> and choose the file. What you need to do is to <string>Add Vector Layer</strong>. You can use shortcut <strong>Ctrl+Shift+v</strong></p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.png" alt="Add Vector Layer" width="1433" height="836" class="aligncenter size-full wp-image-1467" /></a></p>
+
+<h2>Export to Google Fusion</h2>
+
+<p>Now what we need is to import what we have to Google Fusion Table. How are we going to turn this beautiful layer to Google Maps. We need CSV&#8230;</p>
+
+<p>In QGis you can download the file as CSV. It&#8217;s in <strong>Layer > Save As</strong>. You just need to make sure that <strong>Geometry</strong> has to be set so you get the coordinates.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.png" alt="Save to CSV" width="591" height="652" class="aligncenter size-full wp-image-1468" /></a></p>
+
+<h2>Import to Google Fusion Table</h2>
+
+<p>Now we can use that CSV to import to Google Fusion. It would look something like this.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.png" alt="Google Fusion Table" width="1425" height="726" class="aligncenter size-full wp-image-1469" /></a></p>
+
+<p>what you need to make sure is that you need to specify which fields are Lat, Long so Google can plot that for you.</p>
+
+<p>Here&#8217;s how you do it.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.png" alt="Screenshot 2015-07-30 13.05.41" width="226" height="116" class="aligncenter size-full wp-image-1470" /></a></p>
+
+<p>The click <strong>change</strong> You will see something like this and you can choose which field you want to be Longitude or Latitude.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.png" alt="Set Location" width="518" height="673" class="aligncenter size-full wp-image-1471" /></a></p>
+
+<p>Once the coordinates have set we can go to Map tab and see beautiful little dots that show where all the signs are in NYC.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.png" alt="Parking signs in Google Fusion Table" width="1254" height="736" class="aligncenter size-full wp-image-1472" /></a>.</p>
+
+<p>Walla! Now you have something you can build an application on top of it. The next post, I will create an application on top of this map to make use of our data.</p>
+
+<h2>Things I have tried and failed</h2>
+
+<p>I&#8217;ve tried using <a href="https://github.com/OSGeo/proj.4">Proj4</a> on both R and Python to convert X,Y WGS84 to Lat, Long. Here&#8217;s my little snippet.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          data = read.csv('./parking_regulation.csv')<br /> <br /> library(proj4)<br /> proj4string <- "+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs"<br /> latlong_list<-list()<br /> calculate_long_lat <- function(x,y) {<br /> &nbsp; <br /> &nbsp; # Source data<br /> &nbsp; xy <- data.frame(x=x, y=y)<br /> &nbsp; <br /> &nbsp; # Transformed data<br /> &nbsp; pj <- project(xy, proj4string, inverse=TRUE)<br /> &nbsp; latlon <- data.frame(lat=pj$y, lon=pj$x)<br /> &nbsp; latlong_list[['latlong']] <- latlon<br /> }<br /> <br /> apply(data[,c('x','y')], 1, function(y) calculate_long_lat(y['x'], y['y']))
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>The result is not quite accurate which I think it&#8217;s because I need to find a correct <strong>proj4string</strong>.</p>
+
+<p>Python has the same wrapper which is quite what I want as well.</p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="kw1">from</span> pyproj <span class="kw1">import</span> Proj<br /> <span class="kw1">import</span> pandas <span class="kw1">as</span> pd<br /> <br /> data <span class="sy0">=</span> pd.<span class="me1">read_csv</span><span class="br0">&#40;</span><span class="st0">'parking_regulation.csv'</span><span class="br0">&#41;</span><br /> <br /> p <span class="sy0">=</span> Proj<span class="br0">&#40;</span>r<span class="st0">'+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs'</span><span class="br0">&#41;</span><br /> <br /> <span class="kw1">def</span> cal_long_lat<span class="br0">&#40;</span>row<span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; <span class="kw1">return</span> p<span class="br0">&#40;</span>row<span class="br0">&#91;</span><span class="st0">'x'</span><span class="br0">&#93;</span><span class="sy0">,</span> row<span class="br0">&#91;</span><span class="st0">'y'</span><span class="br0">&#93;</span><span class="sy0">,</span>inverse<span class="sy0">=</span><span class="kw2">True</span><span class="br0">&#41;</span><br /> <br /> data<span class="br0">&#91;</span><span class="st0">'lon'</span><span class="br0">&#93;</span><span class="sy0">,</span> data<span class="br0">&#91;</span><span class="st0">'lat'</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="kw2">zip</span><span class="br0">&#40;</span>data.<span class="me1">apply</span> <span class="br0">&#40;</span><span class="kw1">lambda</span> row: cal_long_lat <span class="br0">&#40;</span>row<span class="br0">&#41;</span><span class="sy0">,</span>axis<span class="sy0">=</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> data.<span class="me1">head</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>I will need to learn more about State Pane and what is the correct format.</p>
+
+<p>This article takes 2 pomodoros to complete.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-17T00:00:00-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ok, the title might be a little bit exaggerating. But let me clear this up first. I still use modern editors, TextMate, Atom.io or IntelliJ. They are pros and cons. But here&#8217;s my real answer if people ask me. I want to be the cool kid!.</p>
+
+<p>I don&#8217;t know if you&#8217;re like me but I get asked almost all the time I go to a meetup or conference, &#8220;What&#8217;s your favourite editor&#8221;?. People almost always say Vim|Emacs. I tried both of them in the past and gave up more than I can remember because of all the shortcuts and plugins and I just get too frustrated to use either of them. Finally, I have made a decision that I&#8217;m going to stick with Vim for a month and let&#8217;s see if at the end of the month I still can&#8217;t use it. It&#8217;s been almost a month and I&#8217;d say I&#8217;m never going back to modern editors again (at least when I&#8217;m coding scripting languages). Here&#8217;s why.</p>
+
+<h3>It&#8217;s just easier</h3>
+
+<p>I know it&#8217;s not really easier than TextMate or Sublime. You still have to learn a lot of shortcuts and commands. Also, bare-bone Vim just doesn&#8217;t have when you get in TextMate or Sublime (e.g, Find file, Command+T, Directory structure or code completion). However, after you powered through that learning phrase everything is just natural to you.</p>
+
+<p>If you want to clear any trailing whitespaces you just have to type <strong>%s/\s+$//</strong> and hit enter. If you want to run some external command you can always do in Vim. For example, if you just want to <strong>git status</strong> you can install <a href="https://github.com/tpope/vim-fugitive">Git wrapper</a> or you can just run <strong>:!git status</strong>. You don&#8217;t even need to go to your terminal which I think it&#8217;s faster.</p>
+
+<p>If you&#8217;re a good engineer, you will always do TDD. Going back and fourth between the editor and terminal, it&#8217;s just too annoying. I remember when I was coding Java I can just hit Cmd+t in IntelliJ or .NET and you see green bars. Isn&#8217;t it just awesome? I realised that TextMate and Sublime have plugins to do that as well or you can just write your own plugin or package. I tried a couple of plugins and they never work for me. In Vim, it just works!.</p>
+
+<h3>Community</h3>
+
+<p>If Vim|Emacs doesn&#8217;t do what you want, you will almost always find the plugin that does it for you. Currently, my standard plugins are. <strong>NERDTree</strong>, <strong>CommandT</strong>, <strong>vim-fugitive</strong>, <strong>vim-rooter</strong>, <strong>vim-virtualenv</strong>. All these plugins just make my Vim functions the same as Atom.io or Sublime.</p>
+
+<h3>Not for everyone</h3>
+
+<p>I have to admit that the first few weeks I got really frustrated. I almost banged my keyboard against the monitor. I found myself opening Atom.io every time I couldn&#8217;t do some basic editing in Vim. For example, using <strong>vimgrep</strong> wasn&#8217;t what I expected and I ended up googling a lot. Now I get the hang of it and I don&#8217;t use Atom anymore. The worst case is I will just use command line instead.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-09T00:00:00-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;m a big fan of TDD. I get nervous every time when I put some code it without having tests. I&#8217;m developing a simple jQuery plugin and I think hey we can TDD this.</p>
+
+<h2>What is it?</h2>
+
+<p>The plugin is really simple. It turns ul tag to be taggable field. It&#8217;s similar to <a href="http://aehlke.github.io/tag-it/">tag-it</a> but with a lot less functionalities and doesn&#8217;t depend on jquery-ui</p>
+
+<h2>What you need</h2>
+
+<p>I decided to use Karma because I&#8217;m going to test a lot of behaviours and Karma seems like a good fit as it run on real browser. Here&#8217;s how I setup my project.</p>
+
+<p>I chose jasmine-jquery because it&#8217;s easier to create some element to test and it&#8217;s easy to setup.</p>
+
+<p>This is my <strong>gulpfile.js</strong></p>
+
+<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="kw2">var</span> gulp <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'gulp'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="kw2">var</span> karma <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'gulp-karma'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="kw2">var</span> testFiles <span class="sy0">=</span> <span class="br0">&#91;</span><br /> &nbsp; <span class="st0">'tests/vendors/jquery-1.11.3.min.js'</span><span class="sy0">,</span><br /> &nbsp; <span class="st0">'tests/vendors/jasmine-jquery.js'</span><span class="sy0">,</span><br /> &nbsp; <span class="st0">'src/**/*.js'</span><span class="sy0">,</span><br /> &nbsp; <span class="st0">'tests/spec/**/*.js'</span><br /> <span class="br0">&#93;</span><span class="sy0">;</span><br /> <span class="coMULTI">/**<br /> &nbsp;* Run test once and exit<br /> &nbsp;*/</span><br /> gulp.<span class="me1">task</span><span class="br0">&#40;</span><span class="st0">'test'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>done<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; <span class="kw1">return</span> gulp.<span class="me1">src</span><span class="br0">&#40;</span>testFiles<span class="br0">&#41;</span><br /> &nbsp; &nbsp; .<span class="me1">pipe</span><span class="br0">&#40;</span>karma<span class="br0">&#40;</span><span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; configFile<span class="sy0">:</span> <span class="st0">'karma.conf.js'</span><span class="sy0">,</span><br /> &nbsp; &nbsp; &nbsp; action<span class="sy0">:</span> <span class="st0">'run'</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> &nbsp; .<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'error'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>err<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="co1">// Make sure failed tests cause gulp to exit non-zero </span><br /> &nbsp; &nbsp; <span class="kw1">throw</span> err<span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> gulp.<span class="me1">task</span><span class="br0">&#40;</span><span class="st0">'default'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; gulp.<span class="me1">src</span><span class="br0">&#40;</span>testFiles<span class="br0">&#41;</span><br /> &nbsp; &nbsp; .<span class="me1">pipe</span><span class="br0">&#40;</span>karma<span class="br0">&#40;</span><span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; configFile<span class="sy0">:</span> <span class="st0">'karma.conf.js'</span><span class="sy0">,</span><br /> &nbsp; &nbsp; &nbsp; action<span class="sy0">:</span> <span class="st0">'watch'</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>This is my <strong>karma.conf.js</strong></p>
+
+<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          module.<span class="me1">exports</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>config<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; config.<span class="me1">set</span><span class="br0">&#40;</span><span class="br0">&#123;</span><br /> &nbsp; &nbsp; browsers<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">'PhantomJS'</span><span class="br0">&#93;</span><span class="sy0">,</span><br /> &nbsp; &nbsp; frameworks<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">'jasmine'</span><span class="br0">&#93;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Here&#8217;s my first test</p>
+
+<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          describe<span class="br0">&#40;</span><span class="st0">'Taggify'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; <span class="kw2">var</span> fixture<span class="sy0">;</span><br /> &nbsp; beforeEach<span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; fixture <span class="sy0">=</span> setFixtures<span class="br0">&#40;</span><span class="st0">'<ul id="tag"></ul>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; jQuery<span class="br0">&#40;</span><span class="st0">'#tag'</span><span class="br0">&#41;</span>.<span class="me1">taggify</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <br /> &nbsp; it<span class="br0">&#40;</span><span class="st0">'should initialize text box'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> input <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'input'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; expect<span class="br0">&#40;</span>input.<span class="me1">length</span> <span class="sy0">></span> <span class="nu0"></span><span class="br0">&#41;</span>.<span class="me1">toBeTruthy</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>You will see that the test failed now we implement some code.</p>
+
+<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>$<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; $.<span class="me1">fn</span>.<span class="me1">taggify</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>options<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; create<span class="br0">&#40;</span><span class="kw1">this</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw1">this</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="sy0">;</span><br /> <br /> &nbsp; <span class="kw2">function</span> create<span class="br0">&#40;</span>$theElement<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> $input <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<input class="tag-input"></input>'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'type'</span><span class="sy0">,</span> <span class="st0">'text'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'autocomplete'</span><span class="sy0">,</span> <span class="st0">'off'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $theElement.<span class="me1">append</span><span class="br0">&#40;</span>$input.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#40;</span>jQuery<span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Now the test passed.</p>
+
+<p>Now let&#8217;s add some event so when you hit enter the tag is added. So, I added one more test</p>
+
+<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          &nbsp; it<span class="br0">&#40;</span><span class="st0">'should add a tag'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> input <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'input'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; input.<span class="me1">val</span><span class="br0">&#40;</span><span class="st0">'tag'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; input.<span class="me1">trigger</span><span class="br0">&#40;</span>jQuery.<span class="me1">Event</span><span class="br0">&#40;</span><span class="st0">'keyup'</span><span class="sy0">,</span> <span class="br0">&#123;</span> keyCode<span class="sy0">:</span> <span class="nu0">13</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="kw2">var</span> tags <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'.tag-label'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> tag <span class="sy0">=</span> jQuery<span class="br0">&#40;</span>tags<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <br /> &nbsp; &nbsp; expect<span class="br0">&#40;</span>tag.<span class="me1">html</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>.<span class="me1">toBe</span><span class="br0">&#40;</span><span class="st0">'tag'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; expect<span class="br0">&#40;</span>tags.<span class="me1">length</span> <span class="sy0">></span> <span class="nu0"></span><span class="br0">&#41;</span>.<span class="me1">toBeTruthy</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Now the test failed.</p>
+
+<p>I&#8217;ll fix the test by doing this.</p>
+
+<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>$<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; $.<span class="me1">fn</span>.<span class="me1">taggify</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>options<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; create<span class="br0">&#40;</span><span class="kw1">this</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw1">this</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="sy0">;</span><br /> <br /> &nbsp; <span class="kw2">function</span> create<span class="br0">&#40;</span>$theElement<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> $input <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<input class="tag-input"></input>'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'type'</span><span class="sy0">,</span> <span class="st0">'text'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'autocomplete'</span><span class="sy0">,</span> <span class="st0">'off'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $input.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'keyup'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>e<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">&#40;</span>e.<span class="me1">keyCode</span> <span class="sy0">===</span> <span class="nu0">13</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> tagText <span class="sy0">=</span> $input.<span class="me1">val</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> $span <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<span class="tag-label"></span>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; $span.<span class="me1">text</span><span class="br0">&#40;</span>tagText<span class="br0">&#41;</span>.<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li class="tag-choice"></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; $theElement.<span class="me1">prepend</span><span class="br0">&#40;</span>$span.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; $input.<span class="me1">val</span><span class="br0">&#40;</span><span class="st0">''</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $theElement.<span class="me1">append</span><span class="br0">&#40;</span>$input.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#40;</span>jQuery<span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Now I want to add some negative test case.</p>
+
+<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          &nbsp; it<span class="br0">&#40;</span><span class="st0">'should not add a tag'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> input <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'input'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; input.<span class="me1">trigger</span><span class="br0">&#40;</span>jQuery.<span class="me1">Event</span><span class="br0">&#40;</span><span class="st0">'keyup'</span><span class="sy0">,</span> <span class="br0">&#123;</span> keyCode<span class="sy0">:</span> <span class="nu0">13</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> tags <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'.tag-label'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <br /> &nbsp; &nbsp; expect<span class="br0">&#40;</span>tags.<span class="me1">length</span> <span class="sy0">></span> <span class="nu0"></span><span class="br0">&#41;</span>.<span class="me1">toBeFalsy</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Oops the test failed, looks like I missed something</p>
+
+<p>I will fix the test by</p>
+
+<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>$<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; $.<span class="me1">fn</span>.<span class="me1">taggify</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>options<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; create<span class="br0">&#40;</span><span class="kw1">this</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw1">this</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="sy0">;</span><br /> <br /> &nbsp; <span class="kw2">function</span> create<span class="br0">&#40;</span>$theElement<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> $input <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<input class="tag-input"></input>'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'type'</span><span class="sy0">,</span> <span class="st0">'text'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'autocomplete'</span><span class="sy0">,</span> <span class="st0">'off'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $input.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'keyup'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>e<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">&#40;</span>e.<span class="me1">keyCode</span> <span class="sy0">===</span> <span class="nu0">13</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> tagText <span class="sy0">=</span> $input.<span class="me1">val</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>tagText <span class="sy0">!==</span> <span class="st0">''</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> $span <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<span class="tag-label"></span>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $span.<span class="me1">text</span><span class="br0">&#40;</span>tagText<span class="br0">&#41;</span>.<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li class="tag-choice"></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $theElement.<span class="me1">prepend</span><span class="br0">&#40;</span>$span.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $input.<span class="me1">val</span><span class="br0">&#40;</span><span class="st0">''</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $theElement.<span class="me1">append</span><span class="br0">&#40;</span>$input.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#40;</span>jQuery<span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>That&#8217;s it. I hope you enjoy and love TDD more. And here&#8217;s the <a href="https://github.com/noppanit/taggify">github repo</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-07T00:00:00-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Just for fun, I wanted to learn how to do linear regression and here&#8217;s the example I come up with.</p>
+
+<p>Let&#8217;s say you have a historical data of 1000 people who dined in your restaurant and left a tip. This is going to be perfect data because I generated. In the real world you will not find something like this.</p>
+
+<p>If you don&#8217;t understand Linear Regression like me before I wrote this post, I recommend you to read this <a href="http://onlinestatbook.com/2/regression/intro.html">basic linear regression.</a>.</p>
+
+<p>The idea is that you have two variables. In this case, it&#8217;s <strong>tips</strong> and <strong>total amount of bill</strong>. You should explore the data by plotting the graph of these two variables. From my generated data you will get something like this.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-07-00.54.42.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-07-00.54.42.png" alt="Linear Regression" width="421" height="281" class="aligncenter size-full wp-image-1448" /></a></p>
+
+<p>You can clearly see that there&#8217;s a strong correlation between the amount of tip and meal.</p>
+
+<p>Now if you can find the slope of the graph and intercept you should be able to use the formula.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          Y = MX + C<br /> <br /> M = slope of the graph<br /> C = Intercept
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>If you&#8217;re lazy to look at my <a href="https://github.com/noppanit/linear-regression-basic">notebook</a>.</p>
+
+<p>Then you can run this code.</p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="kw1">import</span> pandas <span class="kw1">as</span> pd<br /> <span class="kw1">import</span> numpy <span class="kw1">as</span> np<br /> <span class="kw1">from</span> scipy <span class="kw1">import</span> stats<br /> <br /> total_bills <span class="sy0">=</span> np.<span class="kw3">random</span>.<span class="me1">randint</span><span class="br0">&#40;</span><span class="nu0">100</span><span class="sy0">,</span> size<span class="sy0">=</span><span class="nu0">1000</span><span class="br0">&#41;</span><br /> tips <span class="sy0">=</span> total_bills * <span class="nu0">0.10</span><br /> <br /> x <span class="sy0">=</span> pd.<span class="me1">Series</span><span class="br0">&#40;</span>tips<span class="sy0">,</span> name<span class="sy0">=</span><span class="st0">'tips'</span><span class="br0">&#41;</span><br /> y <span class="sy0">=</span> pd.<span class="me1">Series</span><span class="br0">&#40;</span>total_bills<span class="sy0">,</span> name<span class="sy0">=</span><span class="st0">'total_bills'</span><span class="br0">&#41;</span><br /> df <span class="sy0">=</span> pd.<span class="me1">concat</span><span class="br0">&#40;</span><span class="br0">&#91;</span>x<span class="sy0">,</span> y<span class="br0">&#93;</span><span class="sy0">,</span> axis<span class="sy0">=</span><span class="nu0">1</span><span class="br0">&#41;</span><br /> <br /> slope<span class="sy0">,</span> intercept<span class="sy0">,</span> r_value<span class="sy0">,</span> p_value<span class="sy0">,</span> std_err <span class="sy0">=</span> stats.<span class="me1">linregress</span><span class="br0">&#40;</span>x<span class="sy0">=</span>total_bills<span class="sy0">,</span> y<span class="sy0">=</span>tips<span class="br0">&#41;</span><br /> predicted_tips <span class="sy0">=</span> <span class="br0">&#40;</span>slope * <span class="nu0">70</span><span class="br0">&#41;</span> + intercept
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>The result is $7 which corresponds to the 10% tip.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/example-how-did-i-convert-async-code-to-sync-code-with-promise/">Example: How Did I Convert Async Code to Sync Code With Promise.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-05-24T00:00:00-04:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve just finished my first refactor to convert my node.js code to be more promisey (I believe that&#8217;s the word they use these days). There&#8217;s lots of documents out there to do this. However, I thought I should contribute more to help me understand more and might get some feedback from people who&#8217;s seen it as well.</p>
+
+<p>I&#8217;m trying to create a bot to report me back the performance of my site in desktop and mobile mode. So, I thought it would be easy since Google has an <a href="https://developers.google.com/speed/docs/insights/v2/getting-started">API</a> for that already so I went ahead and did this.</p>
+
+<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="kw2">var</span> request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="kw2">var</span> urlToGetTheScore <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=desktop&amp;fields=ruleGroups'</span><br />
+          <br />
+          request.<span class="me1">get</span><span class="br0">&#40;</span>urlToGetTheScore<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> console.<span class="me1">log</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <br />
+          &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>It&#8217;s pretty easy and straight forward right but now that would only return the score of desktop. I need the score of my mobile site as well. So, I added more code to be like this.</p>
+
+<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="kw2">var</span> request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          <span class="kw2">var</span> urlToGetTheScoreDesktop <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=desktop&amp;fields=ruleGroups'</span><br />
+          <br />
+          <span class="kw2">var</span> urlToGetTheScoreMobile <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=mobile&amp;fields=ruleGroups'</span><br />
+          <br />
+          request.<span class="me1">get</span><span class="br0">&#40;</span>urlToGetTheScoreDesktop<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> console.<span class="me1">log</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          request.<span class="me1">get</span><span class="br0">&#40;</span>urlToGetTheScoreMobile<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> console.<span class="me1">log</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>That&#8217;s great but I want to return both scores to a client so I can report the scores rather than printing them to the console. Since, <strong>request</strong> is asynchronous you cannot guarantee which score would come first. So, I thought it&#8217;s easy. I just need to call one request after the other. So, I came up with this.</p>
+
+<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="kw2">var</span> request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          <span class="kw2">var</span> urlToGetTheScoreDesktop <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=desktop&amp;fields=ruleGroups'</span><br />
+          <br />
+          <span class="kw2">var</span> urlToGetTheScoreMobile <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=mobile&amp;fields=ruleGroups'</span><br />
+          <br />
+          request.<span class="me1">get</span><span class="br0">&#40;</span>urlToGetTheScoreDesktop<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> reject<span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; <span class="kw2">var</span> desktopScore <span class="sy0">=</span> JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; request.<span class="me1">get</span><span class="br0">&#40;</span>urlToGetTheScoreMobile<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> reject<span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; &nbsp; <span class="kw2">var</span> mobileScore <span class="sy0">=</span> JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span><span class="st0">'desktop score is '</span> <span class="sy0">+</span> desktopScore <span class="sy0">+</span> <span class="st0">' and mobile score is '</span> <span class="sy0">+</span> mobileScore<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>&nbsp;</p>
+
+<p>Look at how ugly it is. Now I want to make it prettier. So, I will use Promise to make it look nicer. As a good engineer I need to create a test first.</p>
+
+<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="kw2">var</span> perfModule <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'./pagespeed'</span><span class="br0">&#41;</span><span class="sy0">,</span><br />
+          sinon <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'sinon'</span><span class="br0">&#41;</span><span class="sy0">,</span><br />
+          request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">,</span><br />
+          expect <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'expect.js'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          describe<span class="br0">&#40;</span><span class="st0">'Performance'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          <span class="kw2">var</span> server<span class="sy0">;</span><br />
+          &nbsp; beforeEach<span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>done<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; sinon.<span class="me1">stub</span><span class="br0">&#40;</span>request<span class="sy0">,</span> <span class="st0">'get'</span><span class="br0">&#41;</span>.<span class="me1">yields</span><span class="br0">&#40;</span><span class="kw2">null</span><span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> JSON.<span class="me1">stringify</span><span class="br0">&#40;</span><span class="br0">&#123;</span>ruleGroups <span class="sy0">:</span> <span class="br0">&#123;</span> SPEED<span class="sy0">:</span> <span class="br0">&#123;</span>score<span class="sy0">:</span><span class="nu0">10</span><span class="br0">&#125;</span><span class="br0">&#125;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; done<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <br />
+          &nbsp; it<span class="br0">&#40;</span><span class="st0">'should send performance stats to chat room'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>done<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; perfModule.<span class="me1">pagespeed</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>donotknow<span class="sy0">,</span> msg<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; &nbsp; done<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; &nbsp; expect<span class="br0">&#40;</span>msg<span class="br0">&#41;</span>.<span class="me1">to</span>.<span class="me1">eql</span><span class="br0">&#40;</span><span class="st0">'desktop speed is 10 and mobile speed is 10'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>I&#8217;m using <a href="http://sinonjs.org/">Sinon.js</a> as the mocking framework and <a href="http://mochajs.org/">Mocha</a> as the testing framework which are pretty standard.</p>
+
+<p>Now I can start refactor my code. At first, I wrote some code like this, just to make it work.</p>
+
+<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="kw2">var</span> request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          <span class="kw2">var</span> getSpeed <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>strategy<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; <span class="kw2">var</span> url <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy='</span><span class="sy0">+</span> strategy <span class="sy0">+</span> <span class="st0">'&amp;fields=ruleGroups'</span><br />
+          &nbsp; <span class="kw1">return</span> <span class="kw2">new</span> Promise<span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>resolve<span class="sy0">,</span> reject<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; request.<span class="me1">get</span><span class="br0">&#40;</span>url<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> reject<span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; &nbsp; resolve<span class="br0">&#40;</span>JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="sy0">;</span><br />
+          <br />
+          <span class="kw2">var</span> pagespeed <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>cb<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; getSpeed<span class="br0">&#40;</span><span class="st0">'desktop'</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>desktopSpeed<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; getSpeed<span class="br0">&#40;</span><span class="st0">'mobile'</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>mobileSpeed<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span><span class="st0">'desktop speed is '</span> <span class="sy0">+</span> desktopSpeed <span class="sy0">+</span> <span class="st0">' and mobile speed is '</span> <span class="sy0">+</span> mobileSpeed<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="sy0">;</span><br />
+          <br />
+          exports.<span class="me1">pagespeed</span> <span class="sy0">=</span> pagespeed<span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>Any good JavaScript developer would be like, WTH!. You still have callbacks. I thought Promise would solve that issue already! Now, I could use the power of <strong>Promise.all</strong> which takes array of promises and return array of results. My final code would look something like this.</p>
+
+<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="kw2">var</span> request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">,</span><br />
+          Promise <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'promise'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          <span class="kw2">var</span> getSpeed <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>strategy<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; <span class="kw2">var</span> url <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http%3A%2F%2Ffusion.net&amp;strategy='</span><span class="sy0">+</span> strategy <span class="sy0">+</span> <span class="st0">'&amp;fields=ruleGroups'</span><br />
+          &nbsp; <span class="kw1">return</span> <span class="kw2">new</span> Promise<span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>resolve<span class="sy0">,</span> reject<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; request.<span class="me1">get</span><span class="br0">&#40;</span>url<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> reject<span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; &nbsp; resolve<span class="br0">&#40;</span>JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="sy0">;</span><br />
+          <br />
+          <span class="kw2">var</span> pagespeed <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>cb<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; Promise.<span class="me1">all</span><span class="br0">&#40;</span><span class="br0">&#91;</span>getSpeed<span class="br0">&#40;</span><span class="st0">'desktop'</span><span class="br0">&#41;</span><span class="sy0">,</span> getSpeed<span class="br0">&#40;</span><span class="st0">'mobile'</span><span class="br0">&#41;</span><span class="br0">&#93;</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>speed<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; <span class="kw2">var</span> desktop <span class="sy0">=</span> speed<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; <span class="kw2">var</span> mobile <span class="sy0">=</span> speed<span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span><span class="kw2">null</span><span class="sy0">,</span> <span class="st0">'desktop speed is '</span> <span class="sy0">+</span> desktop <span class="sy0">+</span> <span class="st0">' and mobile speed is '</span> <span class="sy0">+</span> mobile<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span>.<span class="kw1">catch</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="sy0">;</span><br />
+          <br />
+          exports.<span class="me1">pagespeed</span> <span class="sy0">=</span> pagespeed<span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>I&#8217;m not an expert in Promise and I welcome any feedback that would help improve my code.</p>
+
+<p>Reference<br/>
+<a href="http://www.html5rocks.com/en/tutorials/es6/promises/">ES6 Promises</a><br/>
+<a href="http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html">We have a problem with promises</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/rise-of-the-slackbots/">Rise of the (Slack)Bots.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-05-23T00:00:00-04:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://fusion.net">Fusion</a> tech team just had a hackday in the theme of &#8220;Slackbot&#8221;. We brainstormed what or how do we make the job of editorial or engineering team easier. We threw a bunch of ideas and my team decided to create a bot that can interact with you in a number of ways or encourage you to fix or debug code. We tried to make it funny and in the same time useful for our daily routine.</p>
+
+<p>My colleague <a href="https://twitter.com/danielbachhuber">Daniel Bachhuber</a> came up with the name Rubberduck which I believe he got it from <a href="http://en.wikipedia.org/wiki/Rubber_duck_debugging">here</a>. The idea of the bot is easy. If you have used Slack you must have seen Slackbot before where it guides you how to use Slack or the bot can help you change your profile picture.</p>
+
+<p>We spent a good one hour to find the best possible solution for creating a bot and we found <a href="https://github.com/silentrob/superscript/">Superscript</a>, which has a client for Slack. It&#8217;s perfect!.</p>
+
+<p>We&#8217;ve also opensourced the <a href="https://github.com/fusioneng/rubberduck-bot">bot</a> which you can clone and play around with it as well.</p>
+
+<p>The first plugin we are thinking is performance bot where the bot can report the current performance of a website instead of going to a dashboard. It&#8217;s because we have remote team. So, having a bit giant board wouldn&#8217;t make much sense since some of our folks are distributed and we mainly use Slack for any communication.</p>
+
+<p><img class=" size-full wp-image-1403" src="http://www.noppanit.com/wp-content/uploads/2015/05/Screenshot-2015-05-23-19.42.23.png" alt="rubberduck bot" width="501" height="86" /></p>
+
+<p>Now, go ahead and create your own bot!.</p>
+
+<p>&nbsp;</p>
+
+<p>Check this out. <a href="https://medium.com/@rob_ellis/slack-superscript-rise-of-the-bots-bba8506a043c">Rise of the bots</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/installing-ssl-on-amazon-cloudfront/">Installing SSL on Amazon CloudFront</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-05-22T00:00:00-04:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>We have just installed SSL on our Amazon CloudFront. We followed this <a href="https://bryce.fisher-fleig.org/blog/setting-up-ssl-on-aws-cloudfront-and-s3/">blog post</a> from Bryce which I think it&#8217;s really good already. However, I was stuck on the last part where you have to upload the certificate to IAM. The difference is that I had to concatenate the crt files myself and I didn&#8217;t know how to do it. So I spent quite a long time to figure it out. I thought I would write this so it might help save sometime for anybody.</p>
+
+<p>If your SSL providers gave you the chained certificate already, then you don&#8217;t have to do anything else. However, when I downloaded my crt files I found this</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          my_domain.crt<br /> AddTrustExternalCARoot.crt<br /> TrustedSecureCertificateAuthority5.crt<br /> USERTrustRSAAddTrustCA.rt
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>And I&#8217;m shocked. So, I thought I would need to upload all of them three times which I did but only one got through and I thought the others must have been backup or some kind (I know I&#8217;m pretty stupid). So, I used <a href="https://www.digicert.com/help/">SSL Checker</a> to check and the site said my trust is broken. I thought how could it be I did everything right.</p>
+
+<p>It turned out that I didn&#8217;t upload all of the chained certificate. So, I went again and I tried to upload the second file which I got a nice error from Amazon that my certificate is malformed. I&#8217;m stumped again.</p>
+
+<p>After a lot of digging and reading. I have to figured out the order of certificates and concatenate all the certificates in the right order until the root. You can ask your SSL provider if you want a quicker answer but I went the hard way.</p>
+
+<p>You can run this command</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          openssl x509 <span class="re5">-text</span> <span class="re5">-noout</span> <span class="re5">-in</span> your_domain.crt
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>You should start with your <strong>domain.crt</strong> file which will be something like this</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          Certificate:<br /> &nbsp; &nbsp; Data:<br /> &nbsp; &nbsp; &nbsp; &nbsp; Version: 3 (0x2)<br /> &nbsp; &nbsp; &nbsp; &nbsp; Serial Number:<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; xxxxxx<br /> &nbsp; &nbsp; &nbsp; &nbsp; Signature Algorithm: xxxxx<br /> &nbsp; &nbsp; &nbsp; &nbsp; Issuer: C=US, ST=DE, L=Wilmington, O=Corporation Service Company, CN=Trusted Secure Certificate Authority 5<br /> &nbsp; &nbsp; &nbsp; &nbsp; Validity<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not Before: <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not After : <br /> &nbsp; &nbsp; &nbsp; &nbsp; Subject: C=US/postalCode=x, ST=xx, L=xxx, O=xxx, LLC, OU=xxx, OU=xxx, CN=xxx<br /> </cod><br /> <br /> You just need to look for <strong>Issuer</strong> which will tell you what is your next immediate certificate. In this case <strong>Trusted Secure Certificate Authority 5</strong> is my first certificate and then you go on and do the next one.<br /> <br /> <code lang="bash"><br /> openssl x509 -text -noout -in TrustedSecureCertificateAuthority5.crt
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>You will get something like this</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          Certificate:<br /> &nbsp; &nbsp; Data:<br /> &nbsp; &nbsp; &nbsp; &nbsp; Version: 3 (0x2)<br /> &nbsp; &nbsp; &nbsp; &nbsp; Serial Number:<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; xxxxx<br /> &nbsp; &nbsp; &nbsp; &nbsp; Signature Algorithm: xxxx<br /> &nbsp; &nbsp; &nbsp; &nbsp; Issuer: C=US, ST=New Jersey, L=Jersey City, O=The USERTRUST Network, CN=USERTrust RSA Certification Authority<br /> &nbsp; &nbsp; &nbsp; &nbsp; Validity<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not Before: Sep 10 00:00:00 2014 GMT<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not After : Sep &nbsp;9 23:59:59 2024 GMT<br /> &nbsp; &nbsp; &nbsp; &nbsp; Subject: C=US, ST=DE, L=Wilmington, O=Corporation Service Company, CN=Trusted Secure Certificate Authority 5
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>It means <strong>USERTrust</strong> is the next certificate then repeat the process again until you see this.</p>
+
+<pre><div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          Certificate:<br />
+          &nbsp; &nbsp; Data:<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; Version: 3 (0x2)<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; Serial Number: xxxx<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; Signature Algorithm: xxxxx<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; Issuer: C=SE, O=AddTrust AB, OU=AddTrust External TTP Network, CN=AddTrust External CA Root<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; Validity<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not Before: May 30 10:48:38 2000 GMT<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not After : May 30 10:48:38 2020 GMT<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; Subject: C=SE, O=AddTrust AB, OU=AddTrust External TTP Network, CN=AddTrust External CA Root
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>If <strong>Issuer</strong> is the same as <strong>Subject</strong> that means this certificate is the root which is going to be the last. Now, what you can do is to concatenate in the correct order of all the certificates.</p>
+
+<p>You can use this command or you can use your favourite editor to do as well.</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw2">cat</span> first_crt second_crt third_crt <span class="sy0">></span> your_pem_file
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then when you&#8217;re ready to upload the certificate to Amazon you can just do this.</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          aws iam upload-server-certificate <span class="re5">--server-certificate-name</span> your_domain \<br /> <span class="re5">--certificate-body</span> file:<span class="sy0">//</span>your_domain.crt \<br /> <span class="re5">--private-key</span> file:<span class="sy0">//</span>your_domain.private \<br /> <span class="re5">--certificate-chain</span> file:<span class="sy0">//</span>your_pem_file \<br /> <span class="re5">--path</span> <span class="sy0">/</span>cloudfront<span class="sy0">/</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>The <strong>&#8211;certificate-chain</strong> should be your concatenated certificates.</p>
+
+<p>The format of the <strong>pem</strong> should be something like this.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          -----BEGIN CERTIFICATE-----<br /> Intermediate certificate 2<br /> -----END CERTIFICATE-----<br /> -----BEGIN CERTIFICATE-----<br /> Intermediate certificate 1<br /> -----END CERTIFICATE-----
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/what-should-you-expect-for-salkantay-trek-to-machu-picchu/">What Should You Expect for Salkantay Trek to Machu Picchu</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-05-18T00:00:00-04:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;m not really a travel blogger but I&#8217;ll try to share my experience as much as possible. I&#8217;ve just come back from Peru (Machu Picchu). Me and a bunch of my friends did the Salkantay trek which hike from Cusco (sort of) to Machu Picchu. It&#8217;s a 5 days 4 nights trip. The hike is really challenging physically and mentally. You will experience altitude sickness and soreness from your body. Funny thing is I didn&#8217;t feel a thing at the highest peak, some of my friends experienced different symptoms. One of the best I&#8217;ve heard is; &#8220;It&#8217;s like EDM concert banging in my head&#8221;.</p>
+
+<h2>Stay warm</h2>
+
+<p>You really need to dress warm because you will be walking at the altitude around 14,000 feet which is going to be quite cold. I&#8217;d suggest a lot of layers instead of big puffy jacket. Base layer is really important and a good fleece. One thing that you can&#8217;t miss out is a good pair of wool socks.</p>
+
+<h2>Prepare for the rain</h2>
+
+<p>It&#8217;s going to rain. What you really need is a good rain jacket and or Pancho is you want. I find rain jacket is enough to keep you dry. However, what really important is waterproof hiking shoes or you need extra pairs of socks. If you have your camera, rain cover for your bag and camera are really crucial.</p>
+
+<h2>Prepare for the altitude</h2>
+
+<p>If you think you will be affected by the altitude, please consult with your doctor to get some pills. I didn&#8217;t really get any headache while hiking on the high altitude but everybody is different.</p>
+
+<h2>What you don&#8217;t really need</h2>
+
+<p>Water is what you really need. But you can get water at every stop along the trail. What you don&#8217;t really need is water purification. However, it&#8217;s just a small pack if you don&#8217;t mind carrying that.</p>
+
+<h2>Pack light</h2>
+
+<p>I found myself overpack for the hike and I exhausted myself on the third day. If you think you&#8217;re going to need snacks. I suggest having <a href="http://www.starburst.com/">starburst</a>. My friend gave away two starbursts at every stop point which I think they really keep me going in terms of energy. I had my raw almonds and dry berries which helped a lot.</p>
+
+<h2>Sleep comfy</h2>
+
+<p>Sleeping bag is a must. However, I had a really good night sleep with my <a href="http://www.rei.com/product/866771/sea-to-summit-aeros-pillow-premium">camping pillow</a> and it&#8217;s inflatable and really light.</p>
+
+<h2>Taking pictures of the locals</h2>
+
+<p>If you walk around in Cusco, you might find local people dressing in traditional custom. If you take a picture of them, they might ask you for some money. I gave them 1 soles and it was enough. And make sure you ask their permission before you take a picture of them.</p>
+
+<h2>Coca leaves</h2>
+
+<p>The locals told us to chew coca leaves to prevent the tiredness and altitude sickness. To be honest, they didn&#8217;t help much but I really like the coca tea in the morning.</p>
+
+<h2>Local food</h2>
+
+<p>Peruvian cuisine is really interesting or at least from my point of view. I had Guinea pig and Alpaca. I like Alpaca but the Guinea pig is not really my jam. At least I tried.</p>
+
+<h2>Machu Picchu</h2>
+
+<h2>Good view from your tent</h2>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/how-to-stop-repainting-your-sticky-bar-on-scroll/">How to Stop Repainting Your Sticky Bar on Scroll?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-04-14T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Everybody loves sticky bar. Or I should say every UX loves sticky bar. You probable have seen that from almost all major websites. Twitter or Facebook all has the top nav bar which sticks to the top and follows you when you scroll down the page. However, there&#8217;s one thing that I have noticed if you use Google Chrome Dev Tool to see the paint area. You will see that the nav bar gets repaint every time you scroll up and down.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png" alt="Screenshot_2015-04-14_01_13_55" width="2304" height="803" class="aligncenter size-full wp-image-1383" /></a></p>
+
+<p>Also, if you use Timeline to record the activity you will notice a lot of Repaint happening which leads to bad scrolling performance.</p>
+
+<p>The easy fix would be to put</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          backface-visibility: hidden;
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>on your navbar which will stop the repaint on scroll.</p>
+
+<h3>Why that fixes it?</h3>
+
+<p>I don&#8217;t want to try answer this myself as this <a href="http://benfrain.com/improving-css-performance-fixed-position-elements/">article</a> answers everything.</p>
+
+<h3>Try it yourself</h3>
+
+<p><a href="http://noppanit.com/navbar-repaint.html">http://noppanit.com/navbar-repaint.html</a> If you put</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          backface-visibility: hidden;
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>to the navbar and you can measure the performance by using Timeline again you will notice the difference.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png" alt="Screenshot 2015-04-14 01.20.04" width="2297" height="805" class="aligncenter size-full wp-image-1384" /></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/2">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -77,6 +1333,26 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
     
   </ul>
 </section>

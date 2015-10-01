@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Sublime Text2 | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/sublime-text2/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[DIY : Run RSpec Test Inside Sublime Text 2]]></title>
+    <link href="http://noppanit.github.io/diy-run-rspec-test-inside-sublime-text-2/"/>
+    <updated>2012-12-30T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/diy-run-rspec-test-inside-sublime-text-2</id>
+    <content type="html"><![CDATA[<p>I guess everybody loves Sublime Text2. I switched from TextMate to Sublime Text 2 and I absolutely love it. Now, when you are writing some tests and want to run it immediately rather than keep switching windows to your terminal you can run your spec inside Sublime Text 2.</p>
+
+<p>There are lots of Packages out there you can just install and use it, but I just wanted to show another way of doing it. You could write your own little Package as well.</p>
+
+<p>Sublime Text 2 comes with a nice functionality called <a href="http://docs.sublimetext.info/en/latest/file_processing/build_systems.html" title="Sublime Text 2 build system">Build System</a> where you can create your own command and run it by using <strong>cmb+b</strong> (If you are a MAC user).</p>
+
+<p>First thing first, I hope you use <strong>rvm</strong> so if you haven&#8217;t done this already you need to create symbolic link like <a href="http://www.sublimetext.com/docs/2/osx_command_line.html">this page</a>. Then if you want to open your project you can just do this command inside your project. This way, sublime will hook up with rvm nicely.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          subl .
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then you go to ****Tools > Build System > New Build System&#8230;</strong>. It will open a new editor then you place this code.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          {<br /> &nbsp; "cmd": ["rspec", "-I ${file_path}", "$file"],<br /> &nbsp; "file_regex": "# ([A-Za-z:0-9_./ ]+rb):([0-9]+)",<br /> &nbsp; "working_dir": "${project_path:${folder:${file_path}}}",<br /> &nbsp; "selector": "source.ruby",<br /> <br /> &nbsp; "windows":<br /> &nbsp; {<br /> &nbsp; &nbsp; "cmd": ["rspec.bat", "-I ${file_path}", "$file"]<br /> &nbsp; }<br /> }
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then you choose the new Build System you just created and hit this combo <strong>cmd+b</strong>. Hooray!</p>
+]]></content>
+  </entry>
+  
+</feed>

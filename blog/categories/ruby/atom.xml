@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ruby | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Koala SSL Error on Ruby 1.9.3.]]></title>
+    <link href="http://noppanit.github.io/koala-ssl-error-on-ruby-1-9-3/"/>
+    <updated>2013-03-17T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/koala-ssl-error-on-ruby-1-9-3</id>
+    <content type="html"><![CDATA[<p>Actually, this error is not just for Koala but I was using Koala for my Facebook application and after I moved to a new laptop I started seeing this error.</p>
+
+<p>So, what is happening. I&#8217;ve just installed my new machine on Mountain Lion with a shiny new RVM and ruby 1.9.3. Everything went fine until I started my work to continue hacking from my old laptop. I got this error while I&#8217;m trying to login via Facebook via Koala. <strong>SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed</strong>. What is wrong? It worked before.</p>
+
+<p>After a couple of rant search on Google I found <a href="http://stackoverflow.com/questions/5711190/how-to-get-rid-of-opensslsslsslerror">this</a>. It seemed a bit hacky to me. It suggested me to download a correct CA certificate and put it into the right place. But after a few more search I found <a href="https://rvm.io/packages/openssl/">this</a>. It turned out I have to install RVM with OpelSSL which somehow is not installed. I think this solution is a lot cleaner then just copying something to a folder and pray.</p>
+
+<p>This is what I did</p>
+
+<pre><div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          rvm pkg install openssl <span class="co1">#installed openssl from RVM</span><br />
+          rvm reinstall 1.9.3<span class="sy0">-</span>head <span class="sy0">--</span>with<span class="sy0">-</span>openssl<span class="sy0">-</span>dir=$rvm_path<span class="sy0">/</span>usr <span class="co1">#configure your rvm to use openssl</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>And then everything went ok after these two magical commands.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Lesson Learnt From Data Cleansing. Part I]]></title>
+    <link href="http://noppanit.github.io/lesson-learnt-from-data-cleansing/"/>
+    <updated>2013-02-07T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/lesson-learnt-from-data-cleansing</id>
+    <content type="html"><![CDATA[<p>Lately, I have been experimenting on <a href="http://www.kaggle.com/c/event-recommendation-engine-challenge">Kaggle competition</a>. This is the one I chose because I want to use neo4j to give some recommendation or in a sense I want to do unsupervised learning. From day one I faced a lot of problem dealing with a lot of data and they are not clean in a way. For example, in this competition, there is users dataset which contains all the users. And there is a friend dataset which contains all the friends. The data look like this.</p>
+
+<p><img src="http://www.noppanit.com/wp-content/uploads/2013/02/Screen-shot-2013-02-01-at-00.08.50.png" alt="users dataset" class="aligncenter size-full wp-image-1028 cool_border" /></p>
+
+<p><img src="http://www.noppanit.com/wp-content/uploads/2013/02/Screen-shot-2013-02-01-at-00.08.28.png" alt="friends dataset" class="aligncenter size-full wp-image-1029 cool_border" /></p>
+
+<p>The first dataset I could dump everything into neo4j without any problem because it&#8217;s just 30000 records it only took me 5 mins to do it. However, the second dataset was kind of a problem because the column <strong>friends</strong> not all of the ids exist in users database which means the users don&#8217;t exist. So, I had to check if the ids exist in user dataset or not. It turned out that the friends dataset is quite large (about 50 MB) and it could be 3000 ids in one column. So, my first thought would be just to do it one by one.</p>
+
+<p><strong>Frist attempt</strong><br/>
+So, what I did first was to dump the whole users dataset to neo4j. And then for loop to check if id exists then insert if not just ignore it. I used cypher to check if the id exists. It turned out that I left my computer for 24 hours and it went just only 10% of the data. It was really slow. One thing from this was that I used neography which means it&#8217;s using REST api which usually it&#8217;s slower than embedded code. And I couldn&#8217;t wait for a whole week just to import the data. So, I moved on. The slow part was the checking every time so I guess it would be nice to clean the data before I dump that to neo4j.</p>
+
+<p><strong>Second attempt</strong><br/>
+I tried to use Google Refine to cross check two datasets but it couldn&#8217;t even pass the stage <strong>&#8220;split multi-valued cells&#8221;</strong> which to split column values to rows. Google Refine uses too much ram. I even tried to start EC2 instance but it froze along the way as well. I posted the question and got the solution <a href="http://stackoverflow.com/questions/14636919/google-refine-cross-reference-between-row-and-column">here</a></p>
+
+<p><strong>Third attempt</strong><br/>
+I used MySQL to join the tables and and check if the ids exist. Dumping all the data to MySQL was pretty easy my plain old PHP and MySQL. It turned out the friends dataset got around 38 Million rows. And here&#8217;s the script I used to check if the id doesn&#8217;t exit spit it out and delete it.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          SELECT uf.id, uf.friend_id, u.user_id FROM eventify.UserFriends uf LEFT JOIN eventify.Users u on uf.friend_id = u.user_id WHERE u.user_id is NULL LIMIT 1
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>It was also really slow since I just use my Macbook and didn&#8217;t even turn MySQL performance. So I moved on again.</p>
+
+<p><strong>Final attempt</strong><br/>
+I couldn&#8217;t believe that this will be the simplest and most effective way. What I did was to dump the whole users dataset to <strong>Hash</strong> in Ruby and check the friends dataset which surprisingly it only took Ruby 10 mins to do that. Then it only took Ruby and neo4j around 2 hours to import the cleaned data.</p>
+
+<blockquote><p>So lesson learnt for me was if anything can be done in memory do that first.</p></blockquote>
+
+<p>I&#8217;ll try to dump the rest in and blog about how did I get on with recommendation engine from neo4j.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Enable Defalter Compression for Sinatra on Heroku]]></title>
+    <link href="http://noppanit.github.io/enable-defalter-compression-for-sinatra-on-herok/"/>
+    <updated>2013-01-15T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/enable-defalter-compression-for-sinatra-on-herok</id>
+    <content type="html"><![CDATA[<p>You guys must have heard about PageSpeed test from Google. It&#8217;s a really cool plugin for Chrome to let you know how you can optimize your webpage faster. I have been using it for a while but I couldn&#8217;t get my head around gzip compression which it seems that Google has taken that seriously. If you want the science bit. Here&#8217;s the <a href="https://developers.google.com/speed/articles/gzip" title="gzip">article</a> from Google.</p>
+
+<p>And here&#8217;s the quickstart bit. The most simplest way is to put the compression in <strong>config.ru</strong></p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          require './server'<br /> use Rack::Deflater<br /> run Sinatra::Application
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>And that&#8217;s it I hope this will save you sometime.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[DIY : Run RSpec Test Inside Sublime Text 2]]></title>
+    <link href="http://noppanit.github.io/diy-run-rspec-test-inside-sublime-text-2/"/>
+    <updated>2012-12-30T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/diy-run-rspec-test-inside-sublime-text-2</id>
+    <content type="html"><![CDATA[<p>I guess everybody loves Sublime Text2. I switched from TextMate to Sublime Text 2 and I absolutely love it. Now, when you are writing some tests and want to run it immediately rather than keep switching windows to your terminal you can run your spec inside Sublime Text 2.</p>
+
+<p>There are lots of Packages out there you can just install and use it, but I just wanted to show another way of doing it. You could write your own little Package as well.</p>
+
+<p>Sublime Text 2 comes with a nice functionality called <a href="http://docs.sublimetext.info/en/latest/file_processing/build_systems.html" title="Sublime Text 2 build system">Build System</a> where you can create your own command and run it by using <strong>cmb+b</strong> (If you are a MAC user).</p>
+
+<p>First thing first, I hope you use <strong>rvm</strong> so if you haven&#8217;t done this already you need to create symbolic link like <a href="http://www.sublimetext.com/docs/2/osx_command_line.html">this page</a>. Then if you want to open your project you can just do this command inside your project. This way, sublime will hook up with rvm nicely.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          subl .
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then you go to ****Tools > Build System > New Build System&#8230;</strong>. It will open a new editor then you place this code.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          {<br /> &nbsp; "cmd": ["rspec", "-I ${file_path}", "$file"],<br /> &nbsp; "file_regex": "# ([A-Za-z:0-9_./ ]+rb):([0-9]+)",<br /> &nbsp; "working_dir": "${project_path:${folder:${file_path}}}",<br /> &nbsp; "selector": "source.ruby",<br /> <br /> &nbsp; "windows":<br /> &nbsp; {<br /> &nbsp; &nbsp; "cmd": ["rspec.bat", "-I ${file_path}", "$file"]<br /> &nbsp; }<br /> }
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then you choose the new Build System you just created and hit this combo <strong>cmd+b</strong>. Hooray!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PhantomJs + Poltergeist + Cucumber.]]></title>
+    <link href="http://noppanit.github.io/phantomjs-poltergeist-cucumber/"/>
+    <updated>2012-12-10T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/phantomjs-poltergeist-cucumber</id>
+    <content type="html"><![CDATA[<p>I love tests and I love experimenting with lots of things. So, I have just come across with PhantomJs a couple weeks ago and I absolutely love it. This should be included in every pipeline. No matter what you want to do, Jasmine? Acceptance Testing? I think right now PhantomJs is the most suitable one (May be there&#8217;ll be another one coming). But this post is not really about PhantomJs. I just want to show what it can do by using Poltergeist to run cucumber test headlessly. Of course you can do it with selenium-driver but running the test headlessly seem to be faster. So, I&#8217;ll just gonna jump right in.</p>
+
+<p>First thing first, install PhantomJs from <a href="http://phantomjs.org/download.html" title="PhantomJs download.">here</a></p>
+
+<p>Then this is what my Gemfile looks like.</p>
+
+<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          source <span class="re3">:rubygems</span><br /> <br /> gem <span class="st0">'poltergeist'</span><br /> gem <span class="st0">'cucumber'</span><br /> gem <span class="st0">'selenium-webdriver'</span><br /> gem <span class="st0">'capybara'</span><br /> gem <span class="st0">'rspec'</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>And this is my env.rb</p>
+
+<pre><div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          <span class="kw3">require</span> <span class="st0">'rubygems'</span><br />
+          <span class="kw3">require</span> <span class="st0">'capybara'</span><br />
+          <span class="kw3">require</span> <span class="st0">'capybara/cucumber'</span><br />
+          <span class="kw3">require</span> <span class="st0">'capybara/dsl'</span><br />
+          <span class="kw3">require</span> <span class="st0">'rspec'</span><br />
+          <span class="kw3">require</span> <span class="st0">'capybara/poltergeist'</span><br />
+          <br />
+          <span class="co1"># Capybara.default_driver = :selenium #uncomment this to use selenium</span><br />
+          Capybara.<span class="me1">javascript_driver</span> = <span class="re3">:poltergeist</span> <span class="co1">#uncomment this to use poltergeist</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>If you&#8217;re not familiar with Cucumber please have a look at <a href="https://github.com/cucumber/cucumber" title="cucumber">this</a></p>
+
+<p>And then you can run the test as you use to run your cucumber tests like this</p>
+
+<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          cucumber features<span class="sy0">/</span>your_spec.<span class="me1">feature</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>If you run with Poltergeist driver then you should not see firefox popping up.</p>
+
+<p>I&#8217;ve written some example project <a href="https://github.com/noppanit/phantomjs-examples">here.</a></p>
+]]></content>
+  </entry>
+  
+</feed>

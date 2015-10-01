@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>First Experiment on Naive Bayes With NLTK - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="I have been experimenting with Natural Language Processing on Text classification for a while now. So, I&#8217;m going to write a little journal on &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/first-experiment-on-naive-bayes-with-nltk/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">First Experiment on Naive Bayes With NLTK</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-12-30T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I have been experimenting with Natural Language Processing on Text classification for a while now. So, I&#8217;m going to write a little journal on my blog. There are lots of academic papers or event commercial API on the Internet for sentiment analysis. But most of them only classify sentiment into <strong>negative</strong>, <strong>positive</strong> and <strong>neutral</strong>. My experiment will be based on <a href="http://en.wikipedia.org/wiki/Plutchik%27s_Wheel_of_Emotions#Plutchik.27s_wheel_of_emotions" title="Plutchik wheel of emotions">Plutchik&#8217;s wheel of emotions</a> which will classify a text into one of the eight emotions.</p>
+
+<p>For the purpose to get things done really fast, I use the example from <a href="http://www.laurentluce.com/posts/twitter-sentiment-analysis-using-python-and-nltk/" title="twitter sentiment analysis">Laurent&#8217;s blog</a>. But you can use <a href="https://github.com/japerk/nltk-trainer" title="nltk trainer">nltk-trainer</a> to train the classifier without a single line of python code.</p>
+
+<p>Most papers suggest that <a href="http://en.wikipedia.org/wiki/Bag-of-words_model" title="bag of words model">bag-of-words model</a> is one of the best techniques o classify text. So, I decided to use this method. However, this is about sentiment analysis so I used only Adjectives for feature extraction. The result is unacceptable with only <strong>19.7530864198 %</strong></p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="kw1">for</span> word<span class="sy0">,</span> pos_tag <span class="kw1">in</span> nltk.<span class="me1">pos_tag</span><span class="br0">&#40;</span>words<span class="br0">&#41;</span>:<br /> &nbsp; &nbsp;<span class="kw1">if</span> pos_tag <span class="sy0">==</span> <span class="st0">'ADJ'</span>:<br /> &nbsp; &nbsp; &nbsp; filtered_words.<span class="me1">append</span><span class="br0">&#40;</span>word.<span class="me1">lower</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>The second attempt I decided to fall back to bag-of-words model, and the result has gone up to <strong>61.316872428 %</strong></p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          filtered_words <span class="sy0">=</span> <span class="br0">&#91;</span>e.<span class="me1">lower</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">for</span> e <span class="kw1">in</span> words.<span class="me1">split</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">if</span> <span class="kw2">len</span><span class="br0">&#40;</span>e<span class="br0">&#41;</span> <span class="sy0">>=</span> <span class="nu0">3</span><span class="br0">&#93;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>So, I moved on and try to clean up the text a bit by cleaning stopwords, stripping &#8216;RT&#8217; or &#8216;rt&#8217; for retweet, deleting @peoplename and tokenise word by whitespace. So, &#8220;i&#8217;m&#8221; stays as one word and not [&#8220;i&#8221;, &#8220;&#8216;m&#8221;]. The result has gone up to <strong>69.9588477366 %</strong>.</p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="co1"># stripping and cleaning.</span><br /> <span class="co1"># this is for stripping out the stopwords by using <a href="http://nltk.googlecode.com/svn/trunk/doc/book/ch02.html" title="NLTK Text Corpora">NLTK Text Corpora</a></span><br /> stripped_words <span class="sy0">=</span> <span class="br0">&#91;</span>w <span class="kw1">for</span> w <span class="kw1">in</span> tokenized_text <span class="kw1">if</span> <span class="kw1">not</span> w <span class="kw1">in</span> stopwords.<span class="me1">words</span><span class="br0">&#40;</span><span class="st0">'english'</span><span class="br0">&#41;</span><span class="br0">&#93;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>I&#8217;ll keep experimenting and post some more techniques to see if I could get something out of this.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Noppanit Charassinvichai</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2012-12-30T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/python/'>python</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://noppanit.github.io/first-experiment-on-naive-bayes-with-nltk/" data-via="" data-counturl="http://noppanit.github.io/first-experiment-on-naive-bayes-with-nltk/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/diy-run-rspec-test-inside-sublime-text-2/" title="Previous Post: DIY : Run RSpec test inside Sublime Text 2">&laquo; DIY : Run RSpec test inside Sublime Text 2</a>
+      
+      
+        <a class="basic-alignment right" href="/second-sentiment-analysis-experiment-on-naive-bayes-with-nltk-bigrams/" title="Next Post: Second sentiment analysis experiment on Naive Bayes with NLTK : Bigrams">Second sentiment analysis experiment on Naive Bayes with NLTK : Bigrams &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

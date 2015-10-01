@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Tutorial : Flex Convert Object to Xml - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="This is CustomerDTO.as that extends DTOBean.as 123456789101112131415 package actionScript &#123; &nbsp; public class CustomerDTO extends DTOBean & &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/tutorial-flex-convert-object-to-xml/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Tutorial : Flex Convert Object to Xml</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-07-20T00:00:00-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>This is CustomerDTO.as that extends DTOBean.as</p>
+
+<pre><div class="codecolorer-container actionscript3 blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="actionscript3 codecolorer">
+          <span class="kw4">package</span> actionScript<br />
+          <span class="br0">&#123;</span><br />
+          <br />
+          &nbsp; <span class="kw1">public</span> <span class="kw4">class</span> CustomerDTO <span class="kw1">extends</span> DTOBean<br />
+          &nbsp; <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw2">var</span> <span class="kw7">name</span><span class="sy0">:</span><a href="http://www.google.com/search?q=string%20inurl:http://livedocs.adobe.com/flex/201/langref/%20inurl:string.html"><span class="kw5">String</span></a><span class="sy0">;</span><br />
+          &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw2">var</span> surname<span class="sy0">:</span><a href="http://www.google.com/search?q=string%20inurl:http://livedocs.adobe.com/flex/201/langref/%20inurl:string.html"><span class="kw5">String</span></a><span class="sy0">;</span><br />
+          <br />
+          &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw3">function</span> CustomerDTO<span class="br0">&#40;</span><span class="br0">&#41;</span><br />
+          &nbsp; &nbsp; <span class="br0">&#123;</span><br />
+          <br />
+          &nbsp; &nbsp; <span class="br0">&#125;</span><br />
+          <br />
+          &nbsp; <span class="br0">&#125;</span><br />
+          <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>This is the base class for every DTO.</p>
+
+<pre><div class="codecolorer-container actionscript3 blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="actionscript3 codecolorer">
+          <span class="kw4">package</span> actionScript<br />
+          <span class="br0">&#123;</span><br />
+          &nbsp; <span class="kw1">public</span> <span class="kw4">class</span> DTOBean<br />
+          &nbsp; <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw3">function</span> DTOBean<span class="br0">&#40;</span><span class="br0">&#41;</span><br />
+          &nbsp; &nbsp; <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; <span class="br0">&#125;</span><br />
+          <br />
+          &nbsp; <span class="br0">&#125;</span><br />
+          <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>Here is our hero ObjectConverter.as</p>
+
+<pre><div class="codecolorer-container actionscript3 blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="actionscript3 codecolorer">
+          <span class="kw4">package</span> actionScript<br />
+          <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; <span class="kw1">import</span> <span class="kw6">flash.xml</span><span class="sy0">.</span><a href="http://www.google.com/search?q=xmldocument%20inurl:http://livedocs.adobe.com/flex/201/langref/%20inurl:xmldocument.html"><span class="kw5">XMLDocument</span></a><span class="sy0">;</span><br />
+          &nbsp; &nbsp; <span class="kw1">import</span> <span class="kw6">flash.xml</span><span class="sy0">.</span><a href="http://www.google.com/search?q=xmlnode%20inurl:http://livedocs.adobe.com/flex/201/langref/%20inurl:xmlnode.html"><span class="kw5">XMLNode</span></a><span class="sy0">;</span><br />
+          <br />
+          &nbsp; &nbsp; <span class="kw1">import</span> mx<span class="sy0">.</span>rpc<span class="sy0">.</span>xml<span class="sy0">.</span>SimpleXMLEncoder<span class="sy0">;</span><br />
+          <br />
+          &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw4">class</span> ObjectConverter<br />
+          &nbsp; &nbsp; <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw3">function</span> ObjectConverter<span class="br0">&#40;</span><span class="br0">&#41;</span><br />
+          &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br />
+          <br />
+          &nbsp; &nbsp; &nbsp; &nbsp; <span class="coMULTI">/**<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* &nbsp;Converting DTO Bean object to XML<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*/</span><br />
+          &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw3">function</span> objectToXML<span class="br0">&#40;</span>dtoBean<span class="sy0">:</span>DTOBean<span class="br0">&#41;</span><span class="sy0">:</span><a href="http://www.google.com/search?q=xml%20inurl:http://livedocs.adobe.com/flex/201/langref/%20inurl:xml.html"><span class="kw5">XML</span></a><br />
+          &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> qName<span class="sy0">:</span><a href="http://www.google.com/search?q=qname%20inurl:http://livedocs.adobe.com/flex/201/langref/%20inurl:qname.html"><span class="kw5">QName</span></a> = <span class="kw1">new</span> <a href="http://www.google.com/search?q=qname%20inurl:http://livedocs.adobe.com/flex/201/langref/%20inurl:qname.html"><span class="kw5">QName</span></a><span class="br0">&#40;</span><span class="st0">"form"</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> xmlDocument<span class="sy0">:</span><a href="http://www.google.com/search?q=xmldocument%20inurl:http://livedocs.adobe.com/flex/201/langref/%20inurl:xmldocument.html"><span class="kw5">XMLDocument</span></a> = <span class="kw1">new</span> <a href="http://www.google.com/search?q=xmldocument%20inurl:http://livedocs.adobe.com/flex/201/langref/%20inurl:xmldocument.html"><span class="kw5">XMLDocument</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> simpleXMLEncoder<span class="sy0">:</span>SimpleXMLEncoder = <span class="kw1">new</span> SimpleXMLEncoder<span class="br0">&#40;</span>xmlDocument<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> xmlNode<span class="sy0">:</span><a href="http://www.google.com/search?q=xmlnode%20inurl:http://livedocs.adobe.com/flex/201/langref/%20inurl:xmlnode.html"><span class="kw5">XMLNode</span></a> = simpleXMLEncoder<span class="sy0">.</span>encodeValue<span class="br0">&#40;</span>dtoBean<span class="sy0">,</span> qName<span class="sy0">,</span> xmlDocument<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> xml<span class="sy0">:</span><a href="http://www.google.com/search?q=xml%20inurl:http://livedocs.adobe.com/flex/201/langref/%20inurl:xml.html"><span class="kw5">XML</span></a> = <span class="kw1">new</span> <a href="http://www.google.com/search?q=xml%20inurl:http://livedocs.adobe.com/flex/201/langref/%20inurl:xml.html"><span class="kw5">XML</span></a><span class="br0">&#40;</span>xmlDocument<span class="sy0">.</span><span class="kw7">toString</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> xml<span class="sy0">;</span><br />
+          &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br />
+          &nbsp; &nbsp; <span class="br0">&#125;</span><br />
+          <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>The last one</p>
+
+<pre><div class="codecolorer-container actionscript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="actionscript codecolorer">
+          &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw3">import</span> mx.<span class="me1">controls</span>.<span class="me1">Alert</span>;<br />
+          &nbsp; <span class="kw3">import</span> actionScript.<span class="me1">ObjectConverter</span>;<br />
+          &nbsp; <span class="kw3">import</span> actionScript.<span class="me1">CustomerDTO</span>;<br />
+          <br />
+          &nbsp; <span class="kw2">var</span> converter:ObjectConverter = <span class="kw2">new</span> ObjectConverter<span class="br0">&#40;</span><span class="br0">&#41;</span>;<br />
+          &nbsp; <br />
+          &nbsp; <span class="kw2">var</span> customer:CustomerDTO = <span class="kw2">new</span> CustomerDTO<span class="br0">&#40;</span><span class="br0">&#41;</span>;<br />
+          &nbsp; customer.<span class="kw3">name</span> = <span class="st0">"Noppanit"</span>;<br />
+          &nbsp; customer.<span class="me1">surname</span> = <span class="st0">"Charassinvichai"</span>;<br />
+          &nbsp; <br />
+          &nbsp; <span class="kw2">var</span> <span class="kw3">xml</span>:<span class="kw3">XML</span> = converter.<span class="me1">objectToXML</span><span class="br0">&#40;</span> customer <span class="br0">&#41;</span>;<br />
+          &nbsp; &nbsp; &nbsp; <br />
+          &nbsp; Alert.<span class="kw3">show</span><span class="br0">&#40;</span> <span class="kw3">xml</span>.<span class="me1">toXMLString</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#41;</span>;
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+
+
+<div class="zemanta-pixie">
+  <img class="zemanta-pixie-img" src="http://img.zemanta.com/pixy.gif?x-id=fb3e0ddf-c7e1-8beb-bd0f-5df717060cdf" alt="" />
+</div>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Noppanit Charassinvichai</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2009-07-20T00:00:00-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/flex/'>flex</a>, <a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://noppanit.github.io/tutorial-flex-convert-object-to-xml/" data-via="" data-counturl="http://noppanit.github.io/tutorial-flex-convert-object-to-xml/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tutorial-flex-profiler/" title="Previous Post: Tutorial : Flex Profiler">&laquo; Tutorial : Flex Profiler</a>
+      
+      
+        <a class="basic-alignment right" href="/the-difference-between-apply-and-call-method-in-javascript/" title="Next Post: The difference between apply and call method in javascript">The difference between apply and call method in javascript &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

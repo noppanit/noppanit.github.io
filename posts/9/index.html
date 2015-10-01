@@ -1,0 +1,603 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="This post is not to provide a tutorial of how to combine those three awesome applications together, but it might stop you from scratching your head &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/posts/9/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/cucumber-capybara-sinatra/">Cucumber + Capybara + Sinatra</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-01-15T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is not to provide a tutorial of how to combine those three awesome applications together, but it might stop you from scratching your head when the test cannot be run correctly.</p>
+
+<ol>
+<li>You need to have Sinatra in subclass style rather than classic style. <a href="http://www.sinatrarb.com/intro.html#Using%20a%20Classic%20Style%20Application%20with%20a%20config.ru" title="Sinatra subclass">Sinatra subclass-style</a></li>
+<li>This is quite importance, you might find some website that is using Spec. but you need to change it to be &#8220;RSpec&#8221; in order for it to work.</li>
+</ol>
+
+
+<pre><div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          <span class="kw3">require</span> <span class="kw4">File</span>.<span class="me1">join</span><span class="br0">&#40;</span><span class="kw4">File</span>.<span class="me1">dirname</span><span class="br0">&#40;</span><span class="kw2">__FILE__</span><span class="br0">&#41;</span>, <span class="st0">'..'</span>, <span class="st0">'..'</span>, <span class="st0">'/server.rb'</span><span class="br0">&#41;</span><br />
+          <br />
+          <span class="kw3">require</span> <span class="st0">'rspec'</span><br />
+          <span class="kw3">require</span> <span class="st0">'rspec/expectations'</span><br />
+          <span class="kw3">require</span> <span class="st0">'rack/test'</span><br />
+          <span class="kw3">require</span> <span class="st0">'capybara'</span><br />
+          <span class="kw3">require</span> <span class="st0">'capybara/cucumber'</span><br />
+          <span class="kw3">require</span> <span class="st0">'capybara/envjs'</span><br />
+          <br />
+          App.<span class="me1">set</span><span class="br0">&#40;</span><span class="re3">:environment</span>, <span class="re3">:test</span><span class="br0">&#41;</span><br />
+          <br />
+          World <span class="kw1">do</span><br />
+          &nbsp; Capybara.<span class="me1">app</span> = App<br />
+          &nbsp; Capybara.<span class="me1">javascript_driver</span> = <span class="re3">:envjs</span><br />
+          &nbsp; <span class="kw1">include</span> Capybara<br />
+          &nbsp; <span class="kw1">include</span> <span class="re2">RSpec::Expectations</span><br />
+          &nbsp; <span class="kw1">include</span> <span class="re2">RSpec::Matchers</span><br />
+          <span class="kw1">end</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/prague-in-december-2011/">Prague in December 2011</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-12-30T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Everybody might say, why would you want to be in Prague in December where it&#8217;s cold and depressing. If you&#8217;re lucky like me, you would find a sunny day when you can walk around in the Christmas market. I say Prague it&#8217;s the place where you can visit anytime you want. Even though, the weather can be a bit tricky, but you still have a lot to do in Prague or even in Czech Republic.</p>
+
+<div id="gallery-0f02becd" class="flickr-gallery photoset">
+  <div class="fg-clear">
+  </div>
+</div>
+
+
+
+
+<div class="fg-clear">
+</div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/brixton/">Brixton Village</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-12-11T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Why when I say to people that I&#8217;ll go to Brixton, everybody just says &#8220;Why somebody would want to go there&#8221;. And here&#8217;s why.</p>
+
+<div id="gallery-22c93100" class="flickr-gallery photoset">
+  <div class="fg-clear">
+  </div>
+</div>
+
+
+
+
+<div class="fg-clear">
+</div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/rails-lost-session-after-doing-a-post/">Rails Lost Session After Doing a POST</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-11-15T00:00:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I might be the only silly person on the Internet, because I haven&#8217;t found anyone having the same problem as I had before. So, in the future there might be someone like me. Basically, you have a rails application, you didn&#8217;t realise that if you do a POST from a plain</p>
+
+<p><form>
+  without using</p></p>
+
+<p>  <div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+    <table cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="line-numbers">
+          <div>
+            1<br />2<br />3<br />
+          </div>
+        </td></p>
+
+<pre><code>    &lt;td&gt;
+      &lt;div class="ruby codecolorer"&gt;
+        form_for&lt;span class="br0"&gt;&amp;#40;&lt;/span&gt;@some&lt;span class="br0"&gt;&amp;#41;&lt;/span&gt;&lt;br /&gt; ...&lt;br /&gt; &lt;span class="kw1"&gt;end&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p>  </div></p>
+
+<p>  <p>
+    You might be losing the session because of the security reason. According to this <a href="http://guides.rubyonrails.org/security.html#cross-site-request-forgery-csrf" title="CSRF">reference</a>
+  </p></p>
+
+<p>  <p>
+    So, to be safe if you&#8217;re doing a POST don&#8217;t use plain<br /></p>
+
+<pre><code>&lt;form&gt;
+  tag. Only use form_for to generate the from and rails will handle everything. You can proof this theory easily by commenting out&lt;/p&gt; 
+
+  &lt;div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;"&gt;
+    &lt;table cellspacing="0" cellpadding="0"&gt;
+      &lt;tr&gt;
+        &lt;td class="line-numbers"&gt;
+          &lt;div&gt;
+            1&lt;br /&gt;2&lt;br /&gt;3&lt;br /&gt;
+          &lt;/div&gt;
+        &lt;/td&gt;
+
+        &lt;td&gt;
+          &lt;div class="ruby codecolorer"&gt;
+            &lt;span class="kw1"&gt;class&lt;/span&gt; ApplicationController &lt;span class="sy0"&gt;&lt;&lt;/span&gt; &lt;span class="re2"&gt;ActionController::Base&lt;/span&gt;&lt;br /&gt; &amp;nbsp; &lt;span class="co1"&gt;#protect_from_forgery &lt;/span&gt;&lt;br /&gt; &lt;span class="kw1"&gt;end&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+
+  &lt;p&gt;
+    Please don&amp;#8217;t do this at production!
+  &lt;/p&gt;
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/how-to-boost-your-old-bold-9700/">How to Boost Your Old Bold 9700.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-11-01T00:00:00-04:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you&#8217;re like me, having an bold 9700 with OS6 and it&#8217;s getting slower. Don&#8217;t know what to do and want to buy a new phone but your pocket is not that deep. The truth is Bold 9700 isn&#8217;t designed for OS6, but who wants OS5 or even OS5. So after installing OS6 to your bold 9700 you will have probably around 68 MB left in your mobile memory. And after installing a couple of applications, such as Gmail, Facebook, Twitter and Whatsapp. You might have some left and once you use it for a day or two, your beloved phone starts to slow down as though you might want to throw it away and get an iPhone4.</p>
+
+<p>There&#8217;s a way to increase some memory. It&#8217;s an application called <a href="http://www.bbh-plus.net/downloads.php?do=file&amp;id=1516" title="Shrink-A-OS">Shrink-A-OS</a>. The steps are very easy, choose your latest official firmware and install it to your computer. Then install BBHTool, run the program. BBHTool will detect the OS that you installed in your computer. Start ticking application that you don&#8217;t want, fonts, or languages that you can&#8217;t even read. Then click &#8220;Shrink My OS&#8221; button. It will show you how much memory you&#8217;ve saved. I saved almost 50-60 MB from the shrinking. I know there&#8217;s a button to Launch Loader, but it doesn&#8217;t work for me. So, you could just go to &#8220;C:\Program Files\Common Files\Research In Motion\AppLoader&#8221; and run Loader.exe then follow the steps and BAM! you got a faster, more memory bold 9700. Hope you enjoy!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/eliminate-two-facebook-accounts/">Eliminate Two Facebook Accounts</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-10-16T00:00:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I don&#8217;t know if you&#8217;ve ever seen or had this before, but it happened to me once. I woke up one they, just wanted to look at my status and how my friends were doing. I open <a href="http://www.facebook.com">http://www.facebook.com</a> and I realised that I couldn&#8217;t log in to my Facebook account. WTF! Then I did everything I could, go to Facebook Help, Reset Password, googled lots of blogs. Then I gave up, I ended up creating a new Facebook account and found out that lots of people on the Internet had the same problems as I had. I tried emailing Facebook Help Centre as well and got some replies but nothing was helpful. Also, it was like seven months ago.</p>
+
+<p>What I did was just beek reporting the other account, like Inappropriate profile picture, or this account pretends to be me. And then today, my other Facebook account has been deleted already. I&#8217;m happy!.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/experimenting-with-microdata-to-satisfy-google/">Experimenting With Microdata to Satisfy Google</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-10-09T00:00:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I think Semantic Web has been introduced to us for quite a long time, but we still haven&#8217;t seen a practical example before. So, I&#8217;m trying to experiment a little bit with my new website that I&#8217;ve just created for my friend. It&#8217;s <a href="http://www.siripachai.com" title="Siripachai Agency">Siripachai Agency</a>. Basically, It&#8217;s a website for any students that want to study aboard in London. Firstly, I will use microdata on <a href="http://www.siripachai.com/abouts">http://www.siripachai.com/abouts</a> first. by following this example. <a href="http://www.google.com/support/webmasters/bin/answer.py?answer=146861">http://www.google.com/support/webmasters/bin/answer.py?answer=146861</a></p>
+
+<p>And this is the before that I get out of Google search result.<br/>
+<a href="http://www.noppanit.com/wp-content/uploads/2011/10/Screen-shot-2011-10-09-at-23.43.08.png"><img src="http://www.noppanit.com/wp-content/uploads/2011/10/Screen-shot-2011-10-09-at-23.43.08-300x37.png" alt="" title="Google aboutus search result" width="300" height="37" class="alignnone size-medium wp-image-788" /></a></p>
+
+<p>Will upload as soon as google picks up the new microdata that I&#8217;ve just uploaded. Hope it works!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/thoughts-on-jquery-mobile/">Thoughts on jQuery Mobile</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-10-06T00:00:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Last week I helped out my friends <a href="http://www.eewei.com" title="Eewei">Eewei</a> and <a href="http://www.fab.co.uk">Jill</a> in <a href="http://futureofwebapps.com/london-2011/">Future of web app conference</a> in London. Unfortunately, I couldn&#8217;t be in the conference. They presented this really amazing called <a href="http://jquerymobile.com/">jQuery Mobile</a></p>
+
+<p>So, you&#8217;re allowed to transform a simple html website to be operational in modern mobile devies, such as iPhone, BB or Android phones. What you need to do it just add a javascript file and a css file from jQueryMobile site and that&#8217;s it. Bam! you have a ready to go mobile website in a min. Interesting to point out is that it&#8217;s still in a development stage and the latest release when I&#8217;m writing this is just a RC1. So, if you try it now you might be getting some bugs or some unresponsive actions when clicking buttons. Also, when you include the javascript src file and the css version, the version of the two files need to be corresponded, otherwise it might not be working correctly.</p>
+
+<p>You can say that these days more and more people are browsing websites from mobile devices. Also, it can be said that IE6 has been holding our back on development of javascript or css on desktop for years now (You might have to include a number of different versions of CSS files for different browsers). Whilst on mobile devices IE doesn&#8217;t have any effects on development. Furthermore, developing native apps for just iPhone or Android might be a daunting task for most people who don&#8217;t have any background on Objective-C. Therefore, I think HTML5 for mobile devices might be a better idea to go than starting to build a native app these days.</p>
+
+<p>I have also built a simple webapp from Rails3 and jQuery Mobile deployed on Heroku. If anybody&#8217;s interested. <a href="https://github.com/noppanit/jquery-mobile-example">https://github.com/noppanit/jquery-mobile-example</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/grails-run-app-doesnt-pick-up-filters-taglib-or-even-controller/">Grails Run-app Doesn&#8217;t Pick Up Filters, TagLib or Even Controller</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-07-18T00:00:00-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Have you every come across a situation that &#8220;grails run-app&#8221; dones&#8217;t work with new TagLib, Controller or even Filter. You might wonder why my Filters doesn&#8217;t fire. Or why grails throws Controller not found exception.</p>
+
+<p>Solution:<br/>
+You might want to check grails.xml in web-app folder, whether the new resources are included in the grails.xml file. Otherwise, grails won&#8217;t pick them up. But grails run-war will still be working.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/the-simplest-dropdown-menu-with-jquery-slider/">The Simplest Dropdown Menu With jQuery Slider</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-06-30T00:00:00-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Nothing much to say here. So, let&#8217;s see the code.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2011/06/Screen-shot-2011-06-30-at-00.59.01.png"><img src="http://www.noppanit.com/wp-content/uploads/2011/06/Screen-shot-2011-06-30-at-00.59.01.png" alt="Dropdown menu slider" title="Dropdown menu" width="153" height="86" class="alignnone size-full wp-image-776" /></a></p>
+
+<div class="codecolorer-container html4strict blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />32<br />33<br />34<br />35<br />36<br />37<br />38<br />39<br />40<br />41<br />42<br />43<br />44<br />45<br />46<br />47<br />48<br />49<br />50<br />51<br />52<br />53<br />54<br />55<br />56<br />57<br />58<br />59<br />60<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="html4strict codecolorer">
+          <span class="sc0"><!DOCTYPE html></span><br /> <span class="sc2"><<a href="http://december.com/html/4/element/html.html"><span class="kw2">html</span></a>></span><br /> <span class="sc2"><<a href="http://december.com/html/4/element/head.html"><span class="kw2">head</span></a>></span><br /> &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/style.html"><span class="kw2">style</span></a>></span><br /> ul<br /> {<br /> &nbsp; list-style:none;<br /> }<br /> ul li{<br /> &nbsp; float: left;<br /> &nbsp; margin-right: 20px;<br /> &nbsp; position: relative;<br /> }<br /> #sublist{<br /> &nbsp; padding: 0;<br /> &nbsp; position: absolute;<br /> &nbsp; border-style: none solid solid solid;<br /> &nbsp; border-width: 1px 1px 1px 1px;<br /> }<br /> <br /> #sublist li{<br /> <br /> }<br /> <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/style.html"><span class="kw2">style</span></a>></span><br /> &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/script.html"><span class="kw2">script</span></a> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">"http://code.jquery.com/jquery-latest.js"</span>><<span class="sy0">/</span><a href="http://december.com/html/4/element/script.html"><span class="kw2">script</span></a>></span><br /> <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/head.html"><span class="kw2">head</span></a>></span><br /> <span class="sc2"><<a href="http://december.com/html/4/element/body.html"><span class="kw2">body</span></a>></span><br /> <span class="sc2"><<a href="http://december.com/html/4/element/ul.html"><span class="kw2">ul</span></a>></span><br /> &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span>A<span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span><br /> &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"list"</span>></span><br /> &nbsp; &nbsp; B<br /> &nbsp; &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/ul.html"><span class="kw2">ul</span></a> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"sublist"</span>></span><br /> &nbsp; &nbsp; &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span>B1<span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span><br /> &nbsp; &nbsp; &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span>B2<span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span><br /> &nbsp; &nbsp; <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/ul.html"><span class="kw2">ul</span></a>></span><br /> &nbsp; <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span><br /> &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span>C<span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span><br /> <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/ul.html"><span class="kw2">ul</span></a>></span><br /> <br /> <span class="sc2"><<a href="http://december.com/html/4/element/script.html"><span class="kw2">script</span></a>></span><br /> $(document).ready( function(){<br /> &nbsp; $('#sublist').hide();<br /> &nbsp; <br /> });<br /> <br /> $('#list').click(function() {<br /> &nbsp; if ( $("#sublist").is(":hidden") )<br /> &nbsp; {<br /> &nbsp; &nbsp; $('#sublist').slideDown("slow");<br /> &nbsp; }<br /> &nbsp; else<br /> &nbsp; {<br /> &nbsp; &nbsp; $('#sublist').hide();<br /> &nbsp; }<br /> });<br /> <br /> <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/script.html"><span class="kw2">script</span></a>></span><br /> <br /> <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/body.html"><span class="kw2">body</span></a>></span><br /> <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/html.html"><span class="kw2">html</span></a>></span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/10">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/8">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

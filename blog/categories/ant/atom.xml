@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ant | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/ant/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ant Debugging Classpath]]></title>
+    <link href="http://noppanit.github.io/ant-debugging-classpath/"/>
+    <updated>2008-06-05T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/ant-debugging-classpath</id>
+    <content type="html"><![CDATA[<p>Have you ever written an build.xml? Is that a little annoying while ANT keeps saying that ClassNotFoundException or something that you missed to include, whilst you knew that they actually there. So, I google and found something that might be useful.</p>
+
+<div class="codetop">
+  CODE
+</div>
+
+
+
+
+<div class="codemain">
+  <target name="debug&#34 ></p> 
+  
+  <p>
+    ???? <property name=&#34myclasspath&#34 refid=&#34classpath&#34/>
+  </p>
+  
+  <p>
+    ???? <echo message=&#34Classpath = ${myclasspath}&#34/>
+  </p>
+  
+  <p>
+    </target>
+  </p>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Tutorial : Struts Version 1 in Action - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="From the previous chapter, I wrote about how to build an EJB from scratch. This topic, I will be presenting how to combine struts version 1 with the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/tutorial-struts-version-1-in-action/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Tutorial : Struts Version 1 in Action</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2008-04-20T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>From the <a href="http://www.noppanit.com/?p=90" target="_blank">previous chapter</a>, I wrote about how to build an EJB from scratch. This topic, I will be presenting how to combine struts version 1 with the previous topic.</p>
+
+<p>First, we need the latest <a href="http://struts.apache.org/download.cgi#struts138" target="_blank">struts version 1</a>. Actually, I wanted to write about struts2, but I don&#8217;t have enough energy to do that, because struts version2 is very difference to version1. So, I will write version 1 first and then migrate to version2 later.</p>
+
+<p><a href="http://www.roseindia.net/struts/struts1-vs-struts2.shtml" target="_blank">This is the difference between Struts1 and Struts2</a></p>
+
+<p><a href="http://www.roseindia.net/struts/struts1-vs-struts2.shtml" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/1-1.gif" alt="" width="232" height="288" /></a></p>
+
+<p>So, First we need to look at the hierarchy of the project. We have</p>
+
+<p><strong>src folder</strong>: where you can keep your .java files.<br/>
+<strong>WebContent folder:</strong> where you can keep your content files, such as .jsp files and libs. In WebContent we have to create WEB-INF to store web.xml and struts-config.xml to tell struts that we are using Struts Framework. <strong><br/>
+WebContent/WEB-INF/classes</strong> <strong>folder</strong>: this folder we can keep our .class files.</p>
+
+<p>The next thing is we have to modified web.xml to tell java that we are going to use Struts and configure about struts-config.xml.</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/2-1.gif" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/2-1-1.gif" alt="" width="150" height="132" /></a></p>
+
+<p>Next, modified the index.jsp to use struts taglib</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/3-1.gif" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/3-1-1.gif" alt="" width="150" height="82" /></a></p>
+
+<p>Now, we are heading to code the main program. I have created TestStrutsEJBAction.java which is extended from org.apache.struts.action.Action in Struts1 we have to extend org.apache.struts.action.Action, but in Struts2 we don&#8217;t have to extend Action, just the class that implements execute method.</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/4-1.gif" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/4-1-1.gif" alt="" width="150" height="146" /></a></p>
+
+<p>After we have created Action class we have to create ActionForm that request the parameters from the form, or jsp file. This class have to extend ActionForm, or we can develop more than that by extending ValidateForm. This class have to have parameters that the names match the jsp file inside html:form.</p>
+
+<p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/5-1.gif" alt="" /></p>
+
+<p>The last thing is the key file, struts-config.xml</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/6-1.gif" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/6-1-1.gif" alt="" /></a></p>
+
+<p>This is the end, the next thing is we pack this project and deploy to application server. We can use ANT or any framework you like.</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/7-1.gif" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/71.gif" alt="" width="150" height="81" /></a></p>
+
+<p>This is the example of my build.xml file, I use ANY, because I want to build my project from scratch. If you can use Eclipse to deploy to the application server, that&#8217;s fine. In build.xml I use war task to pack all the files you needed to WAR.</p>
+
+<p>So, I can summary into the following steps<br/>
+1. Create Struts project and include all the filed the project need, such as struts libraries.<br/>
+2. Config web.xml and struts.xml<br/>
+3. Write Jsp file, modified by using struts taglib, you can use plain html if you want.<br/>
+4. Write Action class which extends org&#8230;struts.action.Action.<br/>
+5. Write ActionForm which extends org&#8230;struts.action.ActionForm.<br/>
+6. Pack the project into war file.<br/>
+7. Deploy into application server.</p>
+
+<p>Next topic, I will be improving this project by using AJAX.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Noppanit Charassinvichai</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2008-04-20T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/struts/'>struts</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://noppanit.github.io/tutorial-struts-version-1-in-action/" data-via="" data-counturl="http://noppanit.github.io/tutorial-struts-version-1-in-action/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tutorial-oracle-web-portal/" title="Previous Post: Tutorial : Oracle Web Portal">&laquo; Tutorial : Oracle Web Portal</a>
+      
+      
+        <a class="basic-alignment right" href="/tutorial-aop-aspect-oriented-programming/" title="Next Post: Tutorial : AOP (Aspect-oriented Programming)">Tutorial : AOP (Aspect-oriented Programming) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

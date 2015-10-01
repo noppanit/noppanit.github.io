@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Solution: C# Loader Lock Exception When Debugging .NET 2.0 - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="I found this exception when I develop my application with barcode, but my application doesn&#8217;t concern with Microsoft DirectX.
+Anyway, The &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/tutorial-c-loader-lock-exception-when-debugging-net-20/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Solution: C# Loader Lock Exception When Debugging .NET 2.0</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2007-03-26T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I found this exception when I develop my application with barcode, but my application doesn&#8217;t concern with Microsoft DirectX.<br/>
+Anyway, The following solution can solves this problem too.</p>
+
+<blockquote><p><pre>LoaderLock was detected
+Message: DLL &lsquo;&hellip;&hellip;.Microsoft.DirectX.Direct3D.dll&rsquo; is attempting
+managed execution inside OS Loader lock. Do not attempt to run
+managed code inside a DllMain or image initialization function since</pre></p></blockquote>
+
+<p>doing so can cause the application to hang.A <a href="http://msdn2.microsoft.com/en-us/library/ms172219">Loader lock</a> is one of the <a href="http://msdn2.microsoft.com/en-us/library/d21c150d.aspx">Managed Debugging Assistants</a> (MDAs) that were added to VS2005 to help find hard to debug runtime issues. There is code in all Managed DirectX 1.1 assemblies that causes this MDA to fire. Microsoft have <a href="http://blogs.msdn.com/tmiller/archive/2005/06/12/428425.aspx">confirmed</a> they are aware of the problem. However I do not expect to see a fix for MDX 1.1 since current efforts are focused on MDX2.0/XNA Framework, it <strong>ONLY</strong> affects code run under the debugger (i.e. it won&#8217;t happen when users run your EXE) and there is a trivial workaround. I&#8217;m not sure of exact reproduction steps &#8211; it appears to fire on some projects and not on others.</p>
+
+<p>To work around the problem you have several choices:</p>
+
+<ol>
+<li>Go back to using VS2003 and .Net 1.1</li>
+<li>Use MDX 2.0. Note that MDX 2.0 will never actually ship as it is being transformed into the XNA framework.</li>
+<li>Disable the loader lock MDA. Debug/Exceptions (ctrl-D, E), Open the Managed Debugging Assistants tree node and uncheck Loader Lock. This setting is per solution so it will only affect this solution.</li>
+</ol>
+
+
+<p><strong><a href="http://www.thezbuffer.com/articles/42.aspx">Versions</a> affected:</strong>All .Net 1.1 Managed DirectX assemblies when used with Visual Studio 2005 and .Net 2.0.</p>
+
+<p>Reference : <a href="http://www.thezbuffer.com/articles/304.aspx">Link</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Noppanit Charassinvichai</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2007-03-26T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/dot-net/'>.net</a>, <a class='category' href='/blog/categories/programming/'>programming</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://noppanit.github.io/tutorial-c-loader-lock-exception-when-debugging-net-20/" data-via="" data-counturl="http://noppanit.github.io/tutorial-c-loader-lock-exception-when-debugging-net-20/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/howto-open-and-save-ico-in-photoshop/" title="Previous Post: HowTo : Open and Save .ICO in Photoshop">&laquo; HowTo : Open and Save .ICO in Photoshop</a>
+      
+      
+        <a class="basic-alignment right" href="/whats-new-hp-6828-rom-10103/" title="Next Post: What&#8217;s new on : HP 6828 Rom 1.01.03">What&#8217;s new on : HP 6828 Rom 1.01.03 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

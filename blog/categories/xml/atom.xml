@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Xml | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/xml/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Tutorial : XSD and XML]]></title>
+    <link href="http://noppanit.github.io/tutorial-xsd-and-xml/"/>
+    <updated>2008-04-05T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/tutorial-xsd-and-xml</id>
+    <content type="html"><![CDATA[<p>I encountered this problem once, when I was taking the exam. It was hard, because I haven&#8217;t done this thing before. So, I decided to post this topic to remember my thought.</p>
+
+<p>XSD is a XML Schema Definition. It&#8217;s like the file that describes XML document. In this topic, I will be writing some sample documents about XSD.</p>
+
+<p><a href="http://www.w3schools.com/Schema/default.asp" target="_blank">Reference:</a></p>
+]]></content>
+  </entry>
+  
+</feed>

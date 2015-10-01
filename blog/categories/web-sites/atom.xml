@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Web Sites | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/web-sites/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Basic HTML Tab, Using Javascript]]></title>
+    <link href="http://noppanit.github.io/basic-html-tab-using-javascript/"/>
+    <updated>2008-05-28T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/basic-html-tab-using-javascript</id>
+    <content type="html"><![CDATA[<p>This will show how to create tabs control in HTML.</p>
+
+<div class="codetop">
+  CODE JAVASCRIPT
+</div>
+
+
+
+
+<div class="codemain">
+  var ids = new Array(&#8216;tab1&#8242;,&#8217;tab2&#8217;) // declare array of tabs
+</div>
+
+
+<p>??</p>
+
+<div class="codetop">
+  CODE JAVASCRIPT
+</div>
+
+
+
+
+<div class="codemain">
+  function switchID(id) // function for switch between tabs<br /> {<br /> hideAllID(); // hide all the tabs<br /> showDivID(id); // show the selected tab<br /> }
+</div>
+
+
+<p>??</p>
+
+<div class="codetop">
+  CODE JAVASCRIPT
+</div>
+
+
+
+
+<div class="codemain">
+  function hideAllID() // function for hide all tabs in the page<br /> {<br /> for(var i=0;i {<br /> hideDivID(ids[i]);<br /> }<br /> }
+</div>
+
+
+<p>??</p>
+
+<div class="codetop">
+  CODE JAVASCRIPT
+</div>
+
+
+
+
+<div class="codemain">
+  function hideDivID(id) // function for hiding the selected tab<br /> {<br /> if(document.getElementById)<br /> {<br /> document.getElementById(id).style.display = &#8216;none&#8217;;<br /> }<br /> }
+</div>
+
+
+<p>??</p>
+
+<div class="codetop">
+  CODE JAVASCRIPT
+</div>
+
+
+
+
+<div class="codemain">
+  function showDivID(id) // function for showing the selected tab<br /> {<br /> if(document.getElementById)<br /> {<br /> document.getElementById(id).style.display = &#8216;block&#8217;;<br /> }<br /> }
+</div>
+
+
+<p>This is how you are going to create in html files</p>
+
+<div class="codetop">
+  CODE HTML
+</div>
+
+
+
+
+<div class="codemain">
+  <a href=&#8217;javascript:switchID(&#8216;tab1&#8242;);&#8217;>Something1</a><br /> <a href=&#8217;javascript:switchID(&#8216;tab2&#8242;);&#8217;>Something2</a>
+</div>
+
+
+<p>??</p>
+
+<div class="codetop">
+  CODE HTML
+</div>
+
+
+
+
+<div class="codemain">
+  <div id=&#8217;tab1&#8242; style=&#8217;display:block;&#8217;>Content1</div><br /> <div id=&#8217;tab2&#8242; style=&#8217;display:none;&#8217;> Content2</div>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Polina Seminova Ballet]]></title>
+    <link href="http://noppanit.github.io/polina-seminova-ballet/"/>
+    <updated>2007-12-08T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/polina-seminova-ballet</id>
+    <content type="html"><![CDATA[<p>I like this ballet so much, a gorgeous music with magnificence ballet.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[About : Concept of Web 2.0 by Video]]></title>
+    <link href="http://noppanit.github.io/about-web-20/"/>
+    <updated>2007-10-10T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/about-web-20</id>
+    <content type="html"><![CDATA[<p>I have heard this concept for a long time. So, I found this youtube video which is very interesting . And after this video I will write about web 2.0 briefly and chiefly&#8230;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tutorial : Accordion V2.0, a Useful Script for Your Websites]]></title>
+    <link href="http://noppanit.github.io/tutorial-accordion-v20-an-useful-script-for-your-websites/"/>
+    <updated>2007-10-09T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/tutorial-accordion-v20-an-useful-script-for-your-websites</id>
+    <content type="html"><![CDATA[<p>I found these scripts on my e-mail, and if you&#8217;re using wordpress when you&#8217;re writing your blog. You can see the right-hand corner with the expansion windows that can slide up and down.</p>
+
+<p>References : <a href="http://www.stickmanlabs.com/accordion/">Accordion v2.0</a></p>
+
+<p>This is <a href="http://www.noppanit.com/accordion/index.html">my accordion</a> and it&#8217;s very simple. I modified it to a better way to understand!!</p>
+]]></content>
+  </entry>
+  
+</feed>

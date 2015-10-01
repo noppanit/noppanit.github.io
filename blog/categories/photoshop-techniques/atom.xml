@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Photoshop Techniques | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/photoshop-techniques/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Vignettes 101 in Photoshop CS4]]></title>
+    <link href="http://noppanit.github.io/vignettes-101-in-photoshop-cs4/"/>
+    <updated>2010-04-15T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/vignettes-101-in-photoshop-cs4</id>
+    <content type="html"><![CDATA[<p>Vignettes mean the edges of the image. I think but I&#8217;m not sure. So, let&#8217;s get to the point. How do I do it?</p>
+
+<p>In Photoshop, go to Filter -> Distort -> Lens Correction.<br/>
+In section vignette you can adjust amount and midpoint. You can choose to darken or lighten your image with amount. You can bring the vignette towards the centre of the image or brings it out by adjusting midpoint.</p>
+
+<p>Here&#8217;s an example.</p>
+
+<div id="attachment_522" style="width: 310px" class="wp-caption alignnone">
+  <a href="http://www.noppanit.com/wp-content/uploads/2010/04/Screen-shot-2010-04-15-at-01.07.53.png"><img src="http://www.noppanit.com/wp-content/uploads/2010/04/Screen-shot-2010-04-15-at-01.07.53-300x200.png" alt="Vignette" title="Screen shot 2010-04-15 at 01.07.53" width="300" height="200" class="size-medium wp-image-522" /></a>
+  
+  <p class="wp-caption-text">
+    Vignette
+  </p>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Photoshop : Adjust White Balance in PS in Perfection]]></title>
+    <link href="http://noppanit.github.io/photoshop-adjust-white-balance-in-ps-in-perfection/"/>
+    <updated>2010-02-14T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/photoshop-adjust-white-balance-in-ps-in-perfection</id>
+    <content type="html"><![CDATA[<p>Reference : <a href="http://9meo.multiply.com/journal/item/31">http://9meo.multiply.com/journal/item/31</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Photoshop Tutorial : Changing Hair Color]]></title>
+    <link href="http://noppanit.github.io/photoshop-tutorial-changing-hair-color/"/>
+    <updated>2008-05-25T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/photoshop-tutorial-changing-hair-color</id>
+    <content type="html"><![CDATA[<p>Reference from <a href="http://www.onlyphotoshop.com/Tutorial-Change-Hair-Color-c-20.html">http://www.onlyphotoshop.com/Tutorial-Change-Hair-Color-c-20.html</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HowTo : Open and Save .ICO in Photoshop]]></title>
+    <link href="http://noppanit.github.io/howto-open-and-save-ico-in-photoshop/"/>
+    <updated>2007-03-26T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/howto-open-and-save-ico-in-photoshop</id>
+    <content type="html"><![CDATA[<p align="left">
+  Use this plugin
+</p>
+
+
+
+
+<p align="left">
+  <a href="http://www.telegraphics.com.au/svn/icoformat/trunk/dist/README.html">http://www.telegraphics.com.au/svn/icoformat/trunk/dist/README.html</a>
+</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Filter Polarize in Photoshop]]></title>
+    <link href="http://noppanit.github.io/filter-polarize-in-photoshop/"/>
+    <updated>2007-03-02T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/filter-polarize-in-photoshop</id>
+    <content type="html"><![CDATA[<p><img src="http://img208.imageshack.us/img208/1048/php1c34yf9.jpg" alt="ImageShack" border="0" /></p>
+
+<ol>
+<li>You will see that around building is darken.</li>
+</ol>
+
+
+<p><img src="http://img157.imageshack.us/img157/6059/php1c4ddq3.jpg" alt="ImageShack" border="0" /></p>
+
+<ol>
+<li>Make a selection.</li>
+</ol>
+
+
+<p><img src="http://img221.imageshack.us/img221/7936/php1c53zf3.jpg" alt="ImageShack" border="0" /></p>
+
+<ol>
+<li>Select feather</li>
+</ol>
+
+
+<p><img src="http://img218.imageshack.us/img218/2591/php1c8chj5.gif" alt="ImageShack" border="0" /></p>
+
+<ol>
+<li>Adjust a feather radius.</li>
+</ol>
+
+
+<p><img src="http://img207.imageshack.us/img207/7162/php1cabal3.jpg" alt="ImageShack" border="0" /></p>
+
+<ol>
+<li>Image>>Adjusment>>Brightness/Contrast, decrease a brightness and increase contrast</li>
+</ol>
+
+
+<p><img src="http://img207.imageshack.us/img207/5966/php1ccbgp5.jpg" alt="ImageShack" border="0" /></p>
+
+<ol>
+<li>Finished</li>
+</ol>
+
+
+<p>Reference by : <a href="http://fujifilmclub.pantipmember.com/">FujiClub</a></p>
+]]></content>
+  </entry>
+  
+</feed>

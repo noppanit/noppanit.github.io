@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>My Thoughts on Play 2.1.1 (Java) - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="I have just rolled off from a project using AngularJS and Play 2.1.1. It was a mobile website, I wish I could include the site here as well but it&# &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/my-thoughts-on-play-2-1-1-java/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">My Thoughts on Play 2.1.1 (Java)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-07-01T00:00:00-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I have just rolled off from a project using AngularJS and Play 2.1.1. It was a mobile website, I wish I could include the site here as well but it&#8217;s still in development. We are using Play! 2.1.1 Java and AngularJs to build a mobile website. So, I&#8217;d like to summarise my thoughts here.</p>
+
+<h1>Play Framework 2.1.1</h1>
+
+<p>It&#8217;s a really good framework if you want to start something quickly. It&#8217;s like Rail in Java. You have everything in this framework, ORM, LESS, RequireJS and also some caching strategy. If in the future, I have a requirement to create a prototype in Java I would choose this framework for sure (Who would create a prototype in Java anyways), buy hey! it can be that who knows. By the way, there are some downsides. As Play considers everything in static. That makes testing quite tricky. For example, every controller is statically created, if you want to have something injected to your controller you have to create a custom global configuration for Play!. Here&#8217;s the example.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          # Global object class<br /> # ~~~~~<br /> # Define the Global object class for this application.<br /> # Default to Global in the root package.<br /> application.global=global.CustomGlobal
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="java codecolorer">
+          <span class="kw1">package</span> <span class="co2">global</span><span class="sy0">;</span><br /> <br /> <span class="co1">// CAUTION: this class name must be specified in application.conf</span><br /> <span class="kw1">public</span> <span class="kw1">class</span> CustomGlobal <span class="kw1">extends</span> GlobalSettings <span class="br0">&#123;</span><br /> &nbsp; &nbsp;<span class="kw1">private</span> <span class="kw1">static</span> MutablePicoContainer dependencies <span class="sy0">=</span> wireUpDependencies<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp;<span class="kw1">private</span> <span class="kw1">static</span> MutablePicoContainer wireUpDependencies<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MutablePicoContainer container <span class="sy0">=</span> <span class="kw1">new</span> DefaultPicoContainer<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="co1">// Do some injections.</span><br /> &nbsp; &nbsp;<span class="br0">&#125;</span><br /> &nbsp; &nbsp;@Override<br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="sy0"><</span>A<span class="sy0">></span> A getControllerInstance<span class="br0">&#40;</span>Class<span class="sy0"><</span>A<span class="sy0">></span> aControllerClass<span class="br0">&#41;</span> <span class="kw1">throws</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aexception+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Exception</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> dependencies.<span class="me1">getComponent</span><span class="br0">&#40;</span>aControllerClass<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then in <strong>/routes</strong> you can use <strong>@</strong> to say not create a controller statically.</p>
+
+<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="java codecolorer">
+          GET &nbsp; &nbsp; <span class="sy0">/</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @controllers.<span class="me1">coop</span>.<span class="me1">main</span>.<span class="me1">Application</span>.<span class="me1">index</span><span class="br0">&#40;</span>any <span class="sy0">=</span> <span class="st0">"none"</span><span class="br0">&#41;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Other thing is EBean which comes with Play!. EBean is built on top of JPA. However, this means you have to learn a new framework if you know Hibernate already. They are quite close. Other than that, I think Play! is great. If you have time you might want to have a look at <a href="http://dropwizard.codahale.com/" title="DropWizard">DropWizard</a> if you just want to create a RESTFul service or <a href="http://www.sparkjava.com/download.html" title="SPARK">SPARK</a> for a sinatra-like java framework.</p>
+
+<h2>EBean Query tuning</h2>
+
+<p>EBean is like another version of Hibernate. It&#8217;s basically an ORM framework. There&#8217;s a catch in EBean if you turn the showing query on and if you join two or three tables and you use RawSql EBean will fire a lot of query to fetch each and every row you want to use. You will see a massive log. That hurts the performance. If you could use basic EBean for example.</p>
+
+<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="java codecolorer">
+          List<span class="sy0"><</span>Order<span class="sy0">></span> orders <span class="sy0">=</span> &nbsp; <br /> &nbsp; &nbsp; Ebean.<span class="me1">find</span><span class="br0">&#40;</span>Order.<span class="kw1">class</span><span class="br0">&#41;</span> &nbsp;<br /> &nbsp; &nbsp; &nbsp; &nbsp; .<span class="me1">fetch</span><span class="br0">&#40;</span><span class="st0">"customer"</span><span class="br0">&#41;</span> &nbsp;<br /> &nbsp; &nbsp; &nbsp; &nbsp; .<span class="me1">findList</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>If you use .fetch(&#8220;customer&#8221;) it will just fire one query. So be careful. If you see a performance hit in your app and if it&#8217;s because of database. Check this <a href="http://www.avaje.org/ebean/introquery_joinquery.html" title="EBean join query.">link</a>. So, keep an eye on your performance because the peak might be on your query.</p>
+
+<h2>Conclusion</h2>
+
+<p>Play! is a good framework for doing something really quick and you don&#8217;t want to get your hands dirty with Spring or pure Java servlet. My biggest catch for Play! for me is the ability to write tests and to inject something to a controller. That means it&#8217;s hard to write unit-test but you can still write integration tests. If you&#8217;re ok with this fact I guess Play! is a good framework to look out for.</p>
+
+<p>Also, Play! documentation is quite incomplete. And every version is really different than the prior version. So, please be careful to choose the write version of your documentation otherwise you might be scratching your head for a long time until you figure it out you&#8217;re looking at the wrong documentation.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Noppanit Charassinvichai</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2013-07-01T00:00:00-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://noppanit.github.io/my-thoughts-on-play-2-1-1-java/" data-via="" data-counturl="http://noppanit.github.io/my-thoughts-on-play-2-1-1-java/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/angularjs-cookies-with-play-framework-2-1-1-java-session/" title="Previous Post: AngularJs Cookies with Play Framework 2.1.1 Java Session.">&laquo; AngularJs Cookies with Play Framework 2.1.1 Java Session.</a>
+      
+      
+        <a class="basic-alignment right" href="/my-thoughts-on-angularjs/" title="Next Post: My thoughts on AngularJs">My thoughts on AngularJs &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

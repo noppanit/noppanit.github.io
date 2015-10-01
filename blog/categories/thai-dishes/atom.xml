@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Thai Dishes | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/thai-dishes/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fried Chicken With Ginger]]></title>
+    <link href="http://noppanit.github.io/fried-chicken-with-ginger/"/>
+    <updated>2008-03-29T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/fried-chicken-with-ginger</id>
+    <content type="html"><![CDATA[<p>Ingredients<br/>
+1. Chicken marinated with salt.<br/>
+2. Finely sliced onion<br/>
+3. Finely sliced red pepper and yellow pepper<br/>
+4. Finely sliced ginger<br/>
+5. Chopped garlic</p>
+
+<ol>
+<li>put vegetable oil into a pan, heat it until smoke emits</li>
+<li>add the chicken and the ginger</li>
+<li>season it and add oyster sauce and fish sauce</li>
+<li>add the others ingredients, stir well</li>
+<li>favor whatever you like</li>
+<li>add &frac12; cup of water and. stir thoroughly, simmer the pan until the mixture thicken</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

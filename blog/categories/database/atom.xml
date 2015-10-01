@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Database | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/database/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Lesson Learnt From Data Cleansing. Part II]]></title>
+    <link href="http://noppanit.github.io/lesson-learnt-from-data-cleansing-part-ii/"/>
+    <updated>2013-02-11T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/lesson-learnt-from-data-cleansing-part-ii</id>
+    <content type="html"><![CDATA[<p>Ok as I have done the <a href="http://www.noppanit.com/lesson-learnt-from-data-cleansing/" title="data cleansing part I">part I</a> I have learnt another thing from data cleansing. I believe the best tool for data analysis is <a href="http://www.r-project.org/" title="R">R</a> but the learning is quite steep but I&#8217;m trying to learn it right now. Hopefully if I can get some results from this with neo4j I could move on to use R to get some more statistical results.</p>
+
+<p>Now, the second challenge I got was that the CSV file is about 1GB with around 100 columns and I was trying to use Ruby to parse that. Obviously, I got <strong>Killed</strong> results from my Terminal even before I got to the first line. So, Ruby has to load everything into memory and parse that. But as I&#8217;m running everything in my small Mac. It seems to be quite a challenging. So, what I have done is to dump everything to MySQL. This time works really good. MySQL has <a href="http://dev.mysql.com/doc/refman/5.1/en/load-data.html" title="Load data mysql">LOAD DATA FILE</a> which can load CSV file into a table. It only took me around <string>20 seconds</strong> to load 1GB of CSV into a table. I dumped the table out and it was around 1GB which is not too bad. Now the next challenge was that I also had to filter out the events that were created by real users (I&#8217;m doing this <a href="http://www.kaggle.com/c/event-recommendation-engine-challenge" title="kaggle competition">Kaggle competition</a>). I had around 3 million rows which is now that much. And I used MySQL which comes with XAMPP. My first query took me around 8 hours without spitting any results back. So, I gave up and did a couple research on how to make MySQL faster, but I&#8217;m not a DBA and I didn&#8217;t have time to read the whole book about MySQL performance tuning.</p>
+
+<p><strong>First attempt</strong><br/>
+Index joined columns and changed the table schema to something small. I used <strong>VARCHAR(50)</strong> instead of <strong>VARCHAR(255)</strong> and of course I used <strong>NUMBER(3)</strong> instead of <strong>VARCHAR(5)</strong></p>
+
+<p>Still, I couldn&#8217;t get the results back in 1 hour which I think MySQL is better than that.</p>
+
+<p><strong>Second attempt</strong><br/>
+So, I moved on to the next one. It looked like everybody on the Internet suggested <strong>key_buffer_size</strong> or <strong>key_buffer</strong> to 4G. And changed some of the variables to pimp MySQL up a little bit.<br/>
+**</p></p>
+
+<ul>
+<li>query_cache_type = 1</li>
+<li>query_cache_size = 128M</li>
+<li>query_cache_limit = 128M></li>
+</ul>
+
+
+<p></strong></p>
+
+<p>Still, I couldn&#8217;t get the results back.</p>
+
+<p>And suddenly I caught something in my <strong>my.cnf</strong></p>
+
+<pre><div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          # Example MySQL config file for small systems.<br />
+          #<br />
+          # This is for a system with little memory (&lt;= 64M) where MySQL is only used<br />
+          # from time to time and it's important that the mysqld daemon<br />
+          # doesn't use much resources.<br />
+          #
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>What is said was that XAMPP is tuned for a very small computer to be able to run basic PHP and MySQL application which is why my MySQL performed really bad in this case.</p>
+
+<p><strong>Final attempt</strong><br/>
+I started my EC2 instance with 7GB of memory and installed MySQL (normal one) also some of the performance tuning variables. Now, I got the results back in just under 20 seconds to join two tables with around 3 millions rows.</p>
+
+<blockquote><p>Lesson learnt: Do not use MySQL from XAMPP for data that is big and use query that would get smaller results. For example, in my case instead of filtering out user_ids that don&#8217;t exist in Users table. I filtered user_ids that exist instead.</p></blockquote>
+
+<p>I also thought about of using BigQuery from Google but I guess my data is rather small and can hardly be called big data. Next time, I might try to use BigQuery just for fun.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tutorial : Enable InnoDB for MySQL]]></title>
+    <link href="http://noppanit.github.io/tutorial-enable-innodb-for-mysql/"/>
+    <updated>2009-03-20T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/tutorial-enable-innodb-for-mysql</id>
+    <content type="html"><![CDATA[<ol>
+<li><p>Open the MySQL options file, the file is called my.cnf (Linux) &#8211; are in the / etc / my.cnf &#8211; or my.ini (Windows) &#8211; the path c: / windows / my.ini &#8212;</p></li>
+<li><p>Find Education skip-InnoDB and comment # before adding it</p></li>
+<li><p>E &#8216;recommended increasing the max_allowed_packet value to make sure you can upload files larger than 1MB.<br/>
+Then just below the line just commented write:<br/>
+set-variable = max_allowed_packet = 64M</p></li>
+<li><p>Restart MySQL</p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Improve MySQL Performance With MySQL Tuner]]></title>
+    <link href="http://noppanit.github.io/improve-mysql-performance-with-mysql-tuner/"/>
+    <updated>2008-11-18T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/improve-mysql-performance-with-mysql-tuner</id>
+    <content type="html"><![CDATA[<p><a href="http://www.zdnetasia.com/techguide/opensource/0,39044899,62048294,00.htm?scid=nl_z_ntnd">Tech Guild</a></p>
+
+<p>This is some other ways to improve performance of you famous Database</p>
+
+<p><a href="http://wiki.mysqltuner.com/MySQLTuner">MySQL Tuner</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Oracle With GUID]]></title>
+    <link href="http://noppanit.github.io/oracle-with-guid/"/>
+    <updated>2008-09-11T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/oracle-with-guid</id>
+    <content type="html"><![CDATA[<p>Have you ever wanted to know that how Oracle generate GUID?</p>
+
+<p>This is the answer. I found this website shows how to use Oracle to generate GUID for us.<br/>
+<a href="http://feuerthoughts.blogspot.com/2006/02/watch-out-for-sequential-oracle-guids.html">http://feuerthoughts.blogspot.com/2006/02/watch-out-for-sequential-oracle-guids.html</a></p>
+
+<p>This is the code</p>
+
+<div class="codetop">
+  SQL Package
+</div>
+
+
+
+
+<div class="codemain">
+  CREATE OR REPLACE PACKAGE guid_pkg</p> 
+  
+  <p>
+    IS
+  </p>
+  
+  <p>
+    SUBTYPE guid_t IS RAW (16);
+  </p>
+  
+  <p>
+    SUBTYPE formatted_guid_t IS VARCHAR2 (38);
+  </p>
+  
+  <p>
+    &#8212; Example: {34DC3EA7-21E4-4C8A-BAA1-7C2F21911524}
+  </p>
+  
+  <p>
+    c_mask CONSTANT formatted_guid_t
+  </p>
+  
+  <p>
+    := &#8216;{________-____-____-____-____________}&#8217;;
+  </p>
+  
+  <p>
+    FUNCTION is_formatted_guid (string_in IN VARCHAR2)
+  </p>
+  
+  <p>
+    RETURN BOOLEAN;
+  </p>
+  
+  <p>
+    FUNCTION formatted_guid (guid_in IN VARCHAR2)
+  </p>
+  
+  <p>
+    RETURN formatted_guid_t;
+  </p>
+  
+  <p>
+    FUNCTION formatted_guid
+  </p>
+  
+  <p>
+    RETURN formatted_guid_t;
+  </p>
+  
+  <p>
+    END guid_pkg;
+  </p>
+  
+  <p>
+    /
+  </p>
+</div>
+
+
+
+
+<div class="codetop">
+  SQL Body
+</div>
+
+
+
+
+<div class="codemain">
+  <p>
+    CREATE OR REPLACE PACKAGE BODY guid_pkg
+  </p>
+  
+  <p>
+    IS
+  </p>
+  
+  <p>
+    FUNCTION is_formatted_guid (string_in IN VARCHAR2)
+  </p>
+  
+  <p>
+    RETURN BOOLEAN
+  </p>
+  
+  <p>
+    IS
+  </p>
+  
+  <p>
+    BEGIN
+  </p>
+  
+  <p>
+    RETURN string_in LIKE c_mask;
+  </p>
+  
+  <p>
+    END is_formatted_guid;
+  </p>
+  
+  <p>
+    FUNCTION formatted_guid (guid_in IN VARCHAR2)
+  </p>
+  
+  <p>
+    RETURN formatted_guid_t
+  </p>
+  
+  <p>
+    IS
+  </p>
+  
+  <p>
+    BEGIN
+  </p>
+  
+  <p>
+    &#8212; If not already in the 8-4-4-4-rest format, then make it so.
+  </p>
+  
+  <p>
+    IF is_formatted_guid (guid_in)
+  </p>
+  
+  <p>
+    THEN
+  </p>
+  
+  <p>
+    RETURN guid_in;
+  </p>
+  
+  <p>
+    &#8212; Is it only missing those squiggly brackets?
+  </p>
+  
+  <p>
+    ELSIF is_formatted_guid (&#8216;{&#8216; || guid_in || &#8216;}&#8217;)
+  </p>
+  
+  <p>
+    THEN
+  </p>
+  
+  <p>
+    RETURN formatted_guid (&#8216;{&#8216; || guid_in || &#8216;}&#8217;);
+  </p>
+  
+  <p>
+    ELSE
+  </p>
+  
+  <p>
+    RETURN &#8216;{&#8216;
+  </p>
+  
+  <p>
+    || SUBSTR (guid_in, 1, 8 )
+  </p>
+  
+  <p>
+    || &#8216;-&#8216;
+  </p>
+  
+  <p>
+    || SUBSTR (guid_in, 9, 4)
+  </p>
+  
+  <p>
+    || &#8216;-&#8216;
+  </p>
+  
+  <p>
+    || SUBSTR (guid_in, 13, 4)
+  </p>
+  
+  <p>
+    || &#8216;-&#8216;
+  </p>
+  
+  <p>
+    || SUBSTR (guid_in, 17, 4)
+  </p>
+  
+  <p>
+    || &#8216;-&#8216;
+  </p>
+  
+  <p>
+    || SUBSTR (guid_in, 21)
+  </p>
+  
+  <p>
+    || &#8216;}&#8217;;
+  </p>
+  
+  <p>
+    END IF;
+  </p>
+  
+  <p>
+    END formatted_guid;
+  </p>
+  
+  <p>
+    FUNCTION formatted_guid
+  </p>
+  
+  <p>
+    RETURN formatted_guid_t
+  </p>
+  
+  <p>
+    IS
+  </p>
+  
+  <p>
+    BEGIN
+  </p>
+  
+  <p>
+    RETURN formatted_guid (SYS_GUID);
+  </p>
+  
+  <p>
+    END formatted_guid;
+  </p>
+  
+  <p>
+    END guid_pkg;
+  </p>
+  
+  <p>
+    /
+  </p>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[C# and SQL Express : Embedded SQL Server Express With Custom Application]]></title>
+    <link href="http://noppanit.github.io/c-and-sql-express-embedded-sql-server-express-with-custom-application/"/>
+    <updated>2008-07-01T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/c-and-sql-express-embedded-sql-server-express-with-custom-application</id>
+    <content type="html"><![CDATA[<p>Well, with my &#8220;Trinop&#8221; project that is built with C# .NET and SQL Server Express edition. However, the diffcult part is that when I deploy the application to end-user, the installation is very hard, becuase the use has to install SQL Server first and the install my program. At least, it&#8217;s hard for some people. So, the problem can be solved by installing SQL Server in silence mode. Therefore, the installation will be done by just one click.</p>
+
+<p>This is the example I have found.</p>
+
+<p><a href="http://msdn.microsoft.com/en-us/library/bb264562.aspx" target="_blank"><a href="http://msdn.microsoft.com/en-us/library/bb264562.aspx">http://msdn.microsoft.com/en-us/library/bb264562.aspx</a></a></p>
+]]></content>
+  </entry>
+  
+</feed>

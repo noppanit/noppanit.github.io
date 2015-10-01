@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Mac Osx | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/mac-osx/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mac OSX: Override Rm to Delete Files to .Trash]]></title>
+    <link href="http://noppanit.github.io/mac-osx-override-rm-to-delete-files-to-trash/"/>
+    <updated>2011-04-05T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/mac-osx-override-rm-to-delete-files-to-trash</id>
+    <content type="html"><![CDATA[<p>So silly of me I have just &#8220;accidentally&#8221; deleted my home directory T_T. There is a way to help that by override rm command to move file to .Trash.</p>
+
+<p>Just copy this code to ~/.bash_profile and restart your terminal.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          function rm () {<br /> &nbsp; local path<br /> &nbsp; for path in "$@"; do<br /> &nbsp; &nbsp; # ignore any arguments<br /> &nbsp; &nbsp; if [[ "$path" = -* ]]; then :<br /> &nbsp; &nbsp; else<br /> &nbsp; &nbsp; &nbsp; local dst=${path##*/}<br /> &nbsp; &nbsp; &nbsp; # append the time if necessary<br /> &nbsp; &nbsp; &nbsp; while [ -e ~/.Trash/"$dst" ]; do<br /> &nbsp; &nbsp; &nbsp; &nbsp; dst="$dst "$(date +%H-%M-%S)<br /> &nbsp; &nbsp; &nbsp; done<br /> &nbsp; &nbsp; &nbsp; mv "$path" ~/.Trash/"$dst"<br /> &nbsp; &nbsp; fi<br /> &nbsp; done<br /> }
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac OSX 10.6 Enabling MySQL, Apache2 and PHP.]]></title>
+    <link href="http://noppanit.github.io/mac-osx-10-6-enabling-mysql-apache2-and-php/"/>
+    <updated>2010-05-28T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/mac-osx-10-6-enabling-mysql-apache2-and-php</id>
+    <content type="html"><![CDATA[<p>Well I don&#8217;t know that I&#8217;m the only person on earth who has this problem. But I have some troubles to get MySQl, PHP and Apache2 work on my Macbook. Since I have been a windows user for 10 years, switch to Mac user is quite new for me. I use to install everything with .exe files and it&#8217;s dame easy!.</p>
+
+<p>However, after a few months, Mac rocks and also dame easy.</p>
+
+<p>Well, Let&#8217;s get started.</p>
+
+<p>First of all, If you installed Mac Server, It&#8217;s already bundled with everything, PHP, Apache and MySQL. But If you&#8217;re not. Mac Snow Leopard already comes with Apache already you just have to enable it.</p>
+
+<h1>Apache</h1>
+
+<p style="text-align: left;">
+  1. First go to System Preferences.<br /> 2. And then go to Sharing.<br /> <a href="http://www.noppanit.com/wp-content/uploads/2010/05/Screen-shot-2010-05-28-at-09.31.56.png"><img class="size-medium wp-image-534 aligncenter" title="Enable PHP in Mac Snow" src="http://www.noppanit.com/wp-content/uploads/2010/05/Screen-shot-2010-05-28-at-09.31.56-215x300.png" alt="Enable PHP in Mac Snow" width="215" height="300" /></a><br /> 3. And click at Web Sharing, the indicator light will go green. That means your apache is now ready to use.<br /> 4. You can try this link at your browser http://localhost/~yourusername. If you see the page like below image, that means your Apache is now ready to use.<br /> <a href="http://www.noppanit.com/wp-content/uploads/2010/05/Screen-shot-2010-05-28-at-09.36.05.png"><img class="size-medium wp-image-536 aligncenter" title="Apache 2 Mac Snow" src="http://www.noppanit.com/wp-content/uploads/2010/05/Screen-shot-2010-05-28-at-09.36.05-300x214.png" alt="Apache 2 Mac Snow" width="300" height="214" /></a>
+</p>
+
+
+<p>Pretty Easy Isn&#8217;t it? now next step is PHP, You have just enabled apache, but that doesn&#8217;t mean you enable PHP already. Well Mac also integrated with PHP already. You just have to enable it, but in a different way.</p>
+
+<h1>PHP</h1>
+
+<ol>
+<li>Go to terminal</li>
+<li>Type</li>
+</ol>
+
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw3">cd</span> <span class="sy0">/</span>private<span class="sy0">/</span>etc<span class="sy0">/</span>apache2
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>Then</li>
+</ol>
+
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw2">sudo</span> mate httpd.conf
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>If you don&#8217;t have TextMate you can use TextEdit instead. Or any editor you like</li>
+<li>Go to line 115 that says</li>
+</ol>
+
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          #LoadModule php5_module &nbsp; &nbsp; &nbsp; &nbsp;libexec/apache2/libphp5.so
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>Uncomment it, so it will be</li>
+</ol>
+
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          LoadModule php5_module &nbsp; &nbsp; &nbsp; &nbsp;libexec/apache2/libphp5.so
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>This will enable PHP in your computer.</li>
+<li>Almost there, now go to terminal again, type</li>
+</ol>
+
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw3">cd</span> <span class="sy0">/</span>private<span class="sy0">/</span>etc
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>Just in case that you&#8217;re not in the etc folder</li>
+<li>PHP is configured by php.ini, and you need that. But, now you have php.ini.default, you just have to change the file name to php.ini. Now type</li>
+</ol>
+
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw2">sudo</span> <span class="kw2">cp</span> php.ini.default php.ini
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>You can now start Apache by going to System Preferences. Click Sharing in Internet &amp; Network. Then place a checkmark in Web Sharing. When Apache starts up, System Preferences should display Web Sharing: On.</li>
+<li><p>Create a page called test.php, and type in the following code: &lt;?php phpinfo(); ?> Save it in Macintosh ~username/Sites</p></li>
+<li><p>And then test it. <a href="http://localhost/~yourusername/test.php.">http://localhost/~yourusername/test.php.</a></p></li>
+<li>You should get the php info page.</li>
+</ol>
+
+
+<p>Reference:<br/>
+<a href="http://foundationphp.com/tutorials/php_leopard.php">http://foundationphp.com/tutorials/php_leopard.php</a></p>
+
+<h1>MySQL</h1>
+
+<ol>
+<li>Well, I suggest you to download .dmg file of MySQL, because it&#8217;s easier to install and it comes with System Preferences panel where you can start and stop MySQL in a click.</li>
+<li>Install 3 files of MySQL and go to System Preferences, you should see a MySQL icon under section &#8220;Other&#8221; and open it.</li>
+<li>Click Start MySQL Server, you should get a green indicator light.</li>
+<li>Now, your MySQL is ready to use, but it&#8217;s not finished yet.</li>
+<li>Go to terminal and type</li>
+</ol>
+
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="sy0">/</span>usr<span class="sy0">/</span>local<span class="sy0">/</span>mysql<span class="sy0">/</span>bin<span class="sy0">/</span>mysqladmin <span class="re5">-u</span> root password yourpassword
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>This will setup your root password</li>
+<li>And I also suggest you to create a symbolic link to your the bin directory.</li>
+<li>Go to terminal again and type. This command will take you to your home user directory.</li>
+</ol>
+
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw3">cd</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>Type</li>
+</ol>
+
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          mate .profile
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>Insert this line of code</li>
+</ol>
+
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          export PATH=/usr/local/mysql/bin:$PATH
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Reference <a href="http://www.tech-recipes.com/rx/2621/os_x_change_path_environment_variable/">http://www.tech-recipes.com/rx/2621/os_x_change_path_environment_variable</a><br/>
+10. Now the final touch.<br/>
+One thing changed with Leopard is the socket for Mysql. It moved to /private/tmp, so you may need to configure your php.ini file to point it to the new location.</p>
+
+<p>To do so, open the file ‘/private/etc/php.ini‘, (if no such file exists, then make a copy of ‘/private/etc/php.ini.default‘ naming it ‘php.ini‘) and edit that.</p>
+
+<p>You have two lines to modify:</p>
+
+<p>mysql.default_socket =</p>
+
+<p>becomes:</p>
+
+<p>mysql.default_socket = /private/tmp/mysql.sock</p>
+
+<p>and mysqli.default_socket =</p>
+
+<p>becomes:</p>
+
+<p>mysqli.default_socket = /private/tmp/mysql.sock</p>
+
+<p>of course, from the sharing pref pane, stop the server and restart it and voila!<br/>
+Reference: <a href="http://mymacinations.com/2007/10/28/apache-php-and-mysql-on-leopard/">http://mymacinations.com/2007/10/28/apache-php-and-mysql-on-leopard/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Recursively Delete File or Folder From Sub-directory]]></title>
+    <link href="http://noppanit.github.io/recursively-delete-file-or-folder-from-sub-directory/"/>
+    <updated>2010-03-21T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/recursively-delete-file-or-folder-from-sub-directory</id>
+    <content type="html"><![CDATA[<p>I used an example from deleting all .svn from sub-directory.</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw2">rm</span> <span class="re5">-rf</span> <span class="sy0">`</span><span class="kw2">find</span> . <span class="re5">-type</span> d <span class="re5">-name</span> .svn<span class="sy0">`</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Apache : Enable Mod_rewrite on MacOSX]]></title>
+    <link href="http://noppanit.github.io/apache-enable-mod_rewrite-on-macosx/"/>
+    <updated>2010-02-02T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/apache-enable-mod_rewrite-on-macosx</id>
+    <content type="html"><![CDATA[<p>Reference <a href="http://www.deheus.net/petrik/blog/2005/02/11/getting-mod_rewrite-to-work-on-mac-os-x/">http://www.deheus.net/petrik/blog/2005/02/11/getting-mod_rewrite-to-work-on-mac-os-x/</a></p>
+
+<p>First go to /private/etc/apache2/httpd.conf<br/>
+Remove # from</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          LoadModule rewrite_module &nbsp; &nbsp; libexec/httpd/mod_rewrite.so
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Second go to /private/etc/apache2/user/your-username.conf<br/>
+Change AllowOverride None to AllowOverride all</p>
+
+<p>Third restart the apache2</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw2">sudo</span> <span class="sy0">/</span>usr<span class="sy0">/</span>sbin<span class="sy0">/</span><span class="kw2">apachectl restart</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>If you need to see the log of mod_rewrite in case that something bad happen just go back to /private/etc/apache2/user/you-username.conf</p>
+
+<p>Add these lines</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          RewriteLog "/private/var/log/httpd/rewrite_log" &nbsp; <br /> RewriteLogLevel 9
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tutorial : Show Hidden Files in Finder Mac OSX]]></title>
+    <link href="http://noppanit.github.io/tutorial-show-hidden-files-in-finder-mac-osx/"/>
+    <updated>2010-01-28T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/tutorial-show-hidden-files-in-finder-mac-osx</id>
+    <content type="html"><![CDATA[<p>Unlike windows, Mac OSX has a different to show hidden files. We just can&#8217;t right click and show all files.</p>
+
+<p>So, in Mac OSX we need to go to Terminal and put this command.<br/>
+To open show all files</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          defaults <span class="kw2">write</span> com.apple.finder AppleShowAllFiles TRUE
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>To disable show all files</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          defaults <span class="kw2">write</span> com.apple.finder AppleShowAllFiles FLASE
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>And then kill all the Finder apps and start it up again.</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw2">killall</span> Finder
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>

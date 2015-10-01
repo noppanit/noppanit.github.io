@@ -1,0 +1,1092 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="I&#8217;m not sure who started this pattern so I can&#8217;t really refer back but if you know please comment below and I will update the post. I&# &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/posts/2/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/you-should-check-in-your-dependencies/">You Should Check in Your Dependencies.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-28T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;m not sure who started this pattern so I can&#8217;t really refer back but if you know please comment below and I will update the post. I&#8217;m sure all of you have heard that you should not check in anything that can be generated to Source control. It&#8217;s long been a common pattern. However, lately I have been checking in my dependencies into my source control and it works really well for small to medium project. Here&#8217;s why.</p>
+
+<h3>Isolate you from any network failures.</h3>
+
+<p>I know you might say that it rarely happens to me so why should I care about this. I hear you. It rarely happens to me as well but when it did happen I got really frustrated. Especially, when your CI failed without any reason and you found out that one of your dependencies doesn&#8217;t get downloaded properly.</p>
+
+<h3>CI failure</h3>
+
+<p>This frustrates me the most and it&#8217;s one of the reasons why I started doing this. More than often that my CI failed and it&#8217;s because of dependencies didn&#8217;t get resolved or compiled properly and people just kept running it over and over again. To eliminate this problem and let CI just run the tests save me a lot of pulling my hair time.</p>
+
+<h3>Check out and Go!</h3>
+
+<p>This pattern I have learnt while I was working with ThoughtWorks that it&#8217;s so frustrated when you are joining a project and you spend almost half a day just to get your machine up and running and run the build script to download all the dependencies. I believed that&#8217;s one of the reasons why Chef and Puppet exist. It&#8217;s so easy when you checkout a project from your source control and you can start coding right away or even run all the tests.</p>
+
+<p>I also have this support from my <a href="http://scottmuc.com/" title="Scott Muc">friend</a></p>
+
+<blockquote class="twitter-tweet" lang="en">
+  <p>
+    <a href="https://twitter.com/noppanit">@noppanit</a> I've been a fan of that technique for a long time now.
+  </p>
+  
+  <p>
+    &mdash; Scott Myц (@ScottMuc) <a href="https://twitter.com/ScottMuc/status/579739745921724416">March 22, 2015</a>
+  </p>
+</blockquote>
+
+
+<p>Srini also pointed out that you shouldn&#8217;t do that for internal project dependencies</p>
+
+<blockquote class="twitter-tweet" lang="en">
+  <p>
+    <a href="https://twitter.com/ScottMuc">@ScottMuc</a> <a href="https://twitter.com/noppanit">@noppanit</a> agree. It's good for external libraries and toolset libraries. Not good for internal project dependencies.
+  </p>
+  
+  <p>
+    &mdash; Srinivasan Raguraman (@sragu) <a href="https://twitter.com/sragu/status/579762369041186816">March 22, 2015</a>
+  </p>
+</blockquote>
+
+
+<h3>Conclusion</h3>
+
+<p>I know people might argue that it doesn&#8217;t really work for big project because of the size of the repository. That&#8217;s why I mention small to medium project. It works really well with small projects. Another point to mention is that every developer might have different environment for example, Windows VS Linux which node_modules might not work for both environments. I solve that problem by using Vagrant so everybody has the same environment.</p>
+
+<p>Inspiration<br/>
+<a href="https://www.dzombak.com/blog/2014/03/including-pods-in-source-control.html">https://www.dzombak.com/blog/2014/03/including-pods-in-source-control.html</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2015/">My 2015</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-05T00:00:00-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I just want to take a break from writing about technical posts to just talk about myself a little bit. I&#8217;m inspired by Scott Muc&#8217;s <a href="http://scottmuc.com/my-resolutions-for-2015/" title="Scott's 2015 Resolution">post</a> about his 2015 Resolutions. Before getting into 2015 I want to take a step back and review my 2014</p>
+
+<h2>My 2014</h2>
+
+<ul>
+<li>I got the opportunity to work in Turkey as part of my consulting job with <a href="http://www.thoughtworks.com/" title="ThougthWorks">ThoughtWorks</a>. I can count Turkey to be my 6th country I have lived and worked in. I used to work and live in Thailand, China, India, United Kingdom, Germany, Turkey.</li>
+<li>Learned C#. C# is the first language I learnt at school when Windows Form was a big thing. I loved it but then the web took over and I felt in love with Java instead and never look back. The project in Turkey is C# so I got to relearn that again and I can say that I like it more than Java now. The language is nicer and more functional. I can do more stuff with less code.</li>
+<li>Moved to the US.</li>
+</ul>
+
+
+<h2>My 2015</h2>
+
+<h3>Move to the US and join Fusion</h3>
+
+<p>I decided to join <a href="http://fusion.net">Fusion</a> and left my glamorous consulting job. Partly because of the city. I felt in love with New York City when I was there in 2013 for a conference and I thought it would be nice to live here. When the opportunity came I took it immediately. Now two months passed by and I still love the city and my job. Much to explore and lots of places to travel in the US. Fusion is also the first place I get to know what&#8217;s like to work remotely. I absolutely love it. I get to be anywhere and also do what I love which is coding. I will write another post about remote collaboration later. Fusion is a media company which is a new field that I haven&#8217;t explored before.</p>
+
+<h3>Join Kollaboration</h3>
+
+<p>I join <a href="http://www.kollaborationnewyork.org" title="Kollaboration New York">Kollaboration</a> New York as a Technical Director because of my roommate <a href="https://www.linkedin.com/in/tannerchung" title="Tanner Chung">Tanner Chung</a>. Kollaboration is a non-profit organization that help and promote Asian American artists through entertainment. In this organization, I get to learn what&#8217;s like to be Asian American. I&#8217;m asian myself but I was born in Asia. So, I didn&#8217;t know the problems a lot of asian people living abroad having.</p>
+
+<h2>What I want to do in 2015</h2>
+
+<h3>Learn to invest</h3>
+
+<p>Who doesn&#8217;t want to have money? I&#8217;m going to learn how to invest my saving and will keep posting the results.</p>
+
+<h3>Travel across America</h3>
+
+<p>When I was living in Europe, you can get to a lot of countries in just 2-3 hours but in America everywhere is so big and South American has always been my dream location.</p>
+
+<h3>Learn Spanish</h3>
+
+<p>My previous goal leads to this goal. I speak Thai, English and Mandarin. I learnt German before but didn&#8217;t really get anywhere. This year I&#8217;m going to learn Spanish and make it my fourth language. I love languages and it&#8217;s fun to talk to the locals and amazed them with their language.</p>
+
+<h3>Run a marathon</h3>
+
+<p>My friend Rajveer and <a href="https://twitter.com/sragu">Srini</a> inspire me to running. I&#8217;m a chubby guy and I really want to get into shape. Running a marathon takes a lot out of you mentally and physically. I thought if I could do it at least for once, I&#8217;d accomplish something.</p>
+
+<h2>Summary</h2>
+
+<p>I started off 2015 pretty good. I went to India for my friend&#8217;s wedding in Rajasthan. I went to US west coast to experience super cold whether. I learned PHP and WordPress and improved my JavaScript skills which I will continue doing that.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/event-delegation-javascript-fast-fast/">Event Delegation in JavaScript Is Fast but How Fast?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-22T00:00:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>People say always use event delegation for adding event because it&#8217;s faster. But how fast exactly? I really want to create a test case for this, but I couldn&#8217;t figure out how to run B<a href="http://benchmarkjs.com/" title="benchmark.js">enchmark.js</a> in browser. So, I thought we could just use Chrome Developer Tool to achieve this.</p>
+
+<h2>What are we measuring?</h2>
+
+<p>As I said in the beginning, we want to know how fast event delegation is compared to direct binding that most people do. For example, I&#8217;ve always seen people do this</p>
+
+<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          $<span class="br0">&#40;</span><span class="st0">'#ul li'</span><span class="br0">&#41;</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'click'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; <span class="co1">// doing something amazing.</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>What is actually doing is, jQuery will add the event to each of the <strong>li</strong> in the DOM. If you have 3-4 lis, then I don&#8217;t think it&#8217;s going to make a big difference. However, if you have a thousand lis, you will see some difference. I&#8217;ll show you by using Chrome Developer Tool.</p>
+
+<h2>What do we need?</h2>
+
+<p>We need some basic HTML</p>
+
+<p>It&#8217;s going to be something like this</p>
+
+<div class="codecolorer-container html4strict blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="html4strict codecolorer">
+          <span class="sc2"><<a href="http://december.com/html/4/element/ul.html"><span class="kw2">ul</span></a> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"parent"</span>></span><br /> &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>><<span class="sy0">/</span><a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span><br /> &nbsp; // 999 more <span class="sc2"><<a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span><br /> <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/ul.html"><span class="kw2">ul</span></a>></span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then we will have JavaScript like this</p>
+
+<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="sy0"><</span>script src<span class="sy0">=</span><span class="st0">"https://code.jquery.com/jquery-1.11.1.min.js"</span><span class="sy0">></</span>script<span class="sy0">></span><br /> <span class="sy0"><</span>script<span class="sy0">></span><br /> &nbsp; &nbsp; $<span class="br0">&#40;</span><span class="st0">'#parent li'</span><span class="br0">&#41;</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'click'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span><span class="st0">'you clicked me!'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="sy0"></</span>script<span class="sy0">></span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>If you open your html page on Chrome you should see something like this.<br/>
+<a href="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png"><img src="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png" alt="Screen Shot 2014-11-21 at 7.06.19 PM" width="2264" height="988" class="aligncenter size-full wp-image-1349" /></a></p>
+
+<p>If you go down to where JavaScript is executed You will see it takes around <strong>37ms</strong> to execute the snippet.<br/>
+<a href="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png"><img src="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png" alt="Screen Shot 2014-11-21 at 7.07.18 PM" width="1352" height="985" class="aligncenter size-full wp-image-1350" /></a></p>
+
+<p>Now change your snippet to be event delegation</p>
+
+<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="sy0"><</span>script src<span class="sy0">=</span><span class="st0">"https://code.jquery.com/jquery-1.11.1.min.js"</span><span class="sy0">></</span>script<span class="sy0">></span><br /> <span class="sy0"><</span>script<span class="sy0">></span><br /> &nbsp; &nbsp; $<span class="br0">&#40;</span><span class="st0">'#parent'</span><span class="br0">&#41;</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'click'</span><span class="sy0">,</span> <span class="st0">'li'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span><span class="st0">'you clicked me!'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="sy0"></</span>script<span class="sy0">></span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>And refresh the page you should see something like this.<br/>
+<a href="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png"><img src="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png" alt="Screen Shot 2014-11-21 at 7.12.02 PM" width="1352" height="986" class="aligncenter size-full wp-image-1353" /></a></p>
+
+<p>Now it will only take <strong>2ms</strong> to execute the snippet. It&#8217;s because the event is added to one element not 1000 of them.</p>
+
+<p>This is just an easy example that you can do it yourself to improve your performance.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/create-simple-vagrant-plugin/">How to Create a Simple Vagrant Plugin.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-21T00:00:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have been searching all over the Internet to find how to create a vagrant plugin. <a href="https://docs.vagrantup.com/v2/plugins/index.html" title="vagrant plugin">Vagrant homepage</a> has information on how to create a vagrant plugin, but I would like to give a real world example. The plugin I&#8217;m going to create is <strong><a href="https://github.com/noppanit/vagrant-ls" title="vagrant-ls">vagrant-ls</a></strong> which is inspired by <strong><a href="https://github.com/joshmcarthur/vagrant-list" title="vagrant-list">vagrant-list</a></strong>.</p>
+
+<h2>How do you start</h2>
+
+<p>Vagrant that you installed already won&#8217;t work with local developing plugin. So, I recommend you to create a new gemset for your plugin. If you haven&#8217;t used <a href="http://rvm.io/" title="rvm">RVM</a>, I highly recommend you use it now. It&#8217;s awesome!.</p>
+
+<p>Once you have RVM installed you can create a gemset using this command <strong>rvm gemset create vagrant-ls</strong>. Then <strong>rvm gemset use vagrant-ls</strong> (Just in case). I recommend you do this for each of your ruby project. It helps you separate your gems, and it won&#8217;t mess up with different versions of your gems. First thing that you have to install is Bundler <strong>gem install bundler</strong>. It&#8217;s because we will use Bundler to manage all of our dependencies. Then you can create <strong>Gemfile</strong>.</p>
+
+<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          source <span class="st0">"https://rubygems.org"</span><br /> <br /> group <span class="re3">:development</span> <span class="kw1">do</span><br /> &nbsp; gem <span class="st0">"vagrant"</span>, git: <span class="st0">"https://github.com/mitchellh/vagrant.git"</span><br /> <span class="kw1">end</span><br /> <br /> group <span class="re3">:plugins</span> <span class="kw1">do</span><br /> &nbsp; gem <span class="st0">"vagrant-ls"</span>, path: <span class="st0">"."</span><br /> <span class="kw1">end</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>This is the most basic you would need for your plugin development. If you wonder what is</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          group :plugins
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>. <a href="https://docs.vagrantup.com/v2/plugins/development-basics.html">Vagrant plugin</a> has already explained that. This will load your local plugin automatically without doing</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          bundle exec vagrant install plugin vagrant-ls
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>which will not quite work anyway.</p>
+
+<p>Then you can create your gemspec file. I name it <strong>vagrant-ls.gemspec</strong></p>
+
+<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          <span class="kw3">require</span> <span class="kw4">File</span>.<span class="me1">expand_path</span><span class="br0">&#40;</span><span class="st0">'../lib/vagrant-ls/version'</span>, <span class="kw2">__FILE__</span><span class="br0">&#41;</span><br /> <br /> <span class="re2">Gem::Specification</span>.<span class="me1">new</span> <span class="kw1">do</span> <span class="sy0">|</span>s<span class="sy0">|</span><br /> &nbsp; s.<span class="me1">name</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= <span class="st0">'vagrant-ls'</span><br /> &nbsp; s.<span class="me1">version</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="re2">Vagrant::Ls::VERSION</span><br /> &nbsp; s.<span class="me1">date</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= <span class="st0">'2014-11-18'</span><br /> &nbsp; s.<span class="me1">summary</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="st0">"List all vms"</span><br /> &nbsp; s.<span class="me1">description</span> &nbsp; &nbsp; = <span class="st0">"A simple vagrant plugin for listing all vms"</span><br /> &nbsp; s.<span class="me1">authors</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="br0">&#91;</span><span class="st0">"Noppanit Charassinvichai"</span><span class="br0">&#93;</span><br /> &nbsp; s.<span class="me1">email</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = <span class="st0">'noppanit.c@gmail.com'</span><br /> &nbsp; s.<span class="me1">files</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = <span class="st0">`git ls-files`</span>.<span class="kw3">split</span><span class="br0">&#40;</span>$\<span class="br0">&#41;</span><br /> &nbsp; s.<span class="me1">executables</span> &nbsp; &nbsp; = s.<span class="me1">files</span>.<span class="me1">grep</span><span class="br0">&#40;</span><span class="sy0">%</span>r<span class="br0">&#123;</span>^bin<span class="sy0">/</span><span class="br0">&#125;</span><span class="br0">&#41;</span>.<span class="me1">map</span><span class="br0">&#123;</span> <span class="sy0">|</span>f<span class="sy0">|</span> <span class="kw4">File</span>.<span class="me1">basename</span><span class="br0">&#40;</span>f<span class="br0">&#41;</span> <span class="br0">&#125;</span><br /> &nbsp; s.<span class="me1">require_paths</span> &nbsp; = <span class="br0">&#91;</span><span class="st0">'lib'</span><span class="br0">&#93;</span><br /> &nbsp; s.<span class="me1">homepage</span> &nbsp; &nbsp; &nbsp; &nbsp;= <span class="st0">'https://github.com/noppanit/vagrant-ls'</span><br /> &nbsp; s.<span class="me1">license</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="st0">'GNU'</span><br /> <span class="kw1">end</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then you crate <strong>Rakefile</strong></p>
+
+<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          <span class="kw3">require</span> <span class="st0">'rubygems'</span><br /> <span class="kw3">require</span> <span class="st0">'bundler/setup'</span><br /> <span class="re2">Bundler::GemHelper</span>.<span class="me1">install_tasks</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then you move on to create your plugin using this <a href="http://guides.rubygems.org/patterns/" title="gem pattern">pattern</a>.</p>
+
+<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          <span class="co1"># lib/vagrant-ls.rb</span><br /> <span class="kw3">require</span> <span class="st0">'bundler'</span><br /> <br /> <span class="kw1">begin</span><br /> &nbsp; <span class="kw3">require</span> <span class="st0">'vagrant'</span><br /> <span class="kw1">rescue</span> <span class="kw4">LoadError</span><br /> &nbsp; Bundler.<span class="kw3">require</span><span class="br0">&#40;</span><span class="re3">:default</span>, <span class="re3">:development</span><span class="br0">&#41;</span><br /> <span class="kw1">end</span><br /> <br /> <span class="kw3">require</span> <span class="st0">'vagrant-ls/plugin'</span><br /> <span class="kw3">require</span> <span class="st0">'vagrant-ls/command'</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>I almost forget you need to create VERSION file for gemspec to get your version number</p>
+
+<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          <span class="co1"># lib/vagrant-ls/version.rb</span><br /> <span class="kw1">module</span> Vagrant<br /> &nbsp; &nbsp; <span class="kw1">module</span> Ls<br /> &nbsp; &nbsp; &nbsp; &nbsp; VERSION = <span class="st0">'0.0.1'</span><br /> &nbsp; &nbsp; <span class="kw1">end</span><br /> <span class="kw1">end</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then you create your plugin class, this will be the place where vagrant finds information about your plugin.</p>
+
+<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          <span class="co1"># lib/vagrant-ls/plugin.rb</span><br /> <span class="kw1">module</span> Vagrant<br /> <br /> &nbsp; &nbsp; <span class="kw1">module</span> Ls<br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">class</span> Plugin <span class="sy0"><</span> Vagrant.<span class="me1">plugin</span><span class="br0">&#40;</span><span class="st0">'2'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name <span class="st0">"List"</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description <span class="sy0"><<-</span>DESC<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; This plugin <span class="st0">'ls'</span> all of the vms running inside the machine<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; DESC<br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; command <span class="st0">'ls'</span> <span class="kw1">do</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; require_relative <span class="st0">'command'</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Command<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">end</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">end</span><br /> &nbsp; &nbsp; <span class="kw1">end</span><br /> <span class="kw1">end</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>This is where you will name your command.</p>
+
+<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          command <span class="st0">'ls'</span> <span class="kw1">do</span><br /> ...<br /> <span class="kw1">end</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Last one, this is where vagrant will know how to execute your plugin</p>
+
+<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          <span class="co1"># lib/vagrant-ls/command.rb</span><br /> <span class="kw1">module</span> Vagrant<br /> &nbsp; &nbsp; <span class="kw1">module</span> Ls<br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">class</span> Command <span class="sy0"><</span> Vagrant.<span class="me1">plugin</span><span class="br0">&#40;</span><span class="st0">'2'</span>, <span class="re3">:command</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">def</span> execute<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw3">exec</span><span class="br0">&#40;</span><span class="st0">'VBoxManage list vms'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nu0"></span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">end</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">end</span><br /> &nbsp; &nbsp; <span class="kw1">end</span><br /> <br /> <span class="kw1">end</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>I just run <strong>VBoxManage</strong> command to list all of the vms. Once you are done, you are ready to test your plugin.</p>
+
+<p>You can run this command</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          bundle exec vagrant ls
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>. If everything is correct, it should list all of your vms with the name of your vms, so you know where you are you running all those vms.</p>
+
+<h2>Publish your gem</h2>
+
+<p>Now, it&#8217;s time to spread the love of your gem. You need to build your gem first. Remember the Rakefile? You can just run</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          rake build
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>It will pack your gem to <strong>.pkg</strong> folder. Then you can just run</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          gem push pkg/vagrant-ls-0.0.1.gem
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>. That&#8217;s it you have your gem published. If you look for <a href="http://guides.rubygems.org/publishing/">documentation</a> for publishing your gem.</p>
+
+<p>You can find my repository <a href="https://github.com/noppanit/vagrant-ls">here</a>. The reason I create this post is that, the plugin might evolve but this blog stays and it will be a good starting point for other people.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/twitter-good-tool-customer-support-used-carefully/">Twitter Is a Good Tool for Customer Support if Used Carefully.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-10-07T00:00:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently moved to NYC and I just got a pre-paid T-Mobile just to try it out how it goes. And this is what I tweeted and got a reply back from T-Mobile.</p>
+
+<blockquote class="twitter-tweet" lang="en">
+  <p>
+    <a href="https://twitter.com/noppanit">@noppanit</a> We're glad to have impressed you <img src="http://www.noppanit.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Thanks for choosing T-Mobile! *JB
+  </p>
+  
+  <p>
+    &mdash; T-Mobile USA (@TMobileHelp) <a href="https://twitter.com/TMobileHelp/status/519478596046712832">October 7, 2014</a>
+  </p>
+</blockquote>
+
+
+<p>I think they might have got hundred of tweets a day. So they might have slipped. The first when I read this I quickly scrolled up to see if I got a typo. But they&#8217;re right though I chose T-Mobile. Just a little laugh for me today.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/knockout-js-virtual-elements-stripped-mobile/">Knockout.js Virtual Elements Are Being Stripped Out From Mobile.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-10-07T00:00:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This rarely happens and you would be surprised what is the cause of this. Recently, I have just finished a mobile site using knockout.js. I have used a fair amount of Virtual Elements in Knockout.js. But weirdly enough one day my Manager came in and talk to my <a href="https://twitter.com/sragu" title="Srini">tech lead</a> (@sragu) that the site is not working. We quickly checked with our live site and everything was ok yet the site from his phone wasn&#8217;t working at all.</p>
+
+<p>We spent quite a long time to find out the cause of this. We cleared the cache. We restarted the phone. Tried different browsers. Luckily, then we found out this <a href="http://stackoverflow.com/questions/4113268/how-to-stop-javascript-injection-from-vodafone-proxy">thread</a> from Stackoverflow.com.</p>
+
+<p>The cause of this is that Vodafone corporate network stripped out HTML comments to save and optimise the bandwidth.</p>
+
+<p>The solution is to set Cache-Control to no-transform and the problem solved. If you have the same problem as me then this is the solution.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          Cache-Control: no-transform
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/hidden-flea-market-istanbul-turkey/">Hidden Flea Market in Istanbul, Turkey</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-07-20T00:00:00-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Love flea market? Love antiques? And you are in Istanbul, you should try out this place if you like antique stuff and what to kill a couple hours on a Sunday in Istanbul. The market opens every Sunday. I don&#8217;t know what time but I was there from 12pm &#8211; 3pm. I don&#8217;t really know how to get there by public transportation, but you can get a taxi to there from Şişli Metro station. It&#8217;s only a couple minutes away by taxi.</p>
+
+<p><small>View <a href="https://www.google.co.uk/maps/ms?msa=0&msid=211227488220634375129.0004fea5141fd05b55572&hl=en&ie=UTF8&t=m&iwloc=0004fea51423be3f8b2a2&ll=41.056035,28.979782&spn=0,0&source=embed" style="color:#0000FF;text-align:left">Istanbul Flea Market</a> in a larger map</small></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/alright-charge-phone-shavers-outlet/">It&#8217;s Alright to Charge Your Phone on &#8216;Shavers Only&#8217; Outlet.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-07-07T00:00:00-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>Problem</strong></p>
+
+<div style="width: 180px" class="wp-caption aligncenter">
+  <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/21/ShaverSocketUK.jpg/170px-ShaverSocketUK.jpg" width="170" height="294" class />
+  
+  <p class="wp-caption-text">
+    Shavers only outlet
+  </p>
+</div>
+
+
+<p>I believe everyone has the same problem once in a while or often that you forget your phone charger. Or even you didn&#8217;t forget your phone charger if you travel between UK and Europe you might forget the converter or adapter. If you stay in a hotel you must have seen one of those Shaver-only outlets. You would think that it&#8217;s clearly said that it&#8217;s for shaver only. So, I cannot use it for anything else. One day, I travel from Europe to the UK and the socket is different. Europe has one of those two-prong socket, and in the UK they use the big three-leg socket.</p>
+
+<p>Then what can you do? I did some research on some myths. I have also tried it myself. It&#8217;s ok to charge your phone with those sockets.</p>
+
+<p><strong>Solution</strong></p>
+
+<p>Modern adapter if you flip it up and have a look you will see this sign or similar to this. &#8220;Travel adapter 110V &#8211; 240V&#8221; What this means is that this adapter will transform the current range from 110 &#8211; 220V to be usable for your appliance. There&#8217;s a reference <a href="http://blog.fosketts.net/2013/02/03/shavers-electrical-outlet/">here</a>. However, those outlets are not suitable for charging your big electronic equipments such as laptop or blow dryer. Once in a while it should be ok to use the outlet to charge your phone. Especially, if you travel from Europe you must have the two-prong socket adapter which is suitable for the outlet.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/naming-test-classes/">Naming Test Classes.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-25T00:00:00-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Normally, you would name your test class like this.</p>
+
+<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="java codecolorer">
+          <span class="kw1">public</span> Product <span class="br0">&#123;</span><br /> &nbsp; &nbsp;<span class="co1">//some awesome code here!</span><br /> <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="java codecolorer">
+          <span class="kw1">public</span> ProductTest<span class="br0">&#123;</span><br /> &nbsp; &nbsp;<span class="co1">//some awesome test code here!</span><br /> <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>There&#8217;s two reasons why I would do this. First, to let IntelliJ find the test class easily and it&#8217;s easy to spot the test class when you scroll through.</p>
+
+<p>However, lately inspired by <a href="https://twitter.com/JeroenSoeters" title="Jeroen">@JeroenSoeters</a> my colleague which I don&#8217;t know where he got this from. I started naming test class like this.</p>
+
+<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="java codecolorer">
+          <span class="kw1">public</span> Product <span class="br0">&#123;</span><br /> &nbsp; &nbsp;<span class="co1">//some awesome code here!</span><br /> <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="java codecolorer">
+          <span class="kw1">public</span> When_building_a_product <span class="br0">&#123;</span><br /> &nbsp; &nbsp;<span class="co1">//some awesome test code here!</span><br /> <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="java codecolorer">
+          <span class="kw1">public</span> When_building_a_product_with_some_more_data <span class="br0">&#123;</span><br /> &nbsp; &nbsp;<span class="co1">//some awesome test code here!</span><br /> <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>There&#8217;s one reason to do this I can think of. You can clearly see the purpose of this class and you can have multiple test classes or <strong>Product</strong> instead of having all the tests in one class and everything is cluttered so you have to scroll up and down</p>
+
+<p>Not everybody likes this convention. I hate it at first but I&#8217;m starting to use it more often and I like it. What do you guys think?</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/ziferblat-pay-per-minute-cafe-moscow-russia/">Ziferblat, Pay-per-minute Cafe in Moscow, Russia.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-05-18T00:00:00-04:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you&#8217;re in Moscow and you want somewhere to just sit down and catch up with some stuff. Or you just want to have a place to read. I recommend <a href="http://pushkin.ziferblat.net/en/" title="Ziferblat">Ziferblat</a>, it&#8217;s pay-per-minute cafe in Central Moscow.</p>
+
+<p>Just 5-min walk from Tverskaya Station (Тверская). Then look for this sign.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-22.52.43.png"><img src="http://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-22.52.43.png" alt="Screen Shot 2014-05-18 at 22.52.43" width="516" height="721" class="aligncenter size-full wp-image-1306" /></a></p>
+
+<p>You have to ring the bell and the security guard will buzz you in then you have to walk upstairs (2nd floor). Unfortunately, at least when I was there people speak little English but understandable. Also, the people are really friendly over there. You just need to tell your name and pay at the end when you&#8217;re ready to rome Moscow again.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-23.08.45.png"><img src="http://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-23.08.45.png" alt="Screen Shot 2014-05-18 at 23.08.45" width="1074" height="749" class="aligncenter size-full wp-image-1308" /></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/3">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/index.html">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Css | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/css/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[CSS : I Love CSS !!!!.]]></title>
+    <link href="http://noppanit.github.io/css-i-love-css/"/>
+    <updated>2008-11-27T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/css-i-love-css</id>
+    <content type="html"><![CDATA[<p>Well, recently I have been trained about CSS class. I haven&#8217;t know about CSS before. Usually, I just use classes that somebody provide me. But this class I have to create myself.</p>
+
+<p>Why I love CSS.I don&#8217;t know. But I can tell you if you start to know about it. You will love it.</p>
+
+<p>These are the links that I would like to remember.</p>
+
+<p><a href="http://www.alistapart.com/articles/cssdropshadows/">CSS Level3 </a><strong>&lt;&#8211; This about testing CSS level3</strong></p>
+
+<p><a href="http://www.csszengarden.com/">The beauty in CSS design</a> <strong>&lt;&#8211; The beauty of CSS design, just click on some design and you will feel the different.</strong></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CSS: How to Drop Shadow With CSS]]></title>
+    <link href="http://noppanit.github.io/css-how-to-drop-shadow-with-css/"/>
+    <updated>2008-11-26T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/css-how-to-drop-shadow-with-css</id>
+    <content type="html"><![CDATA[<p>This is the website I have found, It&#8217;s very useful.</p>
+
+<p><a href="http://www.alistapart.com/articles/cssdropshadows/">Try this</a></p>
+
+<div style="margin: 10px 0pt 0pt 10px ! important; background: transparent url(http://www.alistapart.com/d/cssdropshadows/img/shadowAlpha.png) no-repeat scroll right bottom ! important; width: 90%; float: left;">
+  <div style=" background: none !important; background: url(http://www.alistapart.com/d/cssdropshadows/img/shadow.gif) no-repeat left top; padding: 0 !important; padding: 0 6px 6px 0;">
+    <p style="color: #777; background-color: #fff; font: italic 1em georgia, serif; border: 1px solid #a9a9a9; padding: 4px; margin: -6px 6px 6px -6px !important; margin: 0;">
+      The Example
+    </p>
+  </div>
+</div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

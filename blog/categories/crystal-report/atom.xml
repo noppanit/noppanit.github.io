@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Crystal Report | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/crystal-report/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Crystal Report XI : A Report Keeps Asking for Parameter]]></title>
+    <link href="http://noppanit.github.io/crystal-report-xi-a-report-keeps-asking-for-parameter/"/>
+    <updated>2008-06-15T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/crystal-report-xi-a-report-keeps-asking-for-parameter</id>
+    <content type="html"><![CDATA[<p>I have been working quit a long time this weekend. I encountered a problem that the report keeps asking for parameter which you actually passed it. It is the bug of the program. Download the bugfix form the below link.</p>
+
+<p><a href="http://technicalsupport.businessobjects.com/KanisaSupportSite/search.do;jsessionid=7172CE3D3411803E168E664CFF550C38?cmd=displayKC&docType=kc&externalId=c2018840&sliceId=&dialogID=360384&stateId=1%200%20356275" target="_blank">Go to</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Crystal Report : Report Keeps Displaying Old Data Until I Press Refresh Button]]></title>
+    <link href="http://noppanit.github.io/crystal-report-report-keeps-displaying-old-data-until-i-press-refresh-button/"/>
+    <updated>2008-06-15T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/crystal-report-report-keeps-displaying-old-data-until-i-press-refresh-button</id>
+    <content type="html"><![CDATA[<p>Go to the File -> Report Options and uncheck Save Data With Report</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HowTo : Crystal Report XI With Data Source]]></title>
+    <link href="http://noppanit.github.io/howto-crystal-report-xi-with-data-source/"/>
+    <updated>2007-04-21T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/howto-crystal-report-xi-with-data-source</id>
+    <content type="html"><![CDATA[<p style="text-align: left;">
+  I don&#8217;t know everyone used to encounter with this problem, but I was. When I using crystal report connected with SQLServer 2005 using Microsoft OLE DB connector. I cannot use &#8220;localhost\sqlexpress&#8221; as a Data Source Name, I don&#8217;t know why? but I can use &#8220;localhost\sqlexpress&#8221; when I using sqlcmd to connect database. So my solution is using &#8220;.\sqlexpress&#8221; instead &#8220;localhost&#8221;. At least it&#8217;s work for me.
+</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Crystal Report : Multiple Value in Parameter Field]]></title>
+    <link href="http://noppanit.github.io/crystal-report-multiple-value-in-parameter-field/"/>
+    <updated>2007-03-27T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/crystal-report-multiple-value-in-parameter-field</id>
+    <content type="html"><![CDATA[<p>I&#8217;ve been develop application concern with crystal report, so I have a little problem with parameter field.<br/>
+If I want to send a multiple variable with one parameter field, we must set allow multiple values = true,<br/>
+But the problem is when we preview ours report. We&#8217;ll see only the first parameter that we put into it, because multiple values are array.</p>
+
+<p>We must create formula field with this code:</p>
+
+<blockquote><p>Local StringVar StringText := &#8220;&#8221;;<br/>
+Local NumberVar i;<br/>
+For i := 1 To Ubound({?<Field Name>}) Do<br/>
+(<br/>
+StringText := StringText + &#8220;, &#8221; + {?<Field Name>}[i] );</p>
+
+<p>StringText</p></blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Crystal Report : How to Enter Feed Line on Formula]]></title>
+    <link href="http://noppanit.github.io/crystal-report-how-to-enter-feed-line-on-formula-2/"/>
+    <updated>2007-03-25T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/crystal-report-how-to-enter-feed-line-on-formula-2</id>
+    <content type="html"><![CDATA[<p>Use function Chr(13)</p>
+]]></content>
+  </entry>
+  
+</feed>

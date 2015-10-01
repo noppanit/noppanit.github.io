@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Php | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/php/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Tutorial : Implement AJAX to Your Wordpress Theme.]]></title>
+    <link href="http://noppanit.github.io/tutorial-implement-ajax-to-your-wordpress-theme/"/>
+    <updated>2011-05-06T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/tutorial-implement-ajax-to-your-wordpress-theme</id>
+    <content type="html"><![CDATA[<p>I&#8217;m trying to implement AJAX on wordpres theme. I have scouted around the Internet and I found quite a few articles about it, so I think I would write one more to increase the search results.</p>
+
+<p>Before starting, I think it would be great to read this article. <a href="http://www.garyc40.com/2010/03/5-tips-for-using-ajax-in-wordpress/#form">http://www.garyc40.com/2010/03/5-tips-for-using-ajax-in-wordpress/#form</a>. The article tells you what dos and don&#8217;ts in using AJAX in wordpress.</p>
+
+<p>Okay, now let&#8217;s do some AJAX in wordpress.</p>
+
+<p>So, first let&#8217;s create a template in theme folder called helloworld.php</p>
+
+<div class="codecolorer-container php blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />32<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="php codecolorer">
+          <span class="kw2"><?php</span> <br /> <br /> <span class="coMULTI">/*<br /> Template Name: HelloWorld Page<br /> */</span><br /> <br /> get_header<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="sy1">?></span><br /> <div><br /> &nbsp; Name: <input type="text" id="name" name="name"/> <br /> &nbsp; <input type="button" id="submitButton" value="submit"/><br /> </div><br /> <div id="result"><br /> </div><br /> <br /> <script><br /> <br /> &nbsp; jQuery('#submitButton').click( function() <br /> &nbsp; {<br /> &nbsp; &nbsp; var data = {};<br /> &nbsp; &nbsp; data.name = jQuery('#name').val();<br /> &nbsp; &nbsp; data.action = "helloworld_action"; // The action that needs to be in the request to let Wordpress hooks with a callback<br /> &nbsp; &nbsp; jQuery.post('http://www.url.com/wp-admin/admin-ajax.php',data, successFunction);<br /> &nbsp; });<br /> &nbsp; <br /> &nbsp; &nbsp; &nbsp; &nbsp; // onSuccessFunction<br /> &nbsp; function successFunction(result)<br /> &nbsp; {<br /> &nbsp; &nbsp; alert(result);<br /> &nbsp; }<br /> </script><br /> <span class="kw2"><?php</span> get_sidebar<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> get_footer<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="sy1">?></span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then you have to add a new page with Template Name of HelloWorld Page with blank content you will see something like this when you go to the page you&#8217;ve just created.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2011/05/Screen-shot-2011-05-06-at-15.11.38.png"><img src="http://www.noppanit.com/wp-content/uploads/2011/05/Screen-shot-2011-05-06-at-15.11.38-300x149.png" alt="AJAX on WordPress theme" title="Screen shot 2011-05-06 at 15.11.38" width="300" height="149" class="alignnone size-medium wp-image-747" /></a></p>
+
+<p>And you just have to hook this function in functions.php inside the theme folder</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          add_action('wp_ajax_helloworld_action' , 'print_hello'); // When user login<br /> add_action('wp_ajax_nopriv_helloworld_action' , 'print_hello'); // When user not loggin<br /> <br /> function print_hello()<br /> {<br /> &nbsp; echo "Hello " . $_POST['name'] ;<br /> &nbsp; die(); // You have to die before the response is back, otherwise you would get an extra "0"<br /> }
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Now when you fill in the textbox and click the button you will get a pop up &#8220;Hello&#8221; + with your content in the textbox.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tutorial : How to Add Custom Shipping Module VirtueMart]]></title>
+    <link href="http://noppanit.github.io/tutorial-how-to-add-custom-shipping-module-virtuemart/"/>
+    <updated>2010-07-04T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/tutorial-how-to-add-custom-shipping-module-virtuemart</id>
+    <content type="html"><![CDATA[<p>Do you wan to customize your VirtueMart? I use virtuemart quite a lot, not just because it&#8217;s free but also it&#8217;s good for Joomla. However, when it comes to customize things, there are very little documentation about this. I have been scouting all over the Internet to find a way to customize the shipping module to suit my customers needs. I have found very little details about this. So I decided to do it myself with trials-and-errors method.</p>
+
+<p>Finally, I successfully integrated my customized shipping module for the delivery charge. So I would like to memorise it in my blog. <img src="http://www.noppanit.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+
+<p>There is a documentation about this by Virtuemart by it won&#8217;t go into any details <img src="http://www.noppanit.com/wp-includes/images/smilies/frownie.png" alt=":(" class="wp-smiley" style="height: 1em; max-height: 1em;" /> <a href="http://virtuemart.net/documentation/Developer_Manual/Shipping_Modules.html">http://virtuemart.net/documentation/Developer_Manual/Shipping_Modules.html</a></p>
+
+<p>First, what you need is a Joomla with virtuemart successfully installed. Then decide what do you want for a delivery charge.</p>
+
+<p>I used I use POSTCODE as an indicator, e.g if the postcode begins with CT it will be £5 other than that will be £10. This is just to start with.</p>
+
+<p>There are many points where you can start but I will start with implementing the shipping module first.<br/>
+In $JOOMLA_PATH/administrator/components/com_virtuemart/classes/shipping create two files I will name it zone_city_shipping.php and zone_city_shipping.ini.</p>
+
+<p>I suggest you to copy the file zone_shipping.php and zone_shipping.ini and change the file names as above. It will be easier to start with and you can just delete the methods you don&#8217;t need.</p>
+
+<p>What you need to change is just the list_rates method</p>
+
+<div class="codecolorer-container php blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />32<br />33<br />34<br />35<br />36<br />37<br />38<br />39<br />40<br />41<br />42<br />43<br />44<br />45<br />46<br />47<br />48<br />49<br />50<br />51<br />52<br />53<br />54<br />55<br />56<br />57<br />58<br />59<br />60<br />61<br />62<br />63<br />64<br />65<br />66<br />67<br />68<br />69<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="php codecolorer">
+          <span class="kw2">function</span> list_rates<span class="br0">&#40;</span> <span class="sy0">&</span><span class="re0">$d</span> <span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw2">global</span> <span class="re0">$CURRENCY_DISPLAY</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$db</span> <span class="sy0">=</span> <span class="kw2">new</span> ps_DB<span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <br /> &nbsp; &nbsp; &nbsp; <span class="re0">$q</span> <span class="sy0">=</span> <span class="st0">"SELECT city,zip FROM #__{vm}_user_info WHERE "</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$q</span> <span class="sy0">.=</span> <span class="st0">"user_info_id='"</span><span class="sy0">.</span> <span class="re0">$d</span><span class="br0">&#91;</span><span class="st0">"ship_to_info_id"</span><span class="br0">&#93;</span> <span class="sy0">.</span> <span class="st0">"'"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$db</span><span class="sy0">-></span><span class="me1">query</span><span class="br0">&#40;</span><span class="re0">$q</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$db</span><span class="sy0">-></span><span class="me1">next_record</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <br /> &nbsp; &nbsp; &nbsp; <span class="re0">$city</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-></span><span class="me1">f</span><span class="br0">&#40;</span><span class="st0">"city"</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="re0">$zip</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-></span><span class="me1">f</span><span class="br0">&#40;</span><span class="st0">"zip"</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="re0">$first_two_zip</span> <span class="sy0">=</span> <a href="http://www.php.net/strtolower"><span class="kw3">strtolower</span></a><span class="br0">&#40;</span> <a href="http://www.php.net/substr"><span class="kw3">substr</span></a><span class="br0">&#40;</span><span class="re0">$zip</span><span class="sy0">,</span> <span class="nu0"></span><span class="sy0">,</span><span class="nu0">2</span><span class="br0">&#41;</span> <span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="re0">$first_three_zip</span> <span class="sy0">=</span> <a href="http://www.php.net/strtolower"><span class="kw3">strtolower</span></a><span class="br0">&#40;</span> <a href="http://www.php.net/substr"><span class="kw3">substr</span></a><span class="br0">&#40;</span><span class="re0">$zip</span><span class="sy0">,</span> <span class="nu0"></span><span class="sy0">,</span><span class="nu0">3</span><span class="br0">&#41;</span> <span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="re0">$first_four_zip</span> <span class="sy0">=</span> <a href="http://www.php.net/strtolower"><span class="kw3">strtolower</span></a><span class="br0">&#40;</span> <a href="http://www.php.net/substr"><span class="kw3">substr</span></a><span class="br0">&#40;</span><span class="re0">$zip</span><span class="sy0">,</span> <span class="nu0"></span><span class="sy0">,</span><span class="nu0">4</span><span class="br0">&#41;</span> <span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <br /> &nbsp; &nbsp; <span class="re0">$message</span> <span class="sy0">=</span> <span class="st0">""</span><span class="sy0">;</span><br /> &nbsp; <br /> &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$first_three_zip</span> <span class="sy0">==</span> <span class="st_h">'ct5'</span> <span class="sy0">||</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$first_three_zip</span> <span class="sy0">==</span> <span class="st_h">'ct6'</span> <span class="sy0">||</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$first_three_zip</span> <span class="sy0">==</span> <span class="st_h">'ct2'</span> <span class="sy0">||</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$first_three_zip</span> <span class="sy0">==</span> <span class="st_h">'ct4'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$rate</span> <span class="sy0">=</span> <span class="nu19">5.0</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$zone_name</span> <span class="sy0">=</span> <span class="st0">""</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$the_zone</span> <span class="sy0">=</span> <span class="st0">"0"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$message</span> <span class="sy0">=</span> <span class="st0">""</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">else</span> <span class="kw1">if</span><span class="br0">&#40;</span> <span class="re0">$first_four_zip</span> <span class="sy0">==</span> <span class="st_h">'me13'</span><span class="br0">&#41;</span> <br /> &nbsp; &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$rate</span> <span class="sy0">=</span> <span class="nu19">5.0</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$zone_name</span> <span class="sy0">=</span> <span class="st0">""</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$the_zone</span> <span class="sy0">=</span> <span class="st0">"0"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$message</span> <span class="sy0">=</span> <span class="st0">""</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="kw1">else</span> <span class="kw1">if</span><span class="br0">&#40;</span> <span class="re0">$first_two_zip</span> <span class="sy0">==</span> <span class="st_h">'ct'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$rate</span> <span class="sy0">=</span> <span class="nu19">5.0</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$zone_name</span> <span class="sy0">=</span> <span class="st0">""</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$the_zone</span> <span class="sy0">=</span> <span class="st0">"0"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$message</span> <span class="sy0">=</span> <span class="st0">"Next day delivery but the order must be placed before 2pm and only Tuesday - Friday"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <br /> &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span> <a href="http://www.php.net/date"><span class="kw3">date</span></a><span class="br0">&#40;</span><span class="st0">"D"</span><span class="br0">&#41;</span> <span class="sy0">==</span> <span class="st_h">'Sat'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="re0">$rate</span> <span class="sy0">=</span> <span class="nu19">25.0</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="re0">$message</span> <span class="sy0">=</span> <span class="st0">"Saturday delivery but the order must be placed before 2pm on Friday"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span> <br /> &nbsp; &nbsp; <span class="kw1">else</span><br /> &nbsp; &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$rate</span> <span class="sy0">=</span> <span class="nu19">10.0</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$zone_name</span> <span class="sy0">=</span> <span class="st0">""</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$the_zone</span> <span class="sy0">=</span> <span class="st0">"0"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$message</span> <span class="sy0">=</span> <span class="st0">"Next day delivery but the order must be placed before 2pm and only Tuesday - Friday"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <br /> &nbsp; &nbsp; <span class="br0">&#125;</span> <br /> <br /> &nbsp; &nbsp; &nbsp; <span class="re0">$rate</span> <span class="sy0">=</span> <span class="re0">$GLOBALS</span><span class="br0">&#91;</span><span class="st_h">'CURRENCY'</span><span class="br0">&#93;</span><span class="sy0">-></span><span class="me1">convert</span><span class="br0">&#40;</span> <span class="re0">$rate</span> <span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="co1">// THE ORDER OF THOSE VALUES IS IMPORTANT:</span><br /> &nbsp; &nbsp; &nbsp; <span class="co1">// carrier_name|rate_name|totalshippingcosts|rate_id</span><br /> &nbsp; &nbsp; <span class="re0">$value</span> <span class="sy0">=</span> <a href="http://www.php.net/urlencode"><span class="kw3">urlencode</span></a><span class="br0">&#40;</span><span class="kw4">__CLASS__</span><span class="sy0">.</span><span class="st0">"|Zone City Shipping <span class="es4">$city</span>|"</span><span class="sy0">.</span><span class="re0">$rate</span><span class="sy0">.</span><span class="st0">"|"</span><span class="sy0">.</span><span class="re0">$the_zone</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <br /> &nbsp; &nbsp; &nbsp; <span class="re0">$_SESSION</span><span class="br0">&#91;</span><span class="re0">$value</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="st0">"1"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$string</span> <span class="sy0">=</span> <span class="st0">"<input type=<span class="es1">\"</span>radio<span class="es1">\"</span> checked=<span class="es1">\"</span>checked<span class="es1">\"</span> name=<span class="es1">\"</span>shipping_rate_id<span class="es1">\"</span> value=<span class="es1">\"</span><span class="es4">$value</span><span class="es1">\"</span> />"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$string</span> <span class="sy0">.=</span> <span class="st0">"Delivery charge : <strong>"</span><span class="sy0">.</span> <span class="re0">$CURRENCY_DISPLAY</span><span class="sy0">-></span><span class="me1">getFullValue</span><span class="br0">&#40;</span><span class="re0">$rate</span> <span class="br0">&#41;</span><span class="sy0">.</span><span class="st0">"</strong><br/>"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$string</span> <span class="sy0">.=</span> <span class="st0">"Note: "</span><span class="sy0">.</span> <span class="re0">$message</span><span class="sy0">.</span><span class="st0">"<br/>"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="re0">$string</span> <span class="sy0">.=</span> <span class="st0">"Sorry we cannot do Sunday delivery for Nation wide delivery"</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; <span class="kw1">echo</span> <span class="re0">$string</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Other method descriptions are described <a href="http://virtuemart.net/documentation/Developer_Manual/Shipping_Module_API.html">here</a> already</p>
+
+<p>Next go back to folder classes and copy ps_zone.php and change the file name to ps_zone_city. This is the class where you can connect to the database. And change method add, update and delete to suit your requirements. All the examples please have a look at the file I made below.</p>
+
+<p>All the label names and messages are in the folder languages.</p>
+
+<p>The most important thing is don&#8217;t forget to create a module and add all of the functions in Virtuemart administrator.<br/>
+1. In Virtuemart administrator go to Admin -> List Modules and click New to create a new module. Insert module name and click ok.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2010/07/Screen-shot-2010-07-04-at-12.32.29.png"><img class="alignnone size-medium wp-image-555" title="Create a module" src="http://www.noppanit.com/wp-content/uploads/2010/07/Screen-shot-2010-07-04-at-12.32.29-300x164.png" alt="Create a module" width="300" height="164" /></a></p>
+
+<ol>
+<li>Then click Function Lists behind the module you just created. The functionName should correspond to the method name in file ps_zone_city.php in classes folder. as show in the image below.</li>
+</ol>
+
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2010/07/Screen-shot-2010-07-04-at-12.32.50.png"><img class="alignnone size-medium wp-image-556" title="Screen shot 2010-07-04 at 12.32.50" src="http://www.noppanit.com/wp-content/uploads/2010/07/Screen-shot-2010-07-04-at-12.32.50-300x102.png" alt="" width="300" height="102" /></a></p>
+
+<p>File <a href="http://www.noppanit.com/code/ps_zone_city.zip">http://www.noppanit.com/code/ps_zone_city.zip</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tips: Move Joomla to Another Domain Name]]></title>
+    <link href="http://noppanit.github.io/tips-move-joomla-to-another-domain-name/"/>
+    <updated>2010-06-30T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/tips-move-joomla-to-another-domain-name</id>
+    <content type="html"><![CDATA[<p>I don&#8217;t know if it&#8217;s only me that I like to develop my Joomla and other components in localhost and deploy to the actual server when finished. There are some tips to do that all over Google, so I won&#8217;t be repeating it here.</p>
+
+<p>Just a little tip, when you change your username and password of MySQL database, please don&#8217;t forget to change this variable as well.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          var $live_site = 'http://www.youdomainname.com';
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>I know some tips would say that this is just an optional, but from my experience I had some issues with some components and some images didn&#8217;t show up. When I change this parameter to my actual domain name. It woks very well.</p>
+
+<p>I hope this little tip would help somebody.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac OSX 10.6 Enabling MySQL, Apache2 and PHP.]]></title>
+    <link href="http://noppanit.github.io/mac-osx-10-6-enabling-mysql-apache2-and-php/"/>
+    <updated>2010-05-28T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/mac-osx-10-6-enabling-mysql-apache2-and-php</id>
+    <content type="html"><![CDATA[<p>Well I don&#8217;t know that I&#8217;m the only person on earth who has this problem. But I have some troubles to get MySQl, PHP and Apache2 work on my Macbook. Since I have been a windows user for 10 years, switch to Mac user is quite new for me. I use to install everything with .exe files and it&#8217;s dame easy!.</p>
+
+<p>However, after a few months, Mac rocks and also dame easy.</p>
+
+<p>Well, Let&#8217;s get started.</p>
+
+<p>First of all, If you installed Mac Server, It&#8217;s already bundled with everything, PHP, Apache and MySQL. But If you&#8217;re not. Mac Snow Leopard already comes with Apache already you just have to enable it.</p>
+
+<h1>Apache</h1>
+
+<p style="text-align: left;">
+  1. First go to System Preferences.<br /> 2. And then go to Sharing.<br /> <a href="http://www.noppanit.com/wp-content/uploads/2010/05/Screen-shot-2010-05-28-at-09.31.56.png"><img class="size-medium wp-image-534 aligncenter" title="Enable PHP in Mac Snow" src="http://www.noppanit.com/wp-content/uploads/2010/05/Screen-shot-2010-05-28-at-09.31.56-215x300.png" alt="Enable PHP in Mac Snow" width="215" height="300" /></a><br /> 3. And click at Web Sharing, the indicator light will go green. That means your apache is now ready to use.<br /> 4. You can try this link at your browser http://localhost/~yourusername. If you see the page like below image, that means your Apache is now ready to use.<br /> <a href="http://www.noppanit.com/wp-content/uploads/2010/05/Screen-shot-2010-05-28-at-09.36.05.png"><img class="size-medium wp-image-536 aligncenter" title="Apache 2 Mac Snow" src="http://www.noppanit.com/wp-content/uploads/2010/05/Screen-shot-2010-05-28-at-09.36.05-300x214.png" alt="Apache 2 Mac Snow" width="300" height="214" /></a>
+</p>
+
+
+<p>Pretty Easy Isn&#8217;t it? now next step is PHP, You have just enabled apache, but that doesn&#8217;t mean you enable PHP already. Well Mac also integrated with PHP already. You just have to enable it, but in a different way.</p>
+
+<h1>PHP</h1>
+
+<ol>
+<li>Go to terminal</li>
+<li>Type</li>
+</ol>
+
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw3">cd</span> <span class="sy0">/</span>private<span class="sy0">/</span>etc<span class="sy0">/</span>apache2
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>Then</li>
+</ol>
+
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw2">sudo</span> mate httpd.conf
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>If you don&#8217;t have TextMate you can use TextEdit instead. Or any editor you like</li>
+<li>Go to line 115 that says</li>
+</ol>
+
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          #LoadModule php5_module &nbsp; &nbsp; &nbsp; &nbsp;libexec/apache2/libphp5.so
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>Uncomment it, so it will be</li>
+</ol>
+
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          LoadModule php5_module &nbsp; &nbsp; &nbsp; &nbsp;libexec/apache2/libphp5.so
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>This will enable PHP in your computer.</li>
+<li>Almost there, now go to terminal again, type</li>
+</ol>
+
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw3">cd</span> <span class="sy0">/</span>private<span class="sy0">/</span>etc
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>Just in case that you&#8217;re not in the etc folder</li>
+<li>PHP is configured by php.ini, and you need that. But, now you have php.ini.default, you just have to change the file name to php.ini. Now type</li>
+</ol>
+
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw2">sudo</span> <span class="kw2">cp</span> php.ini.default php.ini
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>You can now start Apache by going to System Preferences. Click Sharing in Internet &amp; Network. Then place a checkmark in Web Sharing. When Apache starts up, System Preferences should display Web Sharing: On.</li>
+<li><p>Create a page called test.php, and type in the following code: &lt;?php phpinfo(); ?> Save it in Macintosh ~username/Sites</p></li>
+<li><p>And then test it. <a href="http://localhost/~yourusername/test.php.">http://localhost/~yourusername/test.php.</a></p></li>
+<li>You should get the php info page.</li>
+</ol>
+
+
+<p>Reference:<br/>
+<a href="http://foundationphp.com/tutorials/php_leopard.php">http://foundationphp.com/tutorials/php_leopard.php</a></p>
+
+<h1>MySQL</h1>
+
+<ol>
+<li>Well, I suggest you to download .dmg file of MySQL, because it&#8217;s easier to install and it comes with System Preferences panel where you can start and stop MySQL in a click.</li>
+<li>Install 3 files of MySQL and go to System Preferences, you should see a MySQL icon under section &#8220;Other&#8221; and open it.</li>
+<li>Click Start MySQL Server, you should get a green indicator light.</li>
+<li>Now, your MySQL is ready to use, but it&#8217;s not finished yet.</li>
+<li>Go to terminal and type</li>
+</ol>
+
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="sy0">/</span>usr<span class="sy0">/</span>local<span class="sy0">/</span>mysql<span class="sy0">/</span>bin<span class="sy0">/</span>mysqladmin <span class="re5">-u</span> root password yourpassword
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>This will setup your root password</li>
+<li>And I also suggest you to create a symbolic link to your the bin directory.</li>
+<li>Go to terminal again and type. This command will take you to your home user directory.</li>
+</ol>
+
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw3">cd</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>Type</li>
+</ol>
+
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          mate .profile
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>Insert this line of code</li>
+</ol>
+
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          export PATH=/usr/local/mysql/bin:$PATH
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Reference <a href="http://www.tech-recipes.com/rx/2621/os_x_change_path_environment_variable/">http://www.tech-recipes.com/rx/2621/os_x_change_path_environment_variable</a><br/>
+10. Now the final touch.<br/>
+One thing changed with Leopard is the socket for Mysql. It moved to /private/tmp, so you may need to configure your php.ini file to point it to the new location.</p>
+
+<p>To do so, open the file ‘/private/etc/php.ini‘, (if no such file exists, then make a copy of ‘/private/etc/php.ini.default‘ naming it ‘php.ini‘) and edit that.</p>
+
+<p>You have two lines to modify:</p>
+
+<p>mysql.default_socket =</p>
+
+<p>becomes:</p>
+
+<p>mysql.default_socket = /private/tmp/mysql.sock</p>
+
+<p>and mysqli.default_socket =</p>
+
+<p>becomes:</p>
+
+<p>mysqli.default_socket = /private/tmp/mysql.sock</p>
+
+<p>of course, from the sharing pref pane, stop the server and restart it and voila!<br/>
+Reference: <a href="http://mymacinations.com/2007/10/28/apache-php-and-mysql-on-leopard/">http://mymacinations.com/2007/10/28/apache-php-and-mysql-on-leopard/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PHP Print_r Formatting : Print_r in a Much Nicer Way.]]></title>
+    <link href="http://noppanit.github.io/php-print_r-in-a-much-nicer-way/"/>
+    <updated>2010-04-07T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/php-print_r-in-a-much-nicer-way</id>
+    <content type="html"><![CDATA[<p>First, I didn&#8217;t build or develop this. I found this a very useful code and I would like to remember it. So I give credit to <a href="http://www.php.net/manual/en/function.print-r.php#91861">http://www.php.net/manual/en/function.print-r.php#91861</a></p>
+
+<div class="codecolorer-container php blackboard" style="overflow:auto;white-space:nowrap;width:500px;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />32<br />33<br />34<br />35<br />36<br />37<br />38<br />39<br />40<br />41<br />42<br />43<br />44<br />45<br />46<br />47<br />48<br />49<br />50<br />51<br />52<br />53<br />54<br />55<br />56<br />57<br />58<br />59<br />60<br />61<br />62<br />63<br />64<br />65<br />66<br />67<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="php codecolorer">
+          <span class="kw2">function</span> print_nice<span class="br0">&#40;</span><span class="re0">$elem</span><span class="sy0">,</span><span class="re0">$max_level</span><span class="sy0">=</span><span class="nu0">100</span><span class="sy0">,</span><span class="re0">$print_nice_stack</span><span class="sy0">=</span><a href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> <span class="br0">&#123;</span><br /> &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span><a href="http://www.php.net/is_array"><span class="kw3">is_array</span></a><span class="br0">&#40;</span><span class="re0">$elem</span><span class="br0">&#41;</span> <span class="sy0">||</span> <a href="http://www.php.net/is_object"><span class="kw3">is_object</span></a><span class="br0">&#40;</span><span class="re0">$elem</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span><a href="http://www.php.net/in_array"><span class="kw3">in_array</span></a><span class="br0">&#40;</span><span class="re0">$elem</span><span class="sy0">,</span><span class="re0">$print_nice_stack</span><span class="sy0">,</span><span class="kw4">true</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">echo</span> <span class="st0">"<font color=red>RECURSION</font>"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">return</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="re0">$print_nice_stack</span><span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">=</span><span class="re0">$elem</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$max_level</span><span class="sy0"><</span><span class="nu0">1</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">echo</span> <span class="st0">"<font color=red>nivel maximo alcanzado</font>"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">return</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="re0">$max_level</span><span class="sy0">--;</span><br /> &nbsp; &nbsp; <span class="kw1">echo</span> <span class="st0">"<table border=1 cellspacing=0 cellpadding=3 width=100%>"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span><a href="http://www.php.net/is_array"><span class="kw3">is_array</span></a><span class="br0">&#40;</span><span class="re0">$elem</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">echo</span> <span class="st_h">'<tr><td colspan=2 style="background-color:#333333;"><strong><font color=white>ARRAY</font></strong></td></tr>'</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="kw1">else</span><br /> &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">echo</span> <span class="st_h">'<tr><td colspan=2 style="background-color:#333333;"><strong>'</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="co1">//echo '<font color=white>OBJECT Type: '.get_class($elem).'</font></strong></td></tr>';</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="re0">$color</span><span class="sy0">=</span><span class="nu0"></span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">foreach</span><span class="br0">&#40;</span><span class="re0">$elem</span> <span class="kw1">as</span> <span class="re0">$k</span> <span class="sy0">=></span> <span class="re0">$v</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$max_level</span><span class="sy0">%</span><span class="nu19">2</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="re0">$rgb</span><span class="sy0">=</span><span class="br0">&#40;</span><span class="re0">$color</span><span class="sy0">++%</span><span class="nu19">2</span><span class="br0">&#41;</span>?<span class="st0">"#888888"</span><span class="sy0">:</span><span class="st0">"#BBBBBB"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><span class="kw1">else</span><br /> &nbsp; &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="re0">$rgb</span><span class="sy0">=</span><span class="br0">&#40;</span><span class="re0">$color</span><span class="sy0">++%</span><span class="nu19">2</span><span class="br0">&#41;</span>?<span class="st0">"#8888BB"</span><span class="sy0">:</span><span class="st0">"#BBBBFF"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">echo</span> <span class="st_h">'<tr><td valign="top" style="width:40px;background-color:'</span><span class="sy0">.</span><span class="re0">$rgb</span><span class="sy0">.</span><span class="st_h">';">'</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; <span class="kw1">echo</span> <span class="st_h">'<strong>'</span><span class="sy0">.</span><span class="re0">$k</span><span class="sy0">.</span><span class="st0">"</strong></td><td>"</span><span class="sy0">;</span> <br /> &nbsp; &nbsp; &nbsp; print_nice<span class="br0">&#40;</span><span class="re0">$v</span><span class="sy0">,</span><span class="re0">$max_level</span><span class="sy0">,</span><span class="re0">$print_nice_stack</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">echo</span> <span class="st0">"</td></tr>"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span> <span class="kw1">echo</span> <span class="st0">"</table>"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">return</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span> <br /> &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$elem</span> <span class="sy0">===</span> <span class="kw4">null</span><span class="br0">&#41;</span><br /> &nbsp; <span class="br0">&#123;</span> <br /> &nbsp; &nbsp; <span class="kw1">echo</span> <span class="st0">"<font color=green>NULL</font>"</span><span class="sy0">;</span> <br /> &nbsp; <span class="br0">&#125;</span><br /> &nbsp; <span class="kw1">elseif</span><span class="br0">&#40;</span><span class="re0">$elem</span> <span class="sy0">===</span> <span class="nu0"></span><span class="br0">&#41;</span><br /> &nbsp; <span class="br0">&#123;</span> <br /> &nbsp; &nbsp; <span class="kw1">echo</span> <span class="st0">"0"</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> &nbsp; <span class="kw1">elseif</span><span class="br0">&#40;</span><span class="re0">$elem</span> <span class="sy0">===</span> <span class="kw4">true</span><span class="br0">&#41;</span><br /> &nbsp; <span class="br0">&#123;</span> <br /> &nbsp; &nbsp; <span class="kw1">echo</span> <span class="st0">"<font color=green>TRUE</font>"</span><span class="sy0">;</span> <br /> &nbsp; <span class="br0">&#125;</span><br /> &nbsp; <span class="kw1">elseif</span><span class="br0">&#40;</span><span class="re0">$elem</span> <span class="sy0">===</span> <span class="kw4">false</span><span class="br0">&#41;</span><br /> &nbsp; <span class="br0">&#123;</span> <br /> &nbsp; &nbsp; <span class="kw1">echo</span> <span class="st0">"<font color=green>FALSE</font>"</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="kw1">elseif</span><span class="br0">&#40;</span><span class="re0">$elem</span> <span class="sy0">===</span> <span class="st0">""</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">echo</span> <span class="st0">"<font color=green>EMPTY STRING</font>"</span><span class="sy0">;</span> <br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="kw1">else</span><br /> &nbsp; &nbsp; <span class="br0">&#123;</span> <br /> &nbsp; &nbsp; &nbsp; <span class="kw1">echo</span> <a href="http://www.php.net/str_replace"><span class="kw3">str_replace</span></a><span class="br0">&#40;</span><span class="st0">"<span class="es1">\n</span>"</span><span class="sy0">,</span><span class="st0">"<strong><font color=red>*</font></strong><br><span class="es1">\n</span>"</span><span class="sy0">,</span><span class="re0">$elem</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Just copy the code and place it anywhere you like and call it print_nice($your_array) instead of calling print_r.</p>
+]]></content>
+  </entry>
+  
+</feed>

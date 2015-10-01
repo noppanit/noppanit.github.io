@@ -1,0 +1,566 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Git &#8211; Interrupted Workflow, What Will You Do? - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="When you&#8217;re working on something intensively and you haven&#8217;t finished the thing, suddenly somebody just wants you to do something again &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/git-interrupted-workflow-what-will-you-do/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Git &#8211; Interrupted Workflow, What Will You Do?</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-03-30T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>When you&#8217;re working on something intensively and you haven&#8217;t finished the thing, suddenly somebody just wants you to do something again which is more important. Normally, what you will do is to create a new branch and commit your changes to the new branch and switch back to the master branch and do the other thing and reset the working directory.</p>
+
+<p>or something like this. I&#8217;ve taken this example from <a href="http://www.kernel.org/pub/software/scm/git/docs/git-stash.html">http://www.kernel.org/pub/software/scm/git/docs/git-stash.html</a></p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="co0"># ... hack hack hack ...</span><br /> <span class="kw2">git checkout</span> <span class="re5">-b</span> my_wip<br /> <span class="kw2">git commit</span> <span class="re5">-a</span> <span class="re5">-m</span> <span class="st0">"WIP"</span><br /> <span class="kw2">git checkout</span> master<br /> edit emergency fix<br /> <span class="kw2">git commit</span> <span class="re5">-a</span> <span class="re5">-m</span> <span class="st0">"Fix in a hurry"</span><br /> <span class="kw2">git checkout</span> my_wip<br /> <span class="kw2">git reset</span> <span class="re5">--soft</span> HEAD^<br /> <span class="co0"># ... continue hacking ...</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>But there is other way to do this by using git stash. Or something like this</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="co0"># ... hack hack hack ...</span><br /> <span class="kw2">git stash</span><br /> edit emergency fix<br /> <span class="kw2">git commit</span> <span class="re5">-a</span> <span class="re5">-m</span> <span class="st0">"Fix in a hurry"</span><br /> <span class="kw2">git stash</span> pop<br /> <span class="co0"># ... continue hacking ...</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Well, I just wanted to give an example of git stash so you can get more understanding of what is happening in git stash</p>
+
+<p>first you need a clean directory to start git</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw2">mkdir</span> gitstash <span class="sy0">&&</span> <span class="kw3">cd</span> gitstash <span class="sy0">&&</span> <span class="kw2">git init</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Now you create a new file to work on</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw2">touch</span> main
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>And you edit the file main like you&#8217;re working with something</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          I'm working on something important.
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>And you use git add to track the file</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw2">git add</span> .
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>And you commit your change</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw2">git commit</span> <span class="re5">-m</span> <span class="st0">"Initial Revision"</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>You will see something like this</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          [master (root-commit) 95616b9] Initial Revision<br /> &nbsp;1 files changed, 1 insertions(+), 0 deletions(-)<br /> &nbsp;create mode 100644 main
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then you keep working of the file main, so the file main would look like this</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          I'm working on something important.<br /> <br /> Something which is also important.
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then somebody just interrupted you and asked you to fix something which is might impact the work that you&#8217;re working on right now. So, what you need to do is to use git stash to clean your working directory.</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw2">git stash</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>You would see something like this to confirm that you have saved the working directory</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          Saved working directory and index state WIP on master: 95616b9 Initial Revision<br /> HEAD is now at 95616b9 Initial Revision
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Now you&#8217;re main file would look something like this. It&#8217;s like the file main is rolled back to the HEAD commit</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          I'm working on something important.
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Now you edit the file main to be something like this.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          I'm working on something important. Something which is very very important.
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>And you commit this change</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw2">git commit</span> <span class="re5">-am</span> <span class="st0">"Fixed something"</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Now you can go back and keep working on what you&#8217;ve left off by using this command</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw2">git stash</span> pop
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>You will see something like this</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          Auto-merging main<br /> CONFLICT (content): Merge conflict in main
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Git will try and merge the change for you, if Git cannot merge the file for you, you have to merge it by yourself manually. In this case, the main file has to be merge manually. I just use vimdiff to merge.</p>
+
+<p>Now you&#8217;re main file will look something like this</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          I'm working on something important. Something which is very very important.<br /> <br /> Something which is also important.
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Noppanit Charassinvichai</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2011-03-30T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://noppanit.github.io/git-interrupted-workflow-what-will-you-do/" data-via="" data-counturl="http://noppanit.github.io/git-interrupted-workflow-what-will-you-do/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/what-should-you-do-about-risks/" title="Previous Post: What should you do about risks?">&laquo; What should you do about risks?</a>
+      
+      
+        <a class="basic-alignment right" href="/vi-search-and-replace-string-the-whole-file/" title="Next Post: Vi, search and replace string the whole file">Vi, search and replace string the whole file &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

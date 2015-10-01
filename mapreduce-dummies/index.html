@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>MapReduce for Dummies. - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="If you are a programmer or work in IT organisations. You must have heard the term &#8220;MapReduce&#8221; at some point. Some of you might be like &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/mapreduce-dummies/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">MapReduce for Dummies.</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-21T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>If you are a programmer or work in IT organisations. You must have heard the term &#8220;MapReduce&#8221; at some point. Some of you might be like myself, wondering what does it mean. It&#8217;s coined by very smart people from Google (<a href="https://en.wikipedia.org/wiki/Mapreduce" title="MapReduce">reference</a>). So, it must be good. Also, you must have heard this little project called &#8220;<a href="https://hadoop.apache.org/" title="Hadoop">Hadoop</a>&#8221; as an opensource for MapReduce. I have known it for a while but never get a full understanding of what it really means. People always mention that &#8220;Oh, you have a lot of data, MapReduce is very fast. Use that&#8221; but ever wonder why?</p>
+
+<p>So, I would like to explain this to my blog as Einstein once said <a href="http://www.brainyquote.com/quotes/quotes/a/alberteins383803.html#y5CAlRzOrI20wJPS.99"" title="einstein quote">&#8220;If you can&#8217;t explain it simply, you don&#8217;t understand it well enough&#8221;</a>.</p>
+
+<p>If you like reading then this <a href="https://www.usenix.org/legacy/publications/library/proceedings/osdi04/tech/full_papers/dean/dean_html/" title="MapReduce: Simplified Data Processing on Large Clusters">article</a> is for you, written by Jeff and Sanjay from Google.</p>
+
+<p>Here&#8217;s my version of what it means. MapReduce consists of two parts. Map and Reduce, Duh? I think the terms is a bit confusing if you don&#8217;t know what it means but I don&#8217;t know what to call it instead of this either. Let&#8217;s have a look at the first part Map.</p>
+
+<p>Map really is like what we know in every language. <strong>Map&lt;Key, Value></strong> in Java. It has key and value. For example, if your country wants to run an election, you have four parties to choose from Party A, Party B, Party C and Party D. It&#8217;d be like this.</p>
+
+<div id="attachment_1255" style="width: 816px" class="wp-caption aligncenter">
+  <a href="http://www.noppanit.com/wp-content/uploads/2013/12/Screen-Shot-2013-12-21-at-21.34.00.png"><img src="http://www.noppanit.com/wp-content/uploads/2013/12/Screen-Shot-2013-12-21-at-21.34.00.png" alt="City election scores" width="806" height="203" class="size-full wp-image-1255" /></a>
+  
+  <p class="wp-caption-text">
+    City election scores
+  </p>
+</div>
+
+
+<p>The key would be your party name. The value would be the votes for each of the key. So, this is how would you process in your computer. Let&#8217;s go back a little bit and have a look at raw data.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          PartyA, 10<br /> PartyA, 5<br /> PartyA, 2<br /> PartyB, 5<br /> PartyB, 10<br /> PartyB, 20<br /> PartyB, 30<br /> PartyC, 9<br /> PartyC, 8<br /> PartyC, 7<br /> PartyC, 5<br /> PartyD, 2<br /> PartyD, 1<br /> PartyD, 8<br /> PartyD, 3
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then you would get something like this in Ruby. (If I show the code how I transformed this many ruby programmers might scream at me so you can do whatever you like to make it like that)</p>
+
+<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          <span class="br0">&#123;</span><span class="st0">"Party A"</span><span class="sy0">=></span><span class="br0">&#91;</span><span class="nu0">10</span>, <span class="nu0">5</span>, <span class="nu0">9</span>, <span class="nu0">2</span><span class="br0">&#93;</span><span class="br0">&#125;</span><br /> <span class="br0">&#123;</span><span class="st0">"Party B"</span><span class="sy0">=></span><span class="br0">&#91;</span><span class="nu0">5</span>, <span class="nu0">10</span>, <span class="nu0">20</span>, <span class="nu0">30</span><span class="br0">&#93;</span><span class="br0">&#125;</span><br /> <span class="br0">&#123;</span><span class="st0">"Party C"</span><span class="sy0">=></span><span class="br0">&#91;</span><span class="nu0">9</span>, <span class="nu0">8</span>, <span class="nu0">7</span>, <span class="nu0">5</span><span class="br0">&#93;</span><span class="br0">&#125;</span><br /> <span class="br0">&#123;</span><span class="st0">"Party D"</span><span class="sy0">=></span><span class="br0">&#91;</span><span class="nu0">2</span>, <span class="nu0">1</span>, <span class="nu0">8</span>, <span class="nu0">3</span><span class="br0">&#93;</span><span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Now the part &#8220;Map&#8221; is done we can do the next part which is reduce. Reduce is where you process your data at your will on each key to get one or zero result. In this case we want to get the summation of the votes on each party. Luckily ruby comes with this already.</p>
+
+<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          <span class="br0">&#91;</span><span class="nu0">10</span>, <span class="nu0">5</span>, <span class="nu0">9</span>, <span class="nu0">2</span><span class="br0">&#93;</span>.<span class="me1">reduce</span><span class="br0">&#40;</span>:<span class="sy0">+</span><span class="br0">&#41;</span> <span class="co1"># => 26</span><br /> <span class="br0">&#91;</span><span class="nu0">5</span>, <span class="nu0">10</span>, <span class="nu0">20</span>, <span class="nu0">30</span><span class="br0">&#93;</span>.<span class="me1">reduce</span><span class="br0">&#40;</span>:<span class="sy0">+</span><span class="br0">&#41;</span> <span class="co1"># => 65</span><br /> <span class="br0">&#91;</span><span class="nu0">9</span>, <span class="nu0">8</span>, <span class="nu0">7</span>, <span class="nu0">5</span><span class="br0">&#93;</span>.<span class="me1">reduce</span><span class="br0">&#40;</span>:<span class="sy0">+</span><span class="br0">&#41;</span> <span class="co1"># => 29</span><br /> <span class="br0">&#91;</span><span class="nu0">2</span>, <span class="nu0">1</span>, <span class="nu0">8</span>, <span class="nu0">3</span><span class="br0">&#93;</span>.<span class="me1">reduce</span><span class="br0">&#40;</span>:<span class="sy0">+</span><span class="br0">&#41;</span> <span class="co1"># => 14</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>That&#8217;s it now we know that PartyB won the election.</p>
+
+<p>So, here&#8217;s the important question. Why it&#8217;s fast?<br/>
+Imagine, if in your country you have 100 cities and each city sends all the cards to the capital city to count, the process would be sequential and might be slow. So, we delegate that to each city then send the final result back to the capital city. That&#8217;s why you will hear a lot of people talking about &#8220;node&#8221;, &#8220;cluster&#8221; or &#8220;distributed&#8221; in MapReduce, because we delegate that to thousands of machines connected together. The classic example on the Internet right now is word counts which imagine how many documents or websites Google has to process each day.</p>
+
+<p>That&#8217;s it. Any feedback is very welcome.</p>
+
+<p>Reference:<br/>
+<a href="http://www-01.ibm.com/software/data/infosphere/hadoop/mapreduce/">http://www-01.ibm.com/software/data/infosphere/hadoop/mapreduce/</a><br/>
+<a href="https://hadoop.apache.org/docs/r1.1.1/mapred_tutorial.html">https://hadoop.apache.org/docs/r1.1.1/mapred_tutorial.html</a><br/>
+<a href="http://www.onebigfluke.com/2013/01/why-is-map-reduce-faster-practical.html">http://www.onebigfluke.com/2013/01/why-is-map-reduce-faster-practical.html</a><br/>
+<a href="http://stevekrenzel.com/finding-friends-with-mapreduce">http://stevekrenzel.com/finding-friends-with-mapreduce</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Noppanit Charassinvichai</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2013-12-21T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://noppanit.github.io/mapreduce-dummies/" data-via="" data-counturl="http://noppanit.github.io/mapreduce-dummies/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/shoot-astrophotography-absolute-dummies-like/" title="Previous Post: How to shoot astrophotography for absolute dummies, like me.">&laquo; How to shoot astrophotography for absolute dummies, like me.</a>
+      
+      
+        <a class="basic-alignment right" href="/never-clean-havent-turkish-bath/" title="Next Post: You have never been clean, if you haven&#8217;t been to the Turkish bath.">You have never been clean, if you haven&#8217;t been to the Turkish bath. &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

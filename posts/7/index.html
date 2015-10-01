@@ -1,0 +1,1072 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="I know this shouldn&#8217;t happen at all these days, but as you have a lot of people contributing to one single repository. This thing might happen &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/posts/7/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/little-javascript-to-check-if-the-page-contain-multiple-ids/">Little JavaScript to Check if the Page Contain Multiple IDs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-01-08T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I know this shouldn&#8217;t happen at all these days, but as you have a lot of people contributing to one single repository. This thing might happen. So, this is just purely for myself. I just use jQuery to create a little util method which is executed every time the browser is loaded to check if the page contains any multiple IDs.</p>
+
+<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          &nbsp; &nbsp; detect_dub_ids <span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> dupIds <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; $<span class="br0">&#40;</span><span class="st0">'[id]'</span><span class="br0">&#41;</span>.<span class="me1">each</span><span class="br0">&#40;</span><span class="kw2">function</span> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> $ids <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'[id='</span> <span class="sy0">+</span> <span class="kw1">this</span>.<span class="me1">id</span> <span class="sy0">+</span> <span class="st0">']'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">&#40;</span>$ids.<span class="me1">length</span> <span class="sy0">></span> <span class="nu0">1</span> <span class="sy0">&&</span> $ids<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span> <span class="sy0">===</span> <span class="kw1">this</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dupIds.<span class="me1">push</span><span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> dupIds<span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="sy0">,</span><br /> <br /> &nbsp; &nbsp; get_display_text_for_dup_ids <span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>ids<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> h <span class="sy0">=</span> <span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; text <span class="sy0">=</span> <span class="st0">""</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; jQuery<span class="br0">&#40;</span>ids<span class="br0">&#41;</span>.<span class="me1">each</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>index<span class="sy0">,</span> value<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>h<span class="br0">&#91;</span>value<span class="br0">&#93;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; h<span class="br0">&#91;</span>value<span class="br0">&#93;</span>.<span class="me1">push</span><span class="br0">&#40;</span>value<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; h<span class="br0">&#91;</span>value<span class="br0">&#93;</span> <span class="sy0">=</span> <span class="br0">&#91;</span>value<span class="br0">&#93;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw2">var</span> k <span class="kw1">in</span> h<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; text <span class="sy0">+=</span> <span class="st0">"#"</span><span class="sy0">+</span>k<span class="sy0">+</span> <span class="st0">" ("</span><span class="sy0">+</span>h<span class="br0">&#91;</span>k<span class="br0">&#93;</span>.<span class="me1">length</span><span class="sy0">+</span><span class="st0">") times "</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> text<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/what-if-matching-exct-string-is-not-enough/">What if Matching Exact String Is Not Enough, Basic Fuzzy Search That You Want to Know.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-01-01T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>First of all, I&#8217;m not a researcher what I post here is just my experiment that I do it myself.</p>
+
+<p>I have this problem when I want to match string but not <strong>exact match</strong>. For example, I have this string <strong>&#8220;I really love The Matrix movie because of this quote &#8216;welcome to the real world'&#8221;</strong> and I have a bunch of tags in my database such as <strong>&#8220;The Matrix&#8221;, &#8220;welcome to the real world&#8221;, &#8220;red pill&#8221;, &#8220;blue pill&#8221;</strong>. So, if I want to match the tags with the string I could do regular expression like this or actually I could do the exact match and still get the correct one.</p>
+
+<p>**</p></p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          /.*world.*/
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p></strong></p>
+
+<p>That would give me what I want. However, what if I have another movie <strong>&#8220;The day after tomorrow&#8221;</strong> with tags <strong>&#8220;world&#8221;</strong>. If I search with word that string against the tags I will get two movies. So, what can I do? I did some Google and found <a href="http://en.wikipedia.org/wiki/Approximate_string_matching">fuzzy search</a> and I picked <a href="http://en.wikipedia.org/wiki/Levenshtein_distance">&#8220;Levenshtein&#8221;</a>. I&#8217;m not good at maths so I can&#8217;t really explains in technical correctly. But basically, it&#8217;s a technique to look into two strings and count every time you have to <string>&#8220;edit&#8221;</strong> to make the strings exact match. For example,</p>
+
+<div class="panel">
+  &#8220;I love you&#8221; # string 1<br /> <br /> &#8220;I <span class="alert label">also</span> love you&#8221; # string 2
+</div>
+
+
+<p>The distance would be <strong>1</strong> because it takes <strong>1</strong> edit to make the two strings exact match. We have to add <strong>also</strong> or delete <strong>also</strong> 1 time.</p>
+
+<p>So from the example above.</p>
+
+<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          <span class="co1"># Distance 12</span><br /> <span class="kw3">puts</span> Levenshtein.<span class="me1">distance</span><span class="br0">&#40;</span><span class="st0">"welcome to the real world"</span>.<span class="kw3">split</span><span class="br0">&#40;</span><span class="st0">" "</span><span class="br0">&#41;</span>, <span class="st0">"I really love The Matrix movie because of this quote 'welcome to the real world'"</span>.<span class="kw3">split</span><span class="br0">&#40;</span><span class="st0">" "</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> <span class="co1"># Distance 15</span><br /> <span class="kw3">puts</span> Levenshtein.<span class="me1">distance</span><span class="br0">&#40;</span><span class="st0">"world"</span>.<span class="kw3">split</span><span class="br0">&#40;</span><span class="st0">" "</span><span class="br0">&#41;</span>, <span class="st0">"I really love The Matrix movie because of this quote 'welcome to the real world'"</span>.<span class="kw3">split</span><span class="br0">&#40;</span><span class="st0">" "</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>So this way, the tag <strong>welcome to the real world</strong> is more likely to match with the string <strong>I really love The Matrix movie because of this quote &#8216;welcome to the real world</strong></p>
+
+<p>I use this <a href="http://rubygems.org/gems/levenshtein" title="levenshtein algorithm">Gem</a> for this experiment</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/second-sentiment-analysis-experiment-on-naive-bayes-with-nltk-bigrams/">Second Sentiment Analysis Experiment on Naive Bayes With NLTK : Bigrams</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-12-30T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>From my <a href="http://www.noppanit.com/first-experiment-on-naive-bayes-with-nltk/" title="first experiment on naive bayes with sentiment analysis">last post</a> I experimented with some of the techniques such as stopwords and bag-of-words model. I yielded some acceptable results. This post, I&#8217;m going to try with bigrams to see if I can increase the accuracy.</p>
+
+<p>I changed the code a little bit to be</p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="kw1">from</span> nltk.<span class="me1">collocations</span> <span class="kw1">import</span> *<br /> <br /> tokenized_text <span class="sy0">=</span> nltk.<span class="me1">wordpunct_tokenize</span><span class="br0">&#40;</span>words<span class="br0">&#41;</span><br /> tokenized_text <span class="sy0">=</span> <span class="br0">&#91;</span>word.<span class="me1">lower</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">for</span> word <span class="kw1">in</span> tokenized_text<span class="br0">&#93;</span><br /> <br /> finder <span class="sy0">=</span> BigramCollocationFinder.<span class="me1">from_words</span><span class="br0">&#40;</span>tokenized_text<span class="br0">&#41;</span><br /> bigrammed_words <span class="sy0">=</span> <span class="kw2">sorted</span><span class="br0">&#40;</span>finder.<span class="me1">nbest</span><span class="br0">&#40;</span>bigram_measures.<span class="me1">chi_sq</span><span class="sy0">,</span> <span class="nu0">200</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>I decided to use <strong>chi_sq</strong> as suggested in <a href="http://streamhacker.com/tag/bigrams/" title="stream hacker bigrams">this post</a>. However, the accuracy has gone down significantly to <strong>19.7530864198%</strong>. I guess this might be that my document (~100 document for each sentiment) is not large enough to use bigrams. But this is just my conclusion. I&#8217;m going to try to increase the dataset and test it again.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/first-experiment-on-naive-bayes-with-nltk/">First Experiment on Naive Bayes With NLTK</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-12-30T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have been experimenting with Natural Language Processing on Text classification for a while now. So, I&#8217;m going to write a little journal on my blog. There are lots of academic papers or event commercial API on the Internet for sentiment analysis. But most of them only classify sentiment into <strong>negative</strong>, <strong>positive</strong> and <strong>neutral</strong>. My experiment will be based on <a href="http://en.wikipedia.org/wiki/Plutchik%27s_Wheel_of_Emotions#Plutchik.27s_wheel_of_emotions" title="Plutchik wheel of emotions">Plutchik&#8217;s wheel of emotions</a> which will classify a text into one of the eight emotions.</p>
+
+<p>For the purpose to get things done really fast, I use the example from <a href="http://www.laurentluce.com/posts/twitter-sentiment-analysis-using-python-and-nltk/" title="twitter sentiment analysis">Laurent&#8217;s blog</a>. But you can use <a href="https://github.com/japerk/nltk-trainer" title="nltk trainer">nltk-trainer</a> to train the classifier without a single line of python code.</p>
+
+<p>Most papers suggest that <a href="http://en.wikipedia.org/wiki/Bag-of-words_model" title="bag of words model">bag-of-words model</a> is one of the best techniques o classify text. So, I decided to use this method. However, this is about sentiment analysis so I used only Adjectives for feature extraction. The result is unacceptable with only <strong>19.7530864198 %</strong></p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="kw1">for</span> word<span class="sy0">,</span> pos_tag <span class="kw1">in</span> nltk.<span class="me1">pos_tag</span><span class="br0">&#40;</span>words<span class="br0">&#41;</span>:<br /> &nbsp; &nbsp;<span class="kw1">if</span> pos_tag <span class="sy0">==</span> <span class="st0">'ADJ'</span>:<br /> &nbsp; &nbsp; &nbsp; filtered_words.<span class="me1">append</span><span class="br0">&#40;</span>word.<span class="me1">lower</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>The second attempt I decided to fall back to bag-of-words model, and the result has gone up to <strong>61.316872428 %</strong></p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          filtered_words <span class="sy0">=</span> <span class="br0">&#91;</span>e.<span class="me1">lower</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">for</span> e <span class="kw1">in</span> words.<span class="me1">split</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">if</span> <span class="kw2">len</span><span class="br0">&#40;</span>e<span class="br0">&#41;</span> <span class="sy0">>=</span> <span class="nu0">3</span><span class="br0">&#93;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>So, I moved on and try to clean up the text a bit by cleaning stopwords, stripping &#8216;RT&#8217; or &#8216;rt&#8217; for retweet, deleting @peoplename and tokenise word by whitespace. So, &#8220;i&#8217;m&#8221; stays as one word and not [&#8220;i&#8221;, &#8220;&#8216;m&#8221;]. The result has gone up to <strong>69.9588477366 %</strong>.</p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="co1"># stripping and cleaning.</span><br /> <span class="co1"># this is for stripping out the stopwords by using <a href="http://nltk.googlecode.com/svn/trunk/doc/book/ch02.html" title="NLTK Text Corpora">NLTK Text Corpora</a></span><br /> stripped_words <span class="sy0">=</span> <span class="br0">&#91;</span>w <span class="kw1">for</span> w <span class="kw1">in</span> tokenized_text <span class="kw1">if</span> <span class="kw1">not</span> w <span class="kw1">in</span> stopwords.<span class="me1">words</span><span class="br0">&#40;</span><span class="st0">'english'</span><span class="br0">&#41;</span><span class="br0">&#93;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>I&#8217;ll keep experimenting and post some more techniques to see if I could get something out of this.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/diy-run-rspec-test-inside-sublime-text-2/">DIY : Run RSpec Test Inside Sublime Text 2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-12-30T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I guess everybody loves Sublime Text2. I switched from TextMate to Sublime Text 2 and I absolutely love it. Now, when you are writing some tests and want to run it immediately rather than keep switching windows to your terminal you can run your spec inside Sublime Text 2.</p>
+
+<p>There are lots of Packages out there you can just install and use it, but I just wanted to show another way of doing it. You could write your own little Package as well.</p>
+
+<p>Sublime Text 2 comes with a nice functionality called <a href="http://docs.sublimetext.info/en/latest/file_processing/build_systems.html" title="Sublime Text 2 build system">Build System</a> where you can create your own command and run it by using <strong>cmb+b</strong> (If you are a MAC user).</p>
+
+<p>First thing first, I hope you use <strong>rvm</strong> so if you haven&#8217;t done this already you need to create symbolic link like <a href="http://www.sublimetext.com/docs/2/osx_command_line.html">this page</a>. Then if you want to open your project you can just do this command inside your project. This way, sublime will hook up with rvm nicely.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          subl .
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then you go to ****Tools > Build System > New Build System&#8230;</strong>. It will open a new editor then you place this code.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          {<br /> &nbsp; "cmd": ["rspec", "-I ${file_path}", "$file"],<br /> &nbsp; "file_regex": "# ([A-Za-z:0-9_./ ]+rb):([0-9]+)",<br /> &nbsp; "working_dir": "${project_path:${folder:${file_path}}}",<br /> &nbsp; "selector": "source.ruby",<br /> <br /> &nbsp; "windows":<br /> &nbsp; {<br /> &nbsp; &nbsp; "cmd": ["rspec.bat", "-I ${file_path}", "$file"]<br /> &nbsp; }<br /> }
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then you choose the new Build System you just created and hit this combo <strong>cmd+b</strong>. Hooray!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/public-key-cryptography-for-dummies/">Public-key Cryptography for Dummies</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-12-29T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For the last few days I have been busy in this amazing <a href="http://events.ccc.de/congress/2012/wiki/Main_Page" title="29c3">29c3</a> conference in Hamburg, Germany (Not in NewYork). Basically, it&#8217;s a conference about everything that is about security and data. One thing that struck me was this talk <a href="http://events.ccc.de/congress/2012/Fahrplan/events/5275.en.html" title="RSA factorisation in the real world">RSA factorisation in the real world</a> from <a href="http://facthacks.cr.yp.to/" title="face hacks">facthack</a>. Why it struck me, it&#8217;s because we have been using it a lot but I think I know nothing about it. And every time you Google about it, you get a lot of mathematical examples (Of course the algorithm is about maths). So, I guess I would just want to write it down so I could remember it myself also if it would benefit others that&#8217;d be fantastic.</p>
+
+<p>So, we all like Wikipedia, here&#8217;s the <a href="http://en.wikipedia.org/wiki/Public-key_cryptography" title="public key cryptography">wiki</a> version. But if you&#8217;re lazy like me you might want to watch this video which I think they virtualise it pretty good.</p>
+
+<p>And here is my version of it. I think the concept is basic and really easy to understand, though it took me a couple days to understand it. Imagine you want to send a note to a girl you like across the room where you have a lot of friends who try to bully or mock you. I ask the girl to buy a box with a lock and a key so nobody with that key can open the box. Then, she will send me the box across the room, it may pass a lot of people but they cannot open the box without her key. I will put the message in the box and close it and send it back. Then she could open that box with her key. I know this is not exactly right, but the point is that she has a key which is private-key and the box is public-key. As the names suggest, public means it&#8217;s wide open you can send it to anywhere publicly, but the key is private and you keep it.</p>
+
+<p>Another example that I can think of is SSH. I&#8217;m gonna skip what SSH is but when you want to connect to the server you need to enter a password and then the connection is open. So, one example that I can think of is Github. When you create an account on Github, it asks you to upload your public key. You have to do <a href="https://help.github.com/articles/generating-ssh-keys" title="Github upload ssh keys">these steps</a></p>
+
+<p>First, you use this command to generate public/private keys</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          ssh-keygen -t rsa -C "your_email@youremail.com"
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Basically, that would generate public/private keys in your home folder. if you saved the keys in your home folder that you can view your keys.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          ls ~/.ssh/<br /> id_rsa&nbsp; &nbsp; id_rsa.pub&nbsp; known_hosts
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>file <strong>id_rsa.pub</strong> is your public key and <strong>id_rsa</strong> is your private key. Then you upload <strong>id_rsa.pub</strong> to Github and then you can connect to Github via SSH without having to use password every time. I think EC2 and Heroku are the same.</p>
+
+<p>Now, we all love coding what about in code? I have some example here which is in Python and I think all the languages are the same.</p>
+
+<p>I use the library <strong>rsa</strong>. You can install it easily</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          pip install rsa
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then you can generate the keys.</p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="kw1">import</span> rsa<br /> <span class="br0">&#40;</span>public_key<span class="sy0">,</span> private_key<span class="br0">&#41;</span> <span class="sy0">=</span> rsa.<span class="me1">new_keys</span><span class="br0">&#40;</span><span class="nu0">2048</span><span class="br0">&#41;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>it might take a couple seconds to get the keys, but 2048 should be your standard by now. Now have a look at the keys</p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="sy0">>>></span> public_key<br /> PublicKey<span class="br0">&#40;</span><span class="nu0">29534209309072966342236728315019059662080809378008690867170941707045309003902270154173510852052110681489591796447806519430369798984624459707158855145174351259726003060555580062598516787344976412595591636803388841296208018460473115348727377101381087280966955180437218649614860816115625029885144484815954440118725591030107342156415013995103531215123098501644397412095363703762543423709714830195367078829211889094350240474706872694251558468928015513092692877035574929167783047652545773000357002867146591894383127690358099462086703188180088169904549856171296368406173474768408900722887810563868713819753518447862895139133</span><span class="sy0">,</span> <span class="nu0">65537</span><span class="br0">&#41;</span><br /> <br /> <span class="sy0">>>></span> private_key<br /> PrivateKey<span class="br0">&#40;</span><span class="nu0">29534209309072966342236728315019059662080809378008690867170941707045309003902270154173510852052110681489591796447806519430369798984624459707158855145174351259726003060555580062598516787344976412595591636803388841296208018460473115348727377101381087280966955180437218649614860816115625029885144484815954440118725591030107342156415013995103531215123098501644397412095363703762543423709714830195367078829211889094350240474706872694251558468928015513092692877035574929167783047652545773000357002867146591894383127690358099462086703188180088169904549856171296368406173474768408900722887810563868713819753518447862895139133</span><span class="sy0">,</span> <span class="nu0">65537</span><span class="sy0">,</span> <span class="nu0">5853484973611070995305138533710462272468493110929015451938345695299014581865001251698425812248117332832877730809474936003800499244873691306228334673248236088203321082038488631354687192743395312925586153935017130164585592135482022296788377575565542253879179407642996063900505472336632032487580151280432952533330871039500260846987279615245989379283555335473200579408998561597984286865492093479293281454202362991371489340478090036107586685417432250640745863007335226075029799578308740141059780564838880874147399808234159082348507409570253455570613403424844782542465277813808638221548094905955710788792599684368754627553</span><span class="sy0">,</span> <span class="nu0">3048836616267442645717253566428183242785699256710435915408206917831986485110304443207329137538405008020749764914855054897471943691960276026164383471359068144785145380429590398022467222960109449831417790058882587360642554647616357991607084035635835566066548855867645483820873548134124697487374239771390745052467948610194583244121</span><span class="sy0">,</span> <span class="nu0">9687042313612202470579779908557945791161444599629082668056659471372738761222623451977742705688117439787620866981353449588434275887551340654960295016278042883725967841149851338806541074750203724704414741041773527871314525574722367110086522054749464369889004170596421460710729163676852042373</span><span class="br0">&#41;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>You can see some prime numbers. Then, I will send the <strong>public_key</strong> to my friend, or Github. Now my friend with encrypt the message and send it back to me.</p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="sy0">>>></span> crypto <span class="sy0">=</span> rsa.<span class="me1">encrypt</span><span class="br0">&#40;</span><span class="st0">"Encrypted_Message"</span><span class="sy0">,</span> public_key<span class="br0">&#41;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>You will get an encrypted message, we can take a peek let&#8217;s see what&#8217;s inside</p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="sy0">>>></span> crypto<br /> <span class="st0">"<span class="es0">\x</span>95G<span class="es0">\x</span>0eZ<span class="es0">\x</span>ad<span class="es0">\x</span>fb-<span class="es0">\x</span>e1<span class="es0">\x</span>d3<span class="es0">\x</span>8a<span class="es0">\x</span>a5<span class="es0">\x</span>0e;<span class="es0">\x</span>f2<span class="es0">\x</span>a4%<span class="es0">\x</span>c4@<span class="es0">\x</span>9f<span class="es0">\x</span>c8<span class="es0">\x</span>d9<span class="es0">\x</span>f8<span class="es0">\x</span>ab<span class="es0">\x</span>9cI8<span class="es0">\x</span>83A/0<span class="es0">\x</span>9e<span class="es0">\\</span><span class="es0">\x</span>c4_?<span class="es0">\x</span>a5<span class="es0">\x</span>12y<span class="es0">\x</span>12<span class="es0">\x</span>cfz E<span class="es0">\x</span>d4{d<span class="es0">\x</span>e6Hk<span class="es0">\x</span>aa<span class="es0">\x</span>88<span class="es0">\x</span>be<span class="es0">\x</span>08<span class="es0">\x</span>d3S<span class="es0">\x</span>05c<span class="es0">\x</span>f5<span class="es0">\x</span>99&<span class="es0">\x</span>19<span class="es0">\x</span>0bxHx/|<span class="es0">\x</span>b9<span class="es0">\x</span>85<span class="es0">\x</span>98<span class="es0">\x</span>a6<span class="es0">\x</span>8f<span class="es0">\x</span>7f<span class="es0">\x</span>13<span class="es0">\x</span>98/<span class="es0">\x</span>aed<span class="es0">\x</span>1a<span class="es0">\x</span>aaeOS(<span class="es0">\x</span>f2<span class="es0">\x</span>fcG<span class="es0">\x</span>19MH<span class="es0">\x</span>dd<span class="es0">\x</span>ed<span class="es0">\x</span>db<span class="es0">\x</span>e9<span class="es0">\x</span>df<span class="es0">\x</span>d8k<span class="es0">\x</span>16xy<span class="es0">\x</span>b1<span class="es0">\x</span>12<span class="es0">\x</span>17<span class="es0">\x</span>fduG<span class="es0">\x</span>d57G<span class="es0">\x</span>02<span class="es0">\x</span>fe<span class="es0">\x</span>9e<span class="es0">\x</span>87<span class="es0">\x</span>02Z?<span class="es0">\x</span>f5<span class="es0">\x</span>c09,3<span class="es0">\x</span>d4b<span class="es0">\x</span>06<span class="es0">\x</span>11<span class="es0">\x</span>f1<span class="es0">\x</span>e2H<span class="es0">\x</span>7f<span class="es0">\x</span>a3?<span class="es0">\x</span>a8<span class="es0">\x</span>88<span class="es0">\x</span>ef<span class="es0">\x</span>95<span class="es0">\x</span>c7<span class="es0">\x</span>b2<span class="es0">\x</span>7f<span class="es0">\x</span>a1y7u<span class="es0">\x</span>df<span class="es0">\x</span>10%<span class="es0">\x</span>fbe*<span class="es0">\x</span>fd)<span class="es0">\x</span>ae<span class="es0">\x</span>cb=<span class="es0">\n</span><span class="es0">\x</span>ddX:<span class="es0">\x</span>cd&<span class="es0">\x</span>ca<span class="es0">\x</span>85i:lJ<span class="es0">\x</span>c8tGg<span class="es0">\x</span>9b<span class="es0">\x</span>d9<span class="es0">\x</span>1c;`<span class="es0">\x</span>e4<span class="es0">\x</span>873<span class="es0">\x</span>82<span class="es0">\x</span>1d<span class="es0">\x</span>11<span class="es0">\x</span>c3P<span class="es0">\x</span>f8z<span class="es0">\x</span>a4eU<span class="es0">\x</span>a3V<span class="es0">\\</span>4<span class="es0">\x</span>8ai<span class="es0">\x</span>a7<span class="es0">\x</span>9a<span class="es0">\x</span>cfY<span class="es0">\x</span>fd<span class="es0">\x</span>ed<span class="es0">\x</span>1b<span class="es0">\x</span>ae<span class="es0">\x</span>b7<span class="es0">\x</span>e17<span class="es0">\x</span>163~<span class="es0">\x</span>1a<span class="es0">\x</span>bb<span class="es0">\x</span>0e<span class="es0">\x</span>d8w3#<span class="es0">\x</span>83<span class="es0">\x</span>ea4<span class="es0">\x</span>b68<span class="es0">\x</span>a1<span class="es0">\x</span>9b<span class="es0">\x</span>88T'<span class="es0">\x</span>9c<span class="es0">\x</span>a9<span class="es0">\x</span>9a<span class="es0">\x</span>bc<span class="es0">\x</span>1f0FP[}<span class="es0">\r</span><span class="es0">\x</span>908<span class="es0">\x</span>8b<span class="es0">\x</span>95<span class="es0">\x</span>a2<span class="es0">\x</span>f5<span class="es0">\x</span>b8<span class="es0">\x</span>16Xi<span class="es0">\x</span>d5<span class="es0">\x</span>d0>o<span class="es0">\x</span>e5<span class="es0">\x</span>93<span class="es0">\x</span>abg<span class="es0">\x</span>a4<span class="es0">\x</span>e7L"</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>You can see it&#8217;s gibberish. Then my friend can send this <strong>crpyto</strong> back to me. And I&#8217;ll try to decrypt it.</p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="sy0">>>></span> rsa.<span class="me1">decrypt</span><span class="br0">&#40;</span>crypto<span class="sy0">,</span>private_key<span class="br0">&#41;</span><br /> <span class="st0">'Encrypted_Message'</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Now let&#8217;s try to decrypt the message with some other private key. You&#8217;ll get this.</p>
+
+<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="python codecolorer">
+          <span class="sy0">>>></span> <span class="br0">&#40;</span>newpublic_key<span class="sy0">,</span>newprivate_key<span class="br0">&#41;</span> <span class="sy0">=</span> rsa.<span class="me1">newkeys</span><span class="br0">&#40;</span><span class="nu0">2048</span><span class="br0">&#41;</span><br /> <span class="sy0">>>></span> rsa.<span class="me1">decrypt</span><span class="br0">&#40;</span>crypto<span class="sy0">,</span> newprivate_key<span class="br0">&#41;</span><br /> Traceback <span class="br0">&#40;</span>most recent call last<span class="br0">&#41;</span>:<br /> &nbsp; File <span class="st0">"<stdin>"</span><span class="sy0">,</span> line <span class="nu0">1</span><span class="sy0">,</span> <span class="kw1">in</span> <span class="sy0"><</span>module<span class="sy0">></span><br /> &nbsp; File <span class="st0">"/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rsa/pkcs1.py"</span><span class="sy0">,</span> line <span class="nu0">232</span><span class="sy0">,</span> <span class="kw1">in</span> decrypt<br /> &nbsp; &nbsp; <span class="kw1">raise</span> DecryptionError<span class="br0">&#40;</span><span class="st0">'Decryption failed'</span><span class="br0">&#41;</span><br /> rsa.<span class="me1">pkcs1</span>.<span class="me1">DecryptionError</span>: Decryption failed
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>If you&#8217;re interested some really hardcore stuff how to hack it. I recommend he talk from 29c3 conference.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/one-way-to-make-use-of-google-add-your-google-profile-to-your-blog-and-show-it-to-search-results/">One Way to Make Use of Google+ : Add Your Google+ Profile to Your Blog and Show It to Search Results</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-12-29T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So, I guess you must have heard Google+. But yet you can&#8217;t figure out how to do it, I don&#8217;t have many friends on Google+, all my friends are in Facebook or Twitter. But while I have been blogging about some stuff, I just thought I have seen some people faces next to google search results before. How come I don&#8217;t have one. Well, now I can think of one way to use Google+ to show my picture next to the content that I contribute.</p>
+
+<p>Google has a process called <a href="https://plus.google.com/authorship" title="Google Authorship">Google Authorship</a> to verify that you can be linked to the content you contributed. After you have completed this, it will show in your profile has your work email. So, now you can start building your Google+ profile by adding some nice profile picture and add some friends, follow some interesting people.</p>
+
+<p>If you use wordpress then you&#8217;re lucky you can just add your google+ profile to your about page like this. The <strong>rel=&#8221;me&#8221;</strong> is the most important one.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          <a href="https://profiles.google.com/your_ID" "rel="me">My Profile</a>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then wordpress will handle the rest by adding <strong>rel=&#8221;author&#8221;</strong> to your post</p>
+
+<p><img src="http://www.noppanit.com/wp-content/uploads/2012/12/Screen-shot-2012-12-29-at-22.44.11.png" alt="Authorship" class="alignnone size-medium wp-image-942" /></p>
+
+<p>You can inspect the html on the link of your name, you should see <strong>rel=&#8221;author&#8221;</strong> in the url</p>
+
+<p>Once you have completed this, Google has this nice cool tool to check your <a href="http://www.google.com/webmasters/tools/richsnippets" title="rich snippets">rich snippet code</a>. You should see something like this.</p>
+
+<p><img src="http://www.noppanit.com/wp-content/uploads/2012/12/Screen-shot-2012-12-29-at-22.45.59.png" alt="Authorship" class="alignnone size-medium wp-image-943" /></p>
+
+<p>If it&#8217;s said <strong>Unverified</strong> then just click on it and Google will tell you how to make it green. It&#8217;s like a little TDD.</p>
+
+<p>Then give it a couple hours or days until Google wakes up.</p>
+
+<p><strong>Edited</strong> I would strongly suggest to install Yoast WordPress SEO plugin if you&#8217;re using wordpress. In the tag &#8220;Titles &amp; Metas&#8221; You can also specify your google+ profile and a lot of features you can use to make your site SEO friendly.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/phantomjs-poltergeist-cucumber/">PhantomJs + Poltergeist + Cucumber.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-12-10T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I love tests and I love experimenting with lots of things. So, I have just come across with PhantomJs a couple weeks ago and I absolutely love it. This should be included in every pipeline. No matter what you want to do, Jasmine? Acceptance Testing? I think right now PhantomJs is the most suitable one (May be there&#8217;ll be another one coming). But this post is not really about PhantomJs. I just want to show what it can do by using Poltergeist to run cucumber test headlessly. Of course you can do it with selenium-driver but running the test headlessly seem to be faster. So, I&#8217;ll just gonna jump right in.</p>
+
+<p>First thing first, install PhantomJs from <a href="http://phantomjs.org/download.html" title="PhantomJs download.">here</a></p>
+
+<p>Then this is what my Gemfile looks like.</p>
+
+<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          source <span class="re3">:rubygems</span><br /> <br /> gem <span class="st0">'poltergeist'</span><br /> gem <span class="st0">'cucumber'</span><br /> gem <span class="st0">'selenium-webdriver'</span><br /> gem <span class="st0">'capybara'</span><br /> gem <span class="st0">'rspec'</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>And this is my env.rb</p>
+
+<pre><div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          <span class="kw3">require</span> <span class="st0">'rubygems'</span><br />
+          <span class="kw3">require</span> <span class="st0">'capybara'</span><br />
+          <span class="kw3">require</span> <span class="st0">'capybara/cucumber'</span><br />
+          <span class="kw3">require</span> <span class="st0">'capybara/dsl'</span><br />
+          <span class="kw3">require</span> <span class="st0">'rspec'</span><br />
+          <span class="kw3">require</span> <span class="st0">'capybara/poltergeist'</span><br />
+          <br />
+          <span class="co1"># Capybara.default_driver = :selenium #uncomment this to use selenium</span><br />
+          Capybara.<span class="me1">javascript_driver</span> = <span class="re3">:poltergeist</span> <span class="co1">#uncomment this to use poltergeist</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>If you&#8217;re not familiar with Cucumber please have a look at <a href="https://github.com/cucumber/cucumber" title="cucumber">this</a></p>
+
+<p>And then you can run the test as you use to run your cucumber tests like this</p>
+
+<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          cucumber features<span class="sy0">/</span>your_spec.<span class="me1">feature</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>If you run with Poltergeist driver then you should not see firefox popping up.</p>
+
+<p>I&#8217;ve written some example project <a href="https://github.com/noppanit/phantomjs-examples">here.</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/google-refine-the-best-way-to-scrape-data-from-websites-that-i-like/">Google Refine the Best Way to Scrape Data From Websites That I Like.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-11-18T00:00:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>There are a lot of ways to scrape data out of a website, you could use any of your favourite computer language to GET a webpage and use HTML parser to get the data you need. But Google Refine comes with a lots of techniques to manipulate the data you scrapped and then export in any format you like with little or less coding. If you don&#8217;t know what Google Refine is I recommend watching some of the videos on their website <a href="http://code.google.com/p/google-refine/">here</a>.</p>
+
+<p>I think I cannot demonstrate how to scrape a website from any website, so I&#8217;m going to use my site for an example.</p>
+
+<ol>
+<li>I would start with Excel and put the URL I want to scrape in the second row. I could have put in the first row but I would have to change the configuration in Google Refine.</li>
+</ol>
+
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.31.01.png"><img src="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.31.01-300x87.png" alt="" title="Excel" width="300" height="87" class="alignnone size-medium wp-image-894" /></a></p>
+
+<ol>
+<li>Create a project in Google Refine.</li>
+</ol>
+
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.34.04.png"><img src="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.34.04-300x116.png" alt="" title="Create project Google Refine" width="300" height="116" class="alignnone size-medium wp-image-896" /></a></p>
+
+<ol>
+<li>If successful you would see this.</li>
+</ol>
+
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.34.35.png"><img src="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.34.35-300x121.png" alt="" title="Google Refine" width="300" height="121" class="alignnone size-medium wp-image-897" /></a></p>
+
+<ol>
+<li>Then we will fetch the url.</li>
+</ol>
+
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.36.31.png"><img src="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.36.31-300x276.png" alt="" title="Fetching url" width="300" height="276" class="alignnone size-medium wp-image-898" /></a></p>
+
+<ol>
+<li>You can set the delay and give the column a name then click Ok. You can also use some formular or expression</li>
+</ol>
+
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.37.31.png"><img src="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.37.31-300x228.png" alt="" title="Google Refine" width="300" height="228" class="alignnone size-medium wp-image-899" /></a></p>
+
+<ol>
+<li>Then you would see that the content has been fetch and put into the column we named.</li>
+</ol>
+
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.39.01.png"><img src="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.39.01-300x170.png" alt="" title="Page Content" width="300" height="170" class="alignnone size-medium wp-image-900" /></a></p>
+
+<ol>
+<li>Then we will only extract the title of the page. Now this one is tricky because every website has its own HTML and we need to adapt the expression.</li>
+</ol>
+
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.42.59.png"><img src="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.42.59-300x224.png" alt="" title="Google Refine Edit Column" width="300" height="224" class="alignnone size-medium wp-image-901" /></a></p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.46.37.png"><img src="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.46.37-300x214.png" alt="" title="GREL" width="300" height="214" class="alignnone size-medium wp-image-903" /></a></p>
+
+<p>For this example I use this expression. So that means get me &#8220;#main-content article header h2 a&#8221; and &#8220;join&#8221; with &#8220;,&#8221;</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          forEach(value.parseHtml().select("#main-content article header h2 a"), e, e.innerHtml()).join(",")
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<ol>
+<li>Then we will change the shape of this data to be each title per row by using &#8220;Split multi-values cells&#8221;</li>
+</ol>
+
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.48.17.png"><img src="http://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.48.17-300x116.png" alt="" title="Split multi-valued cells" width="300" height="116" class="alignnone size-medium wp-image-904" /></a></p>
+
+<p>That&#8217;s it. But there are a lot of ways you could use Google Refine to manipulate your data. One thing that you need to be careful if you&#8217;re fetching a large data, if Google Refine could not finish the process in one go. You might have to start it over. So, if your connection is not reliable I would suggest using Amazon EC2. You could easily deploy Google Refine on the cloud. Also, do give a lot of memore to start Google Refine, otherwise you might get OutOfMemory in the middle of the process.</p>
+
+<p>One thing that I found out and I haven&#8217;t researched it throughly but I think Google Refine lacks is the ability to extract text by regular expression. You could match a text with regular expression but you cannot extract the text you want. But overall, it&#8217;s still the best tool for the job.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/one-day-in-liechtenstein/">One Day in Liechtenstein.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-10-23T00:00:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I usually don&#8217;t blog about my trip, but this one it&#8217;s a bit different because I only had one day and I think <a href="http://www.tourismus.li/en/index.cfm" title="Liechtenstein">Liechtenstein</a> is a really nice country and really worth a visit, if you like trekking like me.</p>
+
+<p>Liechtenstein is right now the sixth smallest country in the world, which shares borders with, Germany, Switzerland and Austria. It&#8217;s so small that it doesn&#8217;t have an airport. The easiest to get into that I found out is through Switzerland. You can get a flight to Zurich and from there, buy a ticket to Buchs SG and from Buchs you can get a Bus from there to Liechtenstein which is just 20 minutes from Buchs.</p>
+
+<p><a href="#"><img src="http://www.noppanit.com/wp-content/uploads/2012/10/IMG_7827_edited-1-300x199.jpg" alt="" title="Bus from Buchs" width="300" height="199" class="alignnone size-medium wp-image-885 cool_border" /></a></p>
+
+<p><a href="#"><img src="http://www.noppanit.com/wp-content/uploads/2012/10/IMG_7874_edited-1-300x199.jpg" alt="" title="tickets" width="300" height="199" class="alignnone size-medium wp-image-888 cool_border" /></a></p>
+
+<p>Don&#8217;t worry if you don&#8217;t know where to go in Liechtenstein, just get in there and you&#8217;ll find out. The country is so small where you can go anywhere within 30 minutes. When you&#8217;re inside Liechtenstein you need one of these for your plan. You can get one on the bus.</p>
+
+<p><a href="#"><img src="http://www.noppanit.com/wp-content/uploads/2012/10/IMG_7877_edited-1-200x300.jpg" alt="" title="Bus schedule" width="200" height="300" class="alignnone size-medium wp-image-886 cool_border" /></a></p>
+
+<p>If you don&#8217;t know where to go I recommend Malbun. You can look it on of your timetable and find a stop &#8220;Malbun&#8221;</p>
+
+<p><a href="#"><img src="http://www.noppanit.com/wp-content/uploads/2012/10/IMG_7850_edited-1-300x199.jpg" alt="" title="Gina" width="300" height="199" class="alignnone size-medium wp-image-887 cool_border" /></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/8">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/6">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

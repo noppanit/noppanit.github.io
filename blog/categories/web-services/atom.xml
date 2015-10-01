@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Web Services | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/web-services/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Java and .NET Compact WebServices : SOAP Encoding Problem]]></title>
+    <link href="http://noppanit.github.io/java-and-net-compact-webservices-soap-encoding-problem/"/>
+    <updated>2008-07-14T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/java-and-net-compact-webservices-soap-encoding-problem</id>
+    <content type="html"><![CDATA[<p>I found this problem three days ago. I was developing java web services to work with .NET Compact framework, WM5. Java web services will return a string which is Thai language, but .NET compact cannot translate into Thai, it showed ?????. I think the problem was SOAP version. I have to downgrade from 1.2 to 1.1. I guess that that WM5 doesn&#8217;t match with SOAP 1.2. It works, at least for me</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[WorkShop : Java Web Service by Using JDeveloper]]></title>
+    <link href="http://noppanit.github.io/workshop-java-web-service-by-using-jdeveloper/"/>
+    <updated>2008-05-16T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/workshop-java-web-service-by-using-jdeveloper</id>
+    <content type="html"><![CDATA[<p>I don&#8217;t have to rewrite the topic again, because the developer team of Oracle did it very well.</p>
+
+<p><a href="http://www.oracle.com/technology/obe/obe1013jdev/ws/wsandascontrol.htm">http://www.oracle.com/technology/obe/obe1013jdev/ws/<br/>
+wsandascontrol.htm</a><br/>
+You can use this topic if :<br/>
+You want to develop your own web services<br/>
+You want to manage your own web services<br/>
+You want to deploy your own web services</p>
+
+<p>You can use this topic if:<br/>
+You want to create web services from WSDL<br/>
+<a href="http://www.oracle.com/technology/obe/obe1013jdev/wstopdown/wstopdown.htm">http://www.oracle.com/technology/obe/obe1013jdev/wstopdown/<br/>
+wstopdown.htm</a></p>
+]]></content>
+  </entry>
+  
+</feed>

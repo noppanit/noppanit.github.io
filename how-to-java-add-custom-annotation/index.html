@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How to : Java Add Custom Annotation - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="From Java 5, there is a new feature called annotation that provided easier to tag or mark class or method. For example, in JUnit we can ust @Test &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/how-to-java-add-custom-annotation/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How to : Java Add Custom Annotation</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-08-13T00:00:00-04:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>From Java 5, there is a new feature called annotation that provided easier to tag or mark class or method. For example, in JUnit we can ust @Test above a method to let the JUnit engine knows that this class is a test case. Moreover, we can also implement our own annotation as well.</p>
+
+<p>Reference: <a href="http://technicalmumbojumbo.wordpress.com/2008/01/13/java-custom-annotations/">http://technicalmumbojumbo.wordpress.com/2008/01/13/java-custom-annotations/</a></p>
+
+<p>Java Reference: <a href="http://download.oracle.com/javase/1.5.0/docs/guide/language/annotations.html">http://download.oracle.com/javase/1.5.0/docs/guide/language/annotations.html</a></p>
+
+<p>I used that reference to implement my own annotation at the first place, but I&#8217;m going to memorise that as well in this post.</p>
+
+<p>First, you need to create a new class and make it annotation.</p>
+
+<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="java codecolorer">
+          @Target<span class="br0">&#40;</span>ElementType.<span class="me1">TYPE</span><span class="br0">&#41;</span><br /> <span class="kw1">public</span> @<span class="kw1">interface</span> IgnoreClass<br /> <span class="br0">&#123;</span><br /> <br /> <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>The code above will let the java compiler knows that this class is an annotation. You will notice that instead of writing public class IgnoreClass, we write @interface to let the compiler knows. Above that we see @Target and @Retention. First @Target is a tag where we tell the compiler that this annotation can be used in Class, Method Or Field. This is the options we can use.</p>
+
+<p>TYPE: Class, interface, or enum (not annotation)<br/>
+FIELD: member fields (including enum values)<br/>
+METHOD: methods (does not include constrcutors)<br/>
+PARAMETER: method parameter<br/>
+CONSTRUCTOR: constructor<br/>
+LOCAL_VARIABLE: local variable or catch clause<br/>
+ANNOTATION_TYPE: Annotation types<br/>
+PACKAGE: java package</p>
+
+<p>That&#8217;s it, now we have our own annotation to use, we can also have fields in annotation as well.</p>
+
+<p>So this is how we use the annotation</p>
+
+<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="java codecolorer">
+          @IgnoreClass<br /> <span class="kw1">public</span> <span class="kw1">class</span> AClass<br /> <span class="br0">&#123;</span><br /> <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>And this is how we check that the class has such annotation</p>
+
+<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="java codecolorer">
+          <span class="kw1">Class</span><span class="br0">&#91;</span><span class="br0">&#93;</span> classes <span class="sy0">=</span> <span class="br0">&#123;</span>AClass.<span class="kw1">class</span><span class="br0">&#125;</span><span class="sy0">;</span><br /> <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw1">Class</span> classObj <span class="sy0">:</span> classes<span class="br0">&#41;</span> <br /> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp;<a href="http://www.google.com/search?hl=en&q=allinurl%3Aannotation+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Annotation</span></a><span class="br0">&#91;</span><span class="br0">&#93;</span> annotations <span class="sy0">=</span> classObj.<span class="me1">getAnnotations</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp;<span class="co1">// And then we can loop through this array and cast back to the annotation we want.</span><br /> <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>This is a very easy example for creating our own annotation. There are lots of things you can do with annotation. So, you might want to have a look more at the references above.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Noppanit Charassinvichai</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2010-08-13T00:00:00-04:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://noppanit.github.io/how-to-java-add-custom-annotation/" data-via="" data-counturl="http://noppanit.github.io/how-to-java-add-custom-annotation/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/tutorial-how-to-test-recordstore-with-emulator/" title="Previous Post: Tutorial : J2ME and Netbeans : How to test RecordStore with emulator">&laquo; Tutorial : J2ME and Netbeans : How to test RecordStore with emulator</a>
+      
+      
+        <a class="basic-alignment right" href="/tutorial-java-random-with-scaling/" title="Next Post: Tutorial : Java Random with scaling">Tutorial : Java Random with scaling &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

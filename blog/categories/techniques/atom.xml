@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Techniques | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/techniques/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Installing SSL on Amazon CloudFront]]></title>
+    <link href="http://noppanit.github.io/installing-ssl-on-amazon-cloudfront/"/>
+    <updated>2015-05-22T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/installing-ssl-on-amazon-cloudfront</id>
+    <content type="html"><![CDATA[<p>We have just installed SSL on our Amazon CloudFront. We followed this <a href="https://bryce.fisher-fleig.org/blog/setting-up-ssl-on-aws-cloudfront-and-s3/">blog post</a> from Bryce which I think it&#8217;s really good already. However, I was stuck on the last part where you have to upload the certificate to IAM. The difference is that I had to concatenate the crt files myself and I didn&#8217;t know how to do it. So I spent quite a long time to figure it out. I thought I would write this so it might help save sometime for anybody.</p>
+
+<p>If your SSL providers gave you the chained certificate already, then you don&#8217;t have to do anything else. However, when I downloaded my crt files I found this</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          my_domain.crt<br /> AddTrustExternalCARoot.crt<br /> TrustedSecureCertificateAuthority5.crt<br /> USERTrustRSAAddTrustCA.rt
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>And I&#8217;m shocked. So, I thought I would need to upload all of them three times which I did but only one got through and I thought the others must have been backup or some kind (I know I&#8217;m pretty stupid). So, I used <a href="https://www.digicert.com/help/">SSL Checker</a> to check and the site said my trust is broken. I thought how could it be I did everything right.</p>
+
+<p>It turned out that I didn&#8217;t upload all of the chained certificate. So, I went again and I tried to upload the second file which I got a nice error from Amazon that my certificate is malformed. I&#8217;m stumped again.</p>
+
+<p>After a lot of digging and reading. I have to figured out the order of certificates and concatenate all the certificates in the right order until the root. You can ask your SSL provider if you want a quicker answer but I went the hard way.</p>
+
+<p>You can run this command</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          openssl x509 <span class="re5">-text</span> <span class="re5">-noout</span> <span class="re5">-in</span> your_domain.crt
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>You should start with your <strong>domain.crt</strong> file which will be something like this</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          Certificate:<br /> &nbsp; &nbsp; Data:<br /> &nbsp; &nbsp; &nbsp; &nbsp; Version: 3 (0x2)<br /> &nbsp; &nbsp; &nbsp; &nbsp; Serial Number:<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; xxxxxx<br /> &nbsp; &nbsp; &nbsp; &nbsp; Signature Algorithm: xxxxx<br /> &nbsp; &nbsp; &nbsp; &nbsp; Issuer: C=US, ST=DE, L=Wilmington, O=Corporation Service Company, CN=Trusted Secure Certificate Authority 5<br /> &nbsp; &nbsp; &nbsp; &nbsp; Validity<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not Before: <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not After : <br /> &nbsp; &nbsp; &nbsp; &nbsp; Subject: C=US/postalCode=x, ST=xx, L=xxx, O=xxx, LLC, OU=xxx, OU=xxx, CN=xxx<br /> </cod><br /> <br /> You just need to look for <strong>Issuer</strong> which will tell you what is your next immediate certificate. In this case <strong>Trusted Secure Certificate Authority 5</strong> is my first certificate and then you go on and do the next one.<br /> <br /> <code lang="bash"><br /> openssl x509 -text -noout -in TrustedSecureCertificateAuthority5.crt
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>You will get something like this</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          Certificate:<br /> &nbsp; &nbsp; Data:<br /> &nbsp; &nbsp; &nbsp; &nbsp; Version: 3 (0x2)<br /> &nbsp; &nbsp; &nbsp; &nbsp; Serial Number:<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; xxxxx<br /> &nbsp; &nbsp; &nbsp; &nbsp; Signature Algorithm: xxxx<br /> &nbsp; &nbsp; &nbsp; &nbsp; Issuer: C=US, ST=New Jersey, L=Jersey City, O=The USERTRUST Network, CN=USERTrust RSA Certification Authority<br /> &nbsp; &nbsp; &nbsp; &nbsp; Validity<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not Before: Sep 10 00:00:00 2014 GMT<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not After : Sep &nbsp;9 23:59:59 2024 GMT<br /> &nbsp; &nbsp; &nbsp; &nbsp; Subject: C=US, ST=DE, L=Wilmington, O=Corporation Service Company, CN=Trusted Secure Certificate Authority 5
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>It means <strong>USERTrust</strong> is the next certificate then repeat the process again until you see this.</p>
+
+<pre><div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          Certificate:<br />
+          &nbsp; &nbsp; Data:<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; Version: 3 (0x2)<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; Serial Number: xxxx<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; Signature Algorithm: xxxxx<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; Issuer: C=SE, O=AddTrust AB, OU=AddTrust External TTP Network, CN=AddTrust External CA Root<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; Validity<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not Before: May 30 10:48:38 2000 GMT<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not After : May 30 10:48:38 2020 GMT<br />
+          &nbsp; &nbsp; &nbsp; &nbsp; Subject: C=SE, O=AddTrust AB, OU=AddTrust External TTP Network, CN=AddTrust External CA Root
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>If <strong>Issuer</strong> is the same as <strong>Subject</strong> that means this certificate is the root which is going to be the last. Now, what you can do is to concatenate in the correct order of all the certificates.</p>
+
+<p>You can use this command or you can use your favourite editor to do as well.</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          <span class="kw2">cat</span> first_crt second_crt third_crt <span class="sy0">></span> your_pem_file
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then when you&#8217;re ready to upload the certificate to Amazon you can just do this.</p>
+
+<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="bash codecolorer">
+          aws iam upload-server-certificate <span class="re5">--server-certificate-name</span> your_domain \<br /> <span class="re5">--certificate-body</span> file:<span class="sy0">//</span>your_domain.crt \<br /> <span class="re5">--private-key</span> file:<span class="sy0">//</span>your_domain.private \<br /> <span class="re5">--certificate-chain</span> file:<span class="sy0">//</span>your_pem_file \<br /> <span class="re5">--path</span> <span class="sy0">/</span>cloudfront<span class="sy0">/</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>The <strong>&#8211;certificate-chain</strong> should be your concatenated certificates.</p>
+
+<p>The format of the <strong>pem</strong> should be something like this.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          -----BEGIN CERTIFICATE-----<br /> Intermediate certificate 2<br /> -----END CERTIFICATE-----<br /> -----BEGIN CERTIFICATE-----<br /> Intermediate certificate 1<br /> -----END CERTIFICATE-----
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Apache2 Only Serves the First Virtual Host]]></title>
+    <link href="http://noppanit.github.io/apache2-only-serves-the-first-virtual-host/"/>
+    <updated>2011-04-28T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/apache2-only-serves-the-first-virtual-host</id>
+    <content type="html"><![CDATA[<p>I&#8217;m trying to add another virtual host, but for som reason. Apache2 only points to the first virtual host.<br/>
+The easiest way to fix this problem is to include</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          NameVirtualHost * # Include this line. <br /> <br /> <VirtualHost *><br /> DocumentRoot /path/to/site<br /> ServerName www.yoursite.com<br /> </VirtualHost>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>in the conf file of apache2</p>
+
+<p>Reference: <a href="http://alexking.org/blog/2007/11/01/apache-2-only-serves-first-virtual-host">http://alexking.org/blog/2007/11/01/apache-2-only-serves-first-virtual-host</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tutorial : Google Analytics Excludes Your Own Visits With Dynamic IP Address]]></title>
+    <link href="http://noppanit.github.io/tutorial-google-analytics-excludes-your-own-visits-with-dynamic-ip-address/"/>
+    <updated>2010-09-24T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/tutorial-google-analytics-excludes-your-own-visits-with-dynamic-ip-address</id>
+    <content type="html"><![CDATA[<p>Google Analytics is a great tool to gather and analyse your traffic on your website. However, if a vast majority visits of your website is only yourself, this will inflate the data on your report, such as visits and pageview. This is not good. GA provides you with filters, so that you could filter out your own visits from other traffic. But GA provides pre-defined filters if you have a static IP address or domain within your organisation. So, how would you exclude your traffic from your own computer at home, with dynamic IP address. The answer is cookie. The idea is just you set one variable that will be identified as only you and every time you visit your own site GA will filter your own traffic by looking at the variable. If your cookie has that variable, GA will ignore your visits.</p>
+
+<p>So, enough talking! let&#8217;s get started.<br/>
+First, copy the text below and create a new html file and paste the code into one html file. Then upload it to your server, so it would be <a href="http://www.yourdomain.com/thispage.html">http://www.yourdomain.com/thispage.html</a></p>
+
+<div class="codecolorer-container html4strict blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="html4strict codecolorer">
+          <span class="sc2"><<a href="http://december.com/html/4/element/html.html"><span class="kw2">html</span></a>></span><br /> <span class="sc2"><<a href="http://december.com/html/4/element/head.html"><span class="kw2">head</span></a>></span><br /> &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/script.html"><span class="kw2">script</span></a> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">"text/javascript"</span>></span><br /> &nbsp; &nbsp; var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");<br /> &nbsp; &nbsp; document.write("\<span class="sc2"><<a href="http://december.com/html/4/element/script.html"><span class="kw2">script</span></a> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">'" + gaJsHost + "google-analytics.com/ga.js'</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">'text/javascript'</span>></span>\<span class="sc2"><\<span class="sy0">/</span>script></span>" );<br /> &nbsp; <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/script.html"><span class="kw2">script</span></a>></span><br /> &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/script.html"><span class="kw2">script</span></a> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">"text/javascript"</span>></span><br /> &nbsp; &nbsp; var pageTracker = _gat._getTracker("UA-123456-1");<br /> &nbsp; &nbsp; pageTracker._initData();<br /> &nbsp; &nbsp; pageTracker._trackPageview();<br /> &nbsp; &nbsp; pageTracker._setVar("stop_counting_me");<br /> &nbsp; <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/script.html"><span class="kw2">script</span></a>></span><br /> <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/head.html"><span class="kw2">head</span></a>></span><br /> <span class="sc2"><<a href="http://december.com/html/4/element/body.html"><span class="kw2">body</span></a>></span><br /> <br /> <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/body.html"><span class="kw2">body</span></a>></span><br /> <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/html.html"><span class="kw2">html</span></a>></span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Then apply one filter as picture shown below.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2010/09/Screen-shot-2010-09-24-at-13.24.46.png"><img src="http://www.noppanit.com/wp-content/uploads/2010/09/Screen-shot-2010-09-24-at-13.24.46-300x168.png" alt="GA to exclude your own visits" title="Apply filter to exclude your own visits" width="300" height="168" class="alignnone size-medium wp-image-589" /></a></p>
+
+<p>And don&#8217;t forget to have a backup profile that doesn&#8217;t have any filter applied.</p>
+
+<p>This cookie is a 2-year cookie, so every time you install your new browser or use a new computer, don&#8217;t forget to visit this page <a href="http://www.yourdomain.com/thispage.html">http://www.yourdomain.com/thispage.html</a> before going on to your website.</p>
+
+<p>To prove that you have successfully installed this code on your computer, try viewing your cookie within your browser and looking for __utmv, if the content shows something like this 155621156.stop_counting_me then you are good to go. This means that you have set a cookie variable named stop_counting_me. Then in filter manager you apply a filter to exclude out data by looking at stop_counting_me variable.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Windows : Delete a Service, by Using Registry]]></title>
+    <link href="http://noppanit.github.io/windows-delete-a-service-by-using-registry/"/>
+    <updated>2008-05-28T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/windows-delete-a-service-by-using-registry</id>
+    <content type="html"><![CDATA[<p>Run Regedit and browse to this&#8230; and then delete the service you want</p>
+
+<div class="codetop">
+  REGISTRY
+</div>
+
+
+
+
+<div class="codemain">
+  HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Services
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to : MS Outlook Connects With Windows Live Mail]]></title>
+    <link href="http://noppanit.github.io/tutorial-ms-outlook-connects-with-windows-live-mail/"/>
+    <updated>2008-03-30T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/tutorial-ms-outlook-connects-with-windows-live-mail</id>
+    <content type="html"><![CDATA[<p>I created a new hotmail account, and am??having the problem connecting with outlook 2003, beucase the new windows live mail do not allow outlook to connect with it. So, it needs a <a href="http://www.freewarefiles.com/Microsoft-Office-Outlook-Connector-Beta_program_34975.html">connector</a>, and the problem is solved.</p>
+]]></content>
+  </entry>
+  
+</feed>

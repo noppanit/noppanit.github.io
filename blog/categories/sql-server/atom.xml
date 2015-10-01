@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Sql Server | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/sql-server/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[C# and SQL Express : Embedded SQL Server Express With Custom Application]]></title>
+    <link href="http://noppanit.github.io/c-and-sql-express-embedded-sql-server-express-with-custom-application/"/>
+    <updated>2008-07-01T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/c-and-sql-express-embedded-sql-server-express-with-custom-application</id>
+    <content type="html"><![CDATA[<p>Well, with my &#8220;Trinop&#8221; project that is built with C# .NET and SQL Server Express edition. However, the diffcult part is that when I deploy the application to end-user, the installation is very hard, becuase the use has to install SQL Server first and the install my program. At least, it&#8217;s hard for some people. So, the problem can be solved by installing SQL Server in silence mode. Therefore, the installation will be done by just one click.</p>
+
+<p>This is the example I have found.</p>
+
+<p><a href="http://msdn.microsoft.com/en-us/library/bb264562.aspx" target="_blank"><a href="http://msdn.microsoft.com/en-us/library/bb264562.aspx">http://msdn.microsoft.com/en-us/library/bb264562.aspx</a></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SQL Server : Comparing Date Without Time]]></title>
+    <link href="http://noppanit.github.io/sql-server-comparing-date-without-time/"/>
+    <updated>2008-06-27T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/sql-server-comparing-date-without-time</id>
+    <content type="html"><![CDATA[<p>I&#8217;m facing such problem which is comparing date with full datetime field. So, the problem is when I want to compare full datetime field that contains time. It will return 0 row, because sql server will also compare time too. No matter you have the exact same date, but you have the different time. This is the solution, just convert full datetime file to only date.</p>
+
+<div class="codetop">
+  SQL
+</div>
+
+
+
+
+<div class="codemain">
+  select cast(floor(cast([datetime field] as float)) as datetime) from [your table]
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HowTo : SQLServer 2005 : Exclusive Access Could Not Be Obtained Because the Database Is in Use]]></title>
+    <link href="http://noppanit.github.io/howto-sqlserver-2005-exclusive-access-could-not-be-obtained-because-the-database-is-in-use/"/>
+    <updated>2007-04-11T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/howto-sqlserver-2005-exclusive-access-could-not-be-obtained-because-the-database-is-in-use</id>
+    <content type="html"><![CDATA[<p>&#8220;Exclusive access could not be obtained because the database is in use&#8221;</p>
+
+<p>I got stuck with this error couple days, so mad. I found this solution in this <a href="http://www.thescripts.com/forum/thread605110.html">topic</a>, it works fine for me, anyway here&#8217;s the solution</p>
+
+<p>When you want to restore database in SQLServer you must use &#8216;master&#8217; database run command. If it work fine, so never mind, but if you got stuck in this kind of errors again. This solution may help you.</p>
+
+<p>Use this sql to drop connections</p>
+
+<blockquote><p>ALTER DATABASE databasename SET SINGLE_USER WITH ROLLBACK IMMEDIATE</p></blockquote>
+
+<p>And follow with restore sql</p>
+
+<blockquote><p>RESTORE DATABASE databasename FROM &#8230;</p></blockquote>
+
+<p>The last follow with allow connections</p>
+
+<blockquote><p>ALTER DATABASE databasename SET MULTI_USER</p></blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tutorial : Backup and Restore SQLExpress With C#]]></title>
+    <link href="http://noppanit.github.io/tutorial-backup-and-restore-sqlexpress-with-c/"/>
+    <updated>2007-04-10T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/tutorial-backup-and-restore-sqlexpress-with-c</id>
+    <content type="html"><![CDATA[<p>SQLExpress 2005 will use SMO to manage database, it ship drom DMO from older version (2000). In this topic I&#8217;ll talk about SMO.</p>
+
+<p>If you are using SQLServer Express Edition must read this <a href="http://www.sqldbatips.com/showarticle.asp?ID=35">topic</a></p>
+
+<p><a href="http://www.codeproject.com/useritems/SMODemo.asp">http://www.codeproject.com/useritems/SMODemo.asp</a> This is example application with SMO.</p>
+
+<p><a href="http://www.sqldbatips.com/showarticle.asp?ID=34">http://www.sqldbatips.com/showarticle.asp?ID=34</a> Another example application.</p>
+
+<p>However, I&#8217;ll present another way to use Backup and Restore database via C#, not using SMO. We&#8217;re using StoreProcedure. Sound wired aha, but I just find another ways HaHa.</p>
+
+<blockquote><p>CREATE PROCEDURE BackUpDatabase<br/>
+@name varchar(max)<br/>
+AS<br/>
+BACKUP DATABASE databasename TO @name<br/>
+WITH FORMAT, NAME = &#8216;Full Database Backup&#8217;, SKIP, NOREWIND, NOUNLOAD, STATS = 10</p></blockquote>
+
+<p>This store procedure can backup database in the same way, but maybe not easy to use it. anyway I prefer to use SMO to backup and restore database, much more easier.</p>
+
+<p>In c#</p>
+
+<blockquote><p>myConnection = new &#8230;.<br/>
+SqlCommand comadd = new SqlCommand(&#8220;BackUpDatabase&#8221;,myConnection);<br/>
+comadd.CommandType = CommandType.StoredProcedure;</p>
+
+<p>SqlParameter param1 = new SqlParameter(&#8220;@name&#8221;, name);<br/>
+comadd.Parameters.Add(param1);</p>
+
+<p>try<br/>
+{<br/>
+comadd.ExecuteNonQuery();<br/>
+}<br/>
+catch (Exception e)<br/>
+{<br/>
+Console.WriteLine(e.ToString());<br/>
+}<br/>
+finally<br/>
+{<br/>
+myConnection.Close();<br/>
+}</p></blockquote>
+
+<p>Or you can use direct SQL direct to SqlCommand neither, It&#8217;s work fine.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tutorial : Use SQLCMD for SQL Server 2005]]></title>
+    <link href="http://noppanit.github.io/tutorial-use-sqlcmd-for-sql-server-2005/"/>
+    <updated>2007-03-20T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/tutorial-use-sqlcmd-for-sql-server-2005</id>
+    <content type="html"><![CDATA[<p>in cmd prompt</p>
+
+<blockquote><p>sqlcmd -S [Server] -d [DATABASE NAME]</p></blockquote>
+]]></content>
+  </entry>
+  
+</feed>

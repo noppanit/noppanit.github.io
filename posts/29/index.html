@@ -1,0 +1,844 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="Does anybody encounters problems, svchost.exe consume most of CPU. I don&#8217;t know does anybody has the same problem with me?, but my problem is &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/posts/29/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/fix-windows-xp-fix-svchostexe-100-cpu-usage/">FIX : Windows XP Fix svchost.exe 100% CPU Usage</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2007-04-17T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Does anybody encounters problems, svchost.exe consume most of CPU. I don&#8217;t know does anybody has the same problem with me?, but my problem is about Windows Update. CPU utilization would hit 100% when windows xp want to updating something, it take so much time. This is how I fix about it.</p>
+
+<p><a href="http://www.daniweb.com/techtalkforums/thread75130.html">http://www.daniweb.com/techtalkforums/thread75130.html</a></p>
+
+<p>You can just turn it off but If you turned off you cannot update via website either.</p>
+
+<p>You can use this program to watch what process consume most of your CPU. You can see every processes and every application.<br/>
+<a href="http://www.microsoft.com/technet/sysinternals/utilities/ProcessExplorer.mspx">http://www.microsoft.com/technet/sysinternals/utilities/ProcessExplorer.msp </a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/howto-sqlserver-2005-exclusive-access-could-not-be-obtained-because-the-database-is-in-use/">HowTo : SQLServer 2005 : Exclusive Access Could Not Be Obtained Because the Database Is in Use</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2007-04-11T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>&#8220;Exclusive access could not be obtained because the database is in use&#8221;</p>
+
+<p>I got stuck with this error couple days, so mad. I found this solution in this <a href="http://www.thescripts.com/forum/thread605110.html">topic</a>, it works fine for me, anyway here&#8217;s the solution</p>
+
+<p>When you want to restore database in SQLServer you must use &#8216;master&#8217; database run command. If it work fine, so never mind, but if you got stuck in this kind of errors again. This solution may help you.</p>
+
+<p>Use this sql to drop connections</p>
+
+<blockquote><p>ALTER DATABASE databasename SET SINGLE_USER WITH ROLLBACK IMMEDIATE</p></blockquote>
+
+<p>And follow with restore sql</p>
+
+<blockquote><p>RESTORE DATABASE databasename FROM &#8230;</p></blockquote>
+
+<p>The last follow with allow connections</p>
+
+<blockquote><p>ALTER DATABASE databasename SET MULTI_USER</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tutorial-backup-and-restore-sqlexpress-with-c/">Tutorial : Backup and Restore SQLExpress With C#</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2007-04-10T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>SQLExpress 2005 will use SMO to manage database, it ship drom DMO from older version (2000). In this topic I&#8217;ll talk about SMO.</p>
+
+<p>If you are using SQLServer Express Edition must read this <a href="http://www.sqldbatips.com/showarticle.asp?ID=35">topic</a></p>
+
+<p><a href="http://www.codeproject.com/useritems/SMODemo.asp">http://www.codeproject.com/useritems/SMODemo.asp</a> This is example application with SMO.</p>
+
+<p><a href="http://www.sqldbatips.com/showarticle.asp?ID=34">http://www.sqldbatips.com/showarticle.asp?ID=34</a> Another example application.</p>
+
+<p>However, I&#8217;ll present another way to use Backup and Restore database via C#, not using SMO. We&#8217;re using StoreProcedure. Sound wired aha, but I just find another ways HaHa.</p>
+
+<blockquote><p>CREATE PROCEDURE BackUpDatabase<br/>
+@name varchar(max)<br/>
+AS<br/>
+BACKUP DATABASE databasename TO @name<br/>
+WITH FORMAT, NAME = &#8216;Full Database Backup&#8217;, SKIP, NOREWIND, NOUNLOAD, STATS = 10</p></blockquote>
+
+<p>This store procedure can backup database in the same way, but maybe not easy to use it. anyway I prefer to use SMO to backup and restore database, much more easier.</p>
+
+<p>In c#</p>
+
+<blockquote><p>myConnection = new &#8230;.<br/>
+SqlCommand comadd = new SqlCommand(&#8220;BackUpDatabase&#8221;,myConnection);<br/>
+comadd.CommandType = CommandType.StoredProcedure;</p>
+
+<p>SqlParameter param1 = new SqlParameter(&#8220;@name&#8221;, name);<br/>
+comadd.Parameters.Add(param1);</p>
+
+<p>try<br/>
+{<br/>
+comadd.ExecuteNonQuery();<br/>
+}<br/>
+catch (Exception e)<br/>
+{<br/>
+Console.WriteLine(e.ToString());<br/>
+}<br/>
+finally<br/>
+{<br/>
+myConnection.Close();<br/>
+}</p></blockquote>
+
+<p>Or you can use direct SQL direct to SqlCommand neither, It&#8217;s work fine.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/howto-set-loopback-on-router-zyxel/">HowTo : Set Loopback on Router (ZyXeL)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2007-04-06T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Everyone, used to use <a href="http://www.dyndns.com/">Dynamic DNS Server</a>, which is use your router and ADSL line setting your PC like a Server.</p>
+
+<p>This topic would all about If you set you PC as a SERVER, but when you access its webpage in your server. You will get &#8220;Weppage not found&#8221;, because your router will browse in the Internet first, it cannot loopback on itself. you must set &#8220;Loopback Command&#8221; on a router.</p>
+
+<blockquote><p><pre>Q: Why can not I access the LAN server from LAN host using its domain name?</pre></p>
+
+<p><pre>A: This is because when NAT is enabled in the NAT router, the domain</p></blockquote>
+
+<p>   name will be resolved to the WAN IP of the NAT router. This</p>
+
+<p>   causes the traffic stop at the WAN side of the NAT router when the</p>
+
+<p>   request is sent from the host to the internal server. And never</p>
+
+<p>   arrive at the server.</p>
+
+<p>Therefore, if you try to access this server from LAN side also</p>
+
+<p>   using its domain name, we provide an enhanced solution (not for</p>
+
+<p>   all models) to achieve this.</p>
+
+<p>You need to do two settings:</p>
+
+<ol>
+<li>Go to Menu 24.8 and type the following CI command</li>
+</ol>
+
+
+<p>ras &gt; ip nat loopback on</p>
+
+<ol>
+<li><p>Configure Port Forwarding in menu 15.1 by entering the server</p>
+
+<p>   IP and port number.</p></li>
+</ol>
+
+
+<p>Otherwise, you can only use the IP address to access the internal</p>
+
+<p>server from any LAN host. While only the remote users can use the</p>
+
+<p>domain name instead.</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tuturial-increase-wireless-singal-with-dvds/">Tuturial : Increase Wireless Singal With DVDs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2007-03-30T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p align="left">
+  Truly, I looked on this site <a href="http://www.pdamobiz.com/show_news.asp?NewsID=82022&PN=1">http://www.pdamobiz.com/show_news.asp?NewsID=82022&PN=1.</a><br /> So, I try it on my own. I don&#8217;t know much about science, So I cannot explain what happen with the signal and why DVD can help increase signal. I have been watch Discovery Channel about use silver paper increase mobile phone&#8217;s signal. I think it use the same theory.
+</p>
+
+
+
+
+<p align="left">
+  I try it on myself and it work with my Hp6828&#8217;s WiFi !!!
+</p>
+
+
+
+
+<p align="left">
+  &nbsp;
+</p>
+
+
+
+
+<p align="left">
+  Reference : <a href="http://www.planex.net/product/phaseout/wireless/gw-bst01.htm">http://www.planex.net/product/phaseout/wireless/gw-bst01.htm </a>
+</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tutorial-c-custom-control-listview-editable-column/">Tutorial : C# Custom Control ListView, Editable Column</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2007-03-30T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Everyone must used to use listiview on C#, But I think that everyone already knew that we cannot edit a text in column. You can set Property {LabelEdit = true}, this can make listview editable on the first column, but we want to edit every single column on focused item. This topic will show you how to custom listview by inherit.</p>
+
+<p><a href="http://www.codeproject.com/cs/miscctrl/ListViewCellEditors.asp" target="_blank"><a href="http://www.codeproject.com/cs/miscctrl/ListViewCellEditors.asp">http://www.codeproject.com/cs/miscctrl/ListViewCellEditors.asp</a> </a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tutotial-barcode/">Tutotial : BarCode</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2007-03-29T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I developing windows application with C#, it work with bar code scanner. So, I would like to write a blog about bar code. If it me to write all about bar code, I think is not such a good idea, because I don&#8217;t have enough knowledge about this. So, I&#8217;ll present wikipedia ha ha.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Barcode">??http://en.wikipedia.org/wiki/Barcode</a></p>
+
+<p>Ps. My?? application use 39 bar code.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tutorial-simple-barcoding-in-c/">Tutorial : Simple Barcoding in C#</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2007-03-29T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>According to my recently post, I developing windows application with bar code, So this topic will show you how to write application generate bar code on your own.</p>
+
+<p>A theory of this method is use 39 bar code true type font, which you can download it from the internet. Then, Convert the things you type from keyboard, such as &#8220;0001&#8221; or &#8220;ABCDE&#8221; or human readable code, and turn it to bar code.</p>
+
+<p><img src="http://img261.imageshack.us/img261/2023/php817bft3.gif" alt="ImageShack" border="0" /><br/>
+My name in Bar code<br/>
+References : <a href="http://www.csharphelp.com/archives3/archive507.html">http://www.csharphelp.com/archives3/archive507.html </a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/tutorial-c-with-directives-statement/">Tutorial : C# With Directives Statement</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2007-03-29T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>How to use #if directive. It something like &#8220;if&#8221; statement but there is something different as I want to show you. It kind of preprocessor directive.</p>
+
+<p><a href="http://msdn2.microsoft.com/en-us/library/ed8yd1ha.aspx">C# preprocessor directive</a></p>
+
+<h1>Example</h1>
+
+<blockquote><h1>define DEBUG</h1>
+
+<p>// &#8230;</p>
+
+<h1>if DEBUG</h1>
+
+<p>// do something while debug</p>
+
+<h1>endif</h1></blockquote>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/howto-install-ubuntu-linux-on-a-usb-pendrive/">HowTo : Install Ubuntu Linux on a USB Pendrive</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2007-03-29T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Someday, I woke up and browse to site <a href="http://www.astalavista.com">www.astalavista.com</a> I found this topic, I immediately interesting on it. Because I used to use Ubuntu to work before, and I have USB, most importance I encountered with the situation to use Linux LIVE CD to boot and backup all my work in windows XP, So I think this topic is very useful.</p>
+
+<p>This tutorial will show how-to install Ubuntu on a usb stick. Even though this tutorial uses Ubuntu as its base distribution, you could virtually use any type of Linux liveCD distribution.</p>
+
+<p>Being able to run Linux out of a usb bar is a great way to enjoy the live CD experience (being able to use Linux on any computer you might get by) and the big advantage of being easier to carry around than a CD.</p>
+
+<h2>1. Requirements</h2>
+
+<p>In order to reproduce this tutorial, you will need a few items such as:</p>
+
+<ul>
+<li>a ubuntu liveCD</li>
+<li>a usb bar of at least 1G</li>
+<li>a running Linux operating system</li>
+</ul>
+
+
+<p>Now that you have all this, it is time to prepare you USB bar do host the Ubuntu liveCD files.</p>
+
+<h2>2. Setting up the USB disk</h2>
+
+<h3>2.1. Finding the device</h3>
+
+<p>In the first place, you need to plug your usb drive and check under which device it is associated. To find out the device, run:</p>
+
+<blockquote><p>$ sudo fdisk -l</p></blockquote>
+
+<p>On my system, the device appears as being <em>/dev/sdb</em>, I will therefore use /dev/sdb as a reference for this tutorial, please replace it accordingly to your system (might be sda, sdc &#8230;).<br/>
+Once you found your device, you are going to create the partitions.</p>
+
+<p class="warning">
+  Using the wrong device name might destroy your system partition, please double check
+</p>
+
+
+<h3>2.2. Making the partitions</h3>
+
+<p>Make sure every of your already mounted partition are unmounted:</p>
+
+<blockquote><p>$sudo umount /dev/sdb1</p></blockquote>
+
+<p>and then launch <strong>fdisk</strong>, a tool to edit partition under linux:</p>
+
+<blockquote><p>sudo fdisk /dev/sdb</p></blockquote>
+
+<p>We are going delete all the partition and then create 2 new partition: one fat partition of 750M which will host the files from the live CD iso, and the rest on another partition.</p>
+
+<p>At fdisk prompt type <em>d x</em> where x is the partition number (you can simply type d if you only have one partition), then:</p>
+
+<ul>
+<li><em>n</em> to create a new partition</li>
+<li><em>p</em> to make it primary</li>
+<li><em>1</em> so it is the first primary partition</li>
+<li>Accept the default or type <em>1</em> to start from the first cylinder</li>
+<li><em>+750M</em> to make it 750 Meg big</li>
+<li><em>a</em> to toggle the partition active for boot</li>
+<li><em>1</em> to choose the 1 partition</li>
+<li><em>t</em> to change the partition type</li>
+<li><em>6</em> to set it to FAT16</li>
+</ul>
+
+
+<p>Now we have out first partition set up, let&#8217;s create the second one:</p>
+
+<ul>
+<li><em>n</em> to create yet again a new partition</li>
+<li><em>p</em> to make it primary</li>
+<li><em>2</em> to be the second partition</li>
+<li>Accept the default by typing Enter</li>
+<li>Accept the default to make your partition as big as possible</li>
+<li>Finally, type <em>w</em> to write the change to your usb pendrive</li>
+</ul>
+
+
+<p>Partitions are now created, let&#8217;s format them.</p>
+
+<h3>2.3. Formatting the partitions</h3>
+
+<p>The first partition is going to be formated as a FAT filesystem of size 16 and we are going to attribute it the label &#8220;liveusb&#8221;.</p>
+
+<blockquote><p>$ sudo mkfs.vfat -F 16 -n liveusb /dev/sdb1</p></blockquote>
+
+<p>The second partition is going to be of type ext2 with a blocksize of 4096 bytes and the label <strong>casper-rw</strong>. Mind that it has to be labeled as <em>casper-rw</em> otherwise the tutorial won&#8217;t work!.</p>
+
+<blockquote><p>$ sudo mkfs.ext2 -b 4096 -L casper-rw /dev/sdb2</p></blockquote>
+
+<p>At this stage, our usb pendrive is ready to host the liveCD image. Now, let&#8217;s copy the files to the usb bar.</p>
+
+<h2>3. Installing Ubuntu on the USB stick</h2>
+
+<h3>3.1. Mounting Ubuntu liveCd image</h3>
+
+<p>In the first place we need to mount our ubuntu iso. Depending if you have the .iso file or the CD, there is 2 different ways of mounting it.</p>
+
+<h4>3.1.1. Mounting from the CD</h4>
+
+<p>People using Ubuntu or any other user-friendly distro, might just have to insert the cd and it will be mounted automatically. If this is not the case:</p>
+
+<blockquote><p>$ sudo mount /media/cdrom</p></blockquote>
+
+<p>should mount it.</p>
+
+<h4>3.1.2. Mounting from an .iso image file</h4>
+
+<p>We will need to create a temporary directory, let say <em>/tmp/ubuntu-livecd</em> and then mount our iso (I will be using a feisty fawn iso).</p>
+
+<blockquote><p>$ mkdir /tmp/ubuntu-livecd<br/>
+$ sudo mount -o loop /path/to/feisty-desktop-i386.iso /tmp/ubuntu-livecd</p></blockquote>
+
+<p>Once the cd image is ready, it is time to mount the newly created usb bar partitions:</p>
+
+<h3>3.2. Mounting the usb bar partitions</h3>
+
+<p>Same here, you might be able to get both your partition by simply replugging the usb pendrive, partition might appears as: <em>/media/liveusb</em> and <em>/media/casper-rw</em>. If this is not the case, then you will need to mount them manually:</p>
+
+<blockquote><p>$ mkdir /tmp/liveusb<br/>
+$ sudo mount /dev/sdb1 /tmp/liveusb</p></blockquote>
+
+<p>All the partitions we need are now mounted, let&#8217;s copy the files.</p>
+
+<h3>3.3. Copying the files to the usb bar</h3>
+
+<p>Let positionned yourself on the CD image directory (in my case: /tmp/ubuntu-livecd , but it might be /media/cdrom , and copy at the root of your usb first partition:</p>
+
+<ul>
+<li>the directories: &#8216;casper&#8217;, &#8216;disctree&#8217;, &#8216;dists&#8217;, &#8216;install&#8217;, &#8216;pics&#8217;, &#8216;pool&#8217;, &#8216;preseed&#8217;, &#8216;.disk&#8217;</li>
+<li>The content of directory &#8216;isolinux&#8217;</li>
+<li>and files &#8216;md5sum.txt&#8217;, &#8216;README.diskdefines&#8217;, &#8216;ubuntu.ico&#8217;</li>
+<li>as well as files: &#8216;casper/vmlinuz&#8217;, &#8216;casper/initrd.gz&#8217; and &#8216;install/mt86plus&#8217;</li>
+</ul>
+
+
+<blockquote><p>$ cd /tmp/ubutu-livecd<br/>
+$ sudo cp -rf casper disctree dists install pics pool preseed .disk isolinux/* md5sum.txt README.diskdefines ubuntu.ico casper/vmlinuz casper/initrd.gz install/mt86plus /media/liveusb/</p></blockquote>
+
+<p>It might complain about symbolic links not being able to create, you can ignore this.</p>
+
+<p>Now let&#8217;s go to the first partition of your usb disk and rename <em>isolinux.cfg</em> to <em>syslinux.cfg</em>:</p>
+
+<blockquote><p>$ cd /tmp/liveusb<br/>
+$ sudo mv isolinux.cfg syslinux.cfg</p></blockquote>
+
+<p>change /tmp/liveusb according to your settings</p>
+
+<p>Edit syslinux.cfg so it looks like:<br/>
+DEFAULT persistent</p>
+
+<p>GFXBOOT bootlogo</p>
+
+<p>GFXBOOT-BACKGROUND 0xB6875A</p>
+
+<p>APPEND file=preseed/ubuntu.seed boot=casper initrd=initrd.gz ramdisk_size=1048576 root=/dev/ram rw quiet splash &#8212;</p>
+
+<p>LABEL persistent</p>
+
+<p>menu label ^Start Ubuntu in persistent mode</p>
+
+<p>kernel vmlinuz</p>
+
+<p>append file=preseed/ubuntu.seed boot=casper persistent initrd=initrd.gz ramdisk_size=1048576 root=/dev/ram rw quiet splash &#8212;</p>
+
+<p>LABEL live</p>
+
+<p>menu label ^Start or install Ubuntu</p>
+
+<p>kernel vmlinuz</p>
+
+<p>append file=preseed/ubuntu.seed boot=casper initrd=initrd.gz ramdisk_size=1048576 root=/dev/ram rw quiet splash &#8212;</p>
+
+<p>LABEL xforcevesa</p>
+
+<p>menu label Start Ubuntu in safe ^graphics mode</p>
+
+<p>kernel vmlinuz</p>
+
+<p>append file=preseed/ubuntu.seed boot=casper xforcevesa initrd=initrd.gz ramdisk_size=1048576 root=/dev/ram rw quiet splash &#8212;</p>
+
+<p>LABEL check</p>
+
+<p>menu label ^Check CD for defects</p>
+
+<p>kernel vmlinuz</p>
+
+<p>append boot=casper integrity-check initrd=initrd.gz ramdisk_size=1048576 root=/dev/ram rw quiet splash &#8212;</p>
+
+<p>LABEL memtest</p>
+
+<p>menu label ^Memory test</p>
+
+<p>kernel mt86plus</p>
+
+<p>append &#8211;</p>
+
+<p>LABEL hd</p>
+
+<p>menu label ^Boot from first hard disk</p>
+
+<p>localboot 0x80</p>
+
+<p>append &#8211;</p>
+
+<p>DISPLAY isolinux.txt</p>
+
+<p>TIMEOUT 300</p>
+
+<p>PROMPT 1</p>
+
+<p>F1 f1.txt</p>
+
+<p>F2 f2.txt</p>
+
+<p>F3 f3.txt</p>
+
+<p>F4 f4.txt</p>
+
+<p>F5 f5.txt</p>
+
+<p>F6 f6.txt</p>
+
+<p>F7 f7.txt</p>
+
+<p>F8 f8.txt</p>
+
+<p>F9 f9.txt</p>
+
+<p>F0 f10.txt<br/>
+Woof, finally we have our usb disk almost usuable. We have a last thing to do: make the usb bootable.</p>
+
+<h3>3.4. Making the usb bar bootable.</h3>
+
+<p>in order to make our usb disk bootable, we need to install <em>syslinux</em> and <em>mtools</em>:</p>
+
+<p class="shell">
+  $ sudo apt-get install syslinux mtools
+</p>
+
+
+<p>And finally unmount /dev/sdb1 and make it bootable:</p>
+
+<blockquote><p>$ cd<br/>
+$ sudo umount /tmp/liveusb<br/>
+$ sudo syslinux -f /dev/sdb1</p></blockquote>
+
+<p>Here we are, reboot, set your BIOS to boot from the usb bar and enjoy Ubuntu linux from a pendrive</p>
+
+<h2>4. Troubleshooting</h2>
+
+<p>If you are having trouble booting on the usb bar, this might be due to your MBR being corrupted. In order to fix it up, you can use lilo (I installed lilo on my box only for thid purpose).</p>
+
+<blockquote><p>$ lilo -M /dev/sdb</p>
+
+<p>will fix the MBR on device /dev/sdb</p></blockquote>
+
+<p><a href="http://www.debuntu.org/how-to-install-ubuntu-linux-on-usb-bar">http://www.debuntu.org/how-to-install-ubuntu-linux-on-usb-bar </a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/30">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/28">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,461 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Example: How Did I Convert Async Code to Sync Code With Promise. - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="I&#8217;ve just finished my first refactor to convert my node.js code to be more promisey (I believe that&#8217;s the word they use these days). &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/example-how-did-i-convert-async-code-to-sync-code-with-promise/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Example: How Did I Convert Async Code to Sync Code With Promise.</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-05-24T00:00:00-04:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I&#8217;ve just finished my first refactor to convert my node.js code to be more promisey (I believe that&#8217;s the word they use these days). There&#8217;s lots of documents out there to do this. However, I thought I should contribute more to help me understand more and might get some feedback from people who&#8217;s seen it as well.</p>
+
+<p>I&#8217;m trying to create a bot to report me back the performance of my site in desktop and mobile mode. So, I thought it would be easy since Google has an <a href="https://developers.google.com/speed/docs/insights/v2/getting-started">API</a> for that already so I went ahead and did this.</p>
+
+<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="kw2">var</span> request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="kw2">var</span> urlToGetTheScore <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=desktop&amp;fields=ruleGroups'</span><br />
+          <br />
+          request.<span class="me1">get</span><span class="br0">&#40;</span>urlToGetTheScore<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> console.<span class="me1">log</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <br />
+          &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>It&#8217;s pretty easy and straight forward right but now that would only return the score of desktop. I need the score of my mobile site as well. So, I added more code to be like this.</p>
+
+<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="kw2">var</span> request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          <span class="kw2">var</span> urlToGetTheScoreDesktop <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=desktop&amp;fields=ruleGroups'</span><br />
+          <br />
+          <span class="kw2">var</span> urlToGetTheScoreMobile <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=mobile&amp;fields=ruleGroups'</span><br />
+          <br />
+          request.<span class="me1">get</span><span class="br0">&#40;</span>urlToGetTheScoreDesktop<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> console.<span class="me1">log</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          request.<span class="me1">get</span><span class="br0">&#40;</span>urlToGetTheScoreMobile<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> console.<span class="me1">log</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>That&#8217;s great but I want to return both scores to a client so I can report the scores rather than printing them to the console. Since, <strong>request</strong> is asynchronous you cannot guarantee which score would come first. So, I thought it&#8217;s easy. I just need to call one request after the other. So, I came up with this.</p>
+
+<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="kw2">var</span> request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          <span class="kw2">var</span> urlToGetTheScoreDesktop <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=desktop&amp;fields=ruleGroups'</span><br />
+          <br />
+          <span class="kw2">var</span> urlToGetTheScoreMobile <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=mobile&amp;fields=ruleGroups'</span><br />
+          <br />
+          request.<span class="me1">get</span><span class="br0">&#40;</span>urlToGetTheScoreDesktop<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> reject<span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; <span class="kw2">var</span> desktopScore <span class="sy0">=</span> JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; request.<span class="me1">get</span><span class="br0">&#40;</span>urlToGetTheScoreMobile<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> reject<span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; &nbsp; <span class="kw2">var</span> mobileScore <span class="sy0">=</span> JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span><span class="st0">'desktop score is '</span> <span class="sy0">+</span> desktopScore <span class="sy0">+</span> <span class="st0">' and mobile score is '</span> <span class="sy0">+</span> mobileScore<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>&nbsp;</p>
+
+<p>Look at how ugly it is. Now I want to make it prettier. So, I will use Promise to make it look nicer. As a good engineer I need to create a test first.</p>
+
+<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="kw2">var</span> perfModule <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'./pagespeed'</span><span class="br0">&#41;</span><span class="sy0">,</span><br />
+          sinon <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'sinon'</span><span class="br0">&#41;</span><span class="sy0">,</span><br />
+          request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">,</span><br />
+          expect <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'expect.js'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          describe<span class="br0">&#40;</span><span class="st0">'Performance'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          <span class="kw2">var</span> server<span class="sy0">;</span><br />
+          &nbsp; beforeEach<span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>done<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; sinon.<span class="me1">stub</span><span class="br0">&#40;</span>request<span class="sy0">,</span> <span class="st0">'get'</span><span class="br0">&#41;</span>.<span class="me1">yields</span><span class="br0">&#40;</span><span class="kw2">null</span><span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> JSON.<span class="me1">stringify</span><span class="br0">&#40;</span><span class="br0">&#123;</span>ruleGroups <span class="sy0">:</span> <span class="br0">&#123;</span> SPEED<span class="sy0">:</span> <span class="br0">&#123;</span>score<span class="sy0">:</span><span class="nu0">10</span><span class="br0">&#125;</span><span class="br0">&#125;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; done<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <br />
+          &nbsp; it<span class="br0">&#40;</span><span class="st0">'should send performance stats to chat room'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>done<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; perfModule.<span class="me1">pagespeed</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>donotknow<span class="sy0">,</span> msg<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; &nbsp; done<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; &nbsp; expect<span class="br0">&#40;</span>msg<span class="br0">&#41;</span>.<span class="me1">to</span>.<span class="me1">eql</span><span class="br0">&#40;</span><span class="st0">'desktop speed is 10 and mobile speed is 10'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>I&#8217;m using <a href="http://sinonjs.org/">Sinon.js</a> as the mocking framework and <a href="http://mochajs.org/">Mocha</a> as the testing framework which are pretty standard.</p>
+
+<p>Now I can start refactor my code. At first, I wrote some code like this, just to make it work.</p>
+
+<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="kw2">var</span> request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          <span class="kw2">var</span> getSpeed <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>strategy<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; <span class="kw2">var</span> url <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy='</span><span class="sy0">+</span> strategy <span class="sy0">+</span> <span class="st0">'&amp;fields=ruleGroups'</span><br />
+          &nbsp; <span class="kw1">return</span> <span class="kw2">new</span> Promise<span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>resolve<span class="sy0">,</span> reject<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; request.<span class="me1">get</span><span class="br0">&#40;</span>url<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> reject<span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; &nbsp; resolve<span class="br0">&#40;</span>JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="sy0">;</span><br />
+          <br />
+          <span class="kw2">var</span> pagespeed <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>cb<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; getSpeed<span class="br0">&#40;</span><span class="st0">'desktop'</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>desktopSpeed<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; getSpeed<span class="br0">&#40;</span><span class="st0">'mobile'</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>mobileSpeed<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span><span class="st0">'desktop speed is '</span> <span class="sy0">+</span> desktopSpeed <span class="sy0">+</span> <span class="st0">' and mobile speed is '</span> <span class="sy0">+</span> mobileSpeed<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="sy0">;</span><br />
+          <br />
+          exports.<span class="me1">pagespeed</span> <span class="sy0">=</span> pagespeed<span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>Any good JavaScript developer would be like, WTH!. You still have callbacks. I thought Promise would solve that issue already! Now, I could use the power of <strong>Promise.all</strong> which takes array of promises and return array of results. My final code would look something like this.</p>
+
+<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          <span class="kw2">var</span> request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">,</span><br />
+          Promise <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'promise'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          <span class="kw2">var</span> getSpeed <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>strategy<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; <span class="kw2">var</span> url <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http%3A%2F%2Ffusion.net&amp;strategy='</span><span class="sy0">+</span> strategy <span class="sy0">+</span> <span class="st0">'&amp;fields=ruleGroups'</span><br />
+          &nbsp; <span class="kw1">return</span> <span class="kw2">new</span> Promise<span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>resolve<span class="sy0">,</span> reject<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; request.<span class="me1">get</span><span class="br0">&#40;</span>url<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> reject<span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; &nbsp; resolve<span class="br0">&#40;</span>JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="sy0">;</span><br />
+          <br />
+          <span class="kw2">var</span> pagespeed <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>cb<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; Promise.<span class="me1">all</span><span class="br0">&#40;</span><span class="br0">&#91;</span>getSpeed<span class="br0">&#40;</span><span class="st0">'desktop'</span><span class="br0">&#41;</span><span class="sy0">,</span> getSpeed<span class="br0">&#40;</span><span class="st0">'mobile'</span><span class="br0">&#41;</span><span class="br0">&#93;</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>speed<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; <span class="kw2">var</span> desktop <span class="sy0">=</span> speed<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span><span class="sy0">;</span><br />
+          &nbsp; &nbsp; <span class="kw2">var</span> mobile <span class="sy0">=</span> speed<span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">;</span><br />
+          <br />
+          &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span><span class="kw2">null</span><span class="sy0">,</span> <span class="st0">'desktop speed is '</span> <span class="sy0">+</span> desktop <span class="sy0">+</span> <span class="st0">' and mobile speed is '</span> <span class="sy0">+</span> mobile<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span>.<span class="kw1">catch</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
+          &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
+          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
+          <span class="br0">&#125;</span><span class="sy0">;</span><br />
+          <br />
+          exports.<span class="me1">pagespeed</span> <span class="sy0">=</span> pagespeed<span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</pre>
+
+
+<p>I&#8217;m not an expert in Promise and I welcome any feedback that would help improve my code.</p>
+
+<p>Reference<br/>
+<a href="http://www.html5rocks.com/en/tutorials/es6/promises/">ES6 Promises</a><br/>
+<a href="http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html">We have a problem with promises</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Noppanit Charassinvichai</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-05-24T00:00:00-04:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>javascript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://noppanit.github.io/example-how-did-i-convert-async-code-to-sync-code-with-promise/" data-via="" data-counturl="http://noppanit.github.io/example-how-did-i-convert-async-code-to-sync-code-with-promise/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/rise-of-the-slackbots/" title="Previous Post: Rise of the (Slack)Bots.">&laquo; Rise of the (Slack)Bots.</a>
+      
+      
+        <a class="basic-alignment right" href="/the-most-basic-example-of-linear-regression/" title="Next Post: The most basic example of Linear Regression">The most basic example of Linear Regression &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

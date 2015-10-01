@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Refreshment | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/refreshment/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The Best Hot Chocolate]]></title>
+    <link href="http://noppanit.github.io/the-best-hot-chocolate/"/>
+    <updated>2008-03-29T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/the-best-hot-chocolate</id>
+    <content type="html"><![CDATA[<p>This is the best chocolate I have ever taste.</p>
+
+<p>Ingredients<br/>
+1. Chocolate powder<br/>
+2. Semi-skimmed milk<br/>
+3. Chocolate moose</p>
+
+<ol>
+<li>Simmer semi-skimmed milk until you can see a little bubbles come out, but not boil it until the boiling point</li>
+<li>2 tablespoons of chocolate powder and add the simmering milk</li>
+<li>decorate chocolate moose on top of the chocolate milk</li>
+<li>sprinkle a little bit of chocolate powder as in the picture</li>
+</ol>
+
+
+<p><a href="http://www.noppanit.com/cooking/wp-content/uploads/2007/12/img_2363.jpg" title="Direct link to file"><img src="http://www.noppanit.com/cooking/wp-content/uploads/2007/12/img_2363.thumbnail.jpg" alt="The best hot chocolate" height="128" width="162" /></a></p>
+]]></content>
+  </entry>
+  
+</feed>

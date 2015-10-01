@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Programming | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/programming/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to : C++ Convert Between Various String Types]]></title>
+    <link href="http://noppanit.github.io/c-convert-between-various-string-types/"/>
+    <updated>2010-08-06T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/c-convert-between-various-string-types</id>
+    <content type="html"><![CDATA[<p>Just to remember.</p>
+
+<p><a href="http://msdn.microsoft.com/en-us/library/ms235631(VS.80).aspx">http://msdn.microsoft.com/en-us/library/ms235631(VS.80).aspx</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Design Pattern : Method Factory]]></title>
+    <link href="http://noppanit.github.io/design-pattern-method-factory/"/>
+    <updated>2008-07-01T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/design-pattern-method-factory</id>
+    <content type="html"><![CDATA[<p>Method factory is built to prevent the user from creating an instance directly. For instance, MyClass myClass = new MyClass(); This will prevent from creating too many objects. I will explain no more, because wikipedia do it so much better than me.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Factory_method_pattern">http://en.wikipedia.org/wiki/Factory_method_pattern</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tutorial : Accordion V2.0, a Useful Script for Your Websites]]></title>
+    <link href="http://noppanit.github.io/tutorial-accordion-v20-an-useful-script-for-your-websites/"/>
+    <updated>2007-10-09T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/tutorial-accordion-v20-an-useful-script-for-your-websites</id>
+    <content type="html"><![CDATA[<p>I found these scripts on my e-mail, and if you&#8217;re using wordpress when you&#8217;re writing your blog. You can see the right-hand corner with the expansion windows that can slide up and down.</p>
+
+<p>References : <a href="http://www.stickmanlabs.com/accordion/">Accordion v2.0</a></p>
+
+<p>This is <a href="http://www.noppanit.com/accordion/index.html">my accordion</a> and it&#8217;s very simple. I modified it to a better way to understand!!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HowTo : C# Change DateTime Format Programmatically]]></title>
+    <link href="http://noppanit.github.io/howto-c-change-datetime-format-programmatically/"/>
+    <updated>2007-04-19T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/howto-c-change-datetime-format-programmatically</id>
+    <content type="html"><![CDATA[<p>When you use Datetime. Now in c#, it&#8217;ll give u a datetime as same as in your computer configured. If you want to change it by programmatically. use the following code.</p>
+
+<div class="codecolorer-container csharp blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="csharp codecolorer">
+          <span class="kw1">using</span> <span class="co3">System.Globalization</span><span class="sy0">;</span><br /> <br /> <span class="kw1">private</span> DateTime dt <span class="sy0">=</span> DateTime<span class="sy0">.</span><span class="me1">Now</span><span class="sy0">;</span><br /> <span class="kw1">private</span> DateTimeFormatInfo &nbsp;dfi <span class="sy0">=</span> <a href="http://www.google.com/search?q=new+msdn.microsoft.com"><span class="kw3">new</span></a> DateTimeFormatInfo<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="kw1">private</span> CultureInfo ci <span class="sy0">=</span> <a href="http://www.google.com/search?q=new+msdn.microsoft.com"><span class="kw3">new</span></a> CultureInfo<span class="br0">&#40;</span><span class="st0">"th-TH"</span><span class="br0">&#41;</span><span class="sy0">;</span> <span class="co1">// Change where is you culture do you want</span><br /> <br /> Console<span class="sy0">.</span><span class="me1">WriteLine</span><span class="br0">&#40;</span>dt<span class="sy0">.</span><span class="me1">ToString</span><span class="br0">&#40;</span><span class="st0">"d"</span>,ci<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+<p align="left">
+  Reference : <a href="http://msdn2.microsoft.com/en-us/library/az4se3k1%28VS.71%29.aspx">http://msdn2.microsoft.com/en-us/library/az4se3k1(VS.71).aspx </a>
+</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HowTo : SQLServer 2005 : Exclusive Access Could Not Be Obtained Because the Database Is in Use]]></title>
+    <link href="http://noppanit.github.io/howto-sqlserver-2005-exclusive-access-could-not-be-obtained-because-the-database-is-in-use/"/>
+    <updated>2007-04-11T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/howto-sqlserver-2005-exclusive-access-could-not-be-obtained-because-the-database-is-in-use</id>
+    <content type="html"><![CDATA[<p>&#8220;Exclusive access could not be obtained because the database is in use&#8221;</p>
+
+<p>I got stuck with this error couple days, so mad. I found this solution in this <a href="http://www.thescripts.com/forum/thread605110.html">topic</a>, it works fine for me, anyway here&#8217;s the solution</p>
+
+<p>When you want to restore database in SQLServer you must use &#8216;master&#8217; database run command. If it work fine, so never mind, but if you got stuck in this kind of errors again. This solution may help you.</p>
+
+<p>Use this sql to drop connections</p>
+
+<blockquote><p>ALTER DATABASE databasename SET SINGLE_USER WITH ROLLBACK IMMEDIATE</p></blockquote>
+
+<p>And follow with restore sql</p>
+
+<blockquote><p>RESTORE DATABASE databasename FROM &#8230;</p></blockquote>
+
+<p>The last follow with allow connections</p>
+
+<blockquote><p>ALTER DATABASE databasename SET MULTI_USER</p></blockquote>
+]]></content>
+  </entry>
+  
+</feed>

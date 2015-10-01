@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Windows | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/windows/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to : Searching for Opening Ports]]></title>
+    <link href="http://noppanit.github.io/how-to-searching-for-opening-ports/"/>
+    <updated>2008-06-02T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/how-to-searching-for-opening-ports</id>
+    <content type="html"><![CDATA[<p>I found this topic which is quite useful for security concerns. <a href="http://www.zdnetasia.com/techguide/">http://www.zdnetasia.com/techguide/</a></p>
+
+<div class="codetop">
+  COMMAND LINE
+</div>
+
+
+
+
+<div class="codemain">
+  $ netstat -a | find "LISTENING"??
+</div>
+
+
+
+
+<div class="codetop">
+  COMMAND LINE LINUX
+</div>
+
+
+
+
+<div class="codemain">
+  $ netstat -an | grep "LISTENING"
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Windows : Delete a Service, by Using Registry]]></title>
+    <link href="http://noppanit.github.io/windows-delete-a-service-by-using-registry/"/>
+    <updated>2008-05-28T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/windows-delete-a-service-by-using-registry</id>
+    <content type="html"><![CDATA[<p>Run Regedit and browse to this&#8230; and then delete the service you want</p>
+
+<div class="codetop">
+  REGISTRY
+</div>
+
+
+
+
+<div class="codemain">
+  HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Services
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[If Task Manager on Windows Has Been Disabled]]></title>
+    <link href="http://noppanit.github.io/if-task-manager-on-windows-has-been-disabled/"/>
+    <updated>2008-05-15T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/if-task-manager-on-windows-has-been-disabled</id>
+    <content type="html"><![CDATA[<p>I have been attacked by Spyware, and it disabled my task manager. So, I coundn&#8217;t use CTRL+ALT+DEL at all. I have to re-open it again by using Group Policy.</p>
+
+<ol>
+<li>Open Run command and type : Gpedit.msc</li>
+<li>From User Configuration -> Administrative Templates -> System -><br/>
+Ctrl+Alt+Del Options -> Remove Task Manger</li>
+<li>Change the state to be &#8220;Disabled&#8221;</li>
+<li>Finish, you can use task manager now. or by using HotKey : Ctrl+L_Shife+ESC.</li>
+</ol>
+
+
+<p>Or you can look into the registry.<br/>
+HKEY_LOCAL_MACHIN\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\<br/>
+system\DisabledTaskMgr</p>
+
+<p>Set it to &#8220;1&#8221;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[FixIt : Misdirected Shortcuts]]></title>
+    <link href="http://noppanit.github.io/fixit-misdirected-shortcuts/"/>
+    <updated>2008-03-19T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/fixit-misdirected-shortcuts</id>
+    <content type="html"><![CDATA[<p>I have found this problem from my sister notebook. She had a problem which the registry was unintentionally cleaned. She run a registry program, and it did clean the registry, but it did more than that. So, my sister computer cannot find the shortcut file type which made all of shortcuts dead, and the shortcut file type was gone. For instance, when she clicked the programs on Start Menu; that programs are made from lnk file type. Those programs didn&#8217;t respond, because the computer cannot find shortcut file type. The problem can be solved by fixing shortcut file type.</p>
+
+<ol>
+<li><p>Follow <a href="http://filext.com/faq/broken_exe_association.php" target="_blank"><a href="http://filext.com/faq/broken_exe_association.php">http://filext.com/faq/broken_exe_association.php</a></a>.</p></li>
+<li><p>1.1 In create new extension, if you cannot find ShortCut file type please follow this solution <a href="http://www.dougknox.com/">http://www.dougknox.com.</a></p></li>
+<li><p>Go to Doug&#8217;s website and find Windows XP fixes -> <font face="Arial, Arial, Helvetica"><font size="2"><a href="http://www.dougknox.com/xp/file_assoc.htm">File Association Fixes</a></font></font> -> <font face="Arial, Arial, Helvetica"><font size="2"><a href="http://www.dougknox.com/xp/fileassoc/linkfile_fix.zip">LNK (Shortcut) File Association Fix</a> </font></font> and run the registry file they provided.</p></li>
+<li>It should work just fine, at least my sister computer works.</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HowTo : Recovey Files Which Are Deleted by Mistaken]]></title>
+    <link href="http://noppanit.github.io/how-to-recovey-files-which-are-deleted-by-mistaken/"/>
+    <updated>2007-10-07T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/how-to-recovey-files-which-are-deleted-by-mistaken</id>
+    <content type="html"><![CDATA[<p>I got this problems before, because I accidentally deleted files from my computer while I were holding the shife-key. So, I tried hard to restore them. I found this program which is quite useful and pretty small. You don&#8217;t have to install anything on your computer just use it. Moreover, you can permanently delete it from your hard drive.</p>
+
+<p><a href="http://www.free2u.org/freeware/system_utilities/file_management/file_recovery/rest2514.html">REST2514</a></p>
+
+<p>Ps. Do not turn off your computer. What&#8217;s more, do not copy or move any files in your computer, because they would replaced the old files which you wanted to restore.</p>
+]]></content>
+  </entry>
+  
+</feed>

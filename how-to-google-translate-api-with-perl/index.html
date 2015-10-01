@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How to : Google Translate API With Perl - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="So, without boring introduction. But you need to install some library for Perl as well by using cpan. 12 cpan install JSON cpan install REST::Client &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/how-to-google-translate-api-with-perl/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How to : Google Translate API With Perl</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-02-17T00:00:00-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>So, without boring introduction.</p>
+
+<p>But you need to install some library for Perl as well by using cpan.</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          cpan install JSON<br /> cpan install REST::Client
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+<div class="codecolorer-container perl blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="perl codecolorer">
+          <span class="co1">#!/usr/bin/perl</span><br /> <br /> <span class="kw2">use</span> REST<span class="sy0">::</span><span class="me2">Client</span><span class="sy0">;</span><br /> <span class="kw2">use</span> JSON<span class="sy0">;</span><br /> <span class="kw2">use</span> HTML<span class="sy0">::</span><span class="me2">Entities</span> <a href="http://perldoc.perl.org/functions/qw.html"><span class="kw3">qw</span></a><span class="br0">&#40;</span>decode_entities<span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="kw1">while</span> <span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span> <br /> <span class="br0">&#123;</span><br /> &nbsp; <a href="http://perldoc.perl.org/functions/print.html"><span class="kw3">print</span></a> <span class="st0">"Please enter English word: "</span><span class="sy0">;</span><br /> &nbsp; <a href="http://perldoc.perl.org/functions/chop.html"><span class="kw3">chop</span></a> <span class="br0">&#40;</span> <span class="co5">$_</span> <span class="sy0">=</span> <span class="re4"><STDIN></span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <br /> &nbsp; <span class="kw1">my</span> <span class="re0">$client</span> <span class="sy0">=</span> REST<span class="sy0">::</span><span class="me2">Client</span><span class="sy0">-></span><span class="kw2">new</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="re0">$client</span><span class="sy0">-></span><span class="me1">GET</span><span class="br0">&#40;</span><span class="st0">"https://www.googleapis.com/language/translate/v2?key=AIzaSyACJybEm6lyelnYHZzXfydtk-V6-Uz48bQ&en&target=fr&q=$_"</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="re0">$response</span> <span class="sy0">=</span> <span class="re0">$client</span><span class="sy0">-></span><span class="me1">responseContent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; <span class="re0">$json_text</span> <span class="sy0">=</span> from_json<span class="br0">&#40;</span> <span class="re0">$response</span> <span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; <span class="kw1">foreach</span> <span class="kw1">my</span> <span class="re0">$french</span><span class="br0">&#40;</span><span class="sy0">@</span><span class="br0">&#123;</span><span class="re0">$json_text</span><span class="sy0">-></span><span class="br0">&#123;</span>data<span class="br0">&#125;</span><span class="sy0">-></span><span class="br0">&#123;</span>translations<span class="br0">&#125;</span><span class="br0">&#125;</span><span class="br0">&#41;</span><br /> &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw1">my</span> <span class="re0">%ep_hash</span> <span class="sy0">=</span> <span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="re0">$ep_hash</span><span class="br0">&#123;</span>translatedText<span class="br0">&#125;</span> <span class="sy0">=</span> <span class="st0">"Translated to French: $french->{translatedText}"</span><span class="sy0">;</span><br /> &nbsp;<br /> &nbsp; &nbsp; &nbsp; <span class="co1"># print french</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">while</span> <span class="br0">&#40;</span><span class="kw1">my</span><span class="br0">&#40;</span><span class="re0">$key</span><span class="sy0">,</span> <span class="re0">$value</span><span class="br0">&#41;</span> <span class="sy0">=</span> <a href="http://perldoc.perl.org/functions/each.html"><span class="kw3">each</span></a> <span class="br0">&#40;</span><span class="re0">%ep_hash</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://perldoc.perl.org/functions/print.html"><span class="kw3">print</span></a> decode_entities<span class="br0">&#40;</span><span class="re0">$value</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> &nbsp; <a href="http://perldoc.perl.org/functions/print.html"><span class="kw3">print</span></a> <span class="st0">"<span class="es0">\n</span>"</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Noppanit Charassinvichai</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2011-02-17T00:00:00-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://noppanit.github.io/how-to-google-translate-api-with-perl/" data-via="" data-counturl="http://noppanit.github.io/how-to-google-translate-api-with-perl/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/how-to-java-restful-web-service-without-the-pain/" title="Previous Post: How to: Java RESTFul Web Service without the pain.">&laquo; How to: Java RESTFul Web Service without the pain.</a>
+      
+      
+        <a class="basic-alignment right" href="/how-to-j2me-rest-client/" title="Next Post: How to : J2ME REST Client">How to : J2ME REST Client &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

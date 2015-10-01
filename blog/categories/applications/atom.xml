@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Applications | My Octopress Blog]]></title>
+  <link href="http://noppanit.github.io/blog/categories/applications/atom.xml" rel="self"/>
+  <link href="http://noppanit.github.io/"/>
+  <updated>2015-10-01T15:52:09-04:00</updated>
+  <id>http://noppanit.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Tutorial : Oracle Web Portal]]></title>
+    <link href="http://noppanit.github.io/tutorial-oracle-web-portal/"/>
+    <updated>2008-04-18T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/tutorial-oracle-web-portal</id>
+    <content type="html"><![CDATA[<p>Yesterday, I had a chance to study Oracle Web Portal with my latest company, they ask me to research portal before I will be being trained this Saturday.</p>
+
+<p>So, first thing first I have to know what is web portal, I cannot give this definition better than wikipedia, thus I hand out this task to them. <a title="Web Portal" href="http://en.wikipedia.org/wiki/Web_portal" target="_blank">The Definition</a>. I will give just a brief definition. It&#8217;s just like a dynamic web, which you can add <a title="Portlets" href="http://en.wikipedia.org/wiki/Portlet" target="_blank">Portlets</a> to the web and create report and form within a click. It&#8217;s easy to mange and administer, because oracle has lots of tools to do those tasks. Or regions, items, tabs and portlets can be added to the web without write a single code. You can maintain web portal graphically. Users and Groups can also be maintained, hence the administrator can grant accessibility to users and groups so they can access to which pages and which portlets they can use. Users and groups are come from LADP (Oracle Internet Directory).</p>
+
+<p>The best example I can give you is <a href="http://www.yahoo.com" target="_blank"><a href="http://www.yahoo.com">http://www.yahoo.com</a></a>. It&#8217;s has lots of portlets in their web, such as weather, stock prices, etc&#8230; . Or if I want to say, web portal is a CMS (Content Management System) that can add a small application that can do certain function to a web. Moreover, developers can also develop their own portlets and deploy on a web application server and register portlets to web portal.</p>
+
+<p><a title="Ebook" href="http://www.ebookshare.net/database/McGraw-Hill-Oracle-Application-Server-Portal-Handbook-Jul-2007-eBook-BBL-4538.html" target="_blank">More information?</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HowTo : Crystal Report XI With Data Source]]></title>
+    <link href="http://noppanit.github.io/howto-crystal-report-xi-with-data-source/"/>
+    <updated>2007-04-21T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/howto-crystal-report-xi-with-data-source</id>
+    <content type="html"><![CDATA[<p style="text-align: left;">
+  I don&#8217;t know everyone used to encounter with this problem, but I was. When I using crystal report connected with SQLServer 2005 using Microsoft OLE DB connector. I cannot use &#8220;localhost\sqlexpress&#8221; as a Data Source Name, I don&#8217;t know why? but I can use &#8220;localhost\sqlexpress&#8221; when I using sqlcmd to connect database. So my solution is using &#8220;.\sqlexpress&#8221; instead &#8220;localhost&#8221;. At least it&#8217;s work for me.
+</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Crystal Report : Multiple Value in Parameter Field]]></title>
+    <link href="http://noppanit.github.io/crystal-report-multiple-value-in-parameter-field/"/>
+    <updated>2007-03-27T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/crystal-report-multiple-value-in-parameter-field</id>
+    <content type="html"><![CDATA[<p>I&#8217;ve been develop application concern with crystal report, so I have a little problem with parameter field.<br/>
+If I want to send a multiple variable with one parameter field, we must set allow multiple values = true,<br/>
+But the problem is when we preview ours report. We&#8217;ll see only the first parameter that we put into it, because multiple values are array.</p>
+
+<p>We must create formula field with this code:</p>
+
+<blockquote><p>Local StringVar StringText := &#8220;&#8221;;<br/>
+Local NumberVar i;<br/>
+For i := 1 To Ubound({?<Field Name>}) Do<br/>
+(<br/>
+StringText := StringText + &#8220;, &#8221; + {?<Field Name>}[i] );</p>
+
+<p>StringText</p></blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Crystal Report : How to Enter Feed Line on Formula]]></title>
+    <link href="http://noppanit.github.io/crystal-report-how-to-enter-feed-line-on-formula-2/"/>
+    <updated>2007-03-25T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/crystal-report-how-to-enter-feed-line-on-formula-2</id>
+    <content type="html"><![CDATA[<p>Use function Chr(13)</p>
+]]></content>
+  </entry>
+  
+</feed>

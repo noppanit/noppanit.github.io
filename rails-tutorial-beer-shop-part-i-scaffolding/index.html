@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Rails Tutorial : Beer Shop Part I &#8211; Scaffolding - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="I have decided to jump to rails, because I have seen how fast to build an application and how easy it is. I have been a Java Programmer quite a long &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/rails-tutorial-beer-shop-part-i-scaffolding/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Rails Tutorial : Beer Shop Part I &#8211; Scaffolding</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-12-18T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I have decided to jump to rails, because I have seen how fast to build an application and how easy it is. I have been a Java Programmer quite a long time, and played with Grails and Rails as well. So, I decided to create this tutorial for my benefit to practice my rails techniques. It is an very simple beer shop. I will start from scratch.</p>
+
+<p>Prerequisite.<br/>
+1. Netbeans (I use Netbeans because it provides the rails plugin and everything with one click.<br/>
+2. MySQL<br/>
+That&#8217;s it. Let&#8217;s start</p>
+
+<ol>
+<li><p>Create a rails application<br/>
+<a href="http://www.noppanit.com/wp-content/uploads/2009/12/1.png"><img class="alignnone size-medium wp-image-432" title="create rails application" src="http://www.noppanit.com/wp-content/uploads/2009/12/1-300x204.png" alt="create rails application" width="300" height="204" /></a></p></li>
+<li><p>Call it BeerShop<br/>
+<a href="http://www.noppanit.com/wp-content/uploads/2009/12/2.png"><img class="alignnone size-medium wp-image-433" title="name" src="http://www.noppanit.com/wp-content/uploads/2009/12/2-300x193.png" alt="name" width="300" height="193" /></a></p></li>
+<li><p>Configure database: you have to put your own attributes; username and password that correspond with your database configure, don&#8217;t worry you can change it later at file database.yml<br/>
+<a href="http://www.noppanit.com/wp-content/uploads/2009/12/3.png"><img class="alignnone size-medium wp-image-434" title="configure database" src="http://www.noppanit.com/wp-content/uploads/2009/12/3-300x193.png" alt="configure database" width="300" height="193" /></a></p></li>
+<li><p>Click Finish</p></li>
+</ol>
+
+
+<p>So now, you should have your first rails application created. Try and run it you will get this page. If you don&#8217;t get this page, you might have to check with your database configuration. If you are developing non-database application you might have to <a href="http://www.noppanit.com/ruby-on-rails-disable-database-connection/">turn off the database connection</a>.<br/>
+<a href="http://www.noppanit.com/wp-content/uploads/2009/12/4.png"><img class="alignnone size-medium wp-image-435" title="first rails page" src="http://www.noppanit.com/wp-content/uploads/2009/12/4-300x149.png" alt="first rails page" width="300" height="149" /></a></p>
+
+<p>Next, we are creating a scaffolding, this magic command will create everything for us, CRUD and a simple page<br/>
+5. Right click on your project and choose generate<br/>
+<a href="http://www.noppanit.com/wp-content/uploads/2009/12/5.png"><img src="http://www.noppanit.com/wp-content/uploads/2009/12/5-300x176.png" alt="generate " title="generate " width="300" height="176" class="alignnone size-medium wp-image-438" /></a></p>
+
+<ol>
+<li><p>Model Name:</p></li>
+</ol>
+
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          beer
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Attributes Pairs (field:type) :</p>
+
+<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="text codecolorer">
+          name:string abv:string bottle_size:decimal case_size:decimal price:decimal
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p>Oh, ahh and don&#8217;t for get to create a database in MySQL as well</p>
+
+<div class="codecolorer-container sql blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="sql codecolorer">
+          <span class="kw1">CREATE</span> <span class="kw1">DATABASE</span> BeerShop_development
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2009/12/6.png"><img src="http://www.noppanit.com/wp-content/uploads/2009/12/6-300x205.png" alt="create beer" title="create beer" width="300" height="205" class="alignnone size-medium wp-image-439" /></a></p>
+
+<p>Now we have got a schema already, we just have to migrate those to our database, by using db:migrate command or run</p>
+
+<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="ruby codecolorer">
+          rake db:migrate
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2009/12/8.png"><img src="http://www.noppanit.com/wp-content/uploads/2009/12/8-300x176.png" alt="db:migrate" title="db:migrate" width="300" height="176" class="alignnone size-medium wp-image-442" /></a></p>
+
+<p>You will now have a beer already. try to run <a href="http://localhost:3000/beer">http://localhost:3000/beer</a> on your browser. We will have CRUD beer ready to use. It&#8217;s a very ugly page. We will jazz with it later.</p>
+
+<p><a href="http://www.noppanit.com/wp-content/uploads/2009/12/9.png"><img src="http://www.noppanit.com/wp-content/uploads/2009/12/9-300x149.png" alt="beer" title="beer" width="300" height="149" class="alignnone size-medium wp-image-443" /></a></p>
+
+<p>I&#8217;m gonna continue this next week.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Noppanit Charassinvichai</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2009-12-18T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://noppanit.github.io/rails-tutorial-beer-shop-part-i-scaffolding/" data-via="" data-counturl="http://noppanit.github.io/rails-tutorial-beer-shop-part-i-scaffolding/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/rails-tutorial-add-testing-data-by-using-migration/" title="Previous Post: Rails Tutorial : Add testing data by using migration">&laquo; Rails Tutorial : Add testing data by using migration</a>
+      
+      
+        <a class="basic-alignment right" href="/happy-new-year-2010/" title="Next Post: Happy New Year 2010">Happy New Year 2010 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Tutorial : Backup and Restore SQLExpress With C# - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="SQLExpress 2005 will use SMO to manage database, it ship drom DMO from older version (2000). In this topic I&#8217;ll talk about SMO. If you are &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://noppanit.github.io/tutorial-backup-and-restore-sqlexpress-with-c/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="noppanit.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Tutorial : Backup and Restore SQLExpress With C#</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2007-04-10T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>SQLExpress 2005 will use SMO to manage database, it ship drom DMO from older version (2000). In this topic I&#8217;ll talk about SMO.</p>
+
+<p>If you are using SQLServer Express Edition must read this <a href="http://www.sqldbatips.com/showarticle.asp?ID=35">topic</a></p>
+
+<p><a href="http://www.codeproject.com/useritems/SMODemo.asp">http://www.codeproject.com/useritems/SMODemo.asp</a> This is example application with SMO.</p>
+
+<p><a href="http://www.sqldbatips.com/showarticle.asp?ID=34">http://www.sqldbatips.com/showarticle.asp?ID=34</a> Another example application.</p>
+
+<p>However, I&#8217;ll present another way to use Backup and Restore database via C#, not using SMO. We&#8217;re using StoreProcedure. Sound wired aha, but I just find another ways HaHa.</p>
+
+<blockquote><p>CREATE PROCEDURE BackUpDatabase<br/>
+@name varchar(max)<br/>
+AS<br/>
+BACKUP DATABASE databasename TO @name<br/>
+WITH FORMAT, NAME = &#8216;Full Database Backup&#8217;, SKIP, NOREWIND, NOUNLOAD, STATS = 10</p></blockquote>
+
+<p>This store procedure can backup database in the same way, but maybe not easy to use it. anyway I prefer to use SMO to backup and restore database, much more easier.</p>
+
+<p>In c#</p>
+
+<blockquote><p>myConnection = new &#8230;.<br/>
+SqlCommand comadd = new SqlCommand(&#8220;BackUpDatabase&#8221;,myConnection);<br/>
+comadd.CommandType = CommandType.StoredProcedure;</p>
+
+<p>SqlParameter param1 = new SqlParameter(&#8220;@name&#8221;, name);<br/>
+comadd.Parameters.Add(param1);</p>
+
+<p>try<br/>
+{<br/>
+comadd.ExecuteNonQuery();<br/>
+}<br/>
+catch (Exception e)<br/>
+{<br/>
+Console.WriteLine(e.ToString());<br/>
+}<br/>
+finally<br/>
+{<br/>
+myConnection.Close();<br/>
+}</p></blockquote>
+
+<p>Or you can use direct SQL direct to SqlCommand neither, It&#8217;s work fine.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Noppanit Charassinvichai</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2007-04-10T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/dot-net/'>.net</a>, <a class='category' href='/blog/categories/database/'>database</a>, <a class='category' href='/blog/categories/programming/'>programming</a>, <a class='category' href='/blog/categories/sql-server/'>sql server</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://noppanit.github.io/tutorial-backup-and-restore-sqlexpress-with-c/" data-via="" data-counturl="http://noppanit.github.io/tutorial-backup-and-restore-sqlexpress-with-c/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/howto-set-loopback-on-router-zyxel/" title="Previous Post: HowTo : Set loopback on Router (ZyXeL)">&laquo; HowTo : Set loopback on Router (ZyXeL)</a>
+      
+      
+        <a class="basic-alignment right" href="/howto-sqlserver-2005-exclusive-access-could-not-be-obtained-because-the-database-is-in-use/" title="Next Post: HowTo : SQLServer 2005 : Exclusive access could not be obtained because the database is in use">HowTo : SQLServer 2005 : Exclusive access could not be obtained because the database is in use &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/code-review-with-the-world/">Code Review With the World</a>
+      </li>
+    
+      <li class="post">
+        <a href="/maps-all-parking-signs-in-nyc/">Maps All Parking Signs in NYC.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/im-never-going-back-to-modern-editor-again/">I&#8217;m Never Going Back to Modern Editor Again.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/how-to-start-doing-tdd-for-jquery-plugin/">How to Start Doing TDD for jQuery Plugin.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/the-most-basic-example-of-linear-regression/">The Most Basic Example of Linear Regression</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
