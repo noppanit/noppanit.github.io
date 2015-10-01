@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Postgres | My Octopress Blog]]></title>
   <link href="http://noppanit.github.io/blog/categories/postgres/atom.xml" rel="self"/>
   <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-01T15:52:09-04:00</updated>
+  <updated>2015-10-01T16:22:35-04:00</updated>
   <id>http://noppanit.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -135,32 +135,6 @@
 </div>
 
 </pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Database Encoding for Postgres &#8211; UTF-8]]></title>
-    <link href="http://noppanit.github.io/%e0%b8%9a%e0%b8%b1%e0%b8%99%e0%b8%97%e0%b8%b6%e0%b8%81%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-database-encoding-in-postgres/"/>
-    <updated>2006-05-16T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/%e0%b8%9a%e0%b8%b1%e0%b8%99%e0%b8%97%e0%b8%b6%e0%b8%81%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-database-encoding-in-postgres</id>
-    <content type="html"><![CDATA[<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          createdb -E UTF-8 $db_name<br /> createlang plpgsql $db_name
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
 
 ]]></content>
   </entry>

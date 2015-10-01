@@ -1253,19 +1253,11 @@
     <lastmod>2007-01-31T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://noppanit.github.io/microsoft-loopback-for-oracle/</loc>
-    <lastmod>2006-08-03T00:00:00-04:00</lastmod>
-  </url>
-  <url>
     <loc>http://noppanit.github.io/encoding-in-jboss-request-and-response/</loc>
     <lastmod>2006-05-16T00:00:00-04:00</lastmod>
   </url>
   <url>
     <loc>http://noppanit.github.io/disable-windows-login-screen/</loc>
-    <lastmod>2006-05-16T00:00:00-04:00</lastmod>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/%e0%b8%9a%e0%b8%b1%e0%b8%99%e0%b8%97%e0%b8%b6%e0%b8%81%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%aa%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%87-database-encoding-in-postgres/</loc>
     <lastmod>2006-05-16T00:00:00-04:00</lastmod>
   </url>
   <url>
@@ -1275,12 +1267,6 @@
     <loc>http://noppanit.github.io/</loc>
   </url>
   <url>
-    <loc>http://noppanit.github.io/blog/categories/database/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/blog/categories/postgres/</loc>
-  </url>
-  <url>
     <loc>http://noppanit.github.io/blog/categories/windows/</loc>
   </url>
   <url>
@@ -1288,9 +1274,6 @@
   </url>
   <url>
     <loc>http://noppanit.github.io/blog/categories/jboss/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/blog/categories/oracle/</loc>
   </url>
   <url>
     <loc>http://noppanit.github.io/blog/categories/techniques/</loc>
@@ -1309,6 +1292,9 @@
   </url>
   <url>
     <loc>http://noppanit.github.io/blog/categories/programming/</loc>
+  </url>
+  <url>
+    <loc>http://noppanit.github.io/blog/categories/database/</loc>
   </url>
   <url>
     <loc>http://noppanit.github.io/blog/categories/digital-camera/</loc>
@@ -1348,6 +1334,9 @@
   </url>
   <url>
     <loc>http://noppanit.github.io/blog/categories/xml/</loc>
+  </url>
+  <url>
+    <loc>http://noppanit.github.io/blog/categories/oracle/</loc>
   </url>
   <url>
     <loc>http://noppanit.github.io/blog/categories/web-portal/</loc>
@@ -1422,6 +1411,9 @@
     <loc>http://noppanit.github.io/blog/categories/travel/</loc>
   </url>
   <url>
+    <loc>http://noppanit.github.io/blog/categories/postgres/</loc>
+  </url>
+  <url>
     <loc>http://noppanit.github.io/blog/categories/sublime-text2/</loc>
   </url>
   <url>
@@ -1435,98 +1427,5 @@
   </url>
   <url>
     <loc>http://noppanit.github.io/blog/categories/security/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/2/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/3/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/4/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/5/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/6/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/7/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/8/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/9/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/10/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/11/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/12/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/13/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/14/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/15/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/16/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/17/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/18/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/19/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/20/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/21/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/22/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/23/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/24/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/25/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/26/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/27/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/28/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/29/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/30/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/31/</loc>
-  </url>
-  <url>
-    <loc>http://noppanit.github.io/posts/32/</loc>
   </url>
 </urlset>

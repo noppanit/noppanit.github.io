@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Oracle | My Octopress Blog]]></title>
   <link href="http://noppanit.github.io/blog/categories/oracle/atom.xml" rel="self"/>
   <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-01T15:52:09-04:00</updated>
+  <updated>2015-10-01T16:22:35-04:00</updated>
   <id>http://noppanit.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -322,15 +322,6 @@
 <p>The best example I can give you is <a href="http://www.yahoo.com" target="_blank"><a href="http://www.yahoo.com">http://www.yahoo.com</a></a>. It&#8217;s has lots of portlets in their web, such as weather, stock prices, etc&#8230; . Or if I want to say, web portal is a CMS (Content Management System) that can add a small application that can do certain function to a web. Moreover, developers can also develop their own portlets and deploy on a web application server and register portlets to web portal.</p>
 
 <p><a title="Ebook" href="http://www.ebookshare.net/database/McGraw-Hill-Oracle-Application-Server-Portal-Handbook-Jul-2007-eBook-BBL-4538.html" target="_blank">More information?</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Microsoft Loopback for Oracle]]></title>
-    <link href="http://noppanit.github.io/microsoft-loopback-for-oracle/"/>
-    <updated>2006-08-03T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/microsoft-loopback-for-oracle</id>
-    <content type="html"><![CDATA[<p><a href="http://www.microsoft.com/technet/prodtechnol/virtualserver/2005/proddocs/vs_operate_using_loopback.mspx?mfr=true"> Microsoft Loopback</a></p>
 ]]></content>
   </entry>
   
