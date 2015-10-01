@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Programming | My Octopress Blog]]></title>
+  <title><![CDATA[Category: Programming | My Blog]]></title>
   <link href="http://noppanit.github.io/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-01T16:28:47-04:00</updated>
+  <updated>2015-10-01T16:31:21-04:00</updated>
   <id>http://noppanit.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Noppanit Charassinvichai]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
