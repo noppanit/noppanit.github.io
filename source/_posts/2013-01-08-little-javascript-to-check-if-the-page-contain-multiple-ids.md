@@ -1,0 +1,31 @@
+---
+title: Little JavaScript to check if the page contain multiple IDs
+author: Noppanit Charassinvichai
+layout: post
+permalink: /little-javascript-to-check-if-the-page-contain-multiple-ids/
+dsq_thread_id:
+  - 1014673682
+categories:
+  - Javascript
+tags:
+  - javascript
+---
+I know this shouldn&#8217;t happen at all these days, but as you have a lot of people contributing to one single repository. This thing might happen. So, this is just purely for myself. I just use jQuery to create a little util method which is executed every time the browser is loaded to check if the page contains any multiple IDs.
+
+<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          &nbsp; &nbsp; detect_dub_ids <span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> dupIds <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; $<span class="br0">&#40;</span><span class="st0">'[id]'</span><span class="br0">&#41;</span>.<span class="me1">each</span><span class="br0">&#40;</span><span class="kw2">function</span> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> $ids <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'[id='</span> <span class="sy0">+</span> <span class="kw1">this</span>.<span class="me1">id</span> <span class="sy0">+</span> <span class="st0">']'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">&#40;</span>$ids.<span class="me1">length</span> <span class="sy0">></span> <span class="nu0">1</span> <span class="sy0">&&</span> $ids<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span> <span class="sy0">===</span> <span class="kw1">this</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dupIds.<span class="me1">push</span><span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> dupIds<span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="sy0">,</span><br /> <br /> &nbsp; &nbsp; get_display_text_for_dup_ids <span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>ids<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> h <span class="sy0">=</span> <span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; text <span class="sy0">=</span> <span class="st0">""</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; jQuery<span class="br0">&#40;</span>ids<span class="br0">&#41;</span>.<span class="me1">each</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>index<span class="sy0">,</span> value<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>h<span class="br0">&#91;</span>value<span class="br0">&#93;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; h<span class="br0">&#91;</span>value<span class="br0">&#93;</span>.<span class="me1">push</span><span class="br0">&#40;</span>value<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; h<span class="br0">&#91;</span>value<span class="br0">&#93;</span> <span class="sy0">=</span> <span class="br0">&#91;</span>value<span class="br0">&#93;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw2">var</span> k <span class="kw1">in</span> h<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; text <span class="sy0">+=</span> <span class="st0">"#"</span><span class="sy0">+</span>k<span class="sy0">+</span> <span class="st0">" ("</span><span class="sy0">+</span>h<span class="br0">&#91;</span>k<span class="br0">&#93;</span>.<span class="me1">length</span><span class="sy0">+</span><span class="st0">") times "</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> text<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
