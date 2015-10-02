@@ -30,5 +30,5 @@ bigrammed_words = sorted(finder.nbest(bigram_measures.chi_sq, 200))
 
 I decided to use **chi_sq** as suggested in [this post][2]. However, the accuracy has gone down significantly to **19.7530864198%**. I guess this might be that my document (~100 document for each sentiment) is not large enough to use bigrams. But this is just my conclusion. I&#8217;m going to try to increase the dataset and test it again.
 
- [1]: http://www.noppanit.com/first-experiment-on-naive-bayes-with-nltk/ "first experiment on naive bayes with sentiment analysis"
+ [1]: https://www.noppanit.com/first-experiment-on-naive-bayes-with-nltk/ "first experiment on naive bayes with sentiment analysis"
  [2]: http://streamhacker.com/tag/bigrams/ "stream hacker bigrams"

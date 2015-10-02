@@ -52,11 +52,11 @@ Then we will have JavaScript like this
 ```
 
 If you open your html page on Chrome you should see something like this.  
-{% img http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png %}
+{% img https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png %}
 
 If you go down to where JavaScript is executed You will see it takes around **37ms** to execute the snippet.  
 
-{% img http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png %}
+{% img https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png %}
 
 Now change your snippet to be event delegation
 
@@ -72,13 +72,13 @@ Now change your snippet to be event delegation
 
 And refresh the page you should see something like this.  
 
-{% img http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png %}
+{% img https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png %}
 
 Now it will only take **2ms** to execute the snippet. It&#8217;s because the event is added to one element not 1000 of them. 
 
 This is just an easy example that you can do it yourself to improve your performance.
 
  [1]: http://benchmarkjs.com/ "benchmark.js"
- [2]: http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png
- [3]: http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png
- [4]: http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png
+ [2]: https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png
+ [3]: https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png
+ [4]: https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png

@@ -25,7 +25,7 @@ So far, I have been drinking my coffee from [Monmouth][2] in London, which I&#82
 
 Here&#8217;s my setting so far. 
 
-[<img src="http://www.noppanit.com/wp-content/uploads/2013/08/French-Press-5.jpg" alt="French Press" class="aligncenter size-full wp-image-1142 cool_border" />][3]
+[<img src="https://www.noppanit.com/wp-content/uploads/2013/08/French-Press-5.jpg" alt="French Press" class="aligncenter size-full wp-image-1142 cool_border" />][3]
 
 My quest has not stopped there. I decided to take a further step by taking up a Barista course at [taylor][4]. I have learned more about coffee origins, cupping, how to stream milk and good ratio for espresso. 
 
@@ -53,5 +53,5 @@ However, I&#8217;m not going to stop just there, my quest continues. Now, I&#821
 
  [1]: http://www.zazzle.com/programmer_definition_t_shirt-235878094715752076
  [2]: http://www.monmouthcoffee.co.uk/ "monmouth coffee"
- [3]: http://www.noppanit.com/wp-content/uploads/2013/08/French-Press-5.jpg
+ [3]: https://www.noppanit.com/wp-content/uploads/2013/08/French-Press-5.jpg
  [4]: http://www.taylor-st.com/home-barista-course "TAylor"

@@ -27,11 +27,11 @@ You can get the metro to Kadıköy and then walk from there for only 10-15 minut
 
 **Some pics**  
 
-{% img http://www.noppanit.com/wp-content/uploads/2014/03/20140302_141441.jpg %}
+{% img https://www.noppanit.com/wp-content/uploads/2014/03/20140302_141441.jpg %}
 
-{% img http://www.noppanit.com/wp-content/uploads/2014/03/20140302_141348.jpg %}
+{% img https://www.noppanit.com/wp-content/uploads/2014/03/20140302_141348.jpg %}
 
-{% img http://www.noppanit.com/wp-content/uploads/2014/03/20140302_141636.jpg %}
+{% img https://www.noppanit.com/wp-content/uploads/2014/03/20140302_141636.jpg %}
 
 **Price**  
 It&#8217;s only 15 TL for a day pass. 

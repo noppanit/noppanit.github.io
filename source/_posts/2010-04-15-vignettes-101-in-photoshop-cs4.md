@@ -22,10 +22,4 @@ In section vignette you can adjust amount and midpoint. You can choose to darken
 
 Here&#8217;s an example. 
 
-<div id="attachment_522" style="width: 310px" class="wp-caption alignnone">
-  <a href="http://www.noppanit.com/wp-content/uploads/2010/04/Screen-shot-2010-04-15-at-01.07.53.png"><img src="http://www.noppanit.com/wp-content/uploads/2010/04/Screen-shot-2010-04-15-at-01.07.53-300x200.png" alt="Vignette" title="Screen shot 2010-04-15 at 01.07.53" width="300" height="200" class="size-medium wp-image-522" /></a>
-  
-  <p class="wp-caption-text">
-    Vignette
-  </p>
-</div>
+{% img https://www.noppanit.com/wp-content/uploads/2010/04/Screen-shot-2010-04-15-at-01.07.53-300x200.png %}
