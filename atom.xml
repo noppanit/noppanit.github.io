@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T19:17:17-04:00</updated>
+  <updated>2015-10-02T19:19:15-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -941,7 +941,7 @@
 
 <p>The first plugin we are thinking is performance bot where the bot can report the current performance of a website instead of going to a dashboard. It&#8217;s because we have remote team. So, having a bit giant board wouldn&#8217;t make much sense since some of our folks are distributed and we mainly use Slack for any communication.</p>
 
-<p><img class=" size-full wp-image-1403" src="http://www.noppanit.com/wp-content/uploads/2015/05/Screenshot-2015-05-23-19.42.23.png" alt="rubberduck bot" width="501" height="86" /></p>
+<p><img class=" size-full wp-image-1403" src="https://www.noppanit.com/wp-content/uploads/2015/05/Screenshot-2015-05-23-19.42.23.png" alt="rubberduck bot" width="501" height="86" /></p>
 
 <p>Now, go ahead and create your own bot!.</p>
 
