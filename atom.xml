@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[My Blog]]></title>
-  <link href="http://www.noppanit.com/atom.xml" rel="self"/>
-  <link href="http://www.noppanit.com/"/>
-  <updated>2015-10-02T14:49:21-04:00</updated>
-  <id>http://www.noppanit.com/</id>
+  <link href="https://www.noppanit.com/atom.xml" rel="self"/>
+  <link href="https://www.noppanit.com/"/>
+  <updated>2015-10-02T15:11:45-04:00</updated>
+  <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Migrated My Blog to Octopress]]></title>
-    <link href="http://www.noppanit.com/migrated-my-blog-to-octopress/"/>
+    <link href="https://www.noppanit.com/migrated-my-blog-to-octopress/"/>
     <updated>2015-10-01T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/migrated-my-blog-to-octopress</id>
+    <id>https://www.noppanit.com/migrated-my-blog-to-octopress</id>
     <content type="html"><![CDATA[<p>Performance for noppanit.com
 <a href="http://www.webpagetest.org/result/151002_33_7N6/1/details/">http://www.webpagetest.org/result/151002_33_7N6/1/details/</a></p>
 
@@ -28,9 +28,9 @@
   
   <entry>
     <title type="html"><![CDATA[Code Review With the World]]></title>
-    <link href="http://www.noppanit.com/code-review-with-the-world/"/>
+    <link href="https://www.noppanit.com/code-review-with-the-world/"/>
     <updated>2015-09-22T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/code-review-with-the-world</id>
+    <id>https://www.noppanit.com/code-review-with-the-world</id>
     <content type="html"><![CDATA[<h2>TL;DR</h2>
 
 <p>If you don&#8217;t know <a href="http://codereview.stackexchange.com/">Code Review Stackoverflow</a> you gotta get on it now. It works and it&#8217;s awesome.</p>
@@ -84,9 +84,9 @@
   
   <entry>
     <title type="html"><![CDATA[Maps All Parking Signs in NYC.]]></title>
-    <link href="http://www.noppanit.com/maps-all-parking-signs-in-nyc/"/>
+    <link href="https://www.noppanit.com/maps-all-parking-signs-in-nyc/"/>
     <updated>2015-07-30T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/maps-all-parking-signs-in-nyc</id>
+    <id>https://www.noppanit.com/maps-all-parking-signs-in-nyc</id>
     <content type="html"><![CDATA[<p>This post might be too easy for any Data-viz people but as a beginner tapping in this area. It took me quite a long time to figure it out so I just want to share this hoping that it might save people&#8217;s time.</p>
 
 <p>Parking in NYC is really a pain, especially street parking where there&#8217;re lots of signs and regulations. There are some apps on Android and iPhone that you can download and see signs but I haven&#8217;t been able to find the one that suits my needs. I want an application that can tell me where to circle arounds on which day and time to find parking spot. For example, I parked my car on a Tuesday which has street cleaning on Wednesday and Friday from 8:30 to 9:30. That means I have to move the car on Wednesday morning to find a spot for Friday. The problem is I don&#8217;t know what&#8217;s around me. The closest application I find is <a href="http://www.nycparklife.com/streetparker/">http://www.nycparklife.com/streetparker/</a> which it doesn&#8217;t have Manhattan.</p>
@@ -217,9 +217,9 @@
   
   <entry>
     <title type="html"><![CDATA[I&#8217;m Never Going Back to Modern Editor Again.]]></title>
-    <link href="http://www.noppanit.com/im-never-going-back-to-modern-editor-again/"/>
+    <link href="https://www.noppanit.com/im-never-going-back-to-modern-editor-again/"/>
     <updated>2015-07-17T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/im-never-going-back-to-modern-editor-again</id>
+    <id>https://www.noppanit.com/im-never-going-back-to-modern-editor-again</id>
     <content type="html"><![CDATA[<p>Ok, the title might be a little bit exaggerating. But let me clear this up first. I still use modern editors, TextMate, Atom.io or IntelliJ. They are pros and cons. But here&#8217;s my real answer if people ask me. I want to be the cool kid!.</p>
 
 <p>I don&#8217;t know if you&#8217;re like me but I get asked almost all the time I go to a meetup or conference, &#8220;What&#8217;s your favourite editor&#8221;?. People almost always say Vim|Emacs. I tried both of them in the past and gave up more than I can remember because of all the shortcuts and plugins and I just get too frustrated to use either of them. Finally, I have made a decision that I&#8217;m going to stick with Vim for a month and let&#8217;s see if at the end of the month I still can&#8217;t use it. It&#8217;s been almost a month and I&#8217;d say I&#8217;m never going back to modern editors again (at least when I&#8217;m coding scripting languages). Here&#8217;s why.</p>
@@ -244,9 +244,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to Start Doing TDD for jQuery Plugin.]]></title>
-    <link href="http://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin/"/>
+    <link href="https://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin/"/>
     <updated>2015-07-09T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin</id>
+    <id>https://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin</id>
     <content type="html"><![CDATA[<p>I&#8217;m a big fan of TDD. I get nervous every time when I put some code it without having tests. I&#8217;m developing a simple jQuery plugin and I think hey we can TDD this.</p>
 
 <h2>What is it?</h2>
@@ -587,9 +587,9 @@
   
   <entry>
     <title type="html"><![CDATA[The Most Basic Example of Linear Regression]]></title>
-    <link href="http://www.noppanit.com/the-most-basic-example-of-linear-regression/"/>
+    <link href="https://www.noppanit.com/the-most-basic-example-of-linear-regression/"/>
     <updated>2015-07-07T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/the-most-basic-example-of-linear-regression</id>
+    <id>https://www.noppanit.com/the-most-basic-example-of-linear-regression</id>
     <content type="html"><![CDATA[<p>Just for fun, I wanted to learn how to do linear regression and here&#8217;s the example I come up with.</p>
 
 <p>Let&#8217;s say you have a historical data of 1000 people who dined in your restaurant and left a tip. This is going to be perfect data because I generated. In the real world you will not find something like this.</p>
@@ -653,9 +653,9 @@
   
   <entry>
     <title type="html"><![CDATA[Example: How Did I Convert Async Code to Sync Code With Promise.]]></title>
-    <link href="http://www.noppanit.com/example-how-did-i-convert-async-code-to-sync-code-with-promise/"/>
+    <link href="https://www.noppanit.com/example-how-did-i-convert-async-code-to-sync-code-with-promise/"/>
     <updated>2015-05-24T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/example-how-did-i-convert-async-code-to-sync-code-with-promise</id>
+    <id>https://www.noppanit.com/example-how-did-i-convert-async-code-to-sync-code-with-promise</id>
     <content type="html"><![CDATA[<p>I&#8217;ve just finished my first refactor to convert my node.js code to be more promisey (I believe that&#8217;s the word they use these days). There&#8217;s lots of documents out there to do this. However, I thought I should contribute more to help me understand more and might get some feedback from people who&#8217;s seen it as well.</p>
 
 <p>I&#8217;m trying to create a bot to report me back the performance of my site in desktop and mobile mode. So, I thought it would be easy since Google has an <a href="https://developers.google.com/speed/docs/insights/v2/getting-started">API</a> for that already so I went ahead and did this.</p>
@@ -928,9 +928,9 @@
   
   <entry>
     <title type="html"><![CDATA[Rise of the (Slack)Bots.]]></title>
-    <link href="http://www.noppanit.com/rise-of-the-slackbots/"/>
+    <link href="https://www.noppanit.com/rise-of-the-slackbots/"/>
     <updated>2015-05-23T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/rise-of-the-slackbots</id>
+    <id>https://www.noppanit.com/rise-of-the-slackbots</id>
     <content type="html"><![CDATA[<p><a href="http://fusion.net">Fusion</a> tech team just had a hackday in the theme of &#8220;Slackbot&#8221;. We brainstormed what or how do we make the job of editorial or engineering team easier. We threw a bunch of ideas and my team decided to create a bot that can interact with you in a number of ways or encourage you to fix or debug code. We tried to make it funny and in the same time useful for our daily routine.</p>
 
 <p>My colleague <a href="https://twitter.com/danielbachhuber">Daniel Bachhuber</a> came up with the name Rubberduck which I believe he got it from <a href="http://en.wikipedia.org/wiki/Rubber_duck_debugging">here</a>. The idea of the bot is easy. If you have used Slack you must have seen Slackbot before where it guides you how to use Slack or the bot can help you change your profile picture.</p>
@@ -953,9 +953,9 @@
   
   <entry>
     <title type="html"><![CDATA[Installing SSL on Amazon CloudFront]]></title>
-    <link href="http://www.noppanit.com/installing-ssl-on-amazon-cloudfront/"/>
+    <link href="https://www.noppanit.com/installing-ssl-on-amazon-cloudfront/"/>
     <updated>2015-05-22T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/installing-ssl-on-amazon-cloudfront</id>
+    <id>https://www.noppanit.com/installing-ssl-on-amazon-cloudfront</id>
     <content type="html"><![CDATA[<p>We have just installed SSL on our Amazon CloudFront. We followed this <a href="https://bryce.fisher-fleig.org/blog/setting-up-ssl-on-aws-cloudfront-and-s3/">blog post</a> from Bryce which I think it&#8217;s really good already. However, I was stuck on the last part where you have to upload the certificate to IAM. The difference is that I had to concatenate the crt files myself and I didn&#8217;t know how to do it. So I spent quite a long time to figure it out. I thought I would write this so it might help save sometime for anybody.</p>
 
 <p>If your SSL providers gave you the chained certificate already, then you don&#8217;t have to do anything else. However, when I downloaded my crt files I found this</p>
@@ -1118,9 +1118,9 @@
   
   <entry>
     <title type="html"><![CDATA[What Should You Expect for Salkantay Trek to Machu Picchu]]></title>
-    <link href="http://www.noppanit.com/what-should-you-expect-for-salkantay-trek-to-machu-picchu/"/>
+    <link href="https://www.noppanit.com/what-should-you-expect-for-salkantay-trek-to-machu-picchu/"/>
     <updated>2015-05-18T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/what-should-you-expect-for-salkantay-trek-to-machu-picchu</id>
+    <id>https://www.noppanit.com/what-should-you-expect-for-salkantay-trek-to-machu-picchu</id>
     <content type="html"><![CDATA[<p>I&#8217;m not really a travel blogger but I&#8217;ll try to share my experience as much as possible. I&#8217;ve just come back from Peru (Machu Picchu). Me and a bunch of my friends did the Salkantay trek which hike from Cusco (sort of) to Machu Picchu. It&#8217;s a 5 days 4 nights trip. The hike is really challenging physically and mentally. You will experience altitude sickness and soreness from your body. Funny thing is I didn&#8217;t feel a thing at the highest peak, some of my friends experienced different symptoms. One of the best I&#8217;ve heard is; &#8220;It&#8217;s like EDM concert banging in my head&#8221;.</p>
 
 <h2>Stay warm</h2>
@@ -1177,9 +1177,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to Stop Repainting Your Sticky Bar on Scroll?]]></title>
-    <link href="http://www.noppanit.com/how-to-stop-repainting-your-sticky-bar-on-scroll/"/>
+    <link href="https://www.noppanit.com/how-to-stop-repainting-your-sticky-bar-on-scroll/"/>
     <updated>2015-04-14T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/how-to-stop-repainting-your-sticky-bar-on-scroll</id>
+    <id>https://www.noppanit.com/how-to-stop-repainting-your-sticky-bar-on-scroll</id>
     <content type="html"><![CDATA[<p>Everybody loves sticky bar. Or I should say every UX loves sticky bar. You probable have seen that from almost all major websites. Twitter or Facebook all has the top nav bar which sticks to the top and follows you when you scroll down the page. However, there&#8217;s one thing that I have noticed if you use Google Chrome Dev Tool to see the paint area. You will see that the nav bar gets repaint every time you scroll up and down.</p>
 
 <p><img src="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png"></p>
@@ -1333,9 +1333,9 @@
   
   <entry>
     <title type="html"><![CDATA[You Should Check in Your Dependencies.]]></title>
-    <link href="http://www.noppanit.com/you-should-check-in-your-dependencies/"/>
+    <link href="https://www.noppanit.com/you-should-check-in-your-dependencies/"/>
     <updated>2015-03-28T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/you-should-check-in-your-dependencies</id>
+    <id>https://www.noppanit.com/you-should-check-in-your-dependencies</id>
     <content type="html"><![CDATA[<p>I&#8217;m not sure who started this pattern so I can&#8217;t really refer back but if you know please comment below and I will update the post. I&#8217;m sure all of you have heard that you should not check in anything that can be generated to Source control. It&#8217;s long been a common pattern. However, lately I have been checking in my dependencies into my source control and it works really well for small to medium project. Here&#8217;s why.</p>
 
 <h3>Isolate you from any network failures.</h3>
@@ -1387,9 +1387,9 @@
   
   <entry>
     <title type="html"><![CDATA[My 2015]]></title>
-    <link href="http://www.noppanit.com/2015/"/>
+    <link href="https://www.noppanit.com/2015/"/>
     <updated>2015-02-05T00:00:00-05:00</updated>
-    <id>http://www.noppanit.com/2015</id>
+    <id>https://www.noppanit.com/2015</id>
     <content type="html"><![CDATA[<p>I just want to take a break from writing about technical posts to just talk about myself a little bit. I&#8217;m inspired by Scott Muc&#8217;s <a href="http://scottmuc.com/my-resolutions-for-2015/" title="Scott's 2015 Resolution">post</a> about his 2015 Resolutions. Before getting into 2015 I want to take a step back and review my 2014</p>
 
 <h2>My 2014</h2>
@@ -1437,9 +1437,9 @@
   
   <entry>
     <title type="html"><![CDATA[Event Delegation in JavaScript Is Fast but How Fast?]]></title>
-    <link href="http://www.noppanit.com/event-delegation-javascript-fast-fast/"/>
+    <link href="https://www.noppanit.com/event-delegation-javascript-fast-fast/"/>
     <updated>2014-11-22T00:00:00-05:00</updated>
-    <id>http://www.noppanit.com/event-delegation-javascript-fast-fast</id>
+    <id>https://www.noppanit.com/event-delegation-javascript-fast-fast</id>
     <content type="html"><![CDATA[<p>People say always use event delegation for adding event because it&#8217;s faster. But how fast exactly? I really want to create a test case for this, but I couldn&#8217;t figure out how to run B<a href="http://benchmarkjs.com/" title="benchmark.js">enchmark.js</a> in browser. So, I thought we could just use Chrome Developer Tool to achieve this.</p>
 
 <h2>What are we measuring?</h2>
@@ -1531,9 +1531,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to Create a Simple Vagrant Plugin.]]></title>
-    <link href="http://www.noppanit.com/create-simple-vagrant-plugin/"/>
+    <link href="https://www.noppanit.com/create-simple-vagrant-plugin/"/>
     <updated>2014-11-21T00:00:00-05:00</updated>
-    <id>http://www.noppanit.com/create-simple-vagrant-plugin</id>
+    <id>https://www.noppanit.com/create-simple-vagrant-plugin</id>
     <content type="html"><![CDATA[<p>I have been searching all over the Internet to find how to create a vagrant plugin. <a href="https://docs.vagrantup.com/v2/plugins/index.html" title="vagrant plugin">Vagrant homepage</a> has information on how to create a vagrant plugin, but I would like to give a real world example. The plugin I&#8217;m going to create is <strong><a href="https://github.com/noppanit/vagrant-ls" title="vagrant-ls">vagrant-ls</a></strong> which is inspired by <strong><a href="https://github.com/joshmcarthur/vagrant-list" title="vagrant-list">vagrant-list</a></strong>.</p>
 
 <h2>How do you start</h2>
@@ -1773,9 +1773,9 @@
   
   <entry>
     <title type="html"><![CDATA[Twitter Is a Good Tool for Customer Support if Used Carefully.]]></title>
-    <link href="http://www.noppanit.com/twitter-good-tool-customer-support-used-carefully/"/>
+    <link href="https://www.noppanit.com/twitter-good-tool-customer-support-used-carefully/"/>
     <updated>2014-10-07T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/twitter-good-tool-customer-support-used-carefully</id>
+    <id>https://www.noppanit.com/twitter-good-tool-customer-support-used-carefully</id>
     <content type="html"><![CDATA[<p>I recently moved to NYC and I just got a pre-paid T-Mobile just to try it out how it goes. And this is what I tweeted and got a reply back from T-Mobile.</p>
 
 <blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">After just one week of <a href="https://twitter.com/TMobile">@TMobile</a> in NYC. I&#39;m not quite impressed with the coverage. <a href="https://twitter.com/hashtag/hmm?src=hash">#hmm</a></p>&mdash; Noppanit (Toy) (@noppanit) <a href="https://twitter.com/noppanit/status/519437198610137088">October 7, 2014</a></blockquote>
@@ -1790,9 +1790,9 @@
   
   <entry>
     <title type="html"><![CDATA[Knockout.js Virtual Elements Are Being Stripped Out From Mobile.]]></title>
-    <link href="http://www.noppanit.com/knockout-js-virtual-elements-stripped-mobile/"/>
+    <link href="https://www.noppanit.com/knockout-js-virtual-elements-stripped-mobile/"/>
     <updated>2014-10-07T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/knockout-js-virtual-elements-stripped-mobile</id>
+    <id>https://www.noppanit.com/knockout-js-virtual-elements-stripped-mobile</id>
     <content type="html"><![CDATA[<p>This rarely happens and you would be surprised what is the cause of this. Recently, I have just finished a mobile site using knockout.js. I have used a fair amount of Virtual Elements in Knockout.js. But weirdly enough one day my Manager came in and talk to my <a href="https://twitter.com/sragu" title="Srini">tech lead</a> (@sragu) that the site is not working. We quickly checked with our live site and everything was ok yet the site from his phone wasn&#8217;t working at all.</p>
 
 <p>We spent quite a long time to find out the cause of this. We cleared the cache. We restarted the phone. Tried different browsers. Luckily, then we found out this <a href="http://stackoverflow.com/questions/4113268/how-to-stop-javascript-injection-from-vodafone-proxy">thread</a> from Stackoverflow.com.</p>
@@ -1811,9 +1811,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hidden Flea Market in Istanbul, Turkey]]></title>
-    <link href="http://www.noppanit.com/hidden-flea-market-istanbul-turkey/"/>
+    <link href="https://www.noppanit.com/hidden-flea-market-istanbul-turkey/"/>
     <updated>2014-07-20T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/hidden-flea-market-istanbul-turkey</id>
+    <id>https://www.noppanit.com/hidden-flea-market-istanbul-turkey</id>
     <content type="html"><![CDATA[<p>Love flea market? Love antiques? And you are in Istanbul, you should try out this place if you like antique stuff and what to kill a couple hours on a Sunday in Istanbul. The market opens every Sunday. I don&#8217;t know what time but I was there from 12pm &#8211; 3pm. I don&#8217;t really know how to get there by public transportation, but you can get a taxi to there from Şişli Metro station. It&#8217;s only a couple minutes away by taxi.</p>
 
 <iframe src="https://www.google.com/maps/d/embed?mid=zRNWtq1GEE_Y.kugirvzLoMWo&hl=en" width="640" height="480"></iframe>
@@ -1823,9 +1823,9 @@
   
   <entry>
     <title type="html"><![CDATA[It&#8217;s Alright to Charge Your Phone on &#8216;Shavers Only&#8217; Outlet.]]></title>
-    <link href="http://www.noppanit.com/alright-charge-phone-shavers-outlet/"/>
+    <link href="https://www.noppanit.com/alright-charge-phone-shavers-outlet/"/>
     <updated>2014-07-07T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/alright-charge-phone-shavers-outlet</id>
+    <id>https://www.noppanit.com/alright-charge-phone-shavers-outlet</id>
     <content type="html"><![CDATA[<p><strong>Problem</strong></p>
 
 <p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/21/ShaverSocketUK.jpg/170px-ShaverSocketUK.jpg" title="Shavers only outlet" ></p>
@@ -1842,9 +1842,9 @@
   
   <entry>
     <title type="html"><![CDATA[Naming Test Classes.]]></title>
-    <link href="http://www.noppanit.com/naming-test-classes/"/>
+    <link href="https://www.noppanit.com/naming-test-classes/"/>
     <updated>2014-06-25T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/naming-test-classes</id>
+    <id>https://www.noppanit.com/naming-test-classes</id>
     <content type="html"><![CDATA[<p>Normally, you would name your test class like this.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>

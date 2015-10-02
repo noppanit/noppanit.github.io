@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Ubuntu | My Blog]]></title>
-  <link href="http://www.noppanit.com/blog/categories/ubuntu/atom.xml" rel="self"/>
-  <link href="http://www.noppanit.com/"/>
-  <updated>2015-10-02T14:49:21-04:00</updated>
-  <id>http://www.noppanit.com/</id>
+  <link href="https://www.noppanit.com/blog/categories/ubuntu/atom.xml" rel="self"/>
+  <link href="https://www.noppanit.com/"/>
+  <updated>2015-10-02T15:11:45-04:00</updated>
+  <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mastering Vi Common in Just 10 Minutes]]></title>
-    <link href="http://www.noppanit.com/masteing-vi-common-in-just-10-minutes/"/>
+    <link href="https://www.noppanit.com/masteing-vi-common-in-just-10-minutes/"/>
     <updated>2010-01-05T00:00:00-05:00</updated>
-    <id>http://www.noppanit.com/masteing-vi-common-in-just-10-minutes</id>
+    <id>https://www.noppanit.com/masteing-vi-common-in-just-10-minutes</id>
     <content type="html"><![CDATA[<p>I have just finished my Unix exam. I know somebody hates VI very much, because it is very hard to use. It is so command-line, something like that. But learning to use this editor is very useful because you never know when will you unable to use X-Window or when will you face with command-line configuration.</p>
 
 <p>So, just easing you in. VI is an editor in Unix and Unix-like system. It is command-line-based and very easy to use. You can learn its basics in just 10 minutes. VI has two modes; command mode and insert mode. Command mode is where you put your command and insert mode is where you put your text. Easy!</p>

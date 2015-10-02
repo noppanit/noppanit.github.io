@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Python | My Blog]]></title>
-  <link href="http://www.noppanit.com/blog/categories/python/atom.xml" rel="self"/>
-  <link href="http://www.noppanit.com/"/>
-  <updated>2015-10-02T14:49:21-04:00</updated>
-  <id>http://www.noppanit.com/</id>
+  <link href="https://www.noppanit.com/blog/categories/python/atom.xml" rel="self"/>
+  <link href="https://www.noppanit.com/"/>
+  <updated>2015-10-02T15:11:45-04:00</updated>
+  <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Python to Import Your Dumped Tweets to MongoDb]]></title>
-    <link href="http://www.noppanit.com/python-import-dumped-tweets-mongodb/"/>
+    <link href="https://www.noppanit.com/python-import-dumped-tweets-mongodb/"/>
     <updated>2013-09-04T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/python-import-dumped-tweets-mongodb</id>
+    <id>https://www.noppanit.com/python-import-dumped-tweets-mongodb</id>
     <content type="html"><![CDATA[<p>I&#8217;m playing around with my tweets. Just so you&#8217;re aware that you could download your entire tweets and play around with it. The format is JSON so I think it makes perfect sense to dump this to MongoDB. But you can&#8217;t just import that straight away it needs some manipulation. I&#8217;m not good at Python so the code here might be tedious for python dudes. I&#8217;m going to use this data in my analysis, which will be captured in the next blog post.</p>
 
 <pre><code class="python">import pymongo
@@ -44,9 +44,9 @@ if __name__ == "__main__":
   
   <entry>
     <title type="html"><![CDATA[Flask and RQ Example for Heroku]]></title>
-    <link href="http://www.noppanit.com/flask-and-rq-example-for-heroku/"/>
+    <link href="https://www.noppanit.com/flask-and-rq-example-for-heroku/"/>
     <updated>2013-03-08T00:00:00-05:00</updated>
-    <id>http://www.noppanit.com/flask-and-rq-example-for-heroku</id>
+    <id>https://www.noppanit.com/flask-and-rq-example-for-heroku</id>
     <content type="html"><![CDATA[<p>I have been struggling to find any example on the Internet on how to do long polling on Heroku with Flask and RQ. I know it&#8217;s relatively easy, but I just want to make it clear for my future self.</p>
 
 <p>It&#8217;s really simple.</p>
@@ -86,9 +86,9 @@ def get_word_count_result(job_key):
   
   <entry>
     <title type="html"><![CDATA[Second Sentiment Analysis Experiment on Naive Bayes With NLTK : Bigrams]]></title>
-    <link href="http://www.noppanit.com/second-sentiment-analysis-experiment-on-naive-bayes-with-nltk-bigrams/"/>
+    <link href="https://www.noppanit.com/second-sentiment-analysis-experiment-on-naive-bayes-with-nltk-bigrams/"/>
     <updated>2012-12-30T00:00:00-05:00</updated>
-    <id>http://www.noppanit.com/second-sentiment-analysis-experiment-on-naive-bayes-with-nltk-bigrams</id>
+    <id>https://www.noppanit.com/second-sentiment-analysis-experiment-on-naive-bayes-with-nltk-bigrams</id>
     <content type="html"><![CDATA[<p>From my <a href="http://www.noppanit.com/first-experiment-on-naive-bayes-with-nltk/" title="first experiment on naive bayes with sentiment analysis">last post</a> I experimented with some of the techniques such as stopwords and bag-of-words model. I yielded some acceptable results. This post, I&#8217;m going to try with bigrams to see if I can increase the accuracy.</p>
 
 <p>I changed the code a little bit to be</p>
@@ -108,9 +108,9 @@ bigrammed_words = sorted(finder.nbest(bigram_measures.chi_sq, 200))
   
   <entry>
     <title type="html"><![CDATA[First Experiment on Naive Bayes With NLTK]]></title>
-    <link href="http://www.noppanit.com/first-experiment-on-naive-bayes-with-nltk/"/>
+    <link href="https://www.noppanit.com/first-experiment-on-naive-bayes-with-nltk/"/>
     <updated>2012-12-30T00:00:00-05:00</updated>
-    <id>http://www.noppanit.com/first-experiment-on-naive-bayes-with-nltk</id>
+    <id>https://www.noppanit.com/first-experiment-on-naive-bayes-with-nltk</id>
     <content type="html"><![CDATA[<p>I have been experimenting with Natural Language Processing on Text classification for a while now. So, I&#8217;m going to write a little journal on my blog. There are lots of academic papers or event commercial API on the Internet for sentiment analysis. But most of them only classify sentiment into <strong>negative</strong>, <strong>positive</strong> and <strong>neutral</strong>. My experiment will be based on <a href="http://en.wikipedia.org/wiki/Plutchik%27s_Wheel_of_Emotions#Plutchik.27s_wheel_of_emotions" title="Plutchik wheel of emotions">Plutchik&#8217;s wheel of emotions</a> which will classify a text into one of the eight emotions.</p>
 
 <p>For the purpose to get things done really fast, I use the example from <a href="http://www.laurentluce.com/posts/twitter-sentiment-analysis-using-python-and-nltk/" title="twitter sentiment analysis">Laurent&#8217;s blog</a>. But you can use <a href="https://github.com/japerk/nltk-trainer" title="nltk trainer">nltk-trainer</a> to train the classifier without a single line of python code.</p>

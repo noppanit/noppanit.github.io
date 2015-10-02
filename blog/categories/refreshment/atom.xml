@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Refreshment | My Blog]]></title>
-  <link href="http://www.noppanit.com/blog/categories/refreshment/atom.xml" rel="self"/>
-  <link href="http://www.noppanit.com/"/>
-  <updated>2015-10-02T14:49:21-04:00</updated>
-  <id>http://www.noppanit.com/</id>
+  <link href="https://www.noppanit.com/blog/categories/refreshment/atom.xml" rel="self"/>
+  <link href="https://www.noppanit.com/"/>
+  <updated>2015-10-02T15:11:45-04:00</updated>
+  <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[The Best Hot Chocolate]]></title>
-    <link href="http://www.noppanit.com/the-best-hot-chocolate/"/>
+    <link href="https://www.noppanit.com/the-best-hot-chocolate/"/>
     <updated>2008-03-29T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/the-best-hot-chocolate</id>
+    <id>https://www.noppanit.com/the-best-hot-chocolate</id>
     <content type="html"><![CDATA[<p>This is the best chocolate I have ever taste.</p>
 
 <h2>Ingredients</h2>

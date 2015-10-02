@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Sublime Text2 | My Blog]]></title>
-  <link href="http://www.noppanit.com/blog/categories/sublime-text2/atom.xml" rel="self"/>
-  <link href="http://www.noppanit.com/"/>
-  <updated>2015-10-02T14:49:21-04:00</updated>
-  <id>http://www.noppanit.com/</id>
+  <link href="https://www.noppanit.com/blog/categories/sublime-text2/atom.xml" rel="self"/>
+  <link href="https://www.noppanit.com/"/>
+  <updated>2015-10-02T15:11:45-04:00</updated>
+  <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[DIY : Run RSpec Test Inside Sublime Text 2]]></title>
-    <link href="http://www.noppanit.com/diy-run-rspec-test-inside-sublime-text-2/"/>
+    <link href="https://www.noppanit.com/diy-run-rspec-test-inside-sublime-text-2/"/>
     <updated>2012-12-30T00:00:00-05:00</updated>
-    <id>http://www.noppanit.com/diy-run-rspec-test-inside-sublime-text-2</id>
+    <id>https://www.noppanit.com/diy-run-rspec-test-inside-sublime-text-2</id>
     <content type="html"><![CDATA[<p>I guess everybody loves Sublime Text2. I switched from TextMate to Sublime Text 2 and I absolutely love it. Now, when you are writing some tests and want to run it immediately rather than keep switching windows to your terminal you can run your spec inside Sublime Text 2.</p>
 
 <p>There are lots of Packages out there you can just install and use it, but I just wanted to show another way of doing it. You could write your own little Package as well.</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: R | My Blog]]></title>
-  <link href="http://www.noppanit.com/blog/categories/r/atom.xml" rel="self"/>
-  <link href="http://www.noppanit.com/"/>
-  <updated>2015-10-02T14:49:21-04:00</updated>
-  <id>http://www.noppanit.com/</id>
+  <link href="https://www.noppanit.com/blog/categories/r/atom.xml" rel="self"/>
+  <link href="https://www.noppanit.com/"/>
+  <updated>2015-10-02T15:11:45-04:00</updated>
+  <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How Many Tweets I Have Tweeted in the Past?]]></title>
-    <link href="http://www.noppanit.com/how-many-tweets-i-have-tweeted-in-the-past/"/>
+    <link href="https://www.noppanit.com/how-many-tweets-i-have-tweeted-in-the-past/"/>
     <updated>2013-08-22T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/how-many-tweets-i-have-tweeted-in-the-past</id>
+    <id>https://www.noppanit.com/how-many-tweets-i-have-tweeted-in-the-past</id>
     <content type="html"><![CDATA[<p>This blog post is kinda lame, but I got so excited to get something worked in R. I have been wondering what I have been doing for the last years.</p>
 
 <p>I&#8217;m sitting at my desk and thinking how can I know that. Then, yeah I can analyse my own tweets. So, I downloaded all my tweets from Twitter and started crushing some number.</p>
