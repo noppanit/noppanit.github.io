@@ -12,84 +12,133 @@ When I was in TWU I was assigned to implement a simple program in Java Command l
 
 If you have a program like this. How would you test it in JUnit?
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          <span class="kw1">public</span> <span class="kw4">void</span> launchApp<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">throws</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aioexception+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">IOException</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Ainputstreamreader+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">InputStreamReader</span></a> inputStream <span class="sy0">=</span> <span class="kw1">new</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Ainputstreamreader+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">InputStreamReader</span></a><span class="br0">&#40;</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">in</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Abufferedreader+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">BufferedReader</span></a> reader <span class="sy0">=</span> <span class="kw1">new</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Abufferedreader+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">BufferedReader</span></a><span class="br0">&#40;</span>inputStream<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> value <span class="sy0">=</span> reader.<span class="me1">readLine</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">int</span> choice <span class="sy0">=</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Ainteger+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Integer</span></a>.<span class="me1">parseInt</span><span class="br0">&#40;</span>value<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">switch</span><span class="br0">&#40;</span> choice <span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">case</span> <span class="nu0"></span><span class="sy0">:</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">out</span>.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">"Print 0"</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">break</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">case</span> <span class="nu0">1</span><span class="sy0">:</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">out</span>.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">"Print 1"</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">break</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">case</span> <span class="nu0">2</span><span class="sy0">:</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">int</span> anotherChoice <span class="sy0">=</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Ainteger+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Integer</span></a>.<span class="me1">parseInt</span><span class="br0">&#40;</span>reader.<span class="me1">readLine</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span> anotherChoice <span class="sy0">==</span> <span class="nu0"></span> <span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">out</span>.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">"Print Toy"</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">else</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">out</span>.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">"Print Something Else"</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">break</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` java
+public void launchApp() throws IOException {
+	InputStreamReader inputStream = new InputStreamReader(System.in);
+	BufferedReader reader = new BufferedReader(inputStream);
+	String value = reader.readLine();
+	int choice = Integer.parseInt(value);
+	switch( choice )
+	{
+		case 0:
+			System.out.println("Print 0");
+			break;
+		case 1:
+			System.out.println("Print 1");
+			break;
+		case 2:
+			int anotherChoice = Integer.parseInt(reader.readLine());
+			if( anotherChoice == 0 )
+			{
+				System.out.println("Print Toy");
+			}
+			else
+			{
+				System.out.println("Print Something Else");
+			}
+			break;
+	}
+}
+```
 
 What he pointed out to test this kind of program is to implement a queue in InputStreamReader.
 
 This is the example
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />32<br />33<br />34<br />35<br />36<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          <span class="kw1">class</span> StubbedInputStream <span class="kw1">extends</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Ainputstream+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">InputStream</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw1">private</span> Queue<span class="sy0"><</span>String<span class="sy0">></span> input<span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> StubbedInputStream<span class="br0">&#40;</span>Queue<span class="sy0"><</span>String<span class="sy0">></span> input<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">this</span>.<span class="me1">input</span> <span class="sy0">=</span> input<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; @Override<br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw4">int</span> read<span class="br0">&#40;</span><span class="kw4">byte</span><span class="br0">&#91;</span><span class="br0">&#93;</span> bytes<span class="br0">&#41;</span> <span class="kw1">throws</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aioexception+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">IOException</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw1">super</span>.<span class="me1">read</span><span class="br0">&#40;</span>bytes<span class="br0">&#41;</span><span class="sy0">;</span> &nbsp; &nbsp;<span class="co1">//To change body of overridden methods use File | Settings | File Templates.</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; @Override<br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw4">int</span> read<span class="br0">&#40;</span><span class="kw4">byte</span><span class="br0">&#91;</span><span class="br0">&#93;</span> bytes, <span class="kw4">int</span> i, <span class="kw4">int</span> i1<span class="br0">&#41;</span> <span class="kw1">throws</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aioexception+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">IOException</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>input.<span class="me1">isEmpty</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> <span class="sy0">-</span><span class="nu0">1</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">int</span> byteLocation <span class="sy0">=</span> <span class="nu0"></span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span><span class="br0">&#40;</span><span class="kw4">byte</span> b <span class="sy0">:</span> input.<span class="me1">remove</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">getBytes</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; bytes<span class="br0">&#91;</span>byteLocation<span class="br0">&#93;</span> <span class="sy0">=</span> b<span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; byteLocation<span class="sy0">++;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; bytes<span class="br0">&#91;</span>byteLocation<span class="br0">&#93;</span> <span class="sy0">=</span> <span class="st0">"<span class="es0">\n</span>"</span>.<span class="me1">getBytes</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> byteLocation <span class="sy0">+</span> <span class="nu0">1</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; @Override<br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw4">int</span> read<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">throws</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aioexception+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">IOException</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> <span class="nu0"></span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw1">static</span> InputStreamBuilder stubInputStream<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw1">new</span> InputStreamBuilder<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` java
+class StubbedInputStream extends InputStream {
+	private Queue<String> input;
+
+	public StubbedInputStream(Queue<String> input) {
+		this.input = input;
+	}
+
+	@Override
+		public int read(byte[] bytes) throws IOException {
+			return super.read(bytes);    //To change body of overridden methods use File | Settings | File Templates.
+		}
+
+	@Override
+		public int read(byte[] bytes, int i, int i1) throws IOException {
+			if(input.isEmpty()) {
+				return -1;
+			}
+
+			int byteLocation = 0;
+			for(byte b : input.remove().getBytes()) {
+				bytes[byteLocation] = b;
+				byteLocation++;
+			}
+			bytes[byteLocation] = "\n".getBytes()[0];
+			return byteLocation + 1;
+		}
+
+	@Override
+		public int read() throws IOException {
+			return 0;
+		}
+
+	public static InputStreamBuilder stubInputStream() {
+		return new InputStreamBuilder();
+	}
+}
+```
 
 And &#8230;
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          <span class="kw1">public</span> <span class="kw1">class</span> InputStreamBuilder <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw1">private</span> Queue<span class="sy0"><</span>String<span class="sy0">></span> values <span class="sy0">=</span> <span class="kw1">new</span> LinkedList<span class="sy0"><</span>String<span class="sy0">></span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> InputStreamBuilder toReturn<span class="br0">&#40;</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> value<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">this</span>.<span class="me1">values</span>.<span class="me1">add</span><span class="br0">&#40;</span>value<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw1">this</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> InputStreamBuilder then<span class="br0">&#40;</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> value<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">this</span>.<span class="me1">values</span>.<span class="me1">add</span><span class="br0">&#40;</span>value<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw1">this</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> StubbedInputStream atSomePoint<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw1">new</span> StubbedInputStream<span class="br0">&#40;</span>values<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` java
+public class InputStreamBuilder {
+	private Queue<String> values = new LinkedList<String>();
+
+	public InputStreamBuilder toReturn(String value) {
+		this.values.add(value);
+		return this;
+	}
+
+	public InputStreamBuilder then(String value) {
+		this.values.add(value);
+		return this;
+	}
+
+	public StubbedInputStream atSomePoint() {
+		return new StubbedInputStream(values);
+	}
+}
+```
 
 When you want to test the command-line program you can do something like this.
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          <span class="kw1">public</span> <span class="kw1">class</span> MainTest <span class="br0">&#123;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">private</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aprintstream+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">PrintStream</span></a> console<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">private</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Abytearrayoutputstream+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">ByteArrayOutputStream</span></a> outputStream<span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; @Before<br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw4">void</span> before<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; console <span class="sy0">=</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">out</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; outputStream <span class="sy0">=</span> <span class="kw1">new</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Abytearrayoutputstream+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">ByteArrayOutputStream</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; @Test<br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw4">void</span> mainTest<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">throws</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aioexception+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">IOException</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">setOut</span><span class="br0">&#40;</span><span class="kw1">new</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aprintstream+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">PrintStream</span></a><span class="br0">&#40;</span>outputStream<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">setIn</span><span class="br0">&#40;</span>stubInputStream<span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">toReturn</span><span class="br0">&#40;</span><span class="st0">"0"</span><span class="br0">&#41;</span>.<span class="me1">atSomePoint</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">new</span> Main<span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">launchApp</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; assertThat<span class="br0">&#40;</span>outputStream.<span class="me1">toString</span><span class="br0">&#40;</span><span class="br0">&#41;</span>, containsString<span class="br0">&#40;</span><span class="st0">"Print 0"</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; @Test<br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw4">void</span> mainTestNextCase<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">throws</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aioexception+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">IOException</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">setOut</span><span class="br0">&#40;</span><span class="kw1">new</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aprintstream+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">PrintStream</span></a><span class="br0">&#40;</span>outputStream<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">setIn</span><span class="br0">&#40;</span>stubInputStream<span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">toReturn</span><span class="br0">&#40;</span><span class="st0">"2"</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="st0">"0"</span><span class="br0">&#41;</span>.<span class="me1">atSomePoint</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">new</span> Main<span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">launchApp</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; assertThat<span class="br0">&#40;</span>outputStream.<span class="me1">toString</span><span class="br0">&#40;</span><span class="br0">&#41;</span>, containsString<span class="br0">&#40;</span><span class="st0">"Print Toy"</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` java
+public class MainTest {
 
+    private PrintStream console;
+    private ByteArrayOutputStream outputStream;
+
+    @Before
+    public void before() {
+        console = System.out;
+        outputStream = new ByteArrayOutputStream();
+    }
+
+    @Test
+    public void mainTest() throws IOException {
+        System.setOut(new PrintStream(outputStream));
+        System.setIn(stubInputStream().toReturn("0").atSomePoint());
+
+        new Main().launchApp();
+
+        assertThat(outputStream.toString(), containsString("Print 0"));
+    }
+
+    @Test
+    public void mainTestNextCase() throws IOException {
+        System.setOut(new PrintStream(outputStream));
+        System.setIn(stubInputStream().toReturn("2").then("0").atSomePoint());
+
+        new Main().launchApp();
+
+        assertThat(outputStream.toString(), containsString("Print Toy"));
+    }
+}
+```
  [1]: http://www.markhneedham.com/

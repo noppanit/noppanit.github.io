@@ -8,19 +8,24 @@ dsq_thread_id:
 categories:
   - Java
 ---
-So, for example if you have a 2 dimensional array.  
+So, for example if you have a 2 dimensional array. 
+```
 1 2 3  
 4 5 6  
 7 8 9
-
+```
 the neighbours of &#8220;5&#8221; is  
+```
 1 2 3  
 4 6  
 7 8 9
+```
 
 the neighbours of &#8220;9&#8221; would be  
+```
 5 6  
 8
+```
 
 Without further ado, here is the algorithm.
 

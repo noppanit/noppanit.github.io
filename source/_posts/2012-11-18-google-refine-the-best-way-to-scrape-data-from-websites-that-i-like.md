@@ -44,23 +44,9 @@ I think I cannot demonstrate how to scrape a website from any website, so I&#821
 
 For this example I use this expression. So that means get me &#8220;#main-content article header h2 a&#8221; and &#8220;join&#8221; with &#8220;,&#8221;
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          forEach(value.parseHtml().select("#main-content article header h2 a"), e, e.innerHtml()).join(",")
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` bash
+forEach(value.parseHtml().select("#main-content article header h2 a"), e, e.innerHtml()).join(",")
+```
 
 8. Then we will change the shape of this data to be each title per row by using &#8220;Split multi-values cells&#8221;
 

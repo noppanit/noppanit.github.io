@@ -23,4 +23,3 @@ Wandsbeker Chausse 40
 U1-Wartenau
 
  [1]: http://mealbymel.blogspot.de/2011/09/meister-lo-nudelhaus.html "Meister-lo-Nudelhaus"
- [2]: #
