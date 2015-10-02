@@ -21,8 +21,6 @@ Now I work in the UK, my life is better and I have a reasonably good job. Plus, 
 
 However, we have some good news as well.
 
-
-
 For the past years, I have worked with 2 organisations in Thailand and in India. [Goodwill Thailand][1], the organisation helps disadvantaged women in Thailand by educating them and training them. I know this organisation through my friend, she has worked with this organisation before so I joined later.
 
 What I did was that I volunteered just 2 hours of my weekend time to teach them English and how to use computer. English course in Thailand is quite expensive and not everybody can afford the course. Just this it will help them to get a better job and better quality of life. If they can just make a simple conversation in English they can work as a receptionist in a hotel instead of a cleaner (Apologises, I don&#8217;t mean to be disrespectful about any professions). Or they can be a baby sitter for expats in Bangkok which they will get paid more than minimum average. The minimum wage in Thailand is 10 dollars a day. 
@@ -32,8 +30,6 @@ The second organisation is [Sukrupa][2]. This organisations helps deprived child
 Back to Live Below the Line, as I have worked with two organisations I have realised that with my current status the best way to fight this problem is to donate skills and create awareness. If I can help them get back on their feet quickly, then they can help themselves later. If we give them food once they&#8217;ve eaten that food, it&#8217;s gone. If we teach them to cook the food, they can produce the food for the rest of their life. Also, another reason is that if I can create more awareness so more people know and realise the problem even to the top where powerful people can really make a different. 
 
 More video that inspires me.
-
-
 
 [My Live Below the Line][3]
 
