@@ -20,23 +20,12 @@ We have just installed SSL on our Amazon CloudFront. We followed this [blog post
 
 If your SSL providers gave you the chained certificate already, then you don&#8217;t have to do anything else. However, when I downloaded my crt files I found this
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          my_domain.crt<br /> AddTrustExternalCARoot.crt<br /> TrustedSecureCertificateAuthority5.crt<br /> USERTrustRSAAddTrustCA.rt
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+```
+my_domain.crt
+AddTrustExternalCARoot.crt
+TrustedSecureCertificateAuthority5.crt
+USERTrustRSAAddTrustCA.rt
+```
 
 And I&#8217;m shocked. So, I thought I would need to upload all of them three times which I did but only one got through and I thought the others must have been backup or some kind (I know I&#8217;m pretty stupid). So, I used [SSL Checker][2] to check and the site said my trust is broken. I thought how could it be I did everything right. 
 
@@ -46,158 +35,92 @@ After a lot of digging and reading. I have to figured out the order of certifica
 
 You can run this command
 
-<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="bash codecolorer">
-          openssl x509 <span class="re5">-text</span> <span class="re5">-noout</span> <span class="re5">-in</span> your_domain.crt
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` bash
+openssl x509 -text -noout -in your_domain.crt
+```
 
 You should start with your **domain.crt** file which will be something like this
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          Certificate:<br /> &nbsp; &nbsp; Data:<br /> &nbsp; &nbsp; &nbsp; &nbsp; Version: 3 (0x2)<br /> &nbsp; &nbsp; &nbsp; &nbsp; Serial Number:<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; xxxxxx<br /> &nbsp; &nbsp; &nbsp; &nbsp; Signature Algorithm: xxxxx<br /> &nbsp; &nbsp; &nbsp; &nbsp; Issuer: C=US, ST=DE, L=Wilmington, O=Corporation Service Company, CN=Trusted Secure Certificate Authority 5<br /> &nbsp; &nbsp; &nbsp; &nbsp; Validity<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not Before: <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not After : <br /> &nbsp; &nbsp; &nbsp; &nbsp; Subject: C=US/postalCode=x, ST=xx, L=xxx, O=xxx, LLC, OU=xxx, OU=xxx, CN=xxx<br /> </cod><br /> <br /> You just need to look for <strong>Issuer</strong> which will tell you what is your next immediate certificate. In this case <strong>Trusted Secure Certificate Authority 5</strong> is my first certificate and then you go on and do the next one.<br /> <br /> <code lang="bash"><br /> openssl x509 -text -noout -in TrustedSecureCertificateAuthority5.crt
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+```
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            xxxxxx
+        Signature Algorithm: xxxxx
+        Issuer: C=US, ST=DE, L=Wilmington, O=Corporation Service Company, CN=Trusted Secure Certificate Authority 5
+        Validity
+            Not Before: 
+            Not After : 
+        Subject: C=US/postalCode=x, ST=xx, L=xxx, O=xxx, LLC, OU=xxx, OU=xxx, CN=xxx
+```
+You just need to look for Issuer which will tell you what is your next immediate certificate. In this case Trusted Secure Certificate Authority 5 is my first certificate and then you go on and do the next one.
+
+``` bash
+openssl x509 -text -noout -in TrustedSecureCertificateAuthority5.crt
+```
 
 You will get something like this
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          Certificate:<br /> &nbsp; &nbsp; Data:<br /> &nbsp; &nbsp; &nbsp; &nbsp; Version: 3 (0x2)<br /> &nbsp; &nbsp; &nbsp; &nbsp; Serial Number:<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; xxxxx<br /> &nbsp; &nbsp; &nbsp; &nbsp; Signature Algorithm: xxxx<br /> &nbsp; &nbsp; &nbsp; &nbsp; Issuer: C=US, ST=New Jersey, L=Jersey City, O=The USERTRUST Network, CN=USERTrust RSA Certification Authority<br /> &nbsp; &nbsp; &nbsp; &nbsp; Validity<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not Before: Sep 10 00:00:00 2014 GMT<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not After : Sep &nbsp;9 23:59:59 2024 GMT<br /> &nbsp; &nbsp; &nbsp; &nbsp; Subject: C=US, ST=DE, L=Wilmington, O=Corporation Service Company, CN=Trusted Secure Certificate Authority 5
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+```
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            xxxxx
+        Signature Algorithm: xxxx
+        Issuer: C=US, ST=New Jersey, L=Jersey City, O=The USERTRUST Network, CN=USERTrust RSA Certification Authority
+        Validity
+            Not Before: Sep 10 00:00:00 2014 GMT
+            Not After : Sep  9 23:59:59 2024 GMT
+        Subject: C=US, ST=DE, L=Wilmington, O=Corporation Service Company, CN=Trusted Secure Certificate Authority 5
+```
 
 It means **USERTrust** is the next certificate then repeat the process again until you see this.
 
-<pre><div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          Certificate:<br />
-          &nbsp; &nbsp; Data:<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; Version: 3 (0x2)<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; Serial Number: xxxx<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; Signature Algorithm: xxxxx<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; Issuer: C=SE, O=AddTrust AB, OU=AddTrust External TTP Network, CN=AddTrust External CA Root<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; Validity<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not Before: May 30 10:48:38 2000 GMT<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not After : May 30 10:48:38 2020 GMT<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; Subject: C=SE, O=AddTrust AB, OU=AddTrust External TTP Network, CN=AddTrust External CA Root
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+```
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: xxxx
+        Signature Algorithm: xxxxx
+        Issuer: C=SE, O=AddTrust AB, OU=AddTrust External TTP Network, CN=AddTrust External CA Root
+        Validity
+            Not Before: May 30 10:48:38 2000 GMT
+            Not After : May 30 10:48:38 2020 GMT
+        Subject: C=SE, O=AddTrust AB, OU=AddTrust External TTP Network, CN=AddTrust External CA Root
 
-</pre>
+```
 
 If **Issuer** is the same as **Subject** that means this certificate is the root which is going to be the last. Now, what you can do is to concatenate in the correct order of all the certificates. 
 
 You can use this command or you can use your favourite editor to do as well.
 
-<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="bash codecolorer">
-          <span class="kw2">cat</span> first_crt second_crt third_crt <span class="sy0">></span> your_pem_file
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` bash
+cat first_crt second_crt third_crt > your_pem_file
+```
 
 Then when you&#8217;re ready to upload the certificate to Amazon you can just do this.
 
-<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="bash codecolorer">
-          aws iam upload-server-certificate <span class="re5">--server-certificate-name</span> your_domain \<br /> <span class="re5">--certificate-body</span> file:<span class="sy0">//</span>your_domain.crt \<br /> <span class="re5">--private-key</span> file:<span class="sy0">//</span>your_domain.private \<br /> <span class="re5">--certificate-chain</span> file:<span class="sy0">//</span>your_pem_file \<br /> <span class="re5">--path</span> <span class="sy0">/</span>cloudfront<span class="sy0">/</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` bash
+aws iam upload-server-certificate --server-certificate-name your_domain \
+--certificate-body file://your_domain.crt \
+--private-key file://your_domain.private \
+--certificate-chain file://your_pem_file \
+--path /cloudfront/
+```
 
 The **&#8211;certificate-chain** should be your concatenated certificates.
 
 The format of the **pem** should be something like this.
-
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          -----BEGIN CERTIFICATE-----<br /> Intermediate certificate 2<br /> -----END CERTIFICATE-----<br /> -----BEGIN CERTIFICATE-----<br /> Intermediate certificate 1<br /> -----END CERTIFICATE-----
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+```
+-----BEGIN CERTIFICATE-----
+Intermediate certificate 2
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+Intermediate certificate 1
+-----END CERTIFICATE-----
+```
 
  [1]: https://bryce.fisher-fleig.org/blog/setting-up-ssl-on-aws-cloudfront-and-s3/
  [2]: https://www.digicert.com/help/
