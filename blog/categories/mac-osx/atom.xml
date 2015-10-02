@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Mac Osx | My Blog]]></title>
-  <link href="http://noppanit.github.io/blog/categories/mac-osx/atom.xml" rel="self"/>
-  <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-02T07:15:06-04:00</updated>
-  <id>http://noppanit.github.io/</id>
+  <link href="http://www.noppanit.com/blog/categories/mac-osx/atom.xml" rel="self"/>
+  <link href="http://www.noppanit.com/"/>
+  <updated>2015-10-02T07:16:11-04:00</updated>
+  <id>http://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mac OSX: Override Rm to Delete Files to .Trash]]></title>
-    <link href="http://noppanit.github.io/mac-osx-override-rm-to-delete-files-to-trash/"/>
+    <link href="http://www.noppanit.com/mac-osx-override-rm-to-delete-files-to-trash/"/>
     <updated>2011-04-05T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/mac-osx-override-rm-to-delete-files-to-trash</id>
+    <id>http://www.noppanit.com/mac-osx-override-rm-to-delete-files-to-trash</id>
     <content type="html"><![CDATA[<p>So silly of me I have just &#8220;accidentally&#8221; deleted my home directory T_T. There is a way to help that by override rm command to move file to .Trash.</p>
 
 <p>Just copy this code to ~/.bash_profile and restart your terminal.</p>
@@ -43,9 +43,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mastering Vi Common in Just 10 Minutes]]></title>
-    <link href="http://noppanit.github.io/masteing-vi-common-in-just-10-minutes/"/>
+    <link href="http://www.noppanit.com/masteing-vi-common-in-just-10-minutes/"/>
     <updated>2010-01-05T00:00:00-05:00</updated>
-    <id>http://noppanit.github.io/masteing-vi-common-in-just-10-minutes</id>
+    <id>http://www.noppanit.com/masteing-vi-common-in-just-10-minutes</id>
     <content type="html"><![CDATA[<p>I have just finished my Unix exam. I know somebody hates VI very much, because it is very hard to use. It is so command-line, something like that. But learning to use this editor is very useful because you never know when will you unable to use X-Window or when will you face with command-line configuration.</p>
 
 <p>So, just easing you in. VI is an editor in Unix and Unix-like system. It is command-line-based and very easy to use. You can learn its basics in just 10 minutes. VI has two modes; command mode and insert mode. Command mode is where you put your command and insert mode is where you put your text. Easy!</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Javascript | My Blog]]></title>
-  <link href="http://noppanit.github.io/blog/categories/javascript/atom.xml" rel="self"/>
-  <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-02T07:15:06-04:00</updated>
-  <id>http://noppanit.github.io/</id>
+  <link href="http://www.noppanit.com/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://www.noppanit.com/"/>
+  <updated>2015-10-02T07:16:11-04:00</updated>
+  <id>http://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Example: How Did I Convert Async Code to Sync Code With Promise.]]></title>
-    <link href="http://noppanit.github.io/example-how-did-i-convert-async-code-to-sync-code-with-promise/"/>
+    <link href="http://www.noppanit.com/example-how-did-i-convert-async-code-to-sync-code-with-promise/"/>
     <updated>2015-05-24T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/example-how-did-i-convert-async-code-to-sync-code-with-promise</id>
+    <id>http://www.noppanit.com/example-how-did-i-convert-async-code-to-sync-code-with-promise</id>
     <content type="html"><![CDATA[<p>I&#8217;ve just finished my first refactor to convert my node.js code to be more promisey (I believe that&#8217;s the word they use these days). There&#8217;s lots of documents out there to do this. However, I thought I should contribute more to help me understand more and might get some feedback from people who&#8217;s seen it as well.</p>
 
 <p>I&#8217;m trying to create a bot to report me back the performance of my site in desktop and mobile mode. So, I thought it would be easy since Google has an <a href="https://developers.google.com/speed/docs/insights/v2/getting-started">API</a> for that already so I went ahead and did this.</p>
@@ -170,9 +170,9 @@ exports.pagespeed = pagespeed;
   
   <entry>
     <title type="html"><![CDATA[Event Delegation in JavaScript Is Fast but How Fast?]]></title>
-    <link href="http://noppanit.github.io/event-delegation-javascript-fast-fast/"/>
+    <link href="http://www.noppanit.com/event-delegation-javascript-fast-fast/"/>
     <updated>2014-11-22T00:00:00-05:00</updated>
-    <id>http://noppanit.github.io/event-delegation-javascript-fast-fast</id>
+    <id>http://www.noppanit.com/event-delegation-javascript-fast-fast</id>
     <content type="html"><![CDATA[<p>People say always use event delegation for adding event because it&#8217;s faster. But how fast exactly? I really want to create a test case for this, but I couldn&#8217;t figure out how to run B<a href="http://benchmarkjs.com/" title="benchmark.js">enchmark.js</a> in browser. So, I thought we could just use Chrome Developer Tool to achieve this.</p>
 
 <h2>What are we measuring?</h2>
@@ -251,9 +251,9 @@ Now change your snippet to be event delegation
   
   <entry>
     <title type="html"><![CDATA[Knockout.js Virtual Elements Are Being Stripped Out From Mobile.]]></title>
-    <link href="http://noppanit.github.io/knockout-js-virtual-elements-stripped-mobile/"/>
+    <link href="http://www.noppanit.com/knockout-js-virtual-elements-stripped-mobile/"/>
     <updated>2014-10-07T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/knockout-js-virtual-elements-stripped-mobile</id>
+    <id>http://www.noppanit.com/knockout-js-virtual-elements-stripped-mobile</id>
     <content type="html"><![CDATA[<p>This rarely happens and you would be surprised what is the cause of this. Recently, I have just finished a mobile site using knockout.js. I have used a fair amount of Virtual Elements in Knockout.js. But weirdly enough one day my Manager came in and talk to my <a href="https://twitter.com/sragu" title="Srini">tech lead</a> (@sragu) that the site is not working. We quickly checked with our live site and everything was ok yet the site from his phone wasn&#8217;t working at all.</p>
 
 <p>We spent quite a long time to find out the cause of this. We cleared the cache. We restarted the phone. Tried different browsers. Luckily, then we found out this <a href="http://stackoverflow.com/questions/4113268/how-to-stop-javascript-injection-from-vodafone-proxy">thread</a> from Stackoverflow.com.</p>
@@ -269,9 +269,9 @@ Now change your snippet to be event delegation
   
   <entry>
     <title type="html"><![CDATA[Contextual Preloading for Ajax Request.]]></title>
-    <link href="http://noppanit.github.io/contextual-preloading-ajax-request/"/>
+    <link href="http://www.noppanit.com/contextual-preloading-ajax-request/"/>
     <updated>2014-05-10T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/contextual-preloading-ajax-request</id>
+    <id>http://www.noppanit.com/contextual-preloading-ajax-request</id>
     <content type="html"><![CDATA[<p>I have just heard this from my friend <a href="https://twitter.com/rajveerr" title="rajveerr twitter">@rajveerr</a> about pre-loading at the global level, this concept is not new but I have just learned it.. Usually and I think everyone has done it before. People would do something like this.</p>
 
 <pre><code class="javascript">$('#link1').on('click', function (e) {
@@ -309,9 +309,9 @@ Now change your snippet to be event delegation
   
   <entry>
     <title type="html"><![CDATA[Example of Require.js Optimizer.]]></title>
-    <link href="http://noppanit.github.io/example-require-js-optimizer/"/>
+    <link href="http://www.noppanit.com/example-require-js-optimizer/"/>
     <updated>2014-02-09T00:00:00-05:00</updated>
-    <id>http://noppanit.github.io/example-require-js-optimizer</id>
+    <id>http://www.noppanit.com/example-require-js-optimizer</id>
     <content type="html"><![CDATA[<p>I decided to write this blog post to show how easy it is to setup require.js optimizer and how many bytes it saves.</p>
 
 <p>To make it as simple as possible, I created this repository on <a href="https://github.com/noppanit/requirejs-optimization-example" title="Require.js optimisation example">github</a> to show the real example.</p>

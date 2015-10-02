@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Sauces | My Blog]]></title>
-  <link href="http://noppanit.github.io/blog/categories/sauces/atom.xml" rel="self"/>
-  <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-02T07:15:06-04:00</updated>
-  <id>http://noppanit.github.io/</id>
+  <link href="http://www.noppanit.com/blog/categories/sauces/atom.xml" rel="self"/>
+  <link href="http://www.noppanit.com/"/>
+  <updated>2015-10-02T07:16:11-04:00</updated>
+  <id>http://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Korean Sauce]]></title>
-    <link href="http://noppanit.github.io/korean-sauce/"/>
+    <link href="http://www.noppanit.com/korean-sauce/"/>
     <updated>2008-03-29T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/korean-sauce</id>
+    <id>http://www.noppanit.com/korean-sauce</id>
     <content type="html"><![CDATA[<p>This is my first dish in the UK. My Korea friend told me how to cook it. It was fantastic. This sauce can go with everything that grilled.</p>
 
 <h2>Ingredients  </h2>

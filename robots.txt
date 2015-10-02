@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: http://noppanit.github.io/sitemap.xml
+Sitemap: http://www.noppanit.com/sitemap.xml

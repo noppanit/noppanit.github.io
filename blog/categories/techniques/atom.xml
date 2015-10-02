@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Techniques | My Blog]]></title>
-  <link href="http://noppanit.github.io/blog/categories/techniques/atom.xml" rel="self"/>
-  <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-02T07:15:06-04:00</updated>
-  <id>http://noppanit.github.io/</id>
+  <link href="http://www.noppanit.com/blog/categories/techniques/atom.xml" rel="self"/>
+  <link href="http://www.noppanit.com/"/>
+  <updated>2015-10-02T07:16:11-04:00</updated>
+  <id>http://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Installing SSL on Amazon CloudFront]]></title>
-    <link href="http://noppanit.github.io/installing-ssl-on-amazon-cloudfront/"/>
+    <link href="http://www.noppanit.com/installing-ssl-on-amazon-cloudfront/"/>
     <updated>2015-05-22T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/installing-ssl-on-amazon-cloudfront</id>
+    <id>http://www.noppanit.com/installing-ssl-on-amazon-cloudfront</id>
     <content type="html"><![CDATA[<p>We have just installed SSL on our Amazon CloudFront. We followed this <a href="https://bryce.fisher-fleig.org/blog/setting-up-ssl-on-aws-cloudfront-and-s3/">blog post</a> from Bryce which I think it&#8217;s really good already. However, I was stuck on the last part where you have to upload the certificate to IAM. The difference is that I had to concatenate the crt files myself and I didn&#8217;t know how to do it. So I spent quite a long time to figure it out. I thought I would write this so it might help save sometime for anybody.</p>
 
 <p>If your SSL providers gave you the chained certificate already, then you don&#8217;t have to do anything else. However, when I downloaded my crt files I found this</p>
@@ -120,9 +120,9 @@ Intermediate certificate 1
   
   <entry>
     <title type="html"><![CDATA[How to : A Hand-made Cigarette]]></title>
-    <link href="http://noppanit.github.io/how-to-a-hand-made-cigarette/"/>
+    <link href="http://www.noppanit.com/how-to-a-hand-made-cigarette/"/>
     <updated>2007-12-12T00:00:00-05:00</updated>
-    <id>http://noppanit.github.io/how-to-a-hand-made-cigarette</id>
+    <id>http://www.noppanit.com/how-to-a-hand-made-cigarette</id>
     <content type="html"><![CDATA[<p>I have been astonishing by this hand-made cigarette in England. It is made by my friend- Not. It is step by step. It&#8217;s dead simple. Have a good look.</p>
 
 <p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/IMG_9730.jpg" height="300" width="400" /></p>
@@ -149,9 +149,9 @@ Intermediate certificate 1
   
   <entry>
     <title type="html"><![CDATA[HowTo : CPL Filter]]></title>
-    <link href="http://noppanit.github.io/howto-cpl-filter/"/>
+    <link href="http://www.noppanit.com/howto-cpl-filter/"/>
     <updated>2007-07-17T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/howto-cpl-filter</id>
+    <id>http://www.noppanit.com/howto-cpl-filter</id>
     <content type="html"><![CDATA[<p>This topic I will record about how to use CPL filter, because I have bought this filter about 5 months. However, I couldn&#8217;t use it well, until now.</p>
 
 <p>The source of light coming from right hand. Therefore, I turned the ring on the filter directed to the source of light.</p>

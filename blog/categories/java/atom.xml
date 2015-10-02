@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Java | My Blog]]></title>
-  <link href="http://noppanit.github.io/blog/categories/java/atom.xml" rel="self"/>
-  <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-02T07:15:06-04:00</updated>
-  <id>http://noppanit.github.io/</id>
+  <link href="http://www.noppanit.com/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://www.noppanit.com/"/>
+  <updated>2015-10-02T07:16:11-04:00</updated>
+  <id>http://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Thinking Functionally for Idiots.]]></title>
-    <link href="http://noppanit.github.io/thinking-functionally-for-idiots/"/>
+    <link href="http://www.noppanit.com/thinking-functionally-for-idiots/"/>
     <updated>2014-01-20T00:00:00-05:00</updated>
-    <id>http://noppanit.github.io/thinking-functionally-for-idiots</id>
+    <id>http://www.noppanit.com/thinking-functionally-for-idiots</id>
     <content type="html"><![CDATA[<p>I just want to write this post for myself and lucky people who found this post from Google. The world has come to the era of functional. When I pair with my colleagues I always hear &#8220;That&#8217;s not so functional&#8221; or &#8220;Should we use Guava or functional Java&#8221; or &#8220;Wouldn&#8217;t it be easier if we use Scala&#8221;?. What do these mean? Why should I have to care if my code looks functional and what benefits do I get. This post is going to be a really easy post to follow that&#8217;s why the title &#8220;Thinking functionally for idiots&#8221;. If you want more technical I highly recommend this <a href="http://www.ibm.com/developerworks/java/library/j-ft1/index.html" title="Thinking functionally Part I">post</a> from Neal Ford.</p>
 
 <p><strong>Why functional programming?</strong><br/>
@@ -75,9 +75,9 @@ public abstract class MappingClass&lt;S, T&gt; {
   
   <entry>
     <title type="html"><![CDATA[Lesson Learnt : Basic Java Memory Consumption for In-memory Cache.]]></title>
-    <link href="http://noppanit.github.io/lesson-learnt-basic-java-memory-consumption-memory-cache/"/>
+    <link href="http://www.noppanit.com/lesson-learnt-basic-java-memory-consumption-memory-cache/"/>
     <updated>2013-12-05T00:00:00-05:00</updated>
-    <id>http://noppanit.github.io/lesson-learnt-basic-java-memory-consumption-memory-cache</id>
+    <id>http://www.noppanit.com/lesson-learnt-basic-java-memory-consumption-memory-cache</id>
     <content type="html"><![CDATA[<p>I know that these days we&#8217;re in the era of cheap memory. You can pretty much get 8GB of memory on a Notebook off the shelf. I can still remember in the past when I was playing with my 486DX with 64Mb or memory and it was too fast! yeah. People might question what am I doing using a lot of memory and why would you care. In my case, I&#8217;m building a cache which I have to pretty much hold every single object inside the memory. I have over 1 million objects. Well it&#8217;s just 1 million objects which it&#8217;s not a big deal but I have to index and make it searchable which I was told to use hibernate search. Hiberate search is pretty much a wrapper on top of Lucene. That&#8217;s why my my cache it&#8217;s very memory consuming. So, I have to be very careful what I put in my domain object. The example I&#8217;m using it&#8217;s just a basic example which in the real project there will be much more than just this.</p>
 
 <p>For example, I have one <strong>Store</strong> object which it has a method to return jsonified string. So, what I did I just passed <strong>ObjectMapper</strong> to transform my object to be json. However, what I didn&#8217;t realise was that if I passed that from the constructor my object has to store <strong>ObjectMapper</strong> inside the object as well and <strong>ObjectMapper</strong> is a really beefy object. So, If I created a million objects I have to hold another million objects of ObjectMapper as well. So, I just had to pass <strong>ObjectMapper</strong> just when I want to use it. And that save me a lot of memory.</p>
@@ -204,9 +204,9 @@ Used memory is megabytes: 1
   
   <entry>
     <title type="html"><![CDATA[AngularJs Cookies With Play Framework 2.1.1 Java Session.]]></title>
-    <link href="http://noppanit.github.io/angularjs-cookies-with-play-framework-2-1-1-java-session/"/>
+    <link href="http://www.noppanit.com/angularjs-cookies-with-play-framework-2-1-1-java-session/"/>
     <updated>2013-05-31T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/angularjs-cookies-with-play-framework-2-1-1-java-session</id>
+    <id>http://www.noppanit.com/angularjs-cookies-with-play-framework-2-1-1-java-session</id>
     <content type="html"><![CDATA[<p>I have been working with AngularJs and I loved it, but occasionally I ran into some problems and the documentation is not that reliable. So, I&#8217;m helping them to increase the rank.</p>
 
 <p>Recently, I have this problem when Play saved some session in cookie already, but I can&#8217;t use $cookies from AngularJs to read the cookie. So, I started digging in and I found that those cookies are set with <strong>httpOnly</strong> by default. If you have that flag on any plugins (e.g, AngularJs) cannot read that cookie. So, it Play 1 you can set <strong>application.session.httpOnly=false</strong> but in Play 2.1 they changed to <strong>session.httpOnly=false</strong></p>
@@ -217,9 +217,9 @@ Used memory is megabytes: 1
   
   <entry>
     <title type="html"><![CDATA[Test Command Line Program]]></title>
-    <link href="http://noppanit.github.io/test-command-line-program/"/>
+    <link href="http://www.noppanit.com/test-command-line-program/"/>
     <updated>2011-04-26T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/test-command-line-program</id>
+    <id>http://www.noppanit.com/test-command-line-program</id>
     <content type="html"><![CDATA[<p>When I was in TWU I was assigned to implement a simple program in Java Command line. I was ok but when I came to TDD approach I really didn&#8217;t know what to do and test command-line in JUnit. I googled but I found nothing. However, after <a href="http://www.markhneedham.com/">Mark Needham</a> shows us in code and it was rather easy to do that. So I think I would write the example so that I could remember.</p>
 
 <p>If you have a program like this. How would you test it in JUnit?</p>
@@ -354,9 +354,9 @@ Used memory is megabytes: 1
   
   <entry>
     <title type="html"><![CDATA[How to Find Neighbours of 2 Dimensional Array]]></title>
-    <link href="http://noppanit.github.io/how-to-find-neighbours-of-2-dimensional-array/"/>
+    <link href="http://www.noppanit.com/how-to-find-neighbours-of-2-dimensional-array/"/>
     <updated>2011-03-20T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/how-to-find-neighbours-of-2-dimensional-array</id>
+    <id>http://www.noppanit.com/how-to-find-neighbours-of-2-dimensional-array</id>
     <content type="html"><![CDATA[<p>So, for example if you have a 2 dimensional array.
 <code>
 1 2 3  

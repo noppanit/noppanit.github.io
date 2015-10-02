@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Database | My Blog]]></title>
-  <link href="http://noppanit.github.io/blog/categories/database/atom.xml" rel="self"/>
-  <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-02T07:15:06-04:00</updated>
-  <id>http://noppanit.github.io/</id>
+  <link href="http://www.noppanit.com/blog/categories/database/atom.xml" rel="self"/>
+  <link href="http://www.noppanit.com/"/>
+  <updated>2015-10-02T07:16:11-04:00</updated>
+  <id>http://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Lesson Learnt From Data Cleansing. Part II]]></title>
-    <link href="http://noppanit.github.io/lesson-learnt-from-data-cleansing-part-ii/"/>
+    <link href="http://www.noppanit.com/lesson-learnt-from-data-cleansing-part-ii/"/>
     <updated>2013-02-11T00:00:00-05:00</updated>
-    <id>http://noppanit.github.io/lesson-learnt-from-data-cleansing-part-ii</id>
+    <id>http://www.noppanit.com/lesson-learnt-from-data-cleansing-part-ii</id>
     <content type="html"><![CDATA[<p>Ok as I have done the <a href="http://www.noppanit.com/lesson-learnt-from-data-cleansing/" title="data cleansing part I">part I</a> I have learnt another thing from data cleansing. I believe the best tool for data analysis is <a href="http://www.r-project.org/" title="R">R</a> but the learning is quite steep but I&#8217;m trying to learn it right now. Hopefully if I can get some results from this with neo4j I could move on to use R to get some more statistical results.</p>
 
 <p>Now, the second challenge I got was that the CSV file is about 1GB with around 100 columns and I was trying to use Ruby to parse that. Obviously, I got <strong>Killed</strong> results from my Terminal even before I got to the first line. So, Ruby has to load everything into memory and parse that. But as I&#8217;m running everything in my small Mac. It seems to be quite a challenging. So, what I have done is to dump everything to MySQL. This time works really good. MySQL has <a href="http://dev.mysql.com/doc/refman/5.1/en/load-data.html" title="Load data mysql">LOAD DATA FILE</a> which can load CSV file into a table. It only took me around <string>20 seconds</strong> to load 1GB of CSV into a table. I dumped the table out and it was around 1GB which is not too bad. Now the next challenge was that I also had to filter out the events that were created by real users (I&#8217;m doing this <a href="http://www.kaggle.com/c/event-recommendation-engine-challenge" title="kaggle competition">Kaggle competition</a>). I had around 3 million rows which is now that much. And I used MySQL which comes with XAMPP. My first query took me around 8 hours without spitting any results back. So, I gave up and did a couple research on how to make MySQL faster, but I&#8217;m not a DBA and I didn&#8217;t have time to read the whole book about MySQL performance tuning.</p>

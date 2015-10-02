@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Knowledges | My Blog]]></title>
-  <link href="http://noppanit.github.io/blog/categories/knowledges/atom.xml" rel="self"/>
-  <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-02T07:15:06-04:00</updated>
-  <id>http://noppanit.github.io/</id>
+  <link href="http://www.noppanit.com/blog/categories/knowledges/atom.xml" rel="self"/>
+  <link href="http://www.noppanit.com/"/>
+  <updated>2015-10-02T07:16:11-04:00</updated>
+  <id>http://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Code Review With the World]]></title>
-    <link href="http://noppanit.github.io/code-review-with-the-world/"/>
+    <link href="http://www.noppanit.com/code-review-with-the-world/"/>
     <updated>2015-09-22T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/code-review-with-the-world</id>
+    <id>http://www.noppanit.com/code-review-with-the-world</id>
     <content type="html"><![CDATA[<h2>TL;DR</h2>
 
 <p>If you don&#8217;t know <a href="http://codereview.stackexchange.com/">Code Review Stackoverflow</a> you gotta get on it now. It works and it&#8217;s awesome.</p>
@@ -61,9 +61,9 @@ for min_of_i in range(20):
   
   <entry>
     <title type="html"><![CDATA[Maps All Parking Signs in NYC.]]></title>
-    <link href="http://noppanit.github.io/maps-all-parking-signs-in-nyc/"/>
+    <link href="http://www.noppanit.com/maps-all-parking-signs-in-nyc/"/>
     <updated>2015-07-30T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/maps-all-parking-signs-in-nyc</id>
+    <id>http://www.noppanit.com/maps-all-parking-signs-in-nyc</id>
     <content type="html"><![CDATA[<p>This post might be too easy for any Data-viz people but as a beginner tapping in this area. It took me quite a long time to figure it out so I just want to share this hoping that it might save people&#8217;s time.</p>
 
 <p>Parking in NYC is really a pain, especially street parking where there&#8217;re lots of signs and regulations. There are some apps on Android and iPhone that you can download and see signs but I haven&#8217;t been able to find the one that suits my needs. I want an application that can tell me where to circle arounds on which day and time to find parking spot. For example, I parked my car on a Tuesday which has street cleaning on Wednesday and Friday from 8:30 to 9:30. That means I have to move the car on Wednesday morning to find a spot for Friday. The problem is I don&#8217;t know what&#8217;s around me. The closest application I find is <a href="http://www.nycparklife.com/streetparker/">http://www.nycparklife.com/streetparker/</a> which it doesn&#8217;t have Manhattan.</p>
@@ -163,9 +163,9 @@ data.head()
   
   <entry>
     <title type="html"><![CDATA[I&#8217;m Never Going Back to Modern Editor Again.]]></title>
-    <link href="http://noppanit.github.io/im-never-going-back-to-modern-editor-again/"/>
+    <link href="http://www.noppanit.com/im-never-going-back-to-modern-editor-again/"/>
     <updated>2015-07-17T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/im-never-going-back-to-modern-editor-again</id>
+    <id>http://www.noppanit.com/im-never-going-back-to-modern-editor-again</id>
     <content type="html"><![CDATA[<p>Ok, the title might be a little bit exaggerating. But let me clear this up first. I still use modern editors, TextMate, Atom.io or IntelliJ. They are pros and cons. But here&#8217;s my real answer if people ask me. I want to be the cool kid!.</p>
 
 <p>I don&#8217;t know if you&#8217;re like me but I get asked almost all the time I go to a meetup or conference, &#8220;What&#8217;s your favourite editor&#8221;?. People almost always say Vim|Emacs. I tried both of them in the past and gave up more than I can remember because of all the shortcuts and plugins and I just get too frustrated to use either of them. Finally, I have made a decision that I&#8217;m going to stick with Vim for a month and let&#8217;s see if at the end of the month I still can&#8217;t use it. It&#8217;s been almost a month and I&#8217;d say I&#8217;m never going back to modern editors again (at least when I&#8217;m coding scripting languages). Here&#8217;s why.</p>
@@ -190,9 +190,9 @@ data.head()
   
   <entry>
     <title type="html"><![CDATA[How to Start Doing TDD for jQuery Plugin.]]></title>
-    <link href="http://noppanit.github.io/how-to-start-doing-tdd-for-jquery-plugin/"/>
+    <link href="http://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin/"/>
     <updated>2015-07-09T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/how-to-start-doing-tdd-for-jquery-plugin</id>
+    <id>http://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin</id>
     <content type="html"><![CDATA[<p>I&#8217;m a big fan of TDD. I get nervous every time when I put some code it without having tests. I&#8217;m developing a simple jQuery plugin and I think hey we can TDD this.</p>
 
 <h2>What is it?</h2>
@@ -387,9 +387,9 @@ gulp.task('default', function() {
   
   <entry>
     <title type="html"><![CDATA[The Most Basic Example of Linear Regression]]></title>
-    <link href="http://noppanit.github.io/the-most-basic-example-of-linear-regression/"/>
+    <link href="http://www.noppanit.com/the-most-basic-example-of-linear-regression/"/>
     <updated>2015-07-07T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/the-most-basic-example-of-linear-regression</id>
+    <id>http://www.noppanit.com/the-most-basic-example-of-linear-regression</id>
     <content type="html"><![CDATA[<p>Just for fun, I wanted to learn how to do linear regression and here&#8217;s the example I come up with.</p>
 
 <p>Let&#8217;s say you have a historical data of 1000 people who dined in your restaurant and left a tip. This is going to be perfect data because I generated. In the real world you will not find something like this.</p>

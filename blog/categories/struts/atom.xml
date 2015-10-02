@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Struts | My Blog]]></title>
-  <link href="http://noppanit.github.io/blog/categories/struts/atom.xml" rel="self"/>
-  <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-02T07:15:06-04:00</updated>
-  <id>http://noppanit.github.io/</id>
+  <link href="http://www.noppanit.com/blog/categories/struts/atom.xml" rel="self"/>
+  <link href="http://www.noppanit.com/"/>
+  <updated>2015-10-02T07:16:11-04:00</updated>
+  <id>http://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Tutorial : Struts Version 1 in Action]]></title>
-    <link href="http://noppanit.github.io/tutorial-struts-version-1-in-action/"/>
+    <link href="http://www.noppanit.com/tutorial-struts-version-1-in-action/"/>
     <updated>2008-04-20T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/tutorial-struts-version-1-in-action</id>
+    <id>http://www.noppanit.com/tutorial-struts-version-1-in-action</id>
     <content type="html"><![CDATA[<p>From the <a href="http://www.noppanit.com/?p=90" target="_blank">previous chapter</a>, I wrote about how to build an EJB from scratch. This topic, I will be presenting how to combine struts version 1 with the previous topic.</p>
 
 <p>First, we need the latest <a href="http://struts.apache.org/download.cgi#struts138" target="_blank">struts version 1</a>. Actually, I wanted to write about struts2, but I don&#8217;t have enough energy to do that, because struts version2 is very difference to version1. So, I will write version 1 first and then migrate to version2 later.</p>

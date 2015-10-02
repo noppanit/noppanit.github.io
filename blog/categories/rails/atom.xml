@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Rails | My Blog]]></title>
-  <link href="http://noppanit.github.io/blog/categories/rails/atom.xml" rel="self"/>
-  <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-02T07:15:06-04:00</updated>
-  <id>http://noppanit.github.io/</id>
+  <link href="http://www.noppanit.com/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://www.noppanit.com/"/>
+  <updated>2015-10-02T07:16:11-04:00</updated>
+  <id>http://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Thoughts on jQuery Mobile]]></title>
-    <link href="http://noppanit.github.io/thoughts-on-jquery-mobile/"/>
+    <link href="http://www.noppanit.com/thoughts-on-jquery-mobile/"/>
     <updated>2011-10-06T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/thoughts-on-jquery-mobile</id>
+    <id>http://www.noppanit.com/thoughts-on-jquery-mobile</id>
     <content type="html"><![CDATA[<p>Last week I helped out my friends <a href="http://www.eewei.com" title="Eewei">Eewei</a> and <a href="http://www.fab.co.uk">Jill</a> in <a href="http://futureofwebapps.com/london-2011/">Future of web app conference</a> in London. Unfortunately, I couldn&#8217;t be in the conference. They presented this really amazing called <a href="http://jquerymobile.com/">jQuery Mobile</a></p>
 
 <p>So, you&#8217;re allowed to transform a simple html website to be operational in modern mobile devies, such as iPhone, BB or Android phones. What you need to do it just add a javascript file and a css file from jQueryMobile site and that&#8217;s it. Bam! you have a ready to go mobile website in a min. Interesting to point out is that it&#8217;s still in a development stage and the latest release when I&#8217;m writing this is just a RC1. So, if you try it now you might be getting some bugs or some unresponsive actions when clicking buttons. Also, when you include the javascript src file and the css version, the version of the two files need to be corresponded, otherwise it might not be working correctly.</p>
