@@ -8,12 +8,15 @@ dsq_thread_id:
 categories:
   - Thai dishes
 ---
-Ingredients  
+Ingredients
+
 1. Chicken marinated with salt.  
 2. Finely sliced onion  
 3. Finely sliced red pepper and yellow pepper  
 4. Finely sliced ginger  
 5. Chopped garlic
+
+Directions
 
 1. put vegetable oil into a pan, heat it until smoke emits  
 2. add the chicken and the ginger  

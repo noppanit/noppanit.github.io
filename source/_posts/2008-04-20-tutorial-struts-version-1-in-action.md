@@ -50,7 +50,8 @@ This is the end, the next thing is we pack this project and deploy to applicatio
 
 This is the example of my build.xml file, I use ANY, because I want to build my project from scratch. If you can use Eclipse to deploy to the application server, that&#8217;s fine. In build.xml I use war task to pack all the files you needed to WAR.
 
-So, I can summary into the following steps  
+So, I can summary into the following steps 
+
 1. Create Struts project and include all the filed the project need, such as struts libraries.  
 2. Config web.xml and struts.xml  
 3. Write Jsp file, modified by using struts taglib, you can use plain html if you want.  

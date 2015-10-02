@@ -24,8 +24,7 @@ Well, The Guy Fawkes has just passed. I actually don&#8217;t know what is Guy Fa
 2. A good location, it should be some places where you could place your tripod and use the widest lens you could find to try to capture all the bloom and may be the event.  
 3. A remote shutter to prevent from camera shaking, I tried to use the mirror-lock functionality or timer, but by the time you wait for 2 secs or 1 secs, the bloom just gone. The fireworks wont&#8217; last long. So, be prepared.
 
-**Techniques  
-**
+**Techniques**
 
 1. Set your camera to M mode, so you could control your aperture and shutter speed.  
 2. Set your lens to the widest angle.  

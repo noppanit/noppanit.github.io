@@ -14,6 +14,7 @@ tags:
 This is my first dish in the UK. My Korea friend told me how to cook it. It was fantastic. This sauce can go with everything that grilled.
 
 Ingredients  
+---
 1. Korea hot paste  
 2. Ketchup 1/2 tablespoon  
 3. Wooster Sauce 1 teaspoon, you can use Brown Sauce instead  
@@ -22,9 +23,7 @@ Ingredients
 6. Chopped garlic  
 7. a little bit of water
 
-1. pour vegetable oil 1 teaspoon followed by the chopped garlic and the chopped onion, fry them until golden  
-2. and add the others ingredients into the pan and fry them for 5 minutes
+Directions
+---
+1. pour vegetable oil 1 teaspoon followed by the chopped garlic and the chopped onion, fry them until golden 2. and add the others ingredients into the pan and fry them for 5 minutes
 
-[<img src="http://www.noppanit.com/cooking/wp-content/uploads/2007/12/img_0979-1.thumbnail.jpg" alt="The Ingredients" height="128" width="131" />][1]
-
- [1]: http://www.noppanit.com/cooking/wp-content/uploads/2007/12/img_0979-1.jpg "Direct link to file"

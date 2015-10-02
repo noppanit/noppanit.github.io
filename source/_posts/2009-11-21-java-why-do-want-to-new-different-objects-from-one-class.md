@@ -19,22 +19,9 @@ Yes, my first answer is, we need different objects because we need to use them s
 
 For instance,
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          A a <span class="sy0">=</span> <span class="kw1">new</span> A<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> A a1 <span class="sy0">=</span> <span class="kw1">new</span> A<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` java
+A a = new A();
+A a1 = new A();
+```
 
 What&#8217;s the different between a and a1. They behave exactly the same, because they are A class. The reason is we would like to actually change their attributes or properties inside the class. This is very fundamental Object-oriented principle.

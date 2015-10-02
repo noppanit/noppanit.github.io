@@ -24,20 +24,50 @@ the neighbours of &#8220;9&#8221; would be
 
 Without further ado, here is the algorithm.
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />32<br />33<br />34<br />35<br />36<br />37<br />38<br />39<br />40<br />41<br />42<br />43<br />44<br />45<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          &nbsp; &nbsp;<span class="kw1">private</span> <span class="kw1">static</span> <span class="kw4">int</span><span class="br0">&#91;</span><span class="br0">&#93;</span><span class="br0">&#91;</span><span class="br0">&#93;</span> array <span class="sy0">=</span> <span class="kw1">new</span> <span class="kw4">int</span><span class="br0">&#91;</span><span class="nu0">3</span><span class="br0">&#93;</span><span class="br0">&#91;</span><span class="nu0">3</span><span class="br0">&#93;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">private</span> <span class="kw1">static</span> <span class="kw4">void</span> initialiseArray<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">int</span> counter <span class="sy0">=</span> <span class="nu0">1</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw4">int</span> row <span class="sy0">=</span> <span class="nu0"></span><span class="sy0">;</span> row <span class="sy0"><</span> <span class="nu0">3</span><span class="sy0">;</span> row<span class="sy0">++</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw4">int</span> col <span class="sy0">=</span> <span class="nu0"></span><span class="sy0">;</span> col <span class="sy0"><</span> <span class="nu0">3</span><span class="sy0">;</span> col<span class="sy0">++</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; array<span class="br0">&#91;</span>row<span class="br0">&#93;</span><span class="br0">&#91;</span>col<span class="br0">&#93;</span> <span class="sy0">=</span> counter<span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; counter<span class="sy0">++;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw1">static</span> <span class="kw4">void</span> main<span class="br0">&#40;</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> args<span class="br0">&#91;</span><span class="br0">&#93;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; initialiseArray<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw4">int</span> row <span class="sy0">=</span> <span class="nu0"></span><span class="sy0">;</span> row <span class="sy0"><</span> <span class="nu0">3</span><span class="sy0">;</span> row<span class="sy0">++</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw4">int</span> col <span class="sy0">=</span> <span class="nu0"></span><span class="sy0">;</span> col <span class="sy0"><</span> <span class="nu0">3</span><span class="sy0">;</span> col<span class="sy0">++</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">out</span>.<span class="me1">print</span><span class="br0">&#40;</span>array<span class="br0">&#91;</span>row<span class="br0">&#93;</span><span class="br0">&#91;</span>col<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span> col <span class="sy0">==</span> <span class="nu0">2</span> <span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">out</span>.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">"<span class="es0">\n</span>"</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; neighbours<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw1">static</span> <span class="kw4">void</span> neighbours<span class="br0">&#40;</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">// the position of a cell that you want to display its neighbours</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">int</span> posX <span class="sy0">=</span> <span class="nu0">2</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">int</span> posY <span class="sy0">=</span> <span class="nu0">2</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span><span class="br0">&#40;</span> <span class="kw4">int</span> row <span class="sy0">=</span> posX <span class="sy0">-</span> <span class="nu0">1</span><span class="sy0">;</span> row <span class="sy0"><=</span> posX <span class="sy0">+</span> <span class="nu0">1</span><span class="sy0">;</span> row<span class="sy0">++</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span><span class="br0">&#40;</span><span class="kw4">int</span> col <span class="sy0">=</span> &nbsp;posY <span class="sy0">-</span><span class="nu0">1</span><span class="sy0">;</span> &nbsp;col <span class="sy0"><=</span> posY <span class="sy0">+</span> <span class="nu0">1</span><span class="sy0">;</span> col<span class="sy0">++</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span> <span class="sy0">!</span><span class="br0">&#40;</span>posX <span class="sy0">==</span> row <span class="sy0">&&</span> &nbsp;posY <span class="sy0">==</span> col<span class="br0">&#41;</span> <span class="sy0">&&</span> row <span class="sy0">>=</span> <span class="nu0"></span> <span class="sy0">&&</span> col <span class="sy0">>=</span> <span class="nu0"></span> <span class="sy0">&&</span> row <span class="sy0"><</span> <span class="nu0">3</span> <span class="sy0">&&</span> col <span class="sy0"><</span> <span class="nu0">3</span> <span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">out</span>.<span class="me1">println</span><span class="br0">&#40;</span>array<span class="br0">&#91;</span>row<span class="br0">&#93;</span><span class="br0">&#91;</span>col<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` java
+private static int[][] array = new int[3][3];
+
+    private static void initialiseArray() {
+        int counter = 1;
+        for (int row = ; row < 3; row++) {
+            for (int col = ; col < 3; col++) {
+                array[row][col] = counter;
+                counter++;
+            }
+        }
+
+    }
+
+    public static void main(String args[]) {
+        initialiseArray();
+        for (int row = ; row < 3; row++) {
+            for (int col = ; col < 3; col++) {
+                System.out.print(array[row][col]);
+                if( col == 2 )
+                {
+                    System.out.println("\n");
+                }
+            }
+        }
+        neighbours();
+    }
+
+    public static void neighbours()
+    {
+        // the position of a cell that you want to display its neighbours
+        int posX = 2;
+        int posY = 2;
+
+        for( int row = posX - 1; row <= posX + 1; row++)
+        {
+            for(int col =  posY -1;  col <= posY + 1; col++)
+            {
+                if( !(posX == row &&  posY == col) && row >= && col >= && row < 3 && col < 3 )
+                {
+                    System.out.println(array[row][col]);
+                }
+            }
+        }
+
+    }
+```
