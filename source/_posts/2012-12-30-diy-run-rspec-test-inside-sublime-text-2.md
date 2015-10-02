@@ -19,43 +19,25 @@ Sublime Text 2 comes with a nice functionality called [Build System][1] where yo
 
 First thing first, I hope you use **rvm** so if you haven&#8217;t done this already you need to create symbolic link like [this page][2]. Then if you want to open your project you can just do this command inside your project. This way, sublime will hook up with rvm nicely.
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          subl .
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` bash
+subl .
+```
 
-Then you go to ****Tools > Build System > New Build System&#8230;</strong>. It will open a new editor then you place this code.
+Then you go to **Tools > Build System > New Build System**. It will open a new editor then you place this code.
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          {<br /> &nbsp; "cmd": ["rspec", "-I ${file_path}", "$file"],<br /> &nbsp; "file_regex": "# ([A-Za-z:0-9_./ ]+rb):([0-9]+)",<br /> &nbsp; "working_dir": "${project_path:${folder:${file_path}}}",<br /> &nbsp; "selector": "source.ruby",<br /> <br /> &nbsp; "windows":<br /> &nbsp; {<br /> &nbsp; &nbsp; "cmd": ["rspec.bat", "-I ${file_path}", "$file"]<br /> &nbsp; }<br /> }
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` json
+{
+  "cmd": ["rspec", "-I ${file_path}", "$file"],
+  "file_regex": "# ([A-Za-z:0-9_./ ]+rb):([0-9]+)",
+  "working_dir": "${project_path:${folder:${file_path}}}",
+  "selector": "source.ruby",
+
+  "windows":
+  {
+    "cmd": ["rspec.bat", "-I ${file_path}", "$file"]
+  }
+}
+```
 
 Then you choose the new Build System you just created and hit this combo **cmd+b**. Hooray!
 

@@ -18,6 +18,6 @@ However, recently I&#8217;ve been tweeting and complaining or even asking questi
 
 For example, I didn&#8217;t know where to find a dentist, so I tweeted &#8220;Where can I find a dentist around Holborn?&#8221; And this is the response I got. 
 
-> @noppanit We have studios Covent Garden, Soho, Bank Moorgate and Canary Wharf if any of these suit? <img src="http://www.noppanit.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" />
+> @noppanit We have studios Covent Garden, Soho, Bank Moorgate and Canary Wharf if any of these suit? 
 
 And I went there and I was happy to go there. So, if you&#8217;re a small business and don&#8217;t know where to start marketing, twitter marketing by monitoring keywords and hashtags might work for you.

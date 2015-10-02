@@ -26,30 +26,11 @@ You can get the metro to Kadıköy and then walk from there for only 10-15 minut
 
 **Some pics**  
 
+{% img http://www.noppanit.com/wp-content/uploads/2014/03/20140302_141441.jpg %}
 
-<div id="attachment_1288" style="width: 2570px" class="wp-caption aligncenter">
-  <a href="http://www.noppanit.com/wp-content/uploads/2014/03/20140302_141441.jpg"><img src="http://www.noppanit.com/wp-content/uploads/2014/03/20140302_141441.jpg" alt="Boulder Istanbul" width="2560" height="1536" class="size-full wp-image-1288" /></a>
-  
-  <p class="wp-caption-text">
-    Boulder Istanbul
-  </p>
-</div>
+{% img http://www.noppanit.com/wp-content/uploads/2014/03/20140302_141348.jpg %}
 
-<div id="attachment_1289" style="width: 1546px" class="wp-caption aligncenter">
-  <a href="http://www.noppanit.com/wp-content/uploads/2014/03/20140302_141348.jpg"><img src="http://www.noppanit.com/wp-content/uploads/2014/03/20140302_141348.jpg" alt="Boulder Istanbul" width="1536" height="2560" class="size-full wp-image-1289" /></a>
-  
-  <p class="wp-caption-text">
-    Boulder Istanbul
-  </p>
-</div>
-
-<div id="attachment_1290" style="width: 1546px" class="wp-caption aligncenter">
-  <a href="http://www.noppanit.com/wp-content/uploads/2014/03/20140302_141636.jpg"><img src="http://www.noppanit.com/wp-content/uploads/2014/03/20140302_141636.jpg" alt="Boulder Istanbul" width="1536" height="2560" class="size-full wp-image-1290" /></a>
-  
-  <p class="wp-caption-text">
-    Boulder Istanbul
-  </p>
-</div>
+{% img http://www.noppanit.com/wp-content/uploads/2014/03/20140302_141636.jpg %}
 
 **Price**  
 It&#8217;s only 15 TL for a day pass. 

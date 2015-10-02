@@ -10,13 +10,7 @@ categories:
 ---
 **Problem**
 
-<div style="width: 180px" class="wp-caption aligncenter">
-  <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/21/ShaverSocketUK.jpg/170px-ShaverSocketUK.jpg" width="170" height="294" class />
-  
-  <p class="wp-caption-text">
-    Shavers only outlet
-  </p>
-</div>
+{% img http://upload.wikimedia.org/wikipedia/commons/thumb/2/21/ShaverSocketUK.jpg/170px-ShaverSocketUK.jpg Shavers only outlet %}
 
 I believe everyone has the same problem once in a while or often that you forget your phone charger. Or even you didn&#8217;t forget your phone charger if you travel between UK and Europe you might forget the converter or adapter. If you stay in a hotel you must have seen one of those Shaver-only outlets. You would think that it&#8217;s clearly said that it&#8217;s for shaver only. So, I cannot use it for anything else. One day, I travel from Europe to the UK and the socket is different. Europe has one of those two-prong socket, and in the UK they use the big three-leg socket. 
 

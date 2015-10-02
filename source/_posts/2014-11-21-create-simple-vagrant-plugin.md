@@ -20,271 +20,145 @@ Vagrant that you installed already won&#8217;t work with local developing plugin
 
 Once you have RVM installed you can create a gemset using this command **rvm gemset create vagrant-ls**. Then **rvm gemset use vagrant-ls** (Just in case). I recommend you do this for each of your ruby project. It helps you separate your gems, and it won&#8217;t mess up with different versions of your gems. First thing that you have to install is Bundler **gem install bundler**. It&#8217;s because we will use Bundler to manage all of our dependencies. Then you can create **Gemfile**.
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          source <span class="st0">"https://rubygems.org"</span><br /> <br /> group <span class="re3">:development</span> <span class="kw1">do</span><br /> &nbsp; gem <span class="st0">"vagrant"</span>, git: <span class="st0">"https://github.com/mitchellh/vagrant.git"</span><br /> <span class="kw1">end</span><br /> <br /> group <span class="re3">:plugins</span> <span class="kw1">do</span><br /> &nbsp; gem <span class="st0">"vagrant-ls"</span>, path: <span class="st0">"."</span><br /> <span class="kw1">end</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` ruby
+source "https://rubygems.org"
 
-This is the most basic you would need for your plugin development. If you wonder what is
+group :development do
+  gem "vagrant", git: "https://github.com/mitchellh/vagrant.git"
+end
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          group :plugins
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+group :plugins do
+  gem "vagrant-ls", path: "."
+end
+```
 
-. [Vagrant plugin][5] has already explained that. This will load your local plugin automatically without doing
-
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          bundle exec vagrant install plugin vagrant-ls
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-which will not quite work anyway. 
+This is the most basic you would need for your plugin development. If you wonder what is *group :plugins*
+. [Vagrant plugin][5] has already explained that. This will load your local plugin automatically without doing *bundle exec vagrant install plugin vagrant-ls* which will not quite work anyway. 
 
 Then you can create your gemspec file. I name it **vagrant-ls.gemspec**
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="kw3">require</span> <span class="kw4">File</span>.<span class="me1">expand_path</span><span class="br0">&#40;</span><span class="st0">'../lib/vagrant-ls/version'</span>, <span class="kw2">__FILE__</span><span class="br0">&#41;</span><br /> <br /> <span class="re2">Gem::Specification</span>.<span class="me1">new</span> <span class="kw1">do</span> <span class="sy0">|</span>s<span class="sy0">|</span><br /> &nbsp; s.<span class="me1">name</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= <span class="st0">'vagrant-ls'</span><br /> &nbsp; s.<span class="me1">version</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="re2">Vagrant::Ls::VERSION</span><br /> &nbsp; s.<span class="me1">date</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= <span class="st0">'2014-11-18'</span><br /> &nbsp; s.<span class="me1">summary</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="st0">"List all vms"</span><br /> &nbsp; s.<span class="me1">description</span> &nbsp; &nbsp; = <span class="st0">"A simple vagrant plugin for listing all vms"</span><br /> &nbsp; s.<span class="me1">authors</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="br0">&#91;</span><span class="st0">"Noppanit Charassinvichai"</span><span class="br0">&#93;</span><br /> &nbsp; s.<span class="me1">email</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = <span class="st0">'noppanit.c@gmail.com'</span><br /> &nbsp; s.<span class="me1">files</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = <span class="st0">`git ls-files`</span>.<span class="kw3">split</span><span class="br0">&#40;</span>$\<span class="br0">&#41;</span><br /> &nbsp; s.<span class="me1">executables</span> &nbsp; &nbsp; = s.<span class="me1">files</span>.<span class="me1">grep</span><span class="br0">&#40;</span><span class="sy0">%</span>r<span class="br0">&#123;</span>^bin<span class="sy0">/</span><span class="br0">&#125;</span><span class="br0">&#41;</span>.<span class="me1">map</span><span class="br0">&#123;</span> <span class="sy0">|</span>f<span class="sy0">|</span> <span class="kw4">File</span>.<span class="me1">basename</span><span class="br0">&#40;</span>f<span class="br0">&#41;</span> <span class="br0">&#125;</span><br /> &nbsp; s.<span class="me1">require_paths</span> &nbsp; = <span class="br0">&#91;</span><span class="st0">'lib'</span><span class="br0">&#93;</span><br /> &nbsp; s.<span class="me1">homepage</span> &nbsp; &nbsp; &nbsp; &nbsp;= <span class="st0">'https://github.com/noppanit/vagrant-ls'</span><br /> &nbsp; s.<span class="me1">license</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="st0">'GNU'</span><br /> <span class="kw1">end</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` ruby
+require File.expand_path('../lib/vagrant-ls/version', __FILE__)
+
+Gem::Specification.new do |s|
+  s.name            = 'vagrant-ls'
+  s.version         = Vagrant::Ls::VERSION
+  s.date            = '2014-11-18'
+  s.summary         = "List all vms"
+  s.description     = "A simple vagrant plugin for listing all vms"
+  s.authors         = ["Noppanit Charassinvichai"]
+  s.email           = 'noppanit.c@gmail.com'
+  s.files           = `git ls-files`.split($\)
+  s.executables     = s.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  s.require_paths   = ['lib']
+  s.homepage        = 'https://github.com/noppanit/vagrant-ls'
+  s.license         = 'GNU'
+end
+```
 
 Then you crate **Rakefile**
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="kw3">require</span> <span class="st0">'rubygems'</span><br /> <span class="kw3">require</span> <span class="st0">'bundler/setup'</span><br /> <span class="re2">Bundler::GemHelper</span>.<span class="me1">install_tasks</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` ruby
+require 'rubygems'
+require 'bundler/setup'
+Bundler::GemHelper.install_tasks
+```
 
 Then you move on to create your plugin using this [pattern][6].
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="co1"># lib/vagrant-ls.rb</span><br /> <span class="kw3">require</span> <span class="st0">'bundler'</span><br /> <br /> <span class="kw1">begin</span><br /> &nbsp; <span class="kw3">require</span> <span class="st0">'vagrant'</span><br /> <span class="kw1">rescue</span> <span class="kw4">LoadError</span><br /> &nbsp; Bundler.<span class="kw3">require</span><span class="br0">&#40;</span><span class="re3">:default</span>, <span class="re3">:development</span><span class="br0">&#41;</span><br /> <span class="kw1">end</span><br /> <br /> <span class="kw3">require</span> <span class="st0">'vagrant-ls/plugin'</span><br /> <span class="kw3">require</span> <span class="st0">'vagrant-ls/command'</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` ruby
+# lib/vagrant-ls.rb
+require 'bundler'
+
+begin
+  require 'vagrant'
+rescue LoadError
+  Bundler.require(:default, :development)
+end
+
+require 'vagrant-ls/plugin'
+require 'vagrant-ls/command'
+```
 
 I almost forget you need to create VERSION file for gemspec to get your version number
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="co1"># lib/vagrant-ls/version.rb</span><br /> <span class="kw1">module</span> Vagrant<br /> &nbsp; &nbsp; <span class="kw1">module</span> Ls<br /> &nbsp; &nbsp; &nbsp; &nbsp; VERSION = <span class="st0">'0.0.1'</span><br /> &nbsp; &nbsp; <span class="kw1">end</span><br /> <span class="kw1">end</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
+``` ruby
+# lib/vagrant-ls/version.rb
+module Vagrant
+    module Ls
+        VERSION = '0.0.1'
+    end
+end
+```
 Then you create your plugin class, this will be the place where vagrant finds information about your plugin.
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="co1"># lib/vagrant-ls/plugin.rb</span><br /> <span class="kw1">module</span> Vagrant<br /> <br /> &nbsp; &nbsp; <span class="kw1">module</span> Ls<br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">class</span> Plugin <span class="sy0"><</span> Vagrant.<span class="me1">plugin</span><span class="br0">&#40;</span><span class="st0">'2'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name <span class="st0">"List"</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description <span class="sy0"><<-</span>DESC<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; This plugin <span class="st0">'ls'</span> all of the vms running inside the machine<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; DESC<br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; command <span class="st0">'ls'</span> <span class="kw1">do</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; require_relative <span class="st0">'command'</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Command<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">end</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">end</span><br /> &nbsp; &nbsp; <span class="kw1">end</span><br /> <span class="kw1">end</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` ruby
+# lib/vagrant-ls/plugin.rb
+module Vagrant
+
+    module Ls
+
+        class Plugin < Vagrant.plugin('2')
+          name "List"
+
+          description <<-DESC
+          This plugin 'ls' all of the vms running inside the machine
+          DESC
+
+          command 'ls' do
+            require_relative 'command'
+            Command
+          end
+
+        end
+    end
+end
+```
 
 This is where you will name your command.
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          command <span class="st0">'ls'</span> <span class="kw1">do</span><br /> ...<br /> <span class="kw1">end</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` ruby
+command 'ls' do
+...
+end
+```
 
 Last one, this is where vagrant will know how to execute your plugin
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="co1"># lib/vagrant-ls/command.rb</span><br /> <span class="kw1">module</span> Vagrant<br /> &nbsp; &nbsp; <span class="kw1">module</span> Ls<br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">class</span> Command <span class="sy0"><</span> Vagrant.<span class="me1">plugin</span><span class="br0">&#40;</span><span class="st0">'2'</span>, <span class="re3">:command</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">def</span> execute<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw3">exec</span><span class="br0">&#40;</span><span class="st0">'VBoxManage list vms'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nu0"></span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">end</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">end</span><br /> &nbsp; &nbsp; <span class="kw1">end</span><br /> <br /> <span class="kw1">end</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` ruby
+# lib/vagrant-ls/command.rb
+module Vagrant
+    module Ls
+        class Command < Vagrant.plugin('2', :command)
+            def execute
+                exec('VBoxManage list vms')
+                0
+            end
+        end
+    end
+
+end
+```
 
 I just run **VBoxManage** command to list all of the vms. Once you are done, you are ready to test your plugin. 
 
 You can run this command
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          bundle exec vagrant ls
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` bash
+bundle exec vagrant ls
+```
 
 . If everything is correct, it should list all of your vms with the name of your vms, so you know where you are you running all those vms. 
 
 ## Publish your gem
 
-Now, it&#8217;s time to spread the love of your gem. You need to build your gem first. Remember the Rakefile? You can just run
-
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          rake build
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+Now, it&#8217;s time to spread the love of your gem. You need to build your gem first. Remember the Rakefile? You can just run *rake build*
 
 It will pack your gem to **.pkg** folder. Then you can just run
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          gem push pkg/vagrant-ls-0.0.1.gem
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` bash
+gem push pkg/vagrant-ls-0.0.1.gem
+```
 
 . That&#8217;s it you have your gem published. If you look for [documentation][7] for publishing your gem. 
 

@@ -20,23 +20,9 @@ The cause of this is that Vodafone corporate network stripped out HTML comments 
 
 The solution is to set Cache-Control to no-transform and the problem solved. If you have the same problem as me then this is the solution.
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          Cache-Control: no-transform
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+```
+Cache-Control: no-transform
+```
 
  [1]: https://twitter.com/sragu "Srini"
  [2]: http://stackoverflow.com/questions/4113268/how-to-stop-javascript-injection-from-vodafone-proxy

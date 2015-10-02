@@ -18,23 +18,11 @@ You guys must have heard about PageSpeed test from Google. It&#8217;s a really c
 
 And here&#8217;s the quickstart bit. The most simplest way is to put the compression in **config.ru**
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          require './server'<br /> use Rack::Deflater<br /> run Sinatra::Application
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` ruby
+require './server'
+use Rack::Deflater
+run Sinatra::Application
+```
 
 And that&#8217;s it I hope this will save you sometime.
 

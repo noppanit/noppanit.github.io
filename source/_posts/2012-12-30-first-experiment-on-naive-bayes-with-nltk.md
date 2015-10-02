@@ -18,63 +18,25 @@ For the purpose to get things done really fast, I use the example from [Laurent&
 
 Most papers suggest that [bag-of-words model][4] is one of the best techniques o classify text. So, I decided to use this method. However, this is about sentiment analysis so I used only Adjectives for feature extraction. The result is unacceptable with only **19.7530864198 %**
 
-<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="python codecolorer">
-          <span class="kw1">for</span> word<span class="sy0">,</span> pos_tag <span class="kw1">in</span> nltk.<span class="me1">pos_tag</span><span class="br0">&#40;</span>words<span class="br0">&#41;</span>:<br /> &nbsp; &nbsp;<span class="kw1">if</span> pos_tag <span class="sy0">==</span> <span class="st0">'ADJ'</span>:<br /> &nbsp; &nbsp; &nbsp; filtered_words.<span class="me1">append</span><span class="br0">&#40;</span>word.<span class="me1">lower</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` python
+for word, pos_tag in nltk.pos_tag(words):
+   if pos_tag == 'ADJ':
+      filtered_words.append(word.lower())
+```
 
 The second attempt I decided to fall back to bag-of-words model, and the result has gone up to **61.316872428 %**
 
-<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="python codecolorer">
-          filtered_words <span class="sy0">=</span> <span class="br0">&#91;</span>e.<span class="me1">lower</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">for</span> e <span class="kw1">in</span> words.<span class="me1">split</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">if</span> <span class="kw2">len</span><span class="br0">&#40;</span>e<span class="br0">&#41;</span> <span class="sy0">>=</span> <span class="nu0">3</span><span class="br0">&#93;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` python
+filtered_words = [e.lower() for e in words.split() if len(e) >= 3]
+```
 
 So, I moved on and try to clean up the text a bit by cleaning stopwords, stripping &#8216;RT&#8217; or &#8216;rt&#8217; for retweet, deleting @peoplename and tokenise word by whitespace. So, &#8220;i&#8217;m&#8221; stays as one word and not [&#8220;i&#8221;, &#8220;&#8216;m&#8221;]. The result has gone up to **69.9588477366 %**.
 
-<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="python codecolorer">
-          <span class="co1"># stripping and cleaning.</span><br /> <span class="co1"># this is for stripping out the stopwords by using <a href="http://nltk.googlecode.com/svn/trunk/doc/book/ch02.html" title="NLTK Text Corpora">NLTK Text Corpora</a></span><br /> stripped_words <span class="sy0">=</span> <span class="br0">&#91;</span>w <span class="kw1">for</span> w <span class="kw1">in</span> tokenized_text <span class="kw1">if</span> <span class="kw1">not</span> w <span class="kw1">in</span> stopwords.<span class="me1">words</span><span class="br0">&#40;</span><span class="st0">'english'</span><span class="br0">&#41;</span><span class="br0">&#93;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` python
+# stripping and cleaning.
+# this is for stripping out the stopwords by using <a href="http://nltk.googlecode.com/svn/trunk/doc/book/ch02.html" title="NLTK Text Corpora">NLTK Text Corpora</a>
+stripped_words = [w for w in tokenized_text if not w in stopwords.words('english')]
+```
 
 I&#8217;ll keep experimenting and post some more techniques to see if I could get something out of this.
 

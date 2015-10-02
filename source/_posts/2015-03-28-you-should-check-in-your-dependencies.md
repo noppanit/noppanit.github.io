@@ -51,8 +51,6 @@ Srini also pointed out that you shouldn&#8217;t do that for internal project dep
   </p>
 </blockquote>
 
-
-
 ### Conclusion  
 
 

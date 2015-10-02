@@ -23,32 +23,16 @@ Then you need to install the plugin by following [these steps][5]. And that shou
 
 The downloading takes a while depends on your connection. So, I suggest you to download the file [yourself][6] and then unzip it. Then use this command to create index.
 
-<pre><div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="bash codecolorer">
-          curl <span class="re5">-XPUT</span> localhost:<span class="nu0">9203</span><span class="sy0">/</span>_river<span class="sy0">/</span>wikipedia<span class="sy0">/</span>_meta <span class="re5">-d</span> <span class="st_h">'<br />
-          {<br />
-          &nbsp; &nbsp; "type" : "wikipedia",<br />
-          &nbsp; &nbsp; "wikipedia" : {<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; "url" : "file:///${PATH_TO_YOUR_FOLDER}/enwiki-latest-pages-articles.xml"<br />
-          &nbsp; &nbsp; }<br />
-          }<br />
-          '</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-</pre>
+``` bash
+curl -XPUT localhost:9203/_river/wikipedia/_meta -d '
+{
+    "type" : "wikipedia",
+    "wikipedia" : {
+        "url" : "file:///${PATH_TO_YOUR_FOLDER}/enwiki-latest-pages-articles.xml"
+    }
+}
+'
+```
 
 This will speed up the process a lot and it will reduce the chance that your JVM will face PERMGen exception because the plugin will try to unzip the 30GB data for you as well. Then just wait for the indexing to finish. You can try to see the status of your node from your browser by typing this http://localhost:9200/_stats in your favourite browser. The size of the finished index is around 40GB.
 

@@ -13,16 +13,8 @@ tags:
 ---
 I recently moved to NYC and I just got a pre-paid T-Mobile just to try it out how it goes. And this is what I tweeted and got a reply back from T-Mobile. 
 
-<blockquote class="twitter-tweet" lang="en">
-  <p>
-    <a href="https://twitter.com/noppanit">@noppanit</a> We're glad to have impressed you <img src="http://www.noppanit.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Thanks for choosing T-Mobile! *JB
-  </p>
-  
-  <p>
-    &mdash; T-Mobile USA (@TMobileHelp) <a href="https://twitter.com/TMobileHelp/status/519478596046712832">October 7, 2014</a>
-  </p>
-</blockquote>
-
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">After just one week of <a href="https://twitter.com/TMobile">@TMobile</a> in NYC. I&#39;m not quite impressed with the coverage. <a href="https://twitter.com/hashtag/hmm?src=hash">#hmm</a></p>&mdash; Noppanit (Toy) (@noppanit) <a href="https://twitter.com/noppanit/status/519437198610137088">October 7, 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 I think they might have got hundred of tweets a day. So they might have slipped. The first when I read this I quickly scrolled up to see if I got a typo. But they&#8217;re right though I chose T-Mobile. Just a little laugh for me today.

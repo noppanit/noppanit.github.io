@@ -21,73 +21,45 @@ Here&#8217;s my version of what it means. MapReduce consists of two parts. Map a
 
 Map really is like what we know in every language. **Map<Key, Value>** in Java. It has key and value. For example, if your country wants to run an election, you have four parties to choose from Party A, Party B, Party C and Party D. It&#8217;d be like this.
 
-<div id="attachment_1255" style="width: 816px" class="wp-caption aligncenter">
-  <a href="http://www.noppanit.com/wp-content/uploads/2013/12/Screen-Shot-2013-12-21-at-21.34.00.png"><img src="http://www.noppanit.com/wp-content/uploads/2013/12/Screen-Shot-2013-12-21-at-21.34.00.png" alt="City election scores" width="806" height="203" class="size-full wp-image-1255" /></a>
-  
-  <p class="wp-caption-text">
-    City election scores
-  </p>
-</div>
+{% img http://www.noppanit.com/wp-content/uploads/2013/12/Screen-Shot-2013-12-21-at-21.34.00.png City eletion scores %}
 
 The key would be your party name. The value would be the votes for each of the key. So, this is how would you process in your computer. Let&#8217;s go back a little bit and have a look at raw data.
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          PartyA, 10<br /> PartyA, 5<br /> PartyA, 2<br /> PartyB, 5<br /> PartyB, 10<br /> PartyB, 20<br /> PartyB, 30<br /> PartyC, 9<br /> PartyC, 8<br /> PartyC, 7<br /> PartyC, 5<br /> PartyD, 2<br /> PartyD, 1<br /> PartyD, 8<br /> PartyD, 3
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+```
+PartyA, 10
+PartyA, 5
+PartyA, 2
+PartyB, 5
+PartyB, 10
+PartyB, 20
+PartyB, 30
+PartyC, 9
+PartyC, 8
+PartyC, 7
+PartyC, 5
+PartyD, 2
+PartyD, 1
+PartyD, 8
+PartyD, 3
+```
 
 Then you would get something like this in Ruby. (If I show the code how I transformed this many ruby programmers might scream at me so you can do whatever you like to make it like that)
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="br0">&#123;</span><span class="st0">"Party A"</span><span class="sy0">=></span><span class="br0">&#91;</span><span class="nu0">10</span>, <span class="nu0">5</span>, <span class="nu0">9</span>, <span class="nu0">2</span><span class="br0">&#93;</span><span class="br0">&#125;</span><br /> <span class="br0">&#123;</span><span class="st0">"Party B"</span><span class="sy0">=></span><span class="br0">&#91;</span><span class="nu0">5</span>, <span class="nu0">10</span>, <span class="nu0">20</span>, <span class="nu0">30</span><span class="br0">&#93;</span><span class="br0">&#125;</span><br /> <span class="br0">&#123;</span><span class="st0">"Party C"</span><span class="sy0">=></span><span class="br0">&#91;</span><span class="nu0">9</span>, <span class="nu0">8</span>, <span class="nu0">7</span>, <span class="nu0">5</span><span class="br0">&#93;</span><span class="br0">&#125;</span><br /> <span class="br0">&#123;</span><span class="st0">"Party D"</span><span class="sy0">=></span><span class="br0">&#91;</span><span class="nu0">2</span>, <span class="nu0">1</span>, <span class="nu0">8</span>, <span class="nu0">3</span><span class="br0">&#93;</span><span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+```
+{"Party A"=>[10, 5, 9, 2]}
+{"Party B"=>[5, 10, 20, 30]}
+{"Party C"=>[9, 8, 7, 5]}
+{"Party D"=>[2, 1, 8, 3]}
+```
 
 Now the part &#8220;Map&#8221; is done we can do the next part which is reduce. Reduce is where you process your data at your will on each key to get one or zero result. In this case we want to get the summation of the votes on each party. Luckily ruby comes with this already.
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="br0">&#91;</span><span class="nu0">10</span>, <span class="nu0">5</span>, <span class="nu0">9</span>, <span class="nu0">2</span><span class="br0">&#93;</span>.<span class="me1">reduce</span><span class="br0">&#40;</span>:<span class="sy0">+</span><span class="br0">&#41;</span> <span class="co1"># => 26</span><br /> <span class="br0">&#91;</span><span class="nu0">5</span>, <span class="nu0">10</span>, <span class="nu0">20</span>, <span class="nu0">30</span><span class="br0">&#93;</span>.<span class="me1">reduce</span><span class="br0">&#40;</span>:<span class="sy0">+</span><span class="br0">&#41;</span> <span class="co1"># => 65</span><br /> <span class="br0">&#91;</span><span class="nu0">9</span>, <span class="nu0">8</span>, <span class="nu0">7</span>, <span class="nu0">5</span><span class="br0">&#93;</span>.<span class="me1">reduce</span><span class="br0">&#40;</span>:<span class="sy0">+</span><span class="br0">&#41;</span> <span class="co1"># => 29</span><br /> <span class="br0">&#91;</span><span class="nu0">2</span>, <span class="nu0">1</span>, <span class="nu0">8</span>, <span class="nu0">3</span><span class="br0">&#93;</span>.<span class="me1">reduce</span><span class="br0">&#40;</span>:<span class="sy0">+</span><span class="br0">&#41;</span> <span class="co1"># => 14</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+```
+[10, 5, 9, 2].reduce(:+) # => 26
+[5, 10, 20, 30].reduce(:+) # => 65
+[9, 8, 7, 5].reduce(:+) # => 29
+[2, 1, 8, 3].reduce(:+) # => 14
+```
 
 That&#8217;s it now we know that PartyB won the election. 
 

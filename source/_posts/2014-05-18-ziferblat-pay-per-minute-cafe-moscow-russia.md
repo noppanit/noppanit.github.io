@@ -17,11 +17,11 @@ If you&#8217;re in Moscow and you want somewhere to just sit down and catch up w
 
 Just 5-min walk from Tverskaya Station (Тверская). Then look for this sign. 
 
-[<img src="http://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-22.52.43.png" alt="Screen Shot 2014-05-18 at 22.52.43" width="516" height="721" class="aligncenter size-full wp-image-1306" />][2]
+{% img http://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-22.52.43.png %}
 
 You have to ring the bell and the security guard will buzz you in then you have to walk upstairs (2nd floor). Unfortunately, at least when I was there people speak little English but understandable. Also, the people are really friendly over there. You just need to tell your name and pay at the end when you&#8217;re ready to rome Moscow again. 
 
-[<img src="http://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-23.08.45.png" alt="Screen Shot 2014-05-18 at 23.08.45" width="1074" height="749" class="aligncenter size-full wp-image-1308" />][3]
+{% img http://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-23.08.45.png %}
 
  [1]: http://pushkin.ziferblat.net/en/ "Ziferblat"
  [2]: http://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-22.52.43.png

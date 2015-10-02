@@ -21,42 +21,25 @@ Still, I couldn&#8217;t get the results back in 1 hour which I think MySQL is be
 
 **Second attempt**  
 So, I moved on to the next one. It looked like everybody on the Internet suggested **key\_buffer\_size** or **key_buffer** to 4G. And changed some of the variables to pimp MySQL up a little bit.  
-**</p> 
 
+```
   * query\_cache\_type = 1
   * query\_cache\_size = 128M
   * query\_cache\_limit = 128M>
-
-</strong>
+```
 
 Still, I couldn&#8217;t get the results back. 
 
 And suddenly I caught something in my **my.cnf**
 
-<pre><div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          # Example MySQL config file for small systems.<br />
-          #<br />
-          # This is for a system with little memory (&lt;= 64M) where MySQL is only used<br />
-          # from time to time and it's important that the mysqld daemon<br />
-          # doesn't use much resources.<br />
-          #
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+```
+# Example MySQL config file for small systems.
+# This is for a system with little memory (&lt;= 64M) where MySQL is only used
+# from time to time and it's important that the mysqld daemon
+# doesn't use much resources.
+#
 
-</pre>
+```
 
 What is said was that XAMPP is tuned for a very small computer to be able to run basic PHP and MySQL application which is why my MySQL performed really bad in this case. 
 

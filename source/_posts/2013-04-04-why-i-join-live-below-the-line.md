@@ -19,6 +19,7 @@ I&#8217;m from Thailand. Thailand is not a poor country after all, compare to In
 
 Now I work in the UK, my life is better and I have a reasonably good job. Plus, I travel a lot I have been to many countries around Europe and Asia. I have seen and met a lot of rough sleepers. Some of them are legit, but some of them they just want to buy some drink. One time, I got stopped by a homeless asking for 50p to buy a beer, I thought he was honest so I gave him 50p. Some of them told me a lot of story how poor they are, kids and lot of stuff so they can get some money. Sometime I feel sorry for those people, I&#8217;m sure you have asked this question yourself sometime as well. But we also have to accept the reality that we cannot help those people with just a few pennies. Even though we have lots and lots of organisations trying to help those people, we still have poverty, malnutrition children and people who don&#8217;t have access to clean water. So what can we do?
 
+<iframe src="https://embed-ssl.ted.com/talks/bono_the_good_news_on_poverty_yes_there_s_good_news.html" width="560" height="315" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 However, we have some good news as well.
 
 For the past years, I have worked with 2 organisations in Thailand and in India. [Goodwill Thailand][1], the organisation helps disadvantaged women in Thailand by educating them and training them. I know this organisation through my friend, she has worked with this organisation before so I joined later.
@@ -30,6 +31,8 @@ The second organisation is [Sukrupa][2]. This organisations helps deprived child
 Back to Live Below the Line, as I have worked with two organisations I have realised that with my current status the best way to fight this problem is to donate skills and create awareness. If I can help them get back on their feet quickly, then they can help themselves later. If we give them food once they&#8217;ve eaten that food, it&#8217;s gone. If we teach them to cook the food, they can produce the food for the rest of their life. Also, another reason is that if I can create more awareness so more people know and realise the problem even to the top where powerful people can really make a different. 
 
 More video that inspires me.
+
+<iframe src="https://embed-ssl.ted.com/talks/dan_pallotta_the_way_we_think_about_charity_is_dead_wrong.html" width="560" height="315" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 
 [My Live Below the Line][3]
 

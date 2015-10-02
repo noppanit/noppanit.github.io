@@ -43,25 +43,27 @@ Sleeping bag is a must. However, I had a really good night sleep with my [campin
 
 If you walk around in Cusco, you might find local people dressing in traditional custom. If you take a picture of them, they might ask you for some money. I gave them 1 soles and it was enough. And make sure you ask their permission before you take a picture of them. 
 
-
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17626431306/in/dateposted-ff/" title="Peru-1093710.jpg"><img src="https://farm9.staticflickr.com/8837/17626431306_853767fc9e_z.jpg" width="640" height="423" alt="Peru-1093710.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 
 ## Coca leaves
 
 The locals told us to chew coca leaves to prevent the tiredness and altitude sickness. To be honest, they didn&#8217;t help much but I really like the coca tea in the morning.
 
-
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17465382290/in/dateposted-ff/" title="Peru-1093841.jpg"><img src="https://farm8.staticflickr.com/7770/17465382290_7dfcc888d1_z.jpg" width="640" height="431" alt="Peru-1093841.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 
 ## Local food
 
 Peruvian cuisine is really interesting or at least from my point of view. I had Guinea pig and Alpaca. I like Alpaca but the Guinea pig is not really my jam. At least I tried. 
 
-
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17627373766/in/dateposted-ff/" title="Peru-1094221.jpg"><img src="https://farm6.staticflickr.com/5441/17627373766_e4568e063a_z.jpg" width="640" height="444" alt="Peru-1094221.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 
 ## Machu Picchu
 
-
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17653773851/in/dateposted-ff/" title="Peru-1094213.jpg"><img src="https://farm9.staticflickr.com/8707/17653773851_aa6c40a15e_z.jpg" width="640" height="431" alt="Peru-1094213.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 
 ## Good view from your tent
+
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17653136981/in/dateposted-ff/" title="Peru-1093869.jpg"><img src="https://farm8.staticflickr.com/7656/17653136981_03874afb08_z.jpg" width="640" height="431" alt="Peru-1093869.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 
  [1]: http://www.starburst.com/
  [2]: http://www.rei.com/product/866771/sea-to-summit-aeros-pillow-premium

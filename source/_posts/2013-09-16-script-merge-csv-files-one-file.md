@@ -13,6 +13,7 @@ tags:
 ---
 For example I have file structure like this.
 
+```
 ├── 2013-01  
 │   ├── 2013-01-avon-and-somerset-street.csv  
 ├── 2013-02  
@@ -27,31 +28,17 @@ For example I have file structure like this.
 │   ├── 2013-06-avon-and-somerset-street.csv  
 └── 2013-07  
 ├── 2013-07-avon-and-somerset-street.csv
+```
 
 To process multiple files in R or Pandas would be a pain, if I could combine all the csv in every folder into one file and I can work on just that one file. 
 
 How to use it&#8217;s really easy. Just copy the source code and paste in anywhere. For example, I would call this **merge_csv</code>. Then you would execute like this.</p> 
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          sh merge_csv <FOLDER_YOU_WANT>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+``` bash
+sh merge_csv <FOLDER_YOU_WANT>
+```
 
 The script will iterate to every folder and sub-folder.
-
 
 
 **Update**  
