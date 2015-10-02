@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T17:28:19-04:00</updated>
+  <updated>2015-10-02T19:17:17-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -101,11 +101,11 @@
 
 <p>Here&#8217;s the example.</p>
 
-<p><a href="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.png" alt="Parking signs on Qgis" width="1008" height="734" class="aligncenter size-full wp-image-1466" /></a></p>
+<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.png" alt="Parking signs on Qgis" width="1008" height="734" class="aligncenter size-full wp-image-1466" /></a></p>
 
 <p>One thing I learnt was that you cannot just click <strong>Open</strong> and choose the file. What you need to do is to <string>Add Vector Layer</strong>. You can use shortcut <strong>Ctrl+Shift+v</strong></p>
 
-<p><a href="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.png" alt="Add Vector Layer" width="1433" height="836" class="aligncenter size-full wp-image-1467" /></a></p>
+<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.png" alt="Add Vector Layer" width="1433" height="836" class="aligncenter size-full wp-image-1467" /></a></p>
 
 <h2>Export to Google Fusion</h2>
 
@@ -113,27 +113,27 @@
 
 <p>In QGis you can download the file as CSV. It&#8217;s in <strong>Layer > Save As</strong>. You just need to make sure that <strong>Geometry</strong> has to be set so you get the coordinates.</p>
 
-<p><a href="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.png" alt="Save to CSV" width="591" height="652" class="aligncenter size-full wp-image-1468" /></a></p>
+<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.png" alt="Save to CSV" width="591" height="652" class="aligncenter size-full wp-image-1468" /></a></p>
 
 <h2>Import to Google Fusion Table</h2>
 
 <p>Now we can use that CSV to import to Google Fusion. It would look something like this.</p>
 
-<p><a href="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.png" alt="Google Fusion Table" width="1425" height="726" class="aligncenter size-full wp-image-1469" /></a></p>
+<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.png" alt="Google Fusion Table" width="1425" height="726" class="aligncenter size-full wp-image-1469" /></a></p>
 
 <p>what you need to make sure is that you need to specify which fields are Lat, Long so Google can plot that for you.</p>
 
 <p>Here&#8217;s how you do it.</p>
 
-<p><a href="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.png" alt="Screenshot 2015-07-30 13.05.41" width="226" height="116" class="aligncenter size-full wp-image-1470" /></a></p>
+<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.png" alt="Screenshot 2015-07-30 13.05.41" width="226" height="116" class="aligncenter size-full wp-image-1470" /></a></p>
 
 <p>The click <strong>change</strong> You will see something like this and you can choose which field you want to be Longitude or Latitude.</p>
 
-<p><a href="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.png" alt="Set Location" width="518" height="673" class="aligncenter size-full wp-image-1471" /></a></p>
+<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.png" alt="Set Location" width="518" height="673" class="aligncenter size-full wp-image-1471" /></a></p>
 
 <p>Once the coordinates have set we can go to Map tab and see beautiful little dots that show where all the signs are in NYC.</p>
 
-<p><a href="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.png" alt="Parking signs in Google Fusion Table" width="1254" height="736" class="aligncenter size-full wp-image-1472" /></a>.</p>
+<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.png" alt="Parking signs in Google Fusion Table" width="1254" height="736" class="aligncenter size-full wp-image-1472" /></a>.</p>
 
 <p>Walla! Now you have something you can build an application on top of it. The next post, I will create an application on top of this map to make use of our data.</p>
 
@@ -598,7 +598,7 @@
 
 <p>The idea is that you have two variables. In this case, it&#8217;s <strong>tips</strong> and <strong>total amount of bill</strong>. You should explore the data by plotting the graph of these two variables. From my generated data you will get something like this.</p>
 
-<p><a href="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-07-00.54.42.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-07-00.54.42.png" alt="Linear Regression" width="421" height="281" class="aligncenter size-full wp-image-1448" /></a></p>
+<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-07-00.54.42.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-07-00.54.42.png" alt="Linear Regression" width="421" height="281" class="aligncenter size-full wp-image-1448" /></a></p>
 
 <p>You can clearly see that there&#8217;s a strong correlation between the amount of tip and meal.</p>
 
@@ -1182,7 +1182,7 @@
     <id>https://www.noppanit.com/how-to-stop-repainting-your-sticky-bar-on-scroll</id>
     <content type="html"><![CDATA[<p>Everybody loves sticky bar. Or I should say every UX loves sticky bar. You probable have seen that from almost all major websites. Twitter or Facebook all has the top nav bar which sticks to the top and follows you when you scroll down the page. However, there&#8217;s one thing that I have noticed if you use Google Chrome Dev Tool to see the paint area. You will see that the nav bar gets repaint every time you scroll up and down.</p>
 
-<p><img src="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png"></p>
+<p><img src="https://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png"></p>
 
 <p>Also, if you use Timeline to record the activity you will notice a lot of Repaint happening which leads to bad scrolling performance.</p>
 
@@ -1327,7 +1327,7 @@
 
 <p>to the navbar and you can measure the performance by using Timeline again you will notice the difference.</p>
 
-<p><img src="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png"></p>
+<p><img src="https://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png"></p>
 ]]></content>
   </entry>
   
@@ -1494,11 +1494,11 @@
 
 
 <p>If you open your html page on Chrome you should see something like this.<br/>
-<img src="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png"></p>
+<img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png"></p>
 
 <p>If you go down to where JavaScript is executed You will see it takes around <strong>37ms</strong> to execute the snippet.</p>
 
-<p><img src="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png"></p>
+<p><img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png"></p>
 
 <p>Now change your snippet to be event delegation</p>
 
@@ -1521,7 +1521,7 @@
 
 <p>And refresh the page you should see something like this.</p>
 
-<p><img src="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png"></p>
+<p><img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png"></p>
 
 <p>Now it will only take <strong>2ms</strong> to execute the snippet. It&#8217;s because the event is added to one element not 1000 of them.</p>
 

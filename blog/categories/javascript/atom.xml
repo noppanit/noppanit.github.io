@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T17:28:19-04:00</updated>
+  <updated>2015-10-02T19:17:17-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -217,11 +217,11 @@ Then we will have JavaScript like this
 
 <pre><code>
 If you open your html page on Chrome you should see something like this.  
-<img src="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png">
+<img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png">
 
 If you go down to where JavaScript is executed You will see it takes around **37ms** to execute the snippet.  
 
-<img src="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png">
+<img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png">
 
 Now change your snippet to be event delegation
 </code></pre>
@@ -241,7 +241,7 @@ Now change your snippet to be event delegation
 
 <p>And refresh the page you should see something like this.</p>
 
-<p><img class="<a" src="href="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png">http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png</a>"></p>
+<p><img class="<a" src="href="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png">https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png</a>"></p>
 
 <p>Now it will only take <strong>2ms</strong> to execute the snippet. It&#8217;s because the event is added to one element not 1000 of them.</p>
 
