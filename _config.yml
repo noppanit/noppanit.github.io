@@ -2,7 +2,8 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://www.noppanit.com
+url: https://www.noppanit.com
+enforce_ssl: www.noppanit.com   # without any protocol
 title: My Blog
 subtitle: My Blog
 author: Noppanit Charassinvichai
