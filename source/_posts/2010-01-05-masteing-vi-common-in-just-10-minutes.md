@@ -1,5 +1,6 @@
 ---
 title: Mastering Vi Common in just 10 minutes
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /masteing-vi-common-in-just-10-minutes/

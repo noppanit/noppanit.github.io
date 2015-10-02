@@ -1,5 +1,6 @@
 ---
 title: Test Command Line Program
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /test-command-line-program/

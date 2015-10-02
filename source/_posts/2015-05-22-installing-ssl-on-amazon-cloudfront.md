@@ -1,5 +1,6 @@
 ---
 title: Installing SSL on Amazon CloudFront
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /installing-ssl-on-amazon-cloudfront/

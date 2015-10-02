@@ -1,5 +1,6 @@
 ---
 title: 'Ruby: Find unscrambled words from a list of scrambled words'
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /ruby-find-unscrambled-words-from-a-list-of-scrambled-words/

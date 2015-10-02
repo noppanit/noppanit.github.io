@@ -1,5 +1,6 @@
 ---
 title: Keep your data more secure than it already is my version.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /keep-your-data-more-secure-than-it-already-is/

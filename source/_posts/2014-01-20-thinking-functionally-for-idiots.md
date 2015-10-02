@@ -1,5 +1,6 @@
 ---
 title: Thinking functionally for idiots.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /thinking-functionally-for-idiots/

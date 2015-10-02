@@ -1,5 +1,6 @@
 ---
 title: Fried chicken with ginger
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /fried-chicken-with-ginger/

@@ -1,5 +1,6 @@
 ---
 title: Hidden flea market in Istanbul, Turkey
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /hidden-flea-market-istanbul-turkey/

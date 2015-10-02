@@ -1,5 +1,6 @@
 ---
 title: Cheese knives
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /cheese-knives/

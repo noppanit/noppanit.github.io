@@ -1,5 +1,6 @@
 ---
 title: 'I&#8217;m never going back to modern editor again.'
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /im-never-going-back-to-modern-editor-again/

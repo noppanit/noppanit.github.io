@@ -1,5 +1,6 @@
 ---
 title: You should check in your dependencies.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /you-should-check-in-your-dependencies/

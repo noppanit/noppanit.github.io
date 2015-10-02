@@ -1,5 +1,6 @@
 ---
 title: 'How to : Java capture output from console'
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /how-to-java-capture-output-from-console/

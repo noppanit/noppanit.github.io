@@ -1,5 +1,6 @@
 ---
 title: Contextual Preloading for Ajax request.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /contextual-preloading-ajax-request/

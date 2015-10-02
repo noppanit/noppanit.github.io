@@ -1,5 +1,6 @@
 ---
 title: Example of Require.js optimizer.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /example-require-js-optimizer/

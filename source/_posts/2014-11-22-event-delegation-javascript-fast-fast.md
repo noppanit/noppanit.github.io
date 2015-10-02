@@ -1,5 +1,6 @@
 ---
 title: Event delegation in JavaScript is fast but how fast?
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /event-delegation-javascript-fast-fast/

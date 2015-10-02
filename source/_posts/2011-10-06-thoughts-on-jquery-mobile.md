@@ -1,5 +1,6 @@
 ---
 title: Thoughts on jQuery Mobile
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /thoughts-on-jquery-mobile/

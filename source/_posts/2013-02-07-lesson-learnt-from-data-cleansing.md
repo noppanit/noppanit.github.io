@@ -1,5 +1,6 @@
 ---
 title: Lesson learnt from data cleansing. Part I
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /lesson-learnt-from-data-cleansing/

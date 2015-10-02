@@ -1,5 +1,6 @@
 ---
 title: My thoughts on AngularJs
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /my-thoughts-on-angularjs/

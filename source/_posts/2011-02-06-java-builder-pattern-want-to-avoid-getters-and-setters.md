@@ -1,5 +1,6 @@
 ---
 title: 'Java Builder Pattern: Want to avoid getters and setters to create an object?'
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /java-builder-pattern-want-to-avoid-getters-and-setters/

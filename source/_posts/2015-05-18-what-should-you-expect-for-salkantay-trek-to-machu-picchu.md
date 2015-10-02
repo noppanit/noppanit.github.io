@@ -1,5 +1,6 @@
 ---
 title: What should you expect for Salkantay trek to Machu Picchu
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /what-should-you-expect-for-salkantay-trek-to-machu-picchu/

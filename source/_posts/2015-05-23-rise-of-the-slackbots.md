@@ -1,5 +1,6 @@
 ---
 title: Rise of the (Slack)Bots.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /rise-of-the-slackbots/

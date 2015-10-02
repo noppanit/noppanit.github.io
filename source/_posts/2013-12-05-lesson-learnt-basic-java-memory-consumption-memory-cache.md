@@ -1,5 +1,6 @@
 ---
 title: 'Lesson learnt : Basic Java memory consumption for in-memory cache.'
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /lesson-learnt-basic-java-memory-consumption-memory-cache/

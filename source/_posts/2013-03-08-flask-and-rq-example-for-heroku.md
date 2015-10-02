@@ -1,5 +1,6 @@
 ---
 title: Flask and RQ example for Heroku
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /flask-and-rq-example-for-heroku/

@@ -1,5 +1,6 @@
 ---
 title: What if matching exact string is not enough, basic fuzzy search that you want to know.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /what-if-matching-exct-string-is-not-enough/

@@ -1,5 +1,6 @@
 ---
 title: My Library
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /my-library/

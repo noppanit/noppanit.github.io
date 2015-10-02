@@ -1,5 +1,6 @@
 ---
 title: How to start doing TDD for jQuery plugin.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /how-to-start-doing-tdd-for-jquery-plugin/

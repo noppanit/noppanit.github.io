@@ -1,5 +1,6 @@
 ---
 title: Another success for my perfect brew.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /another-success-perfect-brew/

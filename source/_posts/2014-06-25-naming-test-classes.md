@@ -1,5 +1,6 @@
 ---
 title: Naming test classes.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /naming-test-classes/

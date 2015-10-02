@@ -1,5 +1,6 @@
 ---
 title: Knockout.js virtual elements are being stripped out from mobile.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /knockout-js-virtual-elements-stripped-mobile/

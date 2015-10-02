@@ -1,5 +1,6 @@
 ---
 title: Country walk from Glynde to Seaford.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /country-walk-from-glynde-to-seaford/

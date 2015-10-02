@@ -1,5 +1,6 @@
 ---
 title: My thoughts on Play 2.1.1 (Java)
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /my-thoughts-on-play-2-1-1-java/

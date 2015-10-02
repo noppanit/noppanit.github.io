@@ -1,5 +1,6 @@
 ---
 title: Little JavaScript to check if the page contain multiple IDs
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /little-javascript-to-check-if-the-page-contain-multiple-ids/

@@ -1,5 +1,6 @@
 ---
 title: 'Tips &#8211; How to photograph fireworks displays'
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /tips-how-to-photograph-fireworks-displays/

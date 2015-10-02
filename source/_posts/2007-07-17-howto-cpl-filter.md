@@ -1,5 +1,6 @@
 ---
 title: 'HowTo : CPL Filter'
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /howto-cpl-filter/

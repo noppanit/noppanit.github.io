@@ -1,5 +1,6 @@
 ---
 title: London Startup Weekend 2012.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /london-startup-weekend-2012/

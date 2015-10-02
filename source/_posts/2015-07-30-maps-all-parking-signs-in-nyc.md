@@ -1,5 +1,6 @@
 ---
 title: Maps all parking signs in NYC.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /maps-all-parking-signs-in-nyc/

@@ -1,5 +1,6 @@
 ---
 title: 'How to : A Hand-made cigarette'
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /how-to-a-hand-made-cigarette/

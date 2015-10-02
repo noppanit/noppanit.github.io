@@ -1,5 +1,6 @@
 ---
 title: If XML file is too big for AJAX
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /if-xml-file-is-too-big-for-ajax/

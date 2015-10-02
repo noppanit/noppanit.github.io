@@ -1,5 +1,6 @@
 ---
 title: 'Example: How did I convert async code to sync code with Promise.'
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /example-how-did-i-convert-async-code-to-sync-code-with-promise/

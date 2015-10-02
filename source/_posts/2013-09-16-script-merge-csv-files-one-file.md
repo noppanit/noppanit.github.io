@@ -1,5 +1,6 @@
 ---
 title: Script to merge all csv files to one file.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /script-merge-csv-files-one-file/

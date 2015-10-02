@@ -1,5 +1,6 @@
 ---
 title: 'Tutorial : Struts version 1 in action'
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /tutorial-struts-version-1-in-action/

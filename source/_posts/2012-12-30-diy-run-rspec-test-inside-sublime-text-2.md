@@ -1,5 +1,6 @@
 ---
 title: 'DIY : Run RSpec test inside Sublime Text 2'
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /diy-run-rspec-test-inside-sublime-text-2/

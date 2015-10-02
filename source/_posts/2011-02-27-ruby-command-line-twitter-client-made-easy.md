@@ -1,5 +1,6 @@
 ---
 title: 'Ruby : Command-line twitter client made easy'
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /ruby-command-line-twitter-client-made-easy/

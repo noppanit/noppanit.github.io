@@ -1,5 +1,6 @@
 ---
 title: How to call haml outside sinatra or Rails?
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /how-to-call-haml-outside-sinatra-or-rails/

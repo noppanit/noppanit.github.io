@@ -1,5 +1,6 @@
 ---
 title: Dependency Injection with Spring by example
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /dependency-injection-with-spring-by-example/

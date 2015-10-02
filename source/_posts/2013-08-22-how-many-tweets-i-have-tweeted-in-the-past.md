@@ -1,5 +1,6 @@
 ---
 title: How many tweets I have tweeted in the past?
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /how-many-tweets-i-have-tweeted-in-the-past/

@@ -1,5 +1,6 @@
 ---
 title: 'How to: Use Junit to test Java Command Line program.'
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /how-to-use-junit-to-test-java-command-line-program/

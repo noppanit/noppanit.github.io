@@ -1,5 +1,6 @@
 ---
 title: The perfect roast chicken
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /the-perfect-roast-chicken/

@@ -1,5 +1,6 @@
 ---
 title: Google Refine the best way to scrape data from websites that I like.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /google-refine-the-best-way-to-scrape-data-from-websites-that-i-like/

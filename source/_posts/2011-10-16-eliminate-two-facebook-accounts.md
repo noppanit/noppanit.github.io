@@ -1,5 +1,6 @@
 ---
 title: Eliminate two Facebook accounts
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /eliminate-two-facebook-accounts/

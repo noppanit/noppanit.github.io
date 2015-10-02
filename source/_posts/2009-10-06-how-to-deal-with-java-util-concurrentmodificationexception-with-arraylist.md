@@ -1,5 +1,6 @@
 ---
 title: How to deal with java.util.ConcurrentModificationException with ArrayList
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /how-to-deal-with-java-util-concurrentmodificationexception-with-arraylist/

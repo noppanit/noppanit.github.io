@@ -1,5 +1,6 @@
 ---
 title: Michelin Star
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /michelin-star/

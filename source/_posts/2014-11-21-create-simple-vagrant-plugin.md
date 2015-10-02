@@ -1,5 +1,6 @@
 ---
 title: How to create a simple vagrant plugin.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /create-simple-vagrant-plugin/

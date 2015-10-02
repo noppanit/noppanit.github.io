@@ -1,5 +1,6 @@
 ---
 title: How to index all wikipedia (English) data using Elasticsearch?
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /how-to-index-all-wikipedia-english-data-using-elasticsearc/

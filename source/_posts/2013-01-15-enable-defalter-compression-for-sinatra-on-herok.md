@@ -1,5 +1,6 @@
 ---
 title: Enable Defalter compression for Sinatra on Heroku
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /enable-defalter-compression-for-sinatra-on-herok/

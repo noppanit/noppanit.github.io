@@ -1,5 +1,6 @@
 ---
 title: 'Git &#8211; Interrupted workflow, what will you do?'
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /git-interrupted-workflow-what-will-you-do/

@@ -1,5 +1,6 @@
 ---
 title: Does twitter marketing work for you? It works for me.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /does-twitter-marketing-work-for-you-it-works-for-me/

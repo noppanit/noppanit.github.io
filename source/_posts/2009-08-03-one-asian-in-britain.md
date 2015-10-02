@@ -1,5 +1,6 @@
 ---
 title: One asian in Britain.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /one-asian-in-britain/

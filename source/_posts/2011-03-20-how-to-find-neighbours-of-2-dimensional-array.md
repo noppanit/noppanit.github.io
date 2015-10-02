@@ -1,5 +1,6 @@
 ---
 title: How to find neighbours of 2 dimensional array
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /how-to-find-neighbours-of-2-dimensional-array/

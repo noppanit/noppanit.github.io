@@ -1,5 +1,6 @@
 ---
 title: Maybe I have just got scroogled?
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /maybe-i-have-just-got-scroogled/

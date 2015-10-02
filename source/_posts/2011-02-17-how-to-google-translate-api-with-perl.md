@@ -1,5 +1,6 @@
 ---
 title: 'How to : Google Translate API with Perl'
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /how-to-google-translate-api-with-perl/

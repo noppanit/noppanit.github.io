@@ -1,5 +1,6 @@
 ---
 title: 'Agile Thailand 2013 &#8211; Agile in Startup'
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /agile-thailand-2013-agile-in-startup/

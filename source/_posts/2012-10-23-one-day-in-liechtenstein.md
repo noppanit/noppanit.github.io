@@ -1,5 +1,6 @@
 ---
 title: One day in Liechtenstein.
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /one-day-in-liechtenstein/

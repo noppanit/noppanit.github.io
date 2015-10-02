@@ -1,5 +1,6 @@
 ---
 title: Cucumber + Capybara + Sinatra
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /cucumber-capybara-sinatra/

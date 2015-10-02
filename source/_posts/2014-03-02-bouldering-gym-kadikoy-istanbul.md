@@ -1,5 +1,6 @@
 ---
 title: Bouldering gym in Kadıköy, Istanbul
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /bouldering-gym-kadikoy-istanbul/

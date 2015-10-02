@@ -1,5 +1,6 @@
 ---
 title: 'Tutorial : Java Random with scaling'
+comments: true
 author: Noppanit Charassinvichai
 layout: post
 permalink: /tutorial-java-random-with-scaling/
