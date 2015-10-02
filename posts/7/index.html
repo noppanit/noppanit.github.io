@@ -9,7 +9,7 @@
   <meta name="author" content="Noppanit Charassinvichai">
 
   
-  <meta name="description" content="From my last post I experimented with some of the techniques such as stopwords and bag-of-words model. I yielded some acceptable results. This post, &hellip;">
+  <meta name="description" content="First of all, I&#8217;m not a researcher what I post here is just my experiment that I do it myself. I have this problem when I want to match string &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -99,6 +99,71 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/what-if-matching-exct-string-is-not-enough/">What if Matching Exact String Is Not Enough, Basic Fuzzy Search That You Want to Know.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-01-01T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>First of all, I&#8217;m not a researcher what I post here is just my experiment that I do it myself.</p>
+
+<p>I have this problem when I want to match string but not <strong>exact match</strong>. For example, I have this string <strong>&#8220;I really love The Matrix movie because of this quote &#8216;welcome to the real world'&#8221;</strong> and I have a bunch of tags in my database such as <strong>&#8220;The Matrix&#8221;, &#8220;welcome to the real world&#8221;, &#8220;red pill&#8221;, &#8220;blue pill&#8221;</strong>. So, if I want to match the tags with the string I could do regular expression like this or actually I could do the exact match and still get the correct one.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/.*world.*/</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That would give me what I want. However, what if I have another movie <strong>&#8220;The day after tomorrow&#8221;</strong> with tags <strong>&#8220;world&#8221;</strong>. If I search with word that string against the tags I will get two movies. So, what can I do? I did some Google and found <a href="http://en.wikipedia.org/wiki/Approximate_string_matching">fuzzy search</a> and I picked <a href="http://en.wikipedia.org/wiki/Levenshtein_distance">&#8220;Levenshtein&#8221;</a>. I&#8217;m not good at maths so I can&#8217;t really explains in technical correctly. But basically, it&#8217;s a technique to look into two strings and count every time you have to <string>&#8220;edit&#8221;</strong> to make the strings exact match. For example,</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>“I love you” # string 1
+</span><span class='line'>
+</span><span class='line'>“I also love you” # string 2</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The distance would be <strong>1</strong> because it takes <strong>1</strong> edit to make the two strings exact match. We have to add <strong>also</strong> or delete <strong>also</strong> 1 time.</p>
+
+<p>So from the example above.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c"># Distance 12</span>
+</span><span class='line'><span class="n">puts</span> <span class="n">Levenshtein</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="s">&quot;welcome to the real world&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">),</span> <span class="s">&quot;I really love The Matrix movie because of this quote &#39;welcome to the real world&#39;&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">))</span>
+</span><span class='line'><span class="c"># Distance 15</span>
+</span><span class='line'><span class="n">puts</span> <span class="n">Levenshtein</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="s">&quot;world&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">),</span> <span class="s">&quot;I really love The Matrix movie because of this quote &#39;welcome to the real world&#39;&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So this way, the tag <strong>welcome to the real world</strong> is more likely to match with the string <strong>I really love The Matrix movie because of this quote &#8216;welcome to the real world</strong></p>
+
+<p>I use this <a href="http://rubygems.org/gems/levenshtein" title="levenshtein algorithm">Gem</a> for this experiment</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -680,112 +745,6 @@ U1-Wartenau</p>
 <img src="http://www.noppanit.com/wp-content/uploads/2012/07/2012-07-01-13.23.10-150x150.jpg"><br/>
 <img src="http://www.noppanit.com/wp-content/uploads/2012/07/2012-07-01-13.14.52-150x150.jpg">
 <img src="http://www.noppanit.com/wp-content/uploads/2012/07/2012-07-01-13.06.04-150x150.jpg"></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/javascript-prototype-alternative/">Javascript Prototype Alternative.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-05-09T00:00:00-04:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I guess everybody is familiar with the concept of classes in Javascript. For example,</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Adder</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>   <span class="k">this</span><span class="p">.</span><span class="nx">a</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span><span class="p">;</span>
-</span><span class='line'>   <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">Adder</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>   <span class="nx">add</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value1</span><span class="p">,</span> <span class="nx">value2</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>       <span class="k">return</span> <span class="nx">value1</span> <span class="o">+</span> <span class="nx">value2</span><span class="p">;</span>
-</span><span class='line'>   <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">adder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Adder</span><span class="p">();</span>
-</span><span class='line'><span class="nx">adder</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This type is fine in most cases, but the downside of this pattern is that you&#8217;re exposing add function to the outside world via prototype, and it&#8217;s not good for object-oriented concept. You could easily tamper with function add by doing this.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">adder</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And if you run this</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">adder</span><span class="p">.</span><span class="nx">add</span><span class="p">();</span> <span class="c1">// undefined</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You will get an error because you&#8217;ve tampered with function add already.</p>
-
-<p>In order to prevent this to happen you could do something like this. Like this we&#8217;re exposing just the function but not via prototype.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Adder</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">value1</span><span class="p">,</span> <span class="nx">value2</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">return</span> <span class="nx">value1</span> <span class="o">+</span> <span class="nx">value2</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">return</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">add</span> <span class="o">:</span> <span class="nx">add</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">adder</span> <span class="o">=</span> <span class="nx">Adder</span><span class="p">();</span>
-</span><span class='line'><span class="nx">adder</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// 3</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Reference: <a href="http://nodetuts.com/tutorials/28-javascript-classes-prototypes-and-closures.html">http://nodetuts.com/tutorials/28-javascript-classes-prototypes-and-closures.html</a></p>
 </div>
   
   

@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="http://noppanit.github.io/atom.xml" rel="self"/>
   <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-01T23:48:42-04:00</updated>
+  <updated>2015-10-02T07:06:00-04:00</updated>
   <id>http://noppanit.github.io/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Migrated My Blog to Octopress]]></title>
+    <link href="http://noppanit.github.io/blog/2015/10/01/migrated-my-blog-to-octopress/"/>
+    <updated>2015-10-01T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/blog/2015/10/01/migrated-my-blog-to-octopress</id>
+    <content type="html"><![CDATA[<p>Performance for noppanit.com
+<a href="http://www.webpagetest.org/result/151002_33_7N6/1/details/">http://www.webpagetest.org/result/151002_33_7N6/1/details/</a></p>
+
+<p>Performance for noppanit.github.io
+<a href="http://www.webpagetest.org/result/151002_NG_7P4/2/details/">http://www.webpagetest.org/result/151002_NG_7P4/2/details/</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Code Review With the World]]></title>
@@ -1892,23 +1905,6 @@
 <p>There&#8217;s one reason to do this I can think of. You can clearly see the purpose of this class and you can have multiple test classes or <strong>Product</strong> instead of having all the tests in one class and everything is cluttered so you have to scroll up and down</p>
 
 <p>Not everybody likes this convention. I hate it at first but I&#8217;m starting to use it more often and I like it. What do you guys think?</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ziferblat, Pay-per-minute Cafe in Moscow, Russia.]]></title>
-    <link href="http://noppanit.github.io/ziferblat-pay-per-minute-cafe-moscow-russia/"/>
-    <updated>2014-05-18T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/ziferblat-pay-per-minute-cafe-moscow-russia</id>
-    <content type="html"><![CDATA[<p>If you&#8217;re in Moscow and you want somewhere to just sit down and catch up with some stuff. Or you just want to have a place to read. I recommend <a href="http://pushkin.ziferblat.net/en/" title="Ziferblat">Ziferblat</a>, it&#8217;s pay-per-minute cafe in Central Moscow.</p>
-
-<p>Just 5-min walk from Tverskaya Station (Тверская). Then look for this sign.</p>
-
-<p><img src="http://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-22.52.43.png"></p>
-
-<p>You have to ring the bell and the security guard will buzz you in then you have to walk upstairs (2nd floor). Unfortunately, at least when I was there people speak little English but understandable. Also, the people are really friendly over there. You just need to tell your name and pay at the end when you&#8217;re ready to rome Moscow again.</p>
-
-<p><img src="http://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-23.08.45.png"></p>
 ]]></content>
   </entry>
   
