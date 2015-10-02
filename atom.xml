@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="http://www.noppanit.com/atom.xml" rel="self"/>
   <link href="http://www.noppanit.com/"/>
-  <updated>2015-10-02T07:24:10-04:00</updated>
+  <updated>2015-10-02T07:27:20-04:00</updated>
   <id>http://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Migrated My Blog to Octopress]]></title>
-    <link href="http://www.noppanit.com/blog/2015/10/01/migrated-my-blog-to-octopress/"/>
+    <link href="http://www.noppanit.com/migrated-my-blog-to-octopress/"/>
     <updated>2015-10-01T00:00:00-04:00</updated>
-    <id>http://www.noppanit.com/blog/2015/10/01/migrated-my-blog-to-octopress</id>
+    <id>http://www.noppanit.com/migrated-my-blog-to-octopress</id>
     <content type="html"><![CDATA[<p>Performance for noppanit.com
 <a href="http://www.webpagetest.org/result/151002_33_7N6/1/details/">http://www.webpagetest.org/result/151002_33_7N6/1/details/</a></p>
 
