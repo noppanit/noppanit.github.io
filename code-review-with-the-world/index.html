@@ -96,23 +96,25 @@
 
 <p>For example, I wrote this piece of code to learn about dynamic programming.</p>
 
-<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="python codecolorer">
-          <span class="kw1">import</span> <span class="kw3">sys</span><br /> coins <span class="sy0">=</span> <span class="br0">&#91;</span><span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">3</span><span class="sy0">,</span> <span class="nu0">5</span><span class="br0">&#93;</span><br /> min_coin <span class="sy0">=</span> <span class="br0">&#91;</span><span class="kw3">sys</span>.<span class="me1">maxint</span><span class="br0">&#93;</span> * <span class="nu0">20</span><br /> min_coin<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="nu0"></span><br /> <br /> <span class="kw1">for</span> min_of_i <span class="kw1">in</span> <span class="kw2">range</span><span class="br0">&#40;</span><span class="nu0">20</span><span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; <span class="kw1">for</span> c <span class="kw1">in</span> coins:<br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> c <span class="sy0"><=</span> min_of_i <span class="kw1">and</span> <span class="br0">&#40;</span>min_coin<span class="br0">&#91;</span>min_of_i - c<span class="br0">&#93;</span> + <span class="nu0">1</span> <span class="sy0"><</span> min_coin<span class="br0">&#91;</span>min_of_i<span class="br0">&#93;</span><span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; min_coin<span class="br0">&#91;</span>min_of_i<span class="br0">&#93;</span> <span class="sy0">=</span> min_coin<span class="br0">&#91;</span>min_of_i - c<span class="br0">&#93;</span> + <span class="nu0">1</span><br /> <br /> <br /> <span class="kw1">print</span> min_coin
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'><span class="n">coins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</span><span class='line'><span class="n">min_coin</span> <span class="o">=</span> <span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">maxint</span><span class="p">]</span> <span class="o">*</span> <span class="mi">20</span>
+</span><span class='line'><span class="n">min_coin</span><span class="p">[]</span> <span class="o">=</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">min_of_i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">coins</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="n">min_of_i</span> <span class="ow">and</span> <span class="p">(</span><span class="n">min_coin</span><span class="p">[</span><span class="n">min_of_i</span> <span class="o">-</span> <span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">min_coin</span><span class="p">[</span><span class="n">min_of_i</span><span class="p">]):</span>
+</span><span class='line'>                <span class="n">min_coin</span><span class="p">[</span><span class="n">min_of_i</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_coin</span><span class="p">[</span><span class="n">min_of_i</span> <span class="o">-</span> <span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I know that my code is not bad (or maybe is really bad), but let&#8217;s see what I get out of it from this <a href="http://codereview.stackexchange.com/questions/92811/find-the-minimum-number-of-coins">thread</a>. From within a day I have at least 2-3 points to make my code a lot better. Not only that I learn more about Python, I also learn how to optimize the script.</p>

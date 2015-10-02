@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Digital Camera | My Blog]]></title>
   <link href="http://noppanit.github.io/blog/categories/digital-camera/atom.xml" rel="self"/>
   <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-01T16:31:21-04:00</updated>
+  <updated>2015-10-01T21:51:48-04:00</updated>
   <id>http://noppanit.github.io/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -97,8 +97,7 @@
 </ol>
 
 
-<p><strong>Techniques<br/>
-</strong></p>
+<p><strong>Techniques</strong></p>
 
 <ol>
 <li>Set your camera to M mode, so you could control your aperture and shutter speed.</li>
@@ -114,19 +113,19 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[HowTo : Auto Rotate Image Which Is Pictured Vertically.]]></title>
-    <link href="http://noppanit.github.io/howto-auto-rotate-image-which-is-pictured-vertically/"/>
-    <updated>2008-01-02T00:00:00-05:00</updated>
-    <id>http://noppanit.github.io/howto-auto-rotate-image-which-is-pictured-vertically</id>
-    <content type="html"><![CDATA[<p>I have been struggling about finding a way to rotate my pictures which are taken vertically. It&#8217;s very time consuming if I have taken 100 images vertically and I have to rotate every single picture in my computer. So, here are the result that I found.</p>
+    <title type="html"><![CDATA[HowTo : CPL Filter]]></title>
+    <link href="http://noppanit.github.io/howto-cpl-filter/"/>
+    <updated>2007-07-17T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/howto-cpl-filter</id>
+    <content type="html"><![CDATA[<p>This topic I will record about how to use CPL filter, because I have bought this filter about 5 months. However, I couldn&#8217;t use it well, until now.</p>
 
-<ol>
-<li>You can use the program that comes with you camera. I use Canon?? 400D, so I use ZoomBrowser to get the pictures from my camera.</li>
-<li>But, I have another choice which is &#8220;Acdsee&#8221;, the most incredible program about managing you photos. You can use Acdsee to get your images from the your camera. You the function that comes with the program. While you are getting the images from Acdsee, the program will check your image whether or not your image was shot vertically and the program will rotate it automatically.</li>
-</ol>
+<p>The source of light coming from right hand. Therefore, I turned the ring on the filter directed to the source of light.</p>
 
+<p><a href="http://www.noppanit.com/wp-content/uploads/2007/07/img_9672-before.JPG" title="Before Filtering"><img src="http://www.noppanit.com/wp-content/uploads/2007/07/img_9672-before.thumbnail.JPG" alt="Before Filtering" /></a><br/>
+This picture took before I used CPL filter.</p>
 
-<p>Note : Do not just copy your pictures from memory card directly, because it will stay the same.</p>
+<p><a href="http://www.noppanit.com/wp-content/uploads/2007/07/img_9671-after.JPG" title="After Filtering"><img src="http://www.noppanit.com/wp-content/uploads/2007/07/img_9671-after.thumbnail.JPG" alt="After Filtering" /></a><br/>
+This picture took after I used CPL filter, you can see how is this filter make and effect to the Notebook</p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Knowledges | My Blog]]></title>
   <link href="http://noppanit.github.io/blog/categories/knowledges/atom.xml" rel="self"/>
   <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-01T16:31:21-04:00</updated>
+  <updated>2015-10-01T21:51:48-04:00</updated>
   <id>http://noppanit.github.io/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -30,24 +30,16 @@
 
 <p>For example, I wrote this piece of code to learn about dynamic programming.</p>
 
-<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="python codecolorer">
-          <span class="kw1">import</span> <span class="kw3">sys</span><br /> coins <span class="sy0">=</span> <span class="br0">&#91;</span><span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">3</span><span class="sy0">,</span> <span class="nu0">5</span><span class="br0">&#93;</span><br /> min_coin <span class="sy0">=</span> <span class="br0">&#91;</span><span class="kw3">sys</span>.<span class="me1">maxint</span><span class="br0">&#93;</span> * <span class="nu0">20</span><br /> min_coin<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="nu0"></span><br /> <br /> <span class="kw1">for</span> min_of_i <span class="kw1">in</span> <span class="kw2">range</span><span class="br0">&#40;</span><span class="nu0">20</span><span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; <span class="kw1">for</span> c <span class="kw1">in</span> coins:<br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> c <span class="sy0"><=</span> min_of_i <span class="kw1">and</span> <span class="br0">&#40;</span>min_coin<span class="br0">&#91;</span>min_of_i - c<span class="br0">&#93;</span> + <span class="nu0">1</span> <span class="sy0"><</span> min_coin<span class="br0">&#91;</span>min_of_i<span class="br0">&#93;</span><span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; min_coin<span class="br0">&#91;</span>min_of_i<span class="br0">&#93;</span> <span class="sy0">=</span> min_coin<span class="br0">&#91;</span>min_of_i - c<span class="br0">&#93;</span> + <span class="nu0">1</span><br /> <br /> <br /> <span class="kw1">print</span> min_coin
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<pre><code class="python">import sys
+coins = [1, 3, 5]
+min_coin = [sys.maxint] * 20
+min_coin[] = 
 
+for min_of_i in range(20):
+    for c in coins:
+        if c &lt;= min_of_i and (min_coin[min_of_i - c] + 1 &lt; min_coin[min_of_i]):
+                min_coin[min_of_i] = min_coin[min_of_i - c] + 1
+</code></pre>
 
 <p>I know that my code is not bad (or maybe is really bad), but let&#8217;s see what I get out of it from this <a href="http://codereview.stackexchange.com/questions/92811/find-the-minimum-number-of-coins">thread</a>. From within a day I have at least 2-3 points to make my code a lot better. Not only that I learn more about Python, I also learn how to optimize the script.</p>
 
@@ -126,47 +118,42 @@
 
 <p>I&#8217;ve tried using <a href="https://github.com/OSGeo/proj.4">Proj4</a> on both R and Python to convert X,Y WGS84 to Lat, Long. Here&#8217;s my little snippet.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          data = read.csv('./parking_regulation.csv')<br /> <br /> library(proj4)<br /> proj4string <- "+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs"<br /> latlong_list<-list()<br /> calculate_long_lat <- function(x,y) {<br /> &nbsp; <br /> &nbsp; # Source data<br /> &nbsp; xy <- data.frame(x=x, y=y)<br /> &nbsp; <br /> &nbsp; # Transformed data<br /> &nbsp; pj <- project(xy, proj4string, inverse=TRUE)<br /> &nbsp; latlon <- data.frame(lat=pj$y, lon=pj$x)<br /> &nbsp; latlong_list[['latlong']] <- latlon<br /> }<br /> <br /> apply(data[,c('x','y')], 1, function(y) calculate_long_lat(y['x'], y['y']))
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<pre><code class="R">data = read.csv('./parking_regulation.csv')
 
+library(proj4)
+proj4string &lt;- "+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs"
+latlong_list&lt;-list()
+calculate_long_lat &lt;- function(x,y) {
+
+  # Source data
+  xy &lt;- data.frame(x=x, y=y)
+
+  # Transformed data
+  pj &lt;- project(xy, proj4string, inverse=TRUE)
+  latlon &lt;- data.frame(lat=pj$y, lon=pj$x)
+  latlong_list[['latlong']] &lt;- latlon
+}
+
+apply(data[,c('x','y')], 1, function(y) calculate_long_lat(y['x'], y['y']))
+</code></pre>
 
 <p>The result is not quite accurate which I think it&#8217;s because I need to find a correct <strong>proj4string</strong>.</p>
 
 <p>Python has the same wrapper which is quite what I want as well.</p>
 
-<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="python codecolorer">
-          <span class="kw1">from</span> pyproj <span class="kw1">import</span> Proj<br /> <span class="kw1">import</span> pandas <span class="kw1">as</span> pd<br /> <br /> data <span class="sy0">=</span> pd.<span class="me1">read_csv</span><span class="br0">&#40;</span><span class="st0">'parking_regulation.csv'</span><span class="br0">&#41;</span><br /> <br /> p <span class="sy0">=</span> Proj<span class="br0">&#40;</span>r<span class="st0">'+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs'</span><span class="br0">&#41;</span><br /> <br /> <span class="kw1">def</span> cal_long_lat<span class="br0">&#40;</span>row<span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; <span class="kw1">return</span> p<span class="br0">&#40;</span>row<span class="br0">&#91;</span><span class="st0">'x'</span><span class="br0">&#93;</span><span class="sy0">,</span> row<span class="br0">&#91;</span><span class="st0">'y'</span><span class="br0">&#93;</span><span class="sy0">,</span>inverse<span class="sy0">=</span><span class="kw2">True</span><span class="br0">&#41;</span><br /> <br /> data<span class="br0">&#91;</span><span class="st0">'lon'</span><span class="br0">&#93;</span><span class="sy0">,</span> data<span class="br0">&#91;</span><span class="st0">'lat'</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="kw2">zip</span><span class="br0">&#40;</span>data.<span class="me1">apply</span> <span class="br0">&#40;</span><span class="kw1">lambda</span> row: cal_long_lat <span class="br0">&#40;</span>row<span class="br0">&#41;</span><span class="sy0">,</span>axis<span class="sy0">=</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> data.<span class="me1">head</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<pre><code class="python">from pyproj import Proj
+import pandas as pd
 
+data = pd.read_csv('parking_regulation.csv')
+
+p = Proj(r'+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs')
+
+def cal_long_lat(row):
+    return p(row['x'], row['y'],inverse=True)
+
+data['lon'], data['lat'] = zip(data.apply (lambda row: cal_long_lat (row),axis=1))
+data.head()
+</code></pre>
 
 <p>I will need to learn more about State Pane and what is the correct format.</p>
 
@@ -220,177 +207,179 @@
 
 <p>This is my <strong>gulpfile.js</strong></p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="kw2">var</span> gulp <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'gulp'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="kw2">var</span> karma <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'gulp-karma'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="kw2">var</span> testFiles <span class="sy0">=</span> <span class="br0">&#91;</span><br /> &nbsp; <span class="st0">'tests/vendors/jquery-1.11.3.min.js'</span><span class="sy0">,</span><br /> &nbsp; <span class="st0">'tests/vendors/jasmine-jquery.js'</span><span class="sy0">,</span><br /> &nbsp; <span class="st0">'src/**/*.js'</span><span class="sy0">,</span><br /> &nbsp; <span class="st0">'tests/spec/**/*.js'</span><br /> <span class="br0">&#93;</span><span class="sy0">;</span><br /> <span class="coMULTI">/**<br /> &nbsp;* Run test once and exit<br /> &nbsp;*/</span><br /> gulp.<span class="me1">task</span><span class="br0">&#40;</span><span class="st0">'test'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>done<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; <span class="kw1">return</span> gulp.<span class="me1">src</span><span class="br0">&#40;</span>testFiles<span class="br0">&#41;</span><br /> &nbsp; &nbsp; .<span class="me1">pipe</span><span class="br0">&#40;</span>karma<span class="br0">&#40;</span><span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; configFile<span class="sy0">:</span> <span class="st0">'karma.conf.js'</span><span class="sy0">,</span><br /> &nbsp; &nbsp; &nbsp; action<span class="sy0">:</span> <span class="st0">'run'</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> &nbsp; .<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'error'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>err<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="co1">// Make sure failed tests cause gulp to exit non-zero </span><br /> &nbsp; &nbsp; <span class="kw1">throw</span> err<span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> gulp.<span class="me1">task</span><span class="br0">&#40;</span><span class="st0">'default'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; gulp.<span class="me1">src</span><span class="br0">&#40;</span>testFiles<span class="br0">&#41;</span><br /> &nbsp; &nbsp; .<span class="me1">pipe</span><span class="br0">&#40;</span>karma<span class="br0">&#40;</span><span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; configFile<span class="sy0">:</span> <span class="st0">'karma.conf.js'</span><span class="sy0">,</span><br /> &nbsp; &nbsp; &nbsp; action<span class="sy0">:</span> <span class="st0">'watch'</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<pre><code class="javascript">var gulp = require('gulp');
+var karma = require('gulp-karma');
 
+var testFiles = [
+  'tests/vendors/jquery-1.11.3.min.js',
+  'tests/vendors/jasmine-jquery.js',
+  'src/**/*.js',
+  'tests/spec/**/*.js'
+];
+/**
+ * Run test once and exit
+ */
+gulp.task('test', function (done) {
+  return gulp.src(testFiles)
+    .pipe(karma({
+      configFile: 'karma.conf.js',
+      action: 'run'
+    }))
+  .on('error', function(err) {
+    // Make sure failed tests cause gulp to exit non-zero 
+    throw err;
+  });
+});
+
+gulp.task('default', function() {
+  gulp.src(testFiles)
+    .pipe(karma({
+      configFile: 'karma.conf.js',
+      action: 'watch'
+    }));
+});
+</code></pre>
 
 <p>This is my <strong>karma.conf.js</strong></p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          module.<span class="me1">exports</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>config<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; config.<span class="me1">set</span><span class="br0">&#40;</span><span class="br0">&#123;</span><br /> &nbsp; &nbsp; browsers<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">'PhantomJS'</span><span class="br0">&#93;</span><span class="sy0">,</span><br /> &nbsp; &nbsp; frameworks<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">'jasmine'</span><span class="br0">&#93;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
+<pre><code class="javascript">module.exports = function(config) {
+  config.set({
+    browsers: ['PhantomJS'],
+    frameworks: ['jasmine']
+  });
+};
+</code></pre>
 
 <p>Here&#8217;s my first test</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          describe<span class="br0">&#40;</span><span class="st0">'Taggify'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; <span class="kw2">var</span> fixture<span class="sy0">;</span><br /> &nbsp; beforeEach<span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; fixture <span class="sy0">=</span> setFixtures<span class="br0">&#40;</span><span class="st0">'<ul id="tag"></ul>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; jQuery<span class="br0">&#40;</span><span class="st0">'#tag'</span><span class="br0">&#41;</span>.<span class="me1">taggify</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <br /> &nbsp; it<span class="br0">&#40;</span><span class="st0">'should initialize text box'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> input <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'input'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; expect<span class="br0">&#40;</span>input.<span class="me1">length</span> <span class="sy0">></span> <span class="nu0"></span><span class="br0">&#41;</span>.<span class="me1">toBeTruthy</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<pre><code class="javascript">describe('Taggify', function() {
+  var fixture;
+  beforeEach(function() {
+    fixture = setFixtures('&lt;ul id="tag"&gt;&lt;/ul&gt;');
+    jQuery('#tag').taggify();
+  });
 
+  it('should initialize text box', function() {
+    var input = fixture.find('input');
+    expect(input.length &gt; 0).toBeTruthy();
+  });
+
+});
+</code></pre>
 
 <p>You will see that the test failed now we implement some code.</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>$<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; $.<span class="me1">fn</span>.<span class="me1">taggify</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>options<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; create<span class="br0">&#40;</span><span class="kw1">this</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw1">this</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="sy0">;</span><br /> <br /> &nbsp; <span class="kw2">function</span> create<span class="br0">&#40;</span>$theElement<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> $input <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<input class="tag-input"></input>'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'type'</span><span class="sy0">,</span> <span class="st0">'text'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'autocomplete'</span><span class="sy0">,</span> <span class="st0">'off'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $theElement.<span class="me1">append</span><span class="br0">&#40;</span>$input.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#40;</span>jQuery<span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<pre><code class="javascript">(function($) {
+  $.fn.taggify = function(options) {
+    create(this);
+    return this;
+  };
 
+  function create($theElement) {
+    var $input = $('&lt;input class="tag-input"&gt;&lt;/input&gt;')
+      .attr('type', 'text')
+      .attr('autocomplete', 'off')
+      .wrap('&lt;li&gt;&lt;/li&gt;');
+
+    $theElement.append($input.parent());
+  }
+})(jQuery);
+</code></pre>
 
 <p>Now the test passed.</p>
 
 <p>Now let&#8217;s add some event so when you hit enter the tag is added. So, I added one more test</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          &nbsp; it<span class="br0">&#40;</span><span class="st0">'should add a tag'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> input <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'input'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; input.<span class="me1">val</span><span class="br0">&#40;</span><span class="st0">'tag'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; input.<span class="me1">trigger</span><span class="br0">&#40;</span>jQuery.<span class="me1">Event</span><span class="br0">&#40;</span><span class="st0">'keyup'</span><span class="sy0">,</span> <span class="br0">&#123;</span> keyCode<span class="sy0">:</span> <span class="nu0">13</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="kw2">var</span> tags <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'.tag-label'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> tag <span class="sy0">=</span> jQuery<span class="br0">&#40;</span>tags<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <br /> &nbsp; &nbsp; expect<span class="br0">&#40;</span>tag.<span class="me1">html</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>.<span class="me1">toBe</span><span class="br0">&#40;</span><span class="st0">'tag'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; expect<span class="br0">&#40;</span>tags.<span class="me1">length</span> <span class="sy0">></span> <span class="nu0"></span><span class="br0">&#41;</span>.<span class="me1">toBeTruthy</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<pre><code class="javascript">  it('should add a tag', function() {
+    var input = fixture.find('input');
+    input.val('tag');
+    input.trigger(jQuery.Event('keyup', { keyCode: 13 }));
 
+    var tags = fixture.find('.tag-label');
+    var tag = jQuery(tags[0]);
+
+    expect(tag.html()).toBe('tag');
+    expect(tags.length &gt; 0).toBeTruthy();
+  });
+</code></pre>
 
 <p>Now the test failed.</p>
 
 <p>I&#8217;ll fix the test by doing this.</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>$<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; $.<span class="me1">fn</span>.<span class="me1">taggify</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>options<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; create<span class="br0">&#40;</span><span class="kw1">this</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw1">this</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="sy0">;</span><br /> <br /> &nbsp; <span class="kw2">function</span> create<span class="br0">&#40;</span>$theElement<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> $input <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<input class="tag-input"></input>'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'type'</span><span class="sy0">,</span> <span class="st0">'text'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'autocomplete'</span><span class="sy0">,</span> <span class="st0">'off'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $input.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'keyup'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>e<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">&#40;</span>e.<span class="me1">keyCode</span> <span class="sy0">===</span> <span class="nu0">13</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> tagText <span class="sy0">=</span> $input.<span class="me1">val</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> $span <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<span class="tag-label"></span>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; $span.<span class="me1">text</span><span class="br0">&#40;</span>tagText<span class="br0">&#41;</span>.<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li class="tag-choice"></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; $theElement.<span class="me1">prepend</span><span class="br0">&#40;</span>$span.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; $input.<span class="me1">val</span><span class="br0">&#40;</span><span class="st0">''</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $theElement.<span class="me1">append</span><span class="br0">&#40;</span>$input.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#40;</span>jQuery<span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<pre><code class="javascript">(function($) {
+  $.fn.taggify = function(options) {
+    create(this);
+    return this;
+  };
 
+  function create($theElement) {
+    var $input = $('&lt;input class="tag-input"&gt;&lt;/input&gt;')
+      .attr('type', 'text')
+      .attr('autocomplete', 'off')
+      .wrap('&lt;li&gt;&lt;/li&gt;');
+
+    $input.on('keyup', function(e) {
+      if (e.keyCode === 13) {
+        var tagText = $input.val();
+
+        var $span = $('&lt;span class="tag-label"&gt;&lt;/span&gt;');
+
+        $span.text(tagText).wrap('&lt;li class="tag-choice"&gt;&lt;/li&gt;');
+        $theElement.prepend($span.parent());
+        $input.val('');
+      }
+    });
+
+    $theElement.append($input.parent());
+  }
+})(jQuery);
+</code></pre>
 
 <p>Now I want to add some negative test case.</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          &nbsp; it<span class="br0">&#40;</span><span class="st0">'should not add a tag'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> input <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'input'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; input.<span class="me1">trigger</span><span class="br0">&#40;</span>jQuery.<span class="me1">Event</span><span class="br0">&#40;</span><span class="st0">'keyup'</span><span class="sy0">,</span> <span class="br0">&#123;</span> keyCode<span class="sy0">:</span> <span class="nu0">13</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> tags <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'.tag-label'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <br /> &nbsp; &nbsp; expect<span class="br0">&#40;</span>tags.<span class="me1">length</span> <span class="sy0">></span> <span class="nu0"></span><span class="br0">&#41;</span>.<span class="me1">toBeFalsy</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<pre><code class="javascript">  it('should not add a tag', function() {
+    var input = fixture.find('input');
+    input.trigger(jQuery.Event('keyup', { keyCode: 13 }));
+    var tags = fixture.find('.tag-label');
 
+    expect(tags.length &gt; 0).toBeFalsy();
+  });
+</code></pre>
 
 <p>Oops the test failed, looks like I missed something</p>
 
 <p>I will fix the test by</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>$<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; $.<span class="me1">fn</span>.<span class="me1">taggify</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>options<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; create<span class="br0">&#40;</span><span class="kw1">this</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw1">this</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="sy0">;</span><br /> <br /> &nbsp; <span class="kw2">function</span> create<span class="br0">&#40;</span>$theElement<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> $input <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<input class="tag-input"></input>'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'type'</span><span class="sy0">,</span> <span class="st0">'text'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'autocomplete'</span><span class="sy0">,</span> <span class="st0">'off'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $input.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'keyup'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>e<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">&#40;</span>e.<span class="me1">keyCode</span> <span class="sy0">===</span> <span class="nu0">13</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> tagText <span class="sy0">=</span> $input.<span class="me1">val</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>tagText <span class="sy0">!==</span> <span class="st0">''</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> $span <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<span class="tag-label"></span>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $span.<span class="me1">text</span><span class="br0">&#40;</span>tagText<span class="br0">&#41;</span>.<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li class="tag-choice"></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $theElement.<span class="me1">prepend</span><span class="br0">&#40;</span>$span.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $input.<span class="me1">val</span><span class="br0">&#40;</span><span class="st0">''</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $theElement.<span class="me1">append</span><span class="br0">&#40;</span>$input.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#40;</span>jQuery<span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<pre><code class="javascript">(function($) {
+  $.fn.taggify = function(options) {
+    create(this);
+    return this;
+  };
 
+  function create($theElement) {
+    var $input = $('&lt;input class="tag-input"&gt;&lt;/input&gt;')
+      .attr('type', 'text')
+      .attr('autocomplete', 'off')
+      .wrap('&lt;li&gt;&lt;/li&gt;');
+
+    $input.on('keyup', function(e) {
+      if (e.keyCode === 13) {
+        var tagText = $input.val();
+        if(tagText !== '') {
+          var $span = $('&lt;span class="tag-label"&gt;&lt;/span&gt;');
+
+          $span.text(tagText).wrap('&lt;li class="tag-choice"&gt;&lt;/li&gt;');
+          $theElement.prepend($span.parent());
+          $input.val('');
+        }
+      }
+    });
+
+    $theElement.append($input.parent());
+  }
+})(jQuery);
+</code></pre>
 
 <p>That&#8217;s it. I hope you enjoy and love TDD more. And here&#8217;s the <a href="https://github.com/noppanit/taggify">github repo</a></p>
 ]]></content>
@@ -415,47 +404,30 @@
 
 <p>Now if you can find the slope of the graph and intercept you should be able to use the formula.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          Y = MX + C<br /> <br /> M = slope of the graph<br /> C = Intercept
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<pre><code>Y = MX + C
 
+M = slope of the graph
+C = Intercept
+</code></pre>
 
 <p>If you&#8217;re lazy to look at my <a href="https://github.com/noppanit/linear-regression-basic">notebook</a>.</p>
 
 <p>Then you can run this code.</p>
 
-<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="python codecolorer">
-          <span class="kw1">import</span> pandas <span class="kw1">as</span> pd<br /> <span class="kw1">import</span> numpy <span class="kw1">as</span> np<br /> <span class="kw1">from</span> scipy <span class="kw1">import</span> stats<br /> <br /> total_bills <span class="sy0">=</span> np.<span class="kw3">random</span>.<span class="me1">randint</span><span class="br0">&#40;</span><span class="nu0">100</span><span class="sy0">,</span> size<span class="sy0">=</span><span class="nu0">1000</span><span class="br0">&#41;</span><br /> tips <span class="sy0">=</span> total_bills * <span class="nu0">0.10</span><br /> <br /> x <span class="sy0">=</span> pd.<span class="me1">Series</span><span class="br0">&#40;</span>tips<span class="sy0">,</span> name<span class="sy0">=</span><span class="st0">'tips'</span><span class="br0">&#41;</span><br /> y <span class="sy0">=</span> pd.<span class="me1">Series</span><span class="br0">&#40;</span>total_bills<span class="sy0">,</span> name<span class="sy0">=</span><span class="st0">'total_bills'</span><span class="br0">&#41;</span><br /> df <span class="sy0">=</span> pd.<span class="me1">concat</span><span class="br0">&#40;</span><span class="br0">&#91;</span>x<span class="sy0">,</span> y<span class="br0">&#93;</span><span class="sy0">,</span> axis<span class="sy0">=</span><span class="nu0">1</span><span class="br0">&#41;</span><br /> <br /> slope<span class="sy0">,</span> intercept<span class="sy0">,</span> r_value<span class="sy0">,</span> p_value<span class="sy0">,</span> std_err <span class="sy0">=</span> stats.<span class="me1">linregress</span><span class="br0">&#40;</span>x<span class="sy0">=</span>total_bills<span class="sy0">,</span> y<span class="sy0">=</span>tips<span class="br0">&#41;</span><br /> predicted_tips <span class="sy0">=</span> <span class="br0">&#40;</span>slope * <span class="nu0">70</span><span class="br0">&#41;</span> + intercept
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<pre><code class="python">import pandas as pd
+import numpy as np
+from scipy import stats
 
+total_bills = np.random.randint(100, size=1000)
+tips = total_bills * 0.10
+
+x = pd.Series(tips, name='tips')
+y = pd.Series(total_bills, name='total_bills')
+df = pd.concat([x, y], axis=1)
+
+slope, intercept, r_value, p_value, std_err = stats.linregress(x=total_bills, y=tips)
+predicted_tips = (slope * 70) + intercept
+</code></pre>
 
 <p>The result is $7 which corresponds to the 10% tip.</p>
 ]]></content>

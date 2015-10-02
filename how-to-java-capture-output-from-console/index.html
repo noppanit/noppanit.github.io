@@ -9,7 +9,13 @@
   <meta name="author" content="Noppanit Charassinvichai">
 
   
-  <meta name="description" content="Well, the topic pretty says everything. So, here&#8217;s the solution. 123456 final ByteArrayOutputStream myOut = new ByteArrayOutputStream&#40;&#41 &hellip;">
+  <meta name="description" content="Well, the topic pretty says everything. So, here&#8217;s the solution. 1
+2
+3
+4
+5
+6
+final ByteArrayOutputStream myOut = new ByteArrayOutputStream(); &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,23 +92,19 @@
 
 <div class="entry-content"><p>Well, the topic pretty says everything. So, here&#8217;s the solution.</p>
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          <span class="kw1">final</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Abytearrayoutputstream+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">ByteArrayOutputStream</span></a> myOut <span class="sy0">=</span> <span class="kw1">new</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Abytearrayoutputstream+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">ByteArrayOutputStream</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">setOut</span><span class="br0">&#40;</span><span class="kw1">new</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aprintstream+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">PrintStream</span></a><span class="br0">&#40;</span>myOut<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="co1">// test stuff here...</span><br /> <br /> <span class="kw1">final</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> standardOutput <span class="sy0">=</span> myOut.<span class="me1">toString</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">ByteArrayOutputStream</span> <span class="n">myOut</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ByteArrayOutputStream</span><span class="o">();</span>
+</span><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">setOut</span><span class="o">(</span><span class="k">new</span> <span class="nf">PrintStream</span><span class="o">(</span><span class="n">myOut</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// test stuff here...</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">final</span> <span class="n">String</span> <span class="n">standardOutput</span> <span class="o">=</span> <span class="n">myOut</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The idea is just redirect the System.out to another PrintStream and you can use information in the PrintStream.</p>
@@ -147,7 +149,7 @@
         <a class="basic-alignment left" href="/ruby-command-line-twitter-client-made-easy/" title="Previous Post: Ruby : Command-line twitter client made easy">&laquo; Ruby : Command-line twitter client made easy</a>
       
       
-        <a class="basic-alignment right" href="/tdd-for-command-line-program/" title="Next Post: TDD for Command-line program">TDD for Command-line program &raquo;</a>
+        <a class="basic-alignment right" href="/how-to-find-neighbours-of-2-dimensional-array/" title="Next Post: How to find neighbours of 2 dimensional array">How to find neighbours of 2 dimensional array &raquo;</a>
       
     </p>
   </footer>

@@ -86,23 +86,49 @@
 
 <div class="entry-content"><p>Have you ever had a problem using somebody method with the same name. Well, Have you ever thought why javascript don&#8217;t have package or namespaces like other languages. Well, change your mind. This is how you will be implementing namespaces for javascript.</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="sy0"><</span>script type<span class="sy0">=</span><span class="st0">"text/javascript"</span><span class="sy0">></span><br /> <span class="kw1">if</span> <span class="br0">&#40;</span> com <span class="sy0">==</span> <span class="kw2">null</span> <span class="sy0">||</span> <span class="kw1">typeof</span><span class="br0">&#40;</span> com <span class="br0">&#41;</span> <span class="sy0">!=</span> <span class="st0">"object"</span> <span class="br0">&#41;</span> <br /> <span class="br0">&#123;</span><br /> &nbsp; <span class="kw2">var</span> com <span class="sy0">=</span> <span class="kw2">new</span> Object<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span><br /> <br /> <span class="kw1">if</span> <span class="br0">&#40;</span> com.<span class="me1">noppanit</span> <span class="sy0">==</span> <span class="kw2">null</span> <span class="sy0">||</span> <span class="kw1">typeof</span><span class="br0">&#40;</span> com.<span class="me1">noppanit</span> <span class="br0">&#41;</span> <span class="sy0">!=</span> <span class="st0">"object"</span> <span class="br0">&#41;</span> <br /> <span class="br0">&#123;</span><br /> &nbsp; com.<span class="me1">noppanit</span> <span class="sy0">=</span> <span class="kw2">new</span> Object<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <br /> <span class="br0">&#125;</span><br /> <br /> com.<span class="me1">noppanit</span> <span class="sy0">=</span> <br /> <span class="br0">&#123;</span> <br /> &nbsp; message <span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <br /> &nbsp; <span class="br0">&#123;</span> <br /> &nbsp; &nbsp; <span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">'test'</span><span class="br0">&#41;</span><span class="sy0">;</span> <br /> &nbsp; <span class="br0">&#125;</span><span class="sy0">,</span> <br /> &nbsp; message1 <span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <br /> &nbsp; <span class="br0">&#123;</span> <br /> &nbsp; &nbsp; <span class="kw3">alert</span><span class="br0">&#40;</span><span class="st0">'test1'</span><span class="br0">&#41;</span><span class="sy0">;</span> <br /> &nbsp; <span class="br0">&#125;</span> <br /> <span class="sy0">;</span> <br /> <br /> com.<span class="me1">noppanit</span>.<span class="me1">message</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <br /> com.<span class="me1">noppanit</span>.<span class="me1">message1</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span> <br /> <br /> <span class="sy0"></</span>script<span class="sy0">></span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">if</span> <span class="p">(</span> <span class="nx">com</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="k">typeof</span><span class="p">(</span> <span class="nx">com</span> <span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;object&quot;</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">com</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span> <span class="nx">com</span><span class="p">.</span><span class="nx">noppanit</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="k">typeof</span><span class="p">(</span> <span class="nx">com</span><span class="p">.</span><span class="nx">noppanit</span> <span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;object&quot;</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">com</span><span class="p">.</span><span class="nx">noppanit</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">com</span><span class="p">.</span><span class="nx">noppanit</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">message</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+</span><span class='line'>      <span class="p">{</span>
+</span><span class='line'>          <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">},</span>
+</span><span class='line'>      <span class="nx">message1</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+</span><span class='line'>      <span class="p">{</span>
+</span><span class='line'>          <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;test1&#39;</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">com</span><span class="p">.</span><span class="nx">noppanit</span><span class="p">.</span><span class="nx">message</span><span class="p">();</span>
+</span><span class='line'><span class="nx">com</span><span class="p">.</span><span class="nx">noppanit</span><span class="p">.</span><span class="nx">message1</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
@@ -142,10 +168,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/css-i-love-css/" title="Previous Post: CSS : I love CSS !!!!.">&laquo; CSS : I love CSS !!!!.</a>
+        <a class="basic-alignment left" href="/my-library/" title="Previous Post: My Library">&laquo; My Library</a>
       
       
-        <a class="basic-alignment right" href="/problem-cakephp-gets-ugly-in-apache2-with-mod_rewrite-problem/" title="Next Post: Problem : CakePHP gets ugly in apache2 with mod_rewrite problem">Problem : CakePHP gets ugly in apache2 with mod_rewrite problem &raquo;</a>
+        <a class="basic-alignment right" href="/one-asian-in-britain/" title="Next Post: One asian in Britain.">One asian in Britain. &raquo;</a>
       
     </p>
   </footer>

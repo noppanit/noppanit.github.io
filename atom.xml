@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="http://noppanit.github.io/atom.xml" rel="self"/>
   <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-01T16:31:21-04:00</updated>
+  <updated>2015-10-01T21:51:48-04:00</updated>
   <id>http://noppanit.github.io/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -30,23 +30,25 @@
 
 <p>For example, I wrote this piece of code to learn about dynamic programming.</p>
 
-<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="python codecolorer">
-          <span class="kw1">import</span> <span class="kw3">sys</span><br /> coins <span class="sy0">=</span> <span class="br0">&#91;</span><span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">3</span><span class="sy0">,</span> <span class="nu0">5</span><span class="br0">&#93;</span><br /> min_coin <span class="sy0">=</span> <span class="br0">&#91;</span><span class="kw3">sys</span>.<span class="me1">maxint</span><span class="br0">&#93;</span> * <span class="nu0">20</span><br /> min_coin<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="nu0"></span><br /> <br /> <span class="kw1">for</span> min_of_i <span class="kw1">in</span> <span class="kw2">range</span><span class="br0">&#40;</span><span class="nu0">20</span><span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; <span class="kw1">for</span> c <span class="kw1">in</span> coins:<br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> c <span class="sy0"><=</span> min_of_i <span class="kw1">and</span> <span class="br0">&#40;</span>min_coin<span class="br0">&#91;</span>min_of_i - c<span class="br0">&#93;</span> + <span class="nu0">1</span> <span class="sy0"><</span> min_coin<span class="br0">&#91;</span>min_of_i<span class="br0">&#93;</span><span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; min_coin<span class="br0">&#91;</span>min_of_i<span class="br0">&#93;</span> <span class="sy0">=</span> min_coin<span class="br0">&#91;</span>min_of_i - c<span class="br0">&#93;</span> + <span class="nu0">1</span><br /> <br /> <br /> <span class="kw1">print</span> min_coin
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'><span class="n">coins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</span><span class='line'><span class="n">min_coin</span> <span class="o">=</span> <span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">maxint</span><span class="p">]</span> <span class="o">*</span> <span class="mi">20</span>
+</span><span class='line'><span class="n">min_coin</span><span class="p">[]</span> <span class="o">=</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">min_of_i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">coins</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="n">min_of_i</span> <span class="ow">and</span> <span class="p">(</span><span class="n">min_coin</span><span class="p">[</span><span class="n">min_of_i</span> <span class="o">-</span> <span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">min_coin</span><span class="p">[</span><span class="n">min_of_i</span><span class="p">]):</span>
+</span><span class='line'>                <span class="n">min_coin</span><span class="p">[</span><span class="n">min_of_i</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_coin</span><span class="p">[</span><span class="n">min_of_i</span> <span class="o">-</span> <span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I know that my code is not bad (or maybe is really bad), but let&#8217;s see what I get out of it from this <a href="http://codereview.stackexchange.com/questions/92811/find-the-minimum-number-of-coins">thread</a>. From within a day I have at least 2-3 points to make my code a lot better. Not only that I learn more about Python, I also learn how to optimize the script.</p>
@@ -126,46 +128,72 @@
 
 <p>I&#8217;ve tried using <a href="https://github.com/OSGeo/proj.4">Proj4</a> on both R and Python to convert X,Y WGS84 to Lat, Long. Here&#8217;s my little snippet.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          data = read.csv('./parking_regulation.csv')<br /> <br /> library(proj4)<br /> proj4string <- "+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs"<br /> latlong_list<-list()<br /> calculate_long_lat <- function(x,y) {<br /> &nbsp; <br /> &nbsp; # Source data<br /> &nbsp; xy <- data.frame(x=x, y=y)<br /> &nbsp; <br /> &nbsp; # Transformed data<br /> &nbsp; pj <- project(xy, proj4string, inverse=TRUE)<br /> &nbsp; latlon <- data.frame(lat=pj$y, lon=pj$x)<br /> &nbsp; latlong_list[['latlong']] <- latlon<br /> }<br /> <br /> apply(data[,c('x','y')], 1, function(y) calculate_long_lat(y['x'], y['y']))
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='R'><span class='line'>data <span class="o">=</span> read.csv<span class="p">(</span><span class="s">&#39;./parking_regulation.csv&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">library</span><span class="p">(</span>proj4<span class="p">)</span>
+</span><span class='line'>proj4string <span class="o">&lt;-</span> <span class="s">&quot;+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs&quot;</span>
+</span><span class='line'>latlong_list<span class="o">&lt;-</span><span class="kt">list</span><span class="p">()</span>
+</span><span class='line'>calculate_long_lat <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">,</span>y<span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Source data</span>
+</span><span class='line'>  xy <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>x<span class="o">=</span>x<span class="p">,</span> y<span class="o">=</span>y<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Transformed data</span>
+</span><span class='line'>  pj <span class="o">&lt;-</span> project<span class="p">(</span>xy<span class="p">,</span> proj4string<span class="p">,</span> inverse<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</span><span class='line'>  latlon <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>lat<span class="o">=</span>pj<span class="o">$</span>y<span class="p">,</span> lon<span class="o">=</span>pj<span class="o">$</span>x<span class="p">)</span>
+</span><span class='line'>  latlong_list<span class="p">[[</span><span class="s">&#39;latlong&#39;</span><span class="p">]]</span> <span class="o">&lt;-</span> latlon
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kp">apply</span><span class="p">(</span>data<span class="p">[,</span><span class="kt">c</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">)],</span> <span class="m">1</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span>y<span class="p">)</span> calculate_long_lat<span class="p">(</span>y<span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">],</span> y<span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">]))</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The result is not quite accurate which I think it&#8217;s because I need to find a correct <strong>proj4string</strong>.</p>
 
 <p>Python has the same wrapper which is quite what I want as well.</p>
 
-<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="python codecolorer">
-          <span class="kw1">from</span> pyproj <span class="kw1">import</span> Proj<br /> <span class="kw1">import</span> pandas <span class="kw1">as</span> pd<br /> <br /> data <span class="sy0">=</span> pd.<span class="me1">read_csv</span><span class="br0">&#40;</span><span class="st0">'parking_regulation.csv'</span><span class="br0">&#41;</span><br /> <br /> p <span class="sy0">=</span> Proj<span class="br0">&#40;</span>r<span class="st0">'+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs'</span><span class="br0">&#41;</span><br /> <br /> <span class="kw1">def</span> cal_long_lat<span class="br0">&#40;</span>row<span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; <span class="kw1">return</span> p<span class="br0">&#40;</span>row<span class="br0">&#91;</span><span class="st0">'x'</span><span class="br0">&#93;</span><span class="sy0">,</span> row<span class="br0">&#91;</span><span class="st0">'y'</span><span class="br0">&#93;</span><span class="sy0">,</span>inverse<span class="sy0">=</span><span class="kw2">True</span><span class="br0">&#41;</span><br /> <br /> data<span class="br0">&#91;</span><span class="st0">'lon'</span><span class="br0">&#93;</span><span class="sy0">,</span> data<span class="br0">&#91;</span><span class="st0">'lat'</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="kw2">zip</span><span class="br0">&#40;</span>data.<span class="me1">apply</span> <span class="br0">&#40;</span><span class="kw1">lambda</span> row: cal_long_lat <span class="br0">&#40;</span>row<span class="br0">&#41;</span><span class="sy0">,</span>axis<span class="sy0">=</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> data.<span class="me1">head</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Proj</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&#39;parking_regulation.csv&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">p</span> <span class="o">=</span> <span class="n">Proj</span><span class="p">(</span><span class="s">r&#39;+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">cal_long_lat</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">p</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">],</span><span class="n">inverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">data</span><span class="p">[</span><span class="s">&#39;lon&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;lat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">apply</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">cal_long_lat</span> <span class="p">(</span><span class="n">row</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I will need to learn more about State Pane and what is the correct format.</p>
@@ -220,176 +248,324 @@
 
 <p>This is my <strong>gulpfile.js</strong></p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="kw2">var</span> gulp <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'gulp'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="kw2">var</span> karma <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'gulp-karma'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="kw2">var</span> testFiles <span class="sy0">=</span> <span class="br0">&#91;</span><br /> &nbsp; <span class="st0">'tests/vendors/jquery-1.11.3.min.js'</span><span class="sy0">,</span><br /> &nbsp; <span class="st0">'tests/vendors/jasmine-jquery.js'</span><span class="sy0">,</span><br /> &nbsp; <span class="st0">'src/**/*.js'</span><span class="sy0">,</span><br /> &nbsp; <span class="st0">'tests/spec/**/*.js'</span><br /> <span class="br0">&#93;</span><span class="sy0">;</span><br /> <span class="coMULTI">/**<br /> &nbsp;* Run test once and exit<br /> &nbsp;*/</span><br /> gulp.<span class="me1">task</span><span class="br0">&#40;</span><span class="st0">'test'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>done<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; <span class="kw1">return</span> gulp.<span class="me1">src</span><span class="br0">&#40;</span>testFiles<span class="br0">&#41;</span><br /> &nbsp; &nbsp; .<span class="me1">pipe</span><span class="br0">&#40;</span>karma<span class="br0">&#40;</span><span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; configFile<span class="sy0">:</span> <span class="st0">'karma.conf.js'</span><span class="sy0">,</span><br /> &nbsp; &nbsp; &nbsp; action<span class="sy0">:</span> <span class="st0">'run'</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> &nbsp; .<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'error'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>err<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="co1">// Make sure failed tests cause gulp to exit non-zero </span><br /> &nbsp; &nbsp; <span class="kw1">throw</span> err<span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> gulp.<span class="me1">task</span><span class="br0">&#40;</span><span class="st0">'default'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; gulp.<span class="me1">src</span><span class="br0">&#40;</span>testFiles<span class="br0">&#41;</span><br /> &nbsp; &nbsp; .<span class="me1">pipe</span><span class="br0">&#40;</span>karma<span class="br0">&#40;</span><span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; configFile<span class="sy0">:</span> <span class="st0">'karma.conf.js'</span><span class="sy0">,</span><br /> &nbsp; &nbsp; &nbsp; action<span class="sy0">:</span> <span class="st0">'watch'</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">karma</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-karma&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">testFiles</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>  <span class="s1">&#39;tests/vendors/jquery-1.11.3.min.js&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;tests/vendors/jasmine-jquery.js&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;src/**/*.js&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;tests/spec/**/*.js&#39;</span>
+</span><span class='line'><span class="p">];</span>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * Run test once and exit</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">testFiles</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">karma</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">configFile</span><span class="o">:</span> <span class="s1">&#39;karma.conf.js&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;run&#39;</span>
+</span><span class='line'>    <span class="p">}))</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Make sure failed tests cause gulp to exit non-zero </span>
+</span><span class='line'>    <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">testFiles</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">karma</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">configFile</span><span class="o">:</span> <span class="s1">&#39;karma.conf.js&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;watch&#39;</span>
+</span><span class='line'>    <span class="p">}));</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>This is my <strong>karma.conf.js</strong></p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          module.<span class="me1">exports</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>config<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; config.<span class="me1">set</span><span class="br0">&#40;</span><span class="br0">&#123;</span><br /> &nbsp; &nbsp; browsers<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">'PhantomJS'</span><span class="br0">&#93;</span><span class="sy0">,</span><br /> &nbsp; &nbsp; frameworks<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">'jasmine'</span><span class="br0">&#93;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">config</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">browsers</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;PhantomJS&#39;</span><span class="p">],</span>
+</span><span class='line'>    <span class="nx">frameworks</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;jasmine&#39;</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Here&#8217;s my first test</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          describe<span class="br0">&#40;</span><span class="st0">'Taggify'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; <span class="kw2">var</span> fixture<span class="sy0">;</span><br /> &nbsp; beforeEach<span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; fixture <span class="sy0">=</span> setFixtures<span class="br0">&#40;</span><span class="st0">'<ul id="tag"></ul>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; jQuery<span class="br0">&#40;</span><span class="st0">'#tag'</span><span class="br0">&#41;</span>.<span class="me1">taggify</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <br /> &nbsp; it<span class="br0">&#40;</span><span class="st0">'should initialize text box'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> input <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'input'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; expect<span class="br0">&#40;</span>input.<span class="me1">length</span> <span class="sy0">></span> <span class="nu0"></span><span class="br0">&#41;</span>.<span class="me1">toBeTruthy</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Taggify&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">fixture</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">fixture</span> <span class="o">=</span> <span class="nx">setFixtures</span><span class="p">(</span><span class="s1">&#39;&lt;ul id=&quot;tag&quot;&gt;&lt;/ul&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;#tag&#39;</span><span class="p">).</span><span class="nx">taggify</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should initialize text box&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>You will see that the test failed now we implement some code.</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>$<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; $.<span class="me1">fn</span>.<span class="me1">taggify</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>options<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; create<span class="br0">&#40;</span><span class="kw1">this</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw1">this</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="sy0">;</span><br /> <br /> &nbsp; <span class="kw2">function</span> create<span class="br0">&#40;</span>$theElement<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> $input <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<input class="tag-input"></input>'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'type'</span><span class="sy0">,</span> <span class="st0">'text'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'autocomplete'</span><span class="sy0">,</span> <span class="st0">'off'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $theElement.<span class="me1">append</span><span class="br0">&#40;</span>$input.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#40;</span>jQuery<span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">taggify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">create</span><span class="p">(</span><span class="nx">$theElement</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input class=&quot;tag-input&quot;&gt;&lt;/input&gt;&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$theElement</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Now the test passed.</p>
 
 <p>Now let&#8217;s add some event so when you hit enter the tag is added. So, I added one more test</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          &nbsp; it<span class="br0">&#40;</span><span class="st0">'should add a tag'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> input <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'input'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; input.<span class="me1">val</span><span class="br0">&#40;</span><span class="st0">'tag'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; input.<span class="me1">trigger</span><span class="br0">&#40;</span>jQuery.<span class="me1">Event</span><span class="br0">&#40;</span><span class="st0">'keyup'</span><span class="sy0">,</span> <span class="br0">&#123;</span> keyCode<span class="sy0">:</span> <span class="nu0">13</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="kw2">var</span> tags <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'.tag-label'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> tag <span class="sy0">=</span> jQuery<span class="br0">&#40;</span>tags<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <br /> &nbsp; &nbsp; expect<span class="br0">&#40;</span>tag.<span class="me1">html</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>.<span class="me1">toBe</span><span class="br0">&#40;</span><span class="st0">'tag'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; expect<span class="br0">&#40;</span>tags.<span class="me1">length</span> <span class="sy0">></span> <span class="nu0"></span><span class="br0">&#41;</span>.<span class="me1">toBeTruthy</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should add a tag&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">input</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">Event</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">keyCode</span><span class="o">:</span> <span class="mi">13</span> <span class="p">}));</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">tags</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.tag-label&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">tag</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="nx">tags</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">tag</span><span class="p">.</span><span class="nx">html</span><span class="p">()).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">tags</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Now the test failed.</p>
 
 <p>I&#8217;ll fix the test by doing this.</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>$<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; $.<span class="me1">fn</span>.<span class="me1">taggify</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>options<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; create<span class="br0">&#40;</span><span class="kw1">this</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw1">this</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="sy0">;</span><br /> <br /> &nbsp; <span class="kw2">function</span> create<span class="br0">&#40;</span>$theElement<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> $input <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<input class="tag-input"></input>'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'type'</span><span class="sy0">,</span> <span class="st0">'text'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'autocomplete'</span><span class="sy0">,</span> <span class="st0">'off'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $input.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'keyup'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>e<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">&#40;</span>e.<span class="me1">keyCode</span> <span class="sy0">===</span> <span class="nu0">13</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> tagText <span class="sy0">=</span> $input.<span class="me1">val</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> $span <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<span class="tag-label"></span>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; $span.<span class="me1">text</span><span class="br0">&#40;</span>tagText<span class="br0">&#41;</span>.<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li class="tag-choice"></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; $theElement.<span class="me1">prepend</span><span class="br0">&#40;</span>$span.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; $input.<span class="me1">val</span><span class="br0">&#40;</span><span class="st0">''</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $theElement.<span class="me1">append</span><span class="br0">&#40;</span>$input.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#40;</span>jQuery<span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">taggify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">create</span><span class="p">(</span><span class="nx">$theElement</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input class=&quot;tag-input&quot;&gt;&lt;/input&gt;&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$input</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">===</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">tagText</span> <span class="o">=</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">$span</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;tag-label&quot;&gt;&lt;/span&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">$span</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">tagText</span><span class="p">).</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li class=&quot;tag-choice&quot;&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>        <span class="nx">$theElement</span><span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">$span</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
+</span><span class='line'>        <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$theElement</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Now I want to add some negative test case.</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          &nbsp; it<span class="br0">&#40;</span><span class="st0">'should not add a tag'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> input <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'input'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; input.<span class="me1">trigger</span><span class="br0">&#40;</span>jQuery.<span class="me1">Event</span><span class="br0">&#40;</span><span class="st0">'keyup'</span><span class="sy0">,</span> <span class="br0">&#123;</span> keyCode<span class="sy0">:</span> <span class="nu0">13</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> tags <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'.tag-label'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <br /> &nbsp; &nbsp; expect<span class="br0">&#40;</span>tags.<span class="me1">length</span> <span class="sy0">></span> <span class="nu0"></span><span class="br0">&#41;</span>.<span class="me1">toBeFalsy</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should not add a tag&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">input</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">Event</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">keyCode</span><span class="o">:</span> <span class="mi">13</span> <span class="p">}));</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">tags</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.tag-label&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">tags</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">).</span><span class="nx">toBeFalsy</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Oops the test failed, looks like I missed something</p>
 
 <p>I will fix the test by</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>$<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; $.<span class="me1">fn</span>.<span class="me1">taggify</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>options<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; create<span class="br0">&#40;</span><span class="kw1">this</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw1">this</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="sy0">;</span><br /> <br /> &nbsp; <span class="kw2">function</span> create<span class="br0">&#40;</span>$theElement<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> $input <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<input class="tag-input"></input>'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'type'</span><span class="sy0">,</span> <span class="st0">'text'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'autocomplete'</span><span class="sy0">,</span> <span class="st0">'off'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $input.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'keyup'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>e<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">&#40;</span>e.<span class="me1">keyCode</span> <span class="sy0">===</span> <span class="nu0">13</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> tagText <span class="sy0">=</span> $input.<span class="me1">val</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>tagText <span class="sy0">!==</span> <span class="st0">''</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> $span <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<span class="tag-label"></span>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $span.<span class="me1">text</span><span class="br0">&#40;</span>tagText<span class="br0">&#41;</span>.<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li class="tag-choice"></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $theElement.<span class="me1">prepend</span><span class="br0">&#40;</span>$span.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $input.<span class="me1">val</span><span class="br0">&#40;</span><span class="st0">''</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $theElement.<span class="me1">append</span><span class="br0">&#40;</span>$input.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#40;</span>jQuery<span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">taggify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">create</span><span class="p">(</span><span class="nx">$theElement</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input class=&quot;tag-input&quot;&gt;&lt;/input&gt;&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$input</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">===</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">tagText</span> <span class="o">=</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="nx">tagText</span> <span class="o">!==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="kd">var</span> <span class="nx">$span</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;tag-label&quot;&gt;&lt;/span&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="nx">$span</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">tagText</span><span class="p">).</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li class=&quot;tag-choice&quot;&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>          <span class="nx">$theElement</span><span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">$span</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
+</span><span class='line'>          <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$theElement</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>That&#8217;s it. I hope you enjoy and love TDD more. And here&#8217;s the <a href="https://github.com/noppanit/taggify">github repo</a></p>
@@ -415,46 +591,47 @@
 
 <p>Now if you can find the slope of the graph and intercept you should be able to use the formula.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          Y = MX + C<br /> <br /> M = slope of the graph<br /> C = Intercept
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Y = MX + C
+</span><span class='line'>
+</span><span class='line'>M = slope of the graph
+</span><span class='line'>C = Intercept</span></code></pre></td></tr></table></div></figure>
 
 
 <p>If you&#8217;re lazy to look at my <a href="https://github.com/noppanit/linear-regression-basic">notebook</a>.</p>
 
 <p>Then you can run this code.</p>
 
-<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="python codecolorer">
-          <span class="kw1">import</span> pandas <span class="kw1">as</span> pd<br /> <span class="kw1">import</span> numpy <span class="kw1">as</span> np<br /> <span class="kw1">from</span> scipy <span class="kw1">import</span> stats<br /> <br /> total_bills <span class="sy0">=</span> np.<span class="kw3">random</span>.<span class="me1">randint</span><span class="br0">&#40;</span><span class="nu0">100</span><span class="sy0">,</span> size<span class="sy0">=</span><span class="nu0">1000</span><span class="br0">&#41;</span><br /> tips <span class="sy0">=</span> total_bills * <span class="nu0">0.10</span><br /> <br /> x <span class="sy0">=</span> pd.<span class="me1">Series</span><span class="br0">&#40;</span>tips<span class="sy0">,</span> name<span class="sy0">=</span><span class="st0">'tips'</span><span class="br0">&#41;</span><br /> y <span class="sy0">=</span> pd.<span class="me1">Series</span><span class="br0">&#40;</span>total_bills<span class="sy0">,</span> name<span class="sy0">=</span><span class="st0">'total_bills'</span><span class="br0">&#41;</span><br /> df <span class="sy0">=</span> pd.<span class="me1">concat</span><span class="br0">&#40;</span><span class="br0">&#91;</span>x<span class="sy0">,</span> y<span class="br0">&#93;</span><span class="sy0">,</span> axis<span class="sy0">=</span><span class="nu0">1</span><span class="br0">&#41;</span><br /> <br /> slope<span class="sy0">,</span> intercept<span class="sy0">,</span> r_value<span class="sy0">,</span> p_value<span class="sy0">,</span> std_err <span class="sy0">=</span> stats.<span class="me1">linregress</span><span class="br0">&#40;</span>x<span class="sy0">=</span>total_bills<span class="sy0">,</span> y<span class="sy0">=</span>tips<span class="br0">&#41;</span><br /> predicted_tips <span class="sy0">=</span> <span class="br0">&#40;</span>slope * <span class="nu0">70</span><span class="br0">&#41;</span> + intercept
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">total_bills</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</span><span class='line'><span class="n">tips</span> <span class="o">=</span> <span class="n">total_bills</span> <span class="o">*</span> <span class="mf">0.10</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;tips&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">total_bills</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;total_bills&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">total_bills</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">tips</span><span class="p">)</span>
+</span><span class='line'><span class="n">predicted_tips</span> <span class="o">=</span> <span class="p">(</span><span class="n">slope</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span> <span class="o">+</span> <span class="n">intercept</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The result is $7 which corresponds to the 10% tip.</p>
@@ -470,252 +647,262 @@
 
 <p>I&#8217;m trying to create a bot to report me back the performance of my site in desktop and mobile mode. So, I thought it would be easy since Google has an <a href="https://developers.google.com/speed/docs/insights/v2/getting-started">API</a> for that already so I went ahead and did this.</p>
 
-<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="kw2">var</span> request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <span class="kw2">var</span> urlToGetTheScore <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=desktop&amp;fields=ruleGroups'</span><br />
-          <br />
-          request.<span class="me1">get</span><span class="br0">&#40;</span>urlToGetTheScore<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> console.<span class="me1">log</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
-          &nbsp; <br />
-          &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">urlToGetTheScore</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=desktop&amp;amp;fields=ruleGroups&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScore</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>It&#8217;s pretty easy and straight forward right but now that would only return the score of desktop. I need the score of my mobile site as well. So, I added more code to be like this.</p>
 
-<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="kw2">var</span> request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <br />
-          <span class="kw2">var</span> urlToGetTheScoreDesktop <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=desktop&amp;fields=ruleGroups'</span><br />
-          <br />
-          <span class="kw2">var</span> urlToGetTheScoreMobile <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=mobile&amp;fields=ruleGroups'</span><br />
-          <br />
-          request.<span class="me1">get</span><span class="br0">&#40;</span>urlToGetTheScoreDesktop<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> console.<span class="me1">log</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <br />
-          &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <br />
-          request.<span class="me1">get</span><span class="br0">&#40;</span>urlToGetTheScoreMobile<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> console.<span class="me1">log</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <br />
-          &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">urlToGetTheScoreDesktop</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=desktop&amp;amp;fields=ruleGroups&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">urlToGetTheScoreMobile</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=mobile&amp;amp;fields=ruleGroups&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScoreDesktop</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScoreMobile</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>That&#8217;s great but I want to return both scores to a client so I can report the scores rather than printing them to the console. Since, <strong>request</strong> is asynchronous you cannot guarantee which score would come first. So, I thought it&#8217;s easy. I just need to call one request after the other. So, I came up with this.</p>
 
-<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="kw2">var</span> request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <br />
-          <span class="kw2">var</span> urlToGetTheScoreDesktop <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=desktop&amp;fields=ruleGroups'</span><br />
-          <br />
-          <span class="kw2">var</span> urlToGetTheScoreMobile <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=mobile&amp;fields=ruleGroups'</span><br />
-          <br />
-          request.<span class="me1">get</span><span class="br0">&#40;</span>urlToGetTheScoreDesktop<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> reject<span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <br />
-          &nbsp; <span class="kw2">var</span> desktopScore <span class="sy0">=</span> JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="sy0">;</span><br />
-          <br />
-          &nbsp; request.<span class="me1">get</span><span class="br0">&#40;</span>urlToGetTheScoreMobile<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> reject<span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <br />
-          &nbsp; &nbsp; <span class="kw2">var</span> mobileScore <span class="sy0">=</span> JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="sy0">;</span><br />
-          <br />
-          &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span><span class="st0">'desktop score is '</span> <span class="sy0">+</span> desktopScore <span class="sy0">+</span> <span class="st0">' and mobile score is '</span> <span class="sy0">+</span> mobileScore<span class="br0">&#41;</span><span class="sy0">;</span><br />
-          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">urlToGetTheScoreDesktop</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=desktop&amp;amp;fields=ruleGroups&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">urlToGetTheScoreMobile</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=mobile&amp;amp;fields=ruleGroups&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScoreDesktop</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">desktopScore</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScoreMobile</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">mobileScore</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;desktop score is &#39;</span> <span class="o">+</span> <span class="nx">desktopScore</span> <span class="o">+</span> <span class="s1">&#39; and mobile score is &#39;</span> <span class="o">+</span> <span class="nx">mobileScore</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
-</pre>
-
-
-<p>&nbsp;</p>
 
 <p>Look at how ugly it is. Now I want to make it prettier. So, I will use Promise to make it look nicer. As a good engineer I need to create a test first.</p>
 
-<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="kw2">var</span> perfModule <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'./pagespeed'</span><span class="br0">&#41;</span><span class="sy0">,</span><br />
-          sinon <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'sinon'</span><span class="br0">&#41;</span><span class="sy0">,</span><br />
-          request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">,</span><br />
-          expect <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'expect.js'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <br />
-          describe<span class="br0">&#40;</span><span class="st0">'Performance'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          <span class="kw2">var</span> server<span class="sy0">;</span><br />
-          &nbsp; beforeEach<span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>done<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; &nbsp; sinon.<span class="me1">stub</span><span class="br0">&#40;</span>request<span class="sy0">,</span> <span class="st0">'get'</span><span class="br0">&#41;</span>.<span class="me1">yields</span><span class="br0">&#40;</span><span class="kw2">null</span><span class="sy0">,</span> <span class="kw2">null</span><span class="sy0">,</span> JSON.<span class="me1">stringify</span><span class="br0">&#40;</span><span class="br0">&#123;</span>ruleGroups <span class="sy0">:</span> <span class="br0">&#123;</span> SPEED<span class="sy0">:</span> <span class="br0">&#123;</span>score<span class="sy0">:</span><span class="nu0">10</span><span class="br0">&#125;</span><span class="br0">&#125;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          &nbsp; &nbsp; done<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          &nbsp; <br />
-          &nbsp; it<span class="br0">&#40;</span><span class="st0">'should send performance stats to chat room'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>done<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; &nbsp; perfModule.<span class="me1">pagespeed</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>donotknow<span class="sy0">,</span> msg<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; &nbsp; &nbsp; done<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          &nbsp; &nbsp; &nbsp; expect<span class="br0">&#40;</span>msg<span class="br0">&#41;</span>.<span class="me1">to</span>.<span class="me1">eql</span><span class="br0">&#40;</span><span class="st0">'desktop speed is 10 and mobile speed is 10'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">perfModule</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./pagespeed&#39;</span><span class="p">),</span>
+</span><span class='line'><span class="nx">sinon</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sinon&#39;</span><span class="p">),</span>
+</span><span class='line'><span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">),</span>
+</span><span class='line'><span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;expect.js&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Performance&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">server</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="s1">&#39;get&#39;</span><span class="p">).</span><span class="nx">yields</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">ruleGroups</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">SPEED</span><span class="o">:</span> <span class="p">{</span><span class="nx">score</span><span class="o">:</span><span class="mi">10</span><span class="p">}}</span> <span class="p">}));</span>
+</span><span class='line'>    <span class="nx">done</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should send performance stats to chat room&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">perfModule</span><span class="p">.</span><span class="nx">pagespeed</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">donotknow</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">done</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">expect</span><span class="p">(</span><span class="nx">msg</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eql</span><span class="p">(</span><span class="s1">&#39;desktop speed is 10 and mobile speed is 10&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I&#8217;m using <a href="http://sinonjs.org/">Sinon.js</a> as the mocking framework and <a href="http://mochajs.org/">Mocha</a> as the testing framework which are pretty standard.</p>
 
 <p>Now I can start refactor my code. At first, I wrote some code like this, just to make it work.</p>
 
-<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="kw2">var</span> request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <br />
-          <span class="kw2">var</span> getSpeed <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>strategy<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; <span class="kw2">var</span> url <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy='</span><span class="sy0">+</span> strategy <span class="sy0">+</span> <span class="st0">'&amp;fields=ruleGroups'</span><br />
-          &nbsp; <span class="kw1">return</span> <span class="kw2">new</span> Promise<span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>resolve<span class="sy0">,</span> reject<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; &nbsp; request.<span class="me1">get</span><span class="br0">&#40;</span>url<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> reject<span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <br />
-          &nbsp; &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span><span class="sy0">;</span><br />
-          &nbsp; &nbsp; &nbsp; resolve<span class="br0">&#40;</span>JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <span class="br0">&#125;</span><span class="sy0">;</span><br />
-          <br />
-          <span class="kw2">var</span> pagespeed <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>cb<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; getSpeed<span class="br0">&#40;</span><span class="st0">'desktop'</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>desktopSpeed<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; &nbsp; getSpeed<span class="br0">&#40;</span><span class="st0">'mobile'</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>mobileSpeed<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span><span class="st0">'desktop speed is '</span> <span class="sy0">+</span> desktopSpeed <span class="sy0">+</span> <span class="st0">' and mobile speed is '</span> <span class="sy0">+</span> mobileSpeed<span class="br0">&#41;</span><span class="sy0">;</span><br />
-          &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <br />
-          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <span class="br0">&#125;</span><span class="sy0">;</span><br />
-          <br />
-          exports.<span class="me1">pagespeed</span> <span class="sy0">=</span> pagespeed<span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">getSpeed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">strategy</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=&#39;</span><span class="o">+</span> <span class="nx">strategy</span> <span class="o">+</span> <span class="s1">&#39;&amp;amp;fields=ruleGroups&#39;</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+</span><span class='line'>      <span class="nx">resolve</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">pagespeed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">getSpeed</span><span class="p">(</span><span class="s1">&#39;desktop&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">desktopSpeed</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">getSpeed</span><span class="p">(</span><span class="s1">&#39;mobile&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">mobileSpeed</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;desktop speed is &#39;</span> <span class="o">+</span> <span class="nx">desktopSpeed</span> <span class="o">+</span> <span class="s1">&#39; and mobile speed is &#39;</span> <span class="o">+</span> <span class="nx">mobileSpeed</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">exports</span><span class="p">.</span><span class="nx">pagespeed</span> <span class="o">=</span> <span class="nx">pagespeed</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Any good JavaScript developer would be like, WTH!. You still have callbacks. I thought Promise would solve that issue already! Now, I could use the power of <strong>Promise.all</strong> which takes array of promises and return array of results. My final code would look something like this.</p>
 
-<pre><div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="kw2">var</span> request <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'request'</span><span class="br0">&#41;</span><span class="sy0">,</span><br />
-          Promise <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'promise'</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <br />
-          <span class="kw2">var</span> getSpeed <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>strategy<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; <span class="kw2">var</span> url <span class="sy0">=</span> <span class="st0">'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http%3A%2F%2Ffusion.net&amp;strategy='</span><span class="sy0">+</span> strategy <span class="sy0">+</span> <span class="st0">'&amp;fields=ruleGroups'</span><br />
-          &nbsp; <span class="kw1">return</span> <span class="kw2">new</span> Promise<span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>resolve<span class="sy0">,</span> reject<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; &nbsp; request.<span class="me1">get</span><span class="br0">&#40;</span>url<span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>error<span class="sy0">,</span> response<span class="sy0">,</span> body<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> reject<span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <br />
-          &nbsp; &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span><span class="sy0">;</span><br />
-          &nbsp; &nbsp; &nbsp; resolve<span class="br0">&#40;</span>JSON.<span class="me1">parse</span><span class="br0">&#40;</span>body<span class="br0">&#41;</span>.<span class="me1">ruleGroups</span>.<span class="me1">SPEED</span>.<span class="me1">score</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <span class="br0">&#125;</span><span class="sy0">;</span><br />
-          <br />
-          <span class="kw2">var</span> pagespeed <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>cb<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; Promise.<span class="me1">all</span><span class="br0">&#40;</span><span class="br0">&#91;</span>getSpeed<span class="br0">&#40;</span><span class="st0">'desktop'</span><span class="br0">&#41;</span><span class="sy0">,</span> getSpeed<span class="br0">&#40;</span><span class="st0">'mobile'</span><span class="br0">&#41;</span><span class="br0">&#93;</span><span class="br0">&#41;</span>.<span class="me1">then</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>speed<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; &nbsp; <span class="kw2">var</span> desktop <span class="sy0">=</span> speed<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span><span class="sy0">;</span><br />
-          &nbsp; &nbsp; <span class="kw2">var</span> mobile <span class="sy0">=</span> speed<span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">;</span><br />
-          <br />
-          &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span><span class="kw2">null</span><span class="sy0">,</span> <span class="st0">'desktop speed is '</span> <span class="sy0">+</span> desktop <span class="sy0">+</span> <span class="st0">' and mobile speed is '</span> <span class="sy0">+</span> mobile<span class="br0">&#41;</span><span class="sy0">;</span><br />
-          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span>.<span class="kw1">catch</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span> <span class="br0">&#123;</span><br />
-          &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>error<span class="br0">&#41;</span><span class="sy0">;</span><br />
-          &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br />
-          <span class="br0">&#125;</span><span class="sy0">;</span><br />
-          <br />
-          exports.<span class="me1">pagespeed</span> <span class="sy0">=</span> pagespeed<span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">),</span>
+</span><span class='line'><span class="nx">Promise</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;promise&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">getSpeed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">strategy</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http%3A%2F%2Ffusion.net&amp;amp;strategy=&#39;</span><span class="o">+</span> <span class="nx">strategy</span> <span class="o">+</span> <span class="s1">&#39;&amp;amp;fields=ruleGroups&#39;</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+</span><span class='line'>      <span class="nx">resolve</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">pagespeed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">getSpeed</span><span class="p">(</span><span class="s1">&#39;desktop&#39;</span><span class="p">),</span> <span class="nx">getSpeed</span><span class="p">(</span><span class="s1">&#39;mobile&#39;</span><span class="p">)]).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">speed</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">desktop</span> <span class="o">=</span> <span class="nx">speed</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">mobile</span> <span class="o">=</span> <span class="nx">speed</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s1">&#39;desktop speed is &#39;</span> <span class="o">+</span> <span class="nx">desktop</span> <span class="o">+</span> <span class="s1">&#39; and mobile speed is &#39;</span> <span class="o">+</span> <span class="nx">mobile</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">exports</span><span class="p">.</span><span class="nx">pagespeed</span> <span class="o">=</span> <span class="nx">pagespeed</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I&#8217;m not an expert in Promise and I welcome any feedback that would help improve my code.</p>
@@ -760,23 +947,14 @@
 
 <p>If your SSL providers gave you the chained certificate already, then you don&#8217;t have to do anything else. However, when I downloaded my crt files I found this</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          my_domain.crt<br /> AddTrustExternalCARoot.crt<br /> TrustedSecureCertificateAuthority5.crt<br /> USERTrustRSAAddTrustCA.rt
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>my_domain.crt
+</span><span class='line'>AddTrustExternalCARoot.crt
+</span><span class='line'>TrustedSecureCertificateAuthority5.crt
+</span><span class='line'>USERTrustRSAAddTrustCA.rt</span></code></pre></td></tr></table></div></figure>
 
 
 <p>And I&#8217;m shocked. So, I thought I would need to upload all of them three times which I did but only one got through and I thought the others must have been backup or some kind (I know I&#8217;m pretty stupid). So, I used <a href="https://www.digicert.com/help/">SSL Checker</a> to check and the site said my trust is broken. I thought how could it be I did everything right.</p>
@@ -787,164 +965,138 @@
 
 <p>You can run this command</p>
 
-<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="bash codecolorer">
-          openssl x509 <span class="re5">-text</span> <span class="re5">-noout</span> <span class="re5">-in</span> your_domain.crt
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>openssl x509 -text -noout -in your_domain.crt
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>You should start with your <strong>domain.crt</strong> file which will be something like this</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          Certificate:<br /> &nbsp; &nbsp; Data:<br /> &nbsp; &nbsp; &nbsp; &nbsp; Version: 3 (0x2)<br /> &nbsp; &nbsp; &nbsp; &nbsp; Serial Number:<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; xxxxxx<br /> &nbsp; &nbsp; &nbsp; &nbsp; Signature Algorithm: xxxxx<br /> &nbsp; &nbsp; &nbsp; &nbsp; Issuer: C=US, ST=DE, L=Wilmington, O=Corporation Service Company, CN=Trusted Secure Certificate Authority 5<br /> &nbsp; &nbsp; &nbsp; &nbsp; Validity<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not Before: <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not After : <br /> &nbsp; &nbsp; &nbsp; &nbsp; Subject: C=US/postalCode=x, ST=xx, L=xxx, O=xxx, LLC, OU=xxx, OU=xxx, CN=xxx<br /> </cod><br /> <br /> You just need to look for <strong>Issuer</strong> which will tell you what is your next immediate certificate. In this case <strong>Trusted Secure Certificate Authority 5</strong> is my first certificate and then you go on and do the next one.<br /> <br /> <code lang="bash"><br /> openssl x509 -text -noout -in TrustedSecureCertificateAuthority5.crt
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Certificate:
+</span><span class='line'>    Data:
+</span><span class='line'>        Version: <span class="m">3</span> <span class="o">(</span>0x2<span class="o">)</span>
+</span><span class='line'>        Serial Number:
+</span><span class='line'>            xxxxxx
+</span><span class='line'>        Signature Algorithm: xxxxx
+</span><span class='line'>        Issuer: <span class="nv">C</span><span class="o">=</span>US, <span class="nv">ST</span><span class="o">=</span>DE, <span class="nv">L</span><span class="o">=</span>Wilmington, <span class="nv">O</span><span class="o">=</span>Corporation Service Company, <span class="nv">CN</span><span class="o">=</span>Trusted Secure Certificate Authority 5
+</span><span class='line'>        Validity
+</span><span class='line'>            Not Before:
+</span><span class='line'>            Not After :
+</span><span class='line'>        Subject: <span class="nv">C</span><span class="o">=</span>US/postalCode<span class="o">=</span>x, <span class="nv">ST</span><span class="o">=</span>xx, <span class="nv">L</span><span class="o">=</span>xxx, <span class="nv">O</span><span class="o">=</span>xxx, LLC, <span class="nv">OU</span><span class="o">=</span>xxx, <span class="nv">OU</span><span class="o">=</span>xxx, <span class="nv">CN</span><span class="o">=</span>xxx
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You just need to look for Issuer which will tell you what is your next immediate certificate. In this case Trusted Secure Certificate Authority 5 is my first certificate and then you go on and do the next one.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>openssl x509 -text -noout -in TrustedSecureCertificateAuthority5.crt
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>You will get something like this</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          Certificate:<br /> &nbsp; &nbsp; Data:<br /> &nbsp; &nbsp; &nbsp; &nbsp; Version: 3 (0x2)<br /> &nbsp; &nbsp; &nbsp; &nbsp; Serial Number:<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; xxxxx<br /> &nbsp; &nbsp; &nbsp; &nbsp; Signature Algorithm: xxxx<br /> &nbsp; &nbsp; &nbsp; &nbsp; Issuer: C=US, ST=New Jersey, L=Jersey City, O=The USERTRUST Network, CN=USERTrust RSA Certification Authority<br /> &nbsp; &nbsp; &nbsp; &nbsp; Validity<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not Before: Sep 10 00:00:00 2014 GMT<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not After : Sep &nbsp;9 23:59:59 2024 GMT<br /> &nbsp; &nbsp; &nbsp; &nbsp; Subject: C=US, ST=DE, L=Wilmington, O=Corporation Service Company, CN=Trusted Secure Certificate Authority 5
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Certificate:
+</span><span class='line'>    Data:
+</span><span class='line'>        Version: <span class="m">3</span> <span class="o">(</span>0x2<span class="o">)</span>
+</span><span class='line'>        Serial Number:
+</span><span class='line'>            xxxxx
+</span><span class='line'>        Signature Algorithm: xxxx
+</span><span class='line'>        Issuer: <span class="nv">C</span><span class="o">=</span>US, <span class="nv">ST</span><span class="o">=</span>New Jersey, <span class="nv">L</span><span class="o">=</span>Jersey City, <span class="nv">O</span><span class="o">=</span>The USERTRUST Network, <span class="nv">CN</span><span class="o">=</span>USERTrust RSA Certification Authority
+</span><span class='line'>        Validity
+</span><span class='line'>            Not Before: Sep <span class="m">10</span> 00:00:00 <span class="m">2014</span> GMT
+</span><span class='line'>            Not After : Sep  <span class="m">9</span> 23:59:59 <span class="m">2024</span> GMT
+</span><span class='line'>        Subject: <span class="nv">C</span><span class="o">=</span>US, <span class="nv">ST</span><span class="o">=</span>DE, <span class="nv">L</span><span class="o">=</span>Wilmington, <span class="nv">O</span><span class="o">=</span>Corporation Service Company, <span class="nv">CN</span><span class="o">=</span>Trusted Secure Certificate Authority 5
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>It means <strong>USERTrust</strong> is the next certificate then repeat the process again until you see this.</p>
 
-<pre><div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          Certificate:<br />
-          &nbsp; &nbsp; Data:<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; Version: 3 (0x2)<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; Serial Number: xxxx<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; Signature Algorithm: xxxxx<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; Issuer: C=SE, O=AddTrust AB, OU=AddTrust External TTP Network, CN=AddTrust External CA Root<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; Validity<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not Before: May 30 10:48:38 2000 GMT<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not After : May 30 10:48:38 2020 GMT<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; Subject: C=SE, O=AddTrust AB, OU=AddTrust External TTP Network, CN=AddTrust External CA Root
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Certificate:
+</span><span class='line'>    Data:
+</span><span class='line'>        Version: <span class="m">3</span> <span class="o">(</span>0x2<span class="o">)</span>
+</span><span class='line'>        Serial Number: xxxx
+</span><span class='line'>        Signature Algorithm: xxxxx
+</span><span class='line'>        Issuer: <span class="nv">C</span><span class="o">=</span>SE, <span class="nv">O</span><span class="o">=</span>AddTrust AB, <span class="nv">OU</span><span class="o">=</span>AddTrust External TTP Network, <span class="nv">CN</span><span class="o">=</span>AddTrust External CA Root
+</span><span class='line'>        Validity
+</span><span class='line'>            Not Before: May <span class="m">30</span> 10:48:38 <span class="m">2000</span> GMT
+</span><span class='line'>            Not After : May <span class="m">30</span> 10:48:38 <span class="m">2020</span> GMT
+</span><span class='line'>        Subject: <span class="nv">C</span><span class="o">=</span>SE, <span class="nv">O</span><span class="o">=</span>AddTrust AB, <span class="nv">OU</span><span class="o">=</span>AddTrust External TTP Network, <span class="nv">CN</span><span class="o">=</span>AddTrust External CA Root
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>If <strong>Issuer</strong> is the same as <strong>Subject</strong> that means this certificate is the root which is going to be the last. Now, what you can do is to concatenate in the correct order of all the certificates.</p>
 
 <p>You can use this command or you can use your favourite editor to do as well.</p>
 
-<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="bash codecolorer">
-          <span class="kw2">cat</span> first_crt second_crt third_crt <span class="sy0">></span> your_pem_file
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>cat first_crt second_crt third_crt &gt; your_pem_file
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Then when you&#8217;re ready to upload the certificate to Amazon you can just do this.</p>
 
-<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="bash codecolorer">
-          aws iam upload-server-certificate <span class="re5">--server-certificate-name</span> your_domain \<br /> <span class="re5">--certificate-body</span> file:<span class="sy0">//</span>your_domain.crt \<br /> <span class="re5">--private-key</span> file:<span class="sy0">//</span>your_domain.private \<br /> <span class="re5">--certificate-chain</span> file:<span class="sy0">//</span>your_pem_file \<br /> <span class="re5">--path</span> <span class="sy0">/</span>cloudfront<span class="sy0">/</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>aws iam upload-server-certificate --server-certificate-name your_domain <span class="se">\</span>
+</span><span class='line'>--certificate-body file://your_domain.crt <span class="se">\</span>
+</span><span class='line'>--private-key file://your_domain.private <span class="se">\</span>
+</span><span class='line'>--certificate-chain file://your_pem_file <span class="se">\</span>
+</span><span class='line'>--path /cloudfront/
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The <strong>&#8211;certificate-chain</strong> should be your concatenated certificates.</p>
 
 <p>The format of the <strong>pem</strong> should be something like this.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          -----BEGIN CERTIFICATE-----<br /> Intermediate certificate 2<br /> -----END CERTIFICATE-----<br /> -----BEGIN CERTIFICATE-----<br /> Intermediate certificate 1<br /> -----END CERTIFICATE-----
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>-----BEGIN CERTIFICATE-----
+</span><span class='line'>Intermediate certificate 2
+</span><span class='line'>-----END CERTIFICATE-----
+</span><span class='line'>-----BEGIN CERTIFICATE-----
+</span><span class='line'>Intermediate certificate 1
+</span><span class='line'>-----END CERTIFICATE-----
+</span></code></pre></td></tr></table></div></figure>
 
 
 

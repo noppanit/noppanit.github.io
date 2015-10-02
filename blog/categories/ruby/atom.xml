@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | My Blog]]></title>
   <link href="http://noppanit.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-01T16:31:21-04:00</updated>
+  <updated>2015-10-01T21:51:48-04:00</updated>
   <id>http://noppanit.github.io/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -12,45 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Koala SSL Error on Ruby 1.9.3.]]></title>
-    <link href="http://noppanit.github.io/koala-ssl-error-on-ruby-1-9-3/"/>
-    <updated>2013-03-17T00:00:00-04:00</updated>
-    <id>http://noppanit.github.io/koala-ssl-error-on-ruby-1-9-3</id>
-    <content type="html"><![CDATA[<p>Actually, this error is not just for Koala but I was using Koala for my Facebook application and after I moved to a new laptop I started seeing this error.</p>
-
-<p>So, what is happening. I&#8217;ve just installed my new machine on Mountain Lion with a shiny new RVM and ruby 1.9.3. Everything went fine until I started my work to continue hacking from my old laptop. I got this error while I&#8217;m trying to login via Facebook via Koala. <strong>SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed</strong>. What is wrong? It worked before.</p>
-
-<p>After a couple of rant search on Google I found <a href="http://stackoverflow.com/questions/5711190/how-to-get-rid-of-opensslsslsslerror">this</a>. It seemed a bit hacky to me. It suggested me to download a correct CA certificate and put it into the right place. But after a few more search I found <a href="https://rvm.io/packages/openssl/">this</a>. It turned out I have to install RVM with OpelSSL which somehow is not installed. I think this solution is a lot cleaner then just copying something to a folder and pray.</p>
-
-<p>This is what I did</p>
-
-<pre><div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          rvm pkg install openssl <span class="co1">#installed openssl from RVM</span><br />
-          rvm reinstall 1.9.3<span class="sy0">-</span>head <span class="sy0">--</span>with<span class="sy0">-</span>openssl<span class="sy0">-</span>dir=$rvm_path<span class="sy0">/</span>usr <span class="co1">#configure your rvm to use openssl</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-</pre>
-
-
-<p>And then everything went ok after these two magical commands.</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Lesson Learnt From Data Cleansing. Part I]]></title>
@@ -194,92 +155,128 @@ I couldn&#8217;t believe that this will be the simplest and most effective way. 
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[PhantomJs + Poltergeist + Cucumber.]]></title>
-    <link href="http://noppanit.github.io/phantomjs-poltergeist-cucumber/"/>
-    <updated>2012-12-10T00:00:00-05:00</updated>
-    <id>http://noppanit.github.io/phantomjs-poltergeist-cucumber</id>
-    <content type="html"><![CDATA[<p>I love tests and I love experimenting with lots of things. So, I have just come across with PhantomJs a couple weeks ago and I absolutely love it. This should be included in every pipeline. No matter what you want to do, Jasmine? Acceptance Testing? I think right now PhantomJs is the most suitable one (May be there&#8217;ll be another one coming). But this post is not really about PhantomJs. I just want to show what it can do by using Poltergeist to run cucumber test headlessly. Of course you can do it with selenium-driver but running the test headlessly seem to be faster. So, I&#8217;ll just gonna jump right in.</p>
+    <title type="html"><![CDATA[How to Call Haml Outside Sinatra or Rails?]]></title>
+    <link href="http://noppanit.github.io/how-to-call-haml-outside-sinatra-or-rails/"/>
+    <updated>2012-04-01T00:00:00-04:00</updated>
+    <id>http://noppanit.github.io/how-to-call-haml-outside-sinatra-or-rails</id>
+    <content type="html"><![CDATA[<p>People would think why would you want to do that. Well, in my case I just want to use haml to generate html for me in Test so that I could inject that in to Pusher to test the functionality of the feed page. I could use static html string, but if I change haml I don&#8217;t want to come back to the test and change the string again.</p>
 
-<p>First thing first, install PhantomJs from <a href="http://phantomjs.org/download.html" title="PhantomJs download.">here</a></p>
+<p>So, Haml actually is just a static class that you can call anywhere, but where you call inside Sinatra or Rails controller. You could just use</p>
 
-<p>Then this is what my Gemfile looks like.</p>
+<pre><code>haml :my_view
+</code></pre>
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          source <span class="re3">:rubygems</span><br /> <br /> gem <span class="st0">'poltergeist'</span><br /> gem <span class="st0">'cucumber'</span><br /> gem <span class="st0">'selenium-webdriver'</span><br /> gem <span class="st0">'capybara'</span><br /> gem <span class="st0">'rspec'</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<p>However, if you do this outside Sinatra, you would get an exception that haml is not found or something close.</p>
 
+<p>So here&#8217;s just a simple solution plus I&#8217;ve added how to call helper in that as well.</p>
 
-<p>And this is my env.rb</p>
+<pre><code class="ruby"> base = Class.new do
+    include Sinatra::DateTimeHelper # This is the helper that you want to include in Haml.
+  end.new
 
-<pre><div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="kw3">require</span> <span class="st0">'rubygems'</span><br />
-          <span class="kw3">require</span> <span class="st0">'capybara'</span><br />
-          <span class="kw3">require</span> <span class="st0">'capybara/cucumber'</span><br />
-          <span class="kw3">require</span> <span class="st0">'capybara/dsl'</span><br />
-          <span class="kw3">require</span> <span class="st0">'rspec'</span><br />
-          <span class="kw3">require</span> <span class="st0">'capybara/poltergeist'</span><br />
-          <br />
-          <span class="co1"># Capybara.default_driver = :selenium #uncomment this to use selenium</span><br />
-          Capybara.<span class="me1">javascript_driver</span> = <span class="re3">:poltergeist</span> <span class="co1">#uncomment this to use poltergeist</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+  _feed_partial_path = File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "views", "_feed_partial.haml"))
 
-</pre>
+  engine = Haml::Engine.new(IO.read(_feed_partial_path))
+  rendered = engine.render(base, :var_to_inject =&gt; var_to_inject) # or if you don't want to use helper it could be just engine.render(Object.new, :var_to_inject =&gt; var_to_inject)
+  puts rendered
+</code></pre>
 
+<p>That&#8217;s it nice and easy!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby : Command-line Twitter Client Made Easy]]></title>
+    <link href="http://noppanit.github.io/ruby-command-line-twitter-client-made-easy/"/>
+    <updated>2011-02-27T00:00:00-05:00</updated>
+    <id>http://noppanit.github.io/ruby-command-line-twitter-client-made-easy</id>
+    <content type="html"><![CDATA[<p>Have you every told off that you&#8217;re playing in your work? Why do you have to open a browser twitter.com to be so obvious that you&#8217;re not doing your job well. Well, you can build a command-line twitter client very easy. So, you will be one of the geeks who use terminal all the time and your boss won&#8217;t know that you&#8217;re on twitter all the time.</p>
 
-<p>If you&#8217;re not familiar with Cucumber please have a look at <a href="https://github.com/cucumber/cucumber" title="cucumber">this</a></p>
+<p>I will start with installing Ruby and Gem, because I wanted to save time building this program from scratch as much as possible. So, a couples of useful gems would be really helpful.</p>
 
-<p>And then you can run the test as you use to run your cucumber tests like this</p>
+<p>if you&#8217;re new to ruby and use mac same as me, I suggest you install ruby by following this great article.<br/>
+<a href="http://hivelogic.com/articles/ruby-rails-leopard">http://hivelogic.com/articles/ruby-rails-leopard</a></p>
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          cucumber features<span class="sy0">/</span>your_spec.<span class="me1">feature</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<p>You can use a great application of all time like MacPort.</p>
 
+<p>Ok! gem installed, ruby installed. Let&#8217;s start with installing some gems</p>
 
-<p>If you run with Poltergeist driver then you should not see firefox popping up.</p>
+<pre><code class="bash">gem install twitter_oauth
+</code></pre>
 
-<p>I&#8217;ve written some example project <a href="https://github.com/noppanit/phantomjs-examples">here.</a></p>
+<p>If you need to know what OAuth is, I suggest you read this great article <a href="http://hueniverse.com/2007/10/beginners-guide-to-oauth-part-i-overview/">http://hueniverse.com/2007/10/beginners-guide-to-oauth-part-i-overview/</a></p>
+
+<p>Basically, OAuth is a helper to help you login to twitter.com without exposing or sending your login details over the Internet. It&#8217;s like public and private key. But If you&#8217;re doing for a single-user like me, then you don&#8217;t have to worry anything about this. You just need 4 keys to access twitter APIs.</p>
+
+<p>First, you will need to register your app with Twitter. Go to this page and follow the steps. <a href="http://twitter.com/apps">http://twitter.com/apps</a></p>
+
+<p>Now you will need four keys to work, go to this page to get all those keys.<br/>
+<a href="https://dev.twitter.com/apps">https://dev.twitter.com/apps</a></p>
+
+<p>You will want, consumer_key, consumer_secret. You can get them from your application setting page, then click on My Access Token on the right-hand sided bar. Note down Access Token and Access Token Secret. Then you&#8217;re good to go.</p>
+
+<pre><code class="ruby">#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'twitter_oauth'
+
+TWITTER_CONSUMER_KEY = 'Your Consumer Key'
+TWITTER_CONSUMER_SECRET = 'Your Consumer Secret'
+TWITTER_ACCESS_TOKEN = 'Your Access Token'
+TWITTER_ACCESS_SECRET = 'Your Access Token Secret'
+
+client = TwitterOAuth::Client.new(
+  :consumer_key =&gt; TWITTER_CONSUMER_KEY,
+  :consumer_secret =&gt; TWITTER_CONSUMER_SECRET,
+  :token =&gt; TWITTER_ACCESS_TOKEN,
+  :secret =&gt; TWITTER_ACCESS_SECRET)
+
+case ARGV[]
+ when "-l"
+  timeline = client.home_timeline()
+  timeline = timeline.reverse
+  timeline.each{ |tweet| 
+    puts tweet['text'] + " @FROM #{tweet['user']['name']}"
+    puts "\n"
+  }
+ when "-u"
+  if ARGV[1].nil?
+    puts "Please enter your status:"
+    status = STDIN.readline.chomp
+    client.update("#{status}")
+  else
+    client.update("#{ARGV[1]}")
+  end
+ when "-m"
+  mentions = client.mentions()
+  mentions = mentions.reverse
+  mentions.each{ |tweet| 
+    puts tweet['text'] + " @FROM #{tweet['user']['name']}"
+    puts "\n"
+  }
+end
+</code></pre>
+
+<p>This is just an example of my application which I use it on terminal. You can run the app by typing</p>
+
+<pre><code class="bash">ruby thenameofthisapplication.rb
+</code></pre>
+
+<p>or you can use symbolic link to /usr/bin and type</p>
+
+<pre><code class="bash">./thenameofthisapplication
+</code></pre>
+
+<p>It&#8217;s totally up to you.</p>
+
+<p>The Ruby API I used in this example is from this <a href="https://github.com/moomerman/twitter_oauth">https://github.com/moomerman/twitter_oauth</a></p>
+
+<p>And this is the Twitter API that you can have a look.<br/>
+<a href="http://apiwiki.twitter.com/w/page/22554679/Twitter-API-Documentation">http://apiwiki.twitter.com/w/page/22554679/Twitter-API-Documentation</a></p>
+
+<p>In this way, you can design your application to be whatever you want and when you&#8217;re at work, you&#8217;ll be on terminal on the time.</p>
+
+<p>Good luck!</p>
 ]]></content>
   </entry>
   

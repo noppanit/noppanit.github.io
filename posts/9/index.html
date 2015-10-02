@@ -9,7 +9,7 @@
   <meta name="author" content="Noppanit Charassinvichai">
 
   
-  <meta name="description" content="This post is not to provide a tutorial of how to combine those three awesome applications together, but it might stop you from scratching your head &hellip;">
+  <meta name="description" content="So silly of me I have just &#8220;accidentally&#8221; deleted my home directory T_T. There is a way to help that by override rm command to move file &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,7 +71,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/cucumber-capybara-sinatra/">Cucumber + Capybara + Sinatra</a></h1>
+      <h1 class="entry-title"><a href="/mac-osx-override-rm-to-delete-files-to-trash/">Mac OSX: Override Rm to Delete Files to .Trash</a></h1>
     
     
       <p class="meta">
@@ -80,57 +80,1330 @@
 
 
 
-<time class='entry-date' datetime='2012-01-15T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+<time class='entry-date' datetime='2011-04-05T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>This post is not to provide a tutorial of how to combine those three awesome applications together, but it might stop you from scratching your head when the test cannot be run correctly.</p>
+  <div class="entry-content"><p>So silly of me I have just &#8220;accidentally&#8221; deleted my home directory T_T. There is a way to help that by override rm command to move file to .Trash.</p>
 
-<ol>
-<li>You need to have Sinatra in subclass style rather than classic style. <a href="http://www.sinatrarb.com/intro.html#Using%20a%20Classic%20Style%20Application%20with%20a%20config.ru" title="Sinatra subclass">Sinatra subclass-style</a></li>
-<li>This is quite importance, you might find some website that is using Spec. but you need to change it to be &#8220;RSpec&#8221; in order for it to work.</li>
-</ol>
+<p>Just copy this code to ~/.bash_profile and restart your terminal.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>function rm () {
+</span><span class='line'>  local path
+</span><span class='line'>  for path in "$@"; do
+</span><span class='line'>    # ignore any arguments
+</span><span class='line'>    if [[ "$path" = -* ]]; then :
+</span><span class='line'>    else
+</span><span class='line'>      local dst=${path##*/}
+</span><span class='line'>      # append the time if necessary
+</span><span class='line'>      while [ -e ~/.Trash/"$dst" ]; do
+</span><span class='line'>        dst="$dst "$(date +%H-%M-%S)
+</span><span class='line'>      done
+</span><span class='line'>      mv "$path" ~/.Trash/"$dst"
+</span><span class='line'>    fi
+</span><span class='line'>  done
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
 
 
-<pre><div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />
-        </div>
-      </td>
+    </article>
+  
+  
+    <article>
       
-      <td>
-        <div class="ruby codecolorer">
-          <span class="kw3">require</span> <span class="kw4">File</span>.<span class="me1">join</span><span class="br0">&#40;</span><span class="kw4">File</span>.<span class="me1">dirname</span><span class="br0">&#40;</span><span class="kw2">__FILE__</span><span class="br0">&#41;</span>, <span class="st0">'..'</span>, <span class="st0">'..'</span>, <span class="st0">'/server.rb'</span><span class="br0">&#41;</span><br />
-          <br />
-          <span class="kw3">require</span> <span class="st0">'rspec'</span><br />
-          <span class="kw3">require</span> <span class="st0">'rspec/expectations'</span><br />
-          <span class="kw3">require</span> <span class="st0">'rack/test'</span><br />
-          <span class="kw3">require</span> <span class="st0">'capybara'</span><br />
-          <span class="kw3">require</span> <span class="st0">'capybara/cucumber'</span><br />
-          <span class="kw3">require</span> <span class="st0">'capybara/envjs'</span><br />
-          <br />
-          App.<span class="me1">set</span><span class="br0">&#40;</span><span class="re3">:environment</span>, <span class="re3">:test</span><span class="br0">&#41;</span><br />
-          <br />
-          World <span class="kw1">do</span><br />
-          &nbsp; Capybara.<span class="me1">app</span> = App<br />
-          &nbsp; Capybara.<span class="me1">javascript_driver</span> = <span class="re3">:envjs</span><br />
-          &nbsp; <span class="kw1">include</span> Capybara<br />
-          &nbsp; <span class="kw1">include</span> <span class="re2">RSpec::Expectations</span><br />
-          &nbsp; <span class="kw1">include</span> <span class="re2">RSpec::Matchers</span><br />
-          <span class="kw1">end</span>
-        </div>
-      </td>
-    </tr>
-  </table>
+  <header>
+    
+      <h1 class="entry-title"><a href="/git-interrupted-workflow-what-will-you-do/">Git &#8211; Interrupted Workflow, What Will You Do?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-03-30T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When you&#8217;re working on something intensively and you haven&#8217;t finished the thing, suddenly somebody just wants you to do something again which is more important. Normally, what you will do is to create a new branch and commit your changes to the new branch and switch back to the master branch and do the other thing and reset the working directory.</p>
+
+<p>or something like this. I&#8217;ve taken this example from <a href="http://www.kernel.org/pub/software/scm/git/docs/git-stash.html">http://www.kernel.org/pub/software/scm/git/docs/git-stash.html</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># ... hack hack hack ...</span>
+</span><span class='line'>git checkout -b my_wip
+</span><span class='line'>git commit -a -m <span class="s2">&quot;WIP&quot;</span>
+</span><span class='line'>git checkout master
+</span><span class='line'>edit emergency fix
+</span><span class='line'>git commit -a -m <span class="s2">&quot;Fix in a hurry&quot;</span>
+</span><span class='line'>git checkout my_wip
+</span><span class='line'>git reset --soft HEAD^
+</span><span class='line'><span class="c"># ... continue hacking ...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But there is other way to do this by using git stash. Or something like this</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># ... hack hack hack ...</span>
+</span><span class='line'>git stash
+</span><span class='line'>edit emergency fix
+</span><span class='line'>git commit -a -m <span class="s2">&quot;Fix in a hurry&quot;</span>
+</span><span class='line'>git stash pop
+</span><span class='line'><span class="c"># ... continue hacking ...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Well, I just wanted to give an example of git stash so you can get more understanding of what is happening in git stash</p>
+
+<p>first you need a clean directory to start git</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>mkdir gitstash <span class="o">&amp;&amp;</span> <span class="nb">cd </span>gitstash <span class="o">&amp;&amp;</span> git init
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now you create a new file to work on</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>touch main
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And you edit the file main like you&#8217;re working with something</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>I<span class="err">&#39;</span>m working on something important.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And you use git add to track the file</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git add .
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And you commit your change</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git commit -m <span class="s2">&quot;Initial Revision&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You will see something like this</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>master <span class="o">(</span>root-commit<span class="o">)</span> 95616b9<span class="o">]</span> Initial Revision
+</span><span class='line'> <span class="m">1</span> files changed, <span class="m">1</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+</span><span class='line'> create mode <span class="m">100644</span> main
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then you keep working of the file main, so the file main would look like this</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>I<span class="err">&#39;</span>m working on something important.
+</span><span class='line'>
+</span><span class='line'>Something which is also important.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then somebody just interrupted you and asked you to fix something which is might impact the work that you&#8217;re working on right now. So, what you need to do is to use git stash to clean your working directory.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git stash
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You would see something like this to confirm that you have saved the working directory</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Saved working directory and index state WIP on master: 95616b9 Initial Revision
+</span><span class='line'>HEAD is now at 95616b9 Initial Revision
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now you&#8217;re main file would look something like this. It&#8217;s like the file main is rolled back to the HEAD commit</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>I<span class="err">&#39;</span>m working on something important.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now you edit the file main to be something like this.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>I<span class="err">&#39;</span>m working on something important. Something which is very very important.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And you commit this change</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git commit -am <span class="s2">&quot;Fixed something&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now you can go back and keep working on what you&#8217;ve left off by using this command</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git stash pop
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You will see something like this</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Auto-merging main
+</span><span class='line'>CONFLICT <span class="o">(</span>content<span class="o">)</span>: Merge conflict in main
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Git will try and merge the change for you, if Git cannot merge the file for you, you have to merge it by yourself manually. In this case, the main file has to be merge manually. I just use vimdiff to merge.</p>
+
+<p>Now you&#8217;re main file will look something like this</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>I<span class="err">&#39;</span>m working on something important. Something which is very very important.
+</span><span class='line'>
+</span><span class='line'>Something which is also important.
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/how-to-find-neighbours-of-2-dimensional-array/">How to Find Neighbours of 2 Dimensional Array</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-03-20T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So, for example if you have a 2 dimensional array.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1 2 3  
+</span><span class='line'>4 5 6  
+</span><span class='line'>7 8 9</span></code></pre></td></tr></table></div></figure>
+
+
+<p>the neighbours of &#8220;5&#8221; is</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1 2 3  
+</span><span class='line'>4 6  
+</span><span class='line'>7 8 9</span></code></pre></td></tr></table></div></figure>
+
+
+<p>the neighbours of &#8220;9&#8221; would be</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>5 6  
+</span><span class='line'>8</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Without further ado, here is the algorithm.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">][</span><span class="mi">3</span><span class="o">];</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">initialiseArray</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="o">;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">;</span> <span class="n">row</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="o">;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">;</span> <span class="n">col</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">array</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">=</span> <span class="n">counter</span><span class="o">;</span>
+</span><span class='line'>                <span class="n">counter</span><span class="o">++;</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">initialiseArray</span><span class="o">();</span>
+</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="o">;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">;</span> <span class="n">row</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="o">;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">;</span> <span class="n">col</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]);</span>
+</span><span class='line'>                <span class="k">if</span><span class="o">(</span> <span class="n">col</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">)</span>
+</span><span class='line'>                <span class="o">{</span>
+</span><span class='line'>                    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;\n&quot;</span><span class="o">);</span>
+</span><span class='line'>                <span class="o">}</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="n">neighbours</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">neighbours</span><span class="o">()</span>
+</span><span class='line'>    <span class="o">{</span>
+</span><span class='line'>        <span class="c1">// the position of a cell that you want to display its neighbours</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">posX</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">posY</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">for</span><span class="o">(</span> <span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="n">posX</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">row</span> <span class="o">&lt;=</span> <span class="n">posX</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">row</span><span class="o">++)</span>
+</span><span class='line'>        <span class="o">{</span>
+</span><span class='line'>            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span>  <span class="n">posY</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>  <span class="n">col</span> <span class="o">&lt;=</span> <span class="n">posY</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">col</span><span class="o">++)</span>
+</span><span class='line'>            <span class="o">{</span>
+</span><span class='line'>                <span class="k">if</span><span class="o">(</span> <span class="o">!(</span><span class="n">posX</span> <span class="o">==</span> <span class="n">row</span> <span class="o">&amp;&amp;</span>  <span class="n">posY</span> <span class="o">==</span> <span class="n">col</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="o">&amp;&amp;</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="o">)</span>
+</span><span class='line'>                <span class="o">{</span>
+</span><span class='line'>                    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]);</span>
+</span><span class='line'>                <span class="o">}</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/how-to-java-capture-output-from-console/">How to : Java Capture Output From Console</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-03-01T00:00:00-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Well, the topic pretty says everything. So, here&#8217;s the solution.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">final</span> <span class="n">ByteArrayOutputStream</span> <span class="n">myOut</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ByteArrayOutputStream</span><span class="o">();</span>
+</span><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">setOut</span><span class="o">(</span><span class="k">new</span> <span class="nf">PrintStream</span><span class="o">(</span><span class="n">myOut</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// test stuff here...</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">final</span> <span class="n">String</span> <span class="n">standardOutput</span> <span class="o">=</span> <span class="n">myOut</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The idea is just redirect the System.out to another PrintStream and you can use information in the PrintStream.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/ruby-command-line-twitter-client-made-easy/">Ruby : Command-line Twitter Client Made Easy</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-02-27T00:00:00-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Have you every told off that you&#8217;re playing in your work? Why do you have to open a browser twitter.com to be so obvious that you&#8217;re not doing your job well. Well, you can build a command-line twitter client very easy. So, you will be one of the geeks who use terminal all the time and your boss won&#8217;t know that you&#8217;re on twitter all the time.</p>
+
+<p>I will start with installing Ruby and Gem, because I wanted to save time building this program from scratch as much as possible. So, a couples of useful gems would be really helpful.</p>
+
+<p>if you&#8217;re new to ruby and use mac same as me, I suggest you install ruby by following this great article.<br/>
+<a href="http://hivelogic.com/articles/ruby-rails-leopard">http://hivelogic.com/articles/ruby-rails-leopard</a></p>
+
+<p>You can use a great application of all time like MacPort.</p>
+
+<p>Ok! gem installed, ruby installed. Let&#8217;s start with installing some gems</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>gem install twitter_oauth
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you need to know what OAuth is, I suggest you read this great article <a href="http://hueniverse.com/2007/10/beginners-guide-to-oauth-part-i-overview/">http://hueniverse.com/2007/10/beginners-guide-to-oauth-part-i-overview/</a></p>
+
+<p>Basically, OAuth is a helper to help you login to twitter.com without exposing or sending your login details over the Internet. It&#8217;s like public and private key. But If you&#8217;re doing for a single-user like me, then you don&#8217;t have to worry anything about this. You just need 4 keys to access twitter APIs.</p>
+
+<p>First, you will need to register your app with Twitter. Go to this page and follow the steps. <a href="http://twitter.com/apps">http://twitter.com/apps</a></p>
+
+<p>Now you will need four keys to work, go to this page to get all those keys.<br/>
+<a href="https://dev.twitter.com/apps">https://dev.twitter.com/apps</a></p>
+
+<p>You will want, consumer_key, consumer_secret. You can get them from your application setting page, then click on My Access Token on the right-hand sided bar. Note down Access Token and Access Token Secret. Then you&#8217;re good to go.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;twitter_oauth&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">TWITTER_CONSUMER_KEY</span> <span class="o">=</span> <span class="s1">&#39;Your Consumer Key&#39;</span>
+</span><span class='line'><span class="no">TWITTER_CONSUMER_SECRET</span> <span class="o">=</span> <span class="s1">&#39;Your Consumer Secret&#39;</span>
+</span><span class='line'><span class="no">TWITTER_ACCESS_TOKEN</span> <span class="o">=</span> <span class="s1">&#39;Your Access Token&#39;</span>
+</span><span class='line'><span class="no">TWITTER_ACCESS_SECRET</span> <span class="o">=</span> <span class="s1">&#39;Your Access Token Secret&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">client</span> <span class="o">=</span> <span class="no">TwitterOAuth</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span><span class='line'>  <span class="ss">:consumer_key</span> <span class="o">=&gt;</span> <span class="no">TWITTER_CONSUMER_KEY</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:consumer_secret</span> <span class="o">=&gt;</span> <span class="no">TWITTER_CONSUMER_SECRET</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:token</span> <span class="o">=&gt;</span> <span class="no">TWITTER_ACCESS_TOKEN</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:secret</span> <span class="o">=&gt;</span> <span class="no">TWITTER_ACCESS_SECRET</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">case</span> <span class="no">ARGV</span><span class="o">[]</span>
+</span><span class='line'> <span class="k">when</span> <span class="s2">&quot;-l&quot;</span>
+</span><span class='line'>  <span class="n">timeline</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">home_timeline</span><span class="p">()</span>
+</span><span class='line'>  <span class="n">timeline</span> <span class="o">=</span> <span class="n">timeline</span><span class="o">.</span><span class="n">reverse</span>
+</span><span class='line'>  <span class="n">timeline</span><span class="o">.</span><span class="n">each</span><span class="p">{</span> <span class="o">|</span><span class="n">tweet</span><span class="o">|</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="n">tweet</span><span class="o">[</span><span class="s1">&#39;text&#39;</span><span class="o">]</span> <span class="o">+</span> <span class="s2">&quot; @FROM </span><span class="si">#{</span><span class="n">tweet</span><span class="o">[</span><span class="s1">&#39;user&#39;</span><span class="o">][</span><span class="s1">&#39;name&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'> <span class="k">when</span> <span class="s2">&quot;-u&quot;</span>
+</span><span class='line'>  <span class="k">if</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">nil?</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Please enter your status:&quot;</span>
+</span><span class='line'>    <span class="n">status</span> <span class="o">=</span> <span class="no">STDIN</span><span class="o">.</span><span class="n">readline</span><span class="o">.</span><span class="n">chomp</span>
+</span><span class='line'>    <span class="n">client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">status</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="n">client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="no">ARGV</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'> <span class="k">when</span> <span class="s2">&quot;-m&quot;</span>
+</span><span class='line'>  <span class="n">mentions</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">mentions</span><span class="p">()</span>
+</span><span class='line'>  <span class="n">mentions</span> <span class="o">=</span> <span class="n">mentions</span><span class="o">.</span><span class="n">reverse</span>
+</span><span class='line'>  <span class="n">mentions</span><span class="o">.</span><span class="n">each</span><span class="p">{</span> <span class="o">|</span><span class="n">tweet</span><span class="o">|</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="n">tweet</span><span class="o">[</span><span class="s1">&#39;text&#39;</span><span class="o">]</span> <span class="o">+</span> <span class="s2">&quot; @FROM </span><span class="si">#{</span><span class="n">tweet</span><span class="o">[</span><span class="s1">&#39;user&#39;</span><span class="o">][</span><span class="s1">&#39;name&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is just an example of my application which I use it on terminal. You can run the app by typing</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ruby thenameofthisapplication.rb
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>or you can use symbolic link to /usr/bin and type</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>./thenameofthisapplication
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It&#8217;s totally up to you.</p>
+
+<p>The Ruby API I used in this example is from this <a href="https://github.com/moomerman/twitter_oauth">https://github.com/moomerman/twitter_oauth</a></p>
+
+<p>And this is the Twitter API that you can have a look.<br/>
+<a href="http://apiwiki.twitter.com/w/page/22554679/Twitter-API-Documentation">http://apiwiki.twitter.com/w/page/22554679/Twitter-API-Documentation</a></p>
+
+<p>In this way, you can design your application to be whatever you want and when you&#8217;re at work, you&#8217;ll be on terminal on the time.</p>
+
+<p>Good luck!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/how-to-google-translate-api-with-perl/">How to : Google Translate API With Perl</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-02-17T00:00:00-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So, without boring introduction.</p>
+
+<p>But you need to install some library for Perl as well by using cpan.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>cpan install JSON
+</span><span class='line'>cpan install REST::Client
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="c1">#!/usr/bin/perl</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">use</span> <span class="nn">REST::</span><span class="n">Client</span><span class="p">;</span>
+</span><span class='line'><span class="k">use</span> <span class="n">JSON</span><span class="p">;</span>
+</span><span class='line'><span class="k">use</span> <span class="nn">HTML::</span><span class="n">Entities</span> <span class="sx">qw(decode_entities)</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">print</span> <span class="s">&quot;Please enter English word: &quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="nb">chop</span> <span class="p">(</span> <span class="nv">$_</span> <span class="o">=</span> <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">my</span> <span class="nv">$client</span> <span class="o">=</span> <span class="nn">REST::</span><span class="n">Client</span><span class="o">-&gt;</span><span class="k">new</span><span class="p">();</span>
+</span><span class='line'>  <span class="nv">$client</span><span class="o">-&gt;</span><span class="n">GET</span><span class="p">(</span><span class="s">&quot;https://www.googleapis.com/language/translate/v2?key=AIzaSyACJybEm6lyelnYHZzXfydtk-V6-Uz48bQ&amp;en&amp;target=fr&amp;q=$_&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="n">responseContent</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">$json_text</span> <span class="o">=</span> <span class="n">from_json</span><span class="p">(</span> <span class="nv">$response</span> <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">foreach</span> <span class="k">my</span> <span class="nv">$french</span><span class="p">(</span><span class="nv">@</span><span class="p">{</span><span class="nv">$json_text</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">data</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">translations</span><span class="p">}})</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>      <span class="k">my</span> <span class="nv">%ep_hash</span> <span class="o">=</span> <span class="p">();</span>
+</span><span class='line'>      <span class="nv">$ep_hash</span><span class="p">{</span><span class="n">translatedText</span><span class="p">}</span> <span class="o">=</span> <span class="s">&quot;Translated to French: $french-&gt;{translatedText}&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># print french</span>
+</span><span class='line'>      <span class="k">while</span> <span class="p">(</span><span class="k">my</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span> <span class="o">=</span> <span class="nb">each</span> <span class="p">(</span><span class="nv">%ep_hash</span><span class="p">))</span>
+</span><span class='line'>      <span class="p">{</span>
+</span><span class='line'>          <span class="k">print</span> <span class="n">decode_entities</span><span class="p">(</span><span class="nv">$value</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">print</span> <span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/how-to-use-junit-to-test-java-command-line-program/">How to: Use Junit to Test Java Command Line Program.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-02-13T00:00:00-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As the topic says and as the code below suggests.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">java.io.ByteArrayInputStream</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestSystemIN</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">printName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&quot;\r\n&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Test</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testPrintName</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="c1">// Simulate input</span>
+</span><span class='line'>      <span class="n">String</span> <span class="n">data</span> <span class="o">=</span> <span class="s">&quot;John&quot;</span><span class="o">;</span>
+</span><span class='line'>      <span class="n">InputStream</span> <span class="n">stdin</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">;</span>
+</span><span class='line'>      <span class="k">try</span>
+</span><span class='line'>      <span class="o">{</span>
+</span><span class='line'>          <span class="n">System</span><span class="o">.</span><span class="na">setIn</span><span class="o">(</span><span class="k">new</span> <span class="nf">ByteArrayInputStream</span><span class="o">(</span><span class="n">data</span><span class="o">.</span><span class="na">getBytes</span><span class="o">()));</span>
+</span><span class='line'>          <span class="n">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+</span><span class='line'>          <span class="c1">// Print name</span>
+</span><span class='line'>          <span class="n">printName</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      <span class="k">finally</span>
+</span><span class='line'>      <span class="o">{</span>
+</span><span class='line'>          <span class="n">System</span><span class="o">.</span><span class="na">setIn</span><span class="o">(</span><span class="n">stdin</span><span class="o">);</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/java-builder-pattern-want-to-avoid-getters-and-setters/">Java Builder Pattern: Want to Avoid Getters and Setters to Create an Object?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-02-06T00:00:00-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Have you ever get bored of setting lots of properties to create an object? Have you ever considered an alternate way to create an object? Well, I got one. It&#8217;s called Builder Pattern. It&#8217;s another way to create an object. I&#8217;m trying to make this as easier as possible but I will need to be technical as well. So, here is a simple of builder diagram.</p>
+
+<div style="width: 543px" class="wp-caption alignnone">
+  <img alt="Builder Pattern" src="http://upload.wikimedia.org/wikipedia/en/6/6e/Builder2.png" title="Builder Pattern" width="533" height="240" />
+  
+  <p class="wp-caption-text">
+    Builder Pattern Diagram
+  </p>
 </div>
 
-</pre>
+
+<p>Start from <strong>Builder</strong><br/>
+Builder is the abstract class where you form a skeleton of a object you want to create; in other words, a base class for every concreate builder.</p>
+
+<p><strong>Concrete Builder</strong><br/>
+Concrete Builder classes are extended from the Builder.</p>
+
+<p><strong>Director</strong><br/>
+The Director class is to control everything and responsible to control the sequence of object creation.</p>
+
+<p><strong>Product</strong><br/>
+Product can be seen as the model class.</p>
+
+<p>However, it will be easier if you look at the example below.<br/>
+First let&#8217;s create a Product class</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">String</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">String</span> <span class="n">model</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * Get the name</span>
+</span><span class='line'><span class="cm">  *</span>
+</span><span class='line'><span class="cm">  * @return the name</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * Set the name</span>
+</span><span class='line'><span class="cm">  *</span>
+</span><span class='line'><span class="cm">  * @param name the name to set</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * Get the description</span>
+</span><span class='line'><span class="cm">  *</span>
+</span><span class='line'><span class="cm">  * @return the description</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDescription</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * Set the description</span>
+</span><span class='line'><span class="cm">  *</span>
+</span><span class='line'><span class="cm">  * @param description the description to set</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDescription</span><span class="o">(</span><span class="n">String</span> <span class="n">description</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">description</span> <span class="o">=</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * Get the model</span>
+</span><span class='line'><span class="cm">  *</span>
+</span><span class='line'><span class="cm">  * @return the model</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getModel</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">model</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * Set the model</span>
+</span><span class='line'><span class="cm">  *</span>
+</span><span class='line'><span class="cm">  * @param model the model to set</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setModel</span><span class="o">(</span><span class="n">String</span> <span class="n">model</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then we create an abstract class to be a base class</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">FactoryAbstract</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>  <span class="kd">protected</span> <span class="n">Car</span> <span class="n">car</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">createACar</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">car</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Car</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">Car</span> <span class="nf">getCar</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">car</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">buildName</span><span class="o">();</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">buildDescription</span><span class="o">();</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">buildModel</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, create a concrete class</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ToyotaCreator</span> <span class="kd">extends</span> <span class="n">FactoryAbstract</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">buildDescription</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="n">car</span><span class="o">.</span><span class="na">setDescription</span><span class="o">(</span><span class="s">&quot;Toyota hybrid-power&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">buildModel</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="n">car</span><span class="o">.</span><span class="na">setModel</span><span class="o">(</span><span class="s">&quot;Prius&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">buildName</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="n">car</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&quot;Toyota&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The last one is the Director</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Director</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">FactoryAbstract</span> <span class="n">factory</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setConcreteClass</span><span class="o">(</span> <span class="n">FactoryAbstract</span> <span class="n">factoryAbstract</span> <span class="o">)</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">factory</span> <span class="o">=</span> <span class="n">factoryAbstract</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">constructACar</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="n">factory</span><span class="o">.</span><span class="na">createACar</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">factory</span><span class="o">.</span><span class="na">buildName</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">factory</span><span class="o">.</span><span class="na">buildDescription</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">factory</span><span class="o">.</span><span class="na">buildModel</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">Car</span> <span class="nf">getCar</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">factory</span><span class="o">.</span><span class="na">getCar</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And a client to test the pattern</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * @param args</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="n">FactoryAbstract</span> <span class="n">factory</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ToyotaCreator</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">Director</span> <span class="n">director</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Director</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">director</span><span class="o">.</span><span class="na">setConcreteClass</span><span class="o">(</span> <span class="n">factory</span> <span class="o">);</span>
+</span><span class='line'>      <span class="n">director</span><span class="o">.</span><span class="na">constructACar</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">Car</span> <span class="n">aCar</span> <span class="o">=</span> <span class="n">director</span><span class="o">.</span><span class="na">getCar</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">aCar</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">);</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="s">&quot;Description: &quot;</span> <span class="o">+</span> <span class="n">aCar</span><span class="o">.</span><span class="na">getDescription</span><span class="o">()</span> <span class="o">);</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="s">&quot;Model: &quot;</span> <span class="o">+</span> <span class="n">aCar</span><span class="o">.</span><span class="na">getModel</span><span class="o">()</span> <span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/dependency-injection-with-spring-by-example/">Dependency Injection With Spring by Example</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-01-19T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I think every developer these days have heard this term &#8220;Dependency Injection&#8221; or &#8220;Inversion of Control&#8221; before Martin Fowler coined the term &#8220;Dependency Injection&#8221;. And how many people are confused by that? Or may be I&#8217;m the only one who does not know what it means by injecting something into something and every developer should be happy about it.</p>
+
+<p>I really recommend you to read this article first by <a href="http://www.martinfowler.com/articles/injection.html">Martin Folwer</a>, he has explained it in a very simple way and easy to understand. Additionally, I cannot think of any simpler example to explain than of Martin&#8217;s article. So, please do read Martin&#8217;s article and Spring in Action for more information.</p>
+
+<p>So, in my example and this is purely from my understanding.</p>
+
+<p>A class student that needs to go to school. You can see that student class is tightly coupled with the class FindARouteToSchool. You can&#8217;t have Student without FindARouteToSchool. This is not so bad, but many developers find it not flexible enough. We need to promote loosely coupled.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>  <span class="n">FindARouteToSchool</span> <span class="n">findARoute</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">goToSchool</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="n">findARoute</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">GoByBus</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">findARoute</span><span class="o">.</span><span class="na">go</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span> <span class="n">String</span> <span class="n">args</span><span class="o">[]</span> <span class="o">)</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="k">new</span> <span class="nf">Student</span><span class="o">().</span><span class="na">goToSchool</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, we need something that can inject something into the Student class, so the class is not dependent to FindARouteToSchool. I have chosen Spring to solve the problem and create a setter object to set a reference of the class FindARouteToSchool.</p>
+
+<p>This is the new Student class which has one more method to set FindARouteToSchool reference.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>  <span class="n">FindARouteToSchool</span> <span class="n">findARoute</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setFindARoute</span><span class="o">(</span><span class="n">FindARouteToSchool</span> <span class="n">findARoute</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">findARoute</span> <span class="o">=</span> <span class="n">findARoute</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">goToSchool</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="n">findARoute</span><span class="o">.</span><span class="na">go</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span> <span class="n">String</span> <span class="n">args</span><span class="o">[]</span> <span class="o">)</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="n">ApplicationContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ClassPathXmlApplicationContext</span><span class="o">(</span><span class="s">&quot;spring-idol.xml&quot;</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">Student</span> <span class="n">student</span> <span class="o">=</span> <span class="o">(</span><span class="n">Student</span><span class="o">)</span> <span class="n">ctx</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&quot;student&quot;</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">student</span><span class="o">.</span><span class="na">goToSchool</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is the XML configure file of Spring</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+</span><span class='line'><span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.springframework.org/schema/beans&quot;</span>
+</span><span class='line'>  <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+</span><span class='line'>  <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.springframework.org/schema/beans </span>
+</span><span class='line'><span class="s">  http://www.springframework.org/schema/beans/spring-beans-2.0.xsd&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;goByTube&quot;</span>
+</span><span class='line'>    <span class="na">class=</span><span class="s">&quot;com.noppanit.GoByTube&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;student&quot;</span> <span class="na">class=</span><span class="s">&quot;com.noppanit.Student&quot;</span> <span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;findARoute&quot;</span> <span class="na">ref=</span><span class="s">&quot;goByTube&quot;</span><span class="nt">&gt;&lt;/property&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/bean&gt;</span>
+</span><span class='line'><span class="nt">&lt;/beans&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -146,7 +1419,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/prague-in-december-2011/">Prague in December 2011</a></h1>
+      <h1 class="entry-title"><a href="/why-dummy-text-from-web-template-has-to-be-lorem-ipsum/">Why Dummy Text From Web Template Has to Be &#8220;Lorem Ipsum&#8221;</a></h1>
     
     
       <p class="meta">
@@ -155,367 +1428,22 @@
 
 
 
-<time class='entry-date' datetime='2011-12-30T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+<time class='entry-date' datetime='2011-01-16T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Everybody might say, why would you want to be in Prague in December where it&#8217;s cold and depressing. If you&#8217;re lucky like me, you would find a sunny day when you can walk around in the Christmas market. I say Prague it&#8217;s the place where you can visit anytime you want. Even though, the weather can be a bit tricky, but you still have a lot to do in Prague or even in Czech Republic.</p>
+  <div class="entry-content"><p>Ever wonder why dummy text or banner text on web templates or Microsoft Word Templates has to begin with &#8220;Lorem ipsum dolor sit amet&#8230;&#8221; and go on and on. Do you even know what this means? Well I don&#8217;t. But I found an answer that might explain all of this.</p>
 
-<div id="gallery-0f02becd" class="flickr-gallery photoset">
-  <div class="fg-clear">
-  </div>
-</div>
+<p>First, after google announced that they have added Latin as one of the languages they can translate. This is the meaning of &#8220;Lorem ipsum dolor sit amet&#8221;, &#8220;<label for="start">We</label> <label for="start">pain is love itself&#8221; and I still don&#8217;t understand what it means. And I found a website that can help my understanding. </label></p>
 
+<p>This is what they say &#8220;The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#8216;Content here, content here&#8217;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#8216;lorem ipsum&#8217; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)&#8221;</p>
 
+<p>And I think this is pretty good, it&#8217;s like when you want to test your program you need to use real data and not just &#8220;1234&#8221; and &#8220;asdf&#8221;. It&#8217;s unreadable.</p>
 
-
-<div class="fg-clear">
-</div>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/brixton/">Brixton Village</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-12-11T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Why when I say to people that I&#8217;ll go to Brixton, everybody just says &#8220;Why somebody would want to go there&#8221;. And here&#8217;s why.</p>
-
-<div id="gallery-22c93100" class="flickr-gallery photoset">
-  <div class="fg-clear">
-  </div>
-</div>
-
-
-
-
-<div class="fg-clear">
-</div>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/rails-lost-session-after-doing-a-post/">Rails Lost Session After Doing a POST</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-11-15T00:00:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I might be the only silly person on the Internet, because I haven&#8217;t found anyone having the same problem as I had before. So, in the future there might be someone like me. Basically, you have a rails application, you didn&#8217;t realise that if you do a POST from a plain</p>
-
-<p><form>
-  without using</p></p>
-
-<p>  <div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-    <table cellspacing="0" cellpadding="0">
-      <tr>
-        <td class="line-numbers">
-          <div>
-            1<br />2<br />3<br />
-          </div>
-        </td></p>
-
-<pre><code>    &lt;td&gt;
-      &lt;div class="ruby codecolorer"&gt;
-        form_for&lt;span class="br0"&gt;&amp;#40;&lt;/span&gt;@some&lt;span class="br0"&gt;&amp;#41;&lt;/span&gt;&lt;br /&gt; ...&lt;br /&gt; &lt;span class="kw1"&gt;end&lt;/span&gt;
-      &lt;/div&gt;
-    &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;
-</code></pre>
-
-<p>  </div></p>
-
-<p>  <p>
-    You might be losing the session because of the security reason. According to this <a href="http://guides.rubyonrails.org/security.html#cross-site-request-forgery-csrf" title="CSRF">reference</a>
-  </p></p>
-
-<p>  <p>
-    So, to be safe if you&#8217;re doing a POST don&#8217;t use plain<br /></p>
-
-<pre><code>&lt;form&gt;
-  tag. Only use form_for to generate the from and rails will handle everything. You can proof this theory easily by commenting out&lt;/p&gt; 
-
-  &lt;div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;"&gt;
-    &lt;table cellspacing="0" cellpadding="0"&gt;
-      &lt;tr&gt;
-        &lt;td class="line-numbers"&gt;
-          &lt;div&gt;
-            1&lt;br /&gt;2&lt;br /&gt;3&lt;br /&gt;
-          &lt;/div&gt;
-        &lt;/td&gt;
-
-        &lt;td&gt;
-          &lt;div class="ruby codecolorer"&gt;
-            &lt;span class="kw1"&gt;class&lt;/span&gt; ApplicationController &lt;span class="sy0"&gt;&lt;&lt;/span&gt; &lt;span class="re2"&gt;ActionController::Base&lt;/span&gt;&lt;br /&gt; &amp;nbsp; &lt;span class="co1"&gt;#protect_from_forgery &lt;/span&gt;&lt;br /&gt; &lt;span class="kw1"&gt;end&lt;/span&gt;
-          &lt;/div&gt;
-        &lt;/td&gt;
-      &lt;/tr&gt;
-    &lt;/table&gt;
-  &lt;/div&gt;
-
-  &lt;p&gt;
-    Please don&amp;#8217;t do this at production!
-  &lt;/p&gt;
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/how-to-boost-your-old-bold-9700/">How to Boost Your Old Bold 9700.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-11-01T00:00:00-04:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you&#8217;re like me, having an bold 9700 with OS6 and it&#8217;s getting slower. Don&#8217;t know what to do and want to buy a new phone but your pocket is not that deep. The truth is Bold 9700 isn&#8217;t designed for OS6, but who wants OS5 or even OS5. So after installing OS6 to your bold 9700 you will have probably around 68 MB left in your mobile memory. And after installing a couple of applications, such as Gmail, Facebook, Twitter and Whatsapp. You might have some left and once you use it for a day or two, your beloved phone starts to slow down as though you might want to throw it away and get an iPhone4.</p>
-
-<p>There&#8217;s a way to increase some memory. It&#8217;s an application called <a href="http://www.bbh-plus.net/downloads.php?do=file&amp;id=1516" title="Shrink-A-OS">Shrink-A-OS</a>. The steps are very easy, choose your latest official firmware and install it to your computer. Then install BBHTool, run the program. BBHTool will detect the OS that you installed in your computer. Start ticking application that you don&#8217;t want, fonts, or languages that you can&#8217;t even read. Then click &#8220;Shrink My OS&#8221; button. It will show you how much memory you&#8217;ve saved. I saved almost 50-60 MB from the shrinking. I know there&#8217;s a button to Launch Loader, but it doesn&#8217;t work for me. So, you could just go to &#8220;C:\Program Files\Common Files\Research In Motion\AppLoader&#8221; and run Loader.exe then follow the steps and BAM! you got a faster, more memory bold 9700. Hope you enjoy!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/eliminate-two-facebook-accounts/">Eliminate Two Facebook Accounts</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-10-16T00:00:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I don&#8217;t know if you&#8217;ve ever seen or had this before, but it happened to me once. I woke up one they, just wanted to look at my status and how my friends were doing. I open <a href="http://www.facebook.com">http://www.facebook.com</a> and I realised that I couldn&#8217;t log in to my Facebook account. WTF! Then I did everything I could, go to Facebook Help, Reset Password, googled lots of blogs. Then I gave up, I ended up creating a new Facebook account and found out that lots of people on the Internet had the same problems as I had. I tried emailing Facebook Help Centre as well and got some replies but nothing was helpful. Also, it was like seven months ago.</p>
-
-<p>What I did was just beek reporting the other account, like Inappropriate profile picture, or this account pretends to be me. And then today, my other Facebook account has been deleted already. I&#8217;m happy!.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/experimenting-with-microdata-to-satisfy-google/">Experimenting With Microdata to Satisfy Google</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-10-09T00:00:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I think Semantic Web has been introduced to us for quite a long time, but we still haven&#8217;t seen a practical example before. So, I&#8217;m trying to experiment a little bit with my new website that I&#8217;ve just created for my friend. It&#8217;s <a href="http://www.siripachai.com" title="Siripachai Agency">Siripachai Agency</a>. Basically, It&#8217;s a website for any students that want to study aboard in London. Firstly, I will use microdata on <a href="http://www.siripachai.com/abouts">http://www.siripachai.com/abouts</a> first. by following this example. <a href="http://www.google.com/support/webmasters/bin/answer.py?answer=146861">http://www.google.com/support/webmasters/bin/answer.py?answer=146861</a></p>
-
-<p>And this is the before that I get out of Google search result.<br/>
-<a href="http://www.noppanit.com/wp-content/uploads/2011/10/Screen-shot-2011-10-09-at-23.43.08.png"><img src="http://www.noppanit.com/wp-content/uploads/2011/10/Screen-shot-2011-10-09-at-23.43.08-300x37.png" alt="" title="Google aboutus search result" width="300" height="37" class="alignnone size-medium wp-image-788" /></a></p>
-
-<p>Will upload as soon as google picks up the new microdata that I&#8217;ve just uploaded. Hope it works!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/thoughts-on-jquery-mobile/">Thoughts on jQuery Mobile</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-10-06T00:00:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Last week I helped out my friends <a href="http://www.eewei.com" title="Eewei">Eewei</a> and <a href="http://www.fab.co.uk">Jill</a> in <a href="http://futureofwebapps.com/london-2011/">Future of web app conference</a> in London. Unfortunately, I couldn&#8217;t be in the conference. They presented this really amazing called <a href="http://jquerymobile.com/">jQuery Mobile</a></p>
-
-<p>So, you&#8217;re allowed to transform a simple html website to be operational in modern mobile devies, such as iPhone, BB or Android phones. What you need to do it just add a javascript file and a css file from jQueryMobile site and that&#8217;s it. Bam! you have a ready to go mobile website in a min. Interesting to point out is that it&#8217;s still in a development stage and the latest release when I&#8217;m writing this is just a RC1. So, if you try it now you might be getting some bugs or some unresponsive actions when clicking buttons. Also, when you include the javascript src file and the css version, the version of the two files need to be corresponded, otherwise it might not be working correctly.</p>
-
-<p>You can say that these days more and more people are browsing websites from mobile devices. Also, it can be said that IE6 has been holding our back on development of javascript or css on desktop for years now (You might have to include a number of different versions of CSS files for different browsers). Whilst on mobile devices IE doesn&#8217;t have any effects on development. Furthermore, developing native apps for just iPhone or Android might be a daunting task for most people who don&#8217;t have any background on Objective-C. Therefore, I think HTML5 for mobile devices might be a better idea to go than starting to build a native app these days.</p>
-
-<p>I have also built a simple webapp from Rails3 and jQuery Mobile deployed on Heroku. If anybody&#8217;s interested. <a href="https://github.com/noppanit/jquery-mobile-example">https://github.com/noppanit/jquery-mobile-example</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/grails-run-app-doesnt-pick-up-filters-taglib-or-even-controller/">Grails Run-app Doesn&#8217;t Pick Up Filters, TagLib or Even Controller</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-07-18T00:00:00-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Have you every come across a situation that &#8220;grails run-app&#8221; dones&#8217;t work with new TagLib, Controller or even Filter. You might wonder why my Filters doesn&#8217;t fire. Or why grails throws Controller not found exception.</p>
-
-<p>Solution:<br/>
-You might want to check grails.xml in web-app folder, whether the new resources are included in the grails.xml file. Otherwise, grails won&#8217;t pick them up. But grails run-war will still be working.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/the-simplest-dropdown-menu-with-jquery-slider/">The Simplest Dropdown Menu With jQuery Slider</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-06-30T00:00:00-04:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Nothing much to say here. So, let&#8217;s see the code.</p>
-
-<p><a href="http://www.noppanit.com/wp-content/uploads/2011/06/Screen-shot-2011-06-30-at-00.59.01.png"><img src="http://www.noppanit.com/wp-content/uploads/2011/06/Screen-shot-2011-06-30-at-00.59.01.png" alt="Dropdown menu slider" title="Dropdown menu" width="153" height="86" class="alignnone size-full wp-image-776" /></a></p>
-
-<div class="codecolorer-container html4strict blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />32<br />33<br />34<br />35<br />36<br />37<br />38<br />39<br />40<br />41<br />42<br />43<br />44<br />45<br />46<br />47<br />48<br />49<br />50<br />51<br />52<br />53<br />54<br />55<br />56<br />57<br />58<br />59<br />60<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="html4strict codecolorer">
-          <span class="sc0"><!DOCTYPE html></span><br /> <span class="sc2"><<a href="http://december.com/html/4/element/html.html"><span class="kw2">html</span></a>></span><br /> <span class="sc2"><<a href="http://december.com/html/4/element/head.html"><span class="kw2">head</span></a>></span><br /> &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/style.html"><span class="kw2">style</span></a>></span><br /> ul<br /> {<br /> &nbsp; list-style:none;<br /> }<br /> ul li{<br /> &nbsp; float: left;<br /> &nbsp; margin-right: 20px;<br /> &nbsp; position: relative;<br /> }<br /> #sublist{<br /> &nbsp; padding: 0;<br /> &nbsp; position: absolute;<br /> &nbsp; border-style: none solid solid solid;<br /> &nbsp; border-width: 1px 1px 1px 1px;<br /> }<br /> <br /> #sublist li{<br /> <br /> }<br /> <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/style.html"><span class="kw2">style</span></a>></span><br /> &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/script.html"><span class="kw2">script</span></a> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">"http://code.jquery.com/jquery-latest.js"</span>><<span class="sy0">/</span><a href="http://december.com/html/4/element/script.html"><span class="kw2">script</span></a>></span><br /> <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/head.html"><span class="kw2">head</span></a>></span><br /> <span class="sc2"><<a href="http://december.com/html/4/element/body.html"><span class="kw2">body</span></a>></span><br /> <span class="sc2"><<a href="http://december.com/html/4/element/ul.html"><span class="kw2">ul</span></a>></span><br /> &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span>A<span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span><br /> &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"list"</span>></span><br /> &nbsp; &nbsp; B<br /> &nbsp; &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/ul.html"><span class="kw2">ul</span></a> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"sublist"</span>></span><br /> &nbsp; &nbsp; &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span>B1<span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span><br /> &nbsp; &nbsp; &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span>B2<span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span><br /> &nbsp; &nbsp; <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/ul.html"><span class="kw2">ul</span></a>></span><br /> &nbsp; <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span><br /> &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span>C<span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span><br /> <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/ul.html"><span class="kw2">ul</span></a>></span><br /> <br /> <span class="sc2"><<a href="http://december.com/html/4/element/script.html"><span class="kw2">script</span></a>></span><br /> $(document).ready( function(){<br /> &nbsp; $('#sublist').hide();<br /> &nbsp; <br /> });<br /> <br /> $('#list').click(function() {<br /> &nbsp; if ( $("#sublist").is(":hidden") )<br /> &nbsp; {<br /> &nbsp; &nbsp; $('#sublist').slideDown("slow");<br /> &nbsp; }<br /> &nbsp; else<br /> &nbsp; {<br /> &nbsp; &nbsp; $('#sublist').hide();<br /> &nbsp; }<br /> });<br /> <br /> <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/script.html"><span class="kw2">script</span></a>></span><br /> <br /> <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/body.html"><span class="kw2">body</span></a>></span><br /> <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/html.html"><span class="kw2">html</span></a>></span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-
-
+<p>For more information click on <a href="http://www.lipsum.com/">http://www.lipsum.com/ </a></p>
 </div>
   
   

@@ -92,42 +92,43 @@
 </ol>
 
 
-<pre><div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="kw3">require</span> <span class="kw4">File</span>.<span class="me1">join</span><span class="br0">&#40;</span><span class="kw4">File</span>.<span class="me1">dirname</span><span class="br0">&#40;</span><span class="kw2">__FILE__</span><span class="br0">&#41;</span>, <span class="st0">'..'</span>, <span class="st0">'..'</span>, <span class="st0">'/server.rb'</span><span class="br0">&#41;</span><br />
-          <br />
-          <span class="kw3">require</span> <span class="st0">'rspec'</span><br />
-          <span class="kw3">require</span> <span class="st0">'rspec/expectations'</span><br />
-          <span class="kw3">require</span> <span class="st0">'rack/test'</span><br />
-          <span class="kw3">require</span> <span class="st0">'capybara'</span><br />
-          <span class="kw3">require</span> <span class="st0">'capybara/cucumber'</span><br />
-          <span class="kw3">require</span> <span class="st0">'capybara/envjs'</span><br />
-          <br />
-          App.<span class="me1">set</span><span class="br0">&#40;</span><span class="re3">:environment</span>, <span class="re3">:test</span><span class="br0">&#41;</span><br />
-          <br />
-          World <span class="kw1">do</span><br />
-          &nbsp; Capybara.<span class="me1">app</span> = App<br />
-          &nbsp; Capybara.<span class="me1">javascript_driver</span> = <span class="re3">:envjs</span><br />
-          &nbsp; <span class="kw1">include</span> Capybara<br />
-          &nbsp; <span class="kw1">include</span> <span class="re2">RSpec::Expectations</span><br />
-          &nbsp; <span class="kw1">include</span> <span class="re2">RSpec::Matchers</span><br />
-          <span class="kw1">end</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">),</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;/server.rb&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rspec&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rspec/expectations&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rack/test&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;capybara&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;capybara/cucumber&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;capybara/envjs&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">App</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="ss">:environment</span><span class="p">,</span> <span class="ss">:test</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">World</span> <span class="k">do</span>
+</span><span class='line'>  <span class="no">Capybara</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="no">App</span>
+</span><span class='line'>  <span class="no">Capybara</span><span class="o">.</span><span class="n">javascript_driver</span> <span class="o">=</span> <span class="ss">:envjs</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">Capybara</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">RSpec</span><span class="o">::</span><span class="no">Expectations</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">RSpec</span><span class="o">::</span><span class="no">Matchers</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -169,7 +170,7 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/prague-in-december-2011/" title="Previous Post: Prague in december 2011">&laquo; Prague in december 2011</a>
+        <a class="basic-alignment left" href="/eliminate-two-facebook-accounts/" title="Previous Post: Eliminate two Facebook accounts">&laquo; Eliminate two Facebook accounts</a>
       
       
         <a class="basic-alignment right" href="/it-seems-that-heroku-doesnt-like-session-much/" title="Next Post: It seems that heroku doesn&#8217;t like session much">It seems that heroku doesn&#8217;t like session much &raquo;</a>

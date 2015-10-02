@@ -9,7 +9,20 @@
   <meta name="author" content="Noppanit Charassinvichai">
 
   
-  <meta name="description" content="I guess everybody is familiar with the concept of classes in Javascript. For example, 12345678910111213 var Adder = function() { &nbsp; &nbsp;this.a &hellip;">
+  <meta name="description" content="I guess everybody is familiar with the concept of classes in Javascript. For example, 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+var Adder = function() { this.a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,119 +99,78 @@
 
 <div class="entry-content"><p>I guess everybody is familiar with the concept of classes in Javascript. For example,</p>
 
-<pre><div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          var Adder = function() {<br />
-          &nbsp; &nbsp;this.a = "0";<br />
-          &nbsp; &nbsp;this.b = "0";<br />
-          }<br />
-          <br />
-          Adder.prototype = {<br />
-          &nbsp; &nbsp;add : function(value1, value2) {<br />
-          &nbsp; &nbsp; &nbsp; &nbsp;return value1 + value2;<br />
-          &nbsp; &nbsp;}<br />
-          }<br />
-          <br />
-          var adder = new Adder();<br />
-          adder.add(1,2);
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Adder</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>   <span class="k">this</span><span class="p">.</span><span class="nx">a</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span><span class="p">;</span>
+</span><span class='line'>   <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">Adder</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>   <span class="nx">add</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value1</span><span class="p">,</span> <span class="nx">value2</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>       <span class="k">return</span> <span class="nx">value1</span> <span class="o">+</span> <span class="nx">value2</span><span class="p">;</span>
+</span><span class='line'>   <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">adder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Adder</span><span class="p">();</span>
+</span><span class='line'><span class="nx">adder</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>This type is fine in most cases, but the downside of this pattern is that you&#8217;re exposing add function to the outside world via prototype, and it&#8217;s not good for object-oriented concept. You could easily tamper with function add by doing this.</p>
 
-<pre><div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          adder.__proto__.add = function() { };
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">adder</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>And if you run this</p>
 
-<pre><div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          adder.add(); // undefined
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">adder</span><span class="p">.</span><span class="nx">add</span><span class="p">();</span> <span class="c1">// undefined</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>You will get an error because you&#8217;ve tampered with function add already.</p>
 
 <p>In order to prevent this to happen you could do something like this. Like this we&#8217;re exposing just the function but not via prototype.</p>
 
-<pre><div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          var Adder = function() {<br />
-          &nbsp; &nbsp; function add(value1, value2) {<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; return value1 + value2;<br />
-          &nbsp; &nbsp; }<br />
-          <br />
-          &nbsp; &nbsp; return { <br />
-          &nbsp; &nbsp; &nbsp; &nbsp; add : add<br />
-          &nbsp; &nbsp; };<br />
-          }<br />
-          <br />
-          var adder = Adder();<br />
-          adder.add(1,2); // 3
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Adder</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">value1</span><span class="p">,</span> <span class="nx">value2</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nx">value1</span> <span class="o">+</span> <span class="nx">value2</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">add</span> <span class="o">:</span> <span class="nx">add</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">adder</span> <span class="o">=</span> <span class="nx">Adder</span><span class="p">();</span>
+</span><span class='line'><span class="nx">adder</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// 3</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Reference: <a href="http://nodetuts.com/tutorials/28-javascript-classes-prototypes-and-closures.html">http://nodetuts.com/tutorials/28-javascript-classes-prototypes-and-closures.html</a></p>
@@ -240,7 +212,7 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/how-to-install-postgresql-on-osx/" title="Previous Post: How to install postgresql on OSX">&laquo; How to install postgresql on OSX</a>
+        <a class="basic-alignment left" href="/my-flash-card-from-nodejs/" title="Previous Post: My Flash Card from NodeJs.">&laquo; My Flash Card from NodeJs.</a>
       
       
         <a class="basic-alignment right" href="/london-startup-weekend-2012/" title="Next Post: London Startup Weekend 2012.">London Startup Weekend 2012. &raquo;</a>

@@ -9,7 +9,7 @@
   <meta name="author" content="Noppanit Charassinvichai">
 
   
-  <meta name="description" content="I know this shouldn&#8217;t happen at all these days, but as you have a lot of people contributing to one single repository. This thing might happen &hellip;">
+  <meta name="description" content="First of all, I&#8217;m not a researcher what I post here is just my experiment that I do it myself. I have this problem when I want to match string &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,54 +65,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/little-javascript-to-check-if-the-page-contain-multiple-ids/">Little JavaScript to Check if the Page Contain Multiple IDs</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-01-08T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I know this shouldn&#8217;t happen at all these days, but as you have a lot of people contributing to one single repository. This thing might happen. So, this is just purely for myself. I just use jQuery to create a little util method which is executed every time the browser is loaded to check if the page contains any multiple IDs.</p>
-
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          &nbsp; &nbsp; detect_dub_ids <span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> dupIds <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; $<span class="br0">&#40;</span><span class="st0">'[id]'</span><span class="br0">&#41;</span>.<span class="me1">each</span><span class="br0">&#40;</span><span class="kw2">function</span> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> $ids <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'[id='</span> <span class="sy0">+</span> <span class="kw1">this</span>.<span class="me1">id</span> <span class="sy0">+</span> <span class="st0">']'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">&#40;</span>$ids.<span class="me1">length</span> <span class="sy0">></span> <span class="nu0">1</span> <span class="sy0">&&</span> $ids<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span> <span class="sy0">===</span> <span class="kw1">this</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dupIds.<span class="me1">push</span><span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> dupIds<span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="sy0">,</span><br /> <br /> &nbsp; &nbsp; get_display_text_for_dup_ids <span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>ids<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> h <span class="sy0">=</span> <span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; text <span class="sy0">=</span> <span class="st0">""</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; jQuery<span class="br0">&#40;</span>ids<span class="br0">&#41;</span>.<span class="me1">each</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>index<span class="sy0">,</span> value<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>h<span class="br0">&#91;</span>value<span class="br0">&#93;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; h<span class="br0">&#91;</span>value<span class="br0">&#93;</span>.<span class="me1">push</span><span class="br0">&#40;</span>value<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; h<span class="br0">&#91;</span>value<span class="br0">&#93;</span> <span class="sy0">=</span> <span class="br0">&#91;</span>value<span class="br0">&#93;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw2">var</span> k <span class="kw1">in</span> h<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; text <span class="sy0">+=</span> <span class="st0">"#"</span><span class="sy0">+</span>k<span class="sy0">+</span> <span class="st0">" ("</span><span class="sy0">+</span>h<span class="br0">&#91;</span>k<span class="br0">&#93;</span>.<span class="me1">length</span><span class="sy0">+</span><span class="st0">") times "</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> text<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -662,184 +614,6 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/one-way-to-make-use-of-google-add-your-google-profile-to-your-blog-and-show-it-to-search-results/">One Way to Make Use of Google+ : Add Your Google+ Profile to Your Blog and Show It to Search Results</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-12-29T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>So, I guess you must have heard Google+. But yet you can&#8217;t figure out how to do it, I don&#8217;t have many friends on Google+, all my friends are in Facebook or Twitter. But while I have been blogging about some stuff, I just thought I have seen some people faces next to google search results before. How come I don&#8217;t have one. Well, now I can think of one way to use Google+ to show my picture next to the content that I contribute.</p>
-
-<p>Google has a process called <a href="https://plus.google.com/authorship" title="Google Authorship">Google Authorship</a> to verify that you can be linked to the content you contributed. After you have completed this, it will show in your profile has your work email. So, now you can start building your Google+ profile by adding some nice profile picture and add some friends, follow some interesting people.</p>
-
-<p>If you use wordpress then you&#8217;re lucky you can just add your google+ profile to your about page like this. The <strong>rel=&#8221;me&#8221;</strong> is the most important one.</p>
-
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          <a href="https://profiles.google.com/your_ID" "rel="me">My Profile</a>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-
-<p>Then wordpress will handle the rest by adding <strong>rel=&#8221;author&#8221;</strong> to your post</p>
-
-<p><img src="http://www.noppanit.com/wp-content/uploads/2012/12/Screen-shot-2012-12-29-at-22.44.11.png" alt="Authorship" class="alignnone size-medium wp-image-942" /></p>
-
-<p>You can inspect the html on the link of your name, you should see <strong>rel=&#8221;author&#8221;</strong> in the url</p>
-
-<p>Once you have completed this, Google has this nice cool tool to check your <a href="http://www.google.com/webmasters/tools/richsnippets" title="rich snippets">rich snippet code</a>. You should see something like this.</p>
-
-<p><img src="http://www.noppanit.com/wp-content/uploads/2012/12/Screen-shot-2012-12-29-at-22.45.59.png" alt="Authorship" class="alignnone size-medium wp-image-943" /></p>
-
-<p>If it&#8217;s said <strong>Unverified</strong> then just click on it and Google will tell you how to make it green. It&#8217;s like a little TDD.</p>
-
-<p>Then give it a couple hours or days until Google wakes up.</p>
-
-<p><strong>Edited</strong> I would strongly suggest to install Yoast WordPress SEO plugin if you&#8217;re using wordpress. In the tag &#8220;Titles &amp; Metas&#8221; You can also specify your google+ profile and a lot of features you can use to make your site SEO friendly.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/phantomjs-poltergeist-cucumber/">PhantomJs + Poltergeist + Cucumber.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-12-10T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I love tests and I love experimenting with lots of things. So, I have just come across with PhantomJs a couple weeks ago and I absolutely love it. This should be included in every pipeline. No matter what you want to do, Jasmine? Acceptance Testing? I think right now PhantomJs is the most suitable one (May be there&#8217;ll be another one coming). But this post is not really about PhantomJs. I just want to show what it can do by using Poltergeist to run cucumber test headlessly. Of course you can do it with selenium-driver but running the test headlessly seem to be faster. So, I&#8217;ll just gonna jump right in.</p>
-
-<p>First thing first, install PhantomJs from <a href="http://phantomjs.org/download.html" title="PhantomJs download.">here</a></p>
-
-<p>Then this is what my Gemfile looks like.</p>
-
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          source <span class="re3">:rubygems</span><br /> <br /> gem <span class="st0">'poltergeist'</span><br /> gem <span class="st0">'cucumber'</span><br /> gem <span class="st0">'selenium-webdriver'</span><br /> gem <span class="st0">'capybara'</span><br /> gem <span class="st0">'rspec'</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-
-<p>And this is my env.rb</p>
-
-<pre><div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="kw3">require</span> <span class="st0">'rubygems'</span><br />
-          <span class="kw3">require</span> <span class="st0">'capybara'</span><br />
-          <span class="kw3">require</span> <span class="st0">'capybara/cucumber'</span><br />
-          <span class="kw3">require</span> <span class="st0">'capybara/dsl'</span><br />
-          <span class="kw3">require</span> <span class="st0">'rspec'</span><br />
-          <span class="kw3">require</span> <span class="st0">'capybara/poltergeist'</span><br />
-          <br />
-          <span class="co1"># Capybara.default_driver = :selenium #uncomment this to use selenium</span><br />
-          Capybara.<span class="me1">javascript_driver</span> = <span class="re3">:poltergeist</span> <span class="co1">#uncomment this to use poltergeist</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-</pre>
-
-
-<p>If you&#8217;re not familiar with Cucumber please have a look at <a href="https://github.com/cucumber/cucumber" title="cucumber">this</a></p>
-
-<p>And then you can run the test as you use to run your cucumber tests like this</p>
-
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          cucumber features<span class="sy0">/</span>your_spec.<span class="me1">feature</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-
-<p>If you run with Poltergeist driver then you should not see firefox popping up.</p>
-
-<p>I&#8217;ve written some example project <a href="https://github.com/noppanit/phantomjs-examples">here.</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/google-refine-the-best-way-to-scrape-data-from-websites-that-i-like/">Google Refine the Best Way to Scrape Data From Websites That I Like.</a></h1>
     
     
@@ -913,23 +687,9 @@
 
 <p>For this example I use this expression. So that means get me &#8220;#main-content article header h2 a&#8221; and &#8220;join&#8221; with &#8220;,&#8221;</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          forEach(value.parseHtml().select("#main-content article header h2 a"), e, e.innerHtml()).join(",")
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>forEach<span class="o">(</span>value.parseHtml<span class="o">()</span>.select<span class="o">(</span><span class="s2">&quot;#main-content article header h2 a&quot;</span><span class="o">)</span>, e, e.innerHtml<span class="o">())</span>.join<span class="o">(</span><span class="s2">&quot;,&quot;</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <ol>
@@ -985,6 +745,120 @@
 <p>If you don&#8217;t know where to go I recommend Malbun. You can look it on of your timetable and find a stop &#8220;Malbun&#8221;</p>
 
 <p><a href="#"><img src="http://www.noppanit.com/wp-content/uploads/2012/10/IMG_7850_edited-1-300x199.jpg" alt="" title="Gina" width="300" height="199" class="alignnone size-medium wp-image-887 cool_border" /></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/beef-noodle-in-hamburg/">Beef Noodle in Hamburg</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-10-03T00:00:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Well, I know I have been posting about something else other than geeky stuff. But it&#8217;s good to do something else and as my twitter bio said. I&#8217;m foodie. So, one day I was working in Hamburg and got bored and craved for Chinese food. After a little asking on my old friend &#8220;Google&#8221; I ran into this post. <a href="http://mealbymel.blogspot.de/2011/09/meister-lo-nudelhaus.html" title="Meister-lo-Nudelhaus">http://mealbymel.blogspot.de/2011/09/meister-lo-nudelhaus.html</a> and I went. My first impression would be that the restaurant is compact, you can see an open kitchen. As I said I craved for Chinese food, so I didn&#8217;t even look at the menu and ordered &#8220;Beef noodle&#8221;. This is what I get, my picture is not that good but the taste says different.</p>
+
+<p>[<img src="http://www.noppanit.com/wp-content/uploads/2012/10/2012-09-26-19.17.27-236x300.jpg" alt="" title="Beef noodle" width="236" height="300" class="alignnone size-medium wp-image-877 cool_border" />][2]</p>
+
+<p>I&#8217;m a little disappointed by the noodle as the blog above said but the meat which is the heart of this dish is delicious. It&#8217;s chunky and meaty, and the soup is clear and not too strong. The location is not quite good as it&#8217;s quite a walk from the station and to get there by Bahn. And I guess that&#8217;s why they can keep the cost down as for the appetiser, noodle and a melon cost me just 8 euros. If you&#8217;re in Hamburg and want to have taste some authentic Taiwanese, you should try it out. And I&#8217;d go back there if I have a chance.</p>
+
+<p><strong>Meister Lo&#8217;s Nudelhaus</strong><br/>
+Wandsbeker Chausse 40<br/>
+22089 Hamburg<br/>
+U1-Wartenau</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/best-schweinshaxe-ive-ever-eaten-so-far-yet-in-munich/">Best Schweinshaxe I&#8217;ve Ever Eaten So Far Yet in Munich.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-09-23T00:00:00-04:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Well, as the title says this was the best Pork Knuckles I have ever eaten in Munich, Germany. I love food and I love good food. So I always find good restaurants, sometimes I go for a michelin-star restaurant but you can&#8217;t do that everyday. I was in Okterber Fest in Munich last week, but it was raining so I decided to find something bavarian to eat instead. I googled for a few and I decided to go for this place &#8220;<a href="https://maps.google.co.uk/maps?q=haxnbauer&amp;ll=48.137515,11.578635&amp;spn=0.003064,0.006968&amp;fb=1&amp;gl=uk&amp;hq=haxnbauer&amp;cid=0,0,7797826227648288280&amp;t=m&amp;z=18&amp;iwloc=A">Haxnbauer</a>&#8220;. They don&#8217;t have a website so this is the only link I can find.</p>
+
+<p><a href="#"><img src="http://www.noppanit.com/wp-content/uploads/2012/09/IMG_7793_edited-1-300x199.jpg" alt="" title="Schweinshaxe" width="300" height="199" class="alignnone size-medium wp-image-873 cool_border" /></a></p>
+
+<p>The cracking is crispy and the sauce is just right with the meat. With Weissbier is just perfect.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/london-startup-weekend-2012/">London Startup Weekend 2012.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-07-02T00:00:00-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I guess I should write this blog whilst my memory is still fresh. Last weekend, I went to London Startup Weekend with <a href="http://www.eewei.com" title="Eewei">Eewei</a>. Our idea was that we could save time of busy professionals by suggesting movies based on their tweets. It&#8217;s called <a href="http://www.emotivu.com" title="Emotivu">http://www.emotivu.com</a>. The event is really good to help young entrepreneurs start up a business. Every body comes up with an idea and the participants will vote on the idea they&#8217;re interested in doing for the next 54 hours. It was intense, less sleep but good food. Unfortunately, I forgot to take pictures of us having BBQ.</p>
+
+<p>What I have learnt from this event is small team has more advantages than bigger team and of course less stress. Small team tends to talk to each other a lot, even though I&#8217;m a dev I still have to pair with the UX/UI to get fast feedback. And 54 hours is not a lot, you have to come up with a business plan, marketing plan, get the prototype up and running. You also have to validate your idea with real customers to see if you idea has legs. And the final thing is the final presentation. At the end judges will give you advices on how to improve the idea. And after 54 hours you could carry on with the idea.</p>
+
+<blockquote><p>Customer validation is key</p></blockquote>
+
+<p>To sum up, the whole event is a really good experience for me. I got to learn a lot of stuff apart from just coding. I really recommend whoever is interested in a start up. The other event that I used to go is <a href="http://launch48.com/" title="Launch48">Launch48</a> which is the same stuff.</p>
+
+<p>These are my teammates. <a href="http://www.eewei.com">Eewei</a>, <a href="http://www.oneninefourstudio.com/">Colin</a> and <a href="http://jonathanyap.com/home.html">Jonathan</a></p>
+
+<p><img src="http://www.noppanit.com/wp-content/uploads/2012/07/2012-06-30-21.30.53-150x150.jpg">
+<img src="http://www.noppanit.com/wp-content/uploads/2012/07/2012-07-01-13.34.21-150x150.jpg">
+<img src="http://www.noppanit.com/wp-content/uploads/2012/07/2012-07-01-13.23.10-150x150.jpg"><br/>
+<img src="http://www.noppanit.com/wp-content/uploads/2012/07/2012-07-01-13.14.52-150x150.jpg">
+<img src="http://www.noppanit.com/wp-content/uploads/2012/07/2012-07-01-13.06.04-150x150.jpg"></p>
 </div>
   
   

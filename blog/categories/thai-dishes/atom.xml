@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Thai Dishes | My Blog]]></title>
   <link href="http://noppanit.github.io/blog/categories/thai-dishes/atom.xml" rel="self"/>
   <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-01T16:31:21-04:00</updated>
+  <updated>2015-10-01T21:51:48-04:00</updated>
   <id>http://noppanit.github.io/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -18,12 +18,18 @@
     <link href="http://noppanit.github.io/fried-chicken-with-ginger/"/>
     <updated>2008-03-29T00:00:00-04:00</updated>
     <id>http://noppanit.github.io/fried-chicken-with-ginger</id>
-    <content type="html"><![CDATA[<p>Ingredients<br/>
-1. Chicken marinated with salt.<br/>
-2. Finely sliced onion<br/>
-3. Finely sliced red pepper and yellow pepper<br/>
-4. Finely sliced ginger<br/>
-5. Chopped garlic</p>
+    <content type="html"><![CDATA[<p>Ingredients</p>
+
+<ol>
+<li>Chicken marinated with salt.</li>
+<li>Finely sliced onion</li>
+<li>Finely sliced red pepper and yellow pepper</li>
+<li>Finely sliced ginger</li>
+<li>Chopped garlic</li>
+</ol>
+
+
+<p>Directions</p>
 
 <ol>
 <li>put vegetable oil into a pan, heat it until smoke emits</li>

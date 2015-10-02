@@ -88,23 +88,36 @@
 
 <p>Just copy this code to ~/.bash_profile and restart your terminal.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          function rm () {<br /> &nbsp; local path<br /> &nbsp; for path in "$@"; do<br /> &nbsp; &nbsp; # ignore any arguments<br /> &nbsp; &nbsp; if [[ "$path" = -* ]]; then :<br /> &nbsp; &nbsp; else<br /> &nbsp; &nbsp; &nbsp; local dst=${path##*/}<br /> &nbsp; &nbsp; &nbsp; # append the time if necessary<br /> &nbsp; &nbsp; &nbsp; while [ -e ~/.Trash/"$dst" ]; do<br /> &nbsp; &nbsp; &nbsp; &nbsp; dst="$dst "$(date +%H-%M-%S)<br /> &nbsp; &nbsp; &nbsp; done<br /> &nbsp; &nbsp; &nbsp; mv "$path" ~/.Trash/"$dst"<br /> &nbsp; &nbsp; fi<br /> &nbsp; done<br /> }
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>function rm () {
+</span><span class='line'>  local path
+</span><span class='line'>  for path in "$@"; do
+</span><span class='line'>    # ignore any arguments
+</span><span class='line'>    if [[ "$path" = -* ]]; then :
+</span><span class='line'>    else
+</span><span class='line'>      local dst=${path##*/}
+</span><span class='line'>      # append the time if necessary
+</span><span class='line'>      while [ -e ~/.Trash/"$dst" ]; do
+</span><span class='line'>        dst="$dst "$(date +%H-%M-%S)
+</span><span class='line'>      done
+</span><span class='line'>      mv "$path" ~/.Trash/"$dst"
+</span><span class='line'>    fi
+</span><span class='line'>  done
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
@@ -144,7 +157,7 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/tutorial-embedding-jetty-with-ssl/" title="Previous Post: Tutorial: Embedding Jetty with SSL">&laquo; Tutorial: Embedding Jetty with SSL</a>
+        <a class="basic-alignment left" href="/git-interrupted-workflow-what-will-you-do/" title="Previous Post: Git &#8211; Interrupted workflow, what will you do?">&laquo; Git &#8211; Interrupted workflow, what will you do?</a>
       
       
         <a class="basic-alignment right" href="/test-command-line-program/" title="Next Post: Test Command Line Program">Test Command Line Program &raquo;</a>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Refreshment | My Blog]]></title>
   <link href="http://noppanit.github.io/blog/categories/refreshment/atom.xml" rel="self"/>
   <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-01T16:31:21-04:00</updated>
+  <updated>2015-10-01T21:51:48-04:00</updated>
   <id>http://noppanit.github.io/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -20,10 +20,16 @@
     <id>http://noppanit.github.io/the-best-hot-chocolate</id>
     <content type="html"><![CDATA[<p>This is the best chocolate I have ever taste.</p>
 
-<p>Ingredients<br/>
-1. Chocolate powder<br/>
-2. Semi-skimmed milk<br/>
-3. Chocolate moose</p>
+<h2>Ingredients</h2>
+
+<ol>
+<li>Chocolate powder</li>
+<li>Semi-skimmed milk</li>
+<li>Chocolate moose</li>
+</ol>
+
+
+<h2>Directions</h2>
 
 <ol>
 <li>Simmer semi-skimmed milk until you can see a little bubbles come out, but not boil it until the boiling point</li>
@@ -32,8 +38,6 @@
 <li>sprinkle a little bit of chocolate powder as in the picture</li>
 </ol>
 
-
-<p><a href="http://www.noppanit.com/cooking/wp-content/uploads/2007/12/img_2363.jpg" title="Direct link to file"><img src="http://www.noppanit.com/cooking/wp-content/uploads/2007/12/img_2363.thumbnail.jpg" alt="The best hot chocolate" height="128" width="162" /></a></p>
 ]]></content>
   </entry>
   

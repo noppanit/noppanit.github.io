@@ -92,67 +92,119 @@
 
 <p>A class student that needs to go to school. You can see that student class is tightly coupled with the class FindARouteToSchool. You can&#8217;t have Student without FindARouteToSchool. This is not so bad, but many developers find it not flexible enough. We need to promote loosely coupled.</p>
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          <span class="kw1">public</span> <span class="kw1">class</span> Student<br /> <span class="br0">&#123;</span><br /> &nbsp; FindARouteToSchool findARoute<span class="sy0">;</span><br /> &nbsp; <br /> &nbsp; <span class="kw1">public</span> <span class="kw4">void</span> goToSchool<span class="br0">&#40;</span><span class="br0">&#41;</span><br /> &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; findARoute <span class="sy0">=</span> <span class="kw1">new</span> GoByBus<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; findARoute.<span class="me1">go</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> &nbsp; <br /> &nbsp; <span class="kw1">public</span> <span class="kw1">static</span> <span class="kw4">void</span> main <span class="br0">&#40;</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> args<span class="br0">&#91;</span><span class="br0">&#93;</span> <span class="br0">&#41;</span><br /> &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw1">new</span> Student<span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">goToSchool</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> &nbsp; <br /> <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>  <span class="n">FindARouteToSchool</span> <span class="n">findARoute</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">goToSchool</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="n">findARoute</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">GoByBus</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">findARoute</span><span class="o">.</span><span class="na">go</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span> <span class="n">String</span> <span class="n">args</span><span class="o">[]</span> <span class="o">)</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="k">new</span> <span class="nf">Student</span><span class="o">().</span><span class="na">goToSchool</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>So, we need something that can inject something into the Student class, so the class is not dependent to FindARouteToSchool. I have chosen Spring to solve the problem and create a setter object to set a reference of the class FindARouteToSchool.</p>
 
 <p>This is the new Student class which has one more method to set FindARouteToSchool reference.</p>
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          <span class="kw1">public</span> <span class="kw1">class</span> Student<br /> <span class="br0">&#123;</span><br /> &nbsp; FindARouteToSchool findARoute<span class="sy0">;</span><br /> &nbsp; <br /> &nbsp; <span class="kw1">public</span> <span class="kw4">void</span> setFindARoute<span class="br0">&#40;</span>FindARouteToSchool findARoute<span class="br0">&#41;</span><br /> &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw1">this</span>.<span class="me1">findARoute</span> <span class="sy0">=</span> findARoute<span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; <span class="kw1">public</span> <span class="kw4">void</span> goToSchool<span class="br0">&#40;</span><span class="br0">&#41;</span><br /> &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; findARoute.<span class="me1">go</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> &nbsp; <br /> &nbsp; <span class="kw1">public</span> <span class="kw1">static</span> <span class="kw4">void</span> main <span class="br0">&#40;</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> args<span class="br0">&#91;</span><span class="br0">&#93;</span> <span class="br0">&#41;</span><br /> &nbsp; <span class="br0">&#123;</span><br /> &nbsp; &nbsp; ApplicationContext ctx <span class="sy0">=</span> <span class="kw1">new</span> ClassPathXmlApplicationContext<span class="br0">&#40;</span><span class="st0">"spring-idol.xml"</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; Student student <span class="sy0">=</span> <span class="br0">&#40;</span>Student<span class="br0">&#41;</span> ctx.<span class="me1">getBean</span><span class="br0">&#40;</span><span class="st0">"student"</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; student.<span class="me1">goToSchool</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>  <span class="n">FindARouteToSchool</span> <span class="n">findARoute</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setFindARoute</span><span class="o">(</span><span class="n">FindARouteToSchool</span> <span class="n">findARoute</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">findARoute</span> <span class="o">=</span> <span class="n">findARoute</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">goToSchool</span><span class="o">()</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="n">findARoute</span><span class="o">.</span><span class="na">go</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span> <span class="n">String</span> <span class="n">args</span><span class="o">[]</span> <span class="o">)</span>
+</span><span class='line'>  <span class="o">{</span>
+</span><span class='line'>      <span class="n">ApplicationContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ClassPathXmlApplicationContext</span><span class="o">(</span><span class="s">&quot;spring-idol.xml&quot;</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">Student</span> <span class="n">student</span> <span class="o">=</span> <span class="o">(</span><span class="n">Student</span><span class="o">)</span> <span class="n">ctx</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&quot;student&quot;</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">student</span><span class="o">.</span><span class="na">goToSchool</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>This is the XML configure file of Spring</p>
 
-<div class="codecolorer-container xml blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="xml codecolorer">
-          <span class="sc3"><span class="re1"><?xml</span> <span class="re0">version</span>=<span class="st0">"1.0"</span> <span class="re0">encoding</span>=<span class="st0">"UTF-8"</span><span class="re2">?></span></span><br /> <span class="sc3"><span class="re1"><beans</span> <span class="re0">xmlns</span>=<span class="st0">"http://www.springframework.org/schema/beans"</span></span><br /> <span class="sc3">&nbsp; <span class="re0">xmlns:xsi</span>=<span class="st0">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br /> <span class="sc3">&nbsp; <span class="re0">xsi:schemaLocation</span>=<span class="st0">"http://www.springframework.org/schema/beans </span><br /> <span class="sc3">&nbsp; http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"</span><span class="re2">></span></span><br /> &nbsp; <br /> &nbsp; <span class="sc3"><span class="re1"><bean</span> <span class="re0">id</span>=<span class="st0">"goByTube"</span></span><br /> <span class="sc3">&nbsp; &nbsp; <span class="re0">class</span>=<span class="st0">"com.noppanit.GoByTube"</span><span class="re2">/></span></span><br /> <br /> &nbsp; <span class="sc3"><span class="re1"><bean</span> <span class="re0">id</span>=<span class="st0">"student"</span> <span class="re0">class</span>=<span class="st0">"com.noppanit.Student"</span> <span class="re2">></span></span><br /> &nbsp; &nbsp; <span class="sc3"><span class="re1"><property</span> <span class="re0">name</span>=<span class="st0">"findARoute"</span> <span class="re0">ref</span>=<span class="st0">"goByTube"</span><span class="re2">></span><span class="re1"></property<span class="re2">></span></span></span><br /> &nbsp; <span class="sc3"><span class="re1"></bean<span class="re2">></span></span></span><br /> <span class="sc3"><span class="re1"></beans<span class="re2">></span></span></span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+</span><span class='line'><span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.springframework.org/schema/beans&quot;</span>
+</span><span class='line'>  <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+</span><span class='line'>  <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.springframework.org/schema/beans </span>
+</span><span class='line'><span class="s">  http://www.springframework.org/schema/beans/spring-beans-2.0.xsd&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;goByTube&quot;</span>
+</span><span class='line'>    <span class="na">class=</span><span class="s">&quot;com.noppanit.GoByTube&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;student&quot;</span> <span class="na">class=</span><span class="s">&quot;com.noppanit.Student&quot;</span> <span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;findARoute&quot;</span> <span class="na">ref=</span><span class="s">&quot;goByTube&quot;</span><span class="nt">&gt;&lt;/property&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/bean&gt;</span>
+</span><span class='line'><span class="nt">&lt;/beans&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -197,7 +249,7 @@
         <a class="basic-alignment left" href="/why-dummy-text-from-web-template-has-to-be-lorem-ipsum/" title="Previous Post: Why dummy text from web template has to be &#8220;Lorem Ipsum&#8221;">&laquo; Why dummy text from web template has to be &#8220;Lorem Ipsum&#8221;</a>
       
       
-        <a class="basic-alignment right" href="/database-joins-what-are-these/" title="Next Post: Database Joins: What are these?">Database Joins: What are these? &raquo;</a>
+        <a class="basic-alignment right" href="/java-builder-pattern-want-to-avoid-getters-and-setters/" title="Next Post: Java Builder Pattern: Want to avoid getters and setters to create an object?">Java Builder Pattern: Want to avoid getters and setters to create an object? &raquo;</a>
       
     </p>
   </footer>

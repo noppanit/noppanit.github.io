@@ -98,176 +98,324 @@
 
 <p>This is my <strong>gulpfile.js</strong></p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="kw2">var</span> gulp <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'gulp'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="kw2">var</span> karma <span class="sy0">=</span> require<span class="br0">&#40;</span><span class="st0">'gulp-karma'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="kw2">var</span> testFiles <span class="sy0">=</span> <span class="br0">&#91;</span><br /> &nbsp; <span class="st0">'tests/vendors/jquery-1.11.3.min.js'</span><span class="sy0">,</span><br /> &nbsp; <span class="st0">'tests/vendors/jasmine-jquery.js'</span><span class="sy0">,</span><br /> &nbsp; <span class="st0">'src/**/*.js'</span><span class="sy0">,</span><br /> &nbsp; <span class="st0">'tests/spec/**/*.js'</span><br /> <span class="br0">&#93;</span><span class="sy0">;</span><br /> <span class="coMULTI">/**<br /> &nbsp;* Run test once and exit<br /> &nbsp;*/</span><br /> gulp.<span class="me1">task</span><span class="br0">&#40;</span><span class="st0">'test'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>done<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; <span class="kw1">return</span> gulp.<span class="me1">src</span><span class="br0">&#40;</span>testFiles<span class="br0">&#41;</span><br /> &nbsp; &nbsp; .<span class="me1">pipe</span><span class="br0">&#40;</span>karma<span class="br0">&#40;</span><span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; configFile<span class="sy0">:</span> <span class="st0">'karma.conf.js'</span><span class="sy0">,</span><br /> &nbsp; &nbsp; &nbsp; action<span class="sy0">:</span> <span class="st0">'run'</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> &nbsp; .<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'error'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>err<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="co1">// Make sure failed tests cause gulp to exit non-zero </span><br /> &nbsp; &nbsp; <span class="kw1">throw</span> err<span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> gulp.<span class="me1">task</span><span class="br0">&#40;</span><span class="st0">'default'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; gulp.<span class="me1">src</span><span class="br0">&#40;</span>testFiles<span class="br0">&#41;</span><br /> &nbsp; &nbsp; .<span class="me1">pipe</span><span class="br0">&#40;</span>karma<span class="br0">&#40;</span><span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; configFile<span class="sy0">:</span> <span class="st0">'karma.conf.js'</span><span class="sy0">,</span><br /> &nbsp; &nbsp; &nbsp; action<span class="sy0">:</span> <span class="st0">'watch'</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">karma</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-karma&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">testFiles</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>  <span class="s1">&#39;tests/vendors/jquery-1.11.3.min.js&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;tests/vendors/jasmine-jquery.js&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;src/**/*.js&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s1">&#39;tests/spec/**/*.js&#39;</span>
+</span><span class='line'><span class="p">];</span>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * Run test once and exit</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">testFiles</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">karma</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">configFile</span><span class="o">:</span> <span class="s1">&#39;karma.conf.js&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;run&#39;</span>
+</span><span class='line'>    <span class="p">}))</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Make sure failed tests cause gulp to exit non-zero </span>
+</span><span class='line'>    <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">testFiles</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">karma</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">configFile</span><span class="o">:</span> <span class="s1">&#39;karma.conf.js&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;watch&#39;</span>
+</span><span class='line'>    <span class="p">}));</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>This is my <strong>karma.conf.js</strong></p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          module.<span class="me1">exports</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>config<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; config.<span class="me1">set</span><span class="br0">&#40;</span><span class="br0">&#123;</span><br /> &nbsp; &nbsp; browsers<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">'PhantomJS'</span><span class="br0">&#93;</span><span class="sy0">,</span><br /> &nbsp; &nbsp; frameworks<span class="sy0">:</span> <span class="br0">&#91;</span><span class="st0">'jasmine'</span><span class="br0">&#93;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">config</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">browsers</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;PhantomJS&#39;</span><span class="p">],</span>
+</span><span class='line'>    <span class="nx">frameworks</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;jasmine&#39;</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Here&#8217;s my first test</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          describe<span class="br0">&#40;</span><span class="st0">'Taggify'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; <span class="kw2">var</span> fixture<span class="sy0">;</span><br /> &nbsp; beforeEach<span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; fixture <span class="sy0">=</span> setFixtures<span class="br0">&#40;</span><span class="st0">'<ul id="tag"></ul>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; jQuery<span class="br0">&#40;</span><span class="st0">'#tag'</span><span class="br0">&#41;</span>.<span class="me1">taggify</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <br /> &nbsp; it<span class="br0">&#40;</span><span class="st0">'should initialize text box'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> input <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'input'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; expect<span class="br0">&#40;</span>input.<span class="me1">length</span> <span class="sy0">></span> <span class="nu0"></span><span class="br0">&#41;</span>.<span class="me1">toBeTruthy</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Taggify&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">fixture</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">fixture</span> <span class="o">=</span> <span class="nx">setFixtures</span><span class="p">(</span><span class="s1">&#39;&lt;ul id=&quot;tag&quot;&gt;&lt;/ul&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;#tag&#39;</span><span class="p">).</span><span class="nx">taggify</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should initialize text box&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>You will see that the test failed now we implement some code.</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>$<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; $.<span class="me1">fn</span>.<span class="me1">taggify</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>options<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; create<span class="br0">&#40;</span><span class="kw1">this</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw1">this</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="sy0">;</span><br /> <br /> &nbsp; <span class="kw2">function</span> create<span class="br0">&#40;</span>$theElement<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> $input <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<input class="tag-input"></input>'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'type'</span><span class="sy0">,</span> <span class="st0">'text'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'autocomplete'</span><span class="sy0">,</span> <span class="st0">'off'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $theElement.<span class="me1">append</span><span class="br0">&#40;</span>$input.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#40;</span>jQuery<span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">taggify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">create</span><span class="p">(</span><span class="nx">$theElement</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input class=&quot;tag-input&quot;&gt;&lt;/input&gt;&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$theElement</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Now the test passed.</p>
 
 <p>Now let&#8217;s add some event so when you hit enter the tag is added. So, I added one more test</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          &nbsp; it<span class="br0">&#40;</span><span class="st0">'should add a tag'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> input <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'input'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; input.<span class="me1">val</span><span class="br0">&#40;</span><span class="st0">'tag'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; input.<span class="me1">trigger</span><span class="br0">&#40;</span>jQuery.<span class="me1">Event</span><span class="br0">&#40;</span><span class="st0">'keyup'</span><span class="sy0">,</span> <span class="br0">&#123;</span> keyCode<span class="sy0">:</span> <span class="nu0">13</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="kw2">var</span> tags <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'.tag-label'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> tag <span class="sy0">=</span> jQuery<span class="br0">&#40;</span>tags<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <br /> &nbsp; &nbsp; expect<span class="br0">&#40;</span>tag.<span class="me1">html</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>.<span class="me1">toBe</span><span class="br0">&#40;</span><span class="st0">'tag'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; expect<span class="br0">&#40;</span>tags.<span class="me1">length</span> <span class="sy0">></span> <span class="nu0"></span><span class="br0">&#41;</span>.<span class="me1">toBeTruthy</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should add a tag&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">input</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">Event</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">keyCode</span><span class="o">:</span> <span class="mi">13</span> <span class="p">}));</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">tags</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.tag-label&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">tag</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="nx">tags</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">tag</span><span class="p">.</span><span class="nx">html</span><span class="p">()).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">tags</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Now the test failed.</p>
 
 <p>I&#8217;ll fix the test by doing this.</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>$<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; $.<span class="me1">fn</span>.<span class="me1">taggify</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>options<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; create<span class="br0">&#40;</span><span class="kw1">this</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw1">this</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="sy0">;</span><br /> <br /> &nbsp; <span class="kw2">function</span> create<span class="br0">&#40;</span>$theElement<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> $input <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<input class="tag-input"></input>'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'type'</span><span class="sy0">,</span> <span class="st0">'text'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'autocomplete'</span><span class="sy0">,</span> <span class="st0">'off'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $input.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'keyup'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>e<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">&#40;</span>e.<span class="me1">keyCode</span> <span class="sy0">===</span> <span class="nu0">13</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> tagText <span class="sy0">=</span> $input.<span class="me1">val</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> $span <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<span class="tag-label"></span>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; $span.<span class="me1">text</span><span class="br0">&#40;</span>tagText<span class="br0">&#41;</span>.<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li class="tag-choice"></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; $theElement.<span class="me1">prepend</span><span class="br0">&#40;</span>$span.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; $input.<span class="me1">val</span><span class="br0">&#40;</span><span class="st0">''</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $theElement.<span class="me1">append</span><span class="br0">&#40;</span>$input.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#40;</span>jQuery<span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">taggify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">create</span><span class="p">(</span><span class="nx">$theElement</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input class=&quot;tag-input&quot;&gt;&lt;/input&gt;&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$input</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">===</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">tagText</span> <span class="o">=</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">$span</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;tag-label&quot;&gt;&lt;/span&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">$span</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">tagText</span><span class="p">).</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li class=&quot;tag-choice&quot;&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>        <span class="nx">$theElement</span><span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">$span</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
+</span><span class='line'>        <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$theElement</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Now I want to add some negative test case.</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          &nbsp; it<span class="br0">&#40;</span><span class="st0">'should not add a tag'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> input <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'input'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; input.<span class="me1">trigger</span><span class="br0">&#40;</span>jQuery.<span class="me1">Event</span><span class="br0">&#40;</span><span class="st0">'keyup'</span><span class="sy0">,</span> <span class="br0">&#123;</span> keyCode<span class="sy0">:</span> <span class="nu0">13</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> tags <span class="sy0">=</span> fixture.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">'.tag-label'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <br /> &nbsp; &nbsp; expect<span class="br0">&#40;</span>tags.<span class="me1">length</span> <span class="sy0">></span> <span class="nu0"></span><span class="br0">&#41;</span>.<span class="me1">toBeFalsy</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should not add a tag&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">input</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">Event</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">keyCode</span><span class="o">:</span> <span class="mi">13</span> <span class="p">}));</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">tags</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.tag-label&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">expect</span><span class="p">(</span><span class="nx">tags</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">).</span><span class="nx">toBeFalsy</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Oops the test failed, looks like I missed something</p>
 
 <p>I will fix the test by</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>$<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; $.<span class="me1">fn</span>.<span class="me1">taggify</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span>options<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; create<span class="br0">&#40;</span><span class="kw1">this</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">return</span> <span class="kw1">this</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><span class="sy0">;</span><br /> <br /> &nbsp; <span class="kw2">function</span> create<span class="br0">&#40;</span>$theElement<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw2">var</span> $input <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<input class="tag-input"></input>'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'type'</span><span class="sy0">,</span> <span class="st0">'text'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">attr</span><span class="br0">&#40;</span><span class="st0">'autocomplete'</span><span class="sy0">,</span> <span class="st0">'off'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; .<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $input.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'keyup'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span>e<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">&#40;</span>e.<span class="me1">keyCode</span> <span class="sy0">===</span> <span class="nu0">13</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> tagText <span class="sy0">=</span> $input.<span class="me1">val</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>tagText <span class="sy0">!==</span> <span class="st0">''</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> $span <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'<span class="tag-label"></span>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $span.<span class="me1">text</span><span class="br0">&#40;</span>tagText<span class="br0">&#41;</span>.<span class="me1">wrap</span><span class="br0">&#40;</span><span class="st0">'<li class="tag-choice"></li>'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $theElement.<span class="me1">prepend</span><span class="br0">&#40;</span>$span.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $input.<span class="me1">val</span><span class="br0">&#40;</span><span class="st0">''</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; $theElement.<span class="me1">append</span><span class="br0">&#40;</span>$input.<span class="me1">parent</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#40;</span>jQuery<span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">taggify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">create</span><span class="p">(</span><span class="nx">$theElement</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input class=&quot;tag-input&quot;&gt;&lt;/input&gt;&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$input</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">===</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">tagText</span> <span class="o">=</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="nx">tagText</span> <span class="o">!==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="kd">var</span> <span class="nx">$span</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;tag-label&quot;&gt;&lt;/span&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="nx">$span</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">tagText</span><span class="p">).</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li class=&quot;tag-choice&quot;&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>          <span class="nx">$theElement</span><span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">$span</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
+</span><span class='line'>          <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$theElement</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>That&#8217;s it. I hope you enjoy and love TDD more. And here&#8217;s the <a href="https://github.com/noppanit/taggify">github repo</a></p>

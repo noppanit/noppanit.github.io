@@ -98,46 +98,47 @@
 
 <p>Now if you can find the slope of the graph and intercept you should be able to use the formula.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          Y = MX + C<br /> <br /> M = slope of the graph<br /> C = Intercept
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Y = MX + C
+</span><span class='line'>
+</span><span class='line'>M = slope of the graph
+</span><span class='line'>C = Intercept</span></code></pre></td></tr></table></div></figure>
 
 
 <p>If you&#8217;re lazy to look at my <a href="https://github.com/noppanit/linear-regression-basic">notebook</a>.</p>
 
 <p>Then you can run this code.</p>
 
-<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="python codecolorer">
-          <span class="kw1">import</span> pandas <span class="kw1">as</span> pd<br /> <span class="kw1">import</span> numpy <span class="kw1">as</span> np<br /> <span class="kw1">from</span> scipy <span class="kw1">import</span> stats<br /> <br /> total_bills <span class="sy0">=</span> np.<span class="kw3">random</span>.<span class="me1">randint</span><span class="br0">&#40;</span><span class="nu0">100</span><span class="sy0">,</span> size<span class="sy0">=</span><span class="nu0">1000</span><span class="br0">&#41;</span><br /> tips <span class="sy0">=</span> total_bills * <span class="nu0">0.10</span><br /> <br /> x <span class="sy0">=</span> pd.<span class="me1">Series</span><span class="br0">&#40;</span>tips<span class="sy0">,</span> name<span class="sy0">=</span><span class="st0">'tips'</span><span class="br0">&#41;</span><br /> y <span class="sy0">=</span> pd.<span class="me1">Series</span><span class="br0">&#40;</span>total_bills<span class="sy0">,</span> name<span class="sy0">=</span><span class="st0">'total_bills'</span><span class="br0">&#41;</span><br /> df <span class="sy0">=</span> pd.<span class="me1">concat</span><span class="br0">&#40;</span><span class="br0">&#91;</span>x<span class="sy0">,</span> y<span class="br0">&#93;</span><span class="sy0">,</span> axis<span class="sy0">=</span><span class="nu0">1</span><span class="br0">&#41;</span><br /> <br /> slope<span class="sy0">,</span> intercept<span class="sy0">,</span> r_value<span class="sy0">,</span> p_value<span class="sy0">,</span> std_err <span class="sy0">=</span> stats.<span class="me1">linregress</span><span class="br0">&#40;</span>x<span class="sy0">=</span>total_bills<span class="sy0">,</span> y<span class="sy0">=</span>tips<span class="br0">&#41;</span><br /> predicted_tips <span class="sy0">=</span> <span class="br0">&#40;</span>slope * <span class="nu0">70</span><span class="br0">&#41;</span> + intercept
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">total_bills</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</span><span class='line'><span class="n">tips</span> <span class="o">=</span> <span class="n">total_bills</span> <span class="o">*</span> <span class="mf">0.10</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;tips&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">total_bills</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;total_bills&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">total_bills</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">tips</span><span class="p">)</span>
+</span><span class='line'><span class="n">predicted_tips</span> <span class="o">=</span> <span class="p">(</span><span class="n">slope</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span> <span class="o">+</span> <span class="n">intercept</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The result is $7 which corresponds to the 10% tip.</p>

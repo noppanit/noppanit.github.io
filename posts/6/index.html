@@ -190,65 +190,6 @@ spend under 1 pound a day for 5 days and you raise money for the needy. Why £1?
       
   <header>
     
-      <h1 class="entry-title"><a href="/koala-ssl-error-on-ruby-1-9-3/">Koala SSL Error on Ruby 1.9.3.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-03-17T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Actually, this error is not just for Koala but I was using Koala for my Facebook application and after I moved to a new laptop I started seeing this error.</p>
-
-<p>So, what is happening. I&#8217;ve just installed my new machine on Mountain Lion with a shiny new RVM and ruby 1.9.3. Everything went fine until I started my work to continue hacking from my old laptop. I got this error while I&#8217;m trying to login via Facebook via Koala. <strong>SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed</strong>. What is wrong? It worked before.</p>
-
-<p>After a couple of rant search on Google I found <a href="http://stackoverflow.com/questions/5711190/how-to-get-rid-of-opensslsslsslerror">this</a>. It seemed a bit hacky to me. It suggested me to download a correct CA certificate and put it into the right place. But after a few more search I found <a href="https://rvm.io/packages/openssl/">this</a>. It turned out I have to install RVM with OpelSSL which somehow is not installed. I think this solution is a lot cleaner then just copying something to a folder and pray.</p>
-
-<p>This is what I did</p>
-
-<pre><div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          rvm pkg install openssl <span class="co1">#installed openssl from RVM</span><br />
-          rvm reinstall 1.9.3<span class="sy0">-</span>head <span class="sy0">--</span>with<span class="sy0">-</span>openssl<span class="sy0">-</span>dir=$rvm_path<span class="sy0">/</span>usr <span class="co1">#configure your rvm to use openssl</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-</pre>
-
-
-<p>And then everything went ok after these two magical commands.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/maybe-i-have-just-got-scroogled/">Maybe I Have Just Got Scroogled?</a></h1>
     
     
@@ -843,6 +784,54 @@ I couldn&#8217;t believe that this will be the simplest and most effective way. 
 <p><a href="#" rel="attachment wp-att-1015"><img class="size-medium wp-image-1015 cool_border alignnone" alt="Mullerthal Trail" src="http://www.noppanit.com/wp-content/uploads/2013/01/IMG_0002_edited-1-300x200.jpg" width="300" height="200" /></a></p>
 
 <p>I walked from Echternach to Berdorf because I didn&#8217;t have enough time. The day was short during the winter and I didn&#8217;t want to spend a night there without something warm. From Berform you can get a bus back to Luxembourg City easily with the same bus number 110 or 111.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/little-javascript-to-check-if-the-page-contain-multiple-ids/">Little JavaScript to Check if the Page Contain Multiple IDs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-01-08T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I know this shouldn&#8217;t happen at all these days, but as you have a lot of people contributing to one single repository. This thing might happen. So, this is just purely for myself. I just use jQuery to create a little util method which is executed every time the browser is loaded to check if the page contains any multiple IDs.</p>
+
+<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="line-numbers">
+        <div>
+          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />
+        </div>
+      </td>
+      
+      <td>
+        <div class="javascript codecolorer">
+          &nbsp; &nbsp; detect_dub_ids <span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> dupIds <span class="sy0">=</span> <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; $<span class="br0">&#40;</span><span class="st0">'[id]'</span><span class="br0">&#41;</span>.<span class="me1">each</span><span class="br0">&#40;</span><span class="kw2">function</span> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> $ids <span class="sy0">=</span> $<span class="br0">&#40;</span><span class="st0">'[id='</span> <span class="sy0">+</span> <span class="kw1">this</span>.<span class="me1">id</span> <span class="sy0">+</span> <span class="st0">']'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">&#40;</span>$ids.<span class="me1">length</span> <span class="sy0">></span> <span class="nu0">1</span> <span class="sy0">&&</span> $ids<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span> <span class="sy0">===</span> <span class="kw1">this</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dupIds.<span class="me1">push</span><span class="br0">&#40;</span><span class="kw1">this</span>.<span class="me1">id</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> dupIds<span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="sy0">,</span><br /> <br /> &nbsp; &nbsp; get_display_text_for_dup_ids <span class="sy0">:</span> <span class="kw2">function</span><span class="br0">&#40;</span>ids<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw2">var</span> h <span class="sy0">=</span> <span class="br0">&#123;</span><span class="br0">&#125;</span><span class="sy0">,</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; text <span class="sy0">=</span> <span class="st0">""</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; jQuery<span class="br0">&#40;</span>ids<span class="br0">&#41;</span>.<span class="me1">each</span><span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>index<span class="sy0">,</span> value<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">&#40;</span>h<span class="br0">&#91;</span>value<span class="br0">&#93;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; h<span class="br0">&#91;</span>value<span class="br0">&#93;</span>.<span class="me1">push</span><span class="br0">&#40;</span>value<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span> <span class="kw1">else</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; h<span class="br0">&#91;</span>value<span class="br0">&#93;</span> <span class="sy0">=</span> <span class="br0">&#91;</span>value<span class="br0">&#93;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw2">var</span> k <span class="kw1">in</span> h<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; text <span class="sy0">+=</span> <span class="st0">"#"</span><span class="sy0">+</span>k<span class="sy0">+</span> <span class="st0">" ("</span><span class="sy0">+</span>h<span class="br0">&#91;</span>k<span class="br0">&#93;</span>.<span class="me1">length</span><span class="sy0">+</span><span class="st0">") times "</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> text<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
 </div>
   
   
