@@ -101,23 +101,8 @@ I tried to use Google Refine to cross check two datasets but it couldn&#8217;t e
 <p><strong>Third attempt</strong><br/>
 I used MySQL to join the tables and and check if the ids exist. Dumping all the data to MySQL was pretty easy my plain old PHP and MySQL. It turned out the friends dataset got around 38 Million rows. And here&#8217;s the script I used to check if the id doesn&#8217;t exit spit it out and delete it.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          SELECT uf.id, uf.friend_id, u.user_id FROM eventify.UserFriends uf LEFT JOIN eventify.Users u on uf.friend_id = u.user_id WHERE u.user_id is NULL LIMIT 1
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> SELECT uf.id, uf.friend_id, u.user_id FROM eventify.UserFriends uf LEFT JOIN eventify.Users u on uf.friend_id = u.user_id WHERE u.user_id is NULL LIMIT 1</span></code></pre></td></tr></table></div></figure>
 
 
 <p>It was also really slow since I just use my Macbook and didn&#8217;t even turn MySQL performance. So I moved on again.</p>

@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="http://noppanit.github.io/atom.xml" rel="self"/>
   <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-01T21:51:48-04:00</updated>
+  <updated>2015-10-01T23:41:14-04:00</updated>
   <id>http://noppanit.github.io/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -1138,17 +1138,27 @@
 
 <p>If you walk around in Cusco, you might find local people dressing in traditional custom. If you take a picture of them, they might ask you for some money. I gave them 1 soles and it was enough. And make sure you ask their permission before you take a picture of them.</p>
 
+<p><a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17626431306/in/dateposted-ff/" title="Peru-1093710.jpg"><img src="https://farm9.staticflickr.com/8837/17626431306_853767fc9e_z.jpg" width="640" height="423" alt="Peru-1093710.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
+
 <h2>Coca leaves</h2>
 
 <p>The locals told us to chew coca leaves to prevent the tiredness and altitude sickness. To be honest, they didn&#8217;t help much but I really like the coca tea in the morning.</p>
+
+<p><a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17465382290/in/dateposted-ff/" title="Peru-1093841.jpg"><img src="https://farm8.staticflickr.com/7770/17465382290_7dfcc888d1_z.jpg" width="640" height="431" alt="Peru-1093841.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
 
 <h2>Local food</h2>
 
 <p>Peruvian cuisine is really interesting or at least from my point of view. I had Guinea pig and Alpaca. I like Alpaca but the Guinea pig is not really my jam. At least I tried.</p>
 
+<p><a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17627373766/in/dateposted-ff/" title="Peru-1094221.jpg"><img src="https://farm6.staticflickr.com/5441/17627373766_e4568e063a_z.jpg" width="640" height="444" alt="Peru-1094221.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
+
 <h2>Machu Picchu</h2>
 
+<p><a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17653773851/in/dateposted-ff/" title="Peru-1094213.jpg"><img src="https://farm9.staticflickr.com/8707/17653773851_aa6c40a15e_z.jpg" width="640" height="431" alt="Peru-1094213.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
+
 <h2>Good view from your tent</h2>
+
+<p><a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17653136981/in/dateposted-ff/" title="Peru-1093869.jpg"><img src="https://farm8.staticflickr.com/7656/17653136981_03874afb08_z.jpg" width="640" height="431" alt="Peru-1093869.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
 ]]></content>
   </entry>
   
@@ -1159,29 +1169,15 @@
     <id>http://noppanit.github.io/how-to-stop-repainting-your-sticky-bar-on-scroll</id>
     <content type="html"><![CDATA[<p>Everybody loves sticky bar. Or I should say every UX loves sticky bar. You probable have seen that from almost all major websites. Twitter or Facebook all has the top nav bar which sticks to the top and follows you when you scroll down the page. However, there&#8217;s one thing that I have noticed if you use Google Chrome Dev Tool to see the paint area. You will see that the nav bar gets repaint every time you scroll up and down.</p>
 
-<p><a href="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png" alt="Screenshot_2015-04-14_01_13_55" width="2304" height="803" class="aligncenter size-full wp-image-1383" /></a></p>
+<p><img src="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png"></p>
 
 <p>Also, if you use Timeline to record the activity you will notice a lot of Repaint happening which leads to bad scrolling performance.</p>
 
 <p>The easy fix would be to put</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          backface-visibility: hidden;
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">backface-visibility</span><span class="o">:</span> <span class="nt">hidden</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>on your navbar which will stop the repaint on scroll.</p>
@@ -1192,30 +1188,133 @@
 
 <h3>Try it yourself</h3>
 
-<p><a href="http://noppanit.com/navbar-repaint.html">http://noppanit.com/navbar-repaint.html</a> If you put</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!doctype&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'><span class="nt">&lt;style&gt;</span>
+</span><span class='line'>  <span class="nt">li</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">margin-left</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="nt">body</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">font-size</span><span class="o">:</span> <span class="m">24px</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="nt">nav</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">background-color</span><span class="o">:</span> <span class="nb">gray</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">position</span><span class="o">:</span> <span class="k">fixed</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="nt">&lt;/style&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;nav&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;li&gt;</span>Menu1<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;li&gt;</span>Menu2<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;li&gt;</span>Menu3<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;li&gt;</span>Menu4<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/nav&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;section&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>  
+</span><span class='line'>  
+</span><span class='line'>  
+</span><span class='line'>  <span class="nt">&lt;/section&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          backface-visibility: hidden;
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">backface-visibility</span><span class="o">:</span> <span class="nt">hidden</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>to the navbar and you can measure the performance by using Timeline again you will notice the difference.</p>
 
-<p><a href="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png" alt="Screenshot 2015-04-14 01.20.04" width="2297" height="805" class="aligncenter size-full wp-image-1384" /></a></p>
+<p><img src="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png"></p>
 ]]></content>
   </entry>
   
@@ -1334,23 +1433,13 @@
 
 <p>As I said in the beginning, we want to know how fast event delegation is compared to direct binding that most people do. For example, I&#8217;ve always seen people do this</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          $<span class="br0">&#40;</span><span class="st0">'#ul li'</span><span class="br0">&#41;</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'click'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; <span class="co1">// doing something amazing.</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#ul li&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// doing something amazing.</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>What is actually doing is, jQuery will add the event to each of the <strong>li</strong> in the DOM. If you have 3-4 lis, then I don&#8217;t think it&#8217;s going to make a big difference. However, if you have a thousand lis, you will see some difference. I&#8217;ll show you by using Chrome Developer Tool.</p>
@@ -1361,75 +1450,65 @@
 
 <p>It&#8217;s going to be something like this</p>
 
-<div class="codecolorer-container html4strict blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="html4strict codecolorer">
-          <span class="sc2"><<a href="http://december.com/html/4/element/ul.html"><span class="kw2">ul</span></a> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"parent"</span>></span><br /> &nbsp; <span class="sc2"><<a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>><<span class="sy0">/</span><a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span><br /> &nbsp; // 999 more <span class="sc2"><<a href="http://december.com/html/4/element/li.html"><span class="kw2">li</span></a>></span><br /> <span class="sc2"><<span class="sy0">/</span><a href="http://december.com/html/4/element/ul.html"><span class="kw2">ul</span></a>></span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">&quot;parent&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;/li&gt;</span>
+</span><span class='line'>  // 999 more <span class="nt">&lt;li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Then we will have JavaScript like this</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="sy0"><</span>script src<span class="sy0">=</span><span class="st0">"https://code.jquery.com/jquery-1.11.1.min.js"</span><span class="sy0">></</span>script<span class="sy0">></span><br /> <span class="sy0"><</span>script<span class="sy0">></span><br /> &nbsp; &nbsp; $<span class="br0">&#40;</span><span class="st0">'#parent li'</span><span class="br0">&#41;</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'click'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span><span class="st0">'you clicked me!'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="sy0"></</span>script<span class="sy0">></span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://code.jquery.com/jquery-1.11.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;script&gt;</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#parent li&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;you clicked me!&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>If you open your html page on Chrome you should see something like this.<br/>
-<a href="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png"><img src="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png" alt="Screen Shot 2014-11-21 at 7.06.19 PM" width="2264" height="988" class="aligncenter size-full wp-image-1349" /></a></p>
+<img src="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png"></p>
 
-<p>If you go down to where JavaScript is executed You will see it takes around <strong>37ms</strong> to execute the snippet.<br/>
-<a href="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png"><img src="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png" alt="Screen Shot 2014-11-21 at 7.07.18 PM" width="1352" height="985" class="aligncenter size-full wp-image-1350" /></a></p>
+<p>If you go down to where JavaScript is executed You will see it takes around <strong>37ms</strong> to execute the snippet.</p>
+
+<p><img src="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png"></p>
 
 <p>Now change your snippet to be event delegation</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          <span class="sy0"><</span>script src<span class="sy0">=</span><span class="st0">"https://code.jquery.com/jquery-1.11.1.min.js"</span><span class="sy0">></</span>script<span class="sy0">></span><br /> <span class="sy0"><</span>script<span class="sy0">></span><br /> &nbsp; &nbsp; $<span class="br0">&#40;</span><span class="st0">'#parent'</span><span class="br0">&#41;</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'click'</span><span class="sy0">,</span> <span class="st0">'li'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span><span class="st0">'you clicked me!'</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> <span class="sy0"></</span>script<span class="sy0">></span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://code.jquery.com/jquery-1.11.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;script&gt;</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#parent&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="s1">&#39;li&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;you clicked me!&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>And refresh the page you should see something like this.<br/>
-<a href="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png"><img src="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png" alt="Screen Shot 2014-11-21 at 7.12.02 PM" width="1352" height="986" class="aligncenter size-full wp-image-1353" /></a></p>
+<p>And refresh the page you should see something like this.</p>
+
+<p><img src="http://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png"></p>
 
 <p>Now it will only take <strong>2ms</strong> to execute the snippet. It&#8217;s because the event is added to one element not 1000 of them.</p>
 
@@ -1450,283 +1529,227 @@
 
 <p>Once you have RVM installed you can create a gemset using this command <strong>rvm gemset create vagrant-ls</strong>. Then <strong>rvm gemset use vagrant-ls</strong> (Just in case). I recommend you do this for each of your ruby project. It helps you separate your gems, and it won&#8217;t mess up with different versions of your gems. First thing that you have to install is Bundler <strong>gem install bundler</strong>. It&#8217;s because we will use Bundler to manage all of our dependencies. Then you can create <strong>Gemfile</strong>.</p>
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          source <span class="st0">"https://rubygems.org"</span><br /> <br /> group <span class="re3">:development</span> <span class="kw1">do</span><br /> &nbsp; gem <span class="st0">"vagrant"</span>, git: <span class="st0">"https://github.com/mitchellh/vagrant.git"</span><br /> <span class="kw1">end</span><br /> <br /> group <span class="re3">:plugins</span> <span class="kw1">do</span><br /> &nbsp; gem <span class="st0">"vagrant-ls"</span>, path: <span class="st0">"."</span><br /> <span class="kw1">end</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">source</span> <span class="s2">&quot;https://rubygems.org&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;vagrant&quot;</span><span class="p">,</span> <span class="ss">git</span><span class="p">:</span> <span class="s2">&quot;https://github.com/mitchellh/vagrant.git&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="ss">:plugins</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;vagrant-ls&quot;</span><span class="p">,</span> <span class="ss">path</span><span class="p">:</span> <span class="s2">&quot;.&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>This is the most basic you would need for your plugin development. If you wonder what is</p>
-
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          group :plugins
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-
-<p>. <a href="https://docs.vagrantup.com/v2/plugins/development-basics.html">Vagrant plugin</a> has already explained that. This will load your local plugin automatically without doing</p>
-
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          bundle exec vagrant install plugin vagrant-ls
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-
-<p>which will not quite work anyway.</p>
+<p>This is the most basic you would need for your plugin development. If you wonder what is <em>group :plugins</em>
+. <a href="https://docs.vagrantup.com/v2/plugins/development-basics.html">Vagrant plugin</a> has already explained that. This will load your local plugin automatically without doing <em>bundle exec vagrant install plugin vagrant-ls</em> which will not quite work anyway.</p>
 
 <p>Then you can create your gemspec file. I name it <strong>vagrant-ls.gemspec</strong></p>
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="kw3">require</span> <span class="kw4">File</span>.<span class="me1">expand_path</span><span class="br0">&#40;</span><span class="st0">'../lib/vagrant-ls/version'</span>, <span class="kw2">__FILE__</span><span class="br0">&#41;</span><br /> <br /> <span class="re2">Gem::Specification</span>.<span class="me1">new</span> <span class="kw1">do</span> <span class="sy0">|</span>s<span class="sy0">|</span><br /> &nbsp; s.<span class="me1">name</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= <span class="st0">'vagrant-ls'</span><br /> &nbsp; s.<span class="me1">version</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="re2">Vagrant::Ls::VERSION</span><br /> &nbsp; s.<span class="me1">date</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= <span class="st0">'2014-11-18'</span><br /> &nbsp; s.<span class="me1">summary</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="st0">"List all vms"</span><br /> &nbsp; s.<span class="me1">description</span> &nbsp; &nbsp; = <span class="st0">"A simple vagrant plugin for listing all vms"</span><br /> &nbsp; s.<span class="me1">authors</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="br0">&#91;</span><span class="st0">"Noppanit Charassinvichai"</span><span class="br0">&#93;</span><br /> &nbsp; s.<span class="me1">email</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = <span class="st0">'noppanit.c@gmail.com'</span><br /> &nbsp; s.<span class="me1">files</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = <span class="st0">`git ls-files`</span>.<span class="kw3">split</span><span class="br0">&#40;</span>$\<span class="br0">&#41;</span><br /> &nbsp; s.<span class="me1">executables</span> &nbsp; &nbsp; = s.<span class="me1">files</span>.<span class="me1">grep</span><span class="br0">&#40;</span><span class="sy0">%</span>r<span class="br0">&#123;</span>^bin<span class="sy0">/</span><span class="br0">&#125;</span><span class="br0">&#41;</span>.<span class="me1">map</span><span class="br0">&#123;</span> <span class="sy0">|</span>f<span class="sy0">|</span> <span class="kw4">File</span>.<span class="me1">basename</span><span class="br0">&#40;</span>f<span class="br0">&#41;</span> <span class="br0">&#125;</span><br /> &nbsp; s.<span class="me1">require_paths</span> &nbsp; = <span class="br0">&#91;</span><span class="st0">'lib'</span><span class="br0">&#93;</span><br /> &nbsp; s.<span class="me1">homepage</span> &nbsp; &nbsp; &nbsp; &nbsp;= <span class="st0">'https://github.com/noppanit/vagrant-ls'</span><br /> &nbsp; s.<span class="me1">license</span> &nbsp; &nbsp; &nbsp; &nbsp; = <span class="st0">'GNU'</span><br /> <span class="kw1">end</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s1">&#39;../lib/vagrant-ls/version&#39;</span><span class="p">,</span> <span class="bp">__FILE__</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">name</span>            <span class="o">=</span> <span class="s1">&#39;vagrant-ls&#39;</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">version</span>         <span class="o">=</span> <span class="no">Vagrant</span><span class="o">::</span><span class="no">Ls</span><span class="o">::</span><span class="no">VERSION</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">date</span>            <span class="o">=</span> <span class="s1">&#39;2014-11-18&#39;</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">summary</span>         <span class="o">=</span> <span class="s2">&quot;List all vms&quot;</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">description</span>     <span class="o">=</span> <span class="s2">&quot;A simple vagrant plugin for listing all vms&quot;</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">authors</span>         <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;Noppanit Charassinvichai&quot;</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">email</span>           <span class="o">=</span> <span class="s1">&#39;noppanit.c@gmail.com&#39;</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">files</span>           <span class="o">=</span> <span class="sb">`git ls-files`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="vg">$\</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">executables</span>     <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">%r{^bin/}</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">require_paths</span>   <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;lib&#39;</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">homepage</span>        <span class="o">=</span> <span class="s1">&#39;https://github.com/noppanit/vagrant-ls&#39;</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">license</span>         <span class="o">=</span> <span class="s1">&#39;GNU&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Then you crate <strong>Rakefile</strong></p>
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="kw3">require</span> <span class="st0">'rubygems'</span><br /> <span class="kw3">require</span> <span class="st0">'bundler/setup'</span><br /> <span class="re2">Bundler::GemHelper</span>.<span class="me1">install_tasks</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;bundler/setup&#39;</span>
+</span><span class='line'><span class="no">Bundler</span><span class="o">::</span><span class="no">GemHelper</span><span class="o">.</span><span class="n">install_tasks</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Then you move on to create your plugin using this <a href="http://guides.rubygems.org/patterns/" title="gem pattern">pattern</a>.</p>
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="co1"># lib/vagrant-ls.rb</span><br /> <span class="kw3">require</span> <span class="st0">'bundler'</span><br /> <br /> <span class="kw1">begin</span><br /> &nbsp; <span class="kw3">require</span> <span class="st0">'vagrant'</span><br /> <span class="kw1">rescue</span> <span class="kw4">LoadError</span><br /> &nbsp; Bundler.<span class="kw3">require</span><span class="br0">&#40;</span><span class="re3">:default</span>, <span class="re3">:development</span><span class="br0">&#41;</span><br /> <span class="kw1">end</span><br /> <br /> <span class="kw3">require</span> <span class="st0">'vagrant-ls/plugin'</span><br /> <span class="kw3">require</span> <span class="st0">'vagrant-ls/command'</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># lib/vagrant-ls.rb</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;bundler&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">begin</span>
+</span><span class='line'>  <span class="nb">require</span> <span class="s1">&#39;vagrant&#39;</span>
+</span><span class='line'><span class="k">rescue</span> <span class="no">LoadError</span>
+</span><span class='line'>  <span class="no">Bundler</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:default</span><span class="p">,</span> <span class="ss">:development</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;vagrant-ls/plugin&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;vagrant-ls/command&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I almost forget you need to create VERSION file for gemspec to get your version number</p>
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="co1"># lib/vagrant-ls/version.rb</span><br /> <span class="kw1">module</span> Vagrant<br /> &nbsp; &nbsp; <span class="kw1">module</span> Ls<br /> &nbsp; &nbsp; &nbsp; &nbsp; VERSION = <span class="st0">'0.0.1'</span><br /> &nbsp; &nbsp; <span class="kw1">end</span><br /> <span class="kw1">end</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># lib/vagrant-ls/version.rb</span>
+</span><span class='line'><span class="k">module</span> <span class="nn">Vagrant</span>
+</span><span class='line'>    <span class="k">module</span> <span class="nn">Ls</span>
+</span><span class='line'>        <span class="no">VERSION</span> <span class="o">=</span> <span class="s1">&#39;0.0.1&#39;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Then you create your plugin class, this will be the place where vagrant finds information about your plugin.</p>
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="co1"># lib/vagrant-ls/plugin.rb</span><br /> <span class="kw1">module</span> Vagrant<br /> <br /> &nbsp; &nbsp; <span class="kw1">module</span> Ls<br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">class</span> Plugin <span class="sy0"><</span> Vagrant.<span class="me1">plugin</span><span class="br0">&#40;</span><span class="st0">'2'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name <span class="st0">"List"</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; description <span class="sy0"><<-</span>DESC<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; This plugin <span class="st0">'ls'</span> all of the vms running inside the machine<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; DESC<br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; command <span class="st0">'ls'</span> <span class="kw1">do</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; require_relative <span class="st0">'command'</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Command<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">end</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">end</span><br /> &nbsp; &nbsp; <span class="kw1">end</span><br /> <span class="kw1">end</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># lib/vagrant-ls/plugin.rb</span>
+</span><span class='line'><span class="k">module</span> <span class="nn">Vagrant</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">module</span> <span class="nn">Ls</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">class</span> <span class="nc">Plugin</span> <span class="o">&lt;</span> <span class="no">Vagrant</span><span class="o">.</span><span class="n">plugin</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+</span><span class='line'>          <span class="nb">name</span> <span class="s2">&quot;List&quot;</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="n">description</span> <span class="o">&lt;&lt;-</span><span class="no">DESC</span>
+</span><span class='line'><span class="sh">          This plugin &#39;ls&#39; all of the vms running inside the machine</span>
+</span><span class='line'><span class="no">          DESC</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="n">command</span> <span class="s1">&#39;ls&#39;</span> <span class="k">do</span>
+</span><span class='line'>            <span class="n">require_relative</span> <span class="s1">&#39;command&#39;</span>
+</span><span class='line'>            <span class="no">Command</span>
+</span><span class='line'>          <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>This is where you will name your command.</p>
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          command <span class="st0">'ls'</span> <span class="kw1">do</span><br /> ...<br /> <span class="kw1">end</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">command</span> <span class="s1">&#39;ls&#39;</span> <span class="k">do</span>
+</span><span class='line'><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Last one, this is where vagrant will know how to execute your plugin</p>
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="co1"># lib/vagrant-ls/command.rb</span><br /> <span class="kw1">module</span> Vagrant<br /> &nbsp; &nbsp; <span class="kw1">module</span> Ls<br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">class</span> Command <span class="sy0"><</span> Vagrant.<span class="me1">plugin</span><span class="br0">&#40;</span><span class="st0">'2'</span>, <span class="re3">:command</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">def</span> execute<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw3">exec</span><span class="br0">&#40;</span><span class="st0">'VBoxManage list vms'</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nu0"></span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">end</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">end</span><br /> &nbsp; &nbsp; <span class="kw1">end</span><br /> <br /> <span class="kw1">end</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># lib/vagrant-ls/command.rb</span>
+</span><span class='line'><span class="k">module</span> <span class="nn">Vagrant</span>
+</span><span class='line'>    <span class="k">module</span> <span class="nn">Ls</span>
+</span><span class='line'>        <span class="k">class</span> <span class="nc">Command</span> <span class="o">&lt;</span> <span class="no">Vagrant</span><span class="o">.</span><span class="n">plugin</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="ss">:command</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">def</span> <span class="nf">execute</span>
+</span><span class='line'>                <span class="nb">exec</span><span class="p">(</span><span class="s1">&#39;VBoxManage list vms&#39;</span><span class="p">)</span>
+</span><span class='line'>                <span class="mi">0</span>
+</span><span class='line'>            <span class="k">end</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I just run <strong>VBoxManage</strong> command to list all of the vms. Once you are done, you are ready to test your plugin.</p>
 
 <p>You can run this command</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          bundle exec vagrant ls
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>bundle <span class="nb">exec </span>vagrant ls
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>. If everything is correct, it should list all of your vms with the name of your vms, so you know where you are you running all those vms.</p>
 
 <h2>Publish your gem</h2>
 
-<p>Now, it&#8217;s time to spread the love of your gem. You need to build your gem first. Remember the Rakefile? You can just run</p>
-
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          rake build
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
+<p>Now, it&#8217;s time to spread the love of your gem. You need to build your gem first. Remember the Rakefile? You can just run <em>rake build</em></p>
 
 <p>It will pack your gem to <strong>.pkg</strong> folder. Then you can just run</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          gem push pkg/vagrant-ls-0.0.1.gem
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>gem push pkg/vagrant-ls-0.0.1.gem
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>. That&#8217;s it you have your gem published. If you look for <a href="http://guides.rubygems.org/publishing/">documentation</a> for publishing your gem.</p>
@@ -1742,15 +1765,10 @@
     <id>http://noppanit.github.io/twitter-good-tool-customer-support-used-carefully</id>
     <content type="html"><![CDATA[<p>I recently moved to NYC and I just got a pre-paid T-Mobile just to try it out how it goes. And this is what I tweeted and got a reply back from T-Mobile.</p>
 
-<blockquote class="twitter-tweet" lang="en">
-  <p>
-    <a href="https://twitter.com/noppanit">@noppanit</a> We're glad to have impressed you <img src="http://www.noppanit.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" /> Thanks for choosing T-Mobile! *JB
-  </p>
-  
-  <p>
-    &mdash; T-Mobile USA (@TMobileHelp) <a href="https://twitter.com/TMobileHelp/status/519478596046712832">October 7, 2014</a>
-  </p>
-</blockquote>
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">After just one week of <a href="https://twitter.com/TMobile">@TMobile</a> in NYC. I&#39;m not quite impressed with the coverage. <a href="https://twitter.com/hashtag/hmm?src=hash">#hmm</a></p>&mdash; Noppanit (Toy) (@noppanit) <a href="https://twitter.com/noppanit/status/519437198610137088">October 7, 2014</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 <p>I think they might have got hundred of tweets a day. So they might have slipped. The first when I read this I quickly scrolled up to see if I got a typo. But they&#8217;re right though I chose T-Mobile. Just a little laugh for me today.</p>
@@ -1770,23 +1788,8 @@
 
 <p>The solution is to set Cache-Control to no-transform and the problem solved. If you have the same problem as me then this is the solution.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          Cache-Control: no-transform
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Cache-Control: no-transform</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -1800,7 +1803,8 @@
     <id>http://noppanit.github.io/hidden-flea-market-istanbul-turkey</id>
     <content type="html"><![CDATA[<p>Love flea market? Love antiques? And you are in Istanbul, you should try out this place if you like antique stuff and what to kill a couple hours on a Sunday in Istanbul. The market opens every Sunday. I don&#8217;t know what time but I was there from 12pm &#8211; 3pm. I don&#8217;t really know how to get there by public transportation, but you can get a taxi to there from Şişli Metro station. It&#8217;s only a couple minutes away by taxi.</p>
 
-<p><small>View <a href="https://www.google.co.uk/maps/ms?msa=0&msid=211227488220634375129.0004fea5141fd05b55572&hl=en&ie=UTF8&t=m&iwloc=0004fea51423be3f8b2a2&ll=41.056035,28.979782&spn=0,0&source=embed" style="color:#0000FF;text-align:left">Istanbul Flea Market</a> in a larger map</small></p>
+<iframe src="https://www.google.com/maps/d/embed?mid=zRNWtq1GEE_Y.kugirvzLoMWo&hl=en" width="640" height="480"></iframe>
+
 ]]></content>
   </entry>
   
@@ -1811,14 +1815,7 @@
     <id>http://noppanit.github.io/alright-charge-phone-shavers-outlet</id>
     <content type="html"><![CDATA[<p><strong>Problem</strong></p>
 
-<div style="width: 180px" class="wp-caption aligncenter">
-  <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/21/ShaverSocketUK.jpg/170px-ShaverSocketUK.jpg" width="170" height="294" class />
-  
-  <p class="wp-caption-text">
-    Shavers only outlet
-  </p>
-</div>
-
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/21/ShaverSocketUK.jpg/170px-ShaverSocketUK.jpg" title="Shavers only outlet" ></p>
 
 <p>I believe everyone has the same problem once in a while or often that you forget your phone charger. Or even you didn&#8217;t forget your phone charger if you travel between UK and Europe you might forget the converter or adapter. If you stay in a hotel you must have seen one of those Shaver-only outlets. You would think that it&#8217;s clearly said that it&#8217;s for shaver only. So, I cannot use it for anything else. One day, I travel from Europe to the UK and the socket is different. Europe has one of those two-prong socket, and in the UK they use the big three-leg socket.</p>
 
@@ -1837,109 +1834,59 @@
     <id>http://noppanit.github.io/naming-test-classes</id>
     <content type="html"><![CDATA[<p>Normally, you would name your test class like this.</p>
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          <span class="kw1">public</span> Product <span class="br0">&#123;</span><br /> &nbsp; &nbsp;<span class="co1">//some awesome code here!</span><br /> <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">Product</span> <span class="o">{</span>
+</span><span class='line'>   <span class="c1">//some awesome code here!</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          <span class="kw1">public</span> ProductTest<span class="br0">&#123;</span><br /> &nbsp; &nbsp;<span class="co1">//some awesome test code here!</span><br /> <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">ProductTest</span><span class="o">{</span>
+</span><span class='line'>   <span class="c1">//some awesome test code here!</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>There&#8217;s two reasons why I would do this. First, to let IntelliJ find the test class easily and it&#8217;s easy to spot the test class when you scroll through.</p>
 
 <p>However, lately inspired by <a href="https://twitter.com/JeroenSoeters" title="Jeroen">@JeroenSoeters</a> my colleague which I don&#8217;t know where he got this from. I started naming test class like this.</p>
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          <span class="kw1">public</span> Product <span class="br0">&#123;</span><br /> &nbsp; &nbsp;<span class="co1">//some awesome code here!</span><br /> <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">Product</span> <span class="o">{</span>
+</span><span class='line'>   <span class="c1">//some awesome code here!</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          <span class="kw1">public</span> When_building_a_product <span class="br0">&#123;</span><br /> &nbsp; &nbsp;<span class="co1">//some awesome test code here!</span><br /> <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">When_building_a_product</span> <span class="o">{</span>
+</span><span class='line'>   <span class="c1">//some awesome test code here!</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          <span class="kw1">public</span> When_building_a_product_with_some_more_data <span class="br0">&#123;</span><br /> &nbsp; &nbsp;<span class="co1">//some awesome test code here!</span><br /> <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">When_building_a_product_with_some_more_data</span> <span class="o">{</span>
+</span><span class='line'>   <span class="c1">//some awesome test code here!</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>There&#8217;s one reason to do this I can think of. You can clearly see the purpose of this class and you can have multiple test classes or <strong>Product</strong> instead of having all the tests in one class and everything is cluttered so you have to scroll up and down</p>
@@ -1957,11 +1904,11 @@
 
 <p>Just 5-min walk from Tverskaya Station (Тверская). Then look for this sign.</p>
 
-<p><a href="http://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-22.52.43.png"><img src="http://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-22.52.43.png" alt="Screen Shot 2014-05-18 at 22.52.43" width="516" height="721" class="aligncenter size-full wp-image-1306" /></a></p>
+<p><img src="http://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-22.52.43.png"></p>
 
 <p>You have to ring the bell and the security guard will buzz you in then you have to walk upstairs (2nd floor). Unfortunately, at least when I was there people speak little English but understandable. Also, the people are really friendly over there. You just need to tell your name and pay at the end when you&#8217;re ready to rome Moscow again.</p>
 
-<p><a href="http://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-23.08.45.png"><img src="http://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-23.08.45.png" alt="Screen Shot 2014-05-18 at 23.08.45" width="1074" height="749" class="aligncenter size-full wp-image-1308" /></a></p>
+<p><img src="http://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-23.08.45.png"></p>
 ]]></content>
   </entry>
   

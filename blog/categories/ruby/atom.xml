@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | My Blog]]></title>
   <link href="http://noppanit.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-01T21:51:48-04:00</updated>
+  <updated>2015-10-01T23:41:14-04:00</updated>
   <id>http://noppanit.github.io/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -35,24 +35,8 @@ I tried to use Google Refine to cross check two datasets but it couldn&#8217;t e
 <p><strong>Third attempt</strong><br/>
 I used MySQL to join the tables and and check if the ids exist. Dumping all the data to MySQL was pretty easy my plain old PHP and MySQL. It turned out the friends dataset got around 38 Million rows. And here&#8217;s the script I used to check if the id doesn&#8217;t exit spit it out and delete it.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          SELECT uf.id, uf.friend_id, u.user_id FROM eventify.UserFriends uf LEFT JOIN eventify.Users u on uf.friend_id = u.user_id WHERE u.user_id is NULL LIMIT 1
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
+<pre><code> SELECT uf.id, uf.friend_id, u.user_id FROM eventify.UserFriends uf LEFT JOIN eventify.Users u on uf.friend_id = u.user_id WHERE u.user_id is NULL LIMIT 1
+</code></pre>
 
 <p>It was also really slow since I just use my Macbook and didn&#8217;t even turn MySQL performance. So I moved on again.</p>
 
@@ -74,24 +58,10 @@ I couldn&#8217;t believe that this will be the simplest and most effective way. 
 
 <p>And here&#8217;s the quickstart bit. The most simplest way is to put the compression in <strong>config.ru</strong></p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          require './server'<br /> use Rack::Deflater<br /> run Sinatra::Application
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
+<pre><code class="ruby">require './server'
+use Rack::Deflater
+run Sinatra::Application
+</code></pre>
 
 <p>And that&#8217;s it I hope this will save you sometime.</p>
 ]]></content>
@@ -110,45 +80,23 @@ I couldn&#8217;t believe that this will be the simplest and most effective way. 
 
 <p>First thing first, I hope you use <strong>rvm</strong> so if you haven&#8217;t done this already you need to create symbolic link like <a href="http://www.sublimetext.com/docs/2/osx_command_line.html">this page</a>. Then if you want to open your project you can just do this command inside your project. This way, sublime will hook up with rvm nicely.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          subl .
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<pre><code class="bash">subl .
+</code></pre>
 
+<p>Then you go to <strong>Tools > Build System > New Build System</strong>. It will open a new editor then you place this code.</p>
 
-<p>Then you go to ****Tools > Build System > New Build System&#8230;</strong>. It will open a new editor then you place this code.</p>
+<pre><code class="json">{
+  "cmd": ["rspec", "-I ${file_path}", "$file"],
+  "file_regex": "# ([A-Za-z:0-9_./ ]+rb):([0-9]+)",
+  "working_dir": "${project_path:${folder:${file_path}}}",
+  "selector": "source.ruby",
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          {<br /> &nbsp; "cmd": ["rspec", "-I ${file_path}", "$file"],<br /> &nbsp; "file_regex": "# ([A-Za-z:0-9_./ ]+rb):([0-9]+)",<br /> &nbsp; "working_dir": "${project_path:${folder:${file_path}}}",<br /> &nbsp; "selector": "source.ruby",<br /> <br /> &nbsp; "windows":<br /> &nbsp; {<br /> &nbsp; &nbsp; "cmd": ["rspec.bat", "-I ${file_path}", "$file"]<br /> &nbsp; }<br /> }
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
+  "windows":
+  {
+    "cmd": ["rspec.bat", "-I ${file_path}", "$file"]
+  }
+}
+</code></pre>
 
 <p>Then you choose the new Build System you just created and hit this combo <strong>cmd+b</strong>. Hooray!</p>
 ]]></content>

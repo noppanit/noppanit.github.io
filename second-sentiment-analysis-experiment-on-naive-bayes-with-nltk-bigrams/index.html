@@ -88,23 +88,21 @@
 
 <p>I changed the code a little bit to be</p>
 
-<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="python codecolorer">
-          <span class="kw1">from</span> nltk.<span class="me1">collocations</span> <span class="kw1">import</span> *<br /> <br /> tokenized_text <span class="sy0">=</span> nltk.<span class="me1">wordpunct_tokenize</span><span class="br0">&#40;</span>words<span class="br0">&#41;</span><br /> tokenized_text <span class="sy0">=</span> <span class="br0">&#91;</span>word.<span class="me1">lower</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">for</span> word <span class="kw1">in</span> tokenized_text<span class="br0">&#93;</span><br /> <br /> finder <span class="sy0">=</span> BigramCollocationFinder.<span class="me1">from_words</span><span class="br0">&#40;</span>tokenized_text<span class="br0">&#41;</span><br /> bigrammed_words <span class="sy0">=</span> <span class="kw2">sorted</span><span class="br0">&#40;</span>finder.<span class="me1">nbest</span><span class="br0">&#40;</span>bigram_measures.<span class="me1">chi_sq</span><span class="sy0">,</span> <span class="nu0">200</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">nltk.collocations</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">tokenized_text</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">wordpunct_tokenize</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+</span><span class='line'><span class="n">tokenized_text</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokenized_text</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">finder</span> <span class="o">=</span> <span class="n">BigramCollocationFinder</span><span class="o">.</span><span class="n">from_words</span><span class="p">(</span><span class="n">tokenized_text</span><span class="p">)</span>
+</span><span class='line'><span class="n">bigrammed_words</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">finder</span><span class="o">.</span><span class="n">nbest</span><span class="p">(</span><span class="n">bigram_measures</span><span class="o">.</span><span class="n">chi_sq</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I decided to use <strong>chi_sq</strong> as suggested in <a href="http://streamhacker.com/tag/bigrams/" title="stream hacker bigrams">this post</a>. However, the accuracy has gone down significantly to <strong>19.7530864198%</strong>. I guess this might be that my document (~100 document for each sentiment) is not large enough to use bigrams. But this is just my conclusion. I&#8217;m going to try to increase the dataset and test it again.</p>

@@ -86,46 +86,53 @@
 
 <div class="entry-content"><p>I have just heard this from my friend <a href="https://twitter.com/rajveerr" title="rajveerr twitter">@rajveerr</a> about pre-loading at the global level, this concept is not new but I have just learned it.. Usually and I think everyone has done it before. People would do something like this.</p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          $<span class="br0">&#40;</span><span class="st0">'#link1'</span><span class="br0">&#41;</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'click'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>e<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="co1">// Do some funky spinning wheel</span><br /> &nbsp; &nbsp; $.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; url<span class="sy0">:</span> <span class="st0">'/echo/json'</span><span class="sy0">,</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; success <span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>data<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">// Cancel that funky spinning wheel</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#link1&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Do some funky spinning wheel</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/echo/json&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">success</span> <span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="c1">// Cancel that funky spinning wheel</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>And you have to do this for every single ajax request. So, here&#8217;s how you would do that in a contextual level.</p>
 
+<iframe width="100%" height="300" src="//jsfiddle.net/noppanit/y63n5/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+
 <p>The trick is that in each ajax request you need to add context option. I used zepto as an example but jquery should work the same. The reason is that is <strong>e.target</strong> behaves differently each browser. Also, usually Ajax request would be fired from <strong>#document</strong> level that means your <strong>e.target</strong> would be your </p></p>
 
-<div class="codecolorer-container javascript blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="javascript codecolorer">
-          $<span class="br0">&#40;</span><span class="st0">'#link1'</span><span class="br0">&#41;</span>.<span class="me1">on</span><span class="br0">&#40;</span><span class="st0">'click'</span><span class="sy0">,</span> <span class="kw2">function</span> <span class="br0">&#40;</span>e<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; $.<span class="me1">ajax</span><span class="br0">&#40;</span><span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; url<span class="sy0">:</span> <span class="st0">'/echo/json'</span><span class="sy0">,</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0"><</span>strong<span class="sy0">></span>context<span class="sy0">:</span> e.<span class="me1">target</span><span class="sy0"></</span>strong<span class="sy0">>,</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; success <span class="sy0">:</span> <span class="kw2">function</span> <span class="br0">&#40;</span>data<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">&#40;</span>data<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#link1&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/echo/json&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="o">&lt;</span><span class="nx">strong</span><span class="o">&gt;</span><span class="nx">context</span><span class="o">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="o">&lt;</span><span class="err">/strong&gt;,</span>
+</span><span class='line'>        <span class="nx">success</span> <span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>By doing this if you want your pre-loader you just need to add <strong>.ajaxContainer</strong> class to your container.</p>

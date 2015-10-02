@@ -88,23 +88,13 @@
 
 <p>And here&#8217;s the quickstart bit. The most simplest way is to put the compression in <strong>config.ru</strong></p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          require './server'<br /> use Rack::Deflater<br /> run Sinatra::Application
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;./server&#39;</span>
+</span><span class='line'><span class="n">use</span> <span class="no">Rack</span><span class="o">::</span><span class="no">Deflater</span>
+</span><span class='line'><span class="n">run</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Application</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>And that&#8217;s it I hope this will save you sometime.</p>

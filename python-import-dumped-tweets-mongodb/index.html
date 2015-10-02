@@ -86,23 +86,39 @@
 
 <div class="entry-content"><p>I&#8217;m playing around with my tweets. Just so you&#8217;re aware that you could download your entire tweets and play around with it. The format is JSON so I think it makes perfect sense to dump this to MongoDB. But you can&#8217;t just import that straight away it needs some manipulation. I&#8217;m not good at Python so the code here might be tedious for python dudes. I&#8217;m going to use this data in my analysis, which will be captured in the next blog post.</p>
 
-<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="python codecolorer">
-          <span class="kw1">import</span> pymongo<br /> <span class="kw1">from</span> <span class="kw3">pprint</span> <span class="kw1">import</span> <span class="kw3">pprint</span><br /> <br /> path <span class="sy0">=</span> <span class="st0">'./data'</span><br /> client <span class="sy0">=</span> pymongo.<span class="me1">MongoClient</span><span class="br0">&#40;</span><span class="st0">'localhost'</span><span class="sy0">,</span> <span class="nu0">27017</span><span class="br0">&#41;</span><br /> db <span class="sy0">=</span> client.<span class="me1">tweets</span><br /> <span class="kw1">def</span> main<span class="br0">&#40;</span><span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> infile <span class="kw1">in</span> <span class="kw3">glob</span>.<span class="kw3">glob</span><span class="br0">&#40;</span> <span class="kw3">os</span>.<span class="me1">path</span>.<span class="me1">join</span><span class="br0">&#40;</span>path<span class="sy0">,</span> <span class="st0">"*.js"</span><span class="br0">&#41;</span><span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; content <span class="sy0">=</span> <span class="kw2">open</span><span class="br0">&#40;</span>infile<span class="br0">&#41;</span>.<span class="me1">read</span><span class="br0">&#40;</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; indexOfFirstEqualSign <span class="sy0">=</span> content.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">"="</span><span class="br0">&#41;</span> + <span class="nu0">1</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pureJson <span class="sy0">=</span> content<span class="br0">&#91;</span>indexOfFirstEqualSign:<span class="br0">&#93;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; jsonifedData <span class="sy0">=</span> json.<span class="me1">loads</span><span class="br0">&#40;</span>pureJson<span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; db.<span class="me1">tweets_collection</span>.<span class="me1">insert</span><span class="br0">&#40;</span>jsonifedData<span class="br0">&#41;</span><br /> <br /> <span class="kw1">if</span> __name__ <span class="sy0">==</span> <span class="st0">"__main__"</span>:<br /> &nbsp; &nbsp; &nbsp; &nbsp; main<span class="br0">&#40;</span><span class="br0">&#41;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">pymongo</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">path</span> <span class="o">=</span> <span class="s">&#39;./data&#39;</span>
+</span><span class='line'><span class="n">client</span> <span class="o">=</span> <span class="n">pymongo</span><span class="o">.</span><span class="n">MongoClient</span><span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">27017</span><span class="p">)</span>
+</span><span class='line'><span class="n">db</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">tweets</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span><span class='line'>        <span class="k">for</span> <span class="n">infile</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s">&quot;*.js&quot;</span><span class="p">)):</span>
+</span><span class='line'>                <span class="n">content</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span class='line'>                <span class="n">indexOfFirstEqualSign</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;=&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span class='line'>                <span class="n">pureJson</span> <span class="o">=</span> <span class="n">content</span><span class="p">[</span><span class="n">indexOfFirstEqualSign</span><span class="p">:]</span>
+</span><span class='line'>                <span class="n">jsonifedData</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">pureJson</span><span class="p">)</span>
+</span><span class='line'>                <span class="n">db</span><span class="o">.</span><span class="n">tweets_collection</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">jsonifedData</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">main</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The data is kept in <strong>data</strong> folder.</p>

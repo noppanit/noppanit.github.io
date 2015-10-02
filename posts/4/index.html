@@ -128,7 +128,7 @@
   </header>
 
 
-  <div class="entry-content"><p>Lately, I have been swamped by phishing emails from HMRC or pretend-to-be HMRC. At first, I was thinking it was probable legit because I had just filed my Tax to HMRC and a couple weeks later I got email from this <a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#x72;&#101;&#102;&#x75;&#110;&#x64;&#115;&#64;&#x68;&#x6d;&#114;&#x63;&#x2e;&#103;&#x6f;&#118;&#46;&#x75;&#x6b;">&#114;&#101;&#x66;&#x75;&#110;&#x64;&#115;&#64;&#x68;&#109;&#114;&#x63;&#x2e;&#x67;&#x6f;&#118;&#x2e;&#117;&#107;</a> and just for a glance I thought hmrc.gov.uk it&#8217;s probably be real. But after a quick google. I found <a href="http://www.hmrc.gov.uk/security/examples.htm" title="hmrc scam">this</a> and <a href="http://www.spamfighter.com/News-12966-HMRC-Cautions-about-Tax-Rebate-Phishing-Scams.htm" title="hmrc scam">this</a>.</p>
+  <div class="entry-content"><p>Lately, I have been swamped by phishing emails from HMRC or pretend-to-be HMRC. At first, I was thinking it was probable legit because I had just filed my Tax to HMRC and a couple weeks later I got email from this <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x72;&#101;&#x66;&#117;&#110;&#100;&#115;&#x40;&#x68;&#109;&#x72;&#x63;&#x2e;&#x67;&#x6f;&#x76;&#x2e;&#117;&#107;">&#x72;&#x65;&#x66;&#117;&#x6e;&#100;&#x73;&#64;&#104;&#x6d;&#x72;&#x63;&#x2e;&#x67;&#111;&#x76;&#x2e;&#117;&#x6b;</a> and just for a glance I thought hmrc.gov.uk it&#8217;s probably be real. But after a quick google. I found <a href="http://www.hmrc.gov.uk/security/examples.htm" title="hmrc scam">this</a> and <a href="http://www.spamfighter.com/News-12966-HMRC-Cautions-about-Tax-Rebate-Phishing-Scams.htm" title="hmrc scam">this</a>.</p>
 
 <p>Another way to look at the links is to just hover over the links and you will see something that&#8217;s not from HMRC at all. So, please be careful not to fall into something like this.</p>
 </div>
@@ -163,65 +163,229 @@
 
 <p>For example, I have one <strong>Store</strong> object which it has a method to return jsonified string. So, what I did I just passed <strong>ObjectMapper</strong> to transform my object to be json. However, what I didn&#8217;t realise was that if I passed that from the constructor my object has to store <strong>ObjectMapper</strong> inside the object as well and <strong>ObjectMapper</strong> is a really beefy object. So, If I created a million objects I have to hold another million objects of ObjectMapper as well. So, I just had to pass <strong>ObjectMapper</strong> just when I want to use it. And that save me a lot of memory.</p>
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />32<br />33<br />34<br />35<br />36<br />37<br />38<br />39<br />40<br />41<br />42<br />43<br />44<br />45<br />46<br />47<br />48<br />49<br />50<br />51<br />52<br />53<br />54<br />55<br />56<br />57<br />58<br />59<br />60<br />61<br />62<br />63<br />64<br />65<br />66<br />67<br />68<br />69<br />70<br />71<br />72<br />73<br />74<br />75<br />76<br />77<br />78<br />79<br />80<br />81<br />82<br />83<br />84<br />85<br />86<br />87<br />88<br />89<br />90<br />91<br />92<br />93<br />94<br />95<br />96<br />97<br />98<br />99<br />100<br />101<br />102<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          <span class="kw1">package</span> <span class="co2">com.noppanit</span><span class="sy0">;</span><br /> <br /> <span class="kw1">import</span> <span class="co2">com.fasterxml.jackson.annotation.JsonAutoDetect</span><span class="sy0">;</span><br /> <span class="kw1">import</span> <span class="co2">com.fasterxml.jackson.annotation.JsonInclude</span><span class="sy0">;</span><br /> <span class="kw1">import</span> <span class="co2">com.fasterxml.jackson.core.JsonProcessingException</span><span class="sy0">;</span><br /> <span class="kw1">import</span> <span class="co2">com.fasterxml.jackson.databind.ObjectMapper</span><span class="sy0">;</span><br /> <span class="kw1">import</span> <span class="co2">org.junit.Test</span><span class="sy0">;</span><br /> <br /> <span class="kw1">import</span> <span class="co2">java.io.Serializable</span><span class="sy0">;</span><br /> <span class="kw1">import</span> <span class="co2">java.util.HashMap</span><span class="sy0">;</span><br /> <br /> <span class="kw1">import</span> <span class="co2">static</span> com.<span class="me1">fasterxml</span>.<span class="me1">jackson</span>.<span class="me1">annotation</span>.<span class="me1">JsonAutoDetect</span>.<a href="http://www.google.com/search?hl=en&q=allinurl%3Avisibility+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Visibility</span></a>.<span class="me1">ANY</span><span class="sy0">;</span><br /> <span class="kw1">import</span> <span class="co2">static</span> com.<span class="me1">fasterxml</span>.<span class="me1">jackson</span>.<span class="me1">annotation</span>.<span class="me1">JsonAutoDetect</span>.<a href="http://www.google.com/search?hl=en&q=allinurl%3Avisibility+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Visibility</span></a>.<span class="me1">NONE</span><span class="sy0">;</span><br /> <br /> <span class="kw1">public</span> <span class="kw1">class</span> TestMemoryConsumption <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw1">private</span> <span class="kw1">static</span> <span class="kw1">final</span> <span class="kw4">long</span> MEGABYTE <span class="sy0">=</span> 1024L <span class="sy0">*</span> 1024L<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw1">static</span> <span class="kw1">final</span> <span class="kw4">int</span> LOOP <span class="sy0">=</span> <span class="nu0">1000000</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw1">static</span> <span class="kw4">long</span> bytesToMegabytes<span class="br0">&#40;</span><span class="kw4">long</span> bytes<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> bytes <span class="sy0">/</span> MEGABYTE<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; @Test<br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw4">void</span> testMemoryConsumption<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">throws</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aexception+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Exception</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; ObjectMapper objectMapper <span class="sy0">=</span> <span class="kw1">new</span> ObjectMapper<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; HashMap<span class="sy0"><</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a>, Object<span class="sy0">></span> map <span class="sy0">=</span> <span class="kw1">new</span> HashMap<span class="sy0"><</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a>, Object<span class="sy0">></span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw4">int</span> i <span class="sy0">=</span> <span class="nu0"></span><span class="sy0">;</span> i <span class="sy0"><</span> LOOP<span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; StoreWithToJson storeWithToJson <span class="sy0">=</span> <span class="kw1">new</span> StoreWithToJson<span class="br0">&#40;</span><span class="st0">"name"</span>, <span class="st0">"description"</span>, objectMapper<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; map.<span class="me1">put</span><span class="br0">&#40;</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a>.<span class="me1">valueOf</span><span class="br0">&#40;</span>i<span class="br0">&#41;</span>, storeWithToJson<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; printMemoryConsumption<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; @Test<br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw4">void</span> testMemoryConsumptionWithoutObjectMapper<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">throws</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aexception+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Exception</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; HashMap<span class="sy0"><</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a>, Object<span class="sy0">></span> map <span class="sy0">=</span> <span class="kw1">new</span> HashMap<span class="sy0"><</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a>, Object<span class="sy0">></span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw4">int</span> i <span class="sy0">=</span> <span class="nu0"></span><span class="sy0">;</span> i <span class="sy0"><</span> LOOP<span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Store store <span class="sy0">=</span> <span class="kw1">new</span> Store<span class="br0">&#40;</span><span class="st0">"name"</span>, <span class="st0">"description"</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; map.<span class="me1">put</span><span class="br0">&#40;</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a>.<span class="me1">valueOf</span><span class="br0">&#40;</span>i<span class="br0">&#41;</span>, store<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; printMemoryConsumption<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">private</span> <span class="kw4">void</span> printMemoryConsumption<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Aruntime+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Runtime</span></a> runtime <span class="sy0">=</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aruntime+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Runtime</span></a>.<span class="me1">getRuntime</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; runtime.<span class="me1">gc</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">runFinalization</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">long</span> memory <span class="sy0">=</span> runtime.<span class="me1">totalMemory</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">-</span> runtime.<span class="me1">freeMemory</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">out</span>.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">"Used memory is bytes: "</span> <span class="sy0">+</span> memory<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">out</span>.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">"Used memory is megabytes: "</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">+</span> bytesToMegabytes<span class="br0">&#40;</span>memory<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span><br /> <br /> @JsonInclude<span class="br0">&#40;</span>JsonInclude.<span class="me1">Include</span>.<span class="me1">NON_NULL</span><span class="br0">&#41;</span><br /> @JsonAutoDetect<span class="br0">&#40;</span>fieldVisibility <span class="sy0">=</span> JsonAutoDetect.<a href="http://www.google.com/search?hl=en&q=allinurl%3Avisibility+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Visibility</span></a>.<span class="me1">NONE</span>, getterVisibility <span class="sy0">=</span> ANY, setterVisibility <span class="sy0">=</span> NONE<span class="br0">&#41;</span><br /> <span class="kw1">class</span> StoreWithToJson <span class="kw1">implements</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aserializable+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Serializable</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw1">private</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> name<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">private</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> description<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">private</span> ObjectMapper mapper<span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> StoreWithToJson<span class="br0">&#40;</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> name, <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> description, ObjectMapper mapper<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">this</span>.<span class="me1">name</span> <span class="sy0">=</span> name<span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">this</span>.<span class="me1">description</span> <span class="sy0">=</span> description<span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">this</span>.<span class="me1">mapper</span> <span class="sy0">=</span> mapper<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> toJson<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">throws</span> JsonProcessingException <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> mapper.<span class="me1">writeValueAsString</span><span class="br0">&#40;</span><span class="kw1">this</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> getName<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> name<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> getDescription<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> description<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span><br /> <br /> <br /> <span class="kw1">class</span> Store <span class="kw1">implements</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aserializable+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Serializable</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw1">private</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> name<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">private</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> description<span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> Store<span class="br0">&#40;</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> name, <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> description<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">this</span>.<span class="me1">name</span> <span class="sy0">=</span> name<span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">this</span>.<span class="me1">description</span> <span class="sy0">=</span> description<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> getName<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> name<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> getDescription<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> description<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">noppanit</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.fasterxml.jackson.annotation.JsonAutoDetect</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.fasterxml.jackson.annotation.JsonInclude</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.fasterxml.jackson.core.JsonProcessingException</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.fasterxml.jackson.databind.ObjectMapper</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">static</span> <span class="n">com</span><span class="o">.</span><span class="na">fasterxml</span><span class="o">.</span><span class="na">jackson</span><span class="o">.</span><span class="na">annotation</span><span class="o">.</span><span class="na">JsonAutoDetect</span><span class="o">.</span><span class="na">Visibility</span><span class="o">.</span><span class="na">ANY</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">static</span> <span class="n">com</span><span class="o">.</span><span class="na">fasterxml</span><span class="o">.</span><span class="na">jackson</span><span class="o">.</span><span class="na">annotation</span><span class="o">.</span><span class="na">JsonAutoDetect</span><span class="o">.</span><span class="na">Visibility</span><span class="o">.</span><span class="na">NONE</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestMemoryConsumption</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">MEGABYTE</span> <span class="o">=</span> <span class="mi">1024L</span> <span class="o">*</span> <span class="mi">1024L</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">LOOP</span> <span class="o">=</span> <span class="mi">1000000</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">long</span> <span class="nf">bytesToMegabytes</span><span class="o">(</span><span class="kt">long</span> <span class="n">bytes</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">bytes</span> <span class="o">/</span> <span class="n">MEGABYTE</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Test</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testMemoryConsumption</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">ObjectMapper</span> <span class="n">objectMapper</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ObjectMapper</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">LOOP</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">StoreWithToJson</span> <span class="n">storeWithToJson</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">StoreWithToJson</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="s">&quot;description&quot;</span><span class="o">,</span> <span class="n">objectMapper</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">i</span><span class="o">),</span> <span class="n">storeWithToJson</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">printMemoryConsumption</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Test</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testMemoryConsumptionWithoutObjectMapper</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">LOOP</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">Store</span> <span class="n">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Store</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="s">&quot;description&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">i</span><span class="o">),</span> <span class="n">store</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">printMemoryConsumption</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">printMemoryConsumption</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">Runtime</span> <span class="n">runtime</span> <span class="o">=</span> <span class="n">Runtime</span><span class="o">.</span><span class="na">getRuntime</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">runtime</span><span class="o">.</span><span class="na">gc</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">runFinalization</span><span class="o">();</span>
+</span><span class='line'>        <span class="kt">long</span> <span class="n">memory</span> <span class="o">=</span> <span class="n">runtime</span><span class="o">.</span><span class="na">totalMemory</span><span class="o">()</span> <span class="o">-</span> <span class="n">runtime</span><span class="o">.</span><span class="na">freeMemory</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Used memory is bytes: &quot;</span> <span class="o">+</span> <span class="n">memory</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Used memory is megabytes: &quot;</span>
+</span><span class='line'>                <span class="o">+</span> <span class="n">bytesToMegabytes</span><span class="o">(</span><span class="n">memory</span><span class="o">));</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nd">@JsonInclude</span><span class="o">(</span><span class="n">JsonInclude</span><span class="o">.</span><span class="na">Include</span><span class="o">.</span><span class="na">NON_NULL</span><span class="o">)</span>
+</span><span class='line'><span class="nd">@JsonAutoDetect</span><span class="o">(</span><span class="n">fieldVisibility</span> <span class="o">=</span> <span class="n">JsonAutoDetect</span><span class="o">.</span><span class="na">Visibility</span><span class="o">.</span><span class="na">NONE</span><span class="o">,</span> <span class="n">getterVisibility</span> <span class="o">=</span> <span class="n">ANY</span><span class="o">,</span> <span class="n">setterVisibility</span> <span class="o">=</span> <span class="n">NONE</span><span class="o">)</span>
+</span><span class='line'><span class="kd">class</span> <span class="nc">StoreWithToJson</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">ObjectMapper</span> <span class="n">mapper</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">StoreWithToJson</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">description</span><span class="o">,</span> <span class="n">ObjectMapper</span> <span class="n">mapper</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">description</span> <span class="o">=</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">mapper</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toJson</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">mapper</span><span class="o">.</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kd">class</span> <span class="nc">Store</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">Store</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">description</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">description</span> <span class="o">=</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Result from passing <strong>ObjectMapper</strong> from the constructor.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          Used memory is bytes: 3723968<br /> Used memory is megabytes: 3
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Used</span> <span class="n">memory</span> <span class="n">is</span> <span class="nl">bytes:</span> <span class="mi">3723968</span>
+</span><span class='line'><span class="n">Used</span> <span class="n">memory</span> <span class="n">is</span> <span class="nl">megabytes:</span> <span class="mi">3</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Result from passing <strong>ObjectMapper</strong> just when I want to use it.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          Used memory is bytes: 1928536<br /> Used memory is megabytes: 1
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Used</span> <span class="n">memory</span> <span class="n">is</span> <span class="nl">bytes:</span> <span class="mi">1928536</span>
+</span><span class='line'><span class="n">Used</span> <span class="n">memory</span> <span class="n">is</span> <span class="nl">megabytes:</span> <span class="mi">1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I know this might be obvious for some people but if you have the same problems as myself this might help shed some lights to something else.</p>
@@ -253,14 +417,7 @@
   </header>
 
 
-  <div class="entry-content"><div style="width: 490px" class="wp-caption alignnone">
-  <img src="http://upload.wikimedia.org/wikipedia/commons/d/d2/Aeropress_setup.jpg" width="480" height="360" alt="AeroPress" class />
-  
-  <p class="wp-caption-text">
-    AeroPress
-  </p>
-</div>
-
+  <div class="entry-content"><p><img src="http://upload.wikimedia.org/wikipedia/commons/d/d2/Aeropress_setup.jpg" title="AeroPress" ></p>
 
 <p>So after my first post <a href="http://www.noppanit.com/my-quest-to-find-my-perfect-brew/" title="Perfect brew.">my quest to find my perfect brew</a>. Rather than spending a fortune for a grinder and espresso machine, I decided to go step by step. I ordered my first <a href="http://aerobie.com/products/aeropress.htm" title="AeroPress">AeroPress</a>. After just one sip, I can taste the difference right away. The coffee from this little piece of plastic is amazing. I brewed my coffee with my already grounded coffee from Starbuck and even that the result is remarkable. It&#8217;s very smooth and rich than the french press method. I guess it&#8217;s because of shorter extraction of the coffee and the micro filter which will keep the small particles so you won&#8217;t test the bitterness of the coffee. If you want to take your brew to a different level I highly recommend AeroPress. I&#8217;m not saying to a higher level because some people might like the bitterness of the coffee which sometime I like. But I think you should totally try AeroPress, It&#8217;s totally worth the money. My quest will continue to a grinder and in search of my perfect coffee beans.</p>
 </div>
@@ -301,10 +458,10 @@
 
 <p>Here&#8217;s the slides I used at the conference.</p>
 
-<div style="margin-bottom:5px">
-  <strong> <a href="https://www.slideshare.net/ncharassinvichai/agile-thailand-2013-agile-in-startup" title="Agile Thailand 2013 - Agile in Startup" target="_blank">Agile Thailand 2013 &#8211; Agile in Startup</a> </strong> from <strong><a href="http://www.slideshare.net/ncharassinvichai" target="_blank">Noppanit Charassinvichai</a></strong>
-</div>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/wz2Ag4fywp2Lq7" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
+
+<p> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/ncharassinvichai/agile-thailand-2013-agile-in-startup" title="Agile Thailand 2013 - Agile in Startup" target="_blank">Agile Thailand 2013 - Agile in Startup</a> </strong> from <strong><a href="//www.slideshare.net/ncharassinvichai" target="_blank">Noppanit Charassinvichai</a></strong> </div></p>
 
 <h2>Feedback</h2>
 
@@ -339,42 +496,43 @@
 
   <div class="entry-content"><p>For example I have file structure like this.</p>
 
-<p>├── 2013-01<br/>
-│   ├── 2013-01-avon-and-somerset-street.csv<br/>
-├── 2013-02<br/>
-│   ├── 2013-02-avon-and-somerset-street.csv<br/>
-├── 2013-03<br/>
-│   ├── 2013-03-avon-and-somerset-street.csv<br/>
-├── 2013-04<br/>
-│   ├── 2013-04-avon-and-somerset-street.csv<br/>
-├── 2013-05<br/>
-│   ├── 2013-05-avon-and-somerset-street.csv<br/>
-├── 2013-06<br/>
-│   ├── 2013-06-avon-and-somerset-street.csv<br/>
-└── 2013-07<br/>
-├── 2013-07-avon-and-somerset-street.csv</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>├── 2013-01  
+</span><span class='line'>│   ├── 2013-01-avon-and-somerset-street.csv  
+</span><span class='line'>├── 2013-02  
+</span><span class='line'>│   ├── 2013-02-avon-and-somerset-street.csv  
+</span><span class='line'>├── 2013-03  
+</span><span class='line'>│   ├── 2013-03-avon-and-somerset-street.csv  
+</span><span class='line'>├── 2013-04  
+</span><span class='line'>│   ├── 2013-04-avon-and-somerset-street.csv  
+</span><span class='line'>├── 2013-05  
+</span><span class='line'>│   ├── 2013-05-avon-and-somerset-street.csv  
+</span><span class='line'>├── 2013-06  
+</span><span class='line'>│   ├── 2013-06-avon-and-somerset-street.csv  
+</span><span class='line'>└── 2013-07  
+</span><span class='line'>├── 2013-07-avon-and-somerset-street.csv</span></code></pre></td></tr></table></div></figure>
+
 
 <p>To process multiple files in R or Pandas would be a pain, if I could combine all the csv in every folder into one file and I can work on just that one file.</p>
 
 <p>How to use it&#8217;s really easy. Just copy the source code and paste in anywhere. For example, I would call this **merge_csv</code>. Then you would execute like this.</p></p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          sh merge_csv <FOLDER_YOU_WANT>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sh merge_csv &lt;FOLDER_YOU_WANT&gt;
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The script will iterate to every folder and sub-folder.</p>
@@ -422,23 +580,39 @@ I also got this from my friend, which is much shorted. I really need to improve 
 
   <div class="entry-content"><p>I&#8217;m playing around with my tweets. Just so you&#8217;re aware that you could download your entire tweets and play around with it. The format is JSON so I think it makes perfect sense to dump this to MongoDB. But you can&#8217;t just import that straight away it needs some manipulation. I&#8217;m not good at Python so the code here might be tedious for python dudes. I&#8217;m going to use this data in my analysis, which will be captured in the next blog post.</p>
 
-<div class="codecolorer-container python blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="python codecolorer">
-          <span class="kw1">import</span> pymongo<br /> <span class="kw1">from</span> <span class="kw3">pprint</span> <span class="kw1">import</span> <span class="kw3">pprint</span><br /> <br /> path <span class="sy0">=</span> <span class="st0">'./data'</span><br /> client <span class="sy0">=</span> pymongo.<span class="me1">MongoClient</span><span class="br0">&#40;</span><span class="st0">'localhost'</span><span class="sy0">,</span> <span class="nu0">27017</span><span class="br0">&#41;</span><br /> db <span class="sy0">=</span> client.<span class="me1">tweets</span><br /> <span class="kw1">def</span> main<span class="br0">&#40;</span><span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> infile <span class="kw1">in</span> <span class="kw3">glob</span>.<span class="kw3">glob</span><span class="br0">&#40;</span> <span class="kw3">os</span>.<span class="me1">path</span>.<span class="me1">join</span><span class="br0">&#40;</span>path<span class="sy0">,</span> <span class="st0">"*.js"</span><span class="br0">&#41;</span><span class="br0">&#41;</span>:<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; content <span class="sy0">=</span> <span class="kw2">open</span><span class="br0">&#40;</span>infile<span class="br0">&#41;</span>.<span class="me1">read</span><span class="br0">&#40;</span><span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; indexOfFirstEqualSign <span class="sy0">=</span> content.<span class="me1">find</span><span class="br0">&#40;</span><span class="st0">"="</span><span class="br0">&#41;</span> + <span class="nu0">1</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pureJson <span class="sy0">=</span> content<span class="br0">&#91;</span>indexOfFirstEqualSign:<span class="br0">&#93;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; jsonifedData <span class="sy0">=</span> json.<span class="me1">loads</span><span class="br0">&#40;</span>pureJson<span class="br0">&#41;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; db.<span class="me1">tweets_collection</span>.<span class="me1">insert</span><span class="br0">&#40;</span>jsonifedData<span class="br0">&#41;</span><br /> <br /> <span class="kw1">if</span> __name__ <span class="sy0">==</span> <span class="st0">"__main__"</span>:<br /> &nbsp; &nbsp; &nbsp; &nbsp; main<span class="br0">&#40;</span><span class="br0">&#41;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">pymongo</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">path</span> <span class="o">=</span> <span class="s">&#39;./data&#39;</span>
+</span><span class='line'><span class="n">client</span> <span class="o">=</span> <span class="n">pymongo</span><span class="o">.</span><span class="n">MongoClient</span><span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">27017</span><span class="p">)</span>
+</span><span class='line'><span class="n">db</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">tweets</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span><span class='line'>        <span class="k">for</span> <span class="n">infile</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s">&quot;*.js&quot;</span><span class="p">)):</span>
+</span><span class='line'>                <span class="n">content</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span class='line'>                <span class="n">indexOfFirstEqualSign</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;=&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span class='line'>                <span class="n">pureJson</span> <span class="o">=</span> <span class="n">content</span><span class="p">[</span><span class="n">indexOfFirstEqualSign</span><span class="p">:]</span>
+</span><span class='line'>                <span class="n">jsonifedData</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">pureJson</span><span class="p">)</span>
+</span><span class='line'>                <span class="n">db</span><span class="o">.</span><span class="n">tweets_collection</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">jsonifedData</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">main</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The data is kept in <strong>data</strong> folder.</p>
@@ -529,23 +703,75 @@ One day on a client side, they said we want you to deploy the application to our
 <p>Solution:<br/>
 So we thought, well we just need Chef-solo because it&#8217;s just going to be one server. Chef is written in Ruby and our Centos VM doesn&#8217;t even come Ruby. The problem gets bigger, how can we install Ruby without root access. Ha! now here&#8217;s the tricky part. Chef is Ruby, Ruby is C. We have C, so we could compile Ruby and use gem to install Chef. Woohoo! Sounds easy right? By the way, Chef comes with embedded-ruby already that&#8217;s why when you install Chef you don&#8217;t need to install Ruby first. The Chef guys cleverly embedded Ruby inside Chef with all the gems and deploy that to <strong>/opt/chef</strong>. You can find more information <a href="http://www.opscode.com/chef/install/" title="Chef install">here</a>. So, we could do the same thing but we need to compile Ruby and dependencies to our folder. Ok, I&#8217;ll cut to the chest now. All we need is Ruby and Chef gem. In order to install, ruby which I found out you just need three minimum libraries, zlib, yaml and openssl. Here&#8217;s how to do it.</p>
 
-<div class="codecolorer-container bash blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />32<br />33<br />34<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="bash codecolorer">
-          <span class="co0">#Install Openssl</span><br /> <span class="kw2">wget</span> https:<span class="sy0">//</span>www.openssl.org<span class="sy0">/</span>source<span class="sy0">/</span>openssl-1.0.0k.tar.gz<br /> <span class="kw2">tar</span> zxvf openssl-1.0.0k.tar.gz<br /> <span class="kw3">cd</span> openssl-1.0.0k<br /> .<span class="sy0">/</span>config shared <span class="re5">-fPIC</span> <span class="re5">--prefix</span>=<span class="sy0">/</span>home<span class="sy0">/</span>centos<span class="sy0">/</span>ruby <span class="re5">--openssldir</span>=<span class="sy0">/</span>home<span class="sy0">/</span>centos<span class="sy0">/</span>ruby<span class="sy0">/</span>ssl<br /> <span class="kw2">make</span> <span class="sy0">&&</span> <span class="kw2">make</span> <span class="kw2">install</span><br /> <span class="kw3">cd</span> <span class="sy0">/</span>home<span class="sy0">/</span>centos<br /> <br /> <span class="co0">#Install zlib</span><br /> <span class="kw2">wget</span> http:<span class="sy0">//</span>zlib.net<span class="sy0">/</span>zlib-1.2.8.tar.gz<br /> <span class="kw2">tar</span> xzvf zlib-1.2.8.tar.gz<br /> <span class="kw3">cd</span> zlib-1.2.8<br /> .<span class="sy0">/</span>configure <span class="re5">--prefix</span>=<span class="sy0">/</span>home<span class="sy0">/</span>centos<span class="sy0">/</span>ruby<br /> <span class="kw2">make</span> <span class="sy0">&&</span> <span class="kw2">make</span> <span class="kw2">install</span><br /> <span class="kw3">cd</span> <span class="sy0">/</span>home<span class="sy0">/</span>centos<br /> <br /> <span class="co0">#Install Yaml</span><br /> <span class="kw2">wget</span> http:<span class="sy0">//</span>pyyaml.org<span class="sy0">/</span>download<span class="sy0">/</span>libyaml<span class="sy0">/</span>yaml-0.1.4.tar.gz<br /> <span class="kw2">tar</span> xzvf yaml-0.1.4.tar.gz<br /> <span class="kw3">cd</span> yaml-0.1.4<br /> .<span class="sy0">/</span>configure <span class="re5">--disable-install-doc</span> <span class="re5">--prefix</span>=<span class="sy0">/</span>home<span class="sy0">/</span>centos<span class="sy0">/</span>ruby<br /> <span class="kw2">make</span> <span class="sy0">&&</span> <span class="kw2">make</span> <span class="kw2">install</span><br /> <span class="kw3">cd</span> <span class="sy0">/</span>home<span class="sy0">/</span>centos<br /> <br /> <span class="co0">#Install Ruby 1.9.3</span><br /> <span class="kw2">wget</span> ftp:<span class="sy0">//</span>ftp.ruby-lang.org<span class="sy0">/</span>pub<span class="sy0">/</span>ruby<span class="sy0">/</span><span class="nu0">1.9</span><span class="sy0">/</span>ruby-1.9.3-p448.tar.gz<br /> <span class="kw2">tar</span> xzvf ruby-1.9.3-p448.tar.gz<br /> <span class="kw3">cd</span> ruby-1.9.3-p448<br /> .<span class="sy0">/</span>configure <span class="re5">--prefix</span>=<span class="sy0">/</span>home<span class="sy0">/</span>centos<span class="sy0">/</span>ruby <span class="re5">--enable-shared</span> <span class="re5">--disable-install-doc</span> <span class="re5">--with-opt-dir</span>=<span class="sy0">/</span>home<span class="sy0">/</span>centos<span class="sy0">/</span>ruby<br /> <span class="kw2">make</span> <span class="sy0">&&</span> <span class="kw2">make</span> <span class="kw2">install</span><br /> <span class="kw3">cd</span> <span class="sy0">/</span>home<span class="sy0">/</span>centos<br /> <br /> <span class="co0">#Install Chef gem</span><br /> .<span class="sy0">/</span>ruby<span class="sy0">/</span>bin<span class="sy0">/</span>gem <span class="kw2">install</span> <span class="re5">--no-rdoc</span> <span class="re5">--no-ri</span> chef
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#Install Openssl</span>
+</span><span class='line'>wget https://www.openssl.org/source/openssl-1.0.0k.tar.gz
+</span><span class='line'>tar zxvf openssl-1.0.0k.tar.gz
+</span><span class='line'><span class="nb">cd </span>openssl-1.0.0k
+</span><span class='line'>./config shared -fPIC --prefix<span class="o">=</span>/home/centos/ruby --openssldir<span class="o">=</span>/home/centos/ruby/ssl
+</span><span class='line'>make <span class="o">&amp;&amp;</span> make install
+</span><span class='line'><span class="nb">cd</span> /home/centos
+</span><span class='line'>
+</span><span class='line'><span class="c">#Install zlib</span>
+</span><span class='line'>wget http://zlib.net/zlib-1.2.8.tar.gz
+</span><span class='line'>tar xzvf zlib-1.2.8.tar.gz
+</span><span class='line'><span class="nb">cd </span>zlib-1.2.8
+</span><span class='line'>./configure --prefix<span class="o">=</span>/home/centos/ruby
+</span><span class='line'>make <span class="o">&amp;&amp;</span> make install
+</span><span class='line'><span class="nb">cd</span> /home/centos
+</span><span class='line'>
+</span><span class='line'><span class="c">#Install Yaml</span>
+</span><span class='line'>wget http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz
+</span><span class='line'>tar xzvf yaml-0.1.4.tar.gz
+</span><span class='line'><span class="nb">cd </span>yaml-0.1.4
+</span><span class='line'>./configure --disable-install-doc --prefix<span class="o">=</span>/home/centos/ruby
+</span><span class='line'>make <span class="o">&amp;&amp;</span> make install
+</span><span class='line'><span class="nb">cd</span> /home/centos
+</span><span class='line'>
+</span><span class='line'><span class="c">#Install Ruby 1.9.3</span>
+</span><span class='line'>wget ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p448.tar.gz
+</span><span class='line'>tar xzvf ruby-1.9.3-p448.tar.gz
+</span><span class='line'><span class="nb">cd </span>ruby-1.9.3-p448
+</span><span class='line'>./configure --prefix<span class="o">=</span>/home/centos/ruby --enable-shared --disable-install-doc --with-opt-dir<span class="o">=</span>/home/centos/ruby
+</span><span class='line'>make <span class="o">&amp;&amp;</span> make install
+</span><span class='line'><span class="nb">cd</span> /home/centos
+</span><span class='line'>
+</span><span class='line'><span class="c">#Install Chef gem</span>
+</span><span class='line'>./ruby/bin/gem install --no-rdoc --no-ri chef
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Please note that I installed ruby with chef to <strong>/home/centos/ruby</strong>, you need to change the path to where you want it to be, the same as chef guys decided <strong>/opt/chef</strong> is the best place for Chef to live. However, we don&#8217;t even have access to /opt.</p>
@@ -589,44 +815,53 @@ So we thought, well we just need Chef-solo because it&#8217;s just going to be o
 
 <p>If you haven&#8217;t done this already.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          install.packages("plyr")<br /> install.packages("ggplot2")
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>install.packages("plyr")
+</span><span class='line'>install.packages("ggplot2")</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          library(plyr)<br /> library(ggplot2)<br /> <br /> #Load all your tweets<br /> tweets<-read.delim("data/tweets.csv", sep=",")<br /> <br /> #Convert timestamp to Date in R<br /> tweets$timestamp<-as.POSIXlt(tweets$timestamp, format="%Y-%m-%d %H:%M:%S +0000")<br /> <br /> #Get month in JAN-DEC format<br /> tweets$month = strftime(tweets$timestamp, "%b")<br /> #Get year in 2011-20xx format<br /> tweets$year = strftime(tweets$timestamp, "%Y")<br /> <br /> #Then start counting for each month compare to each year<br /> timestamps_month = count(tweets, vars = c("month","year"))<br /> <br /> #Then just plot the graph<br /> ggplot(data = timestamps_month) + geom_bar(aes(x = month, y = freq, fill = year), stat="identity", position = "dodge")
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>library(plyr)
+</span><span class='line'>library(ggplot2)
+</span><span class='line'>
+</span><span class='line'>#Load all your tweets
+</span><span class='line'>tweets&lt;-read.delim("data/tweets.csv", sep=",")
+</span><span class='line'>
+</span><span class='line'>#Convert timestamp to Date in R
+</span><span class='line'>tweets$timestamp&lt;-as.POSIXlt(tweets$timestamp, format="%Y-%m-%d %H:%M:%S +0000")
+</span><span class='line'>
+</span><span class='line'>#Get month in JAN-DEC format
+</span><span class='line'>tweets$month = strftime(tweets$timestamp, "%b")
+</span><span class='line'>#Get year in 2011-20xx format
+</span><span class='line'>tweets$year = strftime(tweets$timestamp, "%Y")
+</span><span class='line'>
+</span><span class='line'>#Then start counting for each month compare to each year
+</span><span class='line'>timestamps_month = count(tweets, vars = c("month","year"))
+</span><span class='line'>
+</span><span class='line'>#Then just plot the graph
+</span><span class='line'>ggplot(data = timestamps_month) + geom_bar(aes(x = month, y = freq, fill = year), stat="identity", position = "dodge")
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>This is what I have been tweets for the past years. Interestingly I tweeted a lot back in 2010, hmm I was wondering what did I tweet. Well I gotta go to bed will find out tomorrow. What&#8217;s yours?</p>

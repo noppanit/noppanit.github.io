@@ -371,65 +371,58 @@
 
 <p>It&#8217;s a really good framework if you want to start something quickly. It&#8217;s like Rail in Java. You have everything in this framework, ORM, LESS, RequireJS and also some caching strategy. If in the future, I have a requirement to create a prototype in Java I would choose this framework for sure (Who would create a prototype in Java anyways), buy hey! it can be that who knows. By the way, there are some downsides. As Play considers everything in static. That makes testing quite tricky. For example, every controller is statically created, if you want to have something injected to your controller you have to create a custom global configuration for Play!. Here&#8217;s the example.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          # Global object class<br /> # ~~~~~<br /> # Define the Global object class for this application.<br /> # Default to Global in the root package.<br /> application.global=global.CustomGlobal
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Global object class
+</span><span class='line'># ~~~~~
+</span><span class='line'># Define the Global object class for this application.
+</span><span class='line'># Default to Global in the root package.
+</span><span class='line'>application.global=global.CustomGlobal</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          <span class="kw1">package</span> <span class="co2">global</span><span class="sy0">;</span><br /> <br /> <span class="co1">// CAUTION: this class name must be specified in application.conf</span><br /> <span class="kw1">public</span> <span class="kw1">class</span> CustomGlobal <span class="kw1">extends</span> GlobalSettings <span class="br0">&#123;</span><br /> &nbsp; &nbsp;<span class="kw1">private</span> <span class="kw1">static</span> MutablePicoContainer dependencies <span class="sy0">=</span> wireUpDependencies<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp;<span class="kw1">private</span> <span class="kw1">static</span> MutablePicoContainer wireUpDependencies<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MutablePicoContainer container <span class="sy0">=</span> <span class="kw1">new</span> DefaultPicoContainer<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="co1">// Do some injections.</span><br /> &nbsp; &nbsp;<span class="br0">&#125;</span><br /> &nbsp; &nbsp;@Override<br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="sy0"><</span>A<span class="sy0">></span> A getControllerInstance<span class="br0">&#40;</span>Class<span class="sy0"><</span>A<span class="sy0">></span> aControllerClass<span class="br0">&#41;</span> <span class="kw1">throws</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aexception+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Exception</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> dependencies.<span class="me1">getComponent</span><span class="br0">&#40;</span>aControllerClass<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">global</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// CAUTION: this class name must be specified in application.conf</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomGlobal</span> <span class="kd">extends</span> <span class="n">GlobalSettings</span> <span class="o">{</span>
+</span><span class='line'>   <span class="kd">private</span> <span class="kd">static</span> <span class="n">MutablePicoContainer</span> <span class="n">dependencies</span> <span class="o">=</span> <span class="n">wireUpDependencies</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="kd">private</span> <span class="kd">static</span> <span class="n">MutablePicoContainer</span> <span class="nf">wireUpDependencies</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>         <span class="n">MutablePicoContainer</span> <span class="n">container</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">DefaultPicoContainer</span><span class="o">();</span>
+</span><span class='line'>         <span class="c1">// Do some injections.</span>
+</span><span class='line'>   <span class="o">}</span>
+</span><span class='line'>   <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="o">&lt;</span><span class="n">A</span><span class="o">&gt;</span> <span class="n">A</span> <span class="nf">getControllerInstance</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">A</span><span class="o">&gt;</span> <span class="n">aControllerClass</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">dependencies</span><span class="o">.</span><span class="na">getComponent</span><span class="o">(</span><span class="n">aControllerClass</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Then in <strong>/routes</strong> you can use <strong>@</strong> to say not create a controller statically.</p>
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          GET &nbsp; &nbsp; <span class="sy0">/</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @controllers.<span class="me1">coop</span>.<span class="me1">main</span>.<span class="me1">Application</span>.<span class="me1">index</span><span class="br0">&#40;</span>any <span class="sy0">=</span> <span class="st0">"none"</span><span class="br0">&#41;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">GET</span>     <span class="o">/</span>                               <span class="nd">@controllers.coop.main.Application.index</span><span class="o">(</span><span class="n">any</span> <span class="o">=</span> <span class="s">&quot;none&quot;</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Other thing is EBean which comes with Play!. EBean is built on top of JPA. However, this means you have to learn a new framework if you know Hibernate already. They are quite close. Other than that, I think Play! is great. If you have time you might want to have a look at <a href="http://dropwizard.codahale.com/" title="DropWizard">DropWizard</a> if you just want to create a RESTFul service or <a href="http://www.sparkjava.com/download.html" title="SPARK">SPARK</a> for a sinatra-like java framework.</p>
@@ -438,23 +431,15 @@
 
 <p>EBean is like another version of Hibernate. It&#8217;s basically an ORM framework. There&#8217;s a catch in EBean if you turn the showing query on and if you join two or three tables and you use RawSql EBean will fire a lot of query to fetch each and every row you want to use. You will see a massive log. That hurts the performance. If you could use basic EBean for example.</p>
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          List<span class="sy0"><</span>Order<span class="sy0">></span> orders <span class="sy0">=</span> &nbsp; <br /> &nbsp; &nbsp; Ebean.<span class="me1">find</span><span class="br0">&#40;</span>Order.<span class="kw1">class</span><span class="br0">&#41;</span> &nbsp;<br /> &nbsp; &nbsp; &nbsp; &nbsp; .<span class="me1">fetch</span><span class="br0">&#40;</span><span class="st0">"customer"</span><span class="br0">&#41;</span> &nbsp;<br /> &nbsp; &nbsp; &nbsp; &nbsp; .<span class="me1">findList</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span> <span class="n">orders</span> <span class="o">=</span>
+</span><span class='line'>    <span class="n">Ebean</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">Order</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">fetch</span><span class="o">(</span><span class="s">&quot;customer&quot;</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">findList</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>If you use .fetch(&#8220;customer&#8221;) it will just fire one query. So be careful. If you see a performance hit in your app and if it&#8217;s because of database. Check this <a href="http://www.avaje.org/ebean/introquery_joinquery.html" title="EBean join query.">link</a>. So, keep an eye on your performance because the peak might be on your query.</p>
@@ -497,100 +482,6 @@
 <p>Recently, I have this problem when Play saved some session in cookie already, but I can&#8217;t use $cookies from AngularJs to read the cookie. So, I started digging in and I found that those cookies are set with <strong>httpOnly</strong> by default. If you have that flag on any plugins (e.g, AngularJs) cannot read that cookie. So, it Play 1 you can set <strong>application.session.httpOnly=false</strong> but in Play 2.1 they changed to <strong>session.httpOnly=false</strong></p>
 
 <p>I&#8217;m hoping I can save some people&#8217;s time.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/run-ebean-entities-in-main-class-for-play-framework-java/">Run Ebean Entities in Main Class for Play Framework Java</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-05-22T00:00:00-04:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I guess the title of this blog is kinda wired and I don&#8217;t know how to make it better. People might be wondering why would you want to do that. So, on the current project we have a little requirement to seed the data for the designers to mock the data into the database but they don&#8217;t want to open IDE and run a program. And we would like to use EBean Entities because that should be the models of the application. Let&#8217;s look at the code.</p>
-
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />32<br />33<br />34<br />35<br />36<br />37<br />38<br />39<br />40<br />41<br />42<br />43<br />44<br />45<br />46<br />47<br />48<br />49<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          <span class="kw1">public</span> <span class="kw1">class</span> Seeder <span class="br0">&#123;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw1">static</span> <span class="kw4">void</span> main<span class="br0">&#40;</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> args<span class="br0">&#91;</span><span class="br0">&#93;</span><span class="br0">&#41;</span> <span class="kw1">throws</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Asqlexception+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">SQLException</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; EbeanServer server <span class="sy0">=</span> setupEBeanServer<span class="br0">&#40;</span>args<span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; cleanData<span class="br0">&#40;</span>server<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw4">int</span> i <span class="sy0">=</span> <span class="nu0"></span><span class="sy0">;</span> i <span class="sy0"><</span> <span class="nu0">10</span><span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; setupData<span class="br0">&#40;</span>server<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">private</span> <span class="kw1">static</span> EbeanServer setupEBeanServer<span class="br0">&#40;</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a><span class="br0">&#91;</span><span class="br0">&#93;</span> args<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> username <span class="sy0">=</span> args<span class="br0">&#91;</span><span class="nu0"></span><span class="br0">&#93;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> password <span class="sy0">=</span> args<span class="br0">&#91;</span><span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> connectionString <span class="sy0">=</span> args<span class="br0">&#91;</span><span class="nu0">2</span><span class="br0">&#93;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> dbDriver <span class="sy0">=</span> args<span class="br0">&#91;</span><span class="nu0">3</span><span class="br0">&#93;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">// You can use ebean.properties instead of programatically configure it. &nbsp;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; DataSourceConfig toadlaneDB <span class="sy0">=</span> <span class="kw1">new</span> DataSourceConfig<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; ServerConfig config <span class="sy0">=</span> <span class="kw1">new</span> ServerConfig<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; config.<span class="me1">setName</span><span class="br0">&#40;</span><span class="st0">"mysql"</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; toadlaneDB.<span class="me1">setDriver</span><span class="br0">&#40;</span>dbDriver<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; toadlaneDB.<span class="me1">setUsername</span><span class="br0">&#40;</span>username<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; toadlaneDB.<span class="me1">setPassword</span><span class="br0">&#40;</span>password<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; toadlaneDB.<span class="me1">setUrl</span><span class="br0">&#40;</span>connectionString<span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; config.<span class="me1">setDataSourceConfig</span><span class="br0">&#40;</span>toadlaneDB<span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; config.<span class="me1">setDefaultServer</span><span class="br0">&#40;</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; config.<span class="me1">setRegister</span><span class="br0">&#40;</span><span class="kw2">false</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> EbeanServerFactory.<span class="me1">create</span><span class="br0">&#40;</span>config<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">private</span> <span class="kw1">static</span> <span class="kw4">void</span> cleanData<span class="br0">&#40;</span>EbeanServer connection<span class="br0">&#41;</span> <span class="kw1">throws</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Asqlexception+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">SQLException</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; connection.<span class="me1">createSqlUpdate</span><span class="br0">&#40;</span><span class="st0">"DELETE FROM PRODUCTS"</span><span class="br0">&#41;</span>.<span class="me1">execute</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">private</span> <span class="kw1">static</span> <span class="kw4">void</span> setupData<span class="br0">&#40;</span>EbeanServer server<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; Product product <span class="sy0">=</span> <span class="kw1">new</span> Product<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">// setup properties</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; server.<span class="me1">save</span><span class="br0">&#40;</span>product<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; <br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span><br /> <br /> @<a href="http://www.google.com/search?hl=en&q=allinurl%3Aentity+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Entity</span></a><br /> <span class="kw1">public</span> <span class="kw1">class</span> Product <span class="kw1">extends</span> Model <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="co1">// Properties</span><br /> <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-
-<p>People might be wondering it should be difficult because Play comes with EBean already but when you run this class from the main class you are outside of Play world and it becomes a little problem. First, EBean will complain about</p>
-
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          @<a href="http://www.google.com/search?hl=en&q=allinurl%3Aentity+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Entity</span></a><br /> <span class="kw1">public</span> <span class="kw1">class</span> Product <span class="kw1">extends</span> Model <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="co1">// Properties</span><br /> <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-
-<p>Because Product has been marked @Entity already but we also extends that with Model for other magic methods again. Here&#8217;s the trick which I use -javaagent:/${PROJECT_HOME}/lib/ebean-2.7.7-agent.jar</p>
-
-<p>Here&#8217;s what I have done in Ant script</p>
-
-<div class="codecolorer-container xml blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="xml codecolorer">
-          &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc3"><span class="re1"><java</span> <span class="re0">classname</span>=<span class="st0">"seeder.Seeder"</span> <span class="re0">dir</span>=<span class="st0">"${play.test.build.dir}"</span> <span class="re0">fork</span>=<span class="st0">"true"</span></span><br /> <span class="sc3"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="re0">failonerror</span>=<span class="st0">"true"</span><span class="re2">></span></span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc3"><span class="re1"><arg</span> <span class="re0">value</span>=<span class="st0">"${username}"</span><span class="re2">/></span></span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc3"><span class="re1"><arg</span> <span class="re0">value</span>=<span class="st0">"${password}"</span><span class="re2">/></span></span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc3"><span class="re1"><arg</span> <span class="re0">value</span>=<span class="st0">"${db.url}"</span><span class="re2">/></span></span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc3"><span class="re1"><arg</span> <span class="re0">value</span>=<span class="st0">"${db.driver}"</span><span class="re2">/></span></span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc3"><span class="re1"><jvmarg</span> <span class="re0">value</span>=<span class="st0">"-javaagent:/${PROJECT_HOME}/lib/ebean-2.7.7-agent.jar"</span> <span class="re2">/></span></span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc3"><span class="re1"><classpath<span class="re2">></span></span></span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc3"><span class="re1"><path</span> <span class="re0">refid</span>=<span class="st0">"seeder-classpath"</span><span class="re2">/></span></span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc3"><span class="re1"></classpath<span class="re2">></span></span></span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc3"><span class="re1"></java<span class="re2">></span></span></span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-
-<p>I was inspired by this <a href="http://blog.matthieuguillermin.fr/2012/03/unit-testing-tricks-for-play-2-0-and-ebean/">guy</a></p>
 </div>
   
   
@@ -686,9 +577,65 @@
 
 <p>For example, I didn&#8217;t know where to find a dentist, so I tweeted &#8220;Where can I find a dentist around Holborn?&#8221; And this is the response I got.</p>
 
-<blockquote><p>@noppanit We have studios Covent Garden, Soho, Bank Moorgate and Canary Wharf if any of these suit? <img src="http://www.noppanit.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p></blockquote>
+<blockquote><p>@noppanit We have studios Covent Garden, Soho, Bank Moorgate and Canary Wharf if any of these suit?</p></blockquote>
 
 <p>And I went there and I was happy to go there. So, if you&#8217;re a small business and don&#8217;t know where to start marketing, twitter marketing by monitoring keywords and hashtags might work for you.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/why-i-join-live-below-the-line/">Why I Join Live Below the Line?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-04-04T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I believe all of us have heard this problem before through all kinds of channels, the Internet, TV, Facebook, Twitter, from your friends or even seeing themselves from guys on the street.</p>
+
+<p>But why I join this <a href="https://www.livebelowtheline.com" title="live below the line" target="_blank">programme</a>?, at first I heard this challenge from my friend, <a href="https://twitter.com/CEPitchford" title="Clair Pitchford" target="_blank">Clair Pitchford</a>. Live Below the Line, it&#8217;s a challenge where you have to<br/>
+spend under 1 pound a day for 5 days and you raise money for the needy. Why £1? The short version is that you will be under extreme poverty if you only have $1.25 to spend in one day, more information can be found <a href="https://www.livebelowtheline.com/uk-why-1" title="why £1" target="_blank">here</a>.</p>
+
+<p>I&#8217;m from Thailand. Thailand is not a poor country after all, compare to India, Africa or other third-world countries. But we do have a hugh gap between the rich and the poor. I don&#8217;t come from a poor background but my family struggled quite a bit when I was a child. Sometime we didn&#8217;t have enough food and a lot of debt to pay. I was too young to remember any of those hard times.</p>
+
+<p>Now I work in the UK, my life is better and I have a reasonably good job. Plus, I travel a lot I have been to many countries around Europe and Asia. I have seen and met a lot of rough sleepers. Some of them are legit, but some of them they just want to buy some drink. One time, I got stopped by a homeless asking for 50p to buy a beer, I thought he was honest so I gave him 50p. Some of them told me a lot of story how poor they are, kids and lot of stuff so they can get some money. Sometime I feel sorry for those people, I&#8217;m sure you have asked this question yourself sometime as well. But we also have to accept the reality that we cannot help those people with just a few pennies. Even though we have lots and lots of organisations trying to help those people, we still have poverty, malnutrition children and people who don&#8217;t have access to clean water. So what can we do?</p>
+
+<iframe src="https://embed-ssl.ted.com/talks/bono_the_good_news_on_poverty_yes_there_s_good_news.html" width="560" height="315" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+<p>However, we have some good news as well.</p>
+
+<p>For the past years, I have worked with 2 organisations in Thailand and in India. <a href="http://goodwillthailand.org/" title="Goodwill Thailand">Goodwill Thailand</a>, the organisation helps disadvantaged women in Thailand by educating them and training them. I know this organisation through my friend, she has worked with this organisation before so I joined later.</p>
+
+<p>What I did was that I volunteered just 2 hours of my weekend time to teach them English and how to use computer. English course in Thailand is quite expensive and not everybody can afford the course. Just this it will help them to get a better job and better quality of life. If they can just make a simple conversation in English they can work as a receptionist in a hotel instead of a cleaner (Apologises, I don&#8217;t mean to be disrespectful about any professions). Or they can be a baby sitter for expats in Bangkok which they will get paid more than minimum average. The minimum wage in Thailand is 10 dollars a day.</p>
+
+<p>The second organisation is <a href="http://www.sukrupa.org" title="Sukrupa">Sukrupa</a>. This organisations helps deprived children in Bangalore by giving them education and even helping their parents. The programme is initiated by Krupa which I had a chance to know when when I was in Bangalore for a six-week training from ThoughtWorks. We were bought in to help them develop a website to get more traction on the Internet. So, they can raise more money to help all the children.</p>
+
+<p>Back to Live Below the Line, as I have worked with two organisations I have realised that with my current status the best way to fight this problem is to donate skills and create awareness. If I can help them get back on their feet quickly, then they can help themselves later. If we give them food once they&#8217;ve eaten that food, it&#8217;s gone. If we teach them to cook the food, they can produce the food for the rest of their life. Also, another reason is that if I can create more awareness so more people know and realise the problem even to the top where powerful people can really make a different.</p>
+
+<p>More video that inspires me.</p>
+
+<iframe src="https://embed-ssl.ted.com/talks/dan_pallotta_the_way_we_think_about_charity_is_dead_wrong.html" width="560" height="315" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+<p><a href="https://www.livebelowtheline.com/me/noppanit" title="noppanit">My Live Below the Line</a></p>
 </div>
   
   

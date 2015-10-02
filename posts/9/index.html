@@ -9,7 +9,7 @@
   <meta name="author" content="Noppanit Charassinvichai">
 
   
-  <meta name="description" content="So silly of me I have just &#8220;accidentally&#8221; deleted my home directory T_T. There is a way to help that by override rm command to move file &hellip;">
+  <meta name="description" content="When you&#8217;re working on something intensively and you haven&#8217;t finished the thing, suddenly somebody just wants you to do something again &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,69 +65,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/mac-osx-override-rm-to-delete-files-to-trash/">Mac OSX: Override Rm to Delete Files to .Trash</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-04-05T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>So silly of me I have just &#8220;accidentally&#8221; deleted my home directory T_T. There is a way to help that by override rm command to move file to .Trash.</p>
-
-<p>Just copy this code to ~/.bash_profile and restart your terminal.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>function rm () {
-</span><span class='line'>  local path
-</span><span class='line'>  for path in "$@"; do
-</span><span class='line'>    # ignore any arguments
-</span><span class='line'>    if [[ "$path" = -* ]]; then :
-</span><span class='line'>    else
-</span><span class='line'>      local dst=${path##*/}
-</span><span class='line'>      # append the time if necessary
-</span><span class='line'>      while [ -e ~/.Trash/"$dst" ]; do
-</span><span class='line'>        dst="$dst "$(date +%H-%M-%S)
-</span><span class='line'>      done
-</span><span class='line'>      mv "$path" ~/.Trash/"$dst"
-</span><span class='line'>    fi
-</span><span class='line'>  done
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -1444,6 +1381,139 @@ First let&#8217;s create a Product class</p>
 <p>And I think this is pretty good, it&#8217;s like when you want to test your program you need to use real data and not just &#8220;1234&#8221; and &#8220;asdf&#8221;. It&#8217;s unreadable.</p>
 
 <p>For more information click on <a href="http://www.lipsum.com/">http://www.lipsum.com/ </a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/ruby-find-unscrambled-words-from-a-list-of-scrambled-words/">Ruby: Find Unscrambled Words From a List of Scrambled Words</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-12-08T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Suppose you have a list of words, and you have another list of unscrambled words. How would you find unscrambled words in the list of words. For example, you have a list of words:</p>
+
+<ol>
+<li>testtest</li>
+<li>apple</li>
+<li>college</li>
+<li>abcdefg</li>
+<li>school<br/>
+&#8230; and a lot more, says 1000 words</li>
+</ol>
+
+
+<p>And a list of unscrambled words<br/>
+1. hoolsc<br/>
+2. bgfedcba<br/>
+3. ppale</p>
+
+<p>How would you know that the exact word of the list of unscrambled words? How would you know that &#8220;hoolsc&#8221; is &#8220;school&#8221;.</p>
+
+<p>Here is what I do, I use Ruby to create a hash and find the frequency of each character of each word. And compare the two hashs to see if they contain the same amount of characters. This might not be the most efficient way to do that, but it certainly the easiest way to do.</p>
+
+<p>For instance, &#8220;school&#8221; would have { &#8220;s&#8221; => 1, &#8220;c&#8221; => 1, &#8220;h&#8221; => 1, &#8220;o&#8221; => 2, &#8220;l&#8221; => 1} and &#8220;hoolsc&#8221; would be {&#8220;h&#8221; => 1, &#8220;o&#8221; => 2, &#8220;l&#8221; => 1, &#8220;s&#8221; => 1, &#8220;c&#8221; => 1}. They are different in the position of key, but they have the same number of keys and each key-value pair is equal to the element in the other hash.</p>
+
+<p>Here is the code I created<br/>
+The words.txt is the list of scrambled words<br/>
+and the wordlist.txt is the list of unscrambled words</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">scrambled_words</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;words.txt&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="k">while</span> <span class="p">(</span><span class="n">scrambled_word</span> <span class="o">=</span> <span class="n">scrambled_words</span><span class="o">.</span><span class="n">gets</span> <span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">scrambled_word</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">scrambled_word</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="n">scrambled_word_array</span> <span class="o">=</span> <span class="n">scrambled_word</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sr">//</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">scrambled_word_hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">for</span> <span class="n">word</span> <span class="k">in</span> <span class="n">scrambled_word_array</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span> <span class="n">word</span> <span class="o">!=</span> <span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span> <span class="o">&amp;&amp;</span> <span class="n">word</span> <span class="o">!=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">scrambled_word_hash</span><span class="o">[</span><span class="n">word</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">word_list</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;wordlist.txt&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">while</span> <span class="p">(</span><span class="n">words</span> <span class="o">=</span> <span class="n">word_list</span><span class="o">.</span><span class="n">gets</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">unscrambled_word</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">words</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>      <span class="n">unscrambled_word_array</span> <span class="o">=</span> <span class="n">unscrambled_word</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sr">//</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">unscrambled_word_hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">for</span> <span class="n">word1</span> <span class="k">in</span> <span class="n">unscrambled_word_array</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span> <span class="n">word1</span> <span class="o">!=</span> <span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span> <span class="o">&amp;&amp;</span> <span class="n">word1</span> <span class="o">!=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>          <span class="n">unscrambled_word_hash</span><span class="o">[</span><span class="n">word1</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="n">scrambled_word_hash</span> <span class="o">==</span> <span class="n">unscrambled_word_hash</span>
+</span><span class='line'>      <span class="nb">print</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">words</span><span class="si">}</span><span class="s2">,&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">word_list</span><span class="o">.</span><span class="n">close</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="n">scrambled_words</span><span class="o">.</span><span class="n">close</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can get wordlist.txt from <a href="http://www.hackthissite.org/missions/prog/1/">http://www.hackthissite.org/missions/prog/1/</a> as well. It&#8217;s really fun.</p>
 </div>
   
   

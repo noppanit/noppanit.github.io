@@ -88,65 +88,229 @@
 
 <p>For example, I have one <strong>Store</strong> object which it has a method to return jsonified string. So, what I did I just passed <strong>ObjectMapper</strong> to transform my object to be json. However, what I didn&#8217;t realise was that if I passed that from the constructor my object has to store <strong>ObjectMapper</strong> inside the object as well and <strong>ObjectMapper</strong> is a really beefy object. So, If I created a million objects I have to hold another million objects of ObjectMapper as well. So, I just had to pass <strong>ObjectMapper</strong> just when I want to use it. And that save me a lot of memory.</p>
 
-<div class="codecolorer-container java blackboard" style="overflow:auto;white-space:nowrap;width:100%;height:400px;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />32<br />33<br />34<br />35<br />36<br />37<br />38<br />39<br />40<br />41<br />42<br />43<br />44<br />45<br />46<br />47<br />48<br />49<br />50<br />51<br />52<br />53<br />54<br />55<br />56<br />57<br />58<br />59<br />60<br />61<br />62<br />63<br />64<br />65<br />66<br />67<br />68<br />69<br />70<br />71<br />72<br />73<br />74<br />75<br />76<br />77<br />78<br />79<br />80<br />81<br />82<br />83<br />84<br />85<br />86<br />87<br />88<br />89<br />90<br />91<br />92<br />93<br />94<br />95<br />96<br />97<br />98<br />99<br />100<br />101<br />102<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="java codecolorer">
-          <span class="kw1">package</span> <span class="co2">com.noppanit</span><span class="sy0">;</span><br /> <br /> <span class="kw1">import</span> <span class="co2">com.fasterxml.jackson.annotation.JsonAutoDetect</span><span class="sy0">;</span><br /> <span class="kw1">import</span> <span class="co2">com.fasterxml.jackson.annotation.JsonInclude</span><span class="sy0">;</span><br /> <span class="kw1">import</span> <span class="co2">com.fasterxml.jackson.core.JsonProcessingException</span><span class="sy0">;</span><br /> <span class="kw1">import</span> <span class="co2">com.fasterxml.jackson.databind.ObjectMapper</span><span class="sy0">;</span><br /> <span class="kw1">import</span> <span class="co2">org.junit.Test</span><span class="sy0">;</span><br /> <br /> <span class="kw1">import</span> <span class="co2">java.io.Serializable</span><span class="sy0">;</span><br /> <span class="kw1">import</span> <span class="co2">java.util.HashMap</span><span class="sy0">;</span><br /> <br /> <span class="kw1">import</span> <span class="co2">static</span> com.<span class="me1">fasterxml</span>.<span class="me1">jackson</span>.<span class="me1">annotation</span>.<span class="me1">JsonAutoDetect</span>.<a href="http://www.google.com/search?hl=en&q=allinurl%3Avisibility+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Visibility</span></a>.<span class="me1">ANY</span><span class="sy0">;</span><br /> <span class="kw1">import</span> <span class="co2">static</span> com.<span class="me1">fasterxml</span>.<span class="me1">jackson</span>.<span class="me1">annotation</span>.<span class="me1">JsonAutoDetect</span>.<a href="http://www.google.com/search?hl=en&q=allinurl%3Avisibility+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Visibility</span></a>.<span class="me1">NONE</span><span class="sy0">;</span><br /> <br /> <span class="kw1">public</span> <span class="kw1">class</span> TestMemoryConsumption <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw1">private</span> <span class="kw1">static</span> <span class="kw1">final</span> <span class="kw4">long</span> MEGABYTE <span class="sy0">=</span> 1024L <span class="sy0">*</span> 1024L<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw1">static</span> <span class="kw1">final</span> <span class="kw4">int</span> LOOP <span class="sy0">=</span> <span class="nu0">1000000</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw1">static</span> <span class="kw4">long</span> bytesToMegabytes<span class="br0">&#40;</span><span class="kw4">long</span> bytes<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> bytes <span class="sy0">/</span> MEGABYTE<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; @Test<br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw4">void</span> testMemoryConsumption<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">throws</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aexception+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Exception</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; ObjectMapper objectMapper <span class="sy0">=</span> <span class="kw1">new</span> ObjectMapper<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; HashMap<span class="sy0"><</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a>, Object<span class="sy0">></span> map <span class="sy0">=</span> <span class="kw1">new</span> HashMap<span class="sy0"><</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a>, Object<span class="sy0">></span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw4">int</span> i <span class="sy0">=</span> <span class="nu0"></span><span class="sy0">;</span> i <span class="sy0"><</span> LOOP<span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; StoreWithToJson storeWithToJson <span class="sy0">=</span> <span class="kw1">new</span> StoreWithToJson<span class="br0">&#40;</span><span class="st0">"name"</span>, <span class="st0">"description"</span>, objectMapper<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; map.<span class="me1">put</span><span class="br0">&#40;</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a>.<span class="me1">valueOf</span><span class="br0">&#40;</span>i<span class="br0">&#41;</span>, storeWithToJson<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; printMemoryConsumption<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; @Test<br /> &nbsp; &nbsp; <span class="kw1">public</span> <span class="kw4">void</span> testMemoryConsumptionWithoutObjectMapper<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">throws</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aexception+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Exception</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; HashMap<span class="sy0"><</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a>, Object<span class="sy0">></span> map <span class="sy0">=</span> <span class="kw1">new</span> HashMap<span class="sy0"><</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a>, Object<span class="sy0">></span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw4">int</span> i <span class="sy0">=</span> <span class="nu0"></span><span class="sy0">;</span> i <span class="sy0"><</span> LOOP<span class="sy0">;</span> i<span class="sy0">++</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Store store <span class="sy0">=</span> <span class="kw1">new</span> Store<span class="br0">&#40;</span><span class="st0">"name"</span>, <span class="st0">"description"</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; map.<span class="me1">put</span><span class="br0">&#40;</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a>.<span class="me1">valueOf</span><span class="br0">&#40;</span>i<span class="br0">&#41;</span>, store<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; &nbsp; &nbsp; printMemoryConsumption<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">private</span> <span class="kw4">void</span> printMemoryConsumption<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Aruntime+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Runtime</span></a> runtime <span class="sy0">=</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aruntime+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Runtime</span></a>.<span class="me1">getRuntime</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; runtime.<span class="me1">gc</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">runFinalization</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw4">long</span> memory <span class="sy0">=</span> runtime.<span class="me1">totalMemory</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">-</span> runtime.<span class="me1">freeMemory</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">out</span>.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">"Used memory is bytes: "</span> <span class="sy0">+</span> memory<span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&q=allinurl%3Asystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">System</span></a>.<span class="me1">out</span>.<span class="me1">println</span><span class="br0">&#40;</span><span class="st0">"Used memory is megabytes: "</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sy0">+</span> bytesToMegabytes<span class="br0">&#40;</span>memory<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span><br /> <br /> @JsonInclude<span class="br0">&#40;</span>JsonInclude.<span class="me1">Include</span>.<span class="me1">NON_NULL</span><span class="br0">&#41;</span><br /> @JsonAutoDetect<span class="br0">&#40;</span>fieldVisibility <span class="sy0">=</span> JsonAutoDetect.<a href="http://www.google.com/search?hl=en&q=allinurl%3Avisibility+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Visibility</span></a>.<span class="me1">NONE</span>, getterVisibility <span class="sy0">=</span> ANY, setterVisibility <span class="sy0">=</span> NONE<span class="br0">&#41;</span><br /> <span class="kw1">class</span> StoreWithToJson <span class="kw1">implements</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aserializable+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Serializable</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw1">private</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> name<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">private</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> description<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">private</span> ObjectMapper mapper<span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> StoreWithToJson<span class="br0">&#40;</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> name, <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> description, ObjectMapper mapper<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">this</span>.<span class="me1">name</span> <span class="sy0">=</span> name<span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">this</span>.<span class="me1">description</span> <span class="sy0">=</span> description<span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">this</span>.<span class="me1">mapper</span> <span class="sy0">=</span> mapper<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> toJson<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="kw1">throws</span> JsonProcessingException <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> mapper.<span class="me1">writeValueAsString</span><span class="br0">&#40;</span><span class="kw1">this</span><span class="br0">&#41;</span><span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> getName<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> name<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> getDescription<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> description<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span><br /> <br /> <br /> <span class="kw1">class</span> Store <span class="kw1">implements</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Aserializable+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">Serializable</span></a> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; <span class="kw1">private</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> name<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="kw1">private</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> description<span class="sy0">;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> Store<span class="br0">&#40;</span><a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> name, <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> description<span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">this</span>.<span class="me1">name</span> <span class="sy0">=</span> name<span class="sy0">;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">this</span>.<span class="me1">description</span> <span class="sy0">=</span> description<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> getName<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> name<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <br /> &nbsp; &nbsp; <span class="kw1">public</span> <a href="http://www.google.com/search?hl=en&q=allinurl%3Astring+java.sun.com&btnI=I%27m%20Feeling%20Lucky"><span class="kw3">String</span></a> getDescription<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">return</span> description<span class="sy0">;</span><br /> &nbsp; &nbsp; <span class="br0">&#125;</span><br /> <span class="br0">&#125;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">noppanit</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.fasterxml.jackson.annotation.JsonAutoDetect</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.fasterxml.jackson.annotation.JsonInclude</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.fasterxml.jackson.core.JsonProcessingException</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.fasterxml.jackson.databind.ObjectMapper</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">static</span> <span class="n">com</span><span class="o">.</span><span class="na">fasterxml</span><span class="o">.</span><span class="na">jackson</span><span class="o">.</span><span class="na">annotation</span><span class="o">.</span><span class="na">JsonAutoDetect</span><span class="o">.</span><span class="na">Visibility</span><span class="o">.</span><span class="na">ANY</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">static</span> <span class="n">com</span><span class="o">.</span><span class="na">fasterxml</span><span class="o">.</span><span class="na">jackson</span><span class="o">.</span><span class="na">annotation</span><span class="o">.</span><span class="na">JsonAutoDetect</span><span class="o">.</span><span class="na">Visibility</span><span class="o">.</span><span class="na">NONE</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestMemoryConsumption</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">MEGABYTE</span> <span class="o">=</span> <span class="mi">1024L</span> <span class="o">*</span> <span class="mi">1024L</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">LOOP</span> <span class="o">=</span> <span class="mi">1000000</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">long</span> <span class="nf">bytesToMegabytes</span><span class="o">(</span><span class="kt">long</span> <span class="n">bytes</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">bytes</span> <span class="o">/</span> <span class="n">MEGABYTE</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Test</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testMemoryConsumption</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">ObjectMapper</span> <span class="n">objectMapper</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ObjectMapper</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">LOOP</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">StoreWithToJson</span> <span class="n">storeWithToJson</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">StoreWithToJson</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="s">&quot;description&quot;</span><span class="o">,</span> <span class="n">objectMapper</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">i</span><span class="o">),</span> <span class="n">storeWithToJson</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">printMemoryConsumption</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Test</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testMemoryConsumptionWithoutObjectMapper</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">LOOP</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">Store</span> <span class="n">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Store</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="s">&quot;description&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">i</span><span class="o">),</span> <span class="n">store</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">printMemoryConsumption</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">printMemoryConsumption</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">Runtime</span> <span class="n">runtime</span> <span class="o">=</span> <span class="n">Runtime</span><span class="o">.</span><span class="na">getRuntime</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">runtime</span><span class="o">.</span><span class="na">gc</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">runFinalization</span><span class="o">();</span>
+</span><span class='line'>        <span class="kt">long</span> <span class="n">memory</span> <span class="o">=</span> <span class="n">runtime</span><span class="o">.</span><span class="na">totalMemory</span><span class="o">()</span> <span class="o">-</span> <span class="n">runtime</span><span class="o">.</span><span class="na">freeMemory</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Used memory is bytes: &quot;</span> <span class="o">+</span> <span class="n">memory</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Used memory is megabytes: &quot;</span>
+</span><span class='line'>                <span class="o">+</span> <span class="n">bytesToMegabytes</span><span class="o">(</span><span class="n">memory</span><span class="o">));</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nd">@JsonInclude</span><span class="o">(</span><span class="n">JsonInclude</span><span class="o">.</span><span class="na">Include</span><span class="o">.</span><span class="na">NON_NULL</span><span class="o">)</span>
+</span><span class='line'><span class="nd">@JsonAutoDetect</span><span class="o">(</span><span class="n">fieldVisibility</span> <span class="o">=</span> <span class="n">JsonAutoDetect</span><span class="o">.</span><span class="na">Visibility</span><span class="o">.</span><span class="na">NONE</span><span class="o">,</span> <span class="n">getterVisibility</span> <span class="o">=</span> <span class="n">ANY</span><span class="o">,</span> <span class="n">setterVisibility</span> <span class="o">=</span> <span class="n">NONE</span><span class="o">)</span>
+</span><span class='line'><span class="kd">class</span> <span class="nc">StoreWithToJson</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">ObjectMapper</span> <span class="n">mapper</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">StoreWithToJson</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">description</span><span class="o">,</span> <span class="n">ObjectMapper</span> <span class="n">mapper</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">description</span> <span class="o">=</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">mapper</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toJson</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">mapper</span><span class="o">.</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kd">class</span> <span class="nc">Store</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">Store</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">description</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">description</span> <span class="o">=</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">description</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Result from passing <strong>ObjectMapper</strong> from the constructor.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          Used memory is bytes: 3723968<br /> Used memory is megabytes: 3
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Used</span> <span class="n">memory</span> <span class="n">is</span> <span class="nl">bytes:</span> <span class="mi">3723968</span>
+</span><span class='line'><span class="n">Used</span> <span class="n">memory</span> <span class="n">is</span> <span class="nl">megabytes:</span> <span class="mi">3</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Result from passing <strong>ObjectMapper</strong> just when I want to use it.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          Used memory is bytes: 1928536<br /> Used memory is megabytes: 1
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Used</span> <span class="n">memory</span> <span class="n">is</span> <span class="nl">bytes:</span> <span class="mi">1928536</span>
+</span><span class='line'><span class="n">Used</span> <span class="n">memory</span> <span class="n">is</span> <span class="nl">megabytes:</span> <span class="mi">1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I know this might be obvious for some people but if you have the same problems as myself this might help shed some lights to something else.</p>

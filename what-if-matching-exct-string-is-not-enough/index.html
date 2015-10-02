@@ -88,57 +88,33 @@
 
 <p>I have this problem when I want to match string but not <strong>exact match</strong>. For example, I have this string <strong>&#8220;I really love The Matrix movie because of this quote &#8216;welcome to the real world'&#8221;</strong> and I have a bunch of tags in my database such as <strong>&#8220;The Matrix&#8221;, &#8220;welcome to the real world&#8221;, &#8220;red pill&#8221;, &#8220;blue pill&#8221;</strong>. So, if I want to match the tags with the string I could do regular expression like this or actually I could do the exact match and still get the correct one.</p>
 
-<p>**</p></p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/.*world.*/</span></code></pre></td></tr></table></div></figure>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          /.*world.*/
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-
-<p></strong></p>
 
 <p>That would give me what I want. However, what if I have another movie <strong>&#8220;The day after tomorrow&#8221;</strong> with tags <strong>&#8220;world&#8221;</strong>. If I search with word that string against the tags I will get two movies. So, what can I do? I did some Google and found <a href="http://en.wikipedia.org/wiki/Approximate_string_matching">fuzzy search</a> and I picked <a href="http://en.wikipedia.org/wiki/Levenshtein_distance">&#8220;Levenshtein&#8221;</a>. I&#8217;m not good at maths so I can&#8217;t really explains in technical correctly. But basically, it&#8217;s a technique to look into two strings and count every time you have to <string>&#8220;edit&#8221;</strong> to make the strings exact match. For example,</p>
 
-<div class="panel">
-  &#8220;I love you&#8221; # string 1<br /> <br /> &#8220;I <span class="alert label">also</span> love you&#8221; # string 2
-</div>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>“I love you” # string 1
+</span><span class='line'>
+</span><span class='line'>“I also love you” # string 2</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The distance would be <strong>1</strong> because it takes <strong>1</strong> edit to make the two strings exact match. We have to add <strong>also</strong> or delete <strong>also</strong> 1 time.</p>
 
 <p>So from the example above.</p>
 
-<div class="codecolorer-container ruby blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="ruby codecolorer">
-          <span class="co1"># Distance 12</span><br /> <span class="kw3">puts</span> Levenshtein.<span class="me1">distance</span><span class="br0">&#40;</span><span class="st0">"welcome to the real world"</span>.<span class="kw3">split</span><span class="br0">&#40;</span><span class="st0">" "</span><span class="br0">&#41;</span>, <span class="st0">"I really love The Matrix movie because of this quote 'welcome to the real world'"</span>.<span class="kw3">split</span><span class="br0">&#40;</span><span class="st0">" "</span><span class="br0">&#41;</span><span class="br0">&#41;</span><br /> <span class="co1"># Distance 15</span><br /> <span class="kw3">puts</span> Levenshtein.<span class="me1">distance</span><span class="br0">&#40;</span><span class="st0">"world"</span>.<span class="kw3">split</span><span class="br0">&#40;</span><span class="st0">" "</span><span class="br0">&#41;</span>, <span class="st0">"I really love The Matrix movie because of this quote 'welcome to the real world'"</span>.<span class="kw3">split</span><span class="br0">&#40;</span><span class="st0">" "</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c"># Distance 12</span>
+</span><span class='line'><span class="n">puts</span> <span class="n">Levenshtein</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="s">&quot;welcome to the real world&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">),</span> <span class="s">&quot;I really love The Matrix movie because of this quote &#39;welcome to the real world&#39;&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">))</span>
+</span><span class='line'><span class="c"># Distance 15</span>
+</span><span class='line'><span class="n">puts</span> <span class="n">Levenshtein</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="s">&quot;world&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">),</span> <span class="s">&quot;I really love The Matrix movie because of this quote &#39;welcome to the real world&#39;&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>So this way, the tag <strong>welcome to the real world</strong> is more likely to match with the string <strong>I really love The Matrix movie because of this quote &#8216;welcome to the real world</strong></p>

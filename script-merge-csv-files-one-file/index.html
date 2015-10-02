@@ -9,10 +9,21 @@
   <meta name="author" content="Noppanit Charassinvichai">
 
   
-  <meta name="description" content="For example I have file structure like this. ├── 2013-01
-│   ├── 2013-01-avon-and-somerset-street.csv
-├── 2013-02
-│   ├── 2013-02-avon-and-somerset- &hellip;">
+  <meta name="description" content="For example I have file structure like this. 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+├── 2013-01 │   ├── 2013-01-avon-and-somerset-street.csv ├── 2013-02 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,42 +100,43 @@
 
 <div class="entry-content"><p>For example I have file structure like this.</p>
 
-<p>├── 2013-01<br/>
-│   ├── 2013-01-avon-and-somerset-street.csv<br/>
-├── 2013-02<br/>
-│   ├── 2013-02-avon-and-somerset-street.csv<br/>
-├── 2013-03<br/>
-│   ├── 2013-03-avon-and-somerset-street.csv<br/>
-├── 2013-04<br/>
-│   ├── 2013-04-avon-and-somerset-street.csv<br/>
-├── 2013-05<br/>
-│   ├── 2013-05-avon-and-somerset-street.csv<br/>
-├── 2013-06<br/>
-│   ├── 2013-06-avon-and-somerset-street.csv<br/>
-└── 2013-07<br/>
-├── 2013-07-avon-and-somerset-street.csv</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>├── 2013-01  
+</span><span class='line'>│   ├── 2013-01-avon-and-somerset-street.csv  
+</span><span class='line'>├── 2013-02  
+</span><span class='line'>│   ├── 2013-02-avon-and-somerset-street.csv  
+</span><span class='line'>├── 2013-03  
+</span><span class='line'>│   ├── 2013-03-avon-and-somerset-street.csv  
+</span><span class='line'>├── 2013-04  
+</span><span class='line'>│   ├── 2013-04-avon-and-somerset-street.csv  
+</span><span class='line'>├── 2013-05  
+</span><span class='line'>│   ├── 2013-05-avon-and-somerset-street.csv  
+</span><span class='line'>├── 2013-06  
+</span><span class='line'>│   ├── 2013-06-avon-and-somerset-street.csv  
+</span><span class='line'>└── 2013-07  
+</span><span class='line'>├── 2013-07-avon-and-somerset-street.csv</span></code></pre></td></tr></table></div></figure>
+
 
 <p>To process multiple files in R or Pandas would be a pain, if I could combine all the csv in every folder into one file and I can work on just that one file.</p>
 
 <p>How to use it&#8217;s really easy. Just copy the source code and paste in anywhere. For example, I would call this **merge_csv</code>. Then you would execute like this.</p></p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          sh merge_csv <FOLDER_YOU_WANT>
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sh merge_csv &lt;FOLDER_YOU_WANT&gt;
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The script will iterate to every folder and sub-folder.</p>

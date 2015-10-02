@@ -90,149 +90,113 @@
 
 <p>Let&#8217;s say you have one collection with this document. Let&#8217;s say it&#8217;s <strong>products</strong> collection.</p></p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          {<br /> &nbsp; "_id" : ObjectId("52e05133c68f0b2a95e2b67b"),<br /> &nbsp; "product_id" : 1,<br /> &nbsp; "title" : "Sharpie"<br /> }
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="nt">&quot;_id&quot;</span> <span class="p">:</span> <span class="err">ObjectId(</span><span class="s2">&quot;52e05133c68f0b2a95e2b67b&quot;</span><span class="err">)</span><span class="p">,</span>
+</span><span class='line'>  <span class="nt">&quot;product_id&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span><span class='line'>  <span class="nt">&quot;title&quot;</span> <span class="p">:</span> <span class="s2">&quot;Sharpie&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>And another document in <strong>prices</strong> collection.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          {<br /> &nbsp; "_id" : ObjectId("52e05473c68f0b2a95e2b682"),<br /> &nbsp; "product_id" : 1,<br /> &nbsp; "price" : 99<br /> }
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="nt">&quot;_id&quot;</span> <span class="p">:</span> <span class="err">ObjectId(</span><span class="s2">&quot;52e05473c68f0b2a95e2b682&quot;</span><span class="err">)</span><span class="p">,</span>
+</span><span class='line'>  <span class="nt">&quot;product_id&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span><span class='line'>  <span class="nt">&quot;price&quot;</span> <span class="p">:</span> <span class="mi">99</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I want to end up with this.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          { "_id" : 1, "value" : { "title" : "Sharpie", "price" : 99 } }
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span> <span class="nt">&quot;_id&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nt">&quot;value&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="nt">&quot;title&quot;</span> <span class="p">:</span> <span class="s2">&quot;Sharpie&quot;</span><span class="p">,</span> <span class="nt">&quot;price&quot;</span> <span class="p">:</span> <span class="mi">99</span> <span class="p">}</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Here&#8217;s what you can do. Insert your data first.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          db.products.insert({"product_id" : 1, "title" : "Sharpie"});<br /> db.products.insert({"product_id" : 2, "title" : "Sticky"});<br /> db.prices.insert({"product_id" : 1, "price" : 99});<br /> db.prices.insert({"product_id" : 2, "price" : 30});
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">db</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&quot;product_id&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span> <span class="o">:</span> <span class="s2">&quot;Sharpie&quot;</span><span class="p">});</span>
+</span><span class='line'><span class="nx">db</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&quot;product_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span> <span class="o">:</span> <span class="s2">&quot;Sticky&quot;</span><span class="p">});</span>
+</span><span class='line'><span class="nx">db</span><span class="p">.</span><span class="nx">prices</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&quot;product_id&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="mi">99</span><span class="p">});</span>
+</span><span class='line'><span class="nx">db</span><span class="p">.</span><span class="nx">prices</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&quot;product_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="mi">30</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Then you build maps to get key/value from the documents</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          products_map = function() {<br /> &nbsp; emit(this.product_id, {"title" : this.title});<br /> }<br /> <br /> prices_map = function() {<br /> &nbsp; emit(this.product_id, {"price" : this.price});<br /> };
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">products_map</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">emit</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">product_id</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">title</span><span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">prices_map</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">emit</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">product_id</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">price</span><span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Then you build your reduce function</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          r = function(key, values) {<br /> &nbsp; var result = {<br /> &nbsp; &nbsp; &nbsp; "title" : "",<br /> &nbsp; &nbsp; &nbsp; "price" : ""<br /> &nbsp; &nbsp; };<br /> <br /> &nbsp; &nbsp; values.forEach(function(value) {<br /> &nbsp; &nbsp; &nbsp; if(value.title !== null) {result.title = value.title;}<br /> <br /> &nbsp; &nbsp; &nbsp; if(value.price !== null) {result.price = value.price;}<br /> &nbsp; &nbsp; });<br /> <br /> &nbsp; &nbsp; return result;<br /> }
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">r</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">values</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>      <span class="s2">&quot;title&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span class='line'>      <span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">values</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">title</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span><span class="nx">result</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">title</span><span class="p">;}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">if</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">price</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span><span class="nx">result</span><span class="p">.</span><span class="nx">price</span> <span class="o">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">price</span><span class="p">;}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Then you run your map/reduce function.</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          res = db.products.mapReduce(products_map, r, {out: {reduce : 'joined'}});<br /> res = db.prices.mapReduce(prices_map, r, {out: {reduce : 'joined'}});
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">res</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">mapReduce</span><span class="p">(</span><span class="nx">products_map</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="p">{</span><span class="nx">out</span><span class="o">:</span> <span class="p">{</span><span class="nx">reduce</span> <span class="o">:</span> <span class="s1">&#39;joined&#39;</span><span class="p">}});</span>
+</span><span class='line'><span class="nx">res</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">prices</span><span class="p">.</span><span class="nx">mapReduce</span><span class="p">(</span><span class="nx">prices_map</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="p">{</span><span class="nx">out</span><span class="o">:</span> <span class="p">{</span><span class="nx">reduce</span> <span class="o">:</span> <span class="s1">&#39;joined&#39;</span><span class="p">}});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Then you will get another collection <strong>joined</strong> with the information you want. One caveat is right now map/reduce function will result in <strong>value : { &#8220;field&#8221; : &#8220;value&#8221; }</strong>.</p>

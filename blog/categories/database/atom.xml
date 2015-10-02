@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Database | My Blog]]></title>
   <link href="http://noppanit.github.io/blog/categories/database/atom.xml" rel="self"/>
   <link href="http://noppanit.github.io/"/>
-  <updated>2015-10-01T21:51:48-04:00</updated>
+  <updated>2015-10-01T23:41:14-04:00</updated>
   <id>http://noppanit.github.io/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -28,47 +28,23 @@ Index joined columns and changed the table schema to something small. I used <st
 <p>Still, I couldn&#8217;t get the results back in 1 hour which I think MySQL is better than that.</p>
 
 <p><strong>Second attempt</strong><br/>
-So, I moved on to the next one. It looked like everybody on the Internet suggested <strong>key_buffer_size</strong> or <strong>key_buffer</strong> to 4G. And changed some of the variables to pimp MySQL up a little bit.<br/>
-**</p></p>
+So, I moved on to the next one. It looked like everybody on the Internet suggested <strong>key_buffer_size</strong> or <strong>key_buffer</strong> to 4G. And changed some of the variables to pimp MySQL up a little bit.</p>
 
-<ul>
-<li>query_cache_type = 1</li>
-<li>query_cache_size = 128M</li>
-<li>query_cache_limit = 128M></li>
-</ul>
-
-
-<p></strong></p>
+<pre><code>  * query\_cache\_type = 1
+  * query\_cache\_size = 128M
+  * query\_cache\_limit = 128M&gt;
+</code></pre>
 
 <p>Still, I couldn&#8217;t get the results back.</p>
 
 <p>And suddenly I caught something in my <strong>my.cnf</strong></p>
 
-<pre><div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />2<br />3<br />4<br />5<br />6<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          # Example MySQL config file for small systems.<br />
-          #<br />
-          # This is for a system with little memory (&lt;= 64M) where MySQL is only used<br />
-          # from time to time and it's important that the mysqld daemon<br />
-          # doesn't use much resources.<br />
-          #
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-
-</pre>
-
+<pre><code># Example MySQL config file for small systems.
+# This is for a system with little memory (&amp;lt;= 64M) where MySQL is only used
+# from time to time and it's important that the mysqld daemon
+# doesn't use much resources.
+#
+</code></pre>
 
 <p>What is said was that XAMPP is tuned for a very small computer to be able to run basic PHP and MySQL application which is why my MySQL performed really bad in this case.</p>
 

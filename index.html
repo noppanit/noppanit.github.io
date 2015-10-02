@@ -1367,17 +1367,27 @@
 
 <p>If you walk around in Cusco, you might find local people dressing in traditional custom. If you take a picture of them, they might ask you for some money. I gave them 1 soles and it was enough. And make sure you ask their permission before you take a picture of them.</p>
 
+<p><a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17626431306/in/dateposted-ff/" title="Peru-1093710.jpg"><img src="https://farm9.staticflickr.com/8837/17626431306_853767fc9e_z.jpg" width="640" height="423" alt="Peru-1093710.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
+
 <h2>Coca leaves</h2>
 
 <p>The locals told us to chew coca leaves to prevent the tiredness and altitude sickness. To be honest, they didn&#8217;t help much but I really like the coca tea in the morning.</p>
+
+<p><a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17465382290/in/dateposted-ff/" title="Peru-1093841.jpg"><img src="https://farm8.staticflickr.com/7770/17465382290_7dfcc888d1_z.jpg" width="640" height="431" alt="Peru-1093841.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
 
 <h2>Local food</h2>
 
 <p>Peruvian cuisine is really interesting or at least from my point of view. I had Guinea pig and Alpaca. I like Alpaca but the Guinea pig is not really my jam. At least I tried.</p>
 
+<p><a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17627373766/in/dateposted-ff/" title="Peru-1094221.jpg"><img src="https://farm6.staticflickr.com/5441/17627373766_e4568e063a_z.jpg" width="640" height="444" alt="Peru-1094221.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
+
 <h2>Machu Picchu</h2>
 
+<p><a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17653773851/in/dateposted-ff/" title="Peru-1094213.jpg"><img src="https://farm9.staticflickr.com/8707/17653773851_aa6c40a15e_z.jpg" width="640" height="431" alt="Peru-1094213.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
+
 <h2>Good view from your tent</h2>
+
+<p><a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17653136981/in/dateposted-ff/" title="Peru-1093869.jpg"><img src="https://farm8.staticflickr.com/7656/17653136981_03874afb08_z.jpg" width="640" height="431" alt="Peru-1093869.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
 </div>
   
   
@@ -1408,29 +1418,15 @@
 
   <div class="entry-content"><p>Everybody loves sticky bar. Or I should say every UX loves sticky bar. You probable have seen that from almost all major websites. Twitter or Facebook all has the top nav bar which sticks to the top and follows you when you scroll down the page. However, there&#8217;s one thing that I have noticed if you use Google Chrome Dev Tool to see the paint area. You will see that the nav bar gets repaint every time you scroll up and down.</p>
 
-<p><a href="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png" alt="Screenshot_2015-04-14_01_13_55" width="2304" height="803" class="aligncenter size-full wp-image-1383" /></a></p>
+<p><img src="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png"></p>
 
 <p>Also, if you use Timeline to record the activity you will notice a lot of Repaint happening which leads to bad scrolling performance.</p>
 
 <p>The easy fix would be to put</p>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          backface-visibility: hidden;
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">backface-visibility</span><span class="o">:</span> <span class="nt">hidden</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>on your navbar which will stop the repaint on scroll.</p>
@@ -1441,30 +1437,133 @@
 
 <h3>Try it yourself</h3>
 
-<p><a href="http://noppanit.com/navbar-repaint.html">http://noppanit.com/navbar-repaint.html</a> If you put</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!doctype&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'><span class="nt">&lt;style&gt;</span>
+</span><span class='line'>  <span class="nt">li</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">margin-left</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="nt">body</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">font-size</span><span class="o">:</span> <span class="m">24px</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="nt">nav</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">background-color</span><span class="o">:</span> <span class="nb">gray</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">position</span><span class="o">:</span> <span class="k">fixed</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="nt">&lt;/style&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;nav&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;li&gt;</span>Menu1<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;li&gt;</span>Menu2<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;li&gt;</span>Menu3<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;li&gt;</span>Menu4<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/nav&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;section&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>  
+</span><span class='line'>  
+</span><span class='line'>  
+</span><span class='line'>  <span class="nt">&lt;/section&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="codecolorer-container text blackboard" style="overflow:auto;white-space:nowrap;width:100%;">
-  <table cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="line-numbers">
-        <div>
-          1<br />
-        </div>
-      </td>
-      
-      <td>
-        <div class="text codecolorer">
-          backface-visibility: hidden;
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">backface-visibility</span><span class="o">:</span> <span class="nt">hidden</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>to the navbar and you can measure the performance by using Timeline again you will notice the difference.</p>
 
-<p><a href="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png"><img src="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png" alt="Screenshot 2015-04-14 01.20.04" width="2297" height="805" class="aligncenter size-full wp-image-1384" /></a></p>
+<p><img src="http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png"></p>
 </div>
   
   
