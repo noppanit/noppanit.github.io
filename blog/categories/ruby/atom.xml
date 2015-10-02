@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Ruby | My Blog]]></title>
+  <title><![CDATA[Category: ruby | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T17:24:00-04:00</updated>
+  <updated>2015-10-02T17:28:19-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Lesson Learnt From Data Cleansing. Part I]]></title>
+    <title type="html"><![CDATA[Lesson learnt from data cleansing. Part I]]></title>
     <link href="https://www.noppanit.com/lesson-learnt-from-data-cleansing/"/>
     <updated>2013-02-07T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/lesson-learnt-from-data-cleansing</id>
@@ -50,7 +50,7 @@ I couldn&#8217;t believe that this will be the simplest and most effective way. 
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Enable Defalter Compression for Sinatra on Heroku]]></title>
+    <title type="html"><![CDATA[Enable Defalter compression for Sinatra on Heroku]]></title>
     <link href="https://www.noppanit.com/enable-defalter-compression-for-sinatra-on-herok/"/>
     <updated>2013-01-15T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/enable-defalter-compression-for-sinatra-on-herok</id>
@@ -68,7 +68,7 @@ run Sinatra::Application
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[DIY : Run RSpec Test Inside Sublime Text 2]]></title>
+    <title type="html"><![CDATA[DIY : Run RSpec test inside Sublime Text 2]]></title>
     <link href="https://www.noppanit.com/diy-run-rspec-test-inside-sublime-text-2/"/>
     <updated>2012-12-30T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/diy-run-rspec-test-inside-sublime-text-2</id>
@@ -103,7 +103,7 @@ run Sinatra::Application
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Call Haml Outside Sinatra or Rails?]]></title>
+    <title type="html"><![CDATA[How to call haml outside sinatra or Rails?]]></title>
     <link href="https://www.noppanit.com/how-to-call-haml-outside-sinatra-or-rails/"/>
     <updated>2012-04-01T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/how-to-call-haml-outside-sinatra-or-rails</id>
@@ -134,7 +134,7 @@ run Sinatra::Application
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Ruby : Command-line Twitter Client Made Easy]]></title>
+    <title type="html"><![CDATA[Ruby : Command-line twitter client made easy]]></title>
     <link href="https://www.noppanit.com/ruby-command-line-twitter-client-made-easy/"/>
     <updated>2011-02-27T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/ruby-command-line-twitter-client-made-easy</id>

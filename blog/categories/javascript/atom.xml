@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Javascript | My Blog]]></title>
+  <title><![CDATA[Category: javascript | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T17:24:00-04:00</updated>
+  <updated>2015-10-02T17:28:19-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Example: How Did I Convert Async Code to Sync Code With Promise.]]></title>
+    <title type="html"><![CDATA[Example: How did I convert async code to sync code with Promise.]]></title>
     <link href="https://www.noppanit.com/example-how-did-i-convert-async-code-to-sync-code-with-promise/"/>
     <updated>2015-05-24T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/example-how-did-i-convert-async-code-to-sync-code-with-promise</id>
@@ -169,7 +169,7 @@ exports.pagespeed = pagespeed;
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Event Delegation in JavaScript Is Fast but How Fast?]]></title>
+    <title type="html"><![CDATA[Event delegation in JavaScript is fast but how fast?]]></title>
     <link href="https://www.noppanit.com/event-delegation-javascript-fast-fast/"/>
     <updated>2014-11-22T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/event-delegation-javascript-fast-fast</id>
@@ -250,7 +250,7 @@ Now change your snippet to be event delegation
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Knockout.js Virtual Elements Are Being Stripped Out From Mobile.]]></title>
+    <title type="html"><![CDATA[Knockout.js virtual elements are being stripped out from mobile.]]></title>
     <link href="https://www.noppanit.com/knockout-js-virtual-elements-stripped-mobile/"/>
     <updated>2014-10-07T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/knockout-js-virtual-elements-stripped-mobile</id>
@@ -268,7 +268,7 @@ Now change your snippet to be event delegation
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Contextual Preloading for Ajax Request.]]></title>
+    <title type="html"><![CDATA[Contextual Preloading for Ajax request.]]></title>
     <link href="https://www.noppanit.com/contextual-preloading-ajax-request/"/>
     <updated>2014-05-10T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/contextual-preloading-ajax-request</id>
@@ -308,7 +308,7 @@ Now change your snippet to be event delegation
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Example of Require.js Optimizer.]]></title>
+    <title type="html"><![CDATA[Example of Require.js optimizer.]]></title>
     <link href="https://www.noppanit.com/example-require-js-optimizer/"/>
     <updated>2014-02-09T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/example-require-js-optimizer</id>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Java | My Blog]]></title>
+  <title><![CDATA[Category: java | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/java/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T17:24:00-04:00</updated>
+  <updated>2015-10-02T17:28:19-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Thinking Functionally for Idiots.]]></title>
+    <title type="html"><![CDATA[Thinking functionally for idiots.]]></title>
     <link href="https://www.noppanit.com/thinking-functionally-for-idiots/"/>
     <updated>2014-01-20T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/thinking-functionally-for-idiots</id>
@@ -74,7 +74,7 @@ public abstract class MappingClass&lt;S, T&gt; {
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Lesson Learnt : Basic Java Memory Consumption for In-memory Cache.]]></title>
+    <title type="html"><![CDATA[Lesson learnt : Basic Java memory consumption for in-memory cache.]]></title>
     <link href="https://www.noppanit.com/lesson-learnt-basic-java-memory-consumption-memory-cache/"/>
     <updated>2013-12-05T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/lesson-learnt-basic-java-memory-consumption-memory-cache</id>
@@ -203,7 +203,7 @@ Used memory is megabytes: 1
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[AngularJs Cookies With Play Framework 2.1.1 Java Session.]]></title>
+    <title type="html"><![CDATA[AngularJs Cookies with Play Framework 2.1.1 Java Session.]]></title>
     <link href="https://www.noppanit.com/angularjs-cookies-with-play-framework-2-1-1-java-session/"/>
     <updated>2013-05-31T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/angularjs-cookies-with-play-framework-2-1-1-java-session</id>
@@ -353,7 +353,7 @@ Used memory is megabytes: 1
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Find Neighbours of 2 Dimensional Array]]></title>
+    <title type="html"><![CDATA[How to find neighbours of 2 dimensional array]]></title>
     <link href="https://www.noppanit.com/how-to-find-neighbours-of-2-dimensional-array/"/>
     <updated>2011-03-20T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/how-to-find-neighbours-of-2-dimensional-array</id>

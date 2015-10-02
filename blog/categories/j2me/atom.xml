@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: J2me | My Blog]]></title>
+  <title><![CDATA[Category: j2me | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/j2me/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T17:24:00-04:00</updated>
+  <updated>2015-10-02T17:28:19-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Tutorial : J2ME and Netbeans : How to Test RecordStore With Emulator]]></title>
+    <title type="html"><![CDATA[Tutorial : J2ME and Netbeans : How to test RecordStore with emulator]]></title>
     <link href="https://www.noppanit.com/tutorial-how-to-test-recordstore-with-emulator/"/>
     <updated>2010-08-11T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/tutorial-how-to-test-recordstore-with-emulator</id>

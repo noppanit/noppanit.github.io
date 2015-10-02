@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T17:24:00-04:00</updated>
+  <updated>2015-10-02T17:28:19-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Migrated My Blog to Octopress]]></title>
+    <title type="html"><![CDATA[Migrated My Blog To Octopress]]></title>
     <link href="https://www.noppanit.com/migrated-my-blog-to-octopress/"/>
     <updated>2015-10-01T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/migrated-my-blog-to-octopress</id>
@@ -27,7 +27,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Code Review With the World]]></title>
+    <title type="html"><![CDATA[Code Review with the world]]></title>
     <link href="https://www.noppanit.com/code-review-with-the-world/"/>
     <updated>2015-09-22T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/code-review-with-the-world</id>
@@ -83,7 +83,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Maps All Parking Signs in NYC.]]></title>
+    <title type="html"><![CDATA[Maps all parking signs in NYC.]]></title>
     <link href="https://www.noppanit.com/maps-all-parking-signs-in-nyc/"/>
     <updated>2015-07-30T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/maps-all-parking-signs-in-nyc</id>
@@ -216,7 +216,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[I&#8217;m Never Going Back to Modern Editor Again.]]></title>
+    <title type="html"><![CDATA[I&#8217;m never going back to modern editor again.]]></title>
     <link href="https://www.noppanit.com/im-never-going-back-to-modern-editor-again/"/>
     <updated>2015-07-17T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/im-never-going-back-to-modern-editor-again</id>
@@ -243,7 +243,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Start Doing TDD for jQuery Plugin.]]></title>
+    <title type="html"><![CDATA[How to start doing TDD for jQuery plugin.]]></title>
     <link href="https://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin/"/>
     <updated>2015-07-09T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin</id>
@@ -586,7 +586,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[The Most Basic Example of Linear Regression]]></title>
+    <title type="html"><![CDATA[The most basic example of Linear Regression]]></title>
     <link href="https://www.noppanit.com/the-most-basic-example-of-linear-regression/"/>
     <updated>2015-07-07T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/the-most-basic-example-of-linear-regression</id>
@@ -652,7 +652,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Example: How Did I Convert Async Code to Sync Code With Promise.]]></title>
+    <title type="html"><![CDATA[Example: How did I convert async code to sync code with Promise.]]></title>
     <link href="https://www.noppanit.com/example-how-did-i-convert-async-code-to-sync-code-with-promise/"/>
     <updated>2015-05-24T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/example-how-did-i-convert-async-code-to-sync-code-with-promise</id>
@@ -1117,7 +1117,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[What Should You Expect for Salkantay Trek to Machu Picchu]]></title>
+    <title type="html"><![CDATA[What should you expect for Salkantay trek to Machu Picchu]]></title>
     <link href="https://www.noppanit.com/what-should-you-expect-for-salkantay-trek-to-machu-picchu/"/>
     <updated>2015-05-18T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/what-should-you-expect-for-salkantay-trek-to-machu-picchu</id>
@@ -1176,7 +1176,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Stop Repainting Your Sticky Bar on Scroll?]]></title>
+    <title type="html"><![CDATA[How to stop repainting your sticky bar on scroll?]]></title>
     <link href="https://www.noppanit.com/how-to-stop-repainting-your-sticky-bar-on-scroll/"/>
     <updated>2015-04-14T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/how-to-stop-repainting-your-sticky-bar-on-scroll</id>
@@ -1332,7 +1332,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[You Should Check in Your Dependencies.]]></title>
+    <title type="html"><![CDATA[You should check in your dependencies.]]></title>
     <link href="https://www.noppanit.com/you-should-check-in-your-dependencies/"/>
     <updated>2015-03-28T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/you-should-check-in-your-dependencies</id>
@@ -1436,7 +1436,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Event Delegation in JavaScript Is Fast but How Fast?]]></title>
+    <title type="html"><![CDATA[Event delegation in JavaScript is fast but how fast?]]></title>
     <link href="https://www.noppanit.com/event-delegation-javascript-fast-fast/"/>
     <updated>2014-11-22T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/event-delegation-javascript-fast-fast</id>
@@ -1530,7 +1530,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Create a Simple Vagrant Plugin.]]></title>
+    <title type="html"><![CDATA[How to create a simple vagrant plugin.]]></title>
     <link href="https://www.noppanit.com/create-simple-vagrant-plugin/"/>
     <updated>2014-11-21T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/create-simple-vagrant-plugin</id>
@@ -1772,7 +1772,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Twitter Is a Good Tool for Customer Support if Used Carefully.]]></title>
+    <title type="html"><![CDATA[Twitter is a good tool for customer support if used carefully.]]></title>
     <link href="https://www.noppanit.com/twitter-good-tool-customer-support-used-carefully/"/>
     <updated>2014-10-07T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/twitter-good-tool-customer-support-used-carefully</id>
@@ -1789,7 +1789,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Knockout.js Virtual Elements Are Being Stripped Out From Mobile.]]></title>
+    <title type="html"><![CDATA[Knockout.js virtual elements are being stripped out from mobile.]]></title>
     <link href="https://www.noppanit.com/knockout-js-virtual-elements-stripped-mobile/"/>
     <updated>2014-10-07T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/knockout-js-virtual-elements-stripped-mobile</id>
@@ -1810,7 +1810,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Hidden Flea Market in Istanbul, Turkey]]></title>
+    <title type="html"><![CDATA[Hidden flea market in Istanbul, Turkey]]></title>
     <link href="https://www.noppanit.com/hidden-flea-market-istanbul-turkey/"/>
     <updated>2014-07-20T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/hidden-flea-market-istanbul-turkey</id>
@@ -1822,7 +1822,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[It&#8217;s Alright to Charge Your Phone on &#8216;Shavers Only&#8217; Outlet.]]></title>
+    <title type="html"><![CDATA[It&#8217;s alright to charge your phone on &#8216;Shavers only&#8217; outlet.]]></title>
     <link href="https://www.noppanit.com/alright-charge-phone-shavers-outlet/"/>
     <updated>2014-07-07T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/alright-charge-phone-shavers-outlet</id>
@@ -1841,7 +1841,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Naming Test Classes.]]></title>
+    <title type="html"><![CDATA[Naming test classes.]]></title>
     <link href="https://www.noppanit.com/naming-test-classes/"/>
     <updated>2014-06-25T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/naming-test-classes</id>

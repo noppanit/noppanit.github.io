@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Knowledges | My Blog]]></title>
+  <title><![CDATA[Category: knowledges | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/knowledges/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T17:24:00-04:00</updated>
+  <updated>2015-10-02T17:28:19-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Code Review With the World]]></title>
+    <title type="html"><![CDATA[Code Review with the world]]></title>
     <link href="https://www.noppanit.com/code-review-with-the-world/"/>
     <updated>2015-09-22T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/code-review-with-the-world</id>
@@ -60,7 +60,7 @@ for min_of_i in range(20):
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Maps All Parking Signs in NYC.]]></title>
+    <title type="html"><![CDATA[Maps all parking signs in NYC.]]></title>
     <link href="https://www.noppanit.com/maps-all-parking-signs-in-nyc/"/>
     <updated>2015-07-30T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/maps-all-parking-signs-in-nyc</id>
@@ -162,7 +162,7 @@ data.head()
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[I&#8217;m Never Going Back to Modern Editor Again.]]></title>
+    <title type="html"><![CDATA[I&#8217;m never going back to modern editor again.]]></title>
     <link href="https://www.noppanit.com/im-never-going-back-to-modern-editor-again/"/>
     <updated>2015-07-17T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/im-never-going-back-to-modern-editor-again</id>
@@ -189,7 +189,7 @@ data.head()
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Start Doing TDD for jQuery Plugin.]]></title>
+    <title type="html"><![CDATA[How to start doing TDD for jQuery plugin.]]></title>
     <link href="https://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin/"/>
     <updated>2015-07-09T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin</id>
@@ -386,7 +386,7 @@ gulp.task('default', function() {
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[The Most Basic Example of Linear Regression]]></title>
+    <title type="html"><![CDATA[The most basic example of Linear Regression]]></title>
     <link href="https://www.noppanit.com/the-most-basic-example-of-linear-regression/"/>
     <updated>2015-07-07T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/the-most-basic-example-of-linear-regression</id>

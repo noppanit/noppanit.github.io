@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Database | My Blog]]></title>
+  <title><![CDATA[Category: database | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/database/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T17:24:00-04:00</updated>
+  <updated>2015-10-02T17:28:19-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Lesson Learnt From Data Cleansing. Part II]]></title>
+    <title type="html"><![CDATA[Lesson learnt from data cleansing. Part II]]></title>
     <link href="https://www.noppanit.com/lesson-learnt-from-data-cleansing-part-ii/"/>
     <updated>2013-02-11T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/lesson-learnt-from-data-cleansing-part-ii</id>

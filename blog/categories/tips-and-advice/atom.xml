@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Tips &amp; Advice | My Blog]]></title>
+  <title><![CDATA[Category: tips &amp; advice | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/tips-and-advice/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T17:24:00-04:00</updated>
+  <updated>2015-10-02T17:28:19-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Cheese Knives]]></title>
+    <title type="html"><![CDATA[Cheese knives]]></title>
     <link href="https://www.noppanit.com/cheese-knives/"/>
     <updated>2008-03-29T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/cheese-knives</id>

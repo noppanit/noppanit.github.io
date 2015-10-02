@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: R | My Blog]]></title>
+  <title><![CDATA[Category: r | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/r/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T17:24:00-04:00</updated>
+  <updated>2015-10-02T17:28:19-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[How Many Tweets I Have Tweeted in the Past?]]></title>
+    <title type="html"><![CDATA[How many tweets I have tweeted in the past?]]></title>
     <link href="https://www.noppanit.com/how-many-tweets-i-have-tweeted-in-the-past/"/>
     <updated>2013-08-22T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/how-many-tweets-i-have-tweeted-in-the-past</id>

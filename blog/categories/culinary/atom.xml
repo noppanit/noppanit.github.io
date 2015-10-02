@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Culinary | My Blog]]></title>
+  <title><![CDATA[Category: culinary | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/culinary/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T17:24:00-04:00</updated>
+  <updated>2015-10-02T17:28:19-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[My Quest to Find My Perfect Brew.]]></title>
+    <title type="html"><![CDATA[My quest to find my perfect brew.]]></title>
     <link href="https://www.noppanit.com/my-quest-to-find-my-perfect-brew/"/>
     <updated>2013-08-19T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/my-quest-to-find-my-perfect-brew</id>
@@ -65,7 +65,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Best Schweinshaxe I&#8217;ve Ever Eaten So Far Yet in Munich.]]></title>
+    <title type="html"><![CDATA[Best Schweinshaxe I&#8217;ve ever eaten so far yet in Munich.]]></title>
     <link href="https://www.noppanit.com/best-schweinshaxe-ive-ever-eaten-so-far-yet-in-munich/"/>
     <updated>2012-09-23T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/best-schweinshaxe-ive-ever-eaten-so-far-yet-in-munich</id>
@@ -78,7 +78,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[The Perfect Roast Chicken]]></title>
+    <title type="html"><![CDATA[The perfect roast chicken]]></title>
     <link href="https://www.noppanit.com/the-perfect-roast-chicken/"/>
     <updated>2008-03-29T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/the-perfect-roast-chicken</id>
@@ -104,7 +104,7 @@ This chicken I didn&#8217;t use the above technique. I could see the different b
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[The Best Hot Chocolate]]></title>
+    <title type="html"><![CDATA[The best hot chocolate]]></title>
     <link href="https://www.noppanit.com/the-best-hot-chocolate/"/>
     <updated>2008-03-29T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/the-best-hot-chocolate</id>
@@ -132,7 +132,7 @@ This chicken I didn&#8217;t use the above technique. I could see the different b
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Korean Sauce]]></title>
+    <title type="html"><![CDATA[Korean sauce]]></title>
     <link href="https://www.noppanit.com/korean-sauce/"/>
     <updated>2008-03-29T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/korean-sauce</id>

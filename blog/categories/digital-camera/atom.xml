@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Digital Camera | My Blog]]></title>
+  <title><![CDATA[Category: digital camera | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/digital-camera/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T17:24:00-04:00</updated>
+  <updated>2015-10-02T17:28:19-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[How to Shoot Astrophotography for Absolute Dummies, Like Me.]]></title>
+    <title type="html"><![CDATA[How to shoot astrophotography for absolute dummies, like me.]]></title>
     <link href="https://www.noppanit.com/shoot-astrophotography-absolute-dummies-like/"/>
     <updated>2013-12-18T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/shoot-astrophotography-absolute-dummies-like</id>
@@ -46,7 +46,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[I Have Found My Perfect Travel Tripod. Manfrotto Befree]]></title>
+    <title type="html"><![CDATA[I Have found my perfect travel tripod. Manfrotto Befree]]></title>
     <link href="https://www.noppanit.com/found-perfect-travel-tripod-manfrotto-befree/"/>
     <updated>2013-12-17T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/found-perfect-travel-tripod-manfrotto-befree</id>
@@ -59,7 +59,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How I Learn to Love Mode &#8220;M&#8221; in DSLR.]]></title>
+    <title type="html"><![CDATA[How I learn to love mode &#8220;M&#8221; in DSLR.]]></title>
     <link href="https://www.noppanit.com/learn-to-love-mode-m-dslr/"/>
     <updated>2013-12-16T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/learn-to-love-mode-m-dslr</id>
@@ -80,7 +80,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Tips &#8211; How to Photograph Fireworks Displays]]></title>
+    <title type="html"><![CDATA[Tips &#8211; How to photograph fireworks displays]]></title>
     <link href="https://www.noppanit.com/tips-how-to-photograph-fireworks-displays/"/>
     <updated>2009-11-10T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/tips-how-to-photograph-fireworks-displays</id>

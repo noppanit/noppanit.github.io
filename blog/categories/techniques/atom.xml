@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Techniques | My Blog]]></title>
+  <title><![CDATA[Category: techniques | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/techniques/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T17:24:00-04:00</updated>
+  <updated>2015-10-02T17:28:19-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -119,7 +119,7 @@ Intermediate certificate 1
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to : A Hand-made Cigarette]]></title>
+    <title type="html"><![CDATA[How to : A Hand-made cigarette]]></title>
     <link href="https://www.noppanit.com/how-to-a-hand-made-cigarette/"/>
     <updated>2007-12-12T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/how-to-a-hand-made-cigarette</id>

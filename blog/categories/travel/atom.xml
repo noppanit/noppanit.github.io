@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Travel | My Blog]]></title>
+  <title><![CDATA[Category: travel | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/travel/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T17:24:00-04:00</updated>
+  <updated>2015-10-02T17:28:19-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[What Should You Expect for Salkantay Trek to Machu Picchu]]></title>
+    <title type="html"><![CDATA[What should you expect for Salkantay trek to Machu Picchu]]></title>
     <link href="https://www.noppanit.com/what-should-you-expect-for-salkantay-trek-to-machu-picchu/"/>
     <updated>2015-05-18T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/what-should-you-expect-for-salkantay-trek-to-machu-picchu</id>
@@ -73,7 +73,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Ziferblat, Pay-per-minute Cafe in Moscow, Russia.]]></title>
+    <title type="html"><![CDATA[Ziferblat, Pay-per-minute cafe in Moscow, Russia.]]></title>
     <link href="https://www.noppanit.com/ziferblat-pay-per-minute-cafe-moscow-russia/"/>
     <updated>2014-05-18T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/ziferblat-pay-per-minute-cafe-moscow-russia</id>
@@ -90,7 +90,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Bouldering Gym in Kadıköy, Istanbul]]></title>
+    <title type="html"><![CDATA[Bouldering gym in Kadıköy, Istanbul]]></title>
     <link href="https://www.noppanit.com/bouldering-gym-kadikoy-istanbul/"/>
     <updated>2014-03-02T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/bouldering-gym-kadikoy-istanbul</id>
@@ -120,7 +120,7 @@ It&#8217;s only 15 TL for a day pass.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[You Have Never Been Clean, if You Haven&#8217;t Been to the Turkish Bath.]]></title>
+    <title type="html"><![CDATA[You have never been clean, if you haven&#8217;t been to the Turkish bath.]]></title>
     <link href="https://www.noppanit.com/never-clean-havent-turkish-bath/"/>
     <updated>2013-12-27T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/never-clean-havent-turkish-bath</id>
@@ -141,7 +141,7 @@ It&#8217;s only 15 TL for a day pass.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Paris 2013: Food Quest.]]></title>
+    <title type="html"><![CDATA[Paris 2013: Food quest.]]></title>
     <link href="https://www.noppanit.com/paris-2013-food-quest/"/>
     <updated>2013-08-26T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/paris-2013-food-quest</id>

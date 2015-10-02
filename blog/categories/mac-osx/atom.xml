@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Mac Osx | My Blog]]></title>
+  <title><![CDATA[Category: mac osx | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/mac-osx/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T17:24:00-04:00</updated>
+  <updated>2015-10-02T17:28:19-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Mac OSX: Override Rm to Delete Files to .Trash]]></title>
+    <title type="html"><![CDATA[Mac OSX: override rm to delete files to .Trash]]></title>
     <link href="https://www.noppanit.com/mac-osx-override-rm-to-delete-files-to-trash/"/>
     <updated>2011-04-05T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/mac-osx-override-rm-to-delete-files-to-trash</id>
@@ -42,7 +42,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Mastering Vi Common in Just 10 Minutes]]></title>
+    <title type="html"><![CDATA[Mastering Vi Common in just 10 minutes]]></title>
     <link href="https://www.noppanit.com/masteing-vi-common-in-just-10-minutes/"/>
     <updated>2010-01-05T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/masteing-vi-common-in-just-10-minutes</id>
