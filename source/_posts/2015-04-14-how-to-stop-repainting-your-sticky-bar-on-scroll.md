@@ -14,7 +14,7 @@ tags:
 ---
 Everybody loves sticky bar. Or I should say every UX loves sticky bar. You probable have seen that from almost all major websites. Twitter or Facebook all has the top nav bar which sticks to the top and follows you when you scroll down the page. However, there&#8217;s one thing that I have noticed if you use Google Chrome Dev Tool to see the paint area. You will see that the nav bar gets repaint every time you scroll up and down. 
 
-{% img http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png %}
+{% img https://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png %}
 
 Also, if you use Timeline to record the activity you will notice a lot of Repaint happening which leads to bad scrolling performance. 
 
@@ -99,8 +99,8 @@ backface-visibility: hidden;
 
 to the navbar and you can measure the performance by using Timeline again you will notice the difference. 
 
-{% img http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png %}
+{% img https://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png %}
 
- [1]: http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png
+ [1]: https://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png
  [2]: http://benfrain.com/improving-css-performance-fixed-position-elements/
- [3]: http://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png
+ [3]: https://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png

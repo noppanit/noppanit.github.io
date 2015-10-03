@@ -13,9 +13,9 @@ tags:
 ---
 Lately, I have been experimenting on [Kaggle competition][1]. This is the one I chose because I want to use neo4j to give some recommendation or in a sense I want to do unsupervised learning. From day one I faced a lot of problem dealing with a lot of data and they are not clean in a way. For example, in this competition, there is users dataset which contains all the users. And there is a friend dataset which contains all the friends. The data look like this. 
 
-<img src="http://www.noppanit.com/wp-content/uploads/2013/02/Screen-shot-2013-02-01-at-00.08.50.png" alt="users dataset" class="aligncenter size-full wp-image-1028 cool_border" />
+<img src="https://www.noppanit.com/wp-content/uploads/2013/02/Screen-shot-2013-02-01-at-00.08.50.png" alt="users dataset" class="aligncenter size-full wp-image-1028 cool_border" />
 
-<img src="http://www.noppanit.com/wp-content/uploads/2013/02/Screen-shot-2013-02-01-at-00.08.28.png" alt="friends dataset" class="aligncenter size-full wp-image-1029 cool_border" />
+<img src="https://www.noppanit.com/wp-content/uploads/2013/02/Screen-shot-2013-02-01-at-00.08.28.png" alt="friends dataset" class="aligncenter size-full wp-image-1029 cool_border" />
 
 The first dataset I could dump everything into neo4j without any problem because it&#8217;s just 30000 records it only took me 5 mins to do it. However, the second dataset was kind of a problem because the column **friends** not all of the ids exist in users database which means the users don&#8217;t exist. So, I had to check if the ids exist in user dataset or not. It turned out that the friends dataset is quite large (about 50 MB) and it could be 3000 ids in one column. So, my first thought would be just to do it one by one. 
 

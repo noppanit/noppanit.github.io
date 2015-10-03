@@ -19,11 +19,11 @@ To sum up, the whole event is a really good experience for me. I got to learn a 
 
 These are my teammates. [Eewei][4], [Colin][5] and [Jonathan][6] 
 
-{% img http://www.noppanit.com/wp-content/uploads/2012/07/2012-06-30-21.30.53-150x150.jpg %}
-{% img http://www.noppanit.com/wp-content/uploads/2012/07/2012-07-01-13.34.21-150x150.jpg %}
-{% img http://www.noppanit.com/wp-content/uploads/2012/07/2012-07-01-13.23.10-150x150.jpg %}  
-{% img http://www.noppanit.com/wp-content/uploads/2012/07/2012-07-01-13.14.52-150x150.jpg %}
-{% img http://www.noppanit.com/wp-content/uploads/2012/07/2012-07-01-13.06.04-150x150.jpg %}
+{% img https://www.noppanit.com/wp-content/uploads/2012/07/2012-06-30-21.30.53-150x150.jpg %}
+{% img https://www.noppanit.com/wp-content/uploads/2012/07/2012-07-01-13.34.21-150x150.jpg %}
+{% img https://www.noppanit.com/wp-content/uploads/2012/07/2012-07-01-13.23.10-150x150.jpg %}  
+{% img https://www.noppanit.com/wp-content/uploads/2012/07/2012-07-01-13.14.52-150x150.jpg %}
+{% img https://www.noppanit.com/wp-content/uploads/2012/07/2012-07-01-13.06.04-150x150.jpg %}
 
  [1]: http://www.eewei.com "Eewei"
  [2]: http://www.emotivu.com "Emotivu"

@@ -34,29 +34,11 @@ My surprises would be I&#8217;ve neven thought we&#8217;d come up with all these
 
 Reference : [http://www.designjams.org/wiki/Design\_Jam\_London_1][2]
 
-<div id="attachment_768" style="width: 310px" class="wp-caption alignnone">
-  <a href="http://www.noppanit.com/wp-content/uploads/2011/06/Camden-20110623-00022.jpg"><img src="http://www.noppanit.com/wp-content/uploads/2011/06/Camden-20110623-00022-300x225.jpg" alt="User Journey" title="User Journey" width="300" height="225" class="size-medium wp-image-768" /></a>
-  
-  <p class="wp-caption-text">
-    User Journey
-  </p>
-</div>
+{% img https://www.noppanit.com/wp-content/uploads/2011/06/Camden-20110623-00022.jpg User Journey %} 
 
-<div id="attachment_767" style="width: 310px" class="wp-caption alignnone">
-  <a href="http://www.noppanit.com/wp-content/uploads/2011/06/Westminster-20110623-00024.jpg"><img src="http://www.noppanit.com/wp-content/uploads/2011/06/Westminster-20110623-00024-300x225.jpg" alt="Design Jam" title="Design Jam" width="300" height="225" class="size-medium wp-image-767" /></a>
-  
-  <p class="wp-caption-text">
-    Design Jam
-  </p>
-</div>
+{% img https://www.noppanit.com/wp-content/uploads/2011/06/Westminster-20110623-00024-300x225.jpg Design Jam %}
 
-<div id="attachment_766" style="width: 310px" class="wp-caption alignnone">
-  <a href="http://www.noppanit.com/wp-content/uploads/2011/06/IMG-20110623-00019.jpg"><img src="http://www.noppanit.com/wp-content/uploads/2011/06/IMG-20110623-00019-300x225.jpg" alt="Design" title="Design" width="300" height="225" class="size-medium wp-image-766" /></a>
-  
-  <p class="wp-caption-text">
-    Design
-  </p>
-</div>
+{% img https://www.noppanit.com/wp-content/uploads/2011/06/IMG-20110623-00019-300x225.jpg %}
 
  [1]: http://www.eewei.com/
  [2]: http://www.designjams.org/wiki/Design_Jam_London_1

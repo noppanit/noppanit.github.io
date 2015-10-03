@@ -15,7 +15,7 @@ tags:
 ---
 Well, as the title says this was the best Pork Knuckles I have ever eaten in Munich, Germany. I love food and I love good food. So I always find good restaurants, sometimes I go for a michelin-star restaurant but you can&#8217;t do that everyday. I was in Okterber Fest in Munich last week, but it was raining so I decided to find something bavarian to eat instead. I googled for a few and I decided to go for this place &#8220;[Haxnbauer][1]&#8220;. They don&#8217;t have a website so this is the only link I can find. 
 
-[<img src="http://www.noppanit.com/wp-content/uploads/2012/09/IMG_7793_edited-1-300x199.jpg" alt="" title="Schweinshaxe" width="300" height="199" class="alignnone size-medium wp-image-873 cool_border" />][2]
+{% img https://www.noppanit.com/wp-content/uploads/2012/09/IMG_7793_edited-1-300x199.jpg %}
 
 The cracking is crispy and the sauce is just right with the meat. With Weissbier is just perfect.
 

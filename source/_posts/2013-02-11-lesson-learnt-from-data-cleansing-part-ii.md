@@ -51,7 +51,7 @@ I started my EC2 instance with 7GB of memory and installed MySQL (normal one) al
 
 I also thought about of using BigQuery from Google but I guess my data is rather small and can hardly be called big data. Next time, I might try to use BigQuery just for fun.
 
- [1]: http://www.noppanit.com/lesson-learnt-from-data-cleansing/ "data cleansing part I"
+ [1]: https://www.noppanit.com/lesson-learnt-from-data-cleansing/ "data cleansing part I"
  [2]: http://www.r-project.org/ "R"
  [3]: http://dev.mysql.com/doc/refman/5.1/en/load-data.html "Load data mysql"
  [4]: http://www.kaggle.com/c/event-recommendation-engine-challenge "kaggle competition"

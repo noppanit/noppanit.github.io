@@ -11,7 +11,7 @@ categories:
 tags:
   - Struts
 ---
-From the <a href="http://www.noppanit.com/?p=90" target="_blank">previous chapter</a>, I wrote about how to build an EJB from scratch. This topic, I will be presenting how to combine struts version 1 with the previous topic.
+From the previous chapter, I wrote about how to build an EJB from scratch. This topic, I will be presenting how to combine struts version 1 with the previous topic.
 
 First, we need the latest <a href="http://struts.apache.org/download.cgi#struts138" target="_blank">struts version 1</a>. Actually, I wanted to write about struts2, but I don&#8217;t have enough energy to do that, because struts version2 is very difference to version1. So, I will write version 1 first and then migrate to version2 later.
 

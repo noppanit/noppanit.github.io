@@ -31,11 +31,11 @@ After a few hours of mangling and munching the csv with Pandas and R. I would no
 
 Here&#8217;s the example.
 
-[<img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.png" alt="Parking signs on Qgis" width="1008" height="734" class="aligncenter size-full wp-image-1466" />][4]
+[<img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.png" alt="Parking signs on Qgis" width="1008" height="734" class="aligncenter size-full wp-image-1466" />][4]
 
 One thing I learnt was that you cannot just click **Open** and choose the file. What you need to do is to <string>Add Vector Layer</strong>. You can use shortcut **Ctrl+Shift+v**
 
-[<img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.png" alt="Add Vector Layer" width="1433" height="836" class="aligncenter size-full wp-image-1467" />][5]
+[<img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.png" alt="Add Vector Layer" width="1433" height="836" class="aligncenter size-full wp-image-1467" />][5]
 
 ## Export to Google Fusion
 
@@ -43,27 +43,27 @@ Now what we need is to import what we have to Google Fusion Table. How are we go
 
 In QGis you can download the file as CSV. It&#8217;s in **Layer > Save As**. You just need to make sure that **Geometry** has to be set so you get the coordinates.
 
-[<img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.png" alt="Save to CSV" width="591" height="652" class="aligncenter size-full wp-image-1468" />][6]
+[<img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.png" alt="Save to CSV" width="591" height="652" class="aligncenter size-full wp-image-1468" />][6]
 
 ## Import to Google Fusion Table
 
 Now we can use that CSV to import to Google Fusion. It would look something like this.
 
-[<img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.png" alt="Google Fusion Table" width="1425" height="726" class="aligncenter size-full wp-image-1469" />][7]
+[<img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.png" alt="Google Fusion Table" width="1425" height="726" class="aligncenter size-full wp-image-1469" />][7]
 
 what you need to make sure is that you need to specify which fields are Lat, Long so Google can plot that for you.
 
 Here&#8217;s how you do it.
 
-[<img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.png" alt="Screenshot 2015-07-30 13.05.41" width="226" height="116" class="aligncenter size-full wp-image-1470" />][8]
+[<img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.png" alt="Screenshot 2015-07-30 13.05.41" width="226" height="116" class="aligncenter size-full wp-image-1470" />][8]
 
 The click **change** You will see something like this and you can choose which field you want to be Longitude or Latitude. 
 
-[<img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.png" alt="Set Location" width="518" height="673" class="aligncenter size-full wp-image-1471" />][9]
+[<img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.png" alt="Set Location" width="518" height="673" class="aligncenter size-full wp-image-1471" />][9]
 
 Once the coordinates have set we can go to Map tab and see beautiful little dots that show where all the signs are in NYC.
 
-[<img src="http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.png" alt="Parking signs in Google Fusion Table" width="1254" height="736" class="aligncenter size-full wp-image-1472" />][10]. 
+[<img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.png" alt="Parking signs in Google Fusion Table" width="1254" height="736" class="aligncenter size-full wp-image-1472" />][10]. 
 
 Walla! Now you have something you can build an application on top of it. The next post, I will create an application on top of this map to make use of our data. 
 
@@ -117,11 +117,11 @@ This article takes 2 pomodoros to complete.
  [1]: http://www.nyc.gov/html/dot/html/about/datafeeds.shtml#parking
  [2]: https://support.google.com/fusiontables/answer/2571232?hl=en
  [3]: http://www.qgis.org/en/site/
- [4]: http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.png
- [5]: http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.png
- [6]: http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.png
- [7]: http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.png
- [8]: http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.png
- [9]: http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.png
- [10]: http://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.png
+ [4]: https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.png
+ [5]: https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.png
+ [6]: https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.png
+ [7]: https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.png
+ [8]: https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.png
+ [9]: https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.png
+ [10]: https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.png
  [11]: https://github.com/OSGeo/proj.4
