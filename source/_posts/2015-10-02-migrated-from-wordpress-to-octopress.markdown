@@ -32,6 +32,10 @@ Here's some of the performance breakdown which I haven't tuned.
 
 One can argue that WordPress can do the same as well, but it's just a lot easier in Octopress.
 
+### Before
+
+{% img /wp-content/uploads/2015/10/before-perf-noppanit-com.png %}
+
 ## No Database
 Everybody knows that maintaining a database is a headache. Everytime you need to upgrade WordPress you need to backup database just in case something goes wrong and when you want to transfer the site you will need to do some hack to ensure that the data is there properly. However, one might argue that not having the database for Octopress can cause another migration a hassle. If in the next year or two another blog framework comes along how will we integrate the data? I guess that's the same question for WordPress as well. And somebody has done something to migrate eventually.
 
