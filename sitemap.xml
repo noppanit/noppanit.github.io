@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.noppanit.com/migrated-my-blog-to-octopress/</loc>
-    <lastmod>2015-10-01T00:00:00-04:00</lastmod>
+    <loc>https://www.noppanit.com/migrated-from-wordpress-to-octopress</loc>
+    <lastmod>2015-10-02T15:39:34-04:00</lastmod>
   </url>
   <url>
     <loc>https://www.noppanit.com/code-review-with-the-world/</loc>
@@ -548,38 +548,5 @@
   </url>
   <url>
     <loc>https://www.noppanit.com/blog/categories/security/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/2/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/3/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/4/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/5/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/6/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/7/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/8/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/9/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/10/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/11/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/12/</loc>
   </url>
 </urlset>

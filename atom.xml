@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-02T19:29:04-04:00</updated>
+  <updated>2015-10-04T12:27:43-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,15 +14,104 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Migrated My Blog To Octopress]]></title>
-    <link href="https://www.noppanit.com/migrated-my-blog-to-octopress/"/>
-    <updated>2015-10-01T00:00:00-04:00</updated>
-    <id>https://www.noppanit.com/migrated-my-blog-to-octopress</id>
-    <content type="html"><![CDATA[<p>Performance for noppanit.com
-<a href="http://www.webpagetest.org/result/151002_33_7N6/1/details/">http://www.webpagetest.org/result/151002_33_7N6/1/details/</a></p>
+    <title type="html"><![CDATA[Migrated from WordPress to Octopress]]></title>
+    <link href="https://www.noppanit.com/migrated-from-wordpress-to-octopress"/>
+    <updated>2015-10-02T15:39:34-04:00</updated>
+    <id>https://www.noppanit.com/migrated-from-wordpress-to-octopress</id>
+    <content type="html"><![CDATA[<p>I have heard so much about Octopress but I haven&rsquo;t got the time to actually get to know what it can offer. Finally, this week I finally made the time to migrate my blog to Octopress and I love it. Thanks to <a href="https://habitica.com">HabitRPG</a> and Pomodoro (These will be another blog).</p>
 
-<p>Performance for noppanit.github.io
-<a href="http://www.webpagetest.org/result/151002_NG_7P4/2/details/">http://www.webpagetest.org/result/151002_NG_7P4/2/details/</a></p>
+<p>Don&rsquo;t get me wrong I still love WordPress. In fact, I&rsquo;m actually a WordPress Developer myself. However, for the post 9 years that I have noppanit.com I haven&rsquo;t really used any of the WordPress features. What I really need is just a blog that I can write and publish. Octopress serves me well.</p>
+
+<p>I&rsquo;d like to thank <a href="https://twitter.com/ScottMuc">Scott Muc</a> that inspired me for this migration.</p>
+
+<p>Here are some of the reasons why I migrated my blog to Octopress.</p>
+
+<h2>Hosting</h2>
+
+<p>Having a hosting is nice but it would be nicer if I don&rsquo;t have to maintain it especially when I have to contact the customer service. Octopress gives you various choices of how to deploy your blog to. I chose to deploy my blog to Github as it&rsquo;s the fatest and easiest option. I don&rsquo;t need anything else just github.com which I use it everyday and a couple of command lines. Now, I don&rsquo;t have to worry about upgrading my plugins or WordPress anymore. However, usually my hosting would do it for me if I haven&rsquo;t updated for a long time.</p>
+
+<h2>Writing code snippet</h2>
+
+<p>I think this is personal, because any good WordPress developer might argue that you can do the same in WordPress editor which I agree. However, having written a lot of MarkDown on Github I&rsquo;m just used to use codeblock like this.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>// something amazing</span></code></pre></td></tr></table></div></figure>
+
+
+<p>WordPress gets on my nerves everytime when my blog crashed and all the identations of my code blocks failed.</p>
+
+<h2>Performance</h2>
+
+<p>There&rsquo;s nothing faster than plain HTML. Well, that depends on your server. After deploying to Github pages all my posts are backed up and secured in Github. Then after that, it&rsquo;s up to Github how fast they can deliver my HTML to the browser which I think it&rsquo;s pretty fast.</p>
+
+<p>One can argue that having WordPress properly tuned then you can get the same performance out of it as well. However, I just believe that Octopress is just easier to make changes. One reason relates to how limited your hosting can offer as well. Some of them are quite limited of how much you can do with the webserver without the dedicated server.</p>
+
+<p>Here&rsquo;s some of the performance breakdown which I haven&rsquo;t tuned.</p>
+
+<h3>Before</h3>
+
+<p><a href="http://www.webpagetest.org/result/151002_33_7N6/1/details/">noppanit.com performance</a></p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2015/10/before-perf-noppanit-com.png"></p>
+
+<h3>After</h3>
+
+<p><a href="http://www.webpagetest.org/result/151002_NG_7P4/2/details/">noppanit.github.io performance</a></p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2015/10/after-perf-noppanit-com.png"></p>
+
+<p>The numbers don&rsquo;t lie. After I switched to Octopress, my website renders in <em>1.392s</em>. That&rsquo;s without doing anything else. I&rsquo;m going to write another blog post how I tune my blog to get the most out of it. WordPress is a great framework but when it comes to performance tuning, it requires a lot of hacking.</p>
+
+<p>I have attached the link to <a href="http://webpagetest.org">webpagetest</a> as well in case anybody is interested in more details.</p>
+
+<h2>No Database</h2>
+
+<p>Everybody knows that maintaining a database is a headache. Everytime you need to upgrade WordPress you need to backup database just in case something goes wrong and when you want to transfer the site you will need to do some hack to ensure that the data is transfered properly. However, one might argue that not having the database for Octopress can cause another migration a problem. If in the next year or two another blog framework comes along how will we integrate the data? I guess that&rsquo;s the same question for WordPress as well. Personally, when the time comes I think somebody will create a plugin to transfer that. Open source is the best.</p>
+
+<h2>Problems</h2>
+
+<p>Here&rsquo;s some of the problems I have encountered during the migration. All of them were minors and it didn&rsquo;t take much time to resolve them.</p>
+
+<ol>
+<li>Code snippet wasn&rsquo;t converted correctly. Some of the <code>&lt;code</code> block got transfered during the export as pure HTML. So, I went through all my posts and convert it manually to Markdown format. It&rsquo;s a plus for me so I took the opportunity to clean up old posts.</li>
+<li>One of my posts was encoded in UTF-8. I got lucky because it&rsquo;s just one post. So, I didn&rsquo;t have any problem with it.</li>
+<li>Disqus comment wasn&rsquo;t visible. This is because during the export <code>comments: true</code> wasn&rsquo;t added so I had to do it manually. This is my command to get it done.</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install gsed
+</span><span class='line'>find . -type f -exec gsed -i <span class="s2">&quot;s/\(title: .*\)/\1\ncomments: true/&quot;</span> <span class="o">{}</span> <span class="se">\;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You need to run this in your posts directory. It will add <code>comments: true</code> after the <code>title</code></p>
+
+<p>I got really lucky that I didn&rsquo;t have many issues during the migration.</p>
+
+<h2>What tool did I use</h2>
+
+<ol>
+<li><a href="https://github.com/benbalter/wordpress-to-jekyll-exporter">wordpress-to-jekyll-exporter</a> This is an awesome tool. One click and I get everything including all the pictures I uploaded.</li>
+<li><a href="https://www.cloudflare.com/">Cloudflare</a> This is for my SSL.</li>
+</ol>
+
+
+<h2>SSL</h2>
+
+<p>This is just me. You can do the same for WordPress as well. I think every blog I came across about migrating to Octopress on Github pages mentioned having SSL to their website. It&rsquo;s the perfect solution with Cloudflare but it&rsquo;s the best free option I can find on the Internet. If Github decides to support full SSL later, I&rsquo;d be happy to switch.</p>
+
+<h2>It&rsquo;s not for everyone</h2>
+
+<p>Octopress claims to be blogging framework for hackers and it&rsquo;s true. You can&rsquo;t just give Octopress to non-technical people and expect them to be fluent. I think that&rsquo;s what WordPress&rsquo;s good for. You need to be familiar with git and command line to get it setup and deployed.</p>
+
+<h2>Insipiration</h2>
+
+<ol>
+<li><a href="http://jason.pureconcepts.net/2013/01/migrating-wordpress-octopress/">Migrating from WordPress to Octopress</a></li>
+</ol>
+
 ]]></content>
   </entry>
   
