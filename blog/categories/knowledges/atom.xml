@@ -4,7 +4,7 @@
   <title><![CDATA[Category: knowledges | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/knowledges/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-07T16:58:01-04:00</updated>
+  <updated>2015-10-07T17:15:39-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -176,7 +176,7 @@ for min_of_i in range(20):
 
 <p>Here&#8217;s the example.</p>
 
-<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.png" alt="Parking signs on Qgis" width="1008" height="734" class="aligncenter size-full wp-image-1466" /></a></p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.jpg" title="Parking signs on Qgis" ></p>
 
 <p>One thing I learnt was that you cannot just click <strong>Open</strong> and choose the file. What you need to do is to <string>Add Vector Layer</strong>. You can use shortcut <strong>Ctrl+Shift+v</strong></p>
 
