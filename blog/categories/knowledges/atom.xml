@@ -4,7 +4,7 @@
   <title><![CDATA[Category: knowledges | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/knowledges/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-05T14:13:08-04:00</updated>
+  <updated>2015-10-07T16:58:01-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -51,13 +51,13 @@
 
 <p><a href="http://www.webpagetest.org/result/151002_33_7N6/1/details/">noppanit.com performance</a></p>
 
-<p><img src="/wp-content/uploads/2015/10/before-perf-noppanit-com.png"></p>
+<p><img src="/wp-content/uploads/2015/10/before-perf-noppanit-com.jpg"></p>
 
 <h3>After</h3>
 
 <p><a href="http://www.webpagetest.org/result/151002_NG_7P4/2/details/">noppanit.github.io performance</a></p>
 
-<p><img src="/wp-content/uploads/2015/10/after-perf-noppanit-com.png"></p>
+<p><img src="/wp-content/uploads/2015/10/after-perf-noppanit-com.jpg"></p>
 
 <p>The numbers don&rsquo;t lie. After I switched to Octopress, my website renders in <em>1.392s</em>. That&rsquo;s without doing anything else. I&rsquo;m going to write another blog post how I tune my blog to get the most out of it. WordPress is a great framework but when it comes to performance tuning, it requires a lot of hacking.</p>
 
