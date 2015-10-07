@@ -31,7 +31,7 @@ After a few hours of mangling and munching the csv with Pandas and R. I would no
 
 Here&#8217;s the example.
 
-[<img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.png" alt="Parking signs on Qgis" width="1008" height="734" class="aligncenter size-full wp-image-1466" />][4]
+{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.jpg Parking signs on Qgis %}
 
 One thing I learnt was that you cannot just click **Open** and choose the file. What you need to do is to <string>Add Vector Layer</strong>. You can use shortcut **Ctrl+Shift+v**
 
@@ -63,7 +63,7 @@ The click **change** You will see something like this and you can choose which f
 
 Once the coordinates have set we can go to Map tab and see beautiful little dots that show where all the signs are in NYC.
 
-[<img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.png" alt="Parking signs in Google Fusion Table" width="1254" height="736" class="aligncenter size-full wp-image-1472" />][10]. 
+{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.jpg Parking signs in Google Fusion Table %}
 
 Walla! Now you have something you can build an application on top of it. The next post, I will create an application on top of this map to make use of our data. 
 
@@ -117,11 +117,9 @@ This article takes 2 pomodoros to complete.
  [1]: http://www.nyc.gov/html/dot/html/about/datafeeds.shtml#parking
  [2]: https://support.google.com/fusiontables/answer/2571232?hl=en
  [3]: http://www.qgis.org/en/site/
- [4]: https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.png
  [5]: https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.png
  [6]: https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.png
  [7]: https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.png
  [8]: https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.png
  [9]: https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.png
- [10]: https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.png
  [11]: https://github.com/OSGeo/proj.4
