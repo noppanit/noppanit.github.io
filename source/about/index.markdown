@@ -7,7 +7,7 @@ sharing: true
 footer: true
 ---
 
-{% img wp-content/uploads/2006/05/Paris-With-P_Tong-651-300x290.jpg Me %}
+{% img /wp-content/uploads/2006/05/Paris-With-P_Tong-651-300x290.jpg Me %}
 
 **A little bit about myself**  
 Hello, I&#8217;m Noppanit Charassinvichai. Everybody calls me Toy. That&#8217;s kinda my nickname. I'm ~~a Consultant~~ an Engineer based in ~~London~~ NYC. Well, I have been travelling all over this world. I consider myself a coder, foodie, traveller and photographer. I dedicate this blog to be my central work for all what I have been doing. Even though my work has been spreading through out the cloud, but you can always come to this blog to see what I have been doing. Nice to see all you guys.
