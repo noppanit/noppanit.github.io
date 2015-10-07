@@ -45,13 +45,13 @@ Here's some of the performance breakdown which I haven't tuned.
 
 [noppanit.com performance][5]
 
-{% img /wp-content/uploads/2015/10/before-perf-noppanit-com.png %}
+{% img /wp-content/uploads/2015/10/before-perf-noppanit-com.jpg %}
 
 ### After
 
 [noppanit.github.io performance][6]
 
-{% img /wp-content/uploads/2015/10/after-perf-noppanit-com.png %}
+{% img /wp-content/uploads/2015/10/after-perf-noppanit-com.jpg %}
 
 The numbers don't lie. After I switched to Octopress, my website renders in *1.392s*. That's without doing anything else. I'm going to write another blog post how I tune my blog to get the most out of it. WordPress is a great framework but when it comes to performance tuning, it requires a lot of hacking.
 
