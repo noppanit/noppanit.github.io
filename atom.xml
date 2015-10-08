@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-07T17:52:42-04:00</updated>
+  <updated>2015-10-07T23:52:18-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -12,6 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress on crack]]></title>
+    <link href="https://www.noppanit.com/octopress-on-crack/"/>
+    <updated>2015-10-07T22:44:22-04:00</updated>
+    <id>https://www.noppanit.com/octopress-on-crack</id>
+    <content type="html"><![CDATA[<p>I believe you will find a ton of websites writing about tuning performance of Octopress. I believe nearly everyone who migrated their blog to Octopress, the first post would be the migration and the next would be performance tuning. I&rsquo;m doing the same here.</p>
+
+<p>Once I got out of WordPress now there&rsquo;s much more you can do about your performance. But you should never tune anything unless you have the baseline.</p>
+
+<h2>Before</h2>
+
+<p>Here&rsquo;s my before performance on Google PageSpeed.</p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2015/10/google-pagespeed-before.jpg" title="Google PageSpeed before performance" ></p>
+
+<p>And on webpagetest.org</p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2015/10/before-perf-noppanit-com.jpg" title="Webpagetest before performance" ></p>
+
+<p>Yikes!</p>
+
+<p>In a nutshell, my page starts to render in <em>2.4s</em> and finishes in <em>4s</em>. From what I&rsquo;ve seen looks like the biggest red flag would be images.</p>
+
+<h2>What about images?</h2>
+
+<p>A picture is worth a thousand words. I like my blog to have some images so it won&rsquo;t be too boring. Also, I tend to have a lot of screenshots from my company and they&rsquo;re all PNGs. And PNGs tend to be bigger. As they&rsquo;re all screenshots so I don&rsquo;t really care about losing some of the quality so I convert all of them to be jpg. If you&rsquo;re using OSx, there&rsquo;s a command that you can run.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sips -s format jpeg your_png.png --out your_pic.jpg</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now what about compression. There&rsquo;s lots of tools out there that you can just throw your picture in and it will compress your picture for you. I use <a href="https://compressor.io/">compressor.io</a>. It&rsquo;s really good. Just try throwing your image in there and see what happens. Compressor.io can reduce my images up to 60% and that&rsquo;s a lot of bandwidth.</p>
+
+<h2>Minify CSS/JS</h2>
+
+<p>Fortunetely, I use <a href="https://www.cloudflare.com/">Cloudflare</a> and they have the feature to minify that for you. So, I just flipped the switch and it works like magic.</p>
+
+<h2>Browser caching</h2>
+
+<p>Going back to what Google PageSpeed tells us again. It complaints about <em>Leverage browser caching</em>. I&rsquo;m lucky again because in Cloudflare you can set the time to be 30 days and that seems to be ok for Google. So, I just set the value to be 1 month.</p>
+
+<h2>Inline CSS</h2>
+
+<p>I use <a href="https://github.com/tommy351/Octopress-Theme-Slash">Slash</a> theme and when I look at the CSS, it&rsquo;s only 22K. So why not just inline it and save one more request for the browser. So, in <em>_includes/head.html</em> you can change the line to your stylesheet to be</p>
+
+<p>%{ codeblock html</p>
+
+
+
+<p>%}</p>
+
+<p>This might be different from theme to theme but it should be difficult to check your theme.</p>
+
+<h2>After</h2>
+
+<p>Now, let&rsquo;s have a quick look at the after performance.</p>
+
+<p>Here&rsquo;s my after performance on Google PageSpeed.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Migrated from WordPress to Octopress]]></title>
@@ -194,7 +255,7 @@
 
 <p>One thing I learnt was that you cannot just click <strong>Open</strong> and choose the file. What you need to do is to <string>Add Vector Layer</strong>. You can use shortcut <strong>Ctrl+Shift+v</strong></p>
 
-<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.png" alt="Add Vector Layer" width="1433" height="836" class="aligncenter size-full wp-image-1467" /></a></p>
+<p><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.jpg" title="Add Vector Layer" ></p>
 
 <h2>Export to Google Fusion</h2>
 
@@ -202,23 +263,23 @@
 
 <p>In QGis you can download the file as CSV. It&#8217;s in <strong>Layer > Save As</strong>. You just need to make sure that <strong>Geometry</strong> has to be set so you get the coordinates.</p>
 
-<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.png" alt="Save to CSV" width="591" height="652" class="aligncenter size-full wp-image-1468" /></a></p>
+<p><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.jpg" title="Save to CSV" ></p>
 
 <h2>Import to Google Fusion Table</h2>
 
 <p>Now we can use that CSV to import to Google Fusion. It would look something like this.</p>
 
-<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.png" alt="Google Fusion Table" width="1425" height="726" class="aligncenter size-full wp-image-1469" /></a></p>
+<p><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.jpg" title="Google Fusion Table" ></p>
 
 <p>what you need to make sure is that you need to specify which fields are Lat, Long so Google can plot that for you.</p>
 
 <p>Here&#8217;s how you do it.</p>
 
-<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.png" alt="Screenshot 2015-07-30 13.05.41" width="226" height="116" class="aligncenter size-full wp-image-1470" /></a></p>
+<p><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.jpg"></p>
 
 <p>The click <strong>change</strong> You will see something like this and you can choose which field you want to be Longitude or Latitude.</p>
 
-<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.png" alt="Set Location" width="518" height="673" class="aligncenter size-full wp-image-1471" /></a></p>
+<p><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.jpg" title="Set Location" ></p>
 
 <p>Once the coordinates have set we can go to Map tab and see beautiful little dots that show where all the signs are in NYC.</p>
 
@@ -1926,74 +1987,6 @@
 <p><strong>Solution</strong></p>
 
 <p>Modern adapter if you flip it up and have a look you will see this sign or similar to this. &#8220;Travel adapter 110V &#8211; 240V&#8221; What this means is that this adapter will transform the current range from 110 &#8211; 220V to be usable for your appliance. There&#8217;s a reference <a href="http://blog.fosketts.net/2013/02/03/shavers-electrical-outlet/">here</a>. However, those outlets are not suitable for charging your big electronic equipments such as laptop or blow dryer. Once in a while it should be ok to use the outlet to charge your phone. Especially, if you travel from Europe you must have the two-prong socket adapter which is suitable for the outlet.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Naming test classes.]]></title>
-    <link href="https://www.noppanit.com/naming-test-classes/"/>
-    <updated>2014-06-25T00:00:00-04:00</updated>
-    <id>https://www.noppanit.com/naming-test-classes</id>
-    <content type="html"><![CDATA[<p>Normally, you would name your test class like this.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">Product</span> <span class="o">{</span>
-</span><span class='line'>   <span class="c1">//some awesome code here!</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">ProductTest</span><span class="o">{</span>
-</span><span class='line'>   <span class="c1">//some awesome test code here!</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>There&#8217;s two reasons why I would do this. First, to let IntelliJ find the test class easily and it&#8217;s easy to spot the test class when you scroll through.</p>
-
-<p>However, lately inspired by <a href="https://twitter.com/JeroenSoeters" title="Jeroen">@JeroenSoeters</a> my colleague which I don&#8217;t know where he got this from. I started naming test class like this.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">Product</span> <span class="o">{</span>
-</span><span class='line'>   <span class="c1">//some awesome code here!</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">When_building_a_product</span> <span class="o">{</span>
-</span><span class='line'>   <span class="c1">//some awesome test code here!</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">When_building_a_product_with_some_more_data</span> <span class="o">{</span>
-</span><span class='line'>   <span class="c1">//some awesome test code here!</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>There&#8217;s one reason to do this I can think of. You can clearly see the purpose of this class and you can have multiple test classes or <strong>Product</strong> instead of having all the tests in one class and everything is cluttered so you have to scroll up and down</p>
-
-<p>Not everybody likes this convention. I hate it at first but I&#8217;m starting to use it more often and I like it. What do you guys think?</p>
 ]]></content>
   </entry>
   

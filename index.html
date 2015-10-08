@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I have heard so much about Octopress but I haven&rsquo;t got the time to actually get to know what it can offer. Finally, this week I finally made &hellip;">
+	<meta name="description" content="I believe you will find a ton of websites writing about tuning performance of Octopress. I believe nearly everyone who migrated their blog to &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,88 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/octopress-on-crack/">
+		
+			Octopress on Crack</a>
+	</h2>
+	<div class="entry-content">
+		<p>I believe you will find a ton of websites writing about tuning performance of Octopress. I believe nearly everyone who migrated their blog to Octopress, the first post would be the migration and the next would be performance tuning. I&rsquo;m doing the same here.</p>
+
+<p>Once I got out of WordPress now there&rsquo;s much more you can do about your performance. But you should never tune anything unless you have the baseline.</p>
+
+<h2>Before</h2>
+
+<p>Here&rsquo;s my before performance on Google PageSpeed.</p>
+
+<p><img src="/wp-content/uploads/2015/10/google-pagespeed-before.jpg" title="Google PageSpeed before performance" ></p>
+
+<p>And on webpagetest.org</p>
+
+<p><img src="/wp-content/uploads/2015/10/before-perf-noppanit-com.jpg" title="Webpagetest before performance" ></p>
+
+<p>Yikes!</p>
+
+<p>In a nutshell, my page starts to render in <em>2.4s</em> and finishes in <em>4s</em>. From what I&rsquo;ve seen looks like the biggest red flag would be images.</p>
+
+<h2>What about images?</h2>
+
+<p>A picture is worth a thousand words. I like my blog to have some images so it won&rsquo;t be too boring. Also, I tend to have a lot of screenshots from my company and they&rsquo;re all PNGs. And PNGs tend to be bigger. As they&rsquo;re all screenshots so I don&rsquo;t really care about losing some of the quality so I convert all of them to be jpg. If you&rsquo;re using OSx, there&rsquo;s a command that you can run.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sips -s format jpeg your_png.png --out your_pic.jpg</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now what about compression. There&rsquo;s lots of tools out there that you can just throw your picture in and it will compress your picture for you. I use <a href="https://compressor.io/">compressor.io</a>. It&rsquo;s really good. Just try throwing your image in there and see what happens. Compressor.io can reduce my images up to 60% and that&rsquo;s a lot of bandwidth.</p>
+
+<h2>Minify CSS/JS</h2>
+
+<p>Fortunetely, I use <a href="https://www.cloudflare.com/">Cloudflare</a> and they have the feature to minify that for you. So, I just flipped the switch and it works like magic.</p>
+
+<h2>Browser caching</h2>
+
+<p>Going back to what Google PageSpeed tells us again. It complaints about <em>Leverage browser caching</em>. I&rsquo;m lucky again because in Cloudflare you can set the time to be 30 days and that seems to be ok for Google. So, I just set the value to be 1 month.</p>
+
+<h2>Inline CSS</h2>
+
+<p>I use <a href="https://github.com/tommy351/Octopress-Theme-Slash">Slash</a> theme and when I look at the CSS, it&rsquo;s only 22K. So why not just inline it and save one more request for the browser. So, in <em>_includes/head.html</em> you can change the line to your stylesheet to be</p>
+
+<p>%{ codeblock html</p>
+
+
+
+<p>%}</p>
+
+<p>This might be different from theme to theme but it should be difficult to check your theme.</p>
+
+<h2>After</h2>
+
+<p>Now, let&rsquo;s have a quick look at the after performance.</p>
+
+<p>Here&rsquo;s my after performance on Google PageSpeed.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Oct 7th, 2015</div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -319,7 +401,7 @@ Sep 22nd, 2015</div>
 
 <p>One thing I learnt was that you cannot just click <strong>Open</strong> and choose the file. What you need to do is to <string>Add Vector Layer</strong>. You can use shortcut <strong>Ctrl+Shift+v</strong></p>
 
-<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.png" alt="Add Vector Layer" width="1433" height="836" class="aligncenter size-full wp-image-1467" /></a></p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.jpg" title="Add Vector Layer" ></p>
 
 <h2>Export to Google Fusion</h2>
 
@@ -327,23 +409,23 @@ Sep 22nd, 2015</div>
 
 <p>In QGis you can download the file as CSV. It&#8217;s in <strong>Layer > Save As</strong>. You just need to make sure that <strong>Geometry</strong> has to be set so you get the coordinates.</p>
 
-<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.png" alt="Save to CSV" width="591" height="652" class="aligncenter size-full wp-image-1468" /></a></p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.jpg" title="Save to CSV" ></p>
 
 <h2>Import to Google Fusion Table</h2>
 
 <p>Now we can use that CSV to import to Google Fusion. It would look something like this.</p>
 
-<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.png" alt="Google Fusion Table" width="1425" height="726" class="aligncenter size-full wp-image-1469" /></a></p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.jpg" title="Google Fusion Table" ></p>
 
 <p>what you need to make sure is that you need to specify which fields are Lat, Long so Google can plot that for you.</p>
 
 <p>Here&#8217;s how you do it.</p>
 
-<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.png" alt="Screenshot 2015-07-30 13.05.41" width="226" height="116" class="aligncenter size-full wp-image-1470" /></a></p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.jpg"></p>
 
 <p>The click <strong>change</strong> You will see something like this and you can choose which field you want to be Longitude or Latitude.</p>
 
-<p><a href="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.png"><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.png" alt="Set Location" width="518" height="673" class="aligncenter size-full wp-image-1471" /></a></p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.jpg" title="Set Location" ></p>
 
 <p>Once the coordinates have set we can go to Map tab and see beautiful little dots that show where all the signs are in NYC.</p>
 
@@ -1501,90 +1583,6 @@ May 22nd, 2015</div>
 </div>
 </article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/what-should-you-expect-for-salkantay-trek-to-machu-picchu/">
-		
-			What Should You Expect for Salkantay Trek to Machu Picchu</a>
-	</h2>
-	<div class="entry-content">
-		<p>I&#8217;m not really a travel blogger but I&#8217;ll try to share my experience as much as possible. I&#8217;ve just come back from Peru (Machu Picchu). Me and a bunch of my friends did the Salkantay trek which hike from Cusco (sort of) to Machu Picchu. It&#8217;s a 5 days 4 nights trip. The hike is really challenging physically and mentally. You will experience altitude sickness and soreness from your body. Funny thing is I didn&#8217;t feel a thing at the highest peak, some of my friends experienced different symptoms. One of the best I&#8217;ve heard is; &#8220;It&#8217;s like EDM concert banging in my head&#8221;.</p>
-
-<h2>Stay warm</h2>
-
-<p>You really need to dress warm because you will be walking at the altitude around 14,000 feet which is going to be quite cold. I&#8217;d suggest a lot of layers instead of big puffy jacket. Base layer is really important and a good fleece. One thing that you can&#8217;t miss out is a good pair of wool socks.</p>
-
-<h2>Prepare for the rain</h2>
-
-<p>It&#8217;s going to rain. What you really need is a good rain jacket and or Pancho is you want. I find rain jacket is enough to keep you dry. However, what really important is waterproof hiking shoes or you need extra pairs of socks. If you have your camera, rain cover for your bag and camera are really crucial.</p>
-
-<h2>Prepare for the altitude</h2>
-
-<p>If you think you will be affected by the altitude, please consult with your doctor to get some pills. I didn&#8217;t really get any headache while hiking on the high altitude but everybody is different.</p>
-
-<h2>What you don&#8217;t really need</h2>
-
-<p>Water is what you really need. But you can get water at every stop along the trail. What you don&#8217;t really need is water purification. However, it&#8217;s just a small pack if you don&#8217;t mind carrying that.</p>
-
-<h2>Pack light</h2>
-
-<p>I found myself overpack for the hike and I exhausted myself on the third day. If you think you&#8217;re going to need snacks. I suggest having <a href="http://www.starburst.com/">starburst</a>. My friend gave away two starbursts at every stop point which I think they really keep me going in terms of energy. I had my raw almonds and dry berries which helped a lot.</p>
-
-<h2>Sleep comfy</h2>
-
-<p>Sleeping bag is a must. However, I had a really good night sleep with my <a href="http://www.rei.com/product/866771/sea-to-summit-aeros-pillow-premium">camping pillow</a> and it&#8217;s inflatable and really light.</p>
-
-<h2>Taking pictures of the locals</h2>
-
-<p>If you walk around in Cusco, you might find local people dressing in traditional custom. If you take a picture of them, they might ask you for some money. I gave them 1 soles and it was enough. And make sure you ask their permission before you take a picture of them.</p>
-
-<p><a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17626431306/in/dateposted-ff/" title="Peru-1093710.jpg"><img src="https://farm9.staticflickr.com/8837/17626431306_853767fc9e_z.jpg" width="640" height="423" alt="Peru-1093710.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
-
-<h2>Coca leaves</h2>
-
-<p>The locals told us to chew coca leaves to prevent the tiredness and altitude sickness. To be honest, they didn&#8217;t help much but I really like the coca tea in the morning.</p>
-
-<p><a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17465382290/in/dateposted-ff/" title="Peru-1093841.jpg"><img src="https://farm8.staticflickr.com/7770/17465382290_7dfcc888d1_z.jpg" width="640" height="431" alt="Peru-1093841.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
-
-<h2>Local food</h2>
-
-<p>Peruvian cuisine is really interesting or at least from my point of view. I had Guinea pig and Alpaca. I like Alpaca but the Guinea pig is not really my jam. At least I tried.</p>
-
-<p><a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17627373766/in/dateposted-ff/" title="Peru-1094221.jpg"><img src="https://farm6.staticflickr.com/5441/17627373766_e4568e063a_z.jpg" width="640" height="444" alt="Peru-1094221.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
-
-<h2>Machu Picchu</h2>
-
-<p><a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17653773851/in/dateposted-ff/" title="Peru-1094213.jpg"><img src="https://farm9.staticflickr.com/8707/17653773851_aa6c40a15e_z.jpg" width="640" height="431" alt="Peru-1094213.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
-
-<h2>Good view from your tent</h2>
-
-<p><a data-flickr-embed="true"  href="https://www.flickr.com/photos/pinkcarnation/17653136981/in/dateposted-ff/" title="Peru-1093869.jpg"><img src="https://farm8.staticflickr.com/7656/17653136981_03874afb08_z.jpg" width="640" height="431" alt="Peru-1093869.jpg"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-May 18th, 2015</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/travel/'>travel</a>
-
-
-</div>
-	
-</div>
-</article>
-
 <nav id="pagenavi">
     
     
@@ -1599,12 +1597,13 @@ May 18th, 2015</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-<script src="/javascripts/jquery.fancybox.pack.js"></script>
+
+<!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){
 	$('.fancybox').fancybox();
 })(jQuery);
-</script> <!-- Delete or comment this line to disable Fancybox -->
+</script> Delete or comment this line to disable Fancybox -->
 
 
 <script type="text/javascript">
@@ -1633,6 +1632,7 @@ May 18th, 2015</div>
 			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		})();
 	</script>
+
 
 
 

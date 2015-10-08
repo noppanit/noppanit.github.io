@@ -7,7 +7,14 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="If you&#8217;re in Moscow and you want somewhere to just sit down and catch up with some stuff. Or you just want to have a place to read. I &hellip;">
+	<meta name="description" content="Normally, you would name your test class like this. 1
+2
+3
+public Product { //some awesome code here!
+} 1
+2
+3
+public ProductTest{ //some awesome test &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +90,99 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/naming-test-classes/">
+		
+			Naming Test Classes.</a>
+	</h2>
+	<div class="entry-content">
+		<p>Normally, you would name your test class like this.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">Product</span> <span class="o">{</span>
+</span><span class='line'>   <span class="c1">//some awesome code here!</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">ProductTest</span><span class="o">{</span>
+</span><span class='line'>   <span class="c1">//some awesome test code here!</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There&#8217;s two reasons why I would do this. First, to let IntelliJ find the test class easily and it&#8217;s easy to spot the test class when you scroll through.</p>
+
+<p>However, lately inspired by <a href="https://twitter.com/JeroenSoeters" title="Jeroen">@JeroenSoeters</a> my colleague which I don&#8217;t know where he got this from. I started naming test class like this.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">Product</span> <span class="o">{</span>
+</span><span class='line'>   <span class="c1">//some awesome code here!</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">When_building_a_product</span> <span class="o">{</span>
+</span><span class='line'>   <span class="c1">//some awesome test code here!</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">When_building_a_product_with_some_more_data</span> <span class="o">{</span>
+</span><span class='line'>   <span class="c1">//some awesome test code here!</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There&#8217;s one reason to do this I can think of. You can clearly see the purpose of this class and you can have multiple test classes or <strong>Product</strong> instead of having all the tests in one class and everything is cluttered so you have to scroll up and down</p>
+
+<p>Not everybody likes this convention. I hate it at first but I&#8217;m starting to use it more often and I like it. What do you guys think?</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Jun 25th, 2014</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -802,44 +902,6 @@ Dec 18th, 2013</div>
 </div>
 </article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/found-perfect-travel-tripod-manfrotto-befree/">
-		
-			I Have Found My Perfect Travel Tripod. Manfrotto Befree</a>
-	</h2>
-	<div class="entry-content">
-		<p>This might just be me and this blog post is just my opinion and just give people another opinion if they&#8217;re interested in buying a travel tripod. I&#8217;m sure you will own either one or two tripods if you&#8217;re a serious photographer. Even if you&#8217;re not there&#8217;s a chance that you will own at least one. I have one as well, but very clunky and heavy which I got it really cheap because of the heavy material. And I thought I didn&#8217;t mind to carry it around I can just put it in a car. However, I rarely take it with me when I&#8217;m on a trip. Why? because as you travel a lot, you tend to travel light and those tripods won&#8217;t fit in your suitcase. Also, you don&#8217;t want to carry huge tripod around the airport, I learnt that the hard way when I was in India. I needed to get my tripod scanned and wrapped and scanned again. They had to make sure I could not dissemble my tripod to be a weapon or some sort. It was fun though.</p>
-
-<p>Now I have found this, <a href="http://www.manfrotto.com/befree" title="Manfrotto Befree">Manfrotto Befree</a>. Why I think it&#8217;s perfect for me. Because I can fit that in my suitcase so I won&#8217;t have any problem carrying it with me on a trip and it&#8217;s really small so I will have less trouble carrying it with me when I&#8217;m hiking. However, it&#8217;s not carbon fibre so it won&#8217;t be super light, but because of its size it&#8217;s not too heavy. I can carry it with my 5D all day.</p>
-
-<p>That&#8217;s the best bit for a travel tripod. However, you won&#8217;t use that for a 9-hour long exposure for sure as it&#8217;s not that sturdy but for taking night views with not-so-long exposure or even fireworks it works really well. So, it&#8217;s just another opinion if you&#8217;re thinking of buying a travel tripod.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Dec 17th, 2013</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/digital-camera/'>digital camera</a>
-
-
-</div>
-	
-</div>
-</article>
-
 <nav id="pagenavi">
     
         
@@ -858,12 +920,13 @@ Dec 17th, 2013</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-<script src="/javascripts/jquery.fancybox.pack.js"></script>
+
+<!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){
 	$('.fancybox').fancybox();
 })(jQuery);
-</script> <!-- Delete or comment this line to disable Fancybox -->
+</script> Delete or comment this line to disable Fancybox -->
 
 
 <script type="text/javascript">
@@ -892,6 +955,7 @@ Dec 17th, 2013</div>
 			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		})();
 	</script>
+
 
 
 
