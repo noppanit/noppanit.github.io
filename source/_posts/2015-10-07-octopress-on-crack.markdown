@@ -46,11 +46,11 @@ Going back to what Google PageSpeed tells us again. It complaints about *Leverag
 
 I use [Slash][3] theme and when I look at the CSS, it's only 22K. So why not just inline it and save one more request for the browser. So, in *_includes/head.html* you can change the line that includes your stylesheet to be. 
 
-%{ codeblock html
-<style>
-	{% include screen.css %}
-</style>
-%}
+{% codeblock html %}
+	<style>
+		{\% include screen.css %} # delete '\' in front of % before you paste this snippet
+	</style>
+{% endcodeblock %}
 
 This might be different from theme to theme but it shouldn't be difficult to find that out. 
 
