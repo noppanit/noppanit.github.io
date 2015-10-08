@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-08T00:52:33-04:00</updated>
+  <updated>2015-10-08T01:01:31-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -56,11 +56,14 @@
 
 <p>I use <a href="https://github.com/tommy351/Octopress-Theme-Slash">Slash</a> theme and when I look at the CSS, it&rsquo;s only 22K. So why not just inline it and save one more request for the browser. So, in <em>_includes/head.html</em> you can change the line that includes your stylesheet to be.</p>
 
-<p>%{ codeblock html</p>
+<figure class='code'><figcaption><span>html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;style>
+</span><span class='line'>      {\% include screen.css %} # delete '\' in front of % before you paste this snippet
+</span><span class='line'>  &lt;/style></span></code></pre></td></tr></table></div></figure>
 
-
-
-<p>%}</p>
 
 <p>This might be different from theme to theme but it shouldn&rsquo;t be difficult to find that out.</p>
 
