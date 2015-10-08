@@ -23,7 +23,7 @@ We&#8217;ve also opensourced the [bot][5] which you can clone and play around wi
 
 The first plugin we are thinking is performance bot where the bot can report the current performance of a website instead of going to a dashboard. It&#8217;s because we have remote team. So, having a bit giant board wouldn&#8217;t make much sense since some of our folks are distributed and we mainly use Slack for any communication.
 
-{% img /wp-content/uploads/2015/05/Screenshot-2015-05-23-19.42.23.png rubberduck bot %}
+{% img /wp-content/uploads/2015/05/Screenshot-2015-05-23-19.42.23.jpg rubberduck bot %}
 
 Now, go ahead and create your own bot!.
 
