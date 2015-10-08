@@ -59,7 +59,7 @@ Here&#8217;s how you do it.
 
 The click **change** You will see something like this and you can choose which field you want to be Longitude or Latitude. 
 
-{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.png Set Location %}
+{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.jpg Set Location %}
 
 Once the coordinates have set we can go to Map tab and see beautiful little dots that show where all the signs are in NYC.
 
