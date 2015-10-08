@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: performance | My Blog]]></title>
+  <link href="https://www.noppanit.com/blog/categories/performance/atom.xml" rel="self"/>
+  <link href="https://www.noppanit.com/"/>
+  <updated>2015-10-08T00:52:33-04:00</updated>
+  <id>https://www.noppanit.com/</id>
+  <author>
+    <name><![CDATA[Noppanit Charassinvichai]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress on crack]]></title>
+    <link href="https://www.noppanit.com/octopress-on-crack/"/>
+    <updated>2015-10-07T22:44:22-04:00</updated>
+    <id>https://www.noppanit.com/octopress-on-crack</id>
+    <content type="html"><![CDATA[<p>I believe you will find a ton of blogs writing about makeing Octopress faster. I believe nearly everyone who migrated their blog to Octopress, the first post would be the migration and the next would be performance tuning. I want to be the cool kid so here you go.</p>
+
+<p>Once you got out of WordPress now there&rsquo;s much more you can do about your performance. But before you start, nothing can be done before you have the baseline numbers</p>
+
+<h2>Before</h2>
+
+<p>Here&rsquo;s my before performance from Google PageSpeed.</p>
+
+<p><img src="/wp-content/uploads/2015/10/google-pagespeed-before.jpg" title="Google PageSpeed before performance" ></p>
+
+<p>And from webpagetest.org</p>
+
+<p><img src="/wp-content/uploads/2015/10/before-perf-noppanit-com.jpg" title="Webpagetest before performance" ></p>
+
+<p>In a nutshell, my page starts to render in <em>2.4s</em> and finishes in <em>4s</em>. Yikes! I wouldn&rsquo;t even want to wait for my site to load. Let&rsquo;s see where&rsquo;s the lowest hanging fruit.</p>
+
+<h2>What about images?</h2>
+
+<p>A picture is worth a thousand words. Who doesn&rsquo;t like image right? Also, I tend to have a lot of screenshots and they&rsquo;re all PNGs. And they tend to be big. As they&rsquo;re all screenshots so I don&rsquo;t really care about losing some of the quality so I convert them to be jpg. If you&rsquo;re using OSX, there&rsquo;s a command that you can run.</p>
+
+<pre><code>sips -s format jpeg your_png.png --out your_pic.jpg
+</code></pre>
+
+<p>Now what can we do to reduce the size? There&rsquo;s lots of tools out there that you can just throw your image in and it will compress the image for you. I use <a href="https://compressor.io/">compressor.io</a>. It&rsquo;s really good. Just try throwing your image in there and see what happens. Compressor.io can reduce my images up to 60% and that saves a lot of bandwidth.</p>
+
+<h2>Minify CSS/JS</h2>
+
+<p>Fortunetely, I use <a href="https://www.cloudflare.com/">Cloudflare</a> and they have the feature to minify that for you. So, I just flipped the switch and it works like magic.</p>
+
+<h2>Browser caching</h2>
+
+<p>Going back to what Google PageSpeed tells us again. It complaints about <em>Leverage browser caching</em>. I&rsquo;m lucky again because in Cloudflare you can set the cache to be 30 days and that seems to be ok for Google.</p>
+
+<h2>Inline CSS</h2>
+
+<p>I use <a href="https://github.com/tommy351/Octopress-Theme-Slash">Slash</a> theme and when I look at the CSS, it&rsquo;s only 22K. So why not just inline it and save one more request for the browser. So, in <em>_includes/head.html</em> you can change the line that includes your stylesheet to be.</p>
+
+<p>%{ codeblock html</p>
+
+
+
+<p>%}</p>
+
+<p>This might be different from theme to theme but it shouldn&rsquo;t be difficult to find that out.</p>
+
+<h2>After</h2>
+
+<p>Now, let&rsquo;s have a quick look at the after performance.</p>
+
+<p>Here&rsquo;s my after performance from Google PageSpeed.</p>
+
+<p><img src="/wp-content/uploads/2015/10/google-pagespeed-after.jpg" title="Google PageSpeed after" ></p>
+
+<p>It&rsquo;s a lot better now but there&rsquo;s one tiny problem with mobile which I&rsquo;ll write another blog post about that.</p>
+
+<p>Let&rsquo;s have a look at webpagetest now.</p>
+
+<p><img src="/wp-content/uploads/2015/10/webpagetest-after.jpg" title="Webpagetest After" ></p>
+
+<p>A lot better! It&rsquo;s still not the best but now my page loads within <em>0.5s</em> and finishes in <em>1.9s</em>. However, there&rsquo;s still a lot to work on mobile.</p>
+
+<p>I could shead about 200ms by not using SSL but I&rsquo;m willing to compromise that with a little bit of security.</p>
+
+<h2>What&rsquo;s next</h2>
+
+<p>I&rsquo;d like to try hosting the images on S3 to see if that would speed up the load time. And I want to make the images responsive for mobile.</p>
+]]></content>
+  </entry>
+  
+</feed>
