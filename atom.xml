@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-08T01:01:31-04:00</updated>
+  <updated>2015-10-08T17:26:23-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -12,6 +12,211 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Why algorithm matters?]]></title>
+    <link href="https://www.noppanit.com/why-algorithm-matters/"/>
+    <updated>2015-10-08T15:55:29-04:00</updated>
+    <id>https://www.noppanit.com/why-algorithm-matters</id>
+    <content type="html"><![CDATA[<p>If you have been to one of those technical interviews, you will like this.</p>
+
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Google: 90% of our engineers use the software you wrote (Homebrew), but you can’t invert a binary tree on a whiteboard so fuck off.</p>&mdash; Max Howell (@mxcl) <a href="https://twitter.com/mxcl/status/608682016205344768">June 10, 2015</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>I&rsquo;m not going to rant about how broken the technical interviews are. There&rsquo;s enough people who are more qualified to rant about this more than me.</p>
+
+<p>So, why this matters? I just want to give a quick example of why algorithm matters. Please no haters! I know some of you might read this and will say &ldquo;I do that all the time, what&rsquo;s the big deal&rdquo;. I&rsquo;m still a bad developer and I&rsquo;m still learning.</p>
+
+<h2>Scenario</h2>
+
+<p>You are a general, your home country is at war and you have to fight for your country. You are given a group of soldiers. You want to come up with a strategy to win the battle. Here&rsquo;s the example of the soldiers.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[
+</span><span class='line'>    {
+</span><span class='line'>        "category": "machine-gun",
+</span><span class='line'>        "id": 0,
+</span><span class='line'>        "name": "D408CF"
+</span><span class='line'>    },
+</span><span class='line'>    {
+</span><span class='line'>        "category": "machine-gun",
+</span><span class='line'>        "id": 1,
+</span><span class='line'>        "name": "C0BAD7"
+</span><span class='line'>    },
+</span><span class='line'>    {
+</span><span class='line'>        "category": "rocket-man",
+</span><span class='line'>        "id": 2,
+</span><span class='line'>        "name": "04B5E4"
+</span><span class='line'>    },
+</span><span class='line'>    {
+</span><span class='line'>        "category": "rocket-man",
+</span><span class='line'>        "id": 3,
+</span><span class='line'>        "name": "22F3CF"
+</span><span class='line'>    },
+</span><span class='line'>    {
+</span><span class='line'>        "category": "machine-gun",
+</span><span class='line'>        "id": 4,
+</span><span class='line'>        "name": "811E8A"
+</span><span class='line'>    }
+</span><span class='line'>    ,
+</span><span class='line'>    ...
+</span><span class='line'>]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You came out of a high-profile meeting and all the generals agree that this formation will be best to fight the enemy; <em>infantry</em>, <em>machine-gun</em> and <em>rocket-man</em>. How can I rearrange this quick enough because we&rsquo;re going to attack tomorrow? Simple I go ahead and write the code.</p>
+
+<p>First, let&rsquo;s generate a bunch of soldiers</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Soldier</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">category</span><span class="p">):</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">category</span> <span class="o">=</span> <span class="n">category</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">number_of_soldier</span> <span class="o">=</span> <span class="mi">10000</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">soldiers</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">number_of_soldier</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">get_hex</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
+</span><span class='line'>    <span class="n">soldiers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Soldier</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">categories</span><span class="p">)))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then let&rsquo;s rearrange them.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">json</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">uuid</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">random</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">time</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;infantry&#39;</span><span class="p">,</span> <span class="s">&#39;machine-gun&#39;</span><span class="p">,</span> <span class="s">&#39;rocket-man&#39;</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span><span class='line'><span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categories</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">s_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">soldiers</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">category</span> <span class="o">==</span> <span class="n">c</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">s_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">s_list</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">s_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It works, but you&rsquo;re too late you can&rsquo;t form the soldiers in time. If you take a closer look, this algorithm takes <em>O(n</em>m)<em> for the time complexity given the number of soldiers is </em>n<em> and the </em>category<em> is </em>m<em>. If you have a million soldiers and a million categories you would get </em>O(n<sup>2</sup>)*. How can we make this one faster?</p>
+
+<p>Here&rsquo;s my second version. Hmm, rearrange into category&hellip; category is bucket. How about using map?</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span><span class='line'><span class="n">map_of_soldiers</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">soldiers</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">map_of_soldiers</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categories</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">map_of_soldiers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is the time difference of those two algorithms.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="mf">0.00743103027344</span>
+</span><span class='line'><span class="mf">0.00331783294678</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>By just changing the data structure, you can see that the <em>map</em> version is almost twice as fast. I hope I can demostrate how choosing the right algorithm matters in your program.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress on crack]]></title>
@@ -1985,25 +2190,6 @@
 
 <iframe src="https://www.google.com/maps/d/embed?mid=zRNWtq1GEE_Y.kugirvzLoMWo&hl=en" width="640" height="480"></iframe>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[It&#8217;s alright to charge your phone on &#8216;Shavers only&#8217; outlet.]]></title>
-    <link href="https://www.noppanit.com/alright-charge-phone-shavers-outlet/"/>
-    <updated>2014-07-07T00:00:00-04:00</updated>
-    <id>https://www.noppanit.com/alright-charge-phone-shavers-outlet</id>
-    <content type="html"><![CDATA[<p><strong>Problem</strong></p>
-
-<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/21/ShaverSocketUK.jpg/170px-ShaverSocketUK.jpg" title="Shavers only outlet" ></p>
-
-<p>I believe everyone has the same problem once in a while or often that you forget your phone charger. Or even you didn&#8217;t forget your phone charger if you travel between UK and Europe you might forget the converter or adapter. If you stay in a hotel you must have seen one of those Shaver-only outlets. You would think that it&#8217;s clearly said that it&#8217;s for shaver only. So, I cannot use it for anything else. One day, I travel from Europe to the UK and the socket is different. Europe has one of those two-prong socket, and in the UK they use the big three-leg socket.</p>
-
-<p>Then what can you do? I did some research on some myths. I have also tried it myself. It&#8217;s ok to charge your phone with those sockets.</p>
-
-<p><strong>Solution</strong></p>
-
-<p>Modern adapter if you flip it up and have a look you will see this sign or similar to this. &#8220;Travel adapter 110V &#8211; 240V&#8221; What this means is that this adapter will transform the current range from 110 &#8211; 220V to be usable for your appliance. There&#8217;s a reference <a href="http://blog.fosketts.net/2013/02/03/shavers-electrical-outlet/">here</a>. However, those outlets are not suitable for charging your big electronic equipments such as laptop or blow dryer. Once in a while it should be ok to use the outlet to charge your phone. Especially, if you travel from Europe you must have the two-prong socket adapter which is suitable for the outlet.</p>
 ]]></content>
   </entry>
   
