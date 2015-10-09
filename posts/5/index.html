@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I have been asked from my friend if I could take him to Paris and show him around what cafes in Paris look like. He opens a sandwich shop in London &hellip;">
+	<meta name="description" content="I&#8217;m playing around with my tweets. Just so you&#8217;re aware that you could download your entire tweets and play around with it. The format &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,77 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/python-import-dumped-tweets-mongodb/">
+		
+			Python to Import Your Dumped Tweets to MongoDb</a>
+	</h2>
+	<div class="entry-content">
+		<p>I&#8217;m playing around with my tweets. Just so you&#8217;re aware that you could download your entire tweets and play around with it. The format is JSON so I think it makes perfect sense to dump this to MongoDB. But you can&#8217;t just import that straight away it needs some manipulation. I&#8217;m not good at Python so the code here might be tedious for python dudes. I&#8217;m going to use this data in my analysis, which will be captured in the next blog post.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">pymongo</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">path</span> <span class="o">=</span> <span class="s">&#39;./data&#39;</span>
+</span><span class='line'><span class="n">client</span> <span class="o">=</span> <span class="n">pymongo</span><span class="o">.</span><span class="n">MongoClient</span><span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">27017</span><span class="p">)</span>
+</span><span class='line'><span class="n">db</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">tweets</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span><span class='line'>        <span class="k">for</span> <span class="n">infile</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s">&quot;*.js&quot;</span><span class="p">)):</span>
+</span><span class='line'>                <span class="n">content</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span class='line'>                <span class="n">indexOfFirstEqualSign</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;=&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span class='line'>                <span class="n">pureJson</span> <span class="o">=</span> <span class="n">content</span><span class="p">[</span><span class="n">indexOfFirstEqualSign</span><span class="p">:]</span>
+</span><span class='line'>                <span class="n">jsonifedData</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">pureJson</span><span class="p">)</span>
+</span><span class='line'>                <span class="n">db</span><span class="o">.</span><span class="n">tweets_collection</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">jsonifedData</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">main</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The data is kept in <strong>data</strong> folder.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Sep 4th, 2013</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/python/'>python</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -763,44 +834,6 @@ Jul 1st, 2013</div>
 
 
 	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/angularjs-cookies-with-play-framework-2-1-1-java-session/">
-		
-			AngularJs Cookies With Play Framework 2.1.1 Java Session.</a>
-	</h2>
-	<div class="entry-content">
-		<p>I have been working with AngularJs and I loved it, but occasionally I ran into some problems and the documentation is not that reliable. So, I&#8217;m helping them to increase the rank.</p>
-
-<p>Recently, I have this problem when Play saved some session in cookie already, but I can&#8217;t use $cookies from AngularJs to read the cookie. So, I started digging in and I found that those cookies are set with <strong>httpOnly</strong> by default. If you have that flag on any plugins (e.g, AngularJs) cannot read that cookie. So, it Play 1 you can set <strong>application.session.httpOnly=false</strong> but in Play 2.1 they changed to <strong>session.httpOnly=false</strong></p>
-
-<p>I&#8217;m hoping I can save some people&#8217;s time.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-May 31st, 2013</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/java/'>java</a>
 
 
 </div>

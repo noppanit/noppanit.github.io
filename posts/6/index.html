@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Have you every heard of Suspended Coffee? Or you have you ever heard of Live Below The Line? Last week, a bunch of friends at work embarked on a &hellip;">
+	<meta name="description" content="I have been working with AngularJs and I loved it, but occasionally I ran into some problems and the documentation is not that reliable. So, I&#8217 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,44 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/angularjs-cookies-with-play-framework-2-1-1-java-session/">
+		
+			AngularJs Cookies With Play Framework 2.1.1 Java Session.</a>
+	</h2>
+	<div class="entry-content">
+		<p>I have been working with AngularJs and I loved it, but occasionally I ran into some problems and the documentation is not that reliable. So, I&#8217;m helping them to increase the rank.</p>
+
+<p>Recently, I have this problem when Play saved some session in cookie already, but I can&#8217;t use $cookies from AngularJs to read the cookie. So, I started digging in and I found that those cookies are set with <strong>httpOnly</strong> by default. If you have that flag on any plugins (e.g, AngularJs) cannot read that cookie. So, it Play 1 you can set <strong>application.session.httpOnly=false</strong> but in Play 2.1 they changed to <strong>session.httpOnly=false</strong></p>
+
+<p>I&#8217;m hoping I can save some people&#8217;s time.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+May 31st, 2013</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>java</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -868,53 +906,6 @@ I couldn&#8217;t believe that this will be the simplest and most effective way. 
 
 
 Feb 7th, 2013</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>ruby</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/enable-defalter-compression-for-sinatra-on-herok/">
-		
-			Enable Defalter Compression for Sinatra on Heroku</a>
-	</h2>
-	<div class="entry-content">
-		<p>You guys must have heard about PageSpeed test from Google. It&#8217;s a really cool plugin for Chrome to let you know how you can optimize your webpage faster. I have been using it for a while but I couldn&#8217;t get my head around gzip compression which it seems that Google has taken that seriously. If you want the science bit. Here&#8217;s the <a href="https://developers.google.com/speed/articles/gzip" title="gzip">article</a> from Google.</p>
-
-<p>And here&#8217;s the quickstart bit. The most simplest way is to put the compression in <strong>config.ru</strong></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;./server&#39;</span>
-</span><span class='line'><span class="n">use</span> <span class="no">Rack</span><span class="o">::</span><span class="no">Deflater</span>
-</span><span class='line'><span class="n">run</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Application</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And that&#8217;s it I hope this will save you sometime.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Jan 15th, 2013</div>
 	<div class="tags">
 
 

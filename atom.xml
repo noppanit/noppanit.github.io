@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-08T17:26:23-04:00</updated>
+  <updated>2015-10-09T18:14:30-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -12,6 +12,80 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Why you should or should not SSL your blog]]></title>
+    <link href="https://www.noppanit.com/why-you-should-or-should-not-ssl-your-blog/"/>
+    <updated>2015-10-09T17:02:25-04:00</updated>
+    <id>https://www.noppanit.com/why-you-should-or-should-not-ssl-your-blog</id>
+    <content type="html"><![CDATA[<p>After I switched to Octopress, I knew that I wanted to write about performance and SSL. Those are the main reasons why I switched.</p>
+
+<p>Last year, Google <a href="http://googlewebmastercentral.blogspot.com/2014/08/https-as-ranking-signal.html">announced</a> that they will include Https as a single in their ranking. So, if you want to be the cool kid, go and SSL your site now. But what does SSL really do to your site? Have you seen that in action? I only know that from reading all the blog posts about this. In this blog, I&rsquo;ll show you what SSL does to your site.</p>
+
+<p>Thanks to my friend <a href="https://twitter.com/suksant">Suksant</a> who helped me conducting the test.</p>
+
+<h2>What will you need?</h2>
+
+<ol>
+<li><a href="https://www.wireshark.org/">Wireshare</a> is a network protocal analysis.</li>
+</ol>
+
+
+<h2>Simple website.</h2>
+
+<p>I&rsquo;ve created a simple <a href="https://github.com/noppanit/SSL-Show-and-tell">site</a> that you can fake login form. So, you can go ahead and deploy that to your heroku. I chose Heroku as the platform of choice because you can try the site with and without SSL.</p>
+
+<h2>Setup your wireshark</h2>
+
+<p>There&rsquo;s a couple things you need to do before you can capture the password.</p>
+
+<ol>
+<li>Open your wireshark and go to <em>Capture -> Interfaces</em> and click <em>en0</em> that should be your Wifi connection.</li>
+</ol>
+
+
+<p><img src="wp-content/uploads/2015/10/wireshark-setup-interface.jpg" title="Wireshark Interfaces" ></p>
+
+<p>Then click &lsquo;Start&rsquo; to capture the packets</p>
+
+<ol>
+<li>In the <em>Filter</em> section, put this <em>frame contains topsecret</em> (That&rsquo;s going to be your password)</li>
+</ol>
+
+
+<p><img src="wp-content/uploads/2015/10/wireshark-filter.jpg" title="Wireshark filter" ></p>
+
+<h2>Capture the password</h2>
+
+<ol>
+<li>I deployed the application <a href="http://ssl-show-and-tell.herokuapp.com/login">here</a>. Go ahead and enter &ldquo;username&rdquo; in username and &ldquo;topsecretpassword&rdquo; in password It could be anything. Try to check if the URL is not SSL.</li>
+</ol>
+
+
+<p><img src="wp-content/uploads/2015/10/form-to-submit-without-ssl.jpg" title="Form submit" ></p>
+
+<ol>
+<li>Once you&rsquo;ve submitted your password, you should see that Wireshark has captured something already.</li>
+</ol>
+
+
+<p><img src="wp-content/uploads/2015/10/wireshark-captured-password.jpg" title="Wireshark with password" ></p>
+
+<p>without even trying to do anything hard. You can clearly see the password.</p>
+
+<h2>Now with SSL.</h2>
+
+<ol>
+<li>Change your URL to be *<a href="https:*">https:*</a></li>
+<li>You will not find anything with your password on Wireshark</li>
+</ol>
+
+
+<h2>What gives?</h2>
+
+<p>In conclusion, what have we learned here? SSL encrypts everything being sent to the server will be encrypted. It&rsquo;s safer and make the site more trustworthy. However, if you&rsquo;re just running a blog you probably won&rsquo;t need SSL. If you have a website that capture anything from the user then big &lsquo;YES&rsquo; you need SSL. For me, I just want to be a cool kid so I SSLed my site.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Why algorithm matters?]]></title>
@@ -2177,18 +2251,6 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>Cache-Control: no-transform</span></code></pre></td></tr></table></div></figure>
 
 
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hidden flea market in Istanbul, Turkey]]></title>
-    <link href="https://www.noppanit.com/hidden-flea-market-istanbul-turkey/"/>
-    <updated>2014-07-20T00:00:00-04:00</updated>
-    <id>https://www.noppanit.com/hidden-flea-market-istanbul-turkey</id>
-    <content type="html"><![CDATA[<p>Love flea market? Love antiques? And you are in Istanbul, you should try out this place if you like antique stuff and what to kill a couple hours on a Sunday in Istanbul. The market opens every Sunday. I don&#8217;t know what time but I was there from 12pm &#8211; 3pm. I don&#8217;t really know how to get there by public transportation, but you can get a taxi to there from Şişli Metro station. It&#8217;s only a couple minutes away by taxi.</p>
-
-<iframe src="https://www.google.com/maps/d/embed?mid=zRNWtq1GEE_Y.kugirvzLoMWo&hl=en" width="640" height="480"></iframe>
 
 ]]></content>
   </entry>
