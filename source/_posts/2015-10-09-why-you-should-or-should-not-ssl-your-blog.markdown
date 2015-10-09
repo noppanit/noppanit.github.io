@@ -55,9 +55,12 @@ without even trying to do anything hard. You can clearly see the password.
 
 In conclusion, what have we learned here? SSL encrypts everything being sent to the server will be encrypted. It's safer and make the site more trustworthy. However, if you're just running a blog you probably won't need SSL. If you have a website that capture anything from the user then big 'YES' you need SSL. For me, I just want to be a cool kid so I SSLed my site. 
 
+## Reference
+1. [Wireshark tutorial][6]
 
  [1]: http://googlewebmastercentral.blogspot.com/2014/08/https-as-ranking-signal.html
  [2]: https://twitter.com/suksant
  [3]: https://www.wireshark.org/
  [4]: https://github.com/noppanit/SSL-Show-and-tell
  [5]: http://ssl-show-and-tell.herokuapp.com/login
+ [6]: https://samsclass.info/120/proj/p3-wireshark.htm
