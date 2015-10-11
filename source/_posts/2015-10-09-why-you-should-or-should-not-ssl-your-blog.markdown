@@ -26,23 +26,23 @@ There's a couple things you need to do before you can capture the password.
 
 1. Open your wireshark and go to *Capture -> Interfaces* and click *en0* that should be your Wifi connection.
 
-{% img wp-content/uploads/2015/10/wireshark-setup-interface.jpg Wireshark Interfaces %}
+{% img /wp-content/uploads/2015/10/wireshark-setup-interface.jpg Wireshark Interfaces %}
 
 Then click 'Start' to capture the packets
 
 2. In the *Filter* section, put this *frame contains topsecret* (That's going to be your password)
 
-{% img wp-content/uploads/2015/10/wireshark-filter.jpg Wireshark filter %}
+{% img /wp-content/uploads/2015/10/wireshark-filter.jpg Wireshark filter %}
 
 ## Capture the password
 
 1. I deployed the application [here][5]. Go ahead and enter "username" in username and "topsecretpassword" in password It could be anything. Try to check if the URL is not SSL.
 
-{% img wp-content/uploads/2015/10/form-to-submit-without-ssl.jpg Form submit %}
+{% img /wp-content/uploads/2015/10/form-to-submit-without-ssl.jpg Form submit %}
 
 2. Once you've submitted your password, you should see that Wireshark has captured something already.
 
-{% img wp-content/uploads/2015/10/wireshark-captured-password.jpg Wireshark with password %}
+{% img /wp-content/uploads/2015/10/wireshark-captured-password.jpg Wireshark with password %}
 
 without even trying to do anything hard. You can clearly see the password.
 
