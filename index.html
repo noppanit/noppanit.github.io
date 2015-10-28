@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="After I switched to Octopress, I knew that I wanted to write about performance and SSL. Those are the main reasons why I switched. Last year, Google &hellip;">
+	<meta name="description" content="Alright, I&rsquo;m going to cut to the chase here. I&rsquo;m having problems with Monkey patching in Python and I want to make it clear for myself &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,181 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/pythons-monkey-patch/">
+		
+			Python's Monkey Patch</a>
+	</h2>
+	<div class="entry-content">
+		<p>Alright, I&rsquo;m going to cut to the chase here. I&rsquo;m having problems with Monkey patching in Python and I want to make it clear for myself and anybody who might stumble upon my post in the future. So, what&rsquo;s the big deal here?</p>
+
+<p>Let&rsquo;s say you have a model</p>
+
+<figure class='code'><figcaption><span>models/person.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">get_name</span><span class="p">():</span>
+</span><span class='line'>  <span class="o">//</span> <span class="n">Doing</span> <span class="n">some</span> <span class="n">database</span> <span class="n">lookup</span>
+</span><span class='line'>  <span class="o">//</span> <span class="n">But</span> <span class="n">I</span><span class="s">&#39;m going to return a hard-coded name for now</span>
+</span><span class='line'>  <span class="k">return</span> <span class="s">&#39;John Doe&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And you have a Phonebook class that&rsquo;s trying to access the database</p>
+
+<figure class='code'><figcaption><span>models/phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">models.person</span> <span class="kn">import</span> <span class="n">get_name</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Phonebook</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">lookup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">get_name</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, we know that <code>get_name</code> is accessing some database and we don&rsquo;t want that to happen in unit test. We would like to stub that.</p>
+
+<p>Coming from Java, I&rsquo;d write my test like this.</p>
+
+<figure class='code'><figcaption><span>tests/test_phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span><span class="p">,</span> <span class="n">mock</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">models.phonebook</span> <span class="kn">import</span> <span class="n">Phonebook</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">PhonebookTestCase</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@mock.patch</span><span class="p">(</span><span class="s">&#39;models.person.get_name&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">test_main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock_person</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">mock_person</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="s">&#39;Another Name&#39;</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s">&#39;Another Name&#39;</span><span class="p">,</span> <span class="n">Phonebook</span><span class="p">()</span><span class="o">.</span><span class="n">lookup</span><span class="p">())</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It makes sense right? I want to stub something from <code>models.person.get_name</code> so I&rsquo;m telling <code>mock</code> to stub that class but my test failed miserably.</p>
+
+<figure class='code'><figcaption><span>tests/test_phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">tests</span><span class="o">/</span><span class="n">test_phonebook</span><span class="o">.</span><span class="n">py</span> <span class="n">F</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">===================================================================================</span> <span class="n">FAILURES</span> <span class="o">===================================================================================</span>
+</span><span class='line'><span class="n">_________________________________________________________________________</span> <span class="n">PhonebookTestCase</span><span class="o">.</span><span class="n">test_main</span> <span class="n">__________________________________________________________________________</span>
+</span><span class='line'>
+</span><span class='line'><span class="bp">self</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">tests</span><span class="o">.</span><span class="n">test_phonebook</span><span class="o">.</span><span class="n">PhonebookTestCase</span> <span class="n">testMethod</span><span class="o">=</span><span class="n">test_main</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">mock_person</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">MagicMock</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;get_name&#39;</span> <span class="nb">id</span><span class="o">=</span><span class="s">&#39;4460968592&#39;</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@mock.patch</span><span class="p">(</span><span class="s">&#39;models.person.get_name&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">test_main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock_person</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">mock_person</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="s">&#39;Another Name&#39;</span>
+</span><span class='line'><span class="o">&gt;</span>       <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s">&#39;Another Name&#39;</span><span class="p">,</span> <span class="n">Phonebook</span><span class="p">()</span><span class="o">.</span><span class="n">lookup</span><span class="p">())</span>
+</span><span class='line'><span class="n">E</span>       <span class="ne">AssertionError</span><span class="p">:</span> <span class="s">&#39;Another Name&#39;</span> <span class="o">!=</span> <span class="s">&#39;John Doe&#39;</span>
+</span><span class='line'><span class="n">E</span>       <span class="o">-</span> <span class="n">Another</span> <span class="n">Name</span>
+</span><span class='line'><span class="n">E</span>       <span class="o">+</span> <span class="n">Noppanit</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Why? Because <code>patch</code> behaves differently than what we expected. This is explained in <a href="http://www.voidspace.org.uk/python/mock/patch.html#where-to-patch">Where to patch</a>. I&rsquo;m going to summarize for you. Basically, <code>patch</code> is going to take effect from where it is looked up&hellip; For me after reading that I&rsquo;m still confused. I might be the only one who&rsquo;s confused here so I&rsquo;m going to continue writing.</p>
+
+<p>If we take a closer look how <a href="http://effbot.org/zone/import-confusion.htm">import</a> behaves in Python, it would be clearer.</p>
+
+<figure class='code'><figcaption><span>models/phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">models.person</span> <span class="kn">import</span> <span class="n">get_name</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The line says please import <code>get_name</code> to the namespace in <code>models/phonebook.py</code>. So, when we want to use it we can just called <code>get_name()</code> without having to write <code>models.person.get_name()</code> Now if you change your code to be</p>
+
+<figure class='code'><figcaption><span>models/phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">models.person</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Phonebook</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">lookup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">models</span><span class="o">.</span><span class="n">person</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You test would pass. Because now our Phonebook is looking up <code>models.person.get_name</code> namespace instead of having function <code>get_name</code> being imported to its namespace.</p>
+
+<p>Now if you want the old test to work, your <code>patch</code> has to be changed to</p>
+
+<figure class='code'><figcaption><span>tests/test_phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span><span class="p">,</span> <span class="n">mock</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">models.phonebook</span> <span class="kn">import</span> <span class="n">Phonebook</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">PhonebookTestCase</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@mock.patch</span><span class="p">(</span><span class="s">&#39;models.phonebook.get_name&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">test_main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock_person</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">mock_person</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="s">&#39;Another Name&#39;</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s">&#39;Another Name&#39;</span><span class="p">,</span> <span class="n">Phonebook</span><span class="p">()</span><span class="o">.</span><span class="n">lookup</span><span class="p">())</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&rsquo;s it for now. If you&rsquo;re wondering why this is the case then looking at the source code of patch would help a lot. It&rsquo;s using <a href="https://docs.python.org/3.5/library/functions.html#__import__"><code>__import__</code></a> function.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Oct 25th, 2015</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/python/'>python</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -1389,306 +1564,6 @@ Jul 7th, 2015</div>
 
 
 	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/example-how-did-i-convert-async-code-to-sync-code-with-promise/">
-		
-			Example: How Did I Convert Async Code to Sync Code With Promise.</a>
-	</h2>
-	<div class="entry-content">
-		<p>I&#8217;ve just finished my first refactor to convert my node.js code to be more promisey (I believe that&#8217;s the word they use these days). There&#8217;s lots of documents out there to do this. However, I thought I should contribute more to help me understand more and might get some feedback from people who&#8217;s seen it as well.</p>
-
-<p>I&#8217;m trying to create a bot to report me back the performance of my site in desktop and mobile mode. So, I thought it would be easy since Google has an <a href="https://developers.google.com/speed/docs/insights/v2/getting-started">API</a> for that already so I went ahead and did this.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">urlToGetTheScore</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=desktop&amp;amp;fields=ruleGroups&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScore</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It&#8217;s pretty easy and straight forward right but now that would only return the score of desktop. I need the score of my mobile site as well. So, I added more code to be like this.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">urlToGetTheScoreDesktop</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=desktop&amp;amp;fields=ruleGroups&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">urlToGetTheScoreMobile</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=mobile&amp;amp;fields=ruleGroups&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScoreDesktop</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScoreMobile</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>That&#8217;s great but I want to return both scores to a client so I can report the scores rather than printing them to the console. Since, <strong>request</strong> is asynchronous you cannot guarantee which score would come first. So, I thought it&#8217;s easy. I just need to call one request after the other. So, I came up with this.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">urlToGetTheScoreDesktop</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=desktop&amp;amp;fields=ruleGroups&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">urlToGetTheScoreMobile</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=mobile&amp;amp;fields=ruleGroups&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScoreDesktop</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">desktopScore</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScoreMobile</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">mobileScore</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;desktop score is &#39;</span> <span class="o">+</span> <span class="nx">desktopScore</span> <span class="o">+</span> <span class="s1">&#39; and mobile score is &#39;</span> <span class="o">+</span> <span class="nx">mobileScore</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Look at how ugly it is. Now I want to make it prettier. So, I will use Promise to make it look nicer. As a good engineer I need to create a test first.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">perfModule</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./pagespeed&#39;</span><span class="p">),</span>
-</span><span class='line'><span class="nx">sinon</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sinon&#39;</span><span class="p">),</span>
-</span><span class='line'><span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">),</span>
-</span><span class='line'><span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;expect.js&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Performance&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">server</span><span class="p">;</span>
-</span><span class='line'>  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="s1">&#39;get&#39;</span><span class="p">).</span><span class="nx">yields</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">ruleGroups</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">SPEED</span><span class="o">:</span> <span class="p">{</span><span class="nx">score</span><span class="o">:</span><span class="mi">10</span><span class="p">}}</span> <span class="p">}));</span>
-</span><span class='line'>    <span class="nx">done</span><span class="p">();</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should send performance stats to chat room&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">perfModule</span><span class="p">.</span><span class="nx">pagespeed</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">donotknow</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">done</span><span class="p">();</span>
-</span><span class='line'>      <span class="nx">expect</span><span class="p">(</span><span class="nx">msg</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eql</span><span class="p">(</span><span class="s1">&#39;desktop speed is 10 and mobile speed is 10&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I&#8217;m using <a href="http://sinonjs.org/">Sinon.js</a> as the mocking framework and <a href="http://mochajs.org/">Mocha</a> as the testing framework which are pretty standard.</p>
-
-<p>Now I can start refactor my code. At first, I wrote some code like this, just to make it work.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">getSpeed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">strategy</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=&#39;</span><span class="o">+</span> <span class="nx">strategy</span> <span class="o">+</span> <span class="s1">&#39;&amp;amp;fields=ruleGroups&#39;</span>
-</span><span class='line'>  <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-</span><span class='line'>      <span class="nx">resolve</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">pagespeed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">getSpeed</span><span class="p">(</span><span class="s1">&#39;desktop&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">desktopSpeed</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">getSpeed</span><span class="p">(</span><span class="s1">&#39;mobile&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">mobileSpeed</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;desktop speed is &#39;</span> <span class="o">+</span> <span class="nx">desktopSpeed</span> <span class="o">+</span> <span class="s1">&#39; and mobile speed is &#39;</span> <span class="o">+</span> <span class="nx">mobileSpeed</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">exports</span><span class="p">.</span><span class="nx">pagespeed</span> <span class="o">=</span> <span class="nx">pagespeed</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Any good JavaScript developer would be like, WTH!. You still have callbacks. I thought Promise would solve that issue already! Now, I could use the power of <strong>Promise.all</strong> which takes array of promises and return array of results. My final code would look something like this.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">),</span>
-</span><span class='line'><span class="nx">Promise</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;promise&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">getSpeed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">strategy</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http%3A%2F%2Ffusion.net&amp;amp;strategy=&#39;</span><span class="o">+</span> <span class="nx">strategy</span> <span class="o">+</span> <span class="s1">&#39;&amp;amp;fields=ruleGroups&#39;</span>
-</span><span class='line'>  <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-</span><span class='line'>      <span class="nx">resolve</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="nx">pagespeed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">getSpeed</span><span class="p">(</span><span class="s1">&#39;desktop&#39;</span><span class="p">),</span> <span class="nx">getSpeed</span><span class="p">(</span><span class="s1">&#39;mobile&#39;</span><span class="p">)]).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">speed</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">desktop</span> <span class="o">=</span> <span class="nx">speed</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">mobile</span> <span class="o">=</span> <span class="nx">speed</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s1">&#39;desktop speed is &#39;</span> <span class="o">+</span> <span class="nx">desktop</span> <span class="o">+</span> <span class="s1">&#39; and mobile speed is &#39;</span> <span class="o">+</span> <span class="nx">mobile</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">});</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">exports</span><span class="p">.</span><span class="nx">pagespeed</span> <span class="o">=</span> <span class="nx">pagespeed</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I&#8217;m not an expert in Promise and I welcome any feedback that would help improve my code.</p>
-
-<p>Reference<br/>
-<a href="http://www.html5rocks.com/en/tutorials/es6/promises/">ES6 Promises</a><br/>
-<a href="http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html">We have a problem with promises</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-May 24th, 2015</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/javascript/'>javascript</a>
 
 
 </div>

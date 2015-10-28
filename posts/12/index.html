@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I have watched Heston Blumenthal and liked him very much. I tried some dishes from the program which is the perfect roast chicken. It was work very &hellip;">
+	<meta name="description" content="From the previous chapter, I wrote about how to build an EJB from scratch. This topic, I will be presenting how to combine struts version 1 with the &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,93 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/tutorial-struts-version-1-in-action/">
+		
+			Tutorial : Struts Version 1 in Action</a>
+	</h2>
+	<div class="entry-content">
+		<p>From the previous chapter, I wrote about how to build an EJB from scratch. This topic, I will be presenting how to combine struts version 1 with the previous topic.</p>
+
+<p>First, we need the latest <a href="http://struts.apache.org/download.cgi#struts138" target="_blank">struts version 1</a>. Actually, I wanted to write about struts2, but I don&#8217;t have enough energy to do that, because struts version2 is very difference to version1. So, I will write version 1 first and then migrate to version2 later.</p>
+
+<p><a href="http://www.roseindia.net/struts/struts1-vs-struts2.shtml" target="_blank">This is the difference between Struts1 and Struts2</a></p>
+
+<p><a href="http://www.roseindia.net/struts/struts1-vs-struts2.shtml" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/1-1.gif" alt="" width="232" height="288" /></a></p>
+
+<p>So, First we need to look at the hierarchy of the project. We have</p>
+
+<p><strong>src folder</strong>: where you can keep your .java files.<br/>
+<strong>WebContent folder:</strong> where you can keep your content files, such as .jsp files and libs. In WebContent we have to create WEB-INF to store web.xml and struts-config.xml to tell struts that we are using Struts Framework. <strong><br/>
+WebContent/WEB-INF/classes</strong> <strong>folder</strong>: this folder we can keep our .class files.</p>
+
+<p>The next thing is we have to modified web.xml to tell java that we are going to use Struts and configure about struts-config.xml.</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/2-1.gif" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/2-1-1.gif" alt="" width="150" height="132" /></a></p>
+
+<p>Next, modified the index.jsp to use struts taglib</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/3-1.gif" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/3-1-1.gif" alt="" width="150" height="82" /></a></p>
+
+<p>Now, we are heading to code the main program. I have created TestStrutsEJBAction.java which is extended from org.apache.struts.action.Action in Struts1 we have to extend org.apache.struts.action.Action, but in Struts2 we don&#8217;t have to extend Action, just the class that implements execute method.</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/4-1.gif" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/4-1-1.gif" alt="" width="150" height="146" /></a></p>
+
+<p>After we have created Action class we have to create ActionForm that request the parameters from the form, or jsp file. This class have to extend ActionForm, or we can develop more than that by extending ValidateForm. This class have to have parameters that the names match the jsp file inside html:form.</p>
+
+<p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/5-1.gif" alt="" /></p>
+
+<p>The last thing is the key file, struts-config.xml</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/6-1.gif" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/6-1-1.gif" alt="" /></a></p>
+
+<p>This is the end, the next thing is we pack this project and deploy to application server. We can use ANT or any framework you like.</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/7-1.gif" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/71.gif" alt="" width="150" height="81" /></a></p>
+
+<p>This is the example of my build.xml file, I use ANY, because I want to build my project from scratch. If you can use Eclipse to deploy to the application server, that&#8217;s fine. In build.xml I use war task to pack all the files you needed to WAR.</p>
+
+<p>So, I can summary into the following steps</p>
+
+<ol>
+<li>Create Struts project and include all the filed the project need, such as struts libraries.</li>
+<li>Config web.xml and struts.xml</li>
+<li>Write Jsp file, modified by using struts taglib, you can use plain html if you want.</li>
+<li>Write Action class which extends org&#8230;struts.action.Action.</li>
+<li>Write ActionForm which extends org&#8230;struts.action.ActionForm.</li>
+<li>Pack the project into war file.</li>
+<li>Deploy into application server.</li>
+</ol>
+
+
+<p>Next topic, I will be improving this project by using AJAX.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Apr 20th, 2008</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/struts/'>struts</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -551,50 +638,14 @@ Jul 17th, 2007</div>
 </div>
 </article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/digital-camera-focus-length/">
-		
-			Digital Camera : Focus Length</a>
-	</h2>
-	<div class="entry-content">
-		<p>Last year, I brought my first digital camera from my brother in 15,000 Bath. It is Fiji <a href="http://www.fujifilm.co.uk/digital/cameras/s9500/index.php?page=tech_specs&amp;flash=9">finepix s9500</a></p>
-
-<p>I was so happy with my first digital camera, but I don&#8217;t have any idea to use that camera. I want to introduce my first knowledge in this blog about focus length, the number beside every lens on digital camera. Ex, 28mm &#8211; 300mm. What doesn&#8217;t it mean. I have an answer.</p>
-
-<p><a href="http://www.dpreview.com/learn/?/key=focal+length">http://www.dpreview.com/learn/?/key=focal+length</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Mar 2nd, 2007</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/digital-camera/'>digital camera</a>
-
-
-</div>
-	
-</div>
-</article>
-
 <nav id="pagenavi">
     
         
             <a href="/posts/11" class="prev">Prev</a>
         
     
+    
+        <a href="/posts/13" class="next">Next</a>
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav>

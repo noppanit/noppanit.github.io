@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-11T09:57:37-04:00</updated>
+  <updated>2015-10-28T12:36:20-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -12,6 +12,101 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python's Monkey patch]]></title>
+    <link href="https://www.noppanit.com/pythons-monkey-patch/"/>
+    <updated>2015-10-25T19:00:27-04:00</updated>
+    <id>https://www.noppanit.com/pythons-monkey-patch</id>
+    <content type="html"><![CDATA[<p>Alright, I&rsquo;m going to cut to the chase here. I&rsquo;m having problems with Monkey patching in Python and I want to make it clear for myself and anybody who might stumble upon my post in the future. So, what&rsquo;s the big deal here?</p>
+
+<p>Let&rsquo;s say you have a model</p>
+
+<pre><code class="python models/person.py">def get_name():
+    // Doing some database lookup
+    // But I'm going to return a hard-coded name for now
+    return 'John Doe'
+</code></pre>
+
+<p>And you have a Phonebook class that&rsquo;s trying to access the database</p>
+
+<pre><code class="python models/phonebook.py">from models.person import get_name
+
+class Phonebook(object):
+
+    def lookup(self):
+        return get_name()
+</code></pre>
+
+<p>Now, we know that <code>get_name</code> is accessing some database and we don&rsquo;t want that to happen in unit test. We would like to stub that.</p>
+
+<p>Coming from Java, I&rsquo;d write my test like this.</p>
+
+<pre><code class="python tests/test_phonebook.py">from unittest import TestCase, mock
+from models.phonebook import Phonebook
+
+class PhonebookTestCase(TestCase):
+
+    @mock.patch('models.person.get_name')
+    def test_main(self, mock_person):
+        mock_person.return_value = 'Another Name'
+        self.assertEqual('Another Name', Phonebook().lookup())
+</code></pre>
+
+<p>It makes sense right? I want to stub something from <code>models.person.get_name</code> so I&rsquo;m telling <code>mock</code> to stub that class but my test failed miserably.</p>
+
+<pre><code>tests/test_phonebook.py F
+
+=================================================================================== FAILURES ===================================================================================
+_________________________________________________________________________ PhonebookTestCase.test_main __________________________________________________________________________
+
+self = &lt;tests.test_phonebook.PhonebookTestCase testMethod=test_main&gt;, mock_person = &lt;MagicMock name='get_name' id='4460968592'&gt;
+
+    @mock.patch('models.person.get_name')
+    def test_main(self, mock_person):
+        mock_person.return_value = 'Another Name'
+&gt;       self.assertEqual('Another Name', Phonebook().lookup())
+E       AssertionError: 'Another Name' != 'John Doe'
+E       - Another Name
+E       + Noppanit
+</code></pre>
+
+<p>Why? Because <code>patch</code> behaves differently than what we expected. This is explained in <a href="http://www.voidspace.org.uk/python/mock/patch.html#where-to-patch">Where to patch</a>. I&rsquo;m going to summarize for you. Basically, <code>patch</code> is going to take effect from where it is looked up&hellip; For me after reading that I&rsquo;m still confused. I might be the only one who&rsquo;s confused here so I&rsquo;m going to continue writing.</p>
+
+<p>If we take a closer look how <a href="http://effbot.org/zone/import-confusion.htm">import</a> behaves in Python, it would be clearer.</p>
+
+<pre><code class="python models/phonebook.py">from models.person import get_name
+</code></pre>
+
+<p>The line says please import <code>get_name</code> to the namespace in <code>models/phonebook.py</code>. So, when we want to use it we can just called <code>get_name()</code> without having to write <code>models.person.get_name()</code> Now if you change your code to be</p>
+
+<pre><code class="python models/phonebook.py">import models.person
+
+class Phonebook(object):
+
+    def lookup(self):
+        return models.person.get_name()
+</code></pre>
+
+<p>You test would pass. Because now our Phonebook is looking up <code>models.person.get_name</code> namespace instead of having function <code>get_name</code> being imported to its namespace.</p>
+
+<p>Now if you want the old test to work, your <code>patch</code> has to be changed to</p>
+
+<pre><code class="python tests/test_phonebook.py">
+from unittest import TestCase, mock
+from models.phonebook import Phonebook
+
+class PhonebookTestCase(TestCase):
+
+    @mock.patch('models.phonebook.get_name')
+    def test_main(self, mock_person):
+        mock_person.return_value = 'Another Name'
+        self.assertEqual('Another Name', Phonebook().lookup())
+</code></pre>
+
+<p>That&rsquo;s it for now. If you&rsquo;re wondering why this is the case then looking at the source code of patch would help a lot. It&rsquo;s using <a href="https://docs.python.org/3.5/library/functions.html#__import__"><code>__import__</code></a> function.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python to import your dumped tweets to MongoDb]]></title>
