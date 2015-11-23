@@ -86,13 +86,13 @@
 	<h2 class="title">Tutorial : My Java World Eclipse + EJB + JBoss + Ant. Part 1</h2>
 	<div class="entry-content"><p>Now, I have been struggling in job finding world. I tested a lot, and all about J2EE blah blah and I completely failed. So, I decided to write this topic to record my understand about EJB. I will program EJB from scratch, without using any tools, or as less as possible.</p>
 
-<p>I am using these tools<br/>
-1. <a href="http://www.eclipse.org/downloads/">Eclipse</a><br/>
-2. J2EE 5.04<br/>
-3. <a href="http://labs.jboss.com/projects/download/">JBoss 4.22</a><br/>
+<p>I am using these tools<br />
+1. <a href="http://www.eclipse.org/downloads/">Eclipse</a><br />
+2. J2EE 5.04<br />
+3. <a href="http://labs.jboss.com/projects/download/">JBoss 4.22</a><br />
 4. Ant 1.7</p>
 
-<p>First thing first after you installed JDK, you have to set variables in. Control Panel -> System -> Advance -> Environment Variables. Like the picture below.</p>
+<p>First thing first after you installed JDK, you have to set variables in. Control Panel -&gt; System -&gt; Advance -&gt; Environment Variables. Like the picture below.</p>
 
 <p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/1.jpg" alt="" /></p>
 
@@ -104,11 +104,11 @@
 
 <p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/3.jpg" height="252" width="246" /></p>
 
-<p>The Next thing is, you have to add J2EE library to the project. So, all the J2EE jars can be used in the project. The jars come from C:\Sun\SDK\lib &lt;&#8211; according to my computer, which installed J2EE 5.04</p>
+<p>The Next thing is, you have to add J2EE library to the project. So, all the J2EE jars can be used in the project. The jars come from C:\Sun\SDK\lib &lt;– according to my computer, which installed J2EE 5.04</p>
 
 <p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/4.jpg" alt="" /></p>
 
-<p>In this project, I&#8217;m using Remote interface, because I wanted to show how the EJB can be connected via another J2EE container. So, After importing the j2EE jars, we have to create two interfaces which are Remote interface and Remote home interface. I&#8217;m creating com.noppanit.interfaces and com.noppanit.bean package. The bean package is for SessionBean.</p>
+<p>In this project, I’m using Remote interface, because I wanted to show how the EJB can be connected via another J2EE container. So, After importing the j2EE jars, we have to create two interfaces which are Remote interface and Remote home interface. I’m creating com.noppanit.interfaces and com.noppanit.bean package. The bean package is for SessionBean.</p>
 
 <p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/5.jpg" height="259" width="352" /></p>
 
@@ -124,7 +124,7 @@
 
 <p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/8.jpg"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/81.jpg" height="216" width="200" /></a></p>
 
-<p>The next thing is ejb-jar.xml. It&#8217;s a deployment descriptor. This xml file is for J2EE container, the file will be looked by the J2EE container. So, it can know that what type of this EJB is, and what is the name of this EJB, etc.</p>
+<p>The next thing is ejb-jar.xml. It’s a deployment descriptor. This xml file is for J2EE container, the file will be looked by the J2EE container. So, it can know that what type of this EJB is, and what is the name of this EJB, etc.</p>
 
 <p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/9.jpg"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/91.jpg" height="74" width="200" /></a></p>
 
@@ -133,6 +133,7 @@
 <p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/10.jpg"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/101.jpg" height="203" width="200" /></a></p>
 
 <p>After the deploying, jboss should see the EJB in its container and is ready to be used via JNDI.?? the next Chapter I will be using ordinary Java application client call the EJB. Actually, we must use web container to call the EJB.</p>
+
 </div>
 
 
@@ -180,7 +181,21 @@ Mar 27th, 2008</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

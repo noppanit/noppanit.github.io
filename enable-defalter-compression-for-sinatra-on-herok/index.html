@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="You guys must have heard about PageSpeed test from Google. It&#8217;s a really cool plugin for Chrome to let you know how you can optimize your &hellip;">
+	<meta name="description" content="You guys must have heard about PageSpeed test from Google. It’s a really cool plugin for Chrome to let you know how you can optimize your webpage &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,20 +84,20 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Enable Defalter Compression for Sinatra on Heroku</h2>
-	<div class="entry-content"><p>You guys must have heard about PageSpeed test from Google. It&#8217;s a really cool plugin for Chrome to let you know how you can optimize your webpage faster. I have been using it for a while but I couldn&#8217;t get my head around gzip compression which it seems that Google has taken that seriously. If you want the science bit. Here&#8217;s the <a href="https://developers.google.com/speed/articles/gzip" title="gzip">article</a> from Google.</p>
+	<div class="entry-content"><p>You guys must have heard about PageSpeed test from Google. It’s a really cool plugin for Chrome to let you know how you can optimize your webpage faster. I have been using it for a while but I couldn’t get my head around gzip compression which it seems that Google has taken that seriously. If you want the science bit. Here’s the <a href="https://developers.google.com/speed/articles/gzip" title="gzip">article</a> from Google.</p>
 
-<p>And here&#8217;s the quickstart bit. The most simplest way is to put the compression in <strong>config.ru</strong></p>
+<p>And here’s the quickstart bit. The most simplest way is to put the compression in <strong>config.ru</strong></p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;./server&#39;</span>
-</span><span class='line'><span class="n">use</span> <span class="no">Rack</span><span class="o">::</span><span class="no">Deflater</span>
-</span><span class='line'><span class="n">run</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Application</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;./server&#39;</span>
+</span><span class="line"><span class="n">use</span> <span class="no">Rack</span><span class="o">::</span><span class="no">Deflater</span>
+</span><span class="line"><span class="n">run</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Application</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>And that’s it I hope this will save you sometime.</p>
 
-<p>And that&#8217;s it I hope this will save you sometime.</p>
 </div>
 
 
@@ -145,7 +145,21 @@ Jan 15th, 2013</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

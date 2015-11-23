@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="So silly of me I have just &#8220;accidentally&#8221; deleted my home directory T_T. There is a way to help that by override rm command to move file &hellip;">
+	<meta name="description" content="So silly of me I have just “accidentally” deleted my home directory T_T. There is a way to help that by override rm command to move file to .Trash. &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,41 +84,40 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Mac OSX: Override Rm to Delete Files to .Trash</h2>
-	<div class="entry-content"><p>So silly of me I have just &#8220;accidentally&#8221; deleted my home directory T_T. There is a way to help that by override rm command to move file to .Trash.</p>
+	<div class="entry-content"><p>So silly of me I have just “accidentally” deleted my home directory T_T. There is a way to help that by override rm command to move file to .Trash.</p>
 
 <p>Just copy this code to ~/.bash_profile and restart your terminal.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>function rm () {
-</span><span class='line'>  local path
-</span><span class='line'>  for path in "$@"; do
-</span><span class='line'>    # ignore any arguments
-</span><span class='line'>    if [[ "$path" = -* ]]; then :
-</span><span class='line'>    else
-</span><span class='line'>      local dst=${path##*/}
-</span><span class='line'>      # append the time if necessary
-</span><span class='line'>      while [ -e ~/.Trash/"$dst" ]; do
-</span><span class='line'>        dst="$dst "$(date +%H-%M-%S)
-</span><span class='line'>      done
-</span><span class='line'>      mv "$path" ~/.Trash/"$dst"
-</span><span class='line'>    fi
-</span><span class='line'>  done
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">function rm () {
+</span><span class="line">  local path
+</span><span class="line">  for path in "$@"; do
+</span><span class="line">    # ignore any arguments
+</span><span class="line">    if [[ "$path" = -* ]]; then :
+</span><span class="line">    else
+</span><span class="line">      local dst=${path##*/}
+</span><span class="line">      # append the time if necessary
+</span><span class="line">      while [ -e ~/.Trash/"$dst" ]; do
+</span><span class="line">        dst="$dst "$(date +%H-%M-%S)
+</span><span class="line">      done
+</span><span class="line">      mv "$path" ~/.Trash/"$dst"
+</span><span class="line">    fi
+</span><span class="line">  done
+</span><span class="line">}</span></code></pre></td></tr></table></div></figure></notextile></div>
 </div>
 
 
@@ -166,7 +165,21 @@ Apr 5th, 2011</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: performance | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/performance/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-29T10:10:45-04:00</updated>
+  <updated>2015-11-23T10:32:55-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -21,20 +21,18 @@
     <content type="html"><![CDATA[<p>If you have been to one of those technical interviews, you will like this.</p>
 
 <blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Google: 90% of our engineers use the software you wrote (Homebrew), but you can’t invert a binary tree on a whiteboard so fuck off.</p>&mdash; Max Howell (@mxcl) <a href="https://twitter.com/mxcl/status/608682016205344768">June 10, 2015</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+<p>I’m not going to rant about how broken the technical interviews are. There’s enough people who are more qualified to rant about this more than me.</p>
 
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>So, why this matters? I just want to give a quick example of why algorithm matters. Please no haters! I know some of you might read this and will say “I do that all the time, what’s the big deal”. I’m still a bad developer and I’m still learning.</p>
 
+<h2 id="scenario">Scenario</h2>
 
-<p>I&rsquo;m not going to rant about how broken the technical interviews are. There&rsquo;s enough people who are more qualified to rant about this more than me.</p>
+<p>You are a general, your home country is at war and you have to fight for your country. You are given a group of soldiers. You want to come up with a strategy to win the battle. Here’s the example of the soldiers.</p>
 
-<p>So, why this matters? I just want to give a quick example of why algorithm matters. Please no haters! I know some of you might read this and will say &ldquo;I do that all the time, what&rsquo;s the big deal&rdquo;. I&rsquo;m still a bad developer and I&rsquo;m still learning.</p>
-
-<h2>Scenario</h2>
-
-<p>You are a general, your home country is at war and you have to fight for your country. You are given a group of soldiers. You want to come up with a strategy to win the battle. Here&rsquo;s the example of the soldiers.</p>
-
-<pre><code>[
+<p><code>
+[
     {
         "category": "machine-gun",
         "id": 0,
@@ -63,77 +61,84 @@
     ,
     ...
 ]
-</code></pre>
+</code></p>
 
-<p>You came out of a high-profile meeting and all the generals agree that this formation will be best to fight the enemy; <em>infantry</em>, <em>machine-gun</em> and <em>rocket-man</em>. How can I rearrange this quick enough because we&rsquo;re going to attack tomorrow? Simple I go ahead and write the code.</p>
+<p>You came out of a high-profile meeting and all the generals agree that this formation will be best to fight the enemy; <em>infantry</em>, <em>machine-gun</em> and <em>rocket-man</em>. How can I rearrange this quick enough because we’re going to attack tomorrow? Simple I go ahead and write the code.</p>
 
-<p>First, let&rsquo;s generate a bunch of soldiers</p>
+<p>First, let’s generate a bunch of soldiers</p>
 
-<pre><code class="python">class Soldier(object):
-    def __init__(self, id, name, category):
+<p>``` python
+class Soldier(object):
+    def <strong>init</strong>(self, id, name, category):
         self.id = id
         self.name = name
-        self.category = category
+        self.category = category</p>
 
-number_of_soldier = 10000
+<p>number_of_soldier = 10000</p>
 
-soldiers = []
+<p>soldiers = []
 for i in range(0, number_of_soldier):
     name = str(uuid.uuid4().get_hex().upper()[0:6])
     soldiers.append(Soldier(i, name, random.choice(categories)))
-</code></pre>
+```</p>
 
-<p>Then let&rsquo;s rearrange them.</p>
+<p>Then let’s rearrange them.</p>
 
-<pre><code class="python">import json
+<p>``` python
+import json
 import uuid
 import random
-import time
+import time</p>
 
-categories = ['infantry', 'machine-gun', 'rocket-man']
+<p>categories = [‘infantry’, ‘machine-gun’, ‘rocket-man’]</p>
 
-start = time.time()
+<p>start = time.time()
 result = []
 for c in categories:
     s_list = []
     for s in soldiers:
         if s.category == c:
-            s_list.append(s)
+            s_list.append(s)</p>
 
-    result.extend(s_list)
-    s_list = []
-
-end = time.time()
-print(end - start)
+<pre><code>result.extend(s_list)
+s_list = []
 </code></pre>
 
-<p>It works, but you&rsquo;re too late you can&rsquo;t form the soldiers in time. If you take a closer look, this algorithm takes <em>O(n</em>m)<em> for the time complexity given the number of soldiers is </em>n<em> and the </em>category<em> is </em>m<em>. If you have a million soldiers and a million categories you would get </em>O(n<sup>2</sup>)*. How can we make this one faster?</p>
+<p>end = time.time()
+print(end - start)
+```</p>
 
-<p>Here&rsquo;s my second version. Hmm, rearrange into category&hellip; category is bucket. How about using map?</p>
+<p>It works, but you’re too late you can’t form the soldiers in time. If you take a closer look, this algorithm takes <em>O(n</em>m)* for the time complexity given the number of soldiers is <em>n</em> and the <em>category</em> is <em>m</em>. If you have a million soldiers and a million categories you would get <em>O(n^2)</em>. How can we make this one faster?</p>
 
-<pre><code class="python">from collections import defaultdict
+<p>Here’s my second version. Hmm, rearrange into category… category is bucket. How about using map?</p>
 
-start = time.time()
-map_of_soldiers = defaultdict(list)
+<p>``` python
+from collections import defaultdict</p>
 
-for s in soldiers:
-    map_of_soldiers[s.category].append(s)
+<p>start = time.time()
+map_of_soldiers = defaultdict(list)</p>
 
-result = []
+<p>for s in soldiers:
+    map_of_soldiers[s.category].append(s)</p>
+
+<p>result = []
 for c in categories:
-    result.extend(map_of_soldiers.get(c))
+    result.extend(map_of_soldiers.get(c))</p>
 
-end = time.time()
-print(end - start)
-</code></pre>
+<p>end = time.time()
+print(end - start)</p>
+
+<p>```</p>
 
 <p>This is the time difference of those two algorithms.</p>
 
-<pre><code>0.00743103027344
+<p><code>
+0.00743103027344
 0.00331783294678
-</code></pre>
+</code></p>
 
 <p>By just changing the data structure, you can see that the <em>map</em> version is almost twice as fast. I hope I can demostrate how choosing the right algorithm matters in your program.</p>
+
 ]]></content>
   </entry>
   
@@ -144,72 +149,72 @@ print(end - start)
     <id>https://www.noppanit.com/octopress-on-crack</id>
     <content type="html"><![CDATA[<p>I believe you will find a ton of blogs writing about makeing Octopress faster. I believe nearly everyone who migrated their blog to Octopress, the first post would be the migration and the next would be performance tuning. I want to be the cool kid so here you go.</p>
 
-<p>Once you got out of WordPress now there&rsquo;s much more you can do about your performance. But before you start, nothing can be done before you have the baseline numbers</p>
+<p>Once you got out of WordPress now there’s much more you can do about your performance. But before you start, nothing can be done before you have the baseline numbers</p>
 
-<h2>Before</h2>
+<h2 id="before">Before</h2>
 
-<p>Here&rsquo;s my before performance from Google PageSpeed.</p>
+<p>Here’s my before performance from Google PageSpeed.</p>
 
-<p><img src="/wp-content/uploads/2015/10/google-pagespeed-before.jpg" title="Google PageSpeed before performance" ></p>
+<p>{% img /wp-content/uploads/2015/10/google-pagespeed-before.jpg Google PageSpeed before performance %}</p>
 
 <p>And from webpagetest.org</p>
 
-<p><img src="/wp-content/uploads/2015/10/before-perf-noppanit-com.jpg" title="Webpagetest before performance" ></p>
+<p>{% img /wp-content/uploads/2015/10/before-perf-noppanit-com.jpg Webpagetest before performance %}</p>
 
-<p>In a nutshell, my page starts to render in <em>2.4s</em> and finishes in <em>4s</em>. Yikes! I wouldn&rsquo;t even want to wait for my site to load. Let&rsquo;s see where&rsquo;s the lowest hanging fruit.</p>
+<p>In a nutshell, my page starts to render in <em>2.4s</em> and finishes in <em>4s</em>. Yikes! I wouldn’t even want to wait for my site to load. Let’s see where’s the lowest hanging fruit.</p>
 
-<h2>What about images?</h2>
+<h2 id="what-about-images">What about images?</h2>
 
-<p>A picture is worth a thousand words. Who doesn&rsquo;t like image right? Also, I tend to have a lot of screenshots and they&rsquo;re all PNGs. And they tend to be big. As they&rsquo;re all screenshots so I don&rsquo;t really care about losing some of the quality so I convert them to be jpg. If you&rsquo;re using OSX, there&rsquo;s a command that you can run.</p>
+<p>A picture is worth a thousand words. Who doesn’t like image right? Also, I tend to have a lot of screenshots and they’re all PNGs. And they tend to be big. As they’re all screenshots so I don’t really care about losing some of the quality so I convert them to be jpg. If you’re using OSX, there’s a command that you can run.</p>
 
-<pre><code>sips -s format jpeg your_png.png --out your_pic.jpg
-</code></pre>
+<p><code>
+sips -s format jpeg your_png.png --out your_pic.jpg
+</code></p>
 
-<p>Now what can we do to reduce the size? There&rsquo;s lots of tools out there that you can just throw your image in and it will compress the image for you. I use <a href="https://compressor.io/">compressor.io</a>. It&rsquo;s really good. Just try throwing your image in there and see what happens. Compressor.io can reduce my images up to 60% and that saves a lot of bandwidth.</p>
+<p>Now what can we do to reduce the size? There’s lots of tools out there that you can just throw your image in and it will compress the image for you. I use <a href="https://compressor.io/">compressor.io</a>. It’s really good. Just try throwing your image in there and see what happens. Compressor.io can reduce my images up to 60% and that saves a lot of bandwidth.</p>
 
-<h2>Minify CSS/JS</h2>
+<h2 id="minify-cssjs">Minify CSS/JS</h2>
 
 <p>Fortunetely, I use <a href="https://www.cloudflare.com/">Cloudflare</a> and they have the feature to minify that for you. So, I just flipped the switch and it works like magic.</p>
 
-<h2>Browser caching</h2>
+<h2 id="browser-caching">Browser caching</h2>
 
-<p>Going back to what Google PageSpeed tells us again. It complaints about <em>Leverage browser caching</em>. I&rsquo;m lucky again because in Cloudflare you can set the cache to be 30 days and that seems to be ok for Google.</p>
+<p>Going back to what Google PageSpeed tells us again. It complaints about <em>Leverage browser caching</em>. I’m lucky again because in Cloudflare you can set the cache to be 30 days and that seems to be ok for Google.</p>
 
-<h2>Inline CSS</h2>
+<h2 id="inline-css">Inline CSS</h2>
 
-<p>I use <a href="https://github.com/tommy351/Octopress-Theme-Slash">Slash</a> theme and when I look at the CSS, it&rsquo;s only 22K. So why not just inline it and save one more request for the browser. So, in <em>_includes/head.html</em> you can change the line that includes your stylesheet to be.</p>
+<p>I use <a href="https://github.com/tommy351/Octopress-Theme-Slash">Slash</a> theme and when I look at the CSS, it’s only 22K. So why not just inline it and save one more request for the browser. So, in <em>_includes/head.html</em> you can change the line that includes your stylesheet to be.</p>
 
-<p><figure class='code'><figcaption><span>html </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;style>
-</span><span class='line'>        {\% include screen.css %} # delete &lsquo;\&rsquo; in front of % before you paste this snippet
-</span><span class='line'>    &lt;/style></span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock html %}
+	<style>
+		{\% include screen.css %} # delete '\' in front of % before you paste this snippet
+	</style>
+{% endcodeblock %}</p>
 
-<p>This might be different from theme to theme but it shouldn&rsquo;t be difficult to find that out.</p>
+<p>This might be different from theme to theme but it shouldn’t be difficult to find that out.</p>
 
-<h2>After</h2>
+<h2 id="after">After</h2>
 
-<p>Now, let&rsquo;s have a quick look at the after performance.</p>
+<p>Now, let’s have a quick look at the after performance.</p>
 
-<p>Here&rsquo;s my after performance from Google PageSpeed.</p>
+<p>Here’s my after performance from Google PageSpeed.</p>
 
-<p><img src="/wp-content/uploads/2015/10/google-pagespeed-after.jpg" title="Google PageSpeed after" ></p>
+<p>{% img /wp-content/uploads/2015/10/google-pagespeed-after.jpg Google PageSpeed after %}</p>
 
-<p>It&rsquo;s a lot better now but there&rsquo;s one tiny problem with mobile which I&rsquo;ll write another blog post about that.</p>
+<p>It’s a lot better now but there’s one tiny problem with mobile which I’ll write another blog post about that.</p>
 
-<p>Let&rsquo;s have a look at webpagetest now.</p>
+<p>Let’s have a look at webpagetest now.</p>
 
-<p><img src="/wp-content/uploads/2015/10/webpagetest-after.jpg" title="Webpagetest After" ></p>
+<p>{% img /wp-content/uploads/2015/10/webpagetest-after.jpg Webpagetest After %}</p>
 
-<p>A lot better! It&rsquo;s still not the best but now my page loads within <em>0.5s</em> and finishes in <em>1.9s</em>. However, there&rsquo;s still a lot to work on mobile.</p>
+<p>A lot better! It’s still not the best but now my page loads within <em>0.5s</em> and finishes in <em>1.9s</em>. However, there’s still a lot to work on mobile.</p>
 
-<p>I could shead about 200ms by not using SSL but I&rsquo;m willing to compromise that with a little bit of security.</p>
+<p>I could shead about 200ms by not using SSL but I’m willing to compromise that with a little bit of security.</p>
 
-<h2>What&rsquo;s next</h2>
+<h2 id="whats-next">What’s next</h2>
 
-<p>I&rsquo;d like to try hosting the images on S3 to see if that would speed up the load time. And I want to make the images responsive for mobile.</p>
+<p>I’d like to try hosting the images on S3 to see if that would speed up the load time. And I want to make the images responsive for mobile.</p>
+
 ]]></content>
   </entry>
   

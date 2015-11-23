@@ -4,7 +4,7 @@
   <title><![CDATA[Category: photoshop techniques | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/photoshop-techniques/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-29T10:10:45-04:00</updated>
+  <updated>2015-11-23T10:32:55-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -18,14 +18,14 @@
     <link href="https://www.noppanit.com/vignettes-101-in-photoshop-cs4/"/>
     <updated>2010-04-15T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/vignettes-101-in-photoshop-cs4</id>
-    <content type="html"><![CDATA[<p>Vignettes mean the edges of the image. I think but I&#8217;m not sure. So, let&#8217;s get to the point. How do I do it?</p>
+    <content type="html"><![CDATA[<p>Vignettes mean the edges of the image. I think but I’m not sure. So, let’s get to the point. How do I do it?</p>
 
-<p>In Photoshop, go to Filter -> Distort -> Lens Correction.<br/>
+<p>In Photoshop, go to Filter -&gt; Distort -&gt; Lens Correction.<br />
 In section vignette you can adjust amount and midpoint. You can choose to darken or lighten your image with amount. You can bring the vignette towards the centre of the image or brings it out by adjusting midpoint.</p>
 
-<p>Here&#8217;s an example.</p>
+<p>Here’s an example.</p>
 
-<p><img class="<a" src="href="https://www.noppanit.com/wp-content/uploads/2010/04/Screen-shot-2010-04-15-at-01.07.53-300x200.png">https://www.noppanit.com/wp-content/uploads/2010/04/Screen-shot-2010-04-15-at-01.07.53-300x200.png</a>"></p>
+<p>{% img https://www.noppanit.com/wp-content/uploads/2010/04/Screen-shot-2010-04-15-at-01.07.53-300x200.png %}</p>
 ]]></content>
   </entry>
   

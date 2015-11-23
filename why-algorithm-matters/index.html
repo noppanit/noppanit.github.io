@@ -87,200 +87,193 @@
 	<div class="entry-content"><p>If you have been to one of those technical interviews, you will like this.</p>
 
 <blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Google: 90% of our engineers use the software you wrote (Homebrew), but you can’t invert a binary tree on a whiteboard so fuck off.</p>&mdash; Max Howell (@mxcl) <a href="https://twitter.com/mxcl/status/608682016205344768">June 10, 2015</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+<p>I’m not going to rant about how broken the technical interviews are. There’s enough people who are more qualified to rant about this more than me.</p>
 
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>So, why this matters? I just want to give a quick example of why algorithm matters. Please no haters! I know some of you might read this and will say “I do that all the time, what’s the big deal”. I’m still a bad developer and I’m still learning.</p>
 
+<h2 id="scenario">Scenario</h2>
 
-<p>I&rsquo;m not going to rant about how broken the technical interviews are. There&rsquo;s enough people who are more qualified to rant about this more than me.</p>
+<p>You are a general, your home country is at war and you have to fight for your country. You are given a group of soldiers. You want to come up with a strategy to win the battle. Here’s the example of the soldiers.</p>
 
-<p>So, why this matters? I just want to give a quick example of why algorithm matters. Please no haters! I know some of you might read this and will say &ldquo;I do that all the time, what&rsquo;s the big deal&rdquo;. I&rsquo;m still a bad developer and I&rsquo;m still learning.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">[
+</span><span class="line">    {
+</span><span class="line">        "category": "machine-gun",
+</span><span class="line">        "id": 0,
+</span><span class="line">        "name": "D408CF"
+</span><span class="line">    },
+</span><span class="line">    {
+</span><span class="line">        "category": "machine-gun",
+</span><span class="line">        "id": 1,
+</span><span class="line">        "name": "C0BAD7"
+</span><span class="line">    },
+</span><span class="line">    {
+</span><span class="line">        "category": "rocket-man",
+</span><span class="line">        "id": 2,
+</span><span class="line">        "name": "04B5E4"
+</span><span class="line">    },
+</span><span class="line">    {
+</span><span class="line">        "category": "rocket-man",
+</span><span class="line">        "id": 3,
+</span><span class="line">        "name": "22F3CF"
+</span><span class="line">    },
+</span><span class="line">    {
+</span><span class="line">        "category": "machine-gun",
+</span><span class="line">        "id": 4,
+</span><span class="line">        "name": "811E8A"
+</span><span class="line">    }
+</span><span class="line">    ,
+</span><span class="line">    ...
+</span><span class="line">]</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<h2>Scenario</h2>
+<p>You came out of a high-profile meeting and all the generals agree that this formation will be best to fight the enemy; <em>infantry</em>, <em>machine-gun</em> and <em>rocket-man</em>. How can I rearrange this quick enough because we’re going to attack tomorrow? Simple I go ahead and write the code.</p>
 
-<p>You are a general, your home country is at war and you have to fight for your country. You are given a group of soldiers. You want to come up with a strategy to win the battle. Here&rsquo;s the example of the soldiers.</p>
+<p>First, let’s generate a bunch of soldiers</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[
-</span><span class='line'>    {
-</span><span class='line'>        "category": "machine-gun",
-</span><span class='line'>        "id": 0,
-</span><span class='line'>        "name": "D408CF"
-</span><span class='line'>    },
-</span><span class='line'>    {
-</span><span class='line'>        "category": "machine-gun",
-</span><span class='line'>        "id": 1,
-</span><span class='line'>        "name": "C0BAD7"
-</span><span class='line'>    },
-</span><span class='line'>    {
-</span><span class='line'>        "category": "rocket-man",
-</span><span class='line'>        "id": 2,
-</span><span class='line'>        "name": "04B5E4"
-</span><span class='line'>    },
-</span><span class='line'>    {
-</span><span class='line'>        "category": "rocket-man",
-</span><span class='line'>        "id": 3,
-</span><span class='line'>        "name": "22F3CF"
-</span><span class='line'>    },
-</span><span class='line'>    {
-</span><span class='line'>        "category": "machine-gun",
-</span><span class='line'>        "id": 4,
-</span><span class='line'>        "name": "811E8A"
-</span><span class='line'>    }
-</span><span class='line'>    ,
-</span><span class='line'>    ...
-</span><span class='line'>]</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="k">class</span> <span class="nc">Soldier</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">category</span><span class="p">):</span>
+</span><span class="line">        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+</span><span class="line">        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+</span><span class="line">        <span class="bp">self</span><span class="o">.</span><span class="n">category</span> <span class="o">=</span> <span class="n">category</span>
+</span><span class="line">
+</span><span class="line"><span class="n">number_of_soldier</span> <span class="o">=</span> <span class="mi">10000</span>
+</span><span class="line">
+</span><span class="line"><span class="n">soldiers</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class="line"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">number_of_soldier</span><span class="p">):</span>
+</span><span class="line">    <span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">get_hex</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
+</span><span class="line">    <span class="n">soldiers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Soldier</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">categories</span><span class="p">)))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>Then let’s rearrange them.</p>
 
-<p>You came out of a high-profile meeting and all the generals agree that this formation will be best to fight the enemy; <em>infantry</em>, <em>machine-gun</em> and <em>rocket-man</em>. How can I rearrange this quick enough because we&rsquo;re going to attack tomorrow? Simple I go ahead and write the code.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">import</span> <span class="nn">json</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">uuid</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">random</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">time</span>
+</span><span class="line">
+</span><span class="line"><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;infantry&#39;</span><span class="p">,</span> <span class="s">&#39;machine-gun&#39;</span><span class="p">,</span> <span class="s">&#39;rocket-man&#39;</span><span class="p">]</span>
+</span><span class="line">
+</span><span class="line"><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span><span class="line"><span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class="line"><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categories</span><span class="p">:</span>
+</span><span class="line">    <span class="n">s_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class="line">    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">soldiers</span><span class="p">:</span>
+</span><span class="line">        <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">category</span> <span class="o">==</span> <span class="n">c</span><span class="p">:</span>
+</span><span class="line">            <span class="n">s_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">s_list</span><span class="p">)</span>
+</span><span class="line">    <span class="n">s_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class="line">
+</span><span class="line"><span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span><span class="line"><span class="k">print</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>First, let&rsquo;s generate a bunch of soldiers</p>
+<p>It works, but you’re too late you can’t form the soldiers in time. If you take a closer look, this algorithm takes <em>O(n</em>m)* for the time complexity given the number of soldiers is <em>n</em> and the <em>category</em> is <em>m</em>. If you have a million soldiers and a million categories you would get <em>O(n^2)</em>. How can we make this one faster?</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Soldier</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">category</span><span class="p">):</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">category</span> <span class="o">=</span> <span class="n">category</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">number_of_soldier</span> <span class="o">=</span> <span class="mi">10000</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">soldiers</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">number_of_soldier</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">get_hex</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
-</span><span class='line'>    <span class="n">soldiers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Soldier</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">categories</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>Here’s my second version. Hmm, rearrange into category… category is bucket. How about using map?</p>
 
-
-<p>Then let&rsquo;s rearrange them.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">json</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">uuid</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">random</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">time</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;infantry&#39;</span><span class="p">,</span> <span class="s">&#39;machine-gun&#39;</span><span class="p">,</span> <span class="s">&#39;rocket-man&#39;</span><span class="p">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-</span><span class='line'><span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span class='line'><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categories</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">s_list</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span class='line'>    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">soldiers</span><span class="p">:</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">category</span> <span class="o">==</span> <span class="n">c</span><span class="p">:</span>
-</span><span class='line'>            <span class="n">s_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">s_list</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">s_list</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It works, but you&rsquo;re too late you can&rsquo;t form the soldiers in time. If you take a closer look, this algorithm takes <em>O(n</em>m)<em> for the time complexity given the number of soldiers is </em>n<em> and the </em>category<em> is </em>m<em>. If you have a million soldiers and a million categories you would get </em>O(n<sup>2</sup>)*. How can we make this one faster?</p>
-
-<p>Here&rsquo;s my second version. Hmm, rearrange into category&hellip; category is bucket. How about using map?</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-</span><span class='line'><span class="n">map_of_soldiers</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">soldiers</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">map_of_soldiers</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span class='line'><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categories</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">map_of_soldiers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+</span><span class="line">
+</span><span class="line"><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span><span class="line"><span class="n">map_of_soldiers</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">soldiers</span><span class="p">:</span>
+</span><span class="line">    <span class="n">map_of_soldiers</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">category</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class="line"><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">categories</span><span class="p">:</span>
+</span><span class="line">    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">map_of_soldiers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+</span><span class="line">
+</span><span class="line"><span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span><span class="line"><span class="k">print</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>This is the time difference of those two algorithms.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="mf">0.00743103027344</span>
-</span><span class='line'><span class="mf">0.00331783294678</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="mf">0.00743103027344</span>
+</span><span class="line"><span class="mf">0.00331783294678</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>By just changing the data structure, you can see that the <em>map</em> version is almost twice as fast. I hope I can demostrate how choosing the right algorithm matters in your program.</p>
+
 </div>
 
 
@@ -328,7 +321,21 @@ Oct 8th, 2015</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

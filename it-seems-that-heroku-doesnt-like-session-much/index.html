@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Not sure if this only happens to me. But just sometimes heroku just give out &#8220;Application Error&#8221; for no reason on my application. No &hellip;">
+	<meta name="description" content="Not sure if this only happens to me. But just sometimes heroku just give out “Application Error” for no reason on my application. No errors have been &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,9 +84,9 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">It Seems That Heroku Doesn&#8217;t Like Session Much</h2>
-	<div class="entry-content"><p>Not sure if this only happens to me. But just sometimes heroku just give out &#8220;Application Error&#8221; for no reason on my application. No errors have been logged in the console. So I send a couple email to herouk support but no luck, because there&#8217;s no log. So, I digged further. I found out that using http session on cloud might be a problem, because you don&#8217;t know where you application server will be or will it be scaled somewhere else. So, sometime the session is cut (It just my theory without any reference). So, please let me know if I&#8217;m wrong.</p>
+	<div class="entry-content"><p>Not sure if this only happens to me. But just sometimes heroku just give out “Application Error” for no reason on my application. No errors have been logged in the console. So I send a couple email to herouk support but no luck, because there’s no log. So, I digged further. I found out that using http session on cloud might be a problem, because you don’t know where you application server will be or will it be scaled somewhere else. So, sometime the session is cut (It just my theory without any reference). So, please let me know if I’m wrong.</p>
 
-<p>This is how I solved the problem, I changed everything and used memcache instead and the problem is gone. Memcache is in-memeory cache system which you have store objects as well. And I&#8217;m sure that it&#8217;s scaleable. So, if you have the same problem as me I would suggest using memcache instead it&#8217;s easy.</p>
+<p>This is how I solved the problem, I changed everything and used memcache instead and the problem is gone. Memcache is in-memeory cache system which you have store objects as well. And I’m sure that it’s scaleable. So, if you have the same problem as me I would suggest using memcache instead it’s easy.</p>
 
 <p>Ps. I use Sinatra.</p>
 </div>
@@ -136,7 +136,21 @@ Feb 18th, 2012</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

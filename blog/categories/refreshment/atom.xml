@@ -4,7 +4,7 @@
   <title><![CDATA[Category: refreshment | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/refreshment/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-29T10:10:45-04:00</updated>
+  <updated>2015-11-23T10:32:55-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -20,24 +20,20 @@
     <id>https://www.noppanit.com/the-best-hot-chocolate</id>
     <content type="html"><![CDATA[<p>This is the best chocolate I have ever taste.</p>
 
-<h2>Ingredients</h2>
-
+<h2 id="ingredients">Ingredients</h2>
 <ol>
-<li>Chocolate powder</li>
-<li>Semi-skimmed milk</li>
-<li>Chocolate moose</li>
+  <li>Chocolate powder</li>
+  <li>Semi-skimmed milk</li>
+  <li>Chocolate moose</li>
 </ol>
 
-
-<h2>Directions</h2>
-
+<h2 id="directions">Directions</h2>
 <ol>
-<li>Simmer semi-skimmed milk until you can see a little bubbles come out, but not boil it until the boiling point</li>
-<li>2 tablespoons of chocolate powder and add the simmering milk</li>
-<li>decorate chocolate moose on top of the chocolate milk</li>
-<li>sprinkle a little bit of chocolate powder as in the picture</li>
+  <li>Simmer semi-skimmed milk until you can see a little bubbles come out, but not boil it until the boiling point</li>
+  <li>2 tablespoons of chocolate powder and add the simmering milk</li>
+  <li>decorate chocolate moose on top of the chocolate milk</li>
+  <li>sprinkle a little bit of chocolate powder as in the picture</li>
 </ol>
-
 ]]></content>
   </entry>
   

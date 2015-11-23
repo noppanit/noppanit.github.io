@@ -4,7 +4,7 @@
   <title><![CDATA[Category: sublime text2 | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/sublime-text2/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-29T10:10:45-04:00</updated>
+  <updated>2015-11-23T10:32:55-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -24,27 +24,30 @@
 
 <p>Sublime Text 2 comes with a nice functionality called <a href="http://docs.sublimetext.info/en/latest/file_processing/build_systems.html" title="Sublime Text 2 build system">Build System</a> where you can create your own command and run it by using <strong>cmb+b</strong> (If you are a MAC user).</p>
 
-<p>First thing first, I hope you use <strong>rvm</strong> so if you haven&#8217;t done this already you need to create symbolic link like <a href="http://www.sublimetext.com/docs/2/osx_command_line.html">this page</a>. Then if you want to open your project you can just do this command inside your project. This way, sublime will hook up with rvm nicely.</p>
+<p>First thing first, I hope you use <strong>rvm</strong> so if you haven’t done this already you need to create symbolic link like <a href="http://www.sublimetext.com/docs/2/osx_command_line.html">this page</a>. Then if you want to open your project you can just do this command inside your project. This way, sublime will hook up with rvm nicely.</p>
 
-<pre><code class="bash">subl .
-</code></pre>
+<p><code>bash
+subl .
+</code></p>
 
-<p>Then you go to <strong>Tools > Build System > New Build System</strong>. It will open a new editor then you place this code.</p>
+<p>Then you go to <strong>Tools &gt; Build System &gt; New Build System</strong>. It will open a new editor then you place this code.</p>
 
-<pre><code class="json">{
-  "cmd": ["rspec", "-I ${file_path}", "$file"],
-  "file_regex": "# ([A-Za-z:0-9_./ ]+rb):([0-9]+)",
-  "working_dir": "${project_path:${folder:${file_path}}}",
-  "selector": "source.ruby",
+<p>``` json
+{
+  “cmd”: [“rspec”, “-I ${file_path}”, “$file”],
+  “file_regex”: “# ([A-Za-z:0-9_./ ]+rb):([0-9]+)”,
+  “working_dir”: “${project_path:${folder:${file_path}}}”,
+  “selector”: “source.ruby”,</p>
 
-  "windows":
+<p>“windows”:
   {
-    "cmd": ["rspec.bat", "-I ${file_path}", "$file"]
+    “cmd”: [“rspec.bat”, “-I ${file_path}”, “$file”]
   }
 }
-</code></pre>
+```</p>
 
 <p>Then you choose the new Build System you just created and hit this combo <strong>cmd+b</strong>. Hooray!</p>
+
 ]]></content>
   </entry>
   

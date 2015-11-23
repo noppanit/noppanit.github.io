@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Have you every told off that you&#8217;re playing in your work? Why do you have to open a browser twitter.com to be so obvious that you&#8217;re not &hellip;">
+	<meta name="description" content="Have you every told off that you’re playing in your work? Why do you have to open a browser twitter.com to be so obvious that you’re not doing your &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,138 +84,134 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Ruby : Command-line Twitter Client Made Easy</h2>
-	<div class="entry-content"><p>Have you every told off that you&#8217;re playing in your work? Why do you have to open a browser twitter.com to be so obvious that you&#8217;re not doing your job well. Well, you can build a command-line twitter client very easy. So, you will be one of the geeks who use terminal all the time and your boss won&#8217;t know that you&#8217;re on twitter all the time.</p>
+	<div class="entry-content"><p>Have you every told off that you’re playing in your work? Why do you have to open a browser twitter.com to be so obvious that you’re not doing your job well. Well, you can build a command-line twitter client very easy. So, you will be one of the geeks who use terminal all the time and your boss won’t know that you’re on twitter all the time.</p>
 
 <p>I will start with installing Ruby and Gem, because I wanted to save time building this program from scratch as much as possible. So, a couples of useful gems would be really helpful.</p>
 
-<p>if you&#8217;re new to ruby and use mac same as me, I suggest you install ruby by following this great article.<br/>
+<p>if you’re new to ruby and use mac same as me, I suggest you install ruby by following this great article.
 <a href="http://hivelogic.com/articles/ruby-rails-leopard">http://hivelogic.com/articles/ruby-rails-leopard</a></p>
 
 <p>You can use a great application of all time like MacPort.</p>
 
-<p>Ok! gem installed, ruby installed. Let&#8217;s start with installing some gems</p>
+<p>Ok! gem installed, ruby installed. Let’s start with installing some gems</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>gem install twitter_oauth
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">gem install twitter_oauth
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>If you need to know what OAuth is, I suggest you read this great article <a href="http://hueniverse.com/2007/10/beginners-guide-to-oauth-part-i-overview/">http://hueniverse.com/2007/10/beginners-guide-to-oauth-part-i-overview/</a></p>
 
-<p>Basically, OAuth is a helper to help you login to twitter.com without exposing or sending your login details over the Internet. It&#8217;s like public and private key. But If you&#8217;re doing for a single-user like me, then you don&#8217;t have to worry anything about this. You just need 4 keys to access twitter APIs.</p>
+<p>Basically, OAuth is a helper to help you login to twitter.com without exposing or sending your login details over the Internet. It’s like public and private key. But If you’re doing for a single-user like me, then you don’t have to worry anything about this. You just need 4 keys to access twitter APIs.</p>
 
 <p>First, you will need to register your app with Twitter. Go to this page and follow the steps. <a href="http://twitter.com/apps">http://twitter.com/apps</a></p>
 
-<p>Now you will need four keys to work, go to this page to get all those keys.<br/>
+<p>Now you will need four keys to work, go to this page to get all those keys.
 <a href="https://dev.twitter.com/apps">https://dev.twitter.com/apps</a></p>
 
-<p>You will want, consumer_key, consumer_secret. You can get them from your application setting page, then click on My Access Token on the right-hand sided bar. Note down Access Token and Access Token Secret. Then you&#8217;re good to go.</p>
+<p>You will want, consumer_key, consumer_secret. You can get them from your application setting page, then click on My Access Token on the right-hand sided bar. Note down Access Token and Access Token Secret. Then you’re good to go.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;twitter_oauth&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">TWITTER_CONSUMER_KEY</span> <span class="o">=</span> <span class="s1">&#39;Your Consumer Key&#39;</span>
-</span><span class='line'><span class="no">TWITTER_CONSUMER_SECRET</span> <span class="o">=</span> <span class="s1">&#39;Your Consumer Secret&#39;</span>
-</span><span class='line'><span class="no">TWITTER_ACCESS_TOKEN</span> <span class="o">=</span> <span class="s1">&#39;Your Access Token&#39;</span>
-</span><span class='line'><span class="no">TWITTER_ACCESS_SECRET</span> <span class="o">=</span> <span class="s1">&#39;Your Access Token Secret&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">client</span> <span class="o">=</span> <span class="no">TwitterOAuth</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-</span><span class='line'>  <span class="ss">:consumer_key</span> <span class="o">=&gt;</span> <span class="no">TWITTER_CONSUMER_KEY</span><span class="p">,</span>
-</span><span class='line'>  <span class="ss">:consumer_secret</span> <span class="o">=&gt;</span> <span class="no">TWITTER_CONSUMER_SECRET</span><span class="p">,</span>
-</span><span class='line'>  <span class="ss">:token</span> <span class="o">=&gt;</span> <span class="no">TWITTER_ACCESS_TOKEN</span><span class="p">,</span>
-</span><span class='line'>  <span class="ss">:secret</span> <span class="o">=&gt;</span> <span class="no">TWITTER_ACCESS_SECRET</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">case</span> <span class="no">ARGV</span><span class="o">[]</span>
-</span><span class='line'> <span class="k">when</span> <span class="s2">&quot;-l&quot;</span>
-</span><span class='line'>  <span class="n">timeline</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">home_timeline</span><span class="p">()</span>
-</span><span class='line'>  <span class="n">timeline</span> <span class="o">=</span> <span class="n">timeline</span><span class="o">.</span><span class="n">reverse</span>
-</span><span class='line'>  <span class="n">timeline</span><span class="o">.</span><span class="n">each</span><span class="p">{</span> <span class="o">|</span><span class="n">tweet</span><span class="o">|</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="n">tweet</span><span class="o">[</span><span class="s1">&#39;text&#39;</span><span class="o">]</span> <span class="o">+</span> <span class="s2">&quot; @FROM </span><span class="si">#{</span><span class="n">tweet</span><span class="o">[</span><span class="s1">&#39;user&#39;</span><span class="o">][</span><span class="s1">&#39;name&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'> <span class="k">when</span> <span class="s2">&quot;-u&quot;</span>
-</span><span class='line'>  <span class="k">if</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">nil?</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Please enter your status:&quot;</span>
-</span><span class='line'>    <span class="n">status</span> <span class="o">=</span> <span class="no">STDIN</span><span class="o">.</span><span class="n">readline</span><span class="o">.</span><span class="n">chomp</span>
-</span><span class='line'>    <span class="n">client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">status</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">else</span>
-</span><span class='line'>    <span class="n">client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="no">ARGV</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'> <span class="k">when</span> <span class="s2">&quot;-m&quot;</span>
-</span><span class='line'>  <span class="n">mentions</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">mentions</span><span class="p">()</span>
-</span><span class='line'>  <span class="n">mentions</span> <span class="o">=</span> <span class="n">mentions</span><span class="o">.</span><span class="n">reverse</span>
-</span><span class='line'>  <span class="n">mentions</span><span class="o">.</span><span class="n">each</span><span class="p">{</span> <span class="o">|</span><span class="n">tweet</span><span class="o">|</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="n">tweet</span><span class="o">[</span><span class="s1">&#39;text&#39;</span><span class="o">]</span> <span class="o">+</span> <span class="s2">&quot; @FROM </span><span class="si">#{</span><span class="n">tweet</span><span class="o">[</span><span class="s1">&#39;user&#39;</span><span class="o">][</span><span class="s1">&#39;name&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;twitter_oauth&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="no">TWITTER_CONSUMER_KEY</span> <span class="o">=</span> <span class="s1">&#39;Your Consumer Key&#39;</span>
+</span><span class="line"><span class="no">TWITTER_CONSUMER_SECRET</span> <span class="o">=</span> <span class="s1">&#39;Your Consumer Secret&#39;</span>
+</span><span class="line"><span class="no">TWITTER_ACCESS_TOKEN</span> <span class="o">=</span> <span class="s1">&#39;Your Access Token&#39;</span>
+</span><span class="line"><span class="no">TWITTER_ACCESS_SECRET</span> <span class="o">=</span> <span class="s1">&#39;Your Access Token Secret&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="n">client</span> <span class="o">=</span> <span class="no">TwitterOAuth</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span><span class="line">  <span class="ss">:consumer_key</span> <span class="o">=&gt;</span> <span class="no">TWITTER_CONSUMER_KEY</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">:consumer_secret</span> <span class="o">=&gt;</span> <span class="no">TWITTER_CONSUMER_SECRET</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">:token</span> <span class="o">=&gt;</span> <span class="no">TWITTER_ACCESS_TOKEN</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">:secret</span> <span class="o">=&gt;</span> <span class="no">TWITTER_ACCESS_SECRET</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="k">case</span> <span class="no">ARGV</span><span class="o">[]</span>
+</span><span class="line"> <span class="k">when</span> <span class="s2">&quot;-l&quot;</span>
+</span><span class="line">  <span class="n">timeline</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">home_timeline</span><span class="p">()</span>
+</span><span class="line">  <span class="n">timeline</span> <span class="o">=</span> <span class="n">timeline</span><span class="o">.</span><span class="n">reverse</span>
+</span><span class="line">  <span class="n">timeline</span><span class="o">.</span><span class="n">each</span><span class="p">{</span> <span class="o">|</span><span class="n">tweet</span><span class="o">|</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="n">tweet</span><span class="o">[</span><span class="s1">&#39;text&#39;</span><span class="o">]</span> <span class="o">+</span> <span class="s2">&quot; @FROM </span><span class="si">#{</span><span class="n">tweet</span><span class="o">[</span><span class="s1">&#39;user&#39;</span><span class="o">][</span><span class="s1">&#39;name&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"> <span class="k">when</span> <span class="s2">&quot;-u&quot;</span>
+</span><span class="line">  <span class="k">if</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">nil?</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s2">&quot;Please enter your status:&quot;</span>
+</span><span class="line">    <span class="n">status</span> <span class="o">=</span> <span class="no">STDIN</span><span class="o">.</span><span class="n">readline</span><span class="o">.</span><span class="n">chomp</span>
+</span><span class="line">    <span class="n">client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">status</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class="line">  <span class="k">else</span>
+</span><span class="line">    <span class="n">client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="no">ARGV</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"> <span class="k">when</span> <span class="s2">&quot;-m&quot;</span>
+</span><span class="line">  <span class="n">mentions</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">mentions</span><span class="p">()</span>
+</span><span class="line">  <span class="n">mentions</span> <span class="o">=</span> <span class="n">mentions</span><span class="o">.</span><span class="n">reverse</span>
+</span><span class="line">  <span class="n">mentions</span><span class="o">.</span><span class="n">each</span><span class="p">{</span> <span class="o">|</span><span class="n">tweet</span><span class="o">|</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="n">tweet</span><span class="o">[</span><span class="s1">&#39;text&#39;</span><span class="o">]</span> <span class="o">+</span> <span class="s2">&quot; @FROM </span><span class="si">#{</span><span class="n">tweet</span><span class="o">[</span><span class="s1">&#39;user&#39;</span><span class="o">][</span><span class="s1">&#39;name&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>This is just an example of my application which I use it on terminal. You can run the app by typing</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>ruby thenameofthisapplication.rb
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">ruby thenameofthisapplication.rb
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>or you can use symbolic link to /usr/bin and type</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>./thenameofthisapplication
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">./thenameofthisapplication
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>It&#8217;s totally up to you.</p>
+<p>It’s totally up to you.</p>
 
 <p>The Ruby API I used in this example is from this <a href="https://github.com/moomerman/twitter_oauth">https://github.com/moomerman/twitter_oauth</a></p>
 
-<p>And this is the Twitter API that you can have a look.<br/>
+<p>And this is the Twitter API that you can have a look.
 <a href="http://apiwiki.twitter.com/w/page/22554679/Twitter-API-Documentation">http://apiwiki.twitter.com/w/page/22554679/Twitter-API-Documentation</a></p>
 
-<p>In this way, you can design your application to be whatever you want and when you&#8217;re at work, you&#8217;ll be on terminal on the time.</p>
+<p>In this way, you can design your application to be whatever you want and when you’re at work, you’ll be on terminal on the time.</p>
 
 <p>Good luck!</p>
 </div>
@@ -265,7 +261,21 @@ Feb 27th, 2011</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

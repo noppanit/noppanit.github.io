@@ -93,64 +93,54 @@ public ProductTest{ //some awesome test &hellip;">
 	<h2 class="title">Naming Test Classes.</h2>
 	<div class="entry-content"><p>Normally, you would name your test class like this.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">Product</span> <span class="o">{</span>
-</span><span class='line'>   <span class="c1">//some awesome code here!</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="n">Product</span> <span class="o">{</span>
+</span><span class="line">   <span class="c1">//some awesome code here!</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="n">ProductTest</span><span class="o">{</span>
+</span><span class="line">   <span class="c1">//some awesome test code here!</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>There’s two reasons why I would do this. First, to let IntelliJ find the test class easily and it’s easy to spot the test class when you scroll through.</p>
 
+<p>However, lately inspired by <a href="https://twitter.com/JeroenSoeters" title="Jeroen">@JeroenSoeters</a> my colleague which I don’t know where he got this from. I started naming test class like this.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">ProductTest</span><span class="o">{</span>
-</span><span class='line'>   <span class="c1">//some awesome test code here!</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="n">Product</span> <span class="o">{</span>
+</span><span class="line">   <span class="c1">//some awesome code here!</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="n">When_building_a_product</span> <span class="o">{</span>
+</span><span class="line">   <span class="c1">//some awesome test code here!</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>There&#8217;s two reasons why I would do this. First, to let IntelliJ find the test class easily and it&#8217;s easy to spot the test class when you scroll through.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="n">When_building_a_product_with_some_more_data</span> <span class="o">{</span>
+</span><span class="line">   <span class="c1">//some awesome test code here!</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>However, lately inspired by <a href="https://twitter.com/JeroenSoeters" title="Jeroen">@JeroenSoeters</a> my colleague which I don&#8217;t know where he got this from. I started naming test class like this.</p>
+<p>There’s one reason to do this I can think of. You can clearly see the purpose of this class and you can have multiple test classes or <strong>Product</strong> instead of having all the tests in one class and everything is cluttered so you have to scroll up and down</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">Product</span> <span class="o">{</span>
-</span><span class='line'>   <span class="c1">//some awesome code here!</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>Not everybody likes this convention. I hate it at first but I’m starting to use it more often and I like it. What do you guys think?</p>
 
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">When_building_a_product</span> <span class="o">{</span>
-</span><span class='line'>   <span class="c1">//some awesome test code here!</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">When_building_a_product_with_some_more_data</span> <span class="o">{</span>
-</span><span class='line'>   <span class="c1">//some awesome test code here!</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>There&#8217;s one reason to do this I can think of. You can clearly see the purpose of this class and you can have multiple test classes or <strong>Product</strong> instead of having all the tests in one class and everything is cluttered so you have to scroll up and down</p>
-
-<p>Not everybody likes this convention. I hate it at first but I&#8217;m starting to use it more often and I like it. What do you guys think?</p>
 </div>
 
 
@@ -198,7 +188,21 @@ Jun 25th, 2014</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

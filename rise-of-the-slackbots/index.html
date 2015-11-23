@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Fusion tech team just had a hackday in the theme of &#8220;Slackbot&#8221;. We brainstormed what or how do we make the job of editorial or &hellip;">
+	<meta name="description" content="Fusion tech team just had a hackday in the theme of “Slackbot”. We brainstormed what or how do we make the job of editorial or engineering team &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,23 +84,24 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Rise of the (Slack)Bots.</h2>
-	<div class="entry-content"><p><a href="http://fusion.net">Fusion</a> tech team just had a hackday in the theme of &#8220;Slackbot&#8221;. We brainstormed what or how do we make the job of editorial or engineering team easier. We threw a bunch of ideas and my team decided to create a bot that can interact with you in a number of ways or encourage you to fix or debug code. We tried to make it funny and in the same time useful for our daily routine.</p>
+	<div class="entry-content"><p><a href="http://fusion.net">Fusion</a> tech team just had a hackday in the theme of “Slackbot”. We brainstormed what or how do we make the job of editorial or engineering team easier. We threw a bunch of ideas and my team decided to create a bot that can interact with you in a number of ways or encourage you to fix or debug code. We tried to make it funny and in the same time useful for our daily routine.</p>
 
 <p>My colleague <a href="https://twitter.com/danielbachhuber">Daniel Bachhuber</a> came up with the name Rubberduck which I believe he got it from <a href="http://en.wikipedia.org/wiki/Rubber_duck_debugging">here</a>. The idea of the bot is easy. If you have used Slack you must have seen Slackbot before where it guides you how to use Slack or the bot can help you change your profile picture.</p>
 
-<p>We spent a good one hour to find the best possible solution for creating a bot and we found <a href="https://github.com/silentrob/superscript/">Superscript</a>, which has a client for Slack. It&#8217;s perfect!.</p>
+<p>We spent a good one hour to find the best possible solution for creating a bot and we found <a href="https://github.com/silentrob/superscript/">Superscript</a>, which has a client for Slack. It’s perfect!.</p>
 
-<p>We&#8217;ve also opensourced the <a href="https://github.com/fusioneng/rubberduck-bot">bot</a> which you can clone and play around with it as well.</p>
+<p>We’ve also opensourced the <a href="https://github.com/fusioneng/rubberduck-bot">bot</a> which you can clone and play around with it as well.</p>
 
-<p>The first plugin we are thinking is performance bot where the bot can report the current performance of a website instead of going to a dashboard. It&#8217;s because we have remote team. So, having a bit giant board wouldn&#8217;t make much sense since some of our folks are distributed and we mainly use Slack for any communication.</p>
+<p>The first plugin we are thinking is performance bot where the bot can report the current performance of a website instead of going to a dashboard. It’s because we have remote team. So, having a bit giant board wouldn’t make much sense since some of our folks are distributed and we mainly use Slack for any communication.</p>
 
-<p><img src="/wp-content/uploads/2015/05/Screenshot-2015-05-23-19.42.23.jpg" title="rubberduck bot" ></p>
+<p><img src="/wp-content/uploads/2015/05/Screenshot-2015-05-23-19.42.23.jpg" title="rubberduck bot" /></p>
 
 <p>Now, go ahead and create your own bot!.</p>
 
-<p>&nbsp;</p>
+<p> </p>
 
 <p>Check this out. <a href="https://medium.com/@rob_ellis/slack-superscript-rise-of-the-bots-bba8506a043c">Rise of the bots</a></p>
+
 </div>
 
 
@@ -148,7 +149,21 @@ May 23rd, 2015</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

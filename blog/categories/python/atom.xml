@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-29T10:10:45-04:00</updated>
+  <updated>2015-11-23T10:32:55-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,97 +14,172 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Cosine Similarity for Dummies]]></title>
+    <link href="https://www.noppanit.com/cosine-similarity-for-dummies/"/>
+    <updated>2015-10-29T21:35:17-04:00</updated>
+    <id>https://www.noppanit.com/cosine-similarity-for-dummies</id>
+    <content type="html"><![CDATA[<p>Have you ever wonder how recommender system works? Or How Spotify or Amazon recommends what songs you might like or what product you might like to buy. I do. In this post, I’m going to try to explain how the recommendation algorithm works. First, let’s create a perfect scenario. I like to create an ideal example, it’s easier to understand.</p>
+
+<p>Let’s say you have a very simple data of movies that users like collected from your site and you would like to match those people together based on their interests. How would you do that? One of the most popular methods is <a href="https://en.wikipedia.org/wiki/Cosine_similarity">Cosine Similarity</a>. When I first saw the name I was so confused; why Cosine? I remember when I was a kid I remembered my teacher told me about trigonometry so why does it have to do with that?</p>
+
+<p>Here’s the sample data.</p>
+
+<p>User 1 likes these movies</p>
+
+<p><code>
+['Superman', 'Walking Dead', 'CSI']
+</code></p>
+
+<p>User 2 likes these movies
+<code>
+['Superman', 'Walking Dead', 'CSI']
+</code></p>
+
+<p>Even without any algorithm we can say that two users like the same movies. But we want the algorithm to tell us that the two users are very similar. Before we get into the mathematical formula world. We have to understand what a vector is?</p>
+
+<h1 id="whats-a-vector">What’s a vector?</h1>
+<p>In Pyhsics, a vector has two things; magnitude and direction which can be written as</p>
+
+<p>{% img /wp-content/uploads/2015/11/vector.png Vector %}</p>
+
+<p>I’d like to explain what a vector is but this <a href="http://immersivemath.com/ila/ch02_vectors/ch02.html">site</a> explains a lot better.</p>
+
+<p>However, in Computer Science, 1-dimentional array is called a <a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>. But <code>list</code> in Python cannot perform vector operation so we have to use <code>numpy</code> or you have to build your own which I don’t recommend.</p>
+
+<p>Now we know what a vector is but how does it relate to Cosine Similarity. In a nutshell, Cosine Similarity is <a href="http://blog.christianperone.com/2013/09/machine-learning-cosine-similarity-for-vector-space-models-part-iii/">a measure that calculates the cosine of the angle between them</a>.</p>
+
+<h1 id="cosine-similarity">Cosine Similarity</h1>
+
+<p>{% img /wp-content/uploads/2015/11/cosine_similarity.gif Cosine Similarity %}</p>
+
+<p>In order to find the angle between the two vectors, we need to find the dot product of the two vectors as the formula below.</p>
+
+<p>\begin{align}
+\text{cosine-similarity}(A,B) = \frac{\left&lt;A,B\right&gt;}{||A||\cdot||B||}
+\end{align}</p>
+
+<h1 id="show-me-the-code">Show me the code</h1>
+
+<p>Ok. enough about explanation, show me the code.</p>
+
+<p>```
+import numpy as np</p>
+
+<p>def cosin_sim(v, w):
+    return np.dot(v, w) / np.math.sqrt(np.dot(v, v) * np.dot(w, w))</p>
+
+<h1 id="if-movie-is-in-the-list-of-movies-and-0-is-not">1 if movie is in the list of movies and 0 is not.</h1>
+<p>cosin_sim([1, 1, 1], [1, 1, 1])
+# 1.0
+```</p>
+
+<p>In the perfect example, we can see that the two users have the same interests.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Python's Monkey patch for Dummies]]></title>
     <link href="https://www.noppanit.com/pythons-monkey-patch/"/>
     <updated>2015-10-25T19:00:27-04:00</updated>
     <id>https://www.noppanit.com/pythons-monkey-patch</id>
-    <content type="html"><![CDATA[<p>Alright, I&rsquo;m going to cut to the chase here. I&rsquo;m having problems with Monkey patching in Python and I want to make it clear for myself and anybody who might stumble upon my post in the future. So, what&rsquo;s the big deal here?</p>
+    <content type="html"><![CDATA[<p>Alright, I’m going to cut to the chase here. I’m having problems with Monkey patching in Python and I want to make it clear for myself and anybody who might stumble upon my post in the future. So, what’s the big deal here?</p>
 
-<p>Let&rsquo;s say you have a model</p>
+<p>Let’s say you have a model</p>
 
-<pre><code class="python models/person.py">def get_name():
-    // Doing some database lookup
-    // But I'm going to return a hard-coded name for now
-    return 'John Doe'
+<p><code>python models/person.py
+def get_name():
+	// Doing some database lookup
+	// But I'm going to return a hard-coded name for now
+	return 'John Doe'
+</code></p>
+
+<p>And you have a Phonebook class that’s trying to access the database</p>
+
+<p>``` python models/phonebook.py
+from models.person import get_name</p>
+
+<p>class Phonebook(object):</p>
+
+<pre><code>def lookup(self):
+    return get_name() ```
 </code></pre>
 
-<p>And you have a Phonebook class that&rsquo;s trying to access the database</p>
+<p>Now, we know that <code>get_name</code> is accessing some database and we don’t want that to happen in unit test. We would like to stub that.</p>
 
-<pre><code class="python models/phonebook.py">from models.person import get_name
+<p>Coming from Java, I’d write my test like this.</p>
 
-class Phonebook(object):
+<p>``` python tests/test_phonebook.py
+from unittest import TestCase, mock
+from models.phonebook import Phonebook</p>
 
-    def lookup(self):
-        return get_name()
+<p>class PhonebookTestCase(TestCase):</p>
+
+<pre><code>@mock.patch('models.person.get_name')
+def test_main(self, mock_person):
+    mock_person.return_value = 'Another Name'
+    self.assertEqual('Another Name', Phonebook().lookup())
 </code></pre>
 
-<p>Now, we know that <code>get_name</code> is accessing some database and we don&rsquo;t want that to happen in unit test. We would like to stub that.</p>
+<p>```</p>
 
-<p>Coming from Java, I&rsquo;d write my test like this.</p>
+<p>It makes sense right? I want to stub something from <code>models.person.get_name</code> so I’m telling <code>mock</code> to stub that class but my test failed miserably.</p>
 
-<pre><code class="python tests/test_phonebook.py">from unittest import TestCase, mock
-from models.phonebook import Phonebook
+<p>```
+tests/test_phonebook.py F</p>
 
-class PhonebookTestCase(TestCase):
+<p>=================================================================================== FAILURES ===================================================================================
+<strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong>_ PhonebookTestCase.test_main <strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong>__</p>
 
-    @mock.patch('models.person.get_name')
-    def test_main(self, mock_person):
-        mock_person.return_value = 'Another Name'
-        self.assertEqual('Another Name', Phonebook().lookup())
+<p>self = &lt;tests.test_phonebook.PhonebookTestCase testMethod=test_main&gt;, mock_person = <magicmock name="get_name" id="4460968592"></magicmock></p>
+
+<pre><code>@mock.patch('models.person.get_name')
+def test_main(self, mock_person):
+    mock_person.return_value = 'Another Name' &gt;       self.assertEqual('Another Name', Phonebook().lookup()) E       AssertionError: 'Another Name' != 'John Doe' E       - Another Name E       + Noppanit ```
 </code></pre>
 
-<p>It makes sense right? I want to stub something from <code>models.person.get_name</code> so I&rsquo;m telling <code>mock</code> to stub that class but my test failed miserably.</p>
-
-<pre><code>tests/test_phonebook.py F
-
-=================================================================================== FAILURES ===================================================================================
-_________________________________________________________________________ PhonebookTestCase.test_main __________________________________________________________________________
-
-self = &lt;tests.test_phonebook.PhonebookTestCase testMethod=test_main&gt;, mock_person = &lt;MagicMock name='get_name' id='4460968592'&gt;
-
-    @mock.patch('models.person.get_name')
-    def test_main(self, mock_person):
-        mock_person.return_value = 'Another Name'
-&gt;       self.assertEqual('Another Name', Phonebook().lookup())
-E       AssertionError: 'Another Name' != 'John Doe'
-E       - Another Name
-E       + Noppanit
-</code></pre>
-
-<p>Why? Because <code>patch</code> behaves differently than what we expected. This is explained in <a href="http://www.voidspace.org.uk/python/mock/patch.html#where-to-patch">Where to patch</a>. I&rsquo;m going to summarize for you. Basically, <code>patch</code> is going to take effect from where it is looked up&hellip; For me after reading that I&rsquo;m still confused. I might be the only one who&rsquo;s confused here so I&rsquo;m going to continue writing.</p>
+<p>Why? Because <code>patch</code> behaves differently than what we expected. This is explained in <a href="http://www.voidspace.org.uk/python/mock/patch.html#where-to-patch">Where to patch</a>. I’m going to summarize for you. Basically, <code>patch</code> is going to take effect from where it is looked up… For me after reading that I’m still confused. I might be the only one who’s confused here so I’m going to continue writing.</p>
 
 <p>If we take a closer look how <a href="http://effbot.org/zone/import-confusion.htm">import</a> behaves in Python, it would be clearer.</p>
 
-<pre><code class="python models/phonebook.py">from models.person import get_name
-</code></pre>
+<p><code>python models/phonebook.py
+from models.person import get_name
+</code></p>
 
 <p>The line says please import <code>get_name</code> to the namespace in <code>models/phonebook.py</code>. So, when we want to use it we can just called <code>get_name()</code> without having to write <code>models.person.get_name()</code> Now if you change your code to be</p>
 
-<pre><code class="python models/phonebook.py">import models.person
+<p>``` python models/phonebook.py
+import models.person</p>
 
-class Phonebook(object):
+<p>class Phonebook(object):</p>
 
-    def lookup(self):
-        return models.person.get_name()
+<pre><code>def lookup(self):
+    return models.person.get_name()
 </code></pre>
+
+<p>```</p>
 
 <p>You test would pass. Because now our Phonebook is looking up <code>models.person.get_name</code> namespace instead of having function <code>get_name</code> being imported to its namespace.</p>
 
 <p>Now if you want the old test to work, your <code>patch</code> has to be changed to</p>
 
-<pre><code class="python tests/test_phonebook.py">
-from unittest import TestCase, mock
-from models.phonebook import Phonebook
+<p>``` python tests/test_phonebook.py</p>
 
-class PhonebookTestCase(TestCase):
+<p>from unittest import TestCase, mock
+from models.phonebook import Phonebook</p>
 
-    @mock.patch('models.phonebook.get_name')
-    def test_main(self, mock_person):
-        mock_person.return_value = 'Another Name'
-        self.assertEqual('Another Name', Phonebook().lookup())
+<p>class PhonebookTestCase(TestCase):</p>
+
+<pre><code>@mock.patch('models.phonebook.get_name')
+def test_main(self, mock_person):
+    mock_person.return_value = 'Another Name'
+    self.assertEqual('Another Name', Phonebook().lookup())
 </code></pre>
 
-<p>That&rsquo;s it for now. If you&rsquo;re wondering why this is the case then looking at the source code of patch would help a lot. It&rsquo;s using <a href="https://docs.python.org/3.5/library/functions.html#__import__"><code>__import__</code></a> function.</p>
+<p>```</p>
+
+<p>That’s it for now. If you’re wondering why this is the case then looking at the source code of patch would help a lot. It’s using <a href="https://docs.python.org/3.5/library/functions.html#__import__"><code>__import__</code></a> function.</p>
+
 ]]></content>
   </entry>
   
@@ -113,25 +188,26 @@ class PhonebookTestCase(TestCase):
     <link href="https://www.noppanit.com/python-import-dumped-tweets-mongodb/"/>
     <updated>2013-09-04T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/python-import-dumped-tweets-mongodb</id>
-    <content type="html"><![CDATA[<p>I&#8217;m playing around with my tweets. Just so you&#8217;re aware that you could download your entire tweets and play around with it. The format is JSON so I think it makes perfect sense to dump this to MongoDB. But you can&#8217;t just import that straight away it needs some manipulation. I&#8217;m not good at Python so the code here might be tedious for python dudes. I&#8217;m going to use this data in my analysis, which will be captured in the next blog post.</p>
+    <content type="html"><![CDATA[<p>I’m playing around with my tweets. Just so you’re aware that you could download your entire tweets and play around with it. The format is JSON so I think it makes perfect sense to dump this to MongoDB. But you can’t just import that straight away it needs some manipulation. I’m not good at Python so the code here might be tedious for python dudes. I’m going to use this data in my analysis, which will be captured in the next blog post.</p>
 
-<pre><code class="python">import pymongo
-from pprint import pprint
+<p>``` python
+import pymongo
+from pprint import pprint</p>
 
-path = './data'
-client = pymongo.MongoClient('localhost', 27017)
+<p>path = ‘./data’
+client = pymongo.MongoClient(‘localhost’, 27017)
 db = client.tweets
 def main():
-        for infile in glob.glob( os.path.join(path, "*.js")):
+        for infile in glob.glob( os.path.join(path, “*.js”)):
                 content = open(infile).read()
-                indexOfFirstEqualSign = content.find("=") + 1
+                indexOfFirstEqualSign = content.find(“=”) + 1
                 pureJson = content[indexOfFirstEqualSign:]
                 jsonifedData = json.loads(pureJson)
-                db.tweets_collection.insert(jsonifedData)
+                db.tweets_collection.insert(jsonifedData)</p>
 
-if __name__ == "__main__":
+<p>if <strong>name</strong> == “<strong>main</strong>”:
         main()
-</code></pre>
+```</p>
 
 <p>The data is kept in <strong>data</strong> folder.</p>
 ]]></content>
@@ -142,40 +218,44 @@ if __name__ == "__main__":
     <link href="https://www.noppanit.com/flask-and-rq-example-for-heroku/"/>
     <updated>2013-03-08T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/flask-and-rq-example-for-heroku</id>
-    <content type="html"><![CDATA[<p>I have been struggling to find any example on the Internet on how to do long polling on Heroku with Flask and RQ. I know it&#8217;s relatively easy, but I just want to make it clear for my future self.</p>
+    <content type="html"><![CDATA[<p>I have been struggling to find any example on the Internet on how to do long polling on Heroku with Flask and RQ. I know it’s relatively easy, but I just want to make it clear for my future self.</p>
 
-<p>It&#8217;s really simple.</p>
+<p>It’s really simple.</p>
 
-<pre><code class="python">@app.route('/get_word_count', methods=['POST'])
+<p>``` python
+@app.route(‘/get_word_count’, methods=[‘POST’])
 def get_word_count():
     data_json = json.loads(request.data)
-    job = q.enqueue(word_counter.count_words, data_json["sentence"])
-    return job.key
+    job = q.enqueue(word_counter.count_words, data_json[“sentence”])
+    return job.key</p>
 
-@app.route("/get_word_count_result/&lt;job_key&gt;", methods=['GET'])
+<p>@app.route(“/get_word_count_result/<job_key>", methods=['GET'])
 def get_word_count_result(job_key):
     job_key = job_key.replace("rq:job:", "")
-    job = Job.fetch(job_key, connection=conn)
+    job = Job.fetch(job_key, connection=conn)</job_key></p>
 
-    if(not job.is_finished):
-        return "Not yet", 202
-    else:
-        return str(job.result), 200
+<pre><code>if(not job.is_finished):
+    return "Not yet", 202
+else:
+    return str(job.result), 200 ```
 </code></pre>
 
 <p>The key is here</p>
 
-<pre><code class="python">job = Job.fetch(job_key, connection=conn)
-</code></pre>
+<p><code>python
+job = Job.fetch(job_key, connection=conn)
+</code></p>
 
 <p>The fetch command is used to get the job by job_id, you can also use</p>
 
-<pre><code class="python">get_current_job()
-</code></pre>
+<p><code>python
+get_current_job()
+</code></p>
 
-<p>as well, but I just want to make it clear that if there are more concurrent requests coming in, I&#8217;ll get the right result back.</p>
+<p>as well, but I just want to make it clear that if there are more concurrent requests coming in, I’ll get the right result back.</p>
 
 <p>I posted an example here. <a href="https://github.com/noppanit/heroku-flask-rq-worker" title="Python with RQ on Heroku">https://github.com/noppanit/heroku-flask-rq-worker</a></p>
+
 ]]></content>
   </entry>
   
@@ -184,52 +264,23 @@ def get_word_count_result(job_key):
     <link href="https://www.noppanit.com/second-sentiment-analysis-experiment-on-naive-bayes-with-nltk-bigrams/"/>
     <updated>2012-12-30T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/second-sentiment-analysis-experiment-on-naive-bayes-with-nltk-bigrams</id>
-    <content type="html"><![CDATA[<p>From my <a href="https://www.noppanit.com/first-experiment-on-naive-bayes-with-nltk/" title="first experiment on naive bayes with sentiment analysis">last post</a> I experimented with some of the techniques such as stopwords and bag-of-words model. I yielded some acceptable results. This post, I&#8217;m going to try with bigrams to see if I can increase the accuracy.</p>
+    <content type="html"><![CDATA[<p>From my <a href="https://www.noppanit.com/first-experiment-on-naive-bayes-with-nltk/" title="first experiment on naive bayes with sentiment analysis">last post</a> I experimented with some of the techniques such as stopwords and bag-of-words model. I yielded some acceptable results. This post, I’m going to try with bigrams to see if I can increase the accuracy.</p>
 
 <p>I changed the code a little bit to be</p>
 
-<pre><code class="python">from nltk.collocations import *
+<p>``` python
+from nltk.collocations import *</p>
 
-tokenized_text = nltk.wordpunct_tokenize(words)
-tokenized_text = [word.lower() for word in tokenized_text]
+<p>tokenized_text = nltk.wordpunct_tokenize(words)
+tokenized_text = [word.lower() for word in tokenized_text]</p>
 
-finder = BigramCollocationFinder.from_words(tokenized_text)
-bigrammed_words = sorted(finder.nbest(bigram_measures.chi_sq, 200))
-</code></pre>
+<p>finder = BigramCollocationFinder.from_words(tokenized_text)
+bigrammed_words = sorted(finder.nbest(bigram_measures.chi_sq, 200))</p>
 
-<p>I decided to use <strong>chi_sq</strong> as suggested in <a href="http://streamhacker.com/tag/bigrams/" title="stream hacker bigrams">this post</a>. However, the accuracy has gone down significantly to <strong>19.7530864198%</strong>. I guess this might be that my document (~100 document for each sentiment) is not large enough to use bigrams. But this is just my conclusion. I&#8217;m going to try to increase the dataset and test it again.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[First experiment on Naive Bayes with NLTK]]></title>
-    <link href="https://www.noppanit.com/first-experiment-on-naive-bayes-with-nltk/"/>
-    <updated>2012-12-30T00:00:00-05:00</updated>
-    <id>https://www.noppanit.com/first-experiment-on-naive-bayes-with-nltk</id>
-    <content type="html"><![CDATA[<p>I have been experimenting with Natural Language Processing on Text classification for a while now. So, I&#8217;m going to write a little journal on my blog. There are lots of academic papers or event commercial API on the Internet for sentiment analysis. But most of them only classify sentiment into <strong>negative</strong>, <strong>positive</strong> and <strong>neutral</strong>. My experiment will be based on <a href="http://en.wikipedia.org/wiki/Plutchik%27s_Wheel_of_Emotions#Plutchik.27s_wheel_of_emotions" title="Plutchik wheel of emotions">Plutchik&#8217;s wheel of emotions</a> which will classify a text into one of the eight emotions.</p>
+<p>```</p>
 
-<p>For the purpose to get things done really fast, I use the example from <a href="http://www.laurentluce.com/posts/twitter-sentiment-analysis-using-python-and-nltk/" title="twitter sentiment analysis">Laurent&#8217;s blog</a>. But you can use <a href="https://github.com/japerk/nltk-trainer" title="nltk trainer">nltk-trainer</a> to train the classifier without a single line of python code.</p>
+<p>I decided to use <strong>chi_sq</strong> as suggested in <a href="http://streamhacker.com/tag/bigrams/" title="stream hacker bigrams">this post</a>. However, the accuracy has gone down significantly to <strong>19.7530864198%</strong>. I guess this might be that my document (~100 document for each sentiment) is not large enough to use bigrams. But this is just my conclusion. I’m going to try to increase the dataset and test it again.</p>
 
-<p>Most papers suggest that <a href="http://en.wikipedia.org/wiki/Bag-of-words_model" title="bag of words model">bag-of-words model</a> is one of the best techniques o classify text. So, I decided to use this method. However, this is about sentiment analysis so I used only Adjectives for feature extraction. The result is unacceptable with only <strong>19.7530864198 %</strong></p>
-
-<pre><code class="python">for word, pos_tag in nltk.pos_tag(words):
-   if pos_tag == 'ADJ':
-      filtered_words.append(word.lower())
-</code></pre>
-
-<p>The second attempt I decided to fall back to bag-of-words model, and the result has gone up to <strong>61.316872428 %</strong></p>
-
-<pre><code class="python">filtered_words = [e.lower() for e in words.split() if len(e) &gt;= 3]
-</code></pre>
-
-<p>So, I moved on and try to clean up the text a bit by cleaning stopwords, stripping &#8216;RT&#8217; or &#8216;rt&#8217; for retweet, deleting @peoplename and tokenise word by whitespace. So, &#8220;i&#8217;m&#8221; stays as one word and not [&#8220;i&#8221;, &#8220;&#8216;m&#8221;]. The result has gone up to <strong>69.9588477366 %</strong>.</p>
-
-<pre><code class="python"># stripping and cleaning.
-# this is for stripping out the stopwords by using &lt;a href="http://nltk.googlecode.com/svn/trunk/doc/book/ch02.html" title="NLTK Text Corpora"&gt;NLTK Text Corpora&lt;/a&gt;
-stripped_words = [w for w in tokenized_text if not w in stopwords.words('english')]
-</code></pre>
-
-<p>I&#8217;ll keep experimenting and post some more techniques to see if I could get something out of this.</p>
 ]]></content>
   </entry>
   

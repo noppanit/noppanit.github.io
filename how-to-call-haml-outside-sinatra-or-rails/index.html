@@ -84,40 +84,38 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">How to Call Haml Outside Sinatra or Rails?</h2>
-	<div class="entry-content"><p>People would think why would you want to do that. Well, in my case I just want to use haml to generate html for me in Test so that I could inject that in to Pusher to test the functionality of the feed page. I could use static html string, but if I change haml I don&#8217;t want to come back to the test and change the string again.</p>
+	<div class="entry-content"><p>People would think why would you want to do that. Well, in my case I just want to use haml to generate html for me in Test so that I could inject that in to Pusher to test the functionality of the feed page. I could use static html string, but if I change haml I don’t want to come back to the test and change the string again.</p>
 
 <p>So, Haml actually is just a static class that you can call anywhere, but where you call inside Sinatra or Rails controller. You could just use</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>haml :my_view</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">haml :my_view</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>However, if you do this outside Sinatra, you would get an exception that haml is not found or something close.</p>
 
-<p>So here&#8217;s just a simple solution plus I&#8217;ve added how to call helper in that as well.</p>
+<p>So here’s just a simple solution plus I’ve added how to call helper in that as well.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'> <span class="n">base</span> <span class="o">=</span> <span class="no">Class</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span>
-</span><span class='line'>    <span class="kp">include</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">DateTimeHelper</span> <span class="c1"># This is the helper that you want to include in Haml.</span>
-</span><span class='line'>  <span class="k">end</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">_feed_partial_path</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">),</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;views&quot;</span><span class="p">,</span> <span class="s2">&quot;_feed_partial.haml&quot;</span><span class="p">))</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">engine</span> <span class="o">=</span> <span class="no">Haml</span><span class="o">::</span><span class="no">Engine</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">IO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">_feed_partial_path</span><span class="p">))</span>
-</span><span class='line'>  <span class="n">rendered</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="ss">:var_to_inject</span> <span class="o">=&gt;</span> <span class="n">var_to_inject</span><span class="p">)</span> <span class="c1"># or if you don&#39;t want to use helper it could be just engine.render(Object.new, :var_to_inject =&gt; var_to_inject)</span>
-</span><span class='line'>  <span class="nb">puts</span> <span class="n">rendered</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"> <span class="n">base</span> <span class="o">=</span> <span class="no">Class</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span>
+</span><span class="line">    <span class="kp">include</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">DateTimeHelper</span> <span class="c1"># This is the helper that you want to include in Haml.</span>
+</span><span class="line">  <span class="k">end</span><span class="o">.</span><span class="n">new</span>
+</span><span class="line">
+</span><span class="line">  <span class="n">_feed_partial_path</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">),</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;views&quot;</span><span class="p">,</span> <span class="s2">&quot;_feed_partial.haml&quot;</span><span class="p">))</span>
+</span><span class="line">
+</span><span class="line">  <span class="n">engine</span> <span class="o">=</span> <span class="no">Haml</span><span class="o">::</span><span class="no">Engine</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">IO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">_feed_partial_path</span><span class="p">))</span>
+</span><span class="line">  <span class="n">rendered</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="ss">:var_to_inject</span> <span class="o">=&gt;</span> <span class="n">var_to_inject</span><span class="p">)</span> <span class="c1"># or if you don&#39;t want to use helper it could be just engine.render(Object.new, :var_to_inject =&gt; var_to_inject)</span>
+</span><span class="line">  <span class="nb">puts</span> <span class="n">rendered</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>That&#8217;s it nice and easy!</p>
+<p>That’s it nice and easy!</p>
 </div>
 
 
@@ -165,7 +163,21 @@ Apr 1st, 2012</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

@@ -84,28 +84,28 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Second Sentiment Analysis Experiment on Naive Bayes With NLTK : Bigrams</h2>
-	<div class="entry-content"><p>From my <a href="https://www.noppanit.com/first-experiment-on-naive-bayes-with-nltk/" title="first experiment on naive bayes with sentiment analysis">last post</a> I experimented with some of the techniques such as stopwords and bag-of-words model. I yielded some acceptable results. This post, I&#8217;m going to try with bigrams to see if I can increase the accuracy.</p>
+	<div class="entry-content"><p>From my <a href="https://www.noppanit.com/first-experiment-on-naive-bayes-with-nltk/" title="first experiment on naive bayes with sentiment analysis">last post</a> I experimented with some of the techniques such as stopwords and bag-of-words model. I yielded some acceptable results. This post, I’m going to try with bigrams to see if I can increase the accuracy.</p>
 
 <p>I changed the code a little bit to be</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">nltk.collocations</span> <span class="kn">import</span> <span class="o">*</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">tokenized_text</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">wordpunct_tokenize</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
-</span><span class='line'><span class="n">tokenized_text</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokenized_text</span><span class="p">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">finder</span> <span class="o">=</span> <span class="n">BigramCollocationFinder</span><span class="o">.</span><span class="n">from_words</span><span class="p">(</span><span class="n">tokenized_text</span><span class="p">)</span>
-</span><span class='line'><span class="n">bigrammed_words</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">finder</span><span class="o">.</span><span class="n">nbest</span><span class="p">(</span><span class="n">bigram_measures</span><span class="o">.</span><span class="n">chi_sq</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">from</span> <span class="nn">nltk.collocations</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span class="line">
+</span><span class="line"><span class="n">tokenized_text</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">wordpunct_tokenize</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+</span><span class="line"><span class="n">tokenized_text</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokenized_text</span><span class="p">]</span>
+</span><span class="line">
+</span><span class="line"><span class="n">finder</span> <span class="o">=</span> <span class="n">BigramCollocationFinder</span><span class="o">.</span><span class="n">from_words</span><span class="p">(</span><span class="n">tokenized_text</span><span class="p">)</span>
+</span><span class="line"><span class="n">bigrammed_words</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">finder</span><span class="o">.</span><span class="n">nbest</span><span class="p">(</span><span class="n">bigram_measures</span><span class="o">.</span><span class="n">chi_sq</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>I decided to use <strong>chi_sq</strong> as suggested in <a href="http://streamhacker.com/tag/bigrams/" title="stream hacker bigrams">this post</a>. However, the accuracy has gone down significantly to <strong>19.7530864198%</strong>. I guess this might be that my document (~100 document for each sentiment) is not large enough to use bigrams. But this is just my conclusion. I’m going to try to increase the dataset and test it again.</p>
 
-<p>I decided to use <strong>chi_sq</strong> as suggested in <a href="http://streamhacker.com/tag/bigrams/" title="stream hacker bigrams">this post</a>. However, the accuracy has gone down significantly to <strong>19.7530864198%</strong>. I guess this might be that my document (~100 document for each sentiment) is not large enough to use bigrams. But this is just my conclusion. I&#8217;m going to try to increase the dataset and test it again.</p>
 </div>
 
 
@@ -153,7 +153,21 @@ Dec 30th, 2012</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

@@ -84,17 +84,16 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">If XML File Is Too Big for AJAX</h2>
-	<div class="entry-content"><p><a href="http://www.developer.com/lang/php/article.php/3897851/article.htm">http://www.developer.com/lang/php/article.php/3897851/article.htm</a></p>
+	<div class="entry-content"><p>http://www.developer.com/lang/php/article.php/3897851/article.htm</p>
 
 <p>I found this article which is quite useful. What will you do if XML file is too big.</p>
 
 <ol>
-<li>Transform the XML documents into a character string.</li>
-<li>Split the character string into equal chunks (400 characters).</li>
-<li>Save each chunk as a value in an array.</li>
-<li>Transfer the chunks one by one using the Ajax mechanism into the final XML document.</li>
+  <li>Transform the XML documents into a character string.</li>
+  <li>Split the character string into equal chunks (400 characters).</li>
+  <li>Save each chunk as a value in an array.</li>
+  <li>Transfer the chunks one by one using the Ajax mechanism into the final XML document.</li>
 </ol>
-
 </div>
 
 
@@ -142,7 +141,21 @@ Aug 11th, 2010</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

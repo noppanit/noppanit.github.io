@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Alright, I&rsquo;m going to cut to the chase here. I&rsquo;m having problems with Monkey patching in Python and I want to make it clear for myself &hellip;">
+	<meta name="description" content="Alright, I’m going to cut to the chase here. I’m having problems with Monkey patching in Python and I want to make it clear for myself and anybody &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,148 +84,142 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Python's Monkey Patch for Dummies</h2>
-	<div class="entry-content"><p>Alright, I&rsquo;m going to cut to the chase here. I&rsquo;m having problems with Monkey patching in Python and I want to make it clear for myself and anybody who might stumble upon my post in the future. So, what&rsquo;s the big deal here?</p>
+	<div class="entry-content"><p>Alright, I’m going to cut to the chase here. I’m having problems with Monkey patching in Python and I want to make it clear for myself and anybody who might stumble upon my post in the future. So, what’s the big deal here?</p>
 
-<p>Let&rsquo;s say you have a model</p>
+<p>Let’s say you have a model</p>
 
-<figure class='code'><figcaption><span>models/person.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">get_name</span><span class="p">():</span>
-</span><span class='line'>  <span class="o">//</span> <span class="n">Doing</span> <span class="n">some</span> <span class="n">database</span> <span class="n">lookup</span>
-</span><span class='line'>  <span class="o">//</span> <span class="n">But</span> <span class="n">I</span><span class="s">&#39;m going to return a hard-coded name for now</span>
-</span><span class='line'>  <span class="k">return</span> <span class="s">&#39;John Doe&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>models/person.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="k">def</span> <span class="nf">get_name</span><span class="p">():</span>
+</span><span class="line">	<span class="o">//</span> <span class="n">Doing</span> <span class="n">some</span> <span class="n">database</span> <span class="n">lookup</span>
+</span><span class="line">	<span class="o">//</span> <span class="n">But</span> <span class="n">I</span><span class="s">&#39;m going to return a hard-coded name for now</span>
+</span><span class="line">	<span class="k">return</span> <span class="s">&#39;John Doe&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>And you have a Phonebook class that’s trying to access the database</p>
 
-<p>And you have a Phonebook class that&rsquo;s trying to access the database</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>models/phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">from</span> <span class="nn">models.person</span> <span class="kn">import</span> <span class="n">get_name</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">Phonebook</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">def</span> <span class="nf">lookup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">get_name</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<figure class='code'><figcaption><span>models/phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">models.person</span> <span class="kn">import</span> <span class="n">get_name</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">Phonebook</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">lookup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">get_name</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>Now, we know that <code>get_name</code> is accessing some database and we don’t want that to happen in unit test. We would like to stub that.</p>
 
+<p>Coming from Java, I’d write my test like this.</p>
 
-<p>Now, we know that <code>get_name</code> is accessing some database and we don&rsquo;t want that to happen in unit test. We would like to stub that.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>tests/test_phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span><span class="p">,</span> <span class="n">mock</span>
+</span><span class="line"><span class="kn">from</span> <span class="nn">models.phonebook</span> <span class="kn">import</span> <span class="n">Phonebook</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">PhonebookTestCase</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+</span><span class="line">
+</span><span class="line">    <span class="nd">@mock.patch</span><span class="p">(</span><span class="s">&#39;models.person.get_name&#39;</span><span class="p">)</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">test_main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock_person</span><span class="p">):</span>
+</span><span class="line">        <span class="n">mock_person</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="s">&#39;Another Name&#39;</span>
+</span><span class="line">        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s">&#39;Another Name&#39;</span><span class="p">,</span> <span class="n">Phonebook</span><span class="p">()</span><span class="o">.</span><span class="n">lookup</span><span class="p">())</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Coming from Java, I&rsquo;d write my test like this.</p>
+<p>It makes sense right? I want to stub something from <code>models.person.get_name</code> so I’m telling <code>mock</code> to stub that class but my test failed miserably.</p>
 
-<figure class='code'><figcaption><span>tests/test_phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span><span class="p">,</span> <span class="n">mock</span>
-</span><span class='line'><span class="kn">from</span> <span class="nn">models.phonebook</span> <span class="kn">import</span> <span class="n">Phonebook</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">PhonebookTestCase</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nd">@mock.patch</span><span class="p">(</span><span class="s">&#39;models.person.get_name&#39;</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">test_main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock_person</span><span class="p">):</span>
-</span><span class='line'>        <span class="n">mock_person</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="s">&#39;Another Name&#39;</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s">&#39;Another Name&#39;</span><span class="p">,</span> <span class="n">Phonebook</span><span class="p">()</span><span class="o">.</span><span class="n">lookup</span><span class="p">())</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>tests/test_phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="n">tests</span><span class="o">/</span><span class="n">test_phonebook</span><span class="o">.</span><span class="n">py</span> <span class="n">F</span>
+</span><span class="line">
+</span><span class="line"><span class="o">===================================================================================</span> <span class="n">FAILURES</span> <span class="o">===================================================================================</span>
+</span><span class="line"><span class="n">_________________________________________________________________________</span> <span class="n">PhonebookTestCase</span><span class="o">.</span><span class="n">test_main</span> <span class="n">__________________________________________________________________________</span>
+</span><span class="line">
+</span><span class="line"><span class="bp">self</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">tests</span><span class="o">.</span><span class="n">test_phonebook</span><span class="o">.</span><span class="n">PhonebookTestCase</span> <span class="n">testMethod</span><span class="o">=</span><span class="n">test_main</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">mock_person</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">MagicMock</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;get_name&#39;</span> <span class="nb">id</span><span class="o">=</span><span class="s">&#39;4460968592&#39;</span><span class="o">&gt;</span>
+</span><span class="line">
+</span><span class="line">    <span class="nd">@mock.patch</span><span class="p">(</span><span class="s">&#39;models.person.get_name&#39;</span><span class="p">)</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">test_main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock_person</span><span class="p">):</span>
+</span><span class="line">        <span class="n">mock_person</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="s">&#39;Another Name&#39;</span>
+</span><span class="line"><span class="o">&gt;</span>       <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s">&#39;Another Name&#39;</span><span class="p">,</span> <span class="n">Phonebook</span><span class="p">()</span><span class="o">.</span><span class="n">lookup</span><span class="p">())</span>
+</span><span class="line"><span class="n">E</span>       <span class="ne">AssertionError</span><span class="p">:</span> <span class="s">&#39;Another Name&#39;</span> <span class="o">!=</span> <span class="s">&#39;John Doe&#39;</span>
+</span><span class="line"><span class="n">E</span>       <span class="o">-</span> <span class="n">Another</span> <span class="n">Name</span>
+</span><span class="line"><span class="n">E</span>       <span class="o">+</span> <span class="n">Noppanit</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>It makes sense right? I want to stub something from <code>models.person.get_name</code> so I&rsquo;m telling <code>mock</code> to stub that class but my test failed miserably.</p>
-
-<figure class='code'><figcaption><span>tests/test_phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">tests</span><span class="o">/</span><span class="n">test_phonebook</span><span class="o">.</span><span class="n">py</span> <span class="n">F</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">===================================================================================</span> <span class="n">FAILURES</span> <span class="o">===================================================================================</span>
-</span><span class='line'><span class="n">_________________________________________________________________________</span> <span class="n">PhonebookTestCase</span><span class="o">.</span><span class="n">test_main</span> <span class="n">__________________________________________________________________________</span>
-</span><span class='line'>
-</span><span class='line'><span class="bp">self</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">tests</span><span class="o">.</span><span class="n">test_phonebook</span><span class="o">.</span><span class="n">PhonebookTestCase</span> <span class="n">testMethod</span><span class="o">=</span><span class="n">test_main</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">mock_person</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">MagicMock</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;get_name&#39;</span> <span class="nb">id</span><span class="o">=</span><span class="s">&#39;4460968592&#39;</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nd">@mock.patch</span><span class="p">(</span><span class="s">&#39;models.person.get_name&#39;</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">test_main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock_person</span><span class="p">):</span>
-</span><span class='line'>        <span class="n">mock_person</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="s">&#39;Another Name&#39;</span>
-</span><span class='line'><span class="o">&gt;</span>       <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s">&#39;Another Name&#39;</span><span class="p">,</span> <span class="n">Phonebook</span><span class="p">()</span><span class="o">.</span><span class="n">lookup</span><span class="p">())</span>
-</span><span class='line'><span class="n">E</span>       <span class="ne">AssertionError</span><span class="p">:</span> <span class="s">&#39;Another Name&#39;</span> <span class="o">!=</span> <span class="s">&#39;John Doe&#39;</span>
-</span><span class='line'><span class="n">E</span>       <span class="o">-</span> <span class="n">Another</span> <span class="n">Name</span>
-</span><span class='line'><span class="n">E</span>       <span class="o">+</span> <span class="n">Noppanit</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Why? Because <code>patch</code> behaves differently than what we expected. This is explained in <a href="http://www.voidspace.org.uk/python/mock/patch.html#where-to-patch">Where to patch</a>. I&rsquo;m going to summarize for you. Basically, <code>patch</code> is going to take effect from where it is looked up&hellip; For me after reading that I&rsquo;m still confused. I might be the only one who&rsquo;s confused here so I&rsquo;m going to continue writing.</p>
+<p>Why? Because <code>patch</code> behaves differently than what we expected. This is explained in <a href="http://www.voidspace.org.uk/python/mock/patch.html#where-to-patch">Where to patch</a>. I’m going to summarize for you. Basically, <code>patch</code> is going to take effect from where it is looked up… For me after reading that I’m still confused. I might be the only one who’s confused here so I’m going to continue writing.</p>
 
 <p>If we take a closer look how <a href="http://effbot.org/zone/import-confusion.htm">import</a> behaves in Python, it would be clearer.</p>
 
-<figure class='code'><figcaption><span>models/phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">models.person</span> <span class="kn">import</span> <span class="n">get_name</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>models/phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">from</span> <span class="nn">models.person</span> <span class="kn">import</span> <span class="n">get_name</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The line says please import <code>get_name</code> to the namespace in <code>models/phonebook.py</code>. So, when we want to use it we can just called <code>get_name()</code> without having to write <code>models.person.get_name()</code> Now if you change your code to be</p>
 
-<figure class='code'><figcaption><span>models/phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">models.person</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">Phonebook</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">lookup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">models</span><span class="o">.</span><span class="n">person</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>models/phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">import</span> <span class="nn">models.person</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">Phonebook</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">def</span> <span class="nf">lookup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">models</span><span class="o">.</span><span class="n">person</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>You test would pass. Because now our Phonebook is looking up <code>models.person.get_name</code> namespace instead of having function <code>get_name</code> being imported to its namespace.</p>
 
 <p>Now if you want the old test to work, your <code>patch</code> has to be changed to</p>
 
-<figure class='code'><figcaption><span>tests/test_phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span><span class="p">,</span> <span class="n">mock</span>
-</span><span class='line'><span class="kn">from</span> <span class="nn">models.phonebook</span> <span class="kn">import</span> <span class="n">Phonebook</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">PhonebookTestCase</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nd">@mock.patch</span><span class="p">(</span><span class="s">&#39;models.phonebook.get_name&#39;</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">test_main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock_person</span><span class="p">):</span>
-</span><span class='line'>        <span class="n">mock_person</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="s">&#39;Another Name&#39;</span>
-</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s">&#39;Another Name&#39;</span><span class="p">,</span> <span class="n">Phonebook</span><span class="p">()</span><span class="o">.</span><span class="n">lookup</span><span class="p">())</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>tests/test_phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span><span class="p">,</span> <span class="n">mock</span>
+</span><span class="line"><span class="kn">from</span> <span class="nn">models.phonebook</span> <span class="kn">import</span> <span class="n">Phonebook</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">PhonebookTestCase</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+</span><span class="line">
+</span><span class="line">    <span class="nd">@mock.patch</span><span class="p">(</span><span class="s">&#39;models.phonebook.get_name&#39;</span><span class="p">)</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">test_main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock_person</span><span class="p">):</span>
+</span><span class="line">        <span class="n">mock_person</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="s">&#39;Another Name&#39;</span>
+</span><span class="line">        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s">&#39;Another Name&#39;</span><span class="p">,</span> <span class="n">Phonebook</span><span class="p">()</span><span class="o">.</span><span class="n">lookup</span><span class="p">())</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>That’s it for now. If you’re wondering why this is the case then looking at the source code of patch would help a lot. It’s using <a href="https://docs.python.org/3.5/library/functions.html#__import__"><code>__import__</code></a> function.</p>
 
-<p>That&rsquo;s it for now. If you&rsquo;re wondering why this is the case then looking at the source code of patch would help a lot. It&rsquo;s using <a href="https://docs.python.org/3.5/library/functions.html#__import__"><code>__import__</code></a> function.</p>
 </div>
 
 
@@ -273,7 +267,21 @@ Oct 25th, 2015</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

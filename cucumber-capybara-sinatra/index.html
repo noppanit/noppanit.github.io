@@ -87,50 +87,47 @@
 	<div class="entry-content"><p>This post is not to provide a tutorial of how to combine those three awesome applications together, but it might stop you from scratching your head when the test cannot be run correctly.</p>
 
 <ol>
-<li>You need to have Sinatra in subclass style rather than classic style. <a href="http://www.sinatrarb.com/intro.html#Using%20a%20Classic%20Style%20Application%20with%20a%20config.ru" title="Sinatra subclass">Sinatra subclass-style</a></li>
-<li>This is quite importance, you might find some website that is using Spec. but you need to change it to be &#8220;RSpec&#8221; in order for it to work.</li>
+  <li>You need to have Sinatra in subclass style rather than classic style. <a href="http://www.sinatrarb.com/intro.html#Using%20a%20Classic%20Style%20Application%20with%20a%20config.ru" title="Sinatra subclass">Sinatra subclass-style</a></li>
+  <li>This is quite importance, you might find some website that is using Spec. but you need to change it to be “RSpec” in order for it to work.</li>
 </ol>
 
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">),</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;/server.rb&#39;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rspec&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rspec/expectations&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rack/test&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;capybara&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;capybara/cucumber&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;capybara/envjs&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">App</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="ss">:environment</span><span class="p">,</span> <span class="ss">:test</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">World</span> <span class="k">do</span>
-</span><span class='line'>  <span class="no">Capybara</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="no">App</span>
-</span><span class='line'>  <span class="no">Capybara</span><span class="o">.</span><span class="n">javascript_driver</span> <span class="o">=</span> <span class="ss">:envjs</span>
-</span><span class='line'>  <span class="kp">include</span> <span class="no">Capybara</span>
-</span><span class='line'>  <span class="kp">include</span> <span class="no">RSpec</span><span class="o">::</span><span class="no">Expectations</span>
-</span><span class='line'>  <span class="kp">include</span> <span class="no">RSpec</span><span class="o">::</span><span class="no">Matchers</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">),</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;/server.rb&#39;</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;rspec&#39;</span>
+</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;rspec/expectations&#39;</span>
+</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;rack/test&#39;</span>
+</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;capybara&#39;</span>
+</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;capybara/cucumber&#39;</span>
+</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;capybara/envjs&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="no">App</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="ss">:environment</span><span class="p">,</span> <span class="ss">:test</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="no">World</span> <span class="k">do</span>
+</span><span class="line">  <span class="no">Capybara</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="no">App</span>
+</span><span class="line">  <span class="no">Capybara</span><span class="o">.</span><span class="n">javascript_driver</span> <span class="o">=</span> <span class="ss">:envjs</span>
+</span><span class="line">  <span class="kp">include</span> <span class="no">Capybara</span>
+</span><span class="line">  <span class="kp">include</span> <span class="no">RSpec</span><span class="o">::</span><span class="no">Expectations</span>
+</span><span class="line">  <span class="kp">include</span> <span class="no">RSpec</span><span class="o">::</span><span class="no">Matchers</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 </div>
 
@@ -179,7 +176,21 @@ Jan 15th, 2012</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

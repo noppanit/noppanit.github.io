@@ -91,77 +91,73 @@ cpan install REST::Client &hellip;">
 
 <p>But you need to install some library for Perl as well by using cpan.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>cpan install JSON
-</span><span class='line'>cpan install REST::Client
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">cpan install JSON
+</span><span class="line">cpan install REST::Client
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="c1">#!/usr/bin/perl</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">use</span> <span class="nn">REST::</span><span class="n">Client</span><span class="p">;</span>
-</span><span class='line'><span class="k">use</span> <span class="n">JSON</span><span class="p">;</span>
-</span><span class='line'><span class="k">use</span> <span class="nn">HTML::</span><span class="n">Entities</span> <span class="sx">qw(decode_entities)</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="k">print</span> <span class="s">&quot;Please enter English word: &quot;</span><span class="p">;</span>
-</span><span class='line'>  <span class="nb">chop</span> <span class="p">(</span> <span class="nv">$_</span> <span class="o">=</span> <span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">my</span> <span class="nv">$client</span> <span class="o">=</span> <span class="nn">REST::</span><span class="n">Client</span><span class="o">-&gt;</span><span class="k">new</span><span class="p">();</span>
-</span><span class='line'>  <span class="nv">$client</span><span class="o">-&gt;</span><span class="n">GET</span><span class="p">(</span><span class="s">&quot;https://www.googleapis.com/language/translate/v2?key=AIzaSyACJybEm6lyelnYHZzXfydtk-V6-Uz48bQ&amp;en&amp;target=fr&amp;q=$_&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="n">responseContent</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nv">$json_text</span> <span class="o">=</span> <span class="n">from_json</span><span class="p">(</span> <span class="nv">$response</span> <span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">foreach</span> <span class="k">my</span> <span class="nv">$french</span><span class="p">(</span><span class="nv">@</span><span class="p">{</span><span class="nv">$json_text</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">data</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">translations</span><span class="p">}})</span>
-</span><span class='line'>  <span class="p">{</span>
-</span><span class='line'>      <span class="k">my</span> <span class="nv">%ep_hash</span> <span class="o">=</span> <span class="p">();</span>
-</span><span class='line'>      <span class="nv">$ep_hash</span><span class="p">{</span><span class="n">translatedText</span><span class="p">}</span> <span class="o">=</span> <span class="s">&quot;Translated to French: $french-&gt;{translatedText}&quot;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># print french</span>
-</span><span class='line'>      <span class="k">while</span> <span class="p">(</span><span class="k">my</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span> <span class="o">=</span> <span class="nb">each</span> <span class="p">(</span><span class="nv">%ep_hash</span><span class="p">))</span>
-</span><span class='line'>      <span class="p">{</span>
-</span><span class='line'>          <span class="k">print</span> <span class="n">decode_entities</span><span class="p">(</span><span class="nv">$value</span><span class="p">);</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  <span class="k">print</span> <span class="s">&quot;\n&quot;</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+</pre></td><td class="code"><pre><code class="perl"><span class="line"><span class="c1">#!/usr/bin/perl</span>
+</span><span class="line">
+</span><span class="line"><span class="k">use</span> <span class="nn">REST::</span><span class="n">Client</span><span class="p">;</span>
+</span><span class="line"><span class="k">use</span> <span class="n">JSON</span><span class="p">;</span>
+</span><span class="line"><span class="k">use</span> <span class="nn">HTML::</span><span class="n">Entities</span> <span class="sx">qw(decode_entities)</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">	<span class="k">print</span> <span class="s">&quot;Please enter English word: &quot;</span><span class="p">;</span>
+</span><span class="line">	<span class="nb">chop</span> <span class="p">(</span> <span class="nv">$_</span> <span class="o">=</span> <span class="p">);</span>
+</span><span class="line">
+</span><span class="line">	<span class="k">my</span> <span class="nv">$client</span> <span class="o">=</span> <span class="nn">REST::</span><span class="n">Client</span><span class="o">-&gt;</span><span class="k">new</span><span class="p">();</span>
+</span><span class="line">	<span class="nv">$client</span><span class="o">-&gt;</span><span class="n">GET</span><span class="p">(</span><span class="s">&quot;https://www.googleapis.com/language/translate/v2?key=AIzaSyACJybEm6lyelnYHZzXfydtk-V6-Uz48bQ&amp;en&amp;target=fr&amp;q=$_&quot;</span><span class="p">);</span>
+</span><span class="line">	<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="n">responseContent</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line">	<span class="nv">$json_text</span> <span class="o">=</span> <span class="n">from_json</span><span class="p">(</span> <span class="nv">$response</span> <span class="p">);</span>
+</span><span class="line">
+</span><span class="line">	<span class="k">foreach</span> <span class="k">my</span> <span class="nv">$french</span><span class="p">(</span><span class="nv">@</span><span class="p">{</span><span class="nv">$json_text</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">data</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">translations</span><span class="p">}})</span>
+</span><span class="line">	<span class="p">{</span>
+</span><span class="line">		<span class="k">my</span> <span class="nv">%ep_hash</span> <span class="o">=</span> <span class="p">();</span>
+</span><span class="line">		<span class="nv">$ep_hash</span><span class="p">{</span><span class="n">translatedText</span><span class="p">}</span> <span class="o">=</span> <span class="s">&quot;Translated to French: $french-&gt;{translatedText}&quot;</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># print french</span>
+</span><span class="line">		<span class="k">while</span> <span class="p">(</span><span class="k">my</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span> <span class="o">=</span> <span class="nb">each</span> <span class="p">(</span><span class="nv">%ep_hash</span><span class="p">))</span>
+</span><span class="line">		<span class="p">{</span>
+</span><span class="line">			<span class="k">print</span> <span class="n">decode_entities</span><span class="p">(</span><span class="nv">$value</span><span class="p">);</span>
+</span><span class="line">		<span class="p">}</span>
+</span><span class="line">	<span class="p">}</span>
+</span><span class="line">	<span class="k">print</span> <span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 </div>
 
 
@@ -209,7 +205,21 @@ Feb 17th, 2011</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

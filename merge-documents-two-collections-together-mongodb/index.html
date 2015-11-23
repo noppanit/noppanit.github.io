@@ -84,122 +84,114 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Merge Documents From Two Collections Together in MongoDb</h2>
-	<div class="entry-content"><p>The problem is I have a lot of documents in one collection and even a lot more documents in another collection. I want to merge those documents together but I don&#8217;t want to write a lot of code to merge those documents together. It also might take a lot of time to do it.</p>
+	<div class="entry-content"><p>The problem is I have a lot of documents in one collection and even a lot more documents in another collection. I want to merge those documents together but I don’t want to write a lot of code to merge those documents together. It also might take a lot of time to do it.</p>
 
-<p>MongoDb comes with <a href="http://docs.mongodb.org/manual/core/map-reduce/" title="mongodb map reduce">map/reduce</a> which is a cool feature you can use to achieve something like this. If you don&#8217;t know what map/reduce is I wrote an <a href="http://www.noppanit.com/mapreduce-dummies/">article</a> like this sometime ago.</p>
+<p>MongoDb comes with <a href="http://docs.mongodb.org/manual/core/map-reduce/" title="mongodb map reduce">map/reduce</a> which is a cool feature you can use to achieve something like this. If you don’t know what map/reduce is I wrote an <a href="http://www.noppanit.com/mapreduce-dummies/">article</a> like this sometime ago.</p>
 
-<p>Let&#8217;s say you have one collection with this document. Let&#8217;s say it&#8217;s <strong>products</strong> collection.</p></p>
+<p>Let’s say you have one collection with this document. Let’s say it’s <strong>products</strong> collection.&lt;/p&gt;</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="nt">&quot;_id&quot;</span> <span class="p">:</span> <span class="err">ObjectId(</span><span class="s2">&quot;52e05133c68f0b2a95e2b67b&quot;</span><span class="err">)</span><span class="p">,</span>
-</span><span class='line'>  <span class="nt">&quot;product_id&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-</span><span class='line'>  <span class="nt">&quot;title&quot;</span> <span class="p">:</span> <span class="s2">&quot;Sharpie&quot;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="json"><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="nt">&quot;_id&quot;</span> <span class="p">:</span> <span class="err">ObjectId(</span><span class="s2">&quot;52e05133c68f0b2a95e2b67b&quot;</span><span class="err">)</span><span class="p">,</span>
+</span><span class="line">  <span class="nt">&quot;product_id&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span><span class="line">  <span class="nt">&quot;title&quot;</span> <span class="p">:</span> <span class="s2">&quot;Sharpie&quot;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>And another document in <strong>prices</strong> collection.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="nt">&quot;_id&quot;</span> <span class="p">:</span> <span class="err">ObjectId(</span><span class="s2">&quot;52e05473c68f0b2a95e2b682&quot;</span><span class="err">)</span><span class="p">,</span>
-</span><span class='line'>  <span class="nt">&quot;product_id&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-</span><span class='line'>  <span class="nt">&quot;price&quot;</span> <span class="p">:</span> <span class="mi">99</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="json"><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="nt">&quot;_id&quot;</span> <span class="p">:</span> <span class="err">ObjectId(</span><span class="s2">&quot;52e05473c68f0b2a95e2b682&quot;</span><span class="err">)</span><span class="p">,</span>
+</span><span class="line">  <span class="nt">&quot;product_id&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span><span class="line">  <span class="nt">&quot;price&quot;</span> <span class="p">:</span> <span class="mi">99</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>I want to end up with this.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span> <span class="nt">&quot;_id&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nt">&quot;value&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="nt">&quot;title&quot;</span> <span class="p">:</span> <span class="s2">&quot;Sharpie&quot;</span><span class="p">,</span> <span class="nt">&quot;price&quot;</span> <span class="p">:</span> <span class="mi">99</span> <span class="p">}</span> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="json"><span class="line"><span class="p">{</span> <span class="nt">&quot;_id&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nt">&quot;value&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="nt">&quot;title&quot;</span> <span class="p">:</span> <span class="s2">&quot;Sharpie&quot;</span><span class="p">,</span> <span class="nt">&quot;price&quot;</span> <span class="p">:</span> <span class="mi">99</span> <span class="p">}</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>Here’s what you can do. Insert your data first.</p>
 
-<p>Here&#8217;s what you can do. Insert your data first.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">db</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&quot;product_id&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span> <span class="o">:</span> <span class="s2">&quot;Sharpie&quot;</span><span class="p">});</span>
-</span><span class='line'><span class="nx">db</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&quot;product_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span> <span class="o">:</span> <span class="s2">&quot;Sticky&quot;</span><span class="p">});</span>
-</span><span class='line'><span class="nx">db</span><span class="p">.</span><span class="nx">prices</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&quot;product_id&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="mi">99</span><span class="p">});</span>
-</span><span class='line'><span class="nx">db</span><span class="p">.</span><span class="nx">prices</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&quot;product_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="mi">30</span><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">db</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&quot;product_id&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span> <span class="o">:</span> <span class="s2">&quot;Sharpie&quot;</span><span class="p">});</span>
+</span><span class="line"><span class="nx">db</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&quot;product_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span> <span class="o">:</span> <span class="s2">&quot;Sticky&quot;</span><span class="p">});</span>
+</span><span class="line"><span class="nx">db</span><span class="p">.</span><span class="nx">prices</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&quot;product_id&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="mi">99</span><span class="p">});</span>
+</span><span class="line"><span class="nx">db</span><span class="p">.</span><span class="nx">prices</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&quot;product_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="mi">30</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Then you build maps to get key/value from the documents</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">products_map</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">emit</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">product_id</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">title</span><span class="p">});</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">prices_map</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">emit</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">product_id</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">price</span><span class="p">});</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">products_map</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">emit</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">product_id</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">title</span><span class="p">});</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">prices_map</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">emit</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">product_id</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">price</span><span class="p">});</span>
+</span><span class="line"><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Then you build your reduce function</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">r</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">values</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>      <span class="s2">&quot;title&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-</span><span class='line'>      <span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">values</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="k">if</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">title</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span><span class="nx">result</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">title</span><span class="p">;}</span>
-</span><span class='line'>
-</span><span class='line'>      <span class="k">if</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">price</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span><span class="nx">result</span><span class="p">.</span><span class="nx">price</span> <span class="o">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">price</span><span class="p">;}</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">r</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">values</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">      <span class="s2">&quot;title&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span>
+</span><span class="line">    <span class="p">};</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">values</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">if</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">title</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span><span class="nx">result</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">title</span><span class="p">;}</span>
+</span><span class="line">
+</span><span class="line">      <span class="k">if</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">price</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span><span class="nx">result</span><span class="p">.</span><span class="nx">price</span> <span class="o">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">price</span><span class="p">;}</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 <p>Then you run your map/reduce function.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">res</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">mapReduce</span><span class="p">(</span><span class="nx">products_map</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="p">{</span><span class="nx">out</span><span class="o">:</span> <span class="p">{</span><span class="nx">reduce</span> <span class="o">:</span> <span class="s1">&#39;joined&#39;</span><span class="p">}});</span>
-</span><span class='line'><span class="nx">res</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">prices</span><span class="p">.</span><span class="nx">mapReduce</span><span class="p">(</span><span class="nx">prices_map</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="p">{</span><span class="nx">out</span><span class="o">:</span> <span class="p">{</span><span class="nx">reduce</span> <span class="o">:</span> <span class="s1">&#39;joined&#39;</span><span class="p">}});</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">res</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">mapReduce</span><span class="p">(</span><span class="nx">products_map</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="p">{</span><span class="nx">out</span><span class="o">:</span> <span class="p">{</span><span class="nx">reduce</span> <span class="o">:</span> <span class="s1">&#39;joined&#39;</span><span class="p">}});</span>
+</span><span class="line"><span class="nx">res</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">prices</span><span class="p">.</span><span class="nx">mapReduce</span><span class="p">(</span><span class="nx">prices_map</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="p">{</span><span class="nx">out</span><span class="o">:</span> <span class="p">{</span><span class="nx">reduce</span> <span class="o">:</span> <span class="s1">&#39;joined&#39;</span><span class="p">}});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>Then you will get another collection <strong>joined</strong> with the information you want. One caveat is right now map/reduce function will result in <strong>value : { “field” : “value” }</strong>.</p>
 
-
-<p>Then you will get another collection <strong>joined</strong> with the information you want. One caveat is right now map/reduce function will result in <strong>value : { &#8220;field&#8221; : &#8220;value&#8221; }</strong>.</p>
 </div>
 
 
@@ -247,7 +239,21 @@ Jan 23rd, 2014</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

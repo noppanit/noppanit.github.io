@@ -86,7 +86,7 @@
 	<h2 class="title">Google Analytics IQ Test : Passed</h2>
 	<div class="entry-content"><p>Finally, I passed the Google Analytics test.</p>
 
-<p><img src="https://www.noppanit.com/wp-content/uploads/2010/10/Screen-shot-2010-10-16-at-18.05.10-300x231.png"></p>
+<p><img src="https://www.noppanit.com/wp-content/uploads/2010/10/Screen-shot-2010-10-16-at-18.05.10-300x231.png" /></p>
 </div>
 
 
@@ -134,7 +134,21 @@ Oct 16th, 2010</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

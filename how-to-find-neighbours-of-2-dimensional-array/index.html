@@ -7,13 +7,16 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="So, for example if you have a 2 dimensional array. 1
+	<meta name="description" content="So, for example if you have a 2 dimensional array.
+1
 2
 3
-1 2 3 4 5 6 7 8 9 the neighbours of &#8220;5&#8221; is 1
+1 2 3 4 5 6 7 8 9
+the neighbours of “5” is
+1
 2
 3
-1 2 3 4 6 7 8 9 the neighbours &hellip;">
+1 2 3 4 6 7 8 9 the neighbours of “9” would &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,127 +94,119 @@
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">How to Find Neighbours of 2 Dimensional Array</h2>
 	<div class="entry-content"><p>So, for example if you have a 2 dimensional array.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">1 2 3  
+</span><span class="line">4 5 6  
+</span><span class="line">7 8 9</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>the neighbours of “5” is</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">1 2 3  
+</span><span class="line">4 6  
+</span><span class="line">7 8 9</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1 2 3  
-</span><span class='line'>4 5 6  
-</span><span class='line'>7 8 9</span></code></pre></td></tr></table></div></figure>
-
-
-<p>the neighbours of &#8220;5&#8221; is</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>1 2 3  
-</span><span class='line'>4 6  
-</span><span class='line'>7 8 9</span></code></pre></td></tr></table></div></figure>
-
-
-<p>the neighbours of &#8220;9&#8221; would be</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>5 6  
-</span><span class='line'>8</span></code></pre></td></tr></table></div></figure>
-
+<p>the neighbours of “9” would be</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">5 6  
+</span><span class="line">8</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Without further ado, here is the algorithm.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">][</span><span class="mi">3</span><span class="o">];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">initialiseArray</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>        <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="o">;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">;</span> <span class="n">row</span><span class="o">++)</span> <span class="o">{</span>
-</span><span class='line'>            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="o">;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">;</span> <span class="n">col</span><span class="o">++)</span> <span class="o">{</span>
-</span><span class='line'>                <span class="n">array</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">=</span> <span class="n">counter</span><span class="o">;</span>
-</span><span class='line'>                <span class="n">counter</span><span class="o">++;</span>
-</span><span class='line'>            <span class="o">}</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
-</span><span class='line'>        <span class="n">initialiseArray</span><span class="o">();</span>
-</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="o">;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">;</span> <span class="n">row</span><span class="o">++)</span> <span class="o">{</span>
-</span><span class='line'>            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="o">;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">;</span> <span class="n">col</span><span class="o">++)</span> <span class="o">{</span>
-</span><span class='line'>                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]);</span>
-</span><span class='line'>                <span class="k">if</span><span class="o">(</span> <span class="n">col</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">)</span>
-</span><span class='line'>                <span class="o">{</span>
-</span><span class='line'>                    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;\n&quot;</span><span class="o">);</span>
-</span><span class='line'>                <span class="o">}</span>
-</span><span class='line'>            <span class="o">}</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>        <span class="n">neighbours</span><span class="o">();</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">neighbours</span><span class="o">()</span>
-</span><span class='line'>    <span class="o">{</span>
-</span><span class='line'>        <span class="c1">// the position of a cell that you want to display its neighbours</span>
-</span><span class='line'>        <span class="kt">int</span> <span class="n">posX</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
-</span><span class='line'>        <span class="kt">int</span> <span class="n">posY</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="k">for</span><span class="o">(</span> <span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="n">posX</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">row</span> <span class="o">&lt;=</span> <span class="n">posX</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">row</span><span class="o">++)</span>
-</span><span class='line'>        <span class="o">{</span>
-</span><span class='line'>            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span>  <span class="n">posY</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>  <span class="n">col</span> <span class="o">&lt;=</span> <span class="n">posY</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">col</span><span class="o">++)</span>
-</span><span class='line'>            <span class="o">{</span>
-</span><span class='line'>                <span class="k">if</span><span class="o">(</span> <span class="o">!(</span><span class="n">posX</span> <span class="o">==</span> <span class="n">row</span> <span class="o">&amp;&amp;</span>  <span class="n">posY</span> <span class="o">==</span> <span class="n">col</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="o">&amp;&amp;</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="o">)</span>
-</span><span class='line'>                <span class="o">{</span>
-</span><span class='line'>                    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]);</span>
-</span><span class='line'>                <span class="o">}</span>
-</span><span class='line'>            <span class="o">}</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">][</span><span class="mi">3</span><span class="o">];</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">initialiseArray</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">        <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class="line">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="o">;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">;</span> <span class="n">row</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class="line">            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="o">;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">;</span> <span class="n">col</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class="line">                <span class="n">array</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">=</span> <span class="n">counter</span><span class="o">;</span>
+</span><span class="line">                <span class="n">counter</span><span class="o">++;</span>
+</span><span class="line">            <span class="o">}</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">initialiseArray</span><span class="o">();</span>
+</span><span class="line">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="o">;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">;</span> <span class="n">row</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class="line">            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="o">;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">;</span> <span class="n">col</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class="line">                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]);</span>
+</span><span class="line">                <span class="k">if</span><span class="o">(</span> <span class="n">col</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">)</span>
+</span><span class="line">                <span class="o">{</span>
+</span><span class="line">                    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;\n&quot;</span><span class="o">);</span>
+</span><span class="line">                <span class="o">}</span>
+</span><span class="line">            <span class="o">}</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">        <span class="n">neighbours</span><span class="o">();</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">neighbours</span><span class="o">()</span>
+</span><span class="line">    <span class="o">{</span>
+</span><span class="line">        <span class="c1">// the position of a cell that you want to display its neighbours</span>
+</span><span class="line">        <span class="kt">int</span> <span class="n">posX</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+</span><span class="line">        <span class="kt">int</span> <span class="n">posY</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">for</span><span class="o">(</span> <span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="n">posX</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">row</span> <span class="o">&lt;=</span> <span class="n">posX</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">row</span><span class="o">++)</span>
+</span><span class="line">        <span class="o">{</span>
+</span><span class="line">            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span>  <span class="n">posY</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>  <span class="n">col</span> <span class="o">&lt;=</span> <span class="n">posY</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">col</span><span class="o">++)</span>
+</span><span class="line">            <span class="o">{</span>
+</span><span class="line">                <span class="k">if</span><span class="o">(</span> <span class="o">!(</span><span class="n">posX</span> <span class="o">==</span> <span class="n">row</span> <span class="o">&amp;&amp;</span>  <span class="n">posY</span> <span class="o">==</span> <span class="n">col</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="o">&amp;&amp;</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="o">)</span>
+</span><span class="line">                <span class="o">{</span>
+</span><span class="line">                    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]);</span>
+</span><span class="line">                <span class="o">}</span>
+</span><span class="line">            <span class="o">}</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 </div>
 
 
@@ -259,7 +254,21 @@ Mar 20th, 2011</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

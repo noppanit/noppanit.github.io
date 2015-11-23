@@ -90,41 +90,40 @@
 
 <p>Sublime Text 2 comes with a nice functionality called <a href="http://docs.sublimetext.info/en/latest/file_processing/build_systems.html" title="Sublime Text 2 build system">Build System</a> where you can create your own command and run it by using <strong>cmb+b</strong> (If you are a MAC user).</p>
 
-<p>First thing first, I hope you use <strong>rvm</strong> so if you haven&#8217;t done this already you need to create symbolic link like <a href="http://www.sublimetext.com/docs/2/osx_command_line.html">this page</a>. Then if you want to open your project you can just do this command inside your project. This way, sublime will hook up with rvm nicely.</p>
+<p>First thing first, I hope you use <strong>rvm</strong> so if you haven’t done this already you need to create symbolic link like <a href="http://www.sublimetext.com/docs/2/osx_command_line.html">this page</a>. Then if you want to open your project you can just do this command inside your project. This way, sublime will hook up with rvm nicely.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>subl .
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">subl .
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>Then you go to <strong>Tools &gt; Build System &gt; New Build System</strong>. It will open a new editor then you place this code.</p>
 
-<p>Then you go to <strong>Tools > Build System > New Build System</strong>. It will open a new editor then you place this code.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="nt">&quot;cmd&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;rspec&quot;</span><span class="p">,</span> <span class="s2">&quot;-I ${file_path}&quot;</span><span class="p">,</span> <span class="s2">&quot;$file&quot;</span><span class="p">],</span>
-</span><span class='line'>  <span class="nt">&quot;file_regex&quot;</span><span class="p">:</span> <span class="s2">&quot;# ([A-Za-z:0-9_./ ]+rb):([0-9]+)&quot;</span><span class="p">,</span>
-</span><span class='line'>  <span class="nt">&quot;working_dir&quot;</span><span class="p">:</span> <span class="s2">&quot;${project_path:${folder:${file_path}}}&quot;</span><span class="p">,</span>
-</span><span class='line'>  <span class="nt">&quot;selector&quot;</span><span class="p">:</span> <span class="s2">&quot;source.ruby&quot;</span><span class="p">,</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nt">&quot;windows&quot;</span><span class="p">:</span>
-</span><span class='line'>  <span class="p">{</span>
-</span><span class='line'>    <span class="nt">&quot;cmd&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;rspec.bat&quot;</span><span class="p">,</span> <span class="s2">&quot;-I ${file_path}&quot;</span><span class="p">,</span> <span class="s2">&quot;$file&quot;</span><span class="p">]</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="json"><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="nt">&quot;cmd&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;rspec&quot;</span><span class="p">,</span> <span class="s2">&quot;-I ${file_path}&quot;</span><span class="p">,</span> <span class="s2">&quot;$file&quot;</span><span class="p">],</span>
+</span><span class="line">  <span class="nt">&quot;file_regex&quot;</span><span class="p">:</span> <span class="s2">&quot;# ([A-Za-z:0-9_./ ]+rb):([0-9]+)&quot;</span><span class="p">,</span>
+</span><span class="line">  <span class="nt">&quot;working_dir&quot;</span><span class="p">:</span> <span class="s2">&quot;${project_path:${folder:${file_path}}}&quot;</span><span class="p">,</span>
+</span><span class="line">  <span class="nt">&quot;selector&quot;</span><span class="p">:</span> <span class="s2">&quot;source.ruby&quot;</span><span class="p">,</span>
+</span><span class="line">
+</span><span class="line">  <span class="nt">&quot;windows&quot;</span><span class="p">:</span>
+</span><span class="line">  <span class="p">{</span>
+</span><span class="line">    <span class="nt">&quot;cmd&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;rspec.bat&quot;</span><span class="p">,</span> <span class="s2">&quot;-I ${file_path}&quot;</span><span class="p">,</span> <span class="s2">&quot;$file&quot;</span><span class="p">]</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Then you choose the new Build System you just created and hit this combo <strong>cmd+b</strong>. Hooray!</p>
+
 </div>
 
 
@@ -172,7 +171,21 @@ Dec 30th, 2012</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

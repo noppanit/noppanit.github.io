@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mac osx | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/mac-osx/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-29T10:10:45-04:00</updated>
+  <updated>2015-11-23T10:32:55-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -18,11 +18,12 @@
     <link href="https://www.noppanit.com/mac-osx-override-rm-to-delete-files-to-trash/"/>
     <updated>2011-04-05T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/mac-osx-override-rm-to-delete-files-to-trash</id>
-    <content type="html"><![CDATA[<p>So silly of me I have just &#8220;accidentally&#8221; deleted my home directory T_T. There is a way to help that by override rm command to move file to .Trash.</p>
+    <content type="html"><![CDATA[<p>So silly of me I have just “accidentally” deleted my home directory T_T. There is a way to help that by override rm command to move file to .Trash.</p>
 
 <p>Just copy this code to ~/.bash_profile and restart your terminal.</p>
 
-<pre><code>function rm () {
+<p><code>
+function rm () {
   local path
   for path in "$@"; do
     # ignore any arguments
@@ -37,7 +38,7 @@
     fi
   done
 }
-</code></pre>
+</code></p>
 ]]></content>
   </entry>
   
@@ -50,42 +51,38 @@
 
 <p>So, just easing you in. VI is an editor in Unix and Unix-like system. It is command-line-based and very easy to use. You can learn its basics in just 10 minutes. VI has two modes; command mode and insert mode. Command mode is where you put your command and insert mode is where you put your text. Easy!</p>
 
-<h2>How to switch between two modes</h2>
+<h2 id="how-to-switch-between-two-modes">How to switch between two modes</h2>
 
 <ol>
-<li>In VI editor, press ESC to switch command mode, and press ESC again to insert mode. If you&#8217;re not sure, always press ESC two times, it will always be command mode. You will hear the beep sound.</li>
+  <li>In VI editor, press ESC to switch command mode, and press ESC again to insert mode. If you’re not sure, always press ESC two times, it will always be command mode. You will hear the beep sound.</li>
 </ol>
 
-
-<h2>How to insert text</h2>
+<h2 id="how-to-insert-text">How to insert text</h2>
 
 <ol>
-<li>In VI editor, press ESC two times to command mode, and press &#8220;i&#8221; or &#8220;a&#8221; and then type your text. &#8220;i&#8221; is insert, &#8220;a&#8221; is append your text</li>
+  <li>In VI editor, press ESC two times to command mode, and press “i” or “a” and then type your text. “i” is insert, “a” is append your text</li>
 </ol>
 
-
-<h2>How to delete your text</h2>
+<h2 id="how-to-delete-your-text">How to delete your text</h2>
 
 <ol>
-<li>In VI editor, press ESC two times to command mode, and where the cursor is press &#8220;x&#8221; to delete the character you want.</li>
+  <li>In VI editor, press ESC two times to command mode, and where the cursor is press “x” to delete the character you want.</li>
 </ol>
 
-
-<h2>How to navigate in VI</h2>
+<h2 id="how-to-navigate-in-vi">How to navigate in VI</h2>
 
 <ol>
-<li>In VI editor, you cannot use arrow keys in your keyboard to up, down, left or right. So how?, In VI editor, press ESC two times to command mode, and press &#8220;h&#8221; to navigate left, &#8220;j&#8221; to go down, &#8220;k&#8221; to go up and &#8220;l&#8221; to go left.</li>
+  <li>In VI editor, you cannot use arrow keys in your keyboard to up, down, left or right. So how?, In VI editor, press ESC two times to command mode, and press “h” to navigate left, “j” to go down, “k” to go up and “l” to go left.</li>
 </ol>
 
-
-<h2>How to save and exit in VI</h2>
+<h2 id="how-to-save-and-exit-in-vi">How to save and exit in VI</h2>
 
 <ol>
-<li>In VI editor, press ESC two times to command mode and then press &#8220;:wq&#8221; to save and exit the program.</li>
+  <li>In VI editor, press ESC two times to command mode and then press “:wq” to save and exit the program.</li>
 </ol>
-
 
 <p>See how easy is that, but VI is more than this you can read its documentation or visit <a href="http://www.eng.hawaii.edu/Tutor/vi.html">this</a></p>
+
 ]]></content>
   </entry>
   

@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I have been struggling to find any example on the Internet on how to do long polling on Heroku with Flask and RQ. I know it&#8217;s relatively easy, &hellip;">
+	<meta name="description" content="I have been struggling to find any example on the Internet on how to do long polling on Heroku with Flask and RQ. I know it’s relatively easy, but I &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,60 +84,58 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Flask and RQ Example for Heroku</h2>
-	<div class="entry-content"><p>I have been struggling to find any example on the Internet on how to do long polling on Heroku with Flask and RQ. I know it&#8217;s relatively easy, but I just want to make it clear for my future self.</p>
+	<div class="entry-content"><p>I have been struggling to find any example on the Internet on how to do long polling on Heroku with Flask and RQ. I know it’s relatively easy, but I just want to make it clear for my future self.</p>
 
-<p>It&#8217;s really simple.</p>
+<p>It’s really simple.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/get_word_count&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;POST&#39;</span><span class="p">])</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">get_word_count</span><span class="p">():</span>
-</span><span class='line'>    <span class="n">data_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">job</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">word_counter</span><span class="o">.</span><span class="n">count_words</span><span class="p">,</span> <span class="n">data_json</span><span class="p">[</span><span class="s">&quot;sentence&quot;</span><span class="p">])</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">job</span><span class="o">.</span><span class="n">key</span>
-</span><span class='line'>
-</span><span class='line'><span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/get_word_count_result/&lt;job_key&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">get_word_count_result</span><span class="p">(</span><span class="n">job_key</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">job_key</span> <span class="o">=</span> <span class="n">job_key</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;rq:job:&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">job</span> <span class="o">=</span> <span class="n">Job</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">job_key</span><span class="p">,</span> <span class="n">connection</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="n">job</span><span class="o">.</span><span class="n">is_finished</span><span class="p">):</span>
-</span><span class='line'>        <span class="k">return</span> <span class="s">&quot;Not yet&quot;</span><span class="p">,</span> <span class="mi">202</span>
-</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
-</span><span class='line'>        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">),</span> <span class="mi">200</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/get_word_count&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;POST&#39;</span><span class="p">])</span>
+</span><span class="line"><span class="k">def</span> <span class="nf">get_word_count</span><span class="p">():</span>
+</span><span class="line">    <span class="n">data_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</span><span class="line">    <span class="n">job</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">word_counter</span><span class="o">.</span><span class="n">count_words</span><span class="p">,</span> <span class="n">data_json</span><span class="p">[</span><span class="s">&quot;sentence&quot;</span><span class="p">])</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">job</span><span class="o">.</span><span class="n">key</span>
+</span><span class="line">
+</span><span class="line"><span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/get_word_count_result/&lt;job_key&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+</span><span class="line"><span class="k">def</span> <span class="nf">get_word_count_result</span><span class="p">(</span><span class="n">job_key</span><span class="p">):</span>
+</span><span class="line">    <span class="n">job_key</span> <span class="o">=</span> <span class="n">job_key</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;rq:job:&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class="line">    <span class="n">job</span> <span class="o">=</span> <span class="n">Job</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">job_key</span><span class="p">,</span> <span class="n">connection</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="n">job</span><span class="o">.</span><span class="n">is_finished</span><span class="p">):</span>
+</span><span class="line">        <span class="k">return</span> <span class="s">&quot;Not yet&quot;</span><span class="p">,</span> <span class="mi">202</span>
+</span><span class="line">    <span class="k">else</span><span class="p">:</span>
+</span><span class="line">        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">),</span> <span class="mi">200</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The key is here</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">job</span> <span class="o">=</span> <span class="n">Job</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">job_key</span><span class="p">,</span> <span class="n">connection</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="n">job</span> <span class="o">=</span> <span class="n">Job</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">job_key</span><span class="p">,</span> <span class="n">connection</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The fetch command is used to get the job by job_id, you can also use</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">get_current_job</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="n">get_current_job</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>as well, but I just want to make it clear that if there are more concurrent requests coming in, I&#8217;ll get the right result back.</p>
+<p>as well, but I just want to make it clear that if there are more concurrent requests coming in, I’ll get the right result back.</p>
 
 <p>I posted an example here. <a href="https://github.com/noppanit/heroku-flask-rq-worker" title="Python with RQ on Heroku">https://github.com/noppanit/heroku-flask-rq-worker</a></p>
+
 </div>
 
 
@@ -185,7 +183,21 @@ Mar 8th, 2013</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

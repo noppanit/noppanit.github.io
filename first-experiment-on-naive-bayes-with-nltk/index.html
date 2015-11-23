@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I have been experimenting with Natural Language Processing on Text classification for a while now. So, I&#8217;m going to write a little journal on &hellip;">
+	<meta name="description" content="I have been experimenting with Natural Language Processing on Text classification for a while now. So, I’m going to write a little journal on my blog &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,40 +84,38 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">First Experiment on Naive Bayes With NLTK</h2>
-	<div class="entry-content"><p>I have been experimenting with Natural Language Processing on Text classification for a while now. So, I&#8217;m going to write a little journal on my blog. There are lots of academic papers or event commercial API on the Internet for sentiment analysis. But most of them only classify sentiment into <strong>negative</strong>, <strong>positive</strong> and <strong>neutral</strong>. My experiment will be based on <a href="http://en.wikipedia.org/wiki/Plutchik%27s_Wheel_of_Emotions#Plutchik.27s_wheel_of_emotions" title="Plutchik wheel of emotions">Plutchik&#8217;s wheel of emotions</a> which will classify a text into one of the eight emotions.</p>
+	<div class="entry-content"><p>I have been experimenting with Natural Language Processing on Text classification for a while now. So, I’m going to write a little journal on my blog. There are lots of academic papers or event commercial API on the Internet for sentiment analysis. But most of them only classify sentiment into <strong>negative</strong>, <strong>positive</strong> and <strong>neutral</strong>. My experiment will be based on <a href="http://en.wikipedia.org/wiki/Plutchik%27s_Wheel_of_Emotions#Plutchik.27s_wheel_of_emotions" title="Plutchik wheel of emotions">Plutchik’s wheel of emotions</a> which will classify a text into one of the eight emotions.</p>
 
-<p>For the purpose to get things done really fast, I use the example from <a href="http://www.laurentluce.com/posts/twitter-sentiment-analysis-using-python-and-nltk/" title="twitter sentiment analysis">Laurent&#8217;s blog</a>. But you can use <a href="https://github.com/japerk/nltk-trainer" title="nltk trainer">nltk-trainer</a> to train the classifier without a single line of python code.</p>
+<p>For the purpose to get things done really fast, I use the example from <a href="http://www.laurentluce.com/posts/twitter-sentiment-analysis-using-python-and-nltk/" title="twitter sentiment analysis">Laurent’s blog</a>. But you can use <a href="https://github.com/japerk/nltk-trainer" title="nltk trainer">nltk-trainer</a> to train the classifier without a single line of python code.</p>
 
 <p>Most papers suggest that <a href="http://en.wikipedia.org/wiki/Bag-of-words_model" title="bag of words model">bag-of-words model</a> is one of the best techniques o classify text. So, I decided to use this method. However, this is about sentiment analysis so I used only Adjectives for feature extraction. The result is unacceptable with only <strong>19.7530864198 %</strong></p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">pos_tag</span> <span class="ow">in</span> <span class="n">nltk</span><span class="o">.</span><span class="n">pos_tag</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
-</span><span class='line'>   <span class="k">if</span> <span class="n">pos_tag</span> <span class="o">==</span> <span class="s">&#39;ADJ&#39;</span><span class="p">:</span>
-</span><span class='line'>      <span class="n">filtered_words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">pos_tag</span> <span class="ow">in</span> <span class="n">nltk</span><span class="o">.</span><span class="n">pos_tag</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+</span><span class="line">   <span class="k">if</span> <span class="n">pos_tag</span> <span class="o">==</span> <span class="s">&#39;ADJ&#39;</span><span class="p">:</span>
+</span><span class="line">      <span class="n">filtered_words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The second attempt I decided to fall back to bag-of-words model, and the result has gone up to <strong>61.316872428 %</strong></p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">filtered_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">words</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="n">filtered_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">words</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>So, I moved on and try to clean up the text a bit by cleaning stopwords, stripping ‘RT’ or ‘rt’ for retweet, deleting @peoplename and tokenise word by whitespace. So, “i’m” stays as one word and not [“i”, “‘m”]. The result has gone up to <strong>69.9588477366 %</strong>.</p>
 
-<p>So, I moved on and try to clean up the text a bit by cleaning stopwords, stripping &#8216;RT&#8217; or &#8216;rt&#8217; for retweet, deleting @peoplename and tokenise word by whitespace. So, &#8220;i&#8217;m&#8221; stays as one word and not [&#8220;i&#8221;, &#8220;&#8216;m&#8221;]. The result has gone up to <strong>69.9588477366 %</strong>.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="c"># stripping and cleaning.</span>
+</span><span class="line"><span class="c"># this is for stripping out the stopwords by using &lt;a href=&quot;http://nltk.googlecode.com/svn/trunk/doc/book/ch02.html&quot; title=&quot;NLTK Text Corpora&quot;&gt;NLTK Text Corpora&lt;/a&gt;</span>
+</span><span class="line"><span class="n">stripped_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">tokenized_text</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s">&#39;english&#39;</span><span class="p">)]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c"># stripping and cleaning.</span>
-</span><span class='line'><span class="c"># this is for stripping out the stopwords by using &lt;a href=&quot;http://nltk.googlecode.com/svn/trunk/doc/book/ch02.html&quot; title=&quot;NLTK Text Corpora&quot;&gt;NLTK Text Corpora&lt;/a&gt;</span>
-</span><span class='line'><span class="n">stripped_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">tokenized_text</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s">&#39;english&#39;</span><span class="p">)]</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>I’ll keep experimenting and post some more techniques to see if I could get something out of this.</p>
 
-
-<p>I&#8217;ll keep experimenting and post some more techniques to see if I could get something out of this.</p>
 </div>
 
 
@@ -165,7 +163,21 @@ Dec 30th, 2012</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Nowadays, we are swamped with information. For instance, I have lots of E-Books that have been written on plenty of CDs or DVDs, and they haven&#8217 &hellip;">
+	<meta name="description" content="Nowadays, we are swamped with information. For instance, I have lots of E-Books that have been written on plenty of CDs or DVDs, and they haven’t &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,13 +84,13 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">My Library</h2>
-	<div class="entry-content"><p>Nowadays, we are swamped with information. For instance, I have lots of E-Books that have been written on plenty of CDs or DVDs, and they haven&#8217;t been read at all because they are on DVD. Moreover, I don&#8217;t even know where they are or which DVD is the right one for me. So, that&#8217;s why I came up with an idea that why don&#8217;t we do something. I found some software that can solve this problem, such as Google Desktop. But that software is not what I wanted, because I need something smaller.</p>
+	<div class="entry-content"><p>Nowadays, we are swamped with information. For instance, I have lots of E-Books that have been written on plenty of CDs or DVDs, and they haven’t been read at all because they are on DVD. Moreover, I don’t even know where they are or which DVD is the right one for me. So, that’s why I came up with an idea that why don’t we do something. I found some software that can solve this problem, such as Google Desktop. But that software is not what I wanted, because I need something smaller.</p>
 
 <p>When I was working with the old company, I had a chance to know <a href="http://lucene.apache.org/" target="_blank">Lucene</a>. This project is under Apache, so it is reliable. This project, briefly, is full-text search engine, like Google. But it is written in JAVA and other platforms as well. Documents will be indexed and searched through Lucene engine.</p>
 
-<p>Here&#8217;s my plan.</p>
+<p>Here’s my plan.</p>
 
-<p>So, I am creating an web application. The input for this application is folder that contains files, such as PDFs and CHMs or any other documents that user wants to index. The application will index though those files and use filename as a keyword with a description field that I created. Those files will be searched by filename or description. This is just my idea!!. Personally, I am using the description field as DVD name. Hence, when I search by filename or description, the application will tell me where are the files I&#8217;m looking for and which DVD that they are kept.</p>
+<p>So, I am creating an web application. The input for this application is folder that contains files, such as PDFs and CHMs or any other documents that user wants to index. The application will index though those files and use filename as a keyword with a description field that I created. Those files will be searched by filename or description. This is just my idea!!. Personally, I am using the description field as DVD name. Hence, when I search by filename or description, the application will tell me where are the files I’m looking for and which DVD that they are kept.</p>
 
 <p>The advantage of this application is an offline search. If user uses files or folders searching on window. The files have to be actually on Hard Driver. On the other hand, the application collects just filename and description and write into index files. So, when we search, we search through the index files.</p>
 </div>
@@ -140,7 +140,21 @@ May 13th, 2008</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

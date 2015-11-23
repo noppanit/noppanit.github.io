@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I&#8217;m not sure who started this pattern so I can&#8217;t really refer back but if you know please comment below and I will update the post. I&# &hellip;">
+	<meta name="description" content="I’m not sure who started this pattern so I can’t really refer back but if you know please comment below and I will update the post. I’m sure all of &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,19 +84,19 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">You Should Check in Your Dependencies.</h2>
-	<div class="entry-content"><p>I&#8217;m not sure who started this pattern so I can&#8217;t really refer back but if you know please comment below and I will update the post. I&#8217;m sure all of you have heard that you should not check in anything that can be generated to Source control. It&#8217;s long been a common pattern. However, lately I have been checking in my dependencies into my source control and it works really well for small to medium project. Here&#8217;s why.</p>
+	<div class="entry-content"><p>I’m not sure who started this pattern so I can’t really refer back but if you know please comment below and I will update the post. I’m sure all of you have heard that you should not check in anything that can be generated to Source control. It’s long been a common pattern. However, lately I have been checking in my dependencies into my source control and it works really well for small to medium project. Here’s why.</p>
 
-<h3>Isolate you from any network failures.</h3>
+<h3 id="isolate-you-from-any-network-failures">Isolate you from any network failures.</h3>
 
-<p>I know you might say that it rarely happens to me so why should I care about this. I hear you. It rarely happens to me as well but when it did happen I got really frustrated. Especially, when your CI failed without any reason and you found out that one of your dependencies doesn&#8217;t get downloaded properly.</p>
+<p>I know you might say that it rarely happens to me so why should I care about this. I hear you. It rarely happens to me as well but when it did happen I got really frustrated. Especially, when your CI failed without any reason and you found out that one of your dependencies doesn’t get downloaded properly.</p>
 
-<h3>CI failure</h3>
+<h3 id="ci-failure">CI failure</h3>
 
-<p>This frustrates me the most and it&#8217;s one of the reasons why I started doing this. More than often that my CI failed and it&#8217;s because of dependencies didn&#8217;t get resolved or compiled properly and people just kept running it over and over again. To eliminate this problem and let CI just run the tests save me a lot of pulling my hair time.</p>
+<p>This frustrates me the most and it’s one of the reasons why I started doing this. More than often that my CI failed and it’s because of dependencies didn’t get resolved or compiled properly and people just kept running it over and over again. To eliminate this problem and let CI just run the tests save me a lot of pulling my hair time.</p>
 
-<h3>Check out and Go!</h3>
+<h3 id="check-out-and-go">Check out and Go!</h3>
 
-<p>This pattern I have learnt while I was working with ThoughtWorks that it&#8217;s so frustrated when you are joining a project and you spend almost half a day just to get your machine up and running and run the build script to download all the dependencies. I believed that&#8217;s one of the reasons why Chef and Puppet exist. It&#8217;s so easy when you checkout a project from your source control and you can start coding right away or even run all the tests.</p>
+<p>This pattern I have learnt while I was working with ThoughtWorks that it’s so frustrated when you are joining a project and you spend almost half a day just to get your machine up and running and run the build script to download all the dependencies. I believed that’s one of the reasons why Chef and Puppet exist. It’s so easy when you checkout a project from your source control and you can start coding right away or even run all the tests.</p>
 
 <p>I also have this support from my <a href="http://scottmuc.com/" title="Scott Muc">friend</a></p>
 
@@ -110,8 +110,7 @@
   </p>
 </blockquote>
 
-
-<p>Srini also pointed out that you shouldn&#8217;t do that for internal project dependencies</p>
+<p>Srini also pointed out that you shouldn’t do that for internal project dependencies</p>
 
 <blockquote class="twitter-tweet" lang="en">
   <p>
@@ -123,13 +122,13 @@
   </p>
 </blockquote>
 
+<h3 id="conclusion">Conclusion</h3>
 
-<h3>Conclusion</h3>
+<p>I know people might argue that it doesn’t really work for big project because of the size of the repository. That’s why I mention small to medium project. It works really well with small projects. Another point to mention is that every developer might have different environment for example, Windows VS Linux which node_modules might not work for both environments. I solve that problem by using Vagrant so everybody has the same environment.</p>
 
-<p>I know people might argue that it doesn&#8217;t really work for big project because of the size of the repository. That&#8217;s why I mention small to medium project. It works really well with small projects. Another point to mention is that every developer might have different environment for example, Windows VS Linux which node_modules might not work for both environments. I solve that problem by using Vagrant so everybody has the same environment.</p>
-
-<p>Inspiration<br/>
+<p>Inspiration
 <a href="https://www.dzombak.com/blog/2014/03/including-pods-in-source-control.html">https://www.dzombak.com/blog/2014/03/including-pods-in-source-control.html</a></p>
+
 </div>
 
 
@@ -177,7 +176,21 @@ Mar 28th, 2015</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

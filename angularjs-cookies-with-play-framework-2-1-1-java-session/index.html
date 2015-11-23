@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I have been working with AngularJs and I loved it, but occasionally I ran into some problems and the documentation is not that reliable. So, I&#8217; &hellip;">
+	<meta name="description" content="I have been working with AngularJs and I loved it, but occasionally I ran into some problems and the documentation is not that reliable. So, I’m &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,11 +84,11 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">AngularJs Cookies With Play Framework 2.1.1 Java Session.</h2>
-	<div class="entry-content"><p>I have been working with AngularJs and I loved it, but occasionally I ran into some problems and the documentation is not that reliable. So, I&#8217;m helping them to increase the rank.</p>
+	<div class="entry-content"><p>I have been working with AngularJs and I loved it, but occasionally I ran into some problems and the documentation is not that reliable. So, I’m helping them to increase the rank.</p>
 
-<p>Recently, I have this problem when Play saved some session in cookie already, but I can&#8217;t use $cookies from AngularJs to read the cookie. So, I started digging in and I found that those cookies are set with <strong>httpOnly</strong> by default. If you have that flag on any plugins (e.g, AngularJs) cannot read that cookie. So, it Play 1 you can set <strong>application.session.httpOnly=false</strong> but in Play 2.1 they changed to <strong>session.httpOnly=false</strong></p>
+<p>Recently, I have this problem when Play saved some session in cookie already, but I can’t use $cookies from AngularJs to read the cookie. So, I started digging in and I found that those cookies are set with <strong>httpOnly</strong> by default. If you have that flag on any plugins (e.g, AngularJs) cannot read that cookie. So, it Play 1 you can set <strong>application.session.httpOnly=false</strong> but in Play 2.1 they changed to <strong>session.httpOnly=false</strong></p>
 
-<p>I&#8217;m hoping I can save some people&#8217;s time.</p>
+<p>I’m hoping I can save some people’s time.</p>
 </div>
 
 
@@ -136,7 +136,21 @@ May 31st, 2013</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: r | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/r/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-29T10:10:45-04:00</updated>
+  <updated>2015-11-23T10:32:55-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -20,40 +20,44 @@
     <id>https://www.noppanit.com/how-many-tweets-i-have-tweeted-in-the-past</id>
     <content type="html"><![CDATA[<p>This blog post is kinda lame, but I got so excited to get something worked in R. I have been wondering what I have been doing for the last years.</p>
 
-<p>I&#8217;m sitting at my desk and thinking how can I know that. Then, yeah I can analyse my own tweets. So, I downloaded all my tweets from Twitter and started crushing some number.</p>
+<p>I’m sitting at my desk and thinking how can I know that. Then, yeah I can analyse my own tweets. So, I downloaded all my tweets from Twitter and started crushing some number.</p>
 
-<p>I&#8217;m guessing you can use this code as the format of the csv file should be the same.</p>
+<p>I’m guessing you can use this code as the format of the csv file should be the same.</p>
 
-<p>If you haven&#8217;t done this already.</p>
+<p>If you haven’t done this already.</p>
 
-<pre><code>install.packages("plyr")
+<p><code>
+install.packages("plyr")
 install.packages("ggplot2")
-</code></pre>
+</code></p>
 
-<pre><code>library(plyr)
-library(ggplot2)
+<p>```
+library(plyr)
+library(ggplot2)</p>
 
-#Load all your tweets
-tweets&lt;-read.delim("data/tweets.csv", sep=",")
+<h1 id="load-all-your-tweets">Load all your tweets</h1>
+<p>tweets&lt;-read.delim(“data/tweets.csv”, sep=”,”)</p>
 
-#Convert timestamp to Date in R
-tweets$timestamp&lt;-as.POSIXlt(tweets$timestamp, format="%Y-%m-%d %H:%M:%S +0000")
+<h1 id="convert-timestamp-to-date-in-r">Convert timestamp to Date in R</h1>
+<p>tweets$timestamp&lt;-as.POSIXlt(tweets$timestamp, format=”%Y-%m-%d %H:%M:%S +0000”)</p>
 
-#Get month in JAN-DEC format
-tweets$month = strftime(tweets$timestamp, "%b")
+<h1 id="get-month-in-jan-dec-format">Get month in JAN-DEC format</h1>
+<p>tweets$month = strftime(tweets$timestamp, “%b”)
 #Get year in 2011-20xx format
-tweets$year = strftime(tweets$timestamp, "%Y")
+tweets$year = strftime(tweets$timestamp, “%Y”)</p>
 
-#Then start counting for each month compare to each year
-timestamps_month = count(tweets, vars = c("month","year"))
+<h1 id="then-start-counting-for-each-month-compare-to-each-year">Then start counting for each month compare to each year</h1>
+<p>timestamps_month = count(tweets, vars = c(“month”,”year”))</p>
 
-#Then just plot the graph
-ggplot(data = timestamps_month) + geom_bar(aes(x = month, y = freq, fill = year), stat="identity", position = "dodge")
-</code></pre>
+<h1 id="then-just-plot-the-graph">Then just plot the graph</h1>
+<p>ggplot(data = timestamps_month) + geom_bar(aes(x = month, y = freq, fill = year), stat=”identity”, position = “dodge”)</p>
 
-<p>This is what I have been tweets for the past years. Interestingly I tweeted a lot back in 2010, hmm I was wondering what did I tweet. Well I gotta go to bed will find out tomorrow. What&#8217;s yours?</p>
+<p>```</p>
+
+<p>This is what I have been tweets for the past years. Interestingly I tweeted a lot back in 2010, hmm I was wondering what did I tweet. Well I gotta go to bed will find out tomorrow. What’s yours?</p>
 
 <p><a href="https://www.noppanit.com/wp-content/uploads/2013/08/Screen-Shot-2013-08-22-at-00.21.04.png"><img src="https://www.noppanit.com/wp-content/uploads/2013/08/Screen-Shot-2013-08-22-at-00.21.04.png" alt="My tweets" class="aligncenter size-full wp-image-1151 cool_border" /></a></p>
+
 ]]></content>
   </entry>
   

@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I know this shouldn&#8217;t happen at all these days, but as you have a lot of people contributing to one single repository. This thing might happen &hellip;">
+	<meta name="description" content="I know this shouldn’t happen at all these days, but as you have a lot of people contributing to one single repository. This thing might happen. So, &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,70 +84,69 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Little JavaScript to Check if the Page Contain Multiple IDs</h2>
-	<div class="entry-content"><p>I know this shouldn&#8217;t happen at all these days, but as you have a lot of people contributing to one single repository. This thing might happen. So, this is just purely for myself. I just use jQuery to create a little util method which is executed every time the browser is loaded to check if the page contains any multiple IDs.</p>
+	<div class="entry-content"><p>I know this shouldn’t happen at all these days, but as you have a lot of people contributing to one single repository. This thing might happen. So, this is just purely for myself. I just use jQuery to create a little util method which is executed every time the browser is loaded to check if the page contains any multiple IDs.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">detect_dub_ids</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">dupIds</span> <span class="o">=</span> <span class="p">[];</span>
-</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;[id]&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>        <span class="kd">var</span> <span class="nx">$ids</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;[id=&#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s1">&#39;]&#39;</span><span class="p">);</span>
-</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="nx">$ids</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">$ids</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">===</span> <span class="k">this</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>            <span class="nx">dupIds</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">dupIds</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">},</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">get_display_text_for_dup_ids</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ids</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="p">{},</span>
-</span><span class='line'>        <span class="nx">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">jQuery</span><span class="p">(</span><span class="nx">ids</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="nx">h</span><span class="p">[</span><span class="nx">value</span><span class="p">])</span> <span class="p">{;</span>
-</span><span class='line'>            <span class="nx">h</span><span class="p">[</span><span class="nx">value</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
-</span><span class='line'>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span><span class='line'>            <span class="nx">h</span><span class="p">[</span><span class="nx">value</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">value</span><span class="p">];</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">k</span> <span class="k">in</span> <span class="nx">h</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">text</span> <span class="o">+=</span> <span class="s2">&quot;#&quot;</span><span class="o">+</span><span class="nx">k</span><span class="o">+</span> <span class="s2">&quot; (&quot;</span><span class="o">+</span><span class="nx">h</span><span class="p">[</span><span class="nx">k</span><span class="p">].</span><span class="nx">length</span><span class="o">+</span><span class="s2">&quot;) times &quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">text</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">detect_dub_ids</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">dupIds</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class="line">    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;[id]&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class="line">        <span class="kd">var</span> <span class="nx">$ids</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;[id=&#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s1">&#39;]&#39;</span><span class="p">);</span>
+</span><span class="line">        <span class="k">if</span> <span class="p">(</span><span class="nx">$ids</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">$ids</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">===</span> <span class="k">this</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">            <span class="nx">dupIds</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">return</span> <span class="nx">dupIds</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="p">},</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">get_display_text_for_dup_ids</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ids</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="p">{},</span>
+</span><span class="line">        <span class="nx">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span class="line">    <span class="nx">jQuery</span><span class="p">(</span><span class="nx">ids</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">if</span><span class="p">(</span><span class="nx">h</span><span class="p">[</span><span class="nx">value</span><span class="p">])</span> <span class="p">{;</span>
+</span><span class="line">            <span class="nx">h</span><span class="p">[</span><span class="nx">value</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+</span><span class="line">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="line">            <span class="nx">h</span><span class="p">[</span><span class="nx">value</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">value</span><span class="p">];</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">k</span> <span class="k">in</span> <span class="nx">h</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">text</span> <span class="o">+=</span> <span class="s2">&quot;#&quot;</span><span class="o">+</span><span class="nx">k</span><span class="o">+</span> <span class="s2">&quot; (&quot;</span><span class="o">+</span><span class="nx">h</span><span class="p">[</span><span class="nx">k</span><span class="p">].</span><span class="nx">length</span><span class="o">+</span><span class="s2">&quot;) times &quot;</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">return</span> <span class="nx">text</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 </div>
 
 
@@ -195,7 +194,21 @@ Jan 8th, 2013</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

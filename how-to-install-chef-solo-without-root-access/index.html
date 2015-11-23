@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I know the title it&#8217;s stupid. And if you arrived at this post, I know your this question will pop up in your head, &#8220;Why on earth you want &hellip;">
+	<meta name="description" content="I know the title it’s stupid. And if you arrived at this post, I know your this question will pop up in your head, “Why on earth you want to do that &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,92 +84,92 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">How to Install Chef-Solo Without Root Access?</h2>
-	<div class="entry-content"><p>I know the title it&#8217;s stupid. And if you arrived at this post, I know your this question will pop up in your head, &#8220;Why on earth you want to do that?&#8221;. Chef is built in the assumption that it has root access and yeah it makes perfect sense. Without root access it&#8217;s like I want to hire a cleaner to clean my house but I want to get my house cleaned without giving my house key to the cleaner. It&#8217;s the same thing here.</p>
+	<div class="entry-content"><p>I know the title it’s stupid. And if you arrived at this post, I know your this question will pop up in your head, “Why on earth you want to do that?”. Chef is built in the assumption that it has root access and yeah it makes perfect sense. Without root access it’s like I want to hire a cleaner to clean my house but I want to get my house cleaned without giving my house key to the cleaner. It’s the same thing here.</p>
 
-<p>However, I&#8217;m here to just talk about how to do this in a very ugly and hacky way.</p>
+<p>However, I’m here to just talk about how to do this in a very ugly and hacky way.</p>
 
-<p>Problem:<br/>
-One day on a client side, they said we want you to deploy the application to our production VM server, but we cannot give you sudo or root access. Of course, it makes sense why would you give some guy root access. The IT guy gives me one folder which you can do anything as long as you stay inside that folder. We won&#8217;t have any problem because our app is basically just a java application with Jetty container, so it doesn&#8217;t matter where it lives. Now, here comes the problem we want to deploy our application anytime we want and we want to do the <a href="http://martinfowler.com/bliki/PhoenixServer.html" title="PhoenixServer">PhoenixServer</a> pattern. But in this case, it&#8217;s just going to be semi phoenixServer, because we&#8217;re not going to wipe the whole box out. So we thought, yeah we could use Chef to provision the server. Great!. But how can you even install Chef without sudo or root access? If you go to Chef and download the Linux version it will be an RPM which obviously it needs root access to install that, which we don&#8217;t have. Hmm, what are we gonna do?</p>
+<p>Problem:<br />
+One day on a client side, they said we want you to deploy the application to our production VM server, but we cannot give you sudo or root access. Of course, it makes sense why would you give some guy root access. The IT guy gives me one folder which you can do anything as long as you stay inside that folder. We won’t have any problem because our app is basically just a java application with Jetty container, so it doesn’t matter where it lives. Now, here comes the problem we want to deploy our application anytime we want and we want to do the <a href="http://martinfowler.com/bliki/PhoenixServer.html" title="PhoenixServer">PhoenixServer</a> pattern. But in this case, it’s just going to be semi phoenixServer, because we’re not going to wipe the whole box out. So we thought, yeah we could use Chef to provision the server. Great!. But how can you even install Chef without sudo or root access? If you go to Chef and download the Linux version it will be an RPM which obviously it needs root access to install that, which we don’t have. Hmm, what are we gonna do?</p>
 
-<p>Solution:<br/>
-So we thought, well we just need Chef-solo because it&#8217;s just going to be one server. Chef is written in Ruby and our Centos VM doesn&#8217;t even come Ruby. The problem gets bigger, how can we install Ruby without root access. Ha! now here&#8217;s the tricky part. Chef is Ruby, Ruby is C. We have C, so we could compile Ruby and use gem to install Chef. Woohoo! Sounds easy right? By the way, Chef comes with embedded-ruby already that&#8217;s why when you install Chef you don&#8217;t need to install Ruby first. The Chef guys cleverly embedded Ruby inside Chef with all the gems and deploy that to <strong>/opt/chef</strong>. You can find more information <a href="http://www.opscode.com/chef/install/" title="Chef install">here</a>. So, we could do the same thing but we need to compile Ruby and dependencies to our folder. Ok, I&#8217;ll cut to the chest now. All we need is Ruby and Chef gem. In order to install, ruby which I found out you just need three minimum libraries, zlib, yaml and openssl. Here&#8217;s how to do it.</p>
+<p>Solution:<br />
+So we thought, well we just need Chef-solo because it’s just going to be one server. Chef is written in Ruby and our Centos VM doesn’t even come Ruby. The problem gets bigger, how can we install Ruby without root access. Ha! now here’s the tricky part. Chef is Ruby, Ruby is C. We have C, so we could compile Ruby and use gem to install Chef. Woohoo! Sounds easy right? By the way, Chef comes with embedded-ruby already that’s why when you install Chef you don’t need to install Ruby first. The Chef guys cleverly embedded Ruby inside Chef with all the gems and deploy that to <strong>/opt/chef</strong>. You can find more information <a href="http://www.opscode.com/chef/install/" title="Chef install">here</a>. So, we could do the same thing but we need to compile Ruby and dependencies to our folder. Ok, I’ll cut to the chest now. All we need is Ruby and Chef gem. In order to install, ruby which I found out you just need three minimum libraries, zlib, yaml and openssl. Here’s how to do it.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#Install Openssl</span>
-</span><span class='line'>wget https://www.openssl.org/source/openssl-1.0.0k.tar.gz
-</span><span class='line'>tar zxvf openssl-1.0.0k.tar.gz
-</span><span class='line'><span class="nb">cd </span>openssl-1.0.0k
-</span><span class='line'>./config shared -fPIC --prefix<span class="o">=</span>/home/centos/ruby --openssldir<span class="o">=</span>/home/centos/ruby/ssl
-</span><span class='line'>make <span class="o">&amp;&amp;</span> make install
-</span><span class='line'><span class="nb">cd</span> /home/centos
-</span><span class='line'>
-</span><span class='line'><span class="c">#Install zlib</span>
-</span><span class='line'>wget http://zlib.net/zlib-1.2.8.tar.gz
-</span><span class='line'>tar xzvf zlib-1.2.8.tar.gz
-</span><span class='line'><span class="nb">cd </span>zlib-1.2.8
-</span><span class='line'>./configure --prefix<span class="o">=</span>/home/centos/ruby
-</span><span class='line'>make <span class="o">&amp;&amp;</span> make install
-</span><span class='line'><span class="nb">cd</span> /home/centos
-</span><span class='line'>
-</span><span class='line'><span class="c">#Install Yaml</span>
-</span><span class='line'>wget http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz
-</span><span class='line'>tar xzvf yaml-0.1.4.tar.gz
-</span><span class='line'><span class="nb">cd </span>yaml-0.1.4
-</span><span class='line'>./configure --disable-install-doc --prefix<span class="o">=</span>/home/centos/ruby
-</span><span class='line'>make <span class="o">&amp;&amp;</span> make install
-</span><span class='line'><span class="nb">cd</span> /home/centos
-</span><span class='line'>
-</span><span class='line'><span class="c">#Install Ruby 1.9.3</span>
-</span><span class='line'>wget ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p448.tar.gz
-</span><span class='line'>tar xzvf ruby-1.9.3-p448.tar.gz
-</span><span class='line'><span class="nb">cd </span>ruby-1.9.3-p448
-</span><span class='line'>./configure --prefix<span class="o">=</span>/home/centos/ruby --enable-shared --disable-install-doc --with-opt-dir<span class="o">=</span>/home/centos/ruby
-</span><span class='line'>make <span class="o">&amp;&amp;</span> make install
-</span><span class='line'><span class="nb">cd</span> /home/centos
-</span><span class='line'>
-</span><span class='line'><span class="c">#Install Chef gem</span>
-</span><span class='line'>./ruby/bin/gem install --no-rdoc --no-ri chef
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="c">#Install Openssl</span>
+</span><span class="line">wget https://www.openssl.org/source/openssl-1.0.0k.tar.gz
+</span><span class="line">tar zxvf openssl-1.0.0k.tar.gz
+</span><span class="line"><span class="nb">cd </span>openssl-1.0.0k
+</span><span class="line">./config shared -fPIC --prefix<span class="o">=</span>/home/centos/ruby --openssldir<span class="o">=</span>/home/centos/ruby/ssl
+</span><span class="line">make <span class="o">&amp;&amp;</span> make install
+</span><span class="line"><span class="nb">cd</span> /home/centos
+</span><span class="line">
+</span><span class="line"><span class="c">#Install zlib</span>
+</span><span class="line">wget http://zlib.net/zlib-1.2.8.tar.gz
+</span><span class="line">tar xzvf zlib-1.2.8.tar.gz
+</span><span class="line"><span class="nb">cd </span>zlib-1.2.8
+</span><span class="line">./configure --prefix<span class="o">=</span>/home/centos/ruby
+</span><span class="line">make <span class="o">&amp;&amp;</span> make install
+</span><span class="line"><span class="nb">cd</span> /home/centos
+</span><span class="line">
+</span><span class="line"><span class="c">#Install Yaml</span>
+</span><span class="line">wget http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz
+</span><span class="line">tar xzvf yaml-0.1.4.tar.gz
+</span><span class="line"><span class="nb">cd </span>yaml-0.1.4
+</span><span class="line">./configure --disable-install-doc --prefix<span class="o">=</span>/home/centos/ruby
+</span><span class="line">make <span class="o">&amp;&amp;</span> make install
+</span><span class="line"><span class="nb">cd</span> /home/centos
+</span><span class="line">
+</span><span class="line"><span class="c">#Install Ruby 1.9.3</span>
+</span><span class="line">wget ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p448.tar.gz
+</span><span class="line">tar xzvf ruby-1.9.3-p448.tar.gz
+</span><span class="line"><span class="nb">cd </span>ruby-1.9.3-p448
+</span><span class="line">./configure --prefix<span class="o">=</span>/home/centos/ruby --enable-shared --disable-install-doc --with-opt-dir<span class="o">=</span>/home/centos/ruby
+</span><span class="line">make <span class="o">&amp;&amp;</span> make install
+</span><span class="line"><span class="nb">cd</span> /home/centos
+</span><span class="line">
+</span><span class="line"><span class="c">#Install Chef gem</span>
+</span><span class="line">./ruby/bin/gem install --no-rdoc --no-ri chef
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>Please note that I installed ruby with chef to <strong>/home/centos/ruby</strong>, you need to change the path to where you want it to be, the same as chef guys decided <strong>/opt/chef</strong> is the best place for Chef to live. However, we don&#8217;t even have access to /opt.</p>
+<p>Please note that I installed ruby with chef to <strong>/home/centos/ruby</strong>, you need to change the path to where you want it to be, the same as chef guys decided <strong>/opt/chef</strong> is the best place for Chef to live. However, we don’t even have access to /opt.</p>
 
 <p>Once you run this piece of code in your VM you will have ruby folder which you can just zip it and deploy to your server. There you go, you just got your customised Chef-solo.</p>
 
-<p>I know it sounds stupid and it&#8217;s really hacky and ugly. But here&#8217;s what we found out so I want to blog it here so any lucky people might find this useful in the future.</p>
+<p>I know it sounds stupid and it’s really hacky and ugly. But here’s what we found out so I want to blog it here so any lucky people might find this useful in the future.</p>
+
 </div>
 
 
@@ -217,7 +217,21 @@ Aug 23rd, 2013</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="First of all, I&#8217;m not a researcher what I post here is just my experiment that I do it myself. I have this problem when I want to match string &hellip;">
+	<meta name="description" content="First of all, I’m not a researcher what I post here is just my experiment that I do it myself. I have this problem when I want to match string but &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,42 +84,40 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">What if Matching Exact String Is Not Enough, Basic Fuzzy Search That You Want to Know.</h2>
-	<div class="entry-content"><p>First of all, I&#8217;m not a researcher what I post here is just my experiment that I do it myself.</p>
+	<div class="entry-content"><p>First of all, I’m not a researcher what I post here is just my experiment that I do it myself.</p>
 
-<p>I have this problem when I want to match string but not <strong>exact match</strong>. For example, I have this string <strong>&#8220;I really love The Matrix movie because of this quote &#8216;welcome to the real world'&#8221;</strong> and I have a bunch of tags in my database such as <strong>&#8220;The Matrix&#8221;, &#8220;welcome to the real world&#8221;, &#8220;red pill&#8221;, &#8220;blue pill&#8221;</strong>. So, if I want to match the tags with the string I could do regular expression like this or actually I could do the exact match and still get the correct one.</p>
+<p>I have this problem when I want to match string but not <strong>exact match</strong>. For example, I have this string <strong>“I really love The Matrix movie because of this quote ‘welcome to the real world’”</strong> and I have a bunch of tags in my database such as <strong>“The Matrix”, “welcome to the real world”, “red pill”, “blue pill”</strong>. So, if I want to match the tags with the string I could do regular expression like this or actually I could do the exact match and still get the correct one.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>/.*world.*/</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">/.*world.*/</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>That would give me what I want. However, what if I have another movie <strong>“The day after tomorrow”</strong> with tags <strong>“world”</strong>. If I search with word that string against the tags I will get two movies. So, what can I do? I did some Google and found <a href="http://en.wikipedia.org/wiki/Approximate_string_matching">fuzzy search</a> and I picked <a href="http://en.wikipedia.org/wiki/Levenshtein_distance">“Levenshtein”</a>. I’m not good at maths so I can’t really explains in technical correctly. But basically, it’s a technique to look into two strings and count every time you have to <string>&#8220;edit&#8221;&lt;/strong&gt; to make the strings exact match. For example,</string></p>
 
-<p>That would give me what I want. However, what if I have another movie <strong>&#8220;The day after tomorrow&#8221;</strong> with tags <strong>&#8220;world&#8221;</strong>. If I search with word that string against the tags I will get two movies. So, what can I do? I did some Google and found <a href="http://en.wikipedia.org/wiki/Approximate_string_matching">fuzzy search</a> and I picked <a href="http://en.wikipedia.org/wiki/Levenshtein_distance">&#8220;Levenshtein&#8221;</a>. I&#8217;m not good at maths so I can&#8217;t really explains in technical correctly. But basically, it&#8217;s a technique to look into two strings and count every time you have to <string>&#8220;edit&#8221;</strong> to make the strings exact match. For example,</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>“I love you” # string 1
-</span><span class='line'>
-</span><span class='line'>“I also love you” # string 2</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">“I love you” # string 1
+</span><span class="line">
+</span><span class="line">“I also love you” # string 2</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The distance would be <strong>1</strong> because it takes <strong>1</strong> edit to make the two strings exact match. We have to add <strong>also</strong> or delete <strong>also</strong> 1 time.</p>
 
 <p>So from the example above.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c"># Distance 12</span>
-</span><span class='line'><span class="n">puts</span> <span class="n">Levenshtein</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="s">&quot;welcome to the real world&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">),</span> <span class="s">&quot;I really love The Matrix movie because of this quote &#39;welcome to the real world&#39;&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">))</span>
-</span><span class='line'><span class="c"># Distance 15</span>
-</span><span class='line'><span class="n">puts</span> <span class="n">Levenshtein</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="s">&quot;world&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">),</span> <span class="s">&quot;I really love The Matrix movie because of this quote &#39;welcome to the real world&#39;&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="c"># Distance 12</span>
+</span><span class="line"><span class="n">puts</span> <span class="n">Levenshtein</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="s">&quot;welcome to the real world&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">),</span> <span class="s">&quot;I really love The Matrix movie because of this quote &#39;welcome to the real world&#39;&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">))</span>
+</span><span class="line"><span class="c"># Distance 15</span>
+</span><span class="line"><span class="n">puts</span> <span class="n">Levenshtein</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="s">&quot;world&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">),</span> <span class="s">&quot;I really love The Matrix movie because of this quote &#39;welcome to the real world&#39;&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>So this way, the tag <strong>welcome to the real world</strong> is more likely to match with the string <strong>I really love The Matrix movie because of this quote &#8216;welcome to the real world</strong></p>
+<p>So this way, the tag <strong>welcome to the real world</strong> is more likely to match with the string <strong>I really love The Matrix movie because of this quote ‘welcome to the real world</strong></p>
 
 <p>I use this <a href="http://rubygems.org/gems/levenshtein" title="levenshtein algorithm">Gem</a> for this experiment</p>
+
 </div>
 
 
@@ -167,7 +165,21 @@ Jan 1st, 2013</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

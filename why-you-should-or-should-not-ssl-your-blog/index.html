@@ -86,75 +86,68 @@
 	<h2 class="title">Why You Should or Should Not SSL Your Blog</h2>
 	<div class="entry-content"><p>After I switched to Octopress, I knew that I wanted to write about performance and SSL. Those are the main reasons why I switched.</p>
 
-<p>Last year, Google <a href="http://googlewebmastercentral.blogspot.com/2014/08/https-as-ranking-signal.html">announced</a> that they will include Https as a single in their ranking. So, if you want to be the cool kid, go and SSL your site now. But what does SSL really do to your site? Have you seen that in action? I only know that from reading all the blog posts about this. In this blog, I&rsquo;ll show you what SSL does to your site.</p>
+<p>Last year, Google <a href="http://googlewebmastercentral.blogspot.com/2014/08/https-as-ranking-signal.html">announced</a> that they will include Https as a single in their ranking. So, if you want to be the cool kid, go and SSL your site now. But what does SSL really do to your site? Have you seen that in action? I only know that from reading all the blog posts about this. In this blog, I’ll show you what SSL does to your site.</p>
 
 <p>Thanks to my friend <a href="https://twitter.com/suksant">Suksant</a> who helped me conducting the test.</p>
 
-<h2>What will you need?</h2>
+<h2 id="what-will-you-need">What will you need?</h2>
 
 <ol>
-<li><a href="https://www.wireshark.org/">Wireshare</a> is a network protocal analysis.</li>
+  <li><a href="https://www.wireshark.org/">Wireshare</a> is a network protocal analysis.</li>
 </ol>
 
+<h2 id="simple-website">Simple website.</h2>
 
-<h2>Simple website.</h2>
+<p>I’ve created a simple <a href="https://github.com/noppanit/SSL-Show-and-tell">site</a> that you can fake login form. So, you can go ahead and deploy that to your heroku. I chose Heroku as the platform of choice because you can try the site with and without SSL.</p>
 
-<p>I&rsquo;ve created a simple <a href="https://github.com/noppanit/SSL-Show-and-tell">site</a> that you can fake login form. So, you can go ahead and deploy that to your heroku. I chose Heroku as the platform of choice because you can try the site with and without SSL.</p>
+<h2 id="setup-your-wireshark">Setup your wireshark</h2>
 
-<h2>Setup your wireshark</h2>
-
-<p>There&rsquo;s a couple things you need to do before you can capture the password.</p>
+<p>There’s a couple things you need to do before you can capture the password.</p>
 
 <ol>
-<li>Open your wireshark and go to <em>Capture -> Interfaces</em> and click <em>en0</em> that should be your Wifi connection.</li>
+  <li>Open your wireshark and go to <em>Capture -&gt; Interfaces</em> and click <em>en0</em> that should be your Wifi connection.</li>
 </ol>
 
+<p><img src="/wp-content/uploads/2015/10/wireshark-setup-interface.jpg" title="Wireshark Interfaces" /></p>
 
-<p><img src="/wp-content/uploads/2015/10/wireshark-setup-interface.jpg" title="Wireshark Interfaces" ></p>
-
-<p>Then click &lsquo;Start&rsquo; to capture the packets</p>
+<p>Then click ‘Start’ to capture the packets</p>
 
 <ol>
-<li>In the <em>Filter</em> section, put this <em>frame contains topsecret</em> (That&rsquo;s going to be your password)</li>
+  <li>In the <em>Filter</em> section, put this <em>frame contains topsecret</em> (That’s going to be your password)</li>
 </ol>
 
+<p><img src="/wp-content/uploads/2015/10/wireshark-filter.jpg" title="Wireshark filter" /></p>
 
-<p><img src="/wp-content/uploads/2015/10/wireshark-filter.jpg" title="Wireshark filter" ></p>
-
-<h2>Capture the password</h2>
+<h2 id="capture-the-password">Capture the password</h2>
 
 <ol>
-<li>I deployed the application <a href="http://ssl-show-and-tell.herokuapp.com/login">here</a>. Go ahead and enter &ldquo;username&rdquo; in username and &ldquo;topsecretpassword&rdquo; in password It could be anything. Try to check if the URL is not SSL.</li>
+  <li>I deployed the application <a href="http://ssl-show-and-tell.herokuapp.com/login">here</a>. Go ahead and enter “username” in username and “topsecretpassword” in password It could be anything. Try to check if the URL is not SSL.</li>
 </ol>
 
-
-<p><img src="/wp-content/uploads/2015/10/form-to-submit-without-ssl.jpg" title="Form submit" ></p>
+<p><img src="/wp-content/uploads/2015/10/form-to-submit-without-ssl.jpg" title="Form submit" /></p>
 
 <ol>
-<li>Once you&rsquo;ve submitted your password, you should see that Wireshark has captured something already.</li>
+  <li>Once you’ve submitted your password, you should see that Wireshark has captured something already.</li>
 </ol>
 
-
-<p><img src="/wp-content/uploads/2015/10/wireshark-captured-password.jpg" title="Wireshark with password" ></p>
+<p><img src="/wp-content/uploads/2015/10/wireshark-captured-password.jpg" title="Wireshark with password" /></p>
 
 <p>without even trying to do anything hard. You can clearly see the password.</p>
 
-<h2>Now with SSL.</h2>
+<h2 id="now-with-ssl">Now with SSL.</h2>
 
 <ol>
-<li>Change your URL to be *<a href="https:*">https:*</a></li>
-<li>You will not find anything with your password on Wireshark</li>
+  <li>Change your URL to be <em>https:</em></li>
+  <li>You will not find anything with your password on Wireshark</li>
 </ol>
 
+<h2 id="what-gives">What gives?</h2>
 
-<h2>What gives?</h2>
+<p>In conclusion, what have we learned here? SSL encrypts everything being sent to the server will be encrypted. It’s safer and make the site more trustworthy. However, if you’re just running a blog you probably won’t need SSL. If you have a website that capture anything from the user then big ‘YES’ you need SSL. For me, I just want to be a cool kid so I SSLed my site.</p>
 
-<p>In conclusion, what have we learned here? SSL encrypts everything being sent to the server will be encrypted. It&rsquo;s safer and make the site more trustworthy. However, if you&rsquo;re just running a blog you probably won&rsquo;t need SSL. If you have a website that capture anything from the user then big &lsquo;YES&rsquo; you need SSL. For me, I just want to be a cool kid so I SSLed my site.</p>
-
-<h2>Reference</h2>
-
+<h2 id="reference">Reference</h2>
 <ol>
-<li><a href="https://samsclass.info/120/proj/p3-wireshark.htm">Wireshark tutorial</a></li>
+  <li><a href="https://samsclass.info/120/proj/p3-wireshark.htm">Wireshark tutorial</a></li>
 </ol>
 
 </div>
@@ -200,7 +193,21 @@ Oct 9th, 2015</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

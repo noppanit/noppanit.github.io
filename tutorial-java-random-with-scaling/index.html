@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I have been playing around with Random class in Java. Unfortunately, this class doesn&#8217;t provide us some methods we need. Such as, limit the &hellip;">
+	<meta name="description" content="I have been playing around with Random class in Java. Unfortunately, this class doesn’t provide us some methods we need. Such as, limit the range &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,30 +84,28 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Tutorial : Java Random With Scaling</h2>
-	<div class="entry-content"><p>I have been playing around with Random class in Java. Unfortunately, this class doesn&#8217;t provide us some methods we need. Such as, limit the range between -50,50 or get random double from 1 &#8211; 1000. Something like this we can fine tune. I copied some good practice from this <a href="http://www.cs.geneseo.edu/~baldwin/reference/random.html">website</a>.</p>
+	<div class="entry-content"><p>I have been playing around with Random class in Java. Unfortunately, this class doesn’t provide us some methods we need. Such as, limit the range between -50,50 or get random double from 1 – 1000. Something like this we can fine tune. I copied some good practice from this <a href="http://www.cs.geneseo.edu/~baldwin/reference/random.html">website</a>.</p>
 
 <p>Here are some examples of these operations:</p>
 
 <ul>
-<li>Suppose you are writing a game program that simulates throwing dice, and so need a random integer in the range 1 to 6. &#8220;nextInt&#8221; can give you one in the range 0 to 5, and you can translate this to the range you need:</li>
+  <li>Suppose you are writing a game program that simulates throwing dice, and so need a random integer in the range 1 to 6. “nextInt” can give you one in the range 0 to 5, and you can translate this to the range you need:</li>
 </ul>
-
 
 <p>int throw = generator.nextInt(6) + 1;</p>
 
 <ul>
-<li>In drawing a pattern made up of random lines, you want to pick a random angle between 0 and 360 degrees at which to draw a line. The angle can be any real number. The &#8220;nextDouble&#8221; message will give you a random real number, but between 0 and 1. You can use scaling to turn this into a real number between 0 and 360:</li>
+  <li>In drawing a pattern made up of random lines, you want to pick a random angle between 0 and 360 degrees at which to draw a line. The angle can be any real number. The “nextDouble” message will give you a random real number, but between 0 and 1. You can use scaling to turn this into a real number between 0 and 360:</li>
 </ul>
-
 
 <p>double angle = generator.nextDouble() * 360.0;</p>
 
 <ul>
-<li>Suppose the same pattern-drawing program also needs to pick random lengths for the lines, but that the lines should never be shorter than 10 units, nor longer than 50. Line lengths can be any real number between these limits. Thus you need random lengths from a 40-unit range starting at 10. You can use scaling and translation together to generate these numbers from &#8220;nextDouble&#8221;:</li>
+  <li>Suppose the same pattern-drawing program also needs to pick random lengths for the lines, but that the lines should never be shorter than 10 units, nor longer than 50. Line lengths can be any real number between these limits. Thus you need random lengths from a 40-unit range starting at 10. You can use scaling and translation together to generate these numbers from “nextDouble”:</li>
 </ul>
 
-
 <p>double length = generator.nextDouble() * 40.0 + 10.0;</p>
+
 </div>
 
 
@@ -155,7 +153,21 @@ Sep 2nd, 2010</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

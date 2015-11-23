@@ -85,19 +85,18 @@ Yes, my first answer is, we need different objects because we need &hellip;">
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Java : Why Do Want to New Different Objects From One Class</h2>
-	<div class="entry-content"><p>I was asked this once. Why do we need to new object every time we want to use it.<br/>
+	<div class="entry-content"><p>I was asked this once. Why do we need to new object every time we want to use it.<br />
 Yes, my first answer is, we need different objects because we need to use them separately because they are on different locations in Heap memory. However, this is not actually the answer. So, why do we need to new object every time we want to use it.</p>
 
 <p>For instance,</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">A</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">A</span><span class="o">();</span>
-</span><span class='line'><span class="n">A</span> <span class="n">a1</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">A</span><span class="o">();</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">A</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">A</span><span class="o">();</span>
+</span><span class="line"><span class="n">A</span> <span class="n">a1</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">A</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>What&#8217;s the different between a and a1. They behave exactly the same, because they are A class. The reason is we would like to actually change their attributes or properties inside the class. This is very fundamental Object-oriented principle.</p>
+<p>What’s the different between a and a1. They behave exactly the same, because they are A class. The reason is we would like to actually change their attributes or properties inside the class. This is very fundamental Object-oriented principle.</p>
 </div>
 
 
@@ -145,7 +144,21 @@ Nov 21st, 2009</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

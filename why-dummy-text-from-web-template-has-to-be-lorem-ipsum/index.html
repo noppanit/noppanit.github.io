@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Ever wonder why dummy text or banner text on web templates or Microsoft Word Templates has to begin with &#8220;Lorem ipsum dolor sit amet&#8230;&# &hellip;">
+	<meta name="description" content="Ever wonder why dummy text or banner text on web templates or Microsoft Word Templates has to begin with “Lorem ipsum dolor sit amet…” and go on and &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,15 +84,16 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Why Dummy Text From Web Template Has to Be &#8220;Lorem Ipsum&#8221;</h2>
-	<div class="entry-content"><p>Ever wonder why dummy text or banner text on web templates or Microsoft Word Templates has to begin with &#8220;Lorem ipsum dolor sit amet&#8230;&#8221; and go on and on. Do you even know what this means? Well I don&#8217;t. But I found an answer that might explain all of this.</p>
+	<div class="entry-content"><p>Ever wonder why dummy text or banner text on web templates or Microsoft Word Templates has to begin with “Lorem ipsum dolor sit amet…” and go on and on. Do you even know what this means? Well I don’t. But I found an answer that might explain all of this.</p>
 
-<p>First, after google announced that they have added Latin as one of the languages they can translate. This is the meaning of &#8220;Lorem ipsum dolor sit amet&#8221;, &#8220;<label for="start">We</label> <label for="start">pain is love itself&#8221; and I still don&#8217;t understand what it means. And I found a website that can help my understanding. </label></p>
+<p>First, after google announced that they have added Latin as one of the languages they can translate. This is the meaning of “Lorem ipsum dolor sit amet”, “<label for="start">We</label> <label for="start">pain is love itself” and I still don’t understand what it means. And I found a website that can help my understanding. </label></p>
 
-<p>This is what they say &#8220;The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#8216;Content here, content here&#8217;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#8216;lorem ipsum&#8217; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)&#8221;</p>
+<p>This is what they say “The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ‘lorem ipsum’ will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)”</p>
 
-<p>And I think this is pretty good, it&#8217;s like when you want to test your program you need to use real data and not just &#8220;1234&#8221; and &#8220;asdf&#8221;. It&#8217;s unreadable.</p>
+<p>And I think this is pretty good, it’s like when you want to test your program you need to use real data and not just “1234” and “asdf”. It’s unreadable.</p>
 
 <p>For more information click on <a href="http://www.lipsum.com/">http://www.lipsum.com/ </a></p>
+
 </div>
 
 
@@ -140,7 +141,21 @@ Jan 16th, 2011</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

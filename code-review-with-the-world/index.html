@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="TL;DR If you don&#8217;t know Code Review Stackoverflow you gotta get on it now. It works and it&#8217;s awesome. Longer version In Agile world, &hellip;">
+	<meta name="description" content="TL;DR If you don’t know Code Review Stackoverflow you gotta get on it now. It works and it’s awesome. Longer version In Agile world, everybody is &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,54 +84,54 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Code Review With the World</h2>
-	<div class="entry-content"><h2>TL;DR</h2>
+	<div class="entry-content"><h2 id="tldr">TL;DR</h2>
 
-<p>If you don&#8217;t know <a href="http://codereview.stackexchange.com/">Code Review Stackoverflow</a> you gotta get on it now. It works and it&#8217;s awesome.</p>
+<p>If you don’t know <a href="http://codereview.stackexchange.com/">Code Review Stackoverflow</a> you gotta get on it now. It works and it’s awesome.</p>
 
-<h2>Longer version</h2>
+<h2 id="longer-version">Longer version</h2>
 
-<p>In Agile world, everybody is talking about fail fast and faster feedback. If you&#8217;re a serious coder then code review and feedback are just as important. If you&#8217;re like me (maybe I&#8217;m alone), I used to hate code review so much because I don&#8217;t want someone to criticize my work, coding is like an art. You spent a lot of time on a piece of code and somebody just come in and say it sucks or why would you do something like that?. Not everybody is a great coder like Linus Torvalds or Ryan Dahl. Especially me, Because of rigorous code review I came from the worst coder every to bad coder (I&#8217;m still bad and I&#8217;m still learning). I believe the best way to learn any skill is first you have to be wrong and learn from your mistakes. The quickest way to do that is to code a lot and get your code reviewed by someone who&#8217;s a stronger coder than you, which you will have a lot on the Internet. If you work with some of the best programmers in your life then you&#8217;re lucky. But not everybody is that fortunate. I&#8217;ve found a better solution. <a href="http://codereview.stackexchange.com/">http://codereview.stackexchange.com/</a></p>
+<p>In Agile world, everybody is talking about fail fast and faster feedback. If you’re a serious coder then code review and feedback are just as important. If you’re like me (maybe I’m alone), I used to hate code review so much because I don’t want someone to criticize my work, coding is like an art. You spent a lot of time on a piece of code and somebody just come in and say it sucks or why would you do something like that?. Not everybody is a great coder like Linus Torvalds or Ryan Dahl. Especially me, Because of rigorous code review I came from the worst coder every to bad coder (I’m still bad and I’m still learning). I believe the best way to learn any skill is first you have to be wrong and learn from your mistakes. The quickest way to do that is to code a lot and get your code reviewed by someone who’s a stronger coder than you, which you will have a lot on the Internet. If you work with some of the best programmers in your life then you’re lucky. But not everybody is that fortunate. I’ve found a better solution. <a href="http://codereview.stackexchange.com/">http://codereview.stackexchange.com/</a></p>
 
-<h2>Let&#8217;s get to the meat</h2>
+<h2 id="let8217s-get-to-the-meat">Let’s get to the meat</h2>
 
 <p>For example, I wrote this piece of code to learn about dynamic programming.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
-</span><span class='line'><span class="n">coins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-</span><span class='line'><span class="n">min_coin</span> <span class="o">=</span> <span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">maxint</span><span class="p">]</span> <span class="o">*</span> <span class="mi">20</span>
-</span><span class='line'><span class="n">min_coin</span><span class="p">[]</span> <span class="o">=</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">for</span> <span class="n">min_of_i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">coins</span><span class="p">:</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="n">min_of_i</span> <span class="ow">and</span> <span class="p">(</span><span class="n">min_coin</span><span class="p">[</span><span class="n">min_of_i</span> <span class="o">-</span> <span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">min_coin</span><span class="p">[</span><span class="n">min_of_i</span><span class="p">]):</span>
-</span><span class='line'>                <span class="n">min_coin</span><span class="p">[</span><span class="n">min_of_i</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_coin</span><span class="p">[</span><span class="n">min_of_i</span> <span class="o">-</span> <span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class="line"><span class="n">coins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</span><span class="line"><span class="n">min_coin</span> <span class="o">=</span> <span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">maxint</span><span class="p">]</span> <span class="o">*</span> <span class="mi">20</span>
+</span><span class="line"><span class="n">min_coin</span><span class="p">[]</span> <span class="o">=</span>
+</span><span class="line">
+</span><span class="line"><span class="k">for</span> <span class="n">min_of_i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+</span><span class="line">    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">coins</span><span class="p">:</span>
+</span><span class="line">        <span class="k">if</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="n">min_of_i</span> <span class="ow">and</span> <span class="p">(</span><span class="n">min_coin</span><span class="p">[</span><span class="n">min_of_i</span> <span class="o">-</span> <span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">min_coin</span><span class="p">[</span><span class="n">min_of_i</span><span class="p">]):</span>
+</span><span class="line">                <span class="n">min_coin</span><span class="p">[</span><span class="n">min_of_i</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_coin</span><span class="p">[</span><span class="n">min_of_i</span> <span class="o">-</span> <span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>I know that my code is not bad (or maybe is really bad), but let&#8217;s see what I get out of it from this <a href="http://codereview.stackexchange.com/questions/92811/find-the-minimum-number-of-coins">thread</a>. From within a day I have at least 2-3 points to make my code a lot better. Not only that I learn more about Python, I also learn how to optimize the script.</p>
+<p>I know that my code is not bad (or maybe is really bad), but let’s see what I get out of it from this <a href="http://codereview.stackexchange.com/questions/92811/find-the-minimum-number-of-coins">thread</a>. From within a day I have at least 2-3 points to make my code a lot better. Not only that I learn more about Python, I also learn how to optimize the script.</p>
 
 <p>If you want to learn a new language fast, you need to learn from the expert. In just a few days I improved my code substantially. The best thing about the Internet is, you will have someone to review the reviewer as well. So, you can be sure to some extent that the one who answered your question is trustworthy.</p>
 
-<p>Now you might wonder, how about <a href="http://stackoverflow.com/">http://stackoverflow.com/</a>? I use Stackoverflow too but Stackoverflow has its own purpose. If you&#8217;re stuck in some problem and you can&#8217;t really wrap your head around it posting to Stackoverflow will give you answer in no time. However, if you ask somebody on Stackoverflow to review your code, it&#8217;s likely that your thread will be voted down or closed.</p>
+<p>Now you might wonder, how about <a href="http://stackoverflow.com/">http://stackoverflow.com/</a>? I use Stackoverflow too but Stackoverflow has its own purpose. If you’re stuck in some problem and you can’t really wrap your head around it posting to Stackoverflow will give you answer in no time. However, if you ask somebody on Stackoverflow to review your code, it’s likely that your thread will be voted down or closed.</p>
 
-<h2>What about if you only have an idea.</h2>
+<h2 id="what-about-if-you-only-have-an-idea">What about if you only have an idea.</h2>
 
-<p>I always have new idea and somehow I want experts to review or confirm my idea so I don&#8217;t waste time building something that somebody has done it before. Then, Stackoverflow or codereview.stackoverflow.com is not really the place you&#8217;d go for. That&#8217;s what I love about <a href="http://Quora.com">Quora.com</a>.</p>
+<p>I always have new idea and somehow I want experts to review or confirm my idea so I don’t waste time building something that somebody has done it before. Then, Stackoverflow or codereview.stackoverflow.com is not really the place you’d go for. That’s what I love about <a href="http://Quora.com">Quora.com</a>.</p>
 
-<p>For example, I wanted to understand more about machine learning and I couldn&#8217;t really ask on <a href="http://stats.stackexchange.com">stats.stackexchange.com</a>. That&#8217;s why I turned to Quora. For example, this <a href="https://www.quora.com/How-do-I-start-if-I-want-to-build-a-model-to-predict-if-a-tweet-will-go-viral/answer/Shankar-Iyer-5?__snids__=1350032536&amp;__nsrc__=2">thread</a>, I got a really detailed response from whom I can trust because of the number of upvotes.</p>
+<p>For example, I wanted to understand more about machine learning and I couldn’t really ask on <a href="http://stats.stackexchange.com">stats.stackexchange.com</a>. That’s why I turned to Quora. For example, this <a href="https://www.quora.com/How-do-I-start-if-I-want-to-build-a-model-to-predict-if-a-tweet-will-go-viral/answer/Shankar-Iyer-5?__snids__=1350032536&amp;__nsrc__=2">thread</a>, I got a really detailed response from whom I can trust because of the number of upvotes.</p>
 
-<h2>Some note</h2>
+<h2 id="some-note">Some note</h2>
 
-<p>I have one bad habit of just copying and pasting someone else&#8217;s code. Once you received the feedback, don&#8217;t just copy and paste that. Or if you get feedback from Github don&#8217;t just merge that right away. You will not fully understand the concept behind that. In the book I read recently, <a href="http://www.amazon.com/o/ASIN/039916524X/sciencefriday/">A Mind For Numbers</a>, Barbara taught us about how we can master in math and science and she explains that we have two modes of learning, focused and diffuse mode. If you just copy and paste someone else&#8217;s work, then you just imagine that you understand what&#8217;s going on. The best way to learn that is to actually do it and go into diffuse mode which is just close your eyes and think about it and go back to focused mode to do that again. I made a big mistake as an Engineer (I still do) that I just copy someone else&#8217;s code and I think that I understand that fully which I don&#8217;t. So, don&#8217;t just copy the feedback and commit that make sure you fully understand the code and actually type it. Barbara also suggested that writing is better than just typing but I think it might be difficult for us programmers.</p>
+<p>I have one bad habit of just copying and pasting someone else’s code. Once you received the feedback, don’t just copy and paste that. Or if you get feedback from Github don’t just merge that right away. You will not fully understand the concept behind that. In the book I read recently, <a href="http://www.amazon.com/o/ASIN/039916524X/sciencefriday/">A Mind For Numbers</a>, Barbara taught us about how we can master in math and science and she explains that we have two modes of learning, focused and diffuse mode. If you just copy and paste someone else’s work, then you just imagine that you understand what’s going on. The best way to learn that is to actually do it and go into diffuse mode which is just close your eyes and think about it and go back to focused mode to do that again. I made a big mistake as an Engineer (I still do) that I just copy someone else’s code and I think that I understand that fully which I don’t. So, don’t just copy the feedback and commit that make sure you fully understand the code and actually type it. Barbara also suggested that writing is better than just typing but I think it might be difficult for us programmers.</p>
+
 </div>
 
 
@@ -179,7 +179,21 @@ Sep 22nd, 2015</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

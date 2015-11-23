@@ -4,7 +4,7 @@
   <title><![CDATA[Category: knowledges | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/knowledges/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-10-29T10:10:45-04:00</updated>
+  <updated>2015-11-23T10:32:55-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -18,94 +18,94 @@
     <link href="https://www.noppanit.com/migrated-from-wordpress-to-octopress"/>
     <updated>2015-10-02T15:39:34-04:00</updated>
     <id>https://www.noppanit.com/migrated-from-wordpress-to-octopress</id>
-    <content type="html"><![CDATA[<p>I have heard so much about Octopress but I haven&rsquo;t got the time to actually get to know what it can offer. Finally, this week I finally made the time to migrate my blog to Octopress and I love it. Thanks to <a href="https://habitica.com">HabitRPG</a> and Pomodoro (These will be another blog).</p>
+    <content type="html"><![CDATA[<p>I have heard so much about Octopress but I haven’t got the time to actually get to know what it can offer. Finally, this week I finally made the time to migrate my blog to Octopress and I love it. Thanks to <a href="https://habitica.com">HabitRPG</a> and Pomodoro (These will be another blog).</p>
 
-<p>Don&rsquo;t get me wrong I still love WordPress. In fact, I&rsquo;m actually a WordPress Developer myself. However, for the post 9 years that I have noppanit.com I haven&rsquo;t really used any of the WordPress features. What I really need is just a blog that I can write and publish. Octopress serves me well.</p>
+<p>Don’t get me wrong I still love WordPress. In fact, I’m actually a WordPress Developer myself. However, for the post 9 years that I have noppanit.com I haven’t really used any of the WordPress features. What I really need is just a blog that I can write and publish. Octopress serves me well.</p>
 
-<p>I&rsquo;d like to thank <a href="https://twitter.com/ScottMuc">Scott Muc</a> that inspired me for this migration.</p>
+<p>I’d like to thank <a href="https://twitter.com/ScottMuc">Scott Muc</a> that inspired me for this migration.</p>
 
 <p>Here are some of the reasons why I migrated my blog to Octopress.</p>
 
-<h2>Hosting</h2>
+<h2 id="hosting">Hosting</h2>
 
-<p>Having a hosting is nice but it would be nicer if I don&rsquo;t have to maintain it especially when I have to contact the customer service. Octopress gives you various choices of how to deploy your blog to. I chose to deploy my blog to Github as it&rsquo;s the fatest and easiest option. I don&rsquo;t need anything else just github.com which I use it everyday and a couple of command lines. Now, I don&rsquo;t have to worry about upgrading my plugins or WordPress anymore. However, usually my hosting would do it for me if I haven&rsquo;t updated for a long time.</p>
+<p>Having a hosting is nice but it would be nicer if I don’t have to maintain it especially when I have to contact the customer service. Octopress gives you various choices of how to deploy your blog to. I chose to deploy my blog to Github as it’s the fatest and easiest option. I don’t need anything else just github.com which I use it everyday and a couple of command lines. Now, I don’t have to worry about upgrading my plugins or WordPress anymore. However, usually my hosting would do it for me if I haven’t updated for a long time.</p>
 
-<h2>Writing code snippet</h2>
+<h2 id="writing-code-snippet">Writing code snippet</h2>
 
-<p>I think this is personal, because any good WordPress developer might argue that you can do the same in WordPress editor which I agree. However, having written a lot of MarkDown on Github I&rsquo;m just used to use codeblock like this.</p>
+<p>I think this is personal, because any good WordPress developer might argue that you can do the same in WordPress editor which I agree. However, having written a lot of MarkDown on Github I’m just used to use codeblock like this.</p>
 
-<pre><code>// something amazing
-</code></pre>
+<p><code>
+// something amazing
+</code></p>
 
 <p>WordPress gets on my nerves everytime when my blog crashed and all the identations of my code blocks failed.</p>
 
-<h2>Performance</h2>
+<h2 id="performance">Performance</h2>
 
-<p>There&rsquo;s nothing faster than plain HTML. Well, that depends on your server. After deploying to Github pages all my posts are backed up and secured in Github. Then after that, it&rsquo;s up to Github how fast they can deliver my HTML to the browser which I think it&rsquo;s pretty fast.</p>
+<p>There’s nothing faster than plain HTML. Well, that depends on your server. After deploying to Github pages all my posts are backed up and secured in Github. Then after that, it’s up to Github how fast they can deliver my HTML to the browser which I think it’s pretty fast.</p>
 
 <p>One can argue that having WordPress properly tuned then you can get the same performance out of it as well. However, I just believe that Octopress is just easier to make changes. One reason relates to how limited your hosting can offer as well. Some of them are quite limited of how much you can do with the webserver without the dedicated server.</p>
 
-<p>Here&rsquo;s some of the performance breakdown which I haven&rsquo;t tuned.</p>
+<p>Here’s some of the performance breakdown which I haven’t tuned.</p>
 
-<h3>Before</h3>
+<h3 id="before">Before</h3>
 
 <p><a href="http://www.webpagetest.org/result/151002_33_7N6/1/details/">noppanit.com performance</a></p>
 
-<p><img src="/wp-content/uploads/2015/10/before-perf-noppanit-com.jpg"></p>
+<p>{% img /wp-content/uploads/2015/10/before-perf-noppanit-com.jpg %}</p>
 
-<h3>After</h3>
+<h3 id="after">After</h3>
 
 <p><a href="http://www.webpagetest.org/result/151002_NG_7P4/2/details/">noppanit.github.io performance</a></p>
 
-<p><img src="/wp-content/uploads/2015/10/after-perf-noppanit-com.jpg"></p>
+<p>{% img /wp-content/uploads/2015/10/after-perf-noppanit-com.jpg %}</p>
 
-<p>The numbers don&rsquo;t lie. After I switched to Octopress, my website renders in <em>1.392s</em>. That&rsquo;s without doing anything else. I&rsquo;m going to write another blog post how I tune my blog to get the most out of it. WordPress is a great framework but when it comes to performance tuning, it requires a lot of hacking.</p>
+<p>The numbers don’t lie. After I switched to Octopress, my website renders in <em>1.392s</em>. That’s without doing anything else. I’m going to write another blog post how I tune my blog to get the most out of it. WordPress is a great framework but when it comes to performance tuning, it requires a lot of hacking.</p>
 
 <p>I have attached the link to <a href="http://webpagetest.org">webpagetest</a> as well in case anybody is interested in more details.</p>
 
-<h2>No Database</h2>
+<h2 id="no-database">No Database</h2>
 
-<p>Everybody knows that maintaining a database is a headache. Everytime you need to upgrade WordPress you need to backup database just in case something goes wrong and when you want to transfer the site you will need to do some hack to ensure that the data is transfered properly. However, one might argue that not having the database for Octopress can cause another migration a problem. If in the next year or two another blog framework comes along how will we integrate the data? I guess that&rsquo;s the same question for WordPress as well. Personally, when the time comes I think somebody will create a plugin to transfer that. Open source is the best.</p>
+<p>Everybody knows that maintaining a database is a headache. Everytime you need to upgrade WordPress you need to backup database just in case something goes wrong and when you want to transfer the site you will need to do some hack to ensure that the data is transfered properly. However, one might argue that not having the database for Octopress can cause another migration a problem. If in the next year or two another blog framework comes along how will we integrate the data? I guess that’s the same question for WordPress as well. Personally, when the time comes I think somebody will create a plugin to transfer that. Open source is the best.</p>
 
-<h2>Problems</h2>
+<h2 id="problems">Problems</h2>
 
-<p>Here&rsquo;s some of the problems I have encountered during the migration. All of them were minors and it didn&rsquo;t take much time to resolve them.</p>
+<p>Here’s some of the problems I have encountered during the migration. All of them were minors and it didn’t take much time to resolve them.</p>
 
 <ol>
-<li>Code snippet wasn&rsquo;t converted correctly. Some of the <code>&lt;code</code> block got transfered during the export as pure HTML. So, I went through all my posts and convert it manually to Markdown format. It&rsquo;s a plus for me so I took the opportunity to clean up old posts.</li>
-<li>One of my posts was encoded in UTF-8. I got lucky because it&rsquo;s just one post. So, I didn&rsquo;t have any problem with it.</li>
-<li>Disqus comment wasn&rsquo;t visible. This is because during the export <code>comments: true</code> wasn&rsquo;t added so I had to do it manually. This is my command to get it done.</li>
+  <li>Code snippet wasn’t converted correctly. Some of the <code>&lt;code</code> block got transfered during the export as pure HTML. So, I went through all my posts and convert it manually to Markdown format. It’s a plus for me so I took the opportunity to clean up old posts.</li>
+  <li>One of my posts was encoded in UTF-8. I got lucky because it’s just one post. So, I didn’t have any problem with it.</li>
+  <li>Disqus comment wasn’t visible. This is because during the export <code>comments: true</code> wasn’t added so I had to do it manually. This is my command to get it done.</li>
 </ol>
 
-
-<pre><code class="bash">brew install gsed
+<p><code>bash
+brew install gsed
 find . -type f -exec gsed -i "s/\(title: .*\)/\1\ncomments: true/" {} \;
-</code></pre>
+</code></p>
 
 <p>You need to run this in your posts directory. It will add <code>comments: true</code> after the <code>title</code></p>
 
-<p>I got really lucky that I didn&rsquo;t have many issues during the migration.</p>
+<p>I got really lucky that I didn’t have many issues during the migration.</p>
 
-<h2>What tool did I use</h2>
+<h2 id="what-tool-did-i-use">What tool did I use</h2>
 
 <ol>
-<li><a href="https://github.com/benbalter/wordpress-to-jekyll-exporter">wordpress-to-jekyll-exporter</a> This is an awesome tool. One click and I get everything including all the pictures I uploaded.</li>
-<li><a href="https://www.cloudflare.com/">Cloudflare</a> This is for my SSL.</li>
+  <li><a href="https://github.com/benbalter/wordpress-to-jekyll-exporter">wordpress-to-jekyll-exporter</a> This is an awesome tool. One click and I get everything including all the pictures I uploaded.</li>
+  <li><a href="https://www.cloudflare.com/">Cloudflare</a> This is for my SSL.</li>
 </ol>
 
+<h2 id="ssl">SSL</h2>
 
-<h2>SSL</h2>
+<p>This is just me. You can do the same for WordPress as well. I think every blog I came across about migrating to Octopress on Github pages mentioned having SSL to their website. It’s the perfect solution with Cloudflare but it’s the best free option I can find on the Internet. If Github decides to support full SSL later, I’d be happy to switch.</p>
 
-<p>This is just me. You can do the same for WordPress as well. I think every blog I came across about migrating to Octopress on Github pages mentioned having SSL to their website. It&rsquo;s the perfect solution with Cloudflare but it&rsquo;s the best free option I can find on the Internet. If Github decides to support full SSL later, I&rsquo;d be happy to switch.</p>
+<h2 id="its-not-for-everyone">It’s not for everyone</h2>
 
-<h2>It&rsquo;s not for everyone</h2>
+<p>Octopress claims to be blogging framework for hackers and it’s true. You can’t just give Octopress to non-technical people and expect them to be fluent. I think that’s what WordPress’s good for. You need to be familiar with git and command line to get it setup and deployed.</p>
 
-<p>Octopress claims to be blogging framework for hackers and it&rsquo;s true. You can&rsquo;t just give Octopress to non-technical people and expect them to be fluent. I think that&rsquo;s what WordPress&rsquo;s good for. You need to be familiar with git and command line to get it setup and deployed.</p>
-
-<h2>Insipiration</h2>
+<h2 id="insipiration">Insipiration</h2>
 
 <ol>
-<li><a href="http://jason.pureconcepts.net/2013/01/migrating-wordpress-octopress/">Migrating from WordPress to Octopress</a></li>
+  <li><a href="http://jason.pureconcepts.net/2013/01/migrating-wordpress-octopress/">Migrating from WordPress to Octopress</a></li>
 </ol>
 
 ]]></content>
@@ -116,44 +116,46 @@ find . -type f -exec gsed -i "s/\(title: .*\)/\1\ncomments: true/" {} \;
     <link href="https://www.noppanit.com/code-review-with-the-world/"/>
     <updated>2015-09-22T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/code-review-with-the-world</id>
-    <content type="html"><![CDATA[<h2>TL;DR</h2>
+    <content type="html"><![CDATA[<h2 id="tldr">TL;DR</h2>
 
-<p>If you don&#8217;t know <a href="http://codereview.stackexchange.com/">Code Review Stackoverflow</a> you gotta get on it now. It works and it&#8217;s awesome.</p>
+<p>If you don’t know <a href="http://codereview.stackexchange.com/">Code Review Stackoverflow</a> you gotta get on it now. It works and it’s awesome.</p>
 
-<h2>Longer version</h2>
+<h2 id="longer-version">Longer version</h2>
 
-<p>In Agile world, everybody is talking about fail fast and faster feedback. If you&#8217;re a serious coder then code review and feedback are just as important. If you&#8217;re like me (maybe I&#8217;m alone), I used to hate code review so much because I don&#8217;t want someone to criticize my work, coding is like an art. You spent a lot of time on a piece of code and somebody just come in and say it sucks or why would you do something like that?. Not everybody is a great coder like Linus Torvalds or Ryan Dahl. Especially me, Because of rigorous code review I came from the worst coder every to bad coder (I&#8217;m still bad and I&#8217;m still learning). I believe the best way to learn any skill is first you have to be wrong and learn from your mistakes. The quickest way to do that is to code a lot and get your code reviewed by someone who&#8217;s a stronger coder than you, which you will have a lot on the Internet. If you work with some of the best programmers in your life then you&#8217;re lucky. But not everybody is that fortunate. I&#8217;ve found a better solution. <a href="http://codereview.stackexchange.com/">http://codereview.stackexchange.com/</a></p>
+<p>In Agile world, everybody is talking about fail fast and faster feedback. If you’re a serious coder then code review and feedback are just as important. If you’re like me (maybe I’m alone), I used to hate code review so much because I don’t want someone to criticize my work, coding is like an art. You spent a lot of time on a piece of code and somebody just come in and say it sucks or why would you do something like that?. Not everybody is a great coder like Linus Torvalds or Ryan Dahl. Especially me, Because of rigorous code review I came from the worst coder every to bad coder (I’m still bad and I’m still learning). I believe the best way to learn any skill is first you have to be wrong and learn from your mistakes. The quickest way to do that is to code a lot and get your code reviewed by someone who’s a stronger coder than you, which you will have a lot on the Internet. If you work with some of the best programmers in your life then you’re lucky. But not everybody is that fortunate. I’ve found a better solution. <a href="http://codereview.stackexchange.com/">http://codereview.stackexchange.com/</a></p>
 
-<h2>Let&#8217;s get to the meat</h2>
+<h2 id="let8217s-get-to-the-meat">Let’s get to the meat</h2>
 
 <p>For example, I wrote this piece of code to learn about dynamic programming.</p>
 
-<pre><code class="python">import sys
+<p>``` python
+import sys
 coins = [1, 3, 5]
 min_coin = [sys.maxint] * 20
-min_coin[] = 
+min_coin[] =</p>
 
-for min_of_i in range(20):
+<p>for min_of_i in range(20):
     for c in coins:
         if c &lt;= min_of_i and (min_coin[min_of_i - c] + 1 &lt; min_coin[min_of_i]):
                 min_coin[min_of_i] = min_coin[min_of_i - c] + 1
-</code></pre>
+```</p>
 
-<p>I know that my code is not bad (or maybe is really bad), but let&#8217;s see what I get out of it from this <a href="http://codereview.stackexchange.com/questions/92811/find-the-minimum-number-of-coins">thread</a>. From within a day I have at least 2-3 points to make my code a lot better. Not only that I learn more about Python, I also learn how to optimize the script.</p>
+<p>I know that my code is not bad (or maybe is really bad), but let’s see what I get out of it from this <a href="http://codereview.stackexchange.com/questions/92811/find-the-minimum-number-of-coins">thread</a>. From within a day I have at least 2-3 points to make my code a lot better. Not only that I learn more about Python, I also learn how to optimize the script.</p>
 
 <p>If you want to learn a new language fast, you need to learn from the expert. In just a few days I improved my code substantially. The best thing about the Internet is, you will have someone to review the reviewer as well. So, you can be sure to some extent that the one who answered your question is trustworthy.</p>
 
-<p>Now you might wonder, how about <a href="http://stackoverflow.com/">http://stackoverflow.com/</a>? I use Stackoverflow too but Stackoverflow has its own purpose. If you&#8217;re stuck in some problem and you can&#8217;t really wrap your head around it posting to Stackoverflow will give you answer in no time. However, if you ask somebody on Stackoverflow to review your code, it&#8217;s likely that your thread will be voted down or closed.</p>
+<p>Now you might wonder, how about <a href="http://stackoverflow.com/">http://stackoverflow.com/</a>? I use Stackoverflow too but Stackoverflow has its own purpose. If you’re stuck in some problem and you can’t really wrap your head around it posting to Stackoverflow will give you answer in no time. However, if you ask somebody on Stackoverflow to review your code, it’s likely that your thread will be voted down or closed.</p>
 
-<h2>What about if you only have an idea.</h2>
+<h2 id="what-about-if-you-only-have-an-idea">What about if you only have an idea.</h2>
 
-<p>I always have new idea and somehow I want experts to review or confirm my idea so I don&#8217;t waste time building something that somebody has done it before. Then, Stackoverflow or codereview.stackoverflow.com is not really the place you&#8217;d go for. That&#8217;s what I love about <a href="http://Quora.com">Quora.com</a>.</p>
+<p>I always have new idea and somehow I want experts to review or confirm my idea so I don’t waste time building something that somebody has done it before. Then, Stackoverflow or codereview.stackoverflow.com is not really the place you’d go for. That’s what I love about <a href="http://Quora.com">Quora.com</a>.</p>
 
-<p>For example, I wanted to understand more about machine learning and I couldn&#8217;t really ask on <a href="http://stats.stackexchange.com">stats.stackexchange.com</a>. That&#8217;s why I turned to Quora. For example, this <a href="https://www.quora.com/How-do-I-start-if-I-want-to-build-a-model-to-predict-if-a-tweet-will-go-viral/answer/Shankar-Iyer-5?__snids__=1350032536&amp;__nsrc__=2">thread</a>, I got a really detailed response from whom I can trust because of the number of upvotes.</p>
+<p>For example, I wanted to understand more about machine learning and I couldn’t really ask on <a href="http://stats.stackexchange.com">stats.stackexchange.com</a>. That’s why I turned to Quora. For example, this <a href="https://www.quora.com/How-do-I-start-if-I-want-to-build-a-model-to-predict-if-a-tweet-will-go-viral/answer/Shankar-Iyer-5?__snids__=1350032536&amp;__nsrc__=2">thread</a>, I got a really detailed response from whom I can trust because of the number of upvotes.</p>
 
-<h2>Some note</h2>
+<h2 id="some-note">Some note</h2>
 
-<p>I have one bad habit of just copying and pasting someone else&#8217;s code. Once you received the feedback, don&#8217;t just copy and paste that. Or if you get feedback from Github don&#8217;t just merge that right away. You will not fully understand the concept behind that. In the book I read recently, <a href="http://www.amazon.com/o/ASIN/039916524X/sciencefriday/">A Mind For Numbers</a>, Barbara taught us about how we can master in math and science and she explains that we have two modes of learning, focused and diffuse mode. If you just copy and paste someone else&#8217;s work, then you just imagine that you understand what&#8217;s going on. The best way to learn that is to actually do it and go into diffuse mode which is just close your eyes and think about it and go back to focused mode to do that again. I made a big mistake as an Engineer (I still do) that I just copy someone else&#8217;s code and I think that I understand that fully which I don&#8217;t. So, don&#8217;t just copy the feedback and commit that make sure you fully understand the code and actually type it. Barbara also suggested that writing is better than just typing but I think it might be difficult for us programmers.</p>
+<p>I have one bad habit of just copying and pasting someone else’s code. Once you received the feedback, don’t just copy and paste that. Or if you get feedback from Github don’t just merge that right away. You will not fully understand the concept behind that. In the book I read recently, <a href="http://www.amazon.com/o/ASIN/039916524X/sciencefriday/">A Mind For Numbers</a>, Barbara taught us about how we can master in math and science and she explains that we have two modes of learning, focused and diffuse mode. If you just copy and paste someone else’s work, then you just imagine that you understand what’s going on. The best way to learn that is to actually do it and go into diffuse mode which is just close your eyes and think about it and go back to focused mode to do that again. I made a big mistake as an Engineer (I still do) that I just copy someone else’s code and I think that I understand that fully which I don’t. So, don’t just copy the feedback and commit that make sure you fully understand the code and actually type it. Barbara also suggested that writing is better than just typing but I think it might be difficult for us programmers.</p>
+
 ]]></content>
   </entry>
   
@@ -162,100 +164,103 @@ for min_of_i in range(20):
     <link href="https://www.noppanit.com/maps-all-parking-signs-in-nyc/"/>
     <updated>2015-07-30T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/maps-all-parking-signs-in-nyc</id>
-    <content type="html"><![CDATA[<p>This post might be too easy for any Data-viz people but as a beginner tapping in this area. It took me quite a long time to figure it out so I just want to share this hoping that it might save people&#8217;s time.</p>
+    <content type="html"><![CDATA[<p>This post might be too easy for any Data-viz people but as a beginner tapping in this area. It took me quite a long time to figure it out so I just want to share this hoping that it might save people’s time.</p>
 
-<p>Parking in NYC is really a pain, especially street parking where there&#8217;re lots of signs and regulations. There are some apps on Android and iPhone that you can download and see signs but I haven&#8217;t been able to find the one that suits my needs. I want an application that can tell me where to circle arounds on which day and time to find parking spot. For example, I parked my car on a Tuesday which has street cleaning on Wednesday and Friday from 8:30 to 9:30. That means I have to move the car on Wednesday morning to find a spot for Friday. The problem is I don&#8217;t know what&#8217;s around me. The closest application I find is <a href="http://www.nycparklife.com/streetparker/">http://www.nycparklife.com/streetparker/</a> which it doesn&#8217;t have Manhattan.</p>
+<p>Parking in NYC is really a pain, especially street parking where there’re lots of signs and regulations. There are some apps on Android and iPhone that you can download and see signs but I haven’t been able to find the one that suits my needs. I want an application that can tell me where to circle arounds on which day and time to find parking spot. For example, I parked my car on a Tuesday which has street cleaning on Wednesday and Friday from 8:30 to 9:30. That means I have to move the car on Wednesday morning to find a spot for Friday. The problem is I don’t know what’s around me. The closest application I find is <a href="http://www.nycparklife.com/streetparker/">http://www.nycparklife.com/streetparker/</a> which it doesn’t have Manhattan.</p>
 
-<h2>Getting the data</h2>
+<h2 id="getting-the-data">Getting the data</h2>
 
-<p>So, I googled and thank NYC.gov that provides the <a href="http://www.nyc.gov/html/dot/html/about/datafeeds.shtml#parking">data</a> for us. First, I played around with the csv files but they don&#8217;t have coordinates that I can place location on the map. And I have no experience dealing with shapefiles.</p>
+<p>So, I googled and thank NYC.gov that provides the <a href="http://www.nyc.gov/html/dot/html/about/datafeeds.shtml#parking">data</a> for us. First, I played around with the csv files but they don’t have coordinates that I can place location on the map. And I have no experience dealing with shapefiles.</p>
 
-<h2>Extracting the data</h2>
+<h2 id="extracting-the-data">Extracting the data</h2>
 
 <p>After a few hours of mangling and munching the csv with Pandas and R. I would not be able to get the exact locations of all the signs. So I turned to shapefile hoping that I might get lucky. And I found this <a href="http://www.shpescape.com/">http://www.shpescape.com/</a> which promised to transform shapefile to <a href="https://support.google.com/fusiontables/answer/2571232?hl=en">Google Fusion Table</a>. Awesome! I went ahead and tried it. It works great! but it only gives you the first 100,000 rows. So dug deeper. After another few hours of googling I found <a href="http://www.qgis.org/en/site/">qGis</a> which is a opensource project that you can use to open and view shapefile.</p>
 
-<p>Here&#8217;s the example.</p>
+<p>Here’s the example.</p>
 
-<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.jpg" title="Parking signs on Qgis" ></p>
+<p>{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.jpg Parking signs on Qgis %}</p>
 
-<p>One thing I learnt was that you cannot just click <strong>Open</strong> and choose the file. What you need to do is to <string>Add Vector Layer</strong>. You can use shortcut <strong>Ctrl+Shift+v</strong></p>
+<p>One thing I learnt was that you cannot just click <strong>Open</strong> and choose the file. What you need to do is to <string>Add Vector Layer&lt;/strong&gt;. You can use shortcut **Ctrl+Shift+v**</string></p>
 
-<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.jpg" title="Add Vector Layer" ></p>
+<p>{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.jpg Add Vector Layer %}</p>
 
-<h2>Export to Google Fusion</h2>
+<h2 id="export-to-google-fusion">Export to Google Fusion</h2>
 
-<p>Now what we need is to import what we have to Google Fusion Table. How are we going to turn this beautiful layer to Google Maps. We need CSV&#8230;</p>
+<p>Now what we need is to import what we have to Google Fusion Table. How are we going to turn this beautiful layer to Google Maps. We need CSV…</p>
 
-<p>In QGis you can download the file as CSV. It&#8217;s in <strong>Layer > Save As</strong>. You just need to make sure that <strong>Geometry</strong> has to be set so you get the coordinates.</p>
+<p>In QGis you can download the file as CSV. It’s in <strong>Layer &gt; Save As</strong>. You just need to make sure that <strong>Geometry</strong> has to be set so you get the coordinates.</p>
 
-<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.jpg" title="Save to CSV" ></p>
+<p>{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.jpg Save to CSV %}</p>
 
-<h2>Import to Google Fusion Table</h2>
+<h2 id="import-to-google-fusion-table">Import to Google Fusion Table</h2>
 
 <p>Now we can use that CSV to import to Google Fusion. It would look something like this.</p>
 
-<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.jpg" title="Google Fusion Table" ></p>
+<p>{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.jpg Google Fusion Table %}</p>
 
 <p>what you need to make sure is that you need to specify which fields are Lat, Long so Google can plot that for you.</p>
 
-<p>Here&#8217;s how you do it.</p>
+<p>Here’s how you do it.</p>
 
-<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.jpg"></p>
+<p>{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.jpg %}</p>
 
 <p>The click <strong>change</strong> You will see something like this and you can choose which field you want to be Longitude or Latitude.</p>
 
-<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.jpg" title="Set Location" ></p>
+<p>{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.jpg Set Location %}</p>
 
 <p>Once the coordinates have set we can go to Map tab and see beautiful little dots that show where all the signs are in NYC.</p>
 
-<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.jpg" title="Parking signs in Google Fusion Table" ></p>
+<p>{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.jpg Parking signs in Google Fusion Table %}</p>
 
 <p>Walla! Now you have something you can build an application on top of it. The next post, I will create an application on top of this map to make use of our data.</p>
 
-<h2>Things I have tried and failed</h2>
+<h2 id="things-i-have-tried-and-failed">Things I have tried and failed</h2>
 
-<p>I&#8217;ve tried using <a href="https://github.com/OSGeo/proj.4">Proj4</a> on both R and Python to convert X,Y WGS84 to Lat, Long. Here&#8217;s my little snippet.</p>
+<p>I’ve tried using <a href="https://github.com/OSGeo/proj.4">Proj4</a> on both R and Python to convert X,Y WGS84 to Lat, Long. Here’s my little snippet.</p>
 
-<pre><code class="R">data = read.csv('./parking_regulation.csv')
+<p>``` R
+data = read.csv(‘./parking_regulation.csv’)</p>
 
-library(proj4)
-proj4string &lt;- "+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs"
+<p>library(proj4)
+proj4string &lt;- “+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs”
 latlong_list&lt;-list()
-calculate_long_lat &lt;- function(x,y) {
+calculate_long_lat &lt;- function(x,y) {</p>
 
-  # Source data
-  xy &lt;- data.frame(x=x, y=y)
+<p># Source data
+  xy &lt;- data.frame(x=x, y=y)</p>
 
-  # Transformed data
+<p># Transformed data
   pj &lt;- project(xy, proj4string, inverse=TRUE)
   latlon &lt;- data.frame(lat=pj$y, lon=pj$x)
-  latlong_list[['latlong']] &lt;- latlon
-}
+  latlong_list[[‘latlong’]] &lt;- latlon
+}</p>
 
-apply(data[,c('x','y')], 1, function(y) calculate_long_lat(y['x'], y['y']))
-</code></pre>
+<p>apply(data[,c(‘x’,’y’)], 1, function(y) calculate_long_lat(y[‘x’], y[‘y’]))
+```</p>
 
-<p>The result is not quite accurate which I think it&#8217;s because I need to find a correct <strong>proj4string</strong>.</p>
+<p>The result is not quite accurate which I think it’s because I need to find a correct <strong>proj4string</strong>.</p>
 
 <p>Python has the same wrapper which is quite what I want as well.</p>
 
-<pre><code class="python">from pyproj import Proj
-import pandas as pd
+<p>``` python
+from pyproj import Proj
+import pandas as pd</p>
 
-data = pd.read_csv('parking_regulation.csv')
+<p>data = pd.read_csv(‘parking_regulation.csv’)</p>
 
-p = Proj(r'+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs')
+<p>p = Proj(r’+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs’)</p>
 
-def cal_long_lat(row):
-    return p(row['x'], row['y'],inverse=True)
+<p>def cal_long_lat(row):
+    return p(row[‘x’], row[‘y’],inverse=True)</p>
 
-data['lon'], data['lat'] = zip(data.apply (lambda row: cal_long_lat (row),axis=1))
+<p>data[‘lon’], data[‘lat’] = zip(data.apply (lambda row: cal_long_lat (row),axis=1))
 data.head()
-</code></pre>
+```</p>
 
 <p>I will need to learn more about State Pane and what is the correct format.</p>
 
 <p>This article takes 2 pomodoros to complete.</p>
+
 ]]></content>
   </entry>
   
@@ -264,25 +269,40 @@ data.head()
     <link href="https://www.noppanit.com/im-never-going-back-to-modern-editor-again/"/>
     <updated>2015-07-17T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/im-never-going-back-to-modern-editor-again</id>
-    <content type="html"><![CDATA[<p>Ok, the title might be a little bit exaggerating. But let me clear this up first. I still use modern editors, TextMate, Atom.io or IntelliJ. They are pros and cons. But here&#8217;s my real answer if people ask me. I want to be the cool kid!.</p>
+    <content type="html"><![CDATA[<p>Ok, the title might be a little bit exaggerating. But let me clear this up first. I still use modern editors, TextMate, Atom.io or IntelliJ. They are pros and cons. But here’s my real answer if people ask me. I want to be the cool kid!.</p>
 
-<p>I don&#8217;t know if you&#8217;re like me but I get asked almost all the time I go to a meetup or conference, &#8220;What&#8217;s your favourite editor&#8221;?. People almost always say Vim|Emacs. I tried both of them in the past and gave up more than I can remember because of all the shortcuts and plugins and I just get too frustrated to use either of them. Finally, I have made a decision that I&#8217;m going to stick with Vim for a month and let&#8217;s see if at the end of the month I still can&#8217;t use it. It&#8217;s been almost a month and I&#8217;d say I&#8217;m never going back to modern editors again (at least when I&#8217;m coding scripting languages). Here&#8217;s why.</p>
+<table>
+  <tbody>
+    <tr>
+      <td>I don’t know if you’re like me but I get asked almost all the time I go to a meetup or conference, “What’s your favourite editor”?. People almost always say Vim</td>
+      <td>Emacs. I tried both of them in the past and gave up more than I can remember because of all the shortcuts and plugins and I just get too frustrated to use either of them. Finally, I have made a decision that I’m going to stick with Vim for a month and let’s see if at the end of the month I still can’t use it. It’s been almost a month and I’d say I’m never going back to modern editors again (at least when I’m coding scripting languages). Here’s why.</td>
+    </tr>
+  </tbody>
+</table>
 
-<h3>It&#8217;s just easier</h3>
+<h3 id="it8217s-just-easier">It’s just easier</h3>
 
-<p>I know it&#8217;s not really easier than TextMate or Sublime. You still have to learn a lot of shortcuts and commands. Also, bare-bone Vim just doesn&#8217;t have when you get in TextMate or Sublime (e.g, Find file, Command+T, Directory structure or code completion). However, after you powered through that learning phrase everything is just natural to you.</p>
+<p>I know it’s not really easier than TextMate or Sublime. You still have to learn a lot of shortcuts and commands. Also, bare-bone Vim just doesn’t have when you get in TextMate or Sublime (e.g, Find file, Command+T, Directory structure or code completion). However, after you powered through that learning phrase everything is just natural to you.</p>
 
-<p>If you want to clear any trailing whitespaces you just have to type <strong>%s/\s+$//</strong> and hit enter. If you want to run some external command you can always do in Vim. For example, if you just want to <strong>git status</strong> you can install <a href="https://github.com/tpope/vim-fugitive">Git wrapper</a> or you can just run <strong>:!git status</strong>. You don&#8217;t even need to go to your terminal which I think it&#8217;s faster.</p>
+<p>If you want to clear any trailing whitespaces you just have to type <strong>%s/\s+$//</strong> and hit enter. If you want to run some external command you can always do in Vim. For example, if you just want to <strong>git status</strong> you can install <a href="https://github.com/tpope/vim-fugitive">Git wrapper</a> or you can just run <strong>:!git status</strong>. You don’t even need to go to your terminal which I think it’s faster.</p>
 
-<p>If you&#8217;re a good engineer, you will always do TDD. Going back and fourth between the editor and terminal, it&#8217;s just too annoying. I remember when I was coding Java I can just hit Cmd+t in IntelliJ or .NET and you see green bars. Isn&#8217;t it just awesome? I realised that TextMate and Sublime have plugins to do that as well or you can just write your own plugin or package. I tried a couple of plugins and they never work for me. In Vim, it just works!.</p>
+<p>If you’re a good engineer, you will always do TDD. Going back and fourth between the editor and terminal, it’s just too annoying. I remember when I was coding Java I can just hit Cmd+t in IntelliJ or .NET and you see green bars. Isn’t it just awesome? I realised that TextMate and Sublime have plugins to do that as well or you can just write your own plugin or package. I tried a couple of plugins and they never work for me. In Vim, it just works!.</p>
 
-<h3>Community</h3>
+<h3 id="community">Community</h3>
 
-<p>If Vim|Emacs doesn&#8217;t do what you want, you will almost always find the plugin that does it for you. Currently, my standard plugins are. <strong>NERDTree</strong>, <strong>CommandT</strong>, <strong>vim-fugitive</strong>, <strong>vim-rooter</strong>, <strong>vim-virtualenv</strong>. All these plugins just make my Vim functions the same as Atom.io or Sublime.</p>
+<table>
+  <tbody>
+    <tr>
+      <td>If Vim</td>
+      <td>Emacs doesn’t do what you want, you will almost always find the plugin that does it for you. Currently, my standard plugins are. <strong>NERDTree</strong>, <strong>CommandT</strong>, <strong>vim-fugitive</strong>, <strong>vim-rooter</strong>, <strong>vim-virtualenv</strong>. All these plugins just make my Vim functions the same as Atom.io or Sublime.</td>
+    </tr>
+  </tbody>
+</table>
 
-<h3>Not for everyone</h3>
+<h3 id="not-for-everyone">Not for everyone</h3>
 
-<p>I have to admit that the first few weeks I got really frustrated. I almost banged my keyboard against the monitor. I found myself opening Atom.io every time I couldn&#8217;t do some basic editing in Vim. For example, using <strong>vimgrep</strong> wasn&#8217;t what I expected and I ended up googling a lot. Now I get the hang of it and I don&#8217;t use Atom anymore. The worst case is I will just use command line instead.</p>
+<p>I have to admit that the first few weeks I got really frustrated. I almost banged my keyboard against the monitor. I found myself opening Atom.io every time I couldn’t do some basic editing in Vim. For example, using <strong>vimgrep</strong> wasn’t what I expected and I ended up googling a lot. Now I get the hang of it and I don’t use Atom anymore. The worst case is I will just use command line instead.</p>
+
 ]]></content>
   </entry>
   
@@ -291,195 +311,196 @@ data.head()
     <link href="https://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin/"/>
     <updated>2015-07-09T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin</id>
-    <content type="html"><![CDATA[<p>I&#8217;m a big fan of TDD. I get nervous every time when I put some code it without having tests. I&#8217;m developing a simple jQuery plugin and I think hey we can TDD this.</p>
+    <content type="html"><![CDATA[<p>I’m a big fan of TDD. I get nervous every time when I put some code it without having tests. I’m developing a simple jQuery plugin and I think hey we can TDD this.</p>
 
-<h2>What is it?</h2>
+<h2 id="what-is-it">What is it?</h2>
 
-<p>The plugin is really simple. It turns ul tag to be taggable field. It&#8217;s similar to <a href="http://aehlke.github.io/tag-it/">tag-it</a> but with a lot less functionalities and doesn&#8217;t depend on jquery-ui</p>
+<p>The plugin is really simple. It turns ul tag to be taggable field. It’s similar to <a href="http://aehlke.github.io/tag-it/">tag-it</a> but with a lot less functionalities and doesn’t depend on jquery-ui</p>
 
-<h2>What you need</h2>
+<h2 id="what-you-need">What you need</h2>
 
-<p>I decided to use Karma because I&#8217;m going to test a lot of behaviours and Karma seems like a good fit as it run on real browser. Here&#8217;s how I setup my project.</p>
+<p>I decided to use Karma because I’m going to test a lot of behaviours and Karma seems like a good fit as it run on real browser. Here’s how I setup my project.</p>
 
-<p>I chose jasmine-jquery because it&#8217;s easier to create some element to test and it&#8217;s easy to setup.</p>
+<p>I chose jasmine-jquery because it’s easier to create some element to test and it’s easy to setup.</p>
 
 <p>This is my <strong>gulpfile.js</strong></p>
 
-<pre><code class="javascript">var gulp = require('gulp');
-var karma = require('gulp-karma');
+<p>```javascript
+var gulp = require(‘gulp’);
+var karma = require(‘gulp-karma’);</p>
 
-var testFiles = [
-  'tests/vendors/jquery-1.11.3.min.js',
-  'tests/vendors/jasmine-jquery.js',
-  'src/**/*.js',
-  'tests/spec/**/*.js'
+<p>var testFiles = [
+  ‘tests/vendors/jquery-1.11.3.min.js’,
+  ‘tests/vendors/jasmine-jquery.js’,
+  ‘src/<strong>/<em>.js’,
+  ‘tests/spec/**/</em>.js’
 ];
-/**
+/</strong>
  * Run test once and exit
  */
-gulp.task('test', function (done) {
+gulp.task(‘test’, function (done) {
   return gulp.src(testFiles)
     .pipe(karma({
-      configFile: 'karma.conf.js',
-      action: 'run'
+      configFile: ‘karma.conf.js’,
+      action: ‘run’
     }))
-  .on('error', function(err) {
+  .on(‘error’, function(err) {
     // Make sure failed tests cause gulp to exit non-zero 
     throw err;
   });
-});
+});</p>
 
-gulp.task('default', function() {
+<p>gulp.task(‘default’, function() {
   gulp.src(testFiles)
     .pipe(karma({
-      configFile: 'karma.conf.js',
-      action: 'watch'
+      configFile: ‘karma.conf.js’,
+      action: ‘watch’
     }));
 });
-</code></pre>
+```</p>
 
 <p>This is my <strong>karma.conf.js</strong></p>
 
-<pre><code class="javascript">module.exports = function(config) {
+<p><code>javascript
+module.exports = function(config) {
   config.set({
     browsers: ['PhantomJS'],
     frameworks: ['jasmine']
   });
 };
-</code></pre>
+</code></p>
 
-<p>Here&#8217;s my first test</p>
+<p>Here’s my first test</p>
 
-<pre><code class="javascript">describe('Taggify', function() {
+<p>``` javascript
+describe(‘Taggify’, function() {
   var fixture;
   beforeEach(function() {
-    fixture = setFixtures('&lt;ul id="tag"&gt;&lt;/ul&gt;');
-    jQuery('#tag').taggify();
-  });
+    fixture = setFixtures(‘&lt;ul id="tag"&gt;&lt;/ul&gt;’);
+    jQuery(‘#tag’).taggify();
+  });</p>
 
-  it('should initialize text box', function() {
-    var input = fixture.find('input');
+<p>it(‘should initialize text box’, function() {
+    var input = fixture.find(‘input’);
     expect(input.length &gt; 0).toBeTruthy();
-  });
+  });</p>
 
-});
-</code></pre>
+<p>});
+```</p>
 
 <p>You will see that the test failed now we implement some code.</p>
 
-<pre><code class="javascript">(function($) {
+<p>``` javascript
+(function($) {
   $.fn.taggify = function(options) {
     create(this);
     return this;
-  };
+  };</p>
 
-  function create($theElement) {
-    var $input = $('&lt;input class="tag-input"&gt;&lt;/input&gt;')
-      .attr('type', 'text')
-      .attr('autocomplete', 'off')
-      .wrap('&lt;li&gt;&lt;/li&gt;');
+<p>function create($theElement) {
+    var $input = $(‘<input class="tag-input" />&lt;/input&gt;’)
+      .attr(‘type’, ‘text’)
+      .attr(‘autocomplete’, ‘off’)
+      .wrap(‘&lt;li&gt;&lt;/li&gt;’);</p>
 
-    $theElement.append($input.parent());
-  }
-})(jQuery);
+<pre><code>$theElement.append($input.parent());   } })(jQuery); ```
 </code></pre>
 
 <p>Now the test passed.</p>
 
-<p>Now let&#8217;s add some event so when you hit enter the tag is added. So, I added one more test</p>
+<p>Now let’s add some event so when you hit enter the tag is added. So, I added one more test</p>
 
-<pre><code class="javascript">  it('should add a tag', function() {
-    var input = fixture.find('input');
-    input.val('tag');
-    input.trigger(jQuery.Event('keyup', { keyCode: 13 }));
+<p>``` javascript
+  it(‘should add a tag’, function() {
+    var input = fixture.find(‘input’);
+    input.val(‘tag’);
+    input.trigger(jQuery.Event(‘keyup’, { keyCode: 13 }));</p>
 
-    var tags = fixture.find('.tag-label');
-    var tag = jQuery(tags[0]);
+<pre><code>var tags = fixture.find('.tag-label');
+var tag = jQuery(tags[0]);
 
-    expect(tag.html()).toBe('tag');
-    expect(tags.length &gt; 0).toBeTruthy();
-  });
+expect(tag.html()).toBe('tag');
+expect(tags.length &gt; 0).toBeTruthy();   }); ```
 </code></pre>
 
 <p>Now the test failed.</p>
 
-<p>I&#8217;ll fix the test by doing this.</p>
+<p>I’ll fix the test by doing this.</p>
 
-<pre><code class="javascript">(function($) {
+<p>``` javascript
+(function($) {
   $.fn.taggify = function(options) {
     create(this);
     return this;
-  };
+  };</p>
 
-  function create($theElement) {
-    var $input = $('&lt;input class="tag-input"&gt;&lt;/input&gt;')
-      .attr('type', 'text')
-      .attr('autocomplete', 'off')
-      .wrap('&lt;li&gt;&lt;/li&gt;');
+<p>function create($theElement) {
+    var $input = $(‘<input class="tag-input" />&lt;/input&gt;’)
+      .attr(‘type’, ‘text’)
+      .attr(‘autocomplete’, ‘off’)
+      .wrap(‘&lt;li&gt;&lt;/li&gt;’);</p>
 
-    $input.on('keyup', function(e) {
-      if (e.keyCode === 13) {
-        var tagText = $input.val();
+<pre><code>$input.on('keyup', function(e) {
+  if (e.keyCode === 13) {
+    var tagText = $input.val();
 
-        var $span = $('&lt;span class="tag-label"&gt;&lt;/span&gt;');
+    var $span = $('&lt;span class="tag-label"&gt;&lt;/span&gt;');
 
-        $span.text(tagText).wrap('&lt;li class="tag-choice"&gt;&lt;/li&gt;');
-        $theElement.prepend($span.parent());
-        $input.val('');
-      }
-    });
-
-    $theElement.append($input.parent());
+    $span.text(tagText).wrap('&lt;li class="tag-choice"&gt;&lt;/li&gt;');
+    $theElement.prepend($span.parent());
+    $input.val('');
   }
-})(jQuery);
+});
+
+$theElement.append($input.parent());   } })(jQuery); ```
 </code></pre>
 
 <p>Now I want to add some negative test case.</p>
 
-<pre><code class="javascript">  it('should not add a tag', function() {
-    var input = fixture.find('input');
-    input.trigger(jQuery.Event('keyup', { keyCode: 13 }));
-    var tags = fixture.find('.tag-label');
+<p>``` javascript
+  it(‘should not add a tag’, function() {
+    var input = fixture.find(‘input’);
+    input.trigger(jQuery.Event(‘keyup’, { keyCode: 13 }));
+    var tags = fixture.find(‘.tag-label’);</p>
 
-    expect(tags.length &gt; 0).toBeFalsy();
-  });
+<pre><code>expect(tags.length &gt; 0).toBeFalsy();   }); ```
 </code></pre>
 
 <p>Oops the test failed, looks like I missed something</p>
 
 <p>I will fix the test by</p>
 
-<pre><code class="javascript">(function($) {
+<p>``` javascript
+(function($) {
   $.fn.taggify = function(options) {
     create(this);
     return this;
-  };
+  };</p>
 
-  function create($theElement) {
-    var $input = $('&lt;input class="tag-input"&gt;&lt;/input&gt;')
-      .attr('type', 'text')
-      .attr('autocomplete', 'off')
-      .wrap('&lt;li&gt;&lt;/li&gt;');
+<p>function create($theElement) {
+    var $input = $(‘<input class="tag-input" />&lt;/input&gt;’)
+      .attr(‘type’, ‘text’)
+      .attr(‘autocomplete’, ‘off’)
+      .wrap(‘&lt;li&gt;&lt;/li&gt;’);</p>
 
-    $input.on('keyup', function(e) {
-      if (e.keyCode === 13) {
-        var tagText = $input.val();
-        if(tagText !== '') {
-          var $span = $('&lt;span class="tag-label"&gt;&lt;/span&gt;');
+<pre><code>$input.on('keyup', function(e) {
+  if (e.keyCode === 13) {
+    var tagText = $input.val();
+    if(tagText !== '') {
+      var $span = $('&lt;span class="tag-label"&gt;&lt;/span&gt;');
 
-          $span.text(tagText).wrap('&lt;li class="tag-choice"&gt;&lt;/li&gt;');
-          $theElement.prepend($span.parent());
-          $input.val('');
-        }
-      }
-    });
-
-    $theElement.append($input.parent());
+      $span.text(tagText).wrap('&lt;li class="tag-choice"&gt;&lt;/li&gt;');
+      $theElement.prepend($span.parent());
+      $input.val('');
+    }
   }
-})(jQuery);
+});
+
+$theElement.append($input.parent());   } })(jQuery); ```
 </code></pre>
 
-<p>That&#8217;s it. I hope you enjoy and love TDD more. And here&#8217;s the <a href="https://github.com/noppanit/taggify">github repo</a></p>
+<p>That’s it. I hope you enjoy and love TDD more. And here’s the <a href="https://github.com/noppanit/taggify">github repo</a></p>
+
 ]]></content>
   </entry>
   

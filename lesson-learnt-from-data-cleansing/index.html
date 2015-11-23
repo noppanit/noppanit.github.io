@@ -90,29 +90,31 @@
 
 <p><img src="https://www.noppanit.com/wp-content/uploads/2013/02/Screen-shot-2013-02-01-at-00.08.28.png" alt="friends dataset" class="aligncenter size-full wp-image-1029 cool_border" /></p>
 
-<p>The first dataset I could dump everything into neo4j without any problem because it&#8217;s just 30000 records it only took me 5 mins to do it. However, the second dataset was kind of a problem because the column <strong>friends</strong> not all of the ids exist in users database which means the users don&#8217;t exist. So, I had to check if the ids exist in user dataset or not. It turned out that the friends dataset is quite large (about 50 MB) and it could be 3000 ids in one column. So, my first thought would be just to do it one by one.</p>
+<p>The first dataset I could dump everything into neo4j without any problem because it’s just 30000 records it only took me 5 mins to do it. However, the second dataset was kind of a problem because the column <strong>friends</strong> not all of the ids exist in users database which means the users don’t exist. So, I had to check if the ids exist in user dataset or not. It turned out that the friends dataset is quite large (about 50 MB) and it could be 3000 ids in one column. So, my first thought would be just to do it one by one.</p>
 
-<p><strong>Frist attempt</strong><br/>
-So, what I did first was to dump the whole users dataset to neo4j. And then for loop to check if id exists then insert if not just ignore it. I used cypher to check if the id exists. It turned out that I left my computer for 24 hours and it went just only 10% of the data. It was really slow. One thing from this was that I used neography which means it&#8217;s using REST api which usually it&#8217;s slower than embedded code. And I couldn&#8217;t wait for a whole week just to import the data. So, I moved on. The slow part was the checking every time so I guess it would be nice to clean the data before I dump that to neo4j.</p>
+<p><strong>Frist attempt</strong><br />
+So, what I did first was to dump the whole users dataset to neo4j. And then for loop to check if id exists then insert if not just ignore it. I used cypher to check if the id exists. It turned out that I left my computer for 24 hours and it went just only 10% of the data. It was really slow. One thing from this was that I used neography which means it’s using REST api which usually it’s slower than embedded code. And I couldn’t wait for a whole week just to import the data. So, I moved on. The slow part was the checking every time so I guess it would be nice to clean the data before I dump that to neo4j.</p>
 
-<p><strong>Second attempt</strong><br/>
-I tried to use Google Refine to cross check two datasets but it couldn&#8217;t even pass the stage <strong>&#8220;split multi-valued cells&#8221;</strong> which to split column values to rows. Google Refine uses too much ram. I even tried to start EC2 instance but it froze along the way as well. I posted the question and got the solution <a href="http://stackoverflow.com/questions/14636919/google-refine-cross-reference-between-row-and-column">here</a></p>
+<p><strong>Second attempt</strong><br />
+I tried to use Google Refine to cross check two datasets but it couldn’t even pass the stage <strong>“split multi-valued cells”</strong> which to split column values to rows. Google Refine uses too much ram. I even tried to start EC2 instance but it froze along the way as well. I posted the question and got the solution <a href="http://stackoverflow.com/questions/14636919/google-refine-cross-reference-between-row-and-column">here</a></p>
 
-<p><strong>Third attempt</strong><br/>
-I used MySQL to join the tables and and check if the ids exist. Dumping all the data to MySQL was pretty easy my plain old PHP and MySQL. It turned out the friends dataset got around 38 Million rows. And here&#8217;s the script I used to check if the id doesn&#8217;t exit spit it out and delete it.</p>
+<p><strong>Third attempt</strong><br />
+I used MySQL to join the tables and and check if the ids exist. Dumping all the data to MySQL was pretty easy my plain old PHP and MySQL. It turned out the friends dataset got around 38 Million rows. And here’s the script I used to check if the id doesn’t exit spit it out and delete it.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'> SELECT uf.id, uf.friend_id, u.user_id FROM eventify.UserFriends uf LEFT JOIN eventify.Users u on uf.friend_id = u.user_id WHERE u.user_id is NULL LIMIT 1</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line"> SELECT uf.id, uf.friend_id, u.user_id FROM eventify.UserFriends uf LEFT JOIN eventify.Users u on uf.friend_id = u.user_id WHERE u.user_id is NULL LIMIT 1</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>It was also really slow since I just use my Macbook and didn’t even turn MySQL performance. So I moved on again.</p>
 
-<p>It was also really slow since I just use my Macbook and didn&#8217;t even turn MySQL performance. So I moved on again.</p>
+<p><strong>Final attempt</strong><br />
+I couldn’t believe that this will be the simplest and most effective way. What I did was to dump the whole users dataset to <strong>Hash</strong> in Ruby and check the friends dataset which surprisingly it only took Ruby 10 mins to do that. Then it only took Ruby and neo4j around 2 hours to import the cleaned data.</p>
 
-<p><strong>Final attempt</strong><br/>
-I couldn&#8217;t believe that this will be the simplest and most effective way. What I did was to dump the whole users dataset to <strong>Hash</strong> in Ruby and check the friends dataset which surprisingly it only took Ruby 10 mins to do that. Then it only took Ruby and neo4j around 2 hours to import the cleaned data.</p>
+<blockquote>
+  <p>So lesson learnt for me was if anything can be done in memory do that first.</p>
+</blockquote>
 
-<blockquote><p>So lesson learnt for me was if anything can be done in memory do that first.</p></blockquote>
+<p>I’ll try to dump the rest in and blog about how did I get on with recommendation engine from neo4j.</p>
 
-<p>I&#8217;ll try to dump the rest in and blog about how did I get on with recommendation engine from neo4j.</p>
 </div>
 
 
@@ -160,7 +162,21 @@ Feb 7th, 2013</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

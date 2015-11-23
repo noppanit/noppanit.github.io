@@ -85,166 +85,162 @@ I have two options for you to consider and &hellip;">
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">How to Deal With java.util.ConcurrentModificationException With ArrayList</h2>
-	<div class="entry-content"><p>It is literally occurred when you needed to modify the list while you are iterating it in the same time.<br/>
+	<div class="entry-content"><p>It is literally occurred when you needed to modify the list while you are iterating it in the same time.<br />
 I have two options for you to consider and use at your own risk.</p>
 
 <p>This is the example that cause an error</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestAddRemoveList</span>
-</span><span class='line'><span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span> <span class="n">String</span> <span class="n">args</span><span class="o">[]</span> <span class="o">)</span>
-</span><span class='line'>  <span class="o">{</span>
-</span><span class='line'>    <span class="n">List</span><span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;();</span>
-</span><span class='line'>    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;A&quot;</span><span class="o">);</span>
-</span><span class='line'>    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;B&quot;</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">for</span><span class="o">(</span> <span class="n">String</span> <span class="n">str</span> <span class="o">:</span> <span class="n">list</span> <span class="o">)</span>
-</span><span class='line'>    <span class="o">{</span>
-</span><span class='line'>      <span class="k">if</span><span class="o">(</span> <span class="n">str</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span> <span class="s">&quot;B&quot;</span> <span class="o">)</span> <span class="o">)</span>
-</span><span class='line'>      <span class="o">{</span>
-</span><span class='line'>        <span class="n">list</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span> <span class="k">new</span> <span class="nf">String</span><span class="o">(</span><span class="s">&quot;B&quot;</span> <span class="o">)</span> <span class="o">);</span>
-</span><span class='line'>      <span class="o">}</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestAddRemoveList</span>
+</span><span class="line"><span class="o">{</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span> <span class="n">String</span> <span class="n">args</span><span class="o">[]</span> <span class="o">)</span>
+</span><span class="line">  <span class="o">{</span>
+</span><span class="line">    <span class="n">List</span><span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;();</span>
+</span><span class="line">    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;A&quot;</span><span class="o">);</span>
+</span><span class="line">    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;B&quot;</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">for</span><span class="o">(</span> <span class="n">String</span> <span class="n">str</span> <span class="o">:</span> <span class="n">list</span> <span class="o">)</span>
+</span><span class="line">    <span class="o">{</span>
+</span><span class="line">      <span class="k">if</span><span class="o">(</span> <span class="n">str</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span> <span class="s">&quot;B&quot;</span> <span class="o">)</span> <span class="o">)</span>
+</span><span class="line">      <span class="o">{</span>
+</span><span class="line">        <span class="n">list</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span> <span class="k">new</span> <span class="nf">String</span><span class="o">(</span><span class="s">&quot;B&quot;</span> <span class="o">)</span> <span class="o">);</span>
+</span><span class="line">      <span class="o">}</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>This is the first option you could use <a href="http://java.sun.com/javase/6/docs/api/java/util/concurrent/CopyOnWriteArrayList.html">CopyOnWriteArrayList</a> but there are some drawbacks too. This is the modified result and it worked for me.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.concurrent.CopyOnWriteArrayList</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestAddRemoveList</span>
-</span><span class='line'><span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span> <span class="n">String</span> <span class="n">args</span><span class="o">[]</span> <span class="o">)</span>
-</span><span class='line'>  <span class="o">{</span>
-</span><span class='line'>    <span class="n">List</span><span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CopyOnWriteArrayList</span><span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;();</span>
-</span><span class='line'>    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;A&quot;</span><span class="o">);</span>
-</span><span class='line'>    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;B&quot;</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">for</span><span class="o">(</span> <span class="n">String</span> <span class="n">str</span> <span class="o">:</span> <span class="n">list</span> <span class="o">)</span>
-</span><span class='line'>    <span class="o">{</span>
-</span><span class='line'>      <span class="k">if</span><span class="o">(</span> <span class="n">str</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span> <span class="s">&quot;B&quot;</span> <span class="o">)</span> <span class="o">)</span>
-</span><span class='line'>      <span class="o">{</span>
-</span><span class='line'>        <span class="n">list</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span> <span class="k">new</span> <span class="nf">String</span><span class="o">(</span><span class="s">&quot;B&quot;</span> <span class="o">)</span> <span class="o">);</span>
-</span><span class='line'>      <span class="o">}</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">java.util.concurrent.CopyOnWriteArrayList</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestAddRemoveList</span>
+</span><span class="line"><span class="o">{</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span> <span class="n">String</span> <span class="n">args</span><span class="o">[]</span> <span class="o">)</span>
+</span><span class="line">  <span class="o">{</span>
+</span><span class="line">    <span class="n">List</span><span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CopyOnWriteArrayList</span><span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;();</span>
+</span><span class="line">    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;A&quot;</span><span class="o">);</span>
+</span><span class="line">    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;B&quot;</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">for</span><span class="o">(</span> <span class="n">String</span> <span class="n">str</span> <span class="o">:</span> <span class="n">list</span> <span class="o">)</span>
+</span><span class="line">    <span class="o">{</span>
+</span><span class="line">      <span class="k">if</span><span class="o">(</span> <span class="n">str</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span> <span class="s">&quot;B&quot;</span> <span class="o">)</span> <span class="o">)</span>
+</span><span class="line">      <span class="o">{</span>
+</span><span class="line">        <span class="n">list</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span> <span class="k">new</span> <span class="nf">String</span><span class="o">(</span><span class="s">&quot;B&quot;</span> <span class="o">)</span> <span class="o">);</span>
+</span><span class="line">      <span class="o">}</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>This is the other option. You could you iterator to modify the list</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestAddRemoveList</span>
-</span><span class='line'><span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span> <span class="n">String</span> <span class="n">args</span><span class="o">[]</span> <span class="o">)</span>
-</span><span class='line'>  <span class="o">{</span>
-</span><span class='line'>    <span class="n">List</span><span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;();</span>
-</span><span class='line'>    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;A&quot;</span><span class="o">);</span>
-</span><span class='line'>    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;B&quot;</span><span class="o">);</span>
-</span><span class='line'>    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;C&quot;</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">for</span><span class="o">(</span> <span class="n">Iterator</span><span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">()</span> <span class="o">;</span> <span class="o">)</span>
-</span><span class='line'>    <span class="o">{</span>
-</span><span class='line'>      <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-</span><span class='line'>      <span class="k">if</span><span class="o">(</span> <span class="n">str</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span> <span class="s">&quot;B&quot;</span> <span class="o">)</span> <span class="o">)</span>
-</span><span class='line'>      <span class="o">{</span>
-</span><span class='line'>        <span class="n">it</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
-</span><span class='line'>      <span class="o">}</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">for</span><span class="o">(</span> <span class="n">String</span> <span class="n">str</span> <span class="o">:</span> <span class="n">list</span> <span class="o">)</span>
-</span><span class='line'>    <span class="o">{</span>
-</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="n">str</span> <span class="o">);</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestAddRemoveList</span>
+</span><span class="line"><span class="o">{</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span> <span class="n">String</span> <span class="n">args</span><span class="o">[]</span> <span class="o">)</span>
+</span><span class="line">  <span class="o">{</span>
+</span><span class="line">    <span class="n">List</span><span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;();</span>
+</span><span class="line">    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;A&quot;</span><span class="o">);</span>
+</span><span class="line">    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;B&quot;</span><span class="o">);</span>
+</span><span class="line">    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;C&quot;</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">for</span><span class="o">(</span> <span class="n">Iterator</span><span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">()</span> <span class="o">;</span> <span class="o">)</span>
+</span><span class="line">    <span class="o">{</span>
+</span><span class="line">      <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+</span><span class="line">      <span class="k">if</span><span class="o">(</span> <span class="n">str</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span> <span class="s">&quot;B&quot;</span> <span class="o">)</span> <span class="o">)</span>
+</span><span class="line">      <span class="o">{</span>
+</span><span class="line">        <span class="n">it</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
+</span><span class="line">      <span class="o">}</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">for</span><span class="o">(</span> <span class="n">String</span> <span class="n">str</span> <span class="o">:</span> <span class="n">list</span> <span class="o">)</span>
+</span><span class="line">    <span class="o">{</span>
+</span><span class="line">      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="n">str</span> <span class="o">);</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 </div>
 
@@ -293,7 +289,21 @@ Oct 6th, 2009</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

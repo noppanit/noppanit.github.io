@@ -100,60 +100,57 @@
 	<h2 class="title">Script to Merge All Csv Files to One File.</h2>
 	<div class="entry-content"><p>For example I have file structure like this.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>├── 2013-01  
-</span><span class='line'>│   ├── 2013-01-avon-and-somerset-street.csv  
-</span><span class='line'>├── 2013-02  
-</span><span class='line'>│   ├── 2013-02-avon-and-somerset-street.csv  
-</span><span class='line'>├── 2013-03  
-</span><span class='line'>│   ├── 2013-03-avon-and-somerset-street.csv  
-</span><span class='line'>├── 2013-04  
-</span><span class='line'>│   ├── 2013-04-avon-and-somerset-street.csv  
-</span><span class='line'>├── 2013-05  
-</span><span class='line'>│   ├── 2013-05-avon-and-somerset-street.csv  
-</span><span class='line'>├── 2013-06  
-</span><span class='line'>│   ├── 2013-06-avon-and-somerset-street.csv  
-</span><span class='line'>└── 2013-07  
-</span><span class='line'>├── 2013-07-avon-and-somerset-street.csv</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">├── 2013-01  
+</span><span class="line">│   ├── 2013-01-avon-and-somerset-street.csv  
+</span><span class="line">├── 2013-02  
+</span><span class="line">│   ├── 2013-02-avon-and-somerset-street.csv  
+</span><span class="line">├── 2013-03  
+</span><span class="line">│   ├── 2013-03-avon-and-somerset-street.csv  
+</span><span class="line">├── 2013-04  
+</span><span class="line">│   ├── 2013-04-avon-and-somerset-street.csv  
+</span><span class="line">├── 2013-05  
+</span><span class="line">│   ├── 2013-05-avon-and-somerset-street.csv  
+</span><span class="line">├── 2013-06  
+</span><span class="line">│   ├── 2013-06-avon-and-somerset-street.csv  
+</span><span class="line">└── 2013-07  
+</span><span class="line">├── 2013-07-avon-and-somerset-street.csv</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>To process multiple files in R or Pandas would be a pain, if I could combine all the csv in every folder into one file and I can work on just that one file.</p>
 
-<p>How to use it&#8217;s really easy. Just copy the source code and paste in anywhere. For example, I would call this **merge_csv</code>. Then you would execute like this.</p></p>
+<p>How to use it’s really easy. Just copy the source code and paste in anywhere. For example, I would call this **merge_csv&lt;/code&gt;. Then you would execute like this.&lt;/p&gt;</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sh merge_csv &lt;FOLDER_YOU_WANT&gt;
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">sh merge_csv &lt;FOLDER_YOU_WANT&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The script will iterate to every folder and sub-folder.</p>
 
-<p><strong>Update</strong><br/>
+<p><strong>Update</strong><br />
 I also got this from my friend, which is much shorted. I really need to improve my shell script.</p>
 
 <blockquote class="twitter-tweet">
   <p>
-    <a href="https://twitter.com/noppanit">@noppanit</a> or 'find . -name *.csv -exec cat {} \; > conjoined.csv'
+    <a href="https://twitter.com/noppanit">@noppanit</a> or 'find . -name *.csv -exec cat {} \; &gt; conjoined.csv'
   </p>
   
   <p>
     &mdash; Nathan Fisher (@natbobc) <a href="https://twitter.com/natbobc/statuses/379745266410471424">September 16, 2013</a>
   </p>
 </blockquote>
-
 </div>
 
 
@@ -201,7 +198,21 @@ Sep 16th, 2013</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

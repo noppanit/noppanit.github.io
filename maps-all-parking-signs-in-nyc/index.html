@@ -84,131 +84,130 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Maps All Parking Signs in NYC.</h2>
-	<div class="entry-content"><p>This post might be too easy for any Data-viz people but as a beginner tapping in this area. It took me quite a long time to figure it out so I just want to share this hoping that it might save people&#8217;s time.</p>
+	<div class="entry-content"><p>This post might be too easy for any Data-viz people but as a beginner tapping in this area. It took me quite a long time to figure it out so I just want to share this hoping that it might save people’s time.</p>
 
-<p>Parking in NYC is really a pain, especially street parking where there&#8217;re lots of signs and regulations. There are some apps on Android and iPhone that you can download and see signs but I haven&#8217;t been able to find the one that suits my needs. I want an application that can tell me where to circle arounds on which day and time to find parking spot. For example, I parked my car on a Tuesday which has street cleaning on Wednesday and Friday from 8:30 to 9:30. That means I have to move the car on Wednesday morning to find a spot for Friday. The problem is I don&#8217;t know what&#8217;s around me. The closest application I find is <a href="http://www.nycparklife.com/streetparker/">http://www.nycparklife.com/streetparker/</a> which it doesn&#8217;t have Manhattan.</p>
+<p>Parking in NYC is really a pain, especially street parking where there’re lots of signs and regulations. There are some apps on Android and iPhone that you can download and see signs but I haven’t been able to find the one that suits my needs. I want an application that can tell me where to circle arounds on which day and time to find parking spot. For example, I parked my car on a Tuesday which has street cleaning on Wednesday and Friday from 8:30 to 9:30. That means I have to move the car on Wednesday morning to find a spot for Friday. The problem is I don’t know what’s around me. The closest application I find is <a href="http://www.nycparklife.com/streetparker/">http://www.nycparklife.com/streetparker/</a> which it doesn’t have Manhattan.</p>
 
-<h2>Getting the data</h2>
+<h2 id="getting-the-data">Getting the data</h2>
 
-<p>So, I googled and thank NYC.gov that provides the <a href="http://www.nyc.gov/html/dot/html/about/datafeeds.shtml#parking">data</a> for us. First, I played around with the csv files but they don&#8217;t have coordinates that I can place location on the map. And I have no experience dealing with shapefiles.</p>
+<p>So, I googled and thank NYC.gov that provides the <a href="http://www.nyc.gov/html/dot/html/about/datafeeds.shtml#parking">data</a> for us. First, I played around with the csv files but they don’t have coordinates that I can place location on the map. And I have no experience dealing with shapefiles.</p>
 
-<h2>Extracting the data</h2>
+<h2 id="extracting-the-data">Extracting the data</h2>
 
 <p>After a few hours of mangling and munching the csv with Pandas and R. I would not be able to get the exact locations of all the signs. So I turned to shapefile hoping that I might get lucky. And I found this <a href="http://www.shpescape.com/">http://www.shpescape.com/</a> which promised to transform shapefile to <a href="https://support.google.com/fusiontables/answer/2571232?hl=en">Google Fusion Table</a>. Awesome! I went ahead and tried it. It works great! but it only gives you the first 100,000 rows. So dug deeper. After another few hours of googling I found <a href="http://www.qgis.org/en/site/">qGis</a> which is a opensource project that you can use to open and view shapefile.</p>
 
-<p>Here&#8217;s the example.</p>
+<p>Here’s the example.</p>
 
-<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.jpg" title="Parking signs on Qgis" ></p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.jpg" title="Parking signs on Qgis" /></p>
 
-<p>One thing I learnt was that you cannot just click <strong>Open</strong> and choose the file. What you need to do is to <string>Add Vector Layer</strong>. You can use shortcut <strong>Ctrl+Shift+v</strong></p>
+<p>One thing I learnt was that you cannot just click <strong>Open</strong> and choose the file. What you need to do is to <string>Add Vector Layer&lt;/strong&gt;. You can use shortcut **Ctrl+Shift+v**</string></p>
 
-<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.jpg" title="Add Vector Layer" ></p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.jpg" title="Add Vector Layer" /></p>
 
-<h2>Export to Google Fusion</h2>
+<h2 id="export-to-google-fusion">Export to Google Fusion</h2>
 
-<p>Now what we need is to import what we have to Google Fusion Table. How are we going to turn this beautiful layer to Google Maps. We need CSV&#8230;</p>
+<p>Now what we need is to import what we have to Google Fusion Table. How are we going to turn this beautiful layer to Google Maps. We need CSV…</p>
 
-<p>In QGis you can download the file as CSV. It&#8217;s in <strong>Layer > Save As</strong>. You just need to make sure that <strong>Geometry</strong> has to be set so you get the coordinates.</p>
+<p>In QGis you can download the file as CSV. It’s in <strong>Layer &gt; Save As</strong>. You just need to make sure that <strong>Geometry</strong> has to be set so you get the coordinates.</p>
 
-<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.jpg" title="Save to CSV" ></p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.jpg" title="Save to CSV" /></p>
 
-<h2>Import to Google Fusion Table</h2>
+<h2 id="import-to-google-fusion-table">Import to Google Fusion Table</h2>
 
 <p>Now we can use that CSV to import to Google Fusion. It would look something like this.</p>
 
-<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.jpg" title="Google Fusion Table" ></p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.jpg" title="Google Fusion Table" /></p>
 
 <p>what you need to make sure is that you need to specify which fields are Lat, Long so Google can plot that for you.</p>
 
-<p>Here&#8217;s how you do it.</p>
+<p>Here’s how you do it.</p>
 
-<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.jpg"></p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.jpg" /></p>
 
 <p>The click <strong>change</strong> You will see something like this and you can choose which field you want to be Longitude or Latitude.</p>
 
-<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.jpg" title="Set Location" ></p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.jpg" title="Set Location" /></p>
 
 <p>Once the coordinates have set we can go to Map tab and see beautiful little dots that show where all the signs are in NYC.</p>
 
-<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.jpg" title="Parking signs in Google Fusion Table" ></p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.jpg" title="Parking signs in Google Fusion Table" /></p>
 
 <p>Walla! Now you have something you can build an application on top of it. The next post, I will create an application on top of this map to make use of our data.</p>
 
-<h2>Things I have tried and failed</h2>
+<h2 id="things-i-have-tried-and-failed">Things I have tried and failed</h2>
 
-<p>I&#8217;ve tried using <a href="https://github.com/OSGeo/proj.4">Proj4</a> on both R and Python to convert X,Y WGS84 to Lat, Long. Here&#8217;s my little snippet.</p>
+<p>I’ve tried using <a href="https://github.com/OSGeo/proj.4">Proj4</a> on both R and Python to convert X,Y WGS84 to Lat, Long. Here’s my little snippet.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='R'><span class='line'>data <span class="o">=</span> read.csv<span class="p">(</span><span class="s">&#39;./parking_regulation.csv&#39;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">library</span><span class="p">(</span>proj4<span class="p">)</span>
-</span><span class='line'>proj4string <span class="o">&lt;-</span> <span class="s">&quot;+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs&quot;</span>
-</span><span class='line'>latlong_list<span class="o">&lt;-</span><span class="kt">list</span><span class="p">()</span>
-</span><span class='line'>calculate_long_lat <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">,</span>y<span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Source data</span>
-</span><span class='line'>  xy <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>x<span class="o">=</span>x<span class="p">,</span> y<span class="o">=</span>y<span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Transformed data</span>
-</span><span class='line'>  pj <span class="o">&lt;-</span> project<span class="p">(</span>xy<span class="p">,</span> proj4string<span class="p">,</span> inverse<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
-</span><span class='line'>  latlon <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>lat<span class="o">=</span>pj<span class="o">$</span>y<span class="p">,</span> lon<span class="o">=</span>pj<span class="o">$</span>x<span class="p">)</span>
-</span><span class='line'>  latlong_list<span class="p">[[</span><span class="s">&#39;latlong&#39;</span><span class="p">]]</span> <span class="o">&lt;-</span> latlon
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kp">apply</span><span class="p">(</span>data<span class="p">[,</span><span class="kt">c</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">)],</span> <span class="m">1</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span>y<span class="p">)</span> calculate_long_lat<span class="p">(</span>y<span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">],</span> y<span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">]))</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+</pre></td><td class="code"><pre><code class="R"><span class="line">data <span class="o">=</span> read.csv<span class="p">(</span><span class="s">&#39;./parking_regulation.csv&#39;</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="kn">library</span><span class="p">(</span>proj4<span class="p">)</span>
+</span><span class="line">proj4string <span class="o">&lt;-</span> <span class="s">&quot;+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs&quot;</span>
+</span><span class="line">latlong_list<span class="o">&lt;-</span><span class="kt">list</span><span class="p">()</span>
+</span><span class="line">calculate_long_lat <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">,</span>y<span class="p">)</span> <span class="p">{</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1"># Source data</span>
+</span><span class="line">  xy <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>x<span class="o">=</span>x<span class="p">,</span> y<span class="o">=</span>y<span class="p">)</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1"># Transformed data</span>
+</span><span class="line">  pj <span class="o">&lt;-</span> project<span class="p">(</span>xy<span class="p">,</span> proj4string<span class="p">,</span> inverse<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</span><span class="line">  latlon <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>lat<span class="o">=</span>pj<span class="o">$</span>y<span class="p">,</span> lon<span class="o">=</span>pj<span class="o">$</span>x<span class="p">)</span>
+</span><span class="line">  latlong_list<span class="p">[[</span><span class="s">&#39;latlong&#39;</span><span class="p">]]</span> <span class="o">&lt;-</span> latlon
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kp">apply</span><span class="p">(</span>data<span class="p">[,</span><span class="kt">c</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">)],</span> <span class="m">1</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span>y<span class="p">)</span> calculate_long_lat<span class="p">(</span>y<span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">],</span> y<span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">]))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>The result is not quite accurate which I think it&#8217;s because I need to find a correct <strong>proj4string</strong>.</p>
+<p>The result is not quite accurate which I think it’s because I need to find a correct <strong>proj4string</strong>.</p>
 
 <p>Python has the same wrapper which is quite what I want as well.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Proj</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&#39;parking_regulation.csv&#39;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">p</span> <span class="o">=</span> <span class="n">Proj</span><span class="p">(</span><span class="s">r&#39;+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs&#39;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">cal_long_lat</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">p</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">],</span><span class="n">inverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">data</span><span class="p">[</span><span class="s">&#39;lon&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;lat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">apply</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">cal_long_lat</span> <span class="p">(</span><span class="n">row</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-</span><span class='line'><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Proj</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+</span><span class="line">
+</span><span class="line"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&#39;parking_regulation.csv&#39;</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="n">p</span> <span class="o">=</span> <span class="n">Proj</span><span class="p">(</span><span class="s">r&#39;+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs&#39;</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">cal_long_lat</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">p</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">],</span><span class="n">inverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="n">data</span><span class="p">[</span><span class="s">&#39;lon&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;lat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">apply</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">cal_long_lat</span> <span class="p">(</span><span class="n">row</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</span><span class="line"><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>I will need to learn more about State Pane and what is the correct format.</p>
 
 <p>This article takes 2 pomodoros to complete.</p>
+
 </div>
 
 
@@ -256,7 +255,21 @@ Jul 30th, 2015</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

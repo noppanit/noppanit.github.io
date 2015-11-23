@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Just for fun, I wanted to learn how to do linear regression and here&#8217;s the example I come up with. Let&#8217;s say you have a historical data &hellip;">
+	<meta name="description" content="Just for fun, I wanted to learn how to do linear regression and here’s the example I come up with. Let’s say you have a historical data of 1000 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,64 +84,63 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">The Most Basic Example of Linear Regression</h2>
-	<div class="entry-content"><p>Just for fun, I wanted to learn how to do linear regression and here&#8217;s the example I come up with.</p>
+	<div class="entry-content"><p>Just for fun, I wanted to learn how to do linear regression and here’s the example I come up with.</p>
 
-<p>Let&#8217;s say you have a historical data of 1000 people who dined in your restaurant and left a tip. This is going to be perfect data because I generated. In the real world you will not find something like this.</p>
+<p>Let’s say you have a historical data of 1000 people who dined in your restaurant and left a tip. This is going to be perfect data because I generated. In the real world you will not find something like this.</p>
 
-<p>If you don&#8217;t understand Linear Regression like me before I wrote this post, I recommend you to read this <a href="http://onlinestatbook.com/2/regression/intro.html">basic linear regression.</a>.</p>
+<p>If you don’t understand Linear Regression like me before I wrote this post, I recommend you to read this <a href="http://onlinestatbook.com/2/regression/intro.html">basic linear regression.</a>.</p>
 
-<p>The idea is that you have two variables. In this case, it&#8217;s <strong>tips</strong> and <strong>total amount of bill</strong>. You should explore the data by plotting the graph of these two variables. From my generated data you will get something like this.</p>
+<p>The idea is that you have two variables. In this case, it’s <strong>tips</strong> and <strong>total amount of bill</strong>. You should explore the data by plotting the graph of these two variables. From my generated data you will get something like this.</p>
 
-<p><img src="wp-content/uploads/2015/07/Screenshot-2015-07-07-00.54.42.jpg" title="Linear Regression" ></p>
+<p><img src="wp-content/uploads/2015/07/Screenshot-2015-07-07-00.54.42.jpg" title="Linear Regression" /></p>
 
-<p>You can clearly see that there&#8217;s a strong correlation between the amount of tip and meal.</p>
+<p>You can clearly see that there’s a strong correlation between the amount of tip and meal.</p>
 
 <p>Now if you can find the slope of the graph and intercept you should be able to use the formula.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Y = MX + C
-</span><span class='line'>
-</span><span class='line'>M = slope of the graph
-</span><span class='line'>C = Intercept</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">Y = MX + C
+</span><span class="line">
+</span><span class="line">M = slope of the graph
+</span><span class="line">C = Intercept</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>If you&#8217;re lazy to look at my <a href="https://github.com/noppanit/linear-regression-basic">notebook</a>.</p>
+<p>If you’re lazy to look at my <a href="https://github.com/noppanit/linear-regression-basic">notebook</a>.</p>
 
 <p>Then you can run this code.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-</span><span class='line'><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">total_bills</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-</span><span class='line'><span class="n">tips</span> <span class="o">=</span> <span class="n">total_bills</span> <span class="o">*</span> <span class="mf">0.10</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;tips&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">total_bills</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;total_bills&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">total_bills</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">tips</span><span class="p">)</span>
-</span><span class='line'><span class="n">predicted_tips</span> <span class="o">=</span> <span class="p">(</span><span class="n">slope</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span> <span class="o">+</span> <span class="n">intercept</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</span><span class="line"><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+</span><span class="line">
+</span><span class="line"><span class="n">total_bills</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</span><span class="line"><span class="n">tips</span> <span class="o">=</span> <span class="n">total_bills</span> <span class="o">*</span> <span class="mf">0.10</span>
+</span><span class="line">
+</span><span class="line"><span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;tips&#39;</span><span class="p">)</span>
+</span><span class="line"><span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">total_bills</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;total_bills&#39;</span><span class="p">)</span>
+</span><span class="line"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">total_bills</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">tips</span><span class="p">)</span>
+</span><span class="line"><span class="n">predicted_tips</span> <span class="o">=</span> <span class="p">(</span><span class="n">slope</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span> <span class="o">+</span> <span class="n">intercept</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The result is $7 which corresponds to the 10% tip.</p>
+
 </div>
 
 
@@ -189,7 +188,21 @@ Jul 7th, 2015</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){

@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="This is just another application that choose to implement in nodejs, because it&#8217;s easy and very useful to use. What do you usually do when you &hellip;">
+	<meta name="description" content="This is just another application that choose to implement in nodejs, because it’s easy and very useful to use. What do you usually do when you need &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -84,11 +84,12 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">My Flash Card From NodeJs.</h2>
-	<div class="entry-content"><p>This is just another application that choose to implement in nodejs, because it&#8217;s easy and very useful to use. What do you usually do when you need to learn a new language? You have to remember as many as vocabularies right? Here&#8217;s what I used to do when I was learning Chinese. Have a deck of story cards and wrote down vocabulary on one side and meaning on the other side.</p>
+	<div class="entry-content"><p>This is just another application that choose to implement in nodejs, because it’s easy and very useful to use. What do you usually do when you need to learn a new language? You have to remember as many as vocabularies right? Here’s what I used to do when I was learning Chinese. Have a deck of story cards and wrote down vocabulary on one side and meaning on the other side.</p>
 
 <p>My application <a href="https://github.com/noppanit/my-flash-card" title="MY Flash Card">https://github.com/noppanit/my-flash-card</a> is to demonstrate how easy it is to write an application in NodeJs with a touch of CSS3 to make it elegant.</p>
 
-<p>My first version is using json as a mean of database, but the next version I&#8217;m going to use RedisToGo because I&#8217;m hosting this application on heroku.</p>
+<p>My first version is using json as a mean of database, but the next version I’m going to use RedisToGo because I’m hosting this application on heroku.</p>
+
 </div>
 
 
@@ -136,7 +137,21 @@ May 6th, 2012</div>
 
 </footer>
 	<script src="/javascripts/slash.js"></script>
-
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){
