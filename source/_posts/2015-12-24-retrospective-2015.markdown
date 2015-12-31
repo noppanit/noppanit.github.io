@@ -3,7 +3,7 @@ layout: post
 title: "Retrospective 2015"
 date: 2015-12-24 14:26:19 -0500
 comments: true
-categories: 
+categories: retrospective
 ---
 
 # Reflections on [2015]({% post_url 2015-02-05-2015 %})
