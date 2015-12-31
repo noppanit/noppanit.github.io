@@ -71,7 +71,8 @@ Walla! Now you have something you can build an application on top of it. The nex
 
 I&#8217;ve tried using [Proj4][11] on both R and Python to convert X,Y WGS84 to Lat, Long. Here&#8217;s my little snippet.
 
-``` R
+``` plain
+
 data = read.csv('./parking_regulation.csv')
 
 library(proj4)
@@ -89,13 +90,14 @@ calculate_long_lat <- function(x,y) {
 }
 
 apply(data[,c('x','y')], 1, function(y) calculate_long_lat(y['x'], y['y']))
+
 ```
 
 The result is not quite accurate which I think it&#8217;s because I need to find a correct **proj4string**.
 
 Python has the same wrapper which is quite what I want as well.
 
-``` python
+{% codeblock python %}
 from pyproj import Proj
 import pandas as pd
 
@@ -108,7 +110,7 @@ def cal_long_lat(row):
 
 data['lon'], data['lat'] = zip(data.apply (lambda row: cal_long_lat (row),axis=1))
 data.head()
-```
+{% endcodeblock %}
 
 I will need to learn more about State Pane and what is the correct format.
 

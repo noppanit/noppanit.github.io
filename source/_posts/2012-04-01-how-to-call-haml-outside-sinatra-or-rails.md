@@ -14,7 +14,9 @@ People would think why would you want to do that. Well, in my case I just want t
 So, Haml actually is just a static class that you can call anywhere, but where you call inside Sinatra or Rails controller. You could just use 
 
 ```
+
 haml :my_view
+
 ```
 
 However, if you do this outside Sinatra, you would get an exception that haml is not found or something close. 
@@ -22,6 +24,7 @@ However, if you do this outside Sinatra, you would get an exception that haml is
 So here&#8217;s just a simple solution plus I&#8217;ve added how to call helper in that as well. 
 
 ``` ruby
+
  base = Class.new do
     include Sinatra::DateTimeHelper # This is the helper that you want to include in Haml.
   end.new
@@ -31,6 +34,7 @@ So here&#8217;s just a simple solution plus I&#8217;ve added how to call helper 
   engine = Haml::Engine.new(IO.read(_feed_partial_path))
   rendered = engine.render(base, :var_to_inject => var_to_inject) # or if you don't want to use helper it could be just engine.render(Object.new, :var_to_inject => var_to_inject)
   puts rendered
+  
 ```
 
 That&#8217;s it nice and easy!

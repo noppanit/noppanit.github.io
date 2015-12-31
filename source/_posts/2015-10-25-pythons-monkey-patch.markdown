@@ -48,7 +48,7 @@ class PhonebookTestCase(TestCase):
 
 It makes sense right? I want to stub something from `models.person.get_name` so I'm telling `mock` to stub that class but my test failed miserably.
 
-```
+``` plain
 tests/test_phonebook.py F
 
 =================================================================================== FAILURES ===================================================================================
@@ -63,6 +63,7 @@ self = <tests.test_phonebook.PhonebookTestCase testMethod=test_main>, mock_perso
 E       AssertionError: 'Another Name' != 'John Doe'
 E       - Another Name
 E       + Noppanit
+
 ```
 
 Why? Because `patch` behaves differently than what we expected. This is explained in [Where to patch][1]. I'm going to summarize for you. Basically, `patch` is going to take effect from where it is looked up... For me after reading that I'm still confused. I might be the only one who's confused here so I'm going to continue writing. 

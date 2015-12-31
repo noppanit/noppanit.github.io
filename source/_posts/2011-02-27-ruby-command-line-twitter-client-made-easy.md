@@ -21,7 +21,9 @@ You can use a great application of all time like MacPort.
 Ok! gem installed, ruby installed. Let&#8217;s start with installing some gems
 
 ``` bash
+
 gem install twitter_oauth
+
 ```
 
 If you need to know what OAuth is, I suggest you read this great article <http://hueniverse.com/2007/10/beginners-guide-to-oauth-part-i-overview/>
@@ -37,6 +39,7 @@ You will want, consumer\_key, consumer\_secret. You can get them from your appli
 
 
 ``` ruby
+
 #!/usr/bin/env ruby
 
 require 'rubygems'
@@ -77,18 +80,23 @@ case ARGV[]
     puts "\n"
   }
 end
+
 ```
 
 This is just an example of my application which I use it on terminal. You can run the app by typing
 
 ``` bash
+
 ruby thenameofthisapplication.rb
+
 ```
 
 or you can use symbolic link to /usr/bin and type
 
 ``` bash
+
 ./thenameofthisapplication
+
 ```
 
 It&#8217;s totally up to you. 

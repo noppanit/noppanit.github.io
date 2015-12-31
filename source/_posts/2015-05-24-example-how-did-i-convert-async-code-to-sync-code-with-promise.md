@@ -18,6 +18,7 @@ I&#8217;ve just finished my first refactor to convert my node.js code to be more
 I&#8217;m trying to create a bot to report me back the performance of my site in desktop and mobile mode. So, I thought it would be easy since Google has an [API][1] for that already so I went ahead and did this.
 
 ``` javascript
+
 var request = require('request');
 var urlToGetTheScore = 'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=desktop&amp;fields=ruleGroups'
 
@@ -26,11 +27,13 @@ request.get(urlToGetTheScore, function (error, response, body) {
   
   console.log(JSON.parse(body).ruleGroups.SPEED.score);
 });
+
 ```
 
 It&#8217;s pretty easy and straight forward right but now that would only return the score of desktop. I need the score of my mobile site as well. So, I added more code to be like this.
 
 ``` javascript
+
 var request = require('request');
 
 var urlToGetTheScoreDesktop = 'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=desktop&amp;fields=ruleGroups'
@@ -48,11 +51,13 @@ request.get(urlToGetTheScoreMobile, function (error, response, body) {
 
   console.log(JSON.parse(body).ruleGroups.SPEED.score);
 });
+
 ```
 
 That&#8217;s great but I want to return both scores to a client so I can report the scores rather than printing them to the console. Since, **request** is asynchronous you cannot guarantee which score would come first. So, I thought it&#8217;s easy. I just need to call one request after the other. So, I came up with this.
 
 ``` javascript
+
 var request = require('request');
 
 var urlToGetTheScoreDesktop = 'https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=desktop&amp;fields=ruleGroups'
@@ -72,11 +77,13 @@ request.get(urlToGetTheScoreDesktop, function (error, response, body) {
     console.log('desktop score is ' + desktopScore + ' and mobile score is ' + mobileScore);
   });
 });
+
 ```
 
 Look at how ugly it is. Now I want to make it prettier. So, I will use Promise to make it look nicer. As a good engineer I need to create a test first.
 
 ``` javascript
+
 var perfModule = require('./pagespeed'),
 sinon = require('sinon'),
 request = require('request'),
@@ -96,6 +103,7 @@ var server;
     });
   });
 });
+
 ```
 
 I&#8217;m using [Sinon.js][2] as the mocking framework and [Mocha][3] as the testing framework which are pretty standard.
@@ -103,6 +111,7 @@ I&#8217;m using [Sinon.js][2] as the mocking framework and [Mocha][3] as the tes
 Now I can start refactor my code. At first, I wrote some code like this, just to make it work.
 
 ``` javascript
+
 var request = require('request');
 
 var getSpeed = function(strategy) {
@@ -127,11 +136,13 @@ var pagespeed = function(cb) {
 };
 
 exports.pagespeed = pagespeed;
+
 ```
 
 Any good JavaScript developer would be like, WTH!. You still have callbacks. I thought Promise would solve that issue already! Now, I could use the power of **Promise.all** which takes array of promises and return array of results. My final code would look something like this.
 
 ``` javascript
+
 var request = require('request'),
 Promise = require('promise');
 
@@ -159,6 +170,7 @@ var pagespeed = function(cb) {
 };
 
 exports.pagespeed = pagespeed;
+
 ```
 
 I&#8217;m not an expert in Promise and I welcome any feedback that would help improve my code.

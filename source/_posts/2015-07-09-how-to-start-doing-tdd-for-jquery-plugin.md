@@ -29,6 +29,7 @@ I chose jasmine-jquery because it&#8217;s easier to create some element to test 
 This is my **gulpfile.js**
 
 ```javascript
+
 var gulp = require('gulp');
 var karma = require('gulp-karma');
 
@@ -60,22 +61,26 @@ gulp.task('default', function() {
       action: 'watch'
     }));
 });
+
 ```
 
 This is my **karma.conf.js**
 
 ``` javascript
+
 module.exports = function(config) {
   config.set({
     browsers: ['PhantomJS'],
     frameworks: ['jasmine']
   });
 };
+
 ```
 
 Here&#8217;s my first test
 
 ``` javascript
+
 describe('Taggify', function() {
   var fixture;
   beforeEach(function() {
@@ -89,11 +94,13 @@ describe('Taggify', function() {
   });
 
 });
+
 ```
 
 You will see that the test failed now we implement some code.
 
 ``` javascript
+
 (function($) {
   $.fn.taggify = function(options) {
     create(this);
@@ -109,6 +116,7 @@ You will see that the test failed now we implement some code.
     $theElement.append($input.parent());
   }
 })(jQuery);
+
 ```
 
 Now the test passed. 
@@ -116,6 +124,7 @@ Now the test passed.
 Now let&#8217;s add some event so when you hit enter the tag is added. So, I added one more test
 
 ``` javascript
+
   it('should add a tag', function() {
     var input = fixture.find('input');
     input.val('tag');
@@ -127,6 +136,7 @@ Now let&#8217;s add some event so when you hit enter the tag is added. So, I add
     expect(tag.html()).toBe('tag');
     expect(tags.length > 0).toBeTruthy();
   });
+
 ```
 
 Now the test failed.
@@ -134,6 +144,7 @@ Now the test failed.
 I&#8217;ll fix the test by doing this.
 
 ``` javascript
+
 (function($) {
   $.fn.taggify = function(options) {
     create(this);
@@ -161,11 +172,13 @@ I&#8217;ll fix the test by doing this.
     $theElement.append($input.parent());
   }
 })(jQuery);
+
 ```
 
 Now I want to add some negative test case.
 
 ``` javascript
+
   it('should not add a tag', function() {
     var input = fixture.find('input');
     input.trigger(jQuery.Event('keyup', { keyCode: 13 }));
@@ -173,6 +186,7 @@ Now I want to add some negative test case.
     
     expect(tags.length > 0).toBeFalsy();
   });
+
 ```
 
 Oops the test failed, looks like I missed something
@@ -180,6 +194,7 @@ Oops the test failed, looks like I missed something
 I will fix the test by
 
 ``` javascript
+
 (function($) {
   $.fn.taggify = function(options) {
     create(this);
@@ -208,6 +223,7 @@ I will fix the test by
     $theElement.append($input.parent());
   }
 })(jQuery);
+
 ```
 
 That&#8217;s it. I hope you enjoy and love TDD more. And here&#8217;s the [github repo][2]

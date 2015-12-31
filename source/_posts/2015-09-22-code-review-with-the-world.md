@@ -23,7 +23,7 @@ In Agile world, everybody is talking about fail fast and faster feedback. If you
 
 For example, I wrote this piece of code to learn about dynamic programming.
 
-``` python
+{% codeblock python %}
 import sys
 coins = [1, 3, 5]
 min_coin = [sys.maxint] * 20
@@ -33,7 +33,7 @@ for min_of_i in range(20):
     for c in coins:
         if c <= min_of_i and (min_coin[min_of_i - c] + 1 < min_coin[min_of_i]):
                 min_coin[min_of_i] = min_coin[min_of_i - c] + 1
-```
+{% endcodeblock %}
 
 I know that my code is not bad (or maybe is really bad), but let&#8217;s see what I get out of it from this [thread][2]. From within a day I have at least 2-3 points to make my code a lot better. Not only that I learn more about Python, I also learn how to optimize the script. 
 

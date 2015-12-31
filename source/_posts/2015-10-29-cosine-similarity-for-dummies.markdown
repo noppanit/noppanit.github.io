@@ -17,12 +17,13 @@ Here's the sample data.
 
 User 1 likes these movies
 
-```
+``` plain
 ['Superman', 'Walking Dead', 'CSI']
 ```
 
 User 2 likes these movies
-```
+
+``` plain
 ['Superman', 'Walking Dead', 'CSI']
 ```
 
@@ -53,7 +54,7 @@ In order to find the angle between the two vectors, we need to find the dot prod
 
 Ok. enough about explanation, show me the code. 
 
-```
+``` python
 import numpy as np
 
 def cosin_sim(v, w):
@@ -62,6 +63,7 @@ def cosin_sim(v, w):
 # 1 if movie is in the list of movies and 0 is not. 
 cosin_sim([1, 1, 1], [1, 1, 1])
 # 1.0
+
 ```
 
 In the perfect example, we can see that the two users have the same interests. 
