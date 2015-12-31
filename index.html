@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Have you ever wonder how recommender system works? Or How Spotify or Amazon recommends what songs you might like or what product you might like to &hellip;">
+	<meta name="description" content="Reflections on 2015 I gotta say that my big win for 2015 is I deleted most of my social media accounts even I didn’t plan on doing that at all. I &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,76 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/retrospective-2015/">
+		
+			Retrospective 2015</a>
+	</h2>
+	<div class="entry-content">
+		<h1 id="reflections-on-20152015">Reflections on <a href="/2015/">2015</a></h1>
+
+<ol>
+  <li>I gotta say that my big win for 2015 is I deleted most of my social media accounts even I didn’t plan on doing that at all. I deleted my FB account a couple times in the past. I ended up getting it back. I increase Signal to Noise ration a lot by just deleting that. I used to spend at least 1-2 hour(s) on Facebook browsing what my friends have been doing. Sometimes, I got depressed because it seemed like all the people on Facebook they are on expensive vacation trips.</li>
+</ol>
+
+<p>At first, I was worried because I wouldn’t be able to get in touch with some of my friends and family. But I still talk to my family. We have LINE Messanger which we share pictures and videos. And all of friends that want to contact me, they always find a way to contact me if they want to contact me. I didn’t feel left out at all.</p>
+
+<p>One of the main reasons that I don’t seem to like Facebook as it’s been abused a lot. My mum is the best example, she reacts aggresively and unnecessary to political opinions.</p>
+
+<ol>
+  <li>
+    <p>I didn’t have any excuse for not running the Chicago Marathon but myself to blame. I didn’t train hard enough. I deferred it until 2016 and that would be my 2016 Resolutions.</p>
+  </li>
+  <li>
+    <p>I did learn Spanish. I signed up for the beginner class and now I’m on the second level. Yo hablo poco Espanol!</p>
+  </li>
+  <li>
+    <p>I didn’t learn to invest at all. But my knowledge on how to survive in the US has improved a lot (After spending almost $500 on my medical bill).</p>
+  </li>
+  <li>
+    <p>I went to Peru and it was awesome! I highly recommened anyone to do it.</p>
+  </li>
+</ol>
+
+<h1 id="summary">Summary</h1>
+
+<h2 id="move-to-the-us">Move to the US</h2>
+<p>I moved to the US a year ago. I didn’t regret the decision at all. I joined Fusion Media Network in 2015 as a Developer. However, as my curiosity in Data Science grows. I decided to join Condé Nast as a Data Engineer to quench my curiosity. It feels weird for the first month not building a website or web service. But I got to learn a whole new side of Engineering.</p>
+
+<h2 id="kollaboration">Kollaboration</h2>
+<p>I joined <a href="http://www.kollab.nyc/">Kollaboration</a> as a Technical Director to help out my friend. Unfortunetely, I failed on Time management and I didn’t have enough time to contribute. I’ll devote 2016 to improve my Time management skill.</p>
+
+<h2 id="germany">Germany</h2>
+<p>I met with a bunch of ex-Thoughtworker friends in Germany and I had a blast. I realised how much I love spending time in Germany. I love Berlin and I love the culture over there. People are nice and the coffee is the best I’ve had anywhere. I also received the saddest news whilst I was in Germany.</p>
+
+<h2 id="thailand">Thailand</h2>
+<p>I spoke in <a href="http://www.agiletourbkk.org/">Agile Tour Bangkok 2015</a>. My talk wasn’t that popular because I was up against with some big names but I did send my message to the audience and I got some positive feedback.</p>
+
+<h2 id="habit">Habit</h2>
+<p>I found the <a href="https://habitica.com">task management</a> board that works for me. I didn’t say it’s the best because certainly it lacks a lot of features but it works for me. Will have to come up with another post for this one.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Dec 24th, 2015</div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -1191,367 +1261,6 @@ Jul 30th, 2015</div>
 
 
 Jul 17th, 2015</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/how-to-start-doing-tdd-for-jquery-plugin/">
-		
-			How to Start Doing TDD for jQuery Plugin.</a>
-	</h2>
-	<div class="entry-content">
-		<p>I’m a big fan of TDD. I get nervous every time when I put some code it without having tests. I’m developing a simple jQuery plugin and I think hey we can TDD this.</p>
-
-<h2 id="what-is-it">What is it?</h2>
-
-<p>The plugin is really simple. It turns ul tag to be taggable field. It’s similar to <a href="http://aehlke.github.io/tag-it/">tag-it</a> but with a lot less functionalities and doesn’t depend on jquery-ui</p>
-
-<h2 id="what-you-need">What you need</h2>
-
-<p>I decided to use Karma because I’m going to test a lot of behaviours and Karma seems like a good fit as it run on real browser. Here’s how I setup my project.</p>
-
-<p>I chose jasmine-jquery because it’s easier to create some element to test and it’s easy to setup.</p>
-
-<p>This is my <strong>gulpfile.js</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp&#39;</span><span class="p">);</span>
-</span><span class="line"><span class="kd">var</span> <span class="nx">karma</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-karma&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">testFiles</span> <span class="o">=</span> <span class="p">[</span>
-</span><span class="line">  <span class="s1">&#39;tests/vendors/jquery-1.11.3.min.js&#39;</span><span class="p">,</span>
-</span><span class="line">  <span class="s1">&#39;tests/vendors/jasmine-jquery.js&#39;</span><span class="p">,</span>
-</span><span class="line">  <span class="s1">&#39;src/**/*.js&#39;</span><span class="p">,</span>
-</span><span class="line">  <span class="s1">&#39;tests/spec/**/*.js&#39;</span>
-</span><span class="line"><span class="p">];</span>
-</span><span class="line"><span class="cm">/**</span>
-</span><span class="line"><span class="cm"> * Run test once and exit</span>
-</span><span class="line"><span class="cm"> */</span>
-</span><span class="line"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">testFiles</span><span class="p">)</span>
-</span><span class="line">    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">karma</span><span class="p">({</span>
-</span><span class="line">      <span class="nx">configFile</span><span class="o">:</span> <span class="s1">&#39;karma.conf.js&#39;</span><span class="p">,</span>
-</span><span class="line">      <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;run&#39;</span>
-</span><span class="line">    <span class="p">}))</span>
-</span><span class="line">  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="c1">// Make sure failed tests cause gulp to exit non-zero </span>
-</span><span class="line">    <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line"><span class="p">});</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">testFiles</span><span class="p">)</span>
-</span><span class="line">    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">karma</span><span class="p">({</span>
-</span><span class="line">      <span class="nx">configFile</span><span class="o">:</span> <span class="s1">&#39;karma.conf.js&#39;</span><span class="p">,</span>
-</span><span class="line">      <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;watch&#39;</span>
-</span><span class="line">    <span class="p">}));</span>
-</span><span class="line"><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>This is my <strong>karma.conf.js</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">config</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
-</span><span class="line">    <span class="nx">browsers</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;PhantomJS&#39;</span><span class="p">],</span>
-</span><span class="line">    <span class="nx">frameworks</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;jasmine&#39;</span><span class="p">]</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line"><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Here’s my first test</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Taggify&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="kd">var</span> <span class="nx">fixture</span><span class="p">;</span>
-</span><span class="line">  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">fixture</span> <span class="o">=</span> <span class="nx">setFixtures</span><span class="p">(</span><span class="s1">&#39;&lt;ul id=&quot;tag&quot;&gt;&lt;/ul&gt;&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;#tag&#39;</span><span class="p">).</span><span class="nx">taggify</span><span class="p">();</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should initialize text box&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line">
-</span><span class="line"><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>You will see that the test failed now we implement some code.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">taggify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
-</span><span class="line">  <span class="p">};</span>
-</span><span class="line">
-</span><span class="line">  <span class="kd">function</span> <span class="nx">create</span><span class="p">(</span><span class="nx">$theElement</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input class=&quot;tag-input&quot;&gt;&lt;/input&gt;&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">    <span class="nx">$theElement</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line"><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Now the test passed.</p>
-
-<p>Now let’s add some event so when you hit enter the tag is added. So, I added one more test</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line">  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should add a tag&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">input</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">Event</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">keyCode</span><span class="o">:</span> <span class="mi">13</span> <span class="p">}));</span>
-</span><span class="line">
-</span><span class="line">    <span class="kd">var</span> <span class="nx">tags</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.tag-label&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">tag</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="nx">tags</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-</span><span class="line">
-</span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">tag</span><span class="p">.</span><span class="nx">html</span><span class="p">()).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">tags</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
-</span><span class="line">  <span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Now the test failed.</p>
-
-<p>I’ll fix the test by doing this.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">taggify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
-</span><span class="line">  <span class="p">};</span>
-</span><span class="line">
-</span><span class="line">  <span class="kd">function</span> <span class="nx">create</span><span class="p">(</span><span class="nx">$theElement</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input class=&quot;tag-input&quot;&gt;&lt;/input&gt;&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">    <span class="nx">$input</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">      <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">===</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">        <span class="kd">var</span> <span class="nx">tagText</span> <span class="o">=</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
-</span><span class="line">
-</span><span class="line">        <span class="kd">var</span> <span class="nx">$span</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;tag-label&quot;&gt;&lt;/span&gt;&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">        <span class="nx">$span</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">tagText</span><span class="p">).</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li class=&quot;tag-choice&quot;&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
-</span><span class="line">        <span class="nx">$theElement</span><span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">$span</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
-</span><span class="line">        <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
-</span><span class="line">      <span class="p">}</span>
-</span><span class="line">    <span class="p">});</span>
-</span><span class="line">
-</span><span class="line">    <span class="nx">$theElement</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line"><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Now I want to add some negative test case.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line">  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should not add a tag&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">input</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">Event</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">keyCode</span><span class="o">:</span> <span class="mi">13</span> <span class="p">}));</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">tags</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.tag-label&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">tags</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">).</span><span class="nx">toBeFalsy</span><span class="p">();</span>
-</span><span class="line">  <span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Oops the test failed, looks like I missed something</p>
-
-<p>I will fix the test by</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">taggify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
-</span><span class="line">  <span class="p">};</span>
-</span><span class="line">
-</span><span class="line">  <span class="kd">function</span> <span class="nx">create</span><span class="p">(</span><span class="nx">$theElement</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input class=&quot;tag-input&quot;&gt;&lt;/input&gt;&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">    <span class="nx">$input</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">      <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">===</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">        <span class="kd">var</span> <span class="nx">tagText</span> <span class="o">=</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
-</span><span class="line">        <span class="k">if</span><span class="p">(</span><span class="nx">tagText</span> <span class="o">!==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">          <span class="kd">var</span> <span class="nx">$span</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;tag-label&quot;&gt;&lt;/span&gt;&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">          <span class="nx">$span</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">tagText</span><span class="p">).</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li class=&quot;tag-choice&quot;&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
-</span><span class="line">          <span class="nx">$theElement</span><span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">$span</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
-</span><span class="line">          <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
-</span><span class="line">        <span class="p">}</span>
-</span><span class="line">      <span class="p">}</span>
-</span><span class="line">    <span class="p">});</span>
-</span><span class="line">
-</span><span class="line">    <span class="nx">$theElement</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line"><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>That’s it. I hope you enjoy and love TDD more. And here’s the <a href="https://github.com/noppanit/taggify">github repo</a></p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Jul 9th, 2015</div>
 	<div class="tags">
 
 

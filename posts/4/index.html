@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I just want to write this post for myself and lucky people who found this post from Google. The world has come to the era of functional. When I pair &hellip;">
+	<meta name="description" content="The problem is I have a lot of documents in one collection and even a lot more documents in another collection. I want to merge those documents &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,147 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/merge-documents-two-collections-together-mongodb/">
+		
+			Merge Documents From Two Collections Together in MongoDb</a>
+	</h2>
+	<div class="entry-content">
+		<p>The problem is I have a lot of documents in one collection and even a lot more documents in another collection. I want to merge those documents together but I don’t want to write a lot of code to merge those documents together. It also might take a lot of time to do it.</p>
+
+<p>MongoDb comes with <a href="http://docs.mongodb.org/manual/core/map-reduce/" title="mongodb map reduce">map/reduce</a> which is a cool feature you can use to achieve something like this. If you don’t know what map/reduce is I wrote an <a href="http://www.noppanit.com/mapreduce-dummies/">article</a> like this sometime ago.</p>
+
+<p>Let’s say you have one collection with this document. Let’s say it’s <strong>products</strong> collection.&lt;/p&gt;</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="json"><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="nt">&quot;_id&quot;</span> <span class="p">:</span> <span class="err">ObjectId(</span><span class="s2">&quot;52e05133c68f0b2a95e2b67b&quot;</span><span class="err">)</span><span class="p">,</span>
+</span><span class="line">  <span class="nt">&quot;product_id&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span><span class="line">  <span class="nt">&quot;title&quot;</span> <span class="p">:</span> <span class="s2">&quot;Sharpie&quot;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And another document in <strong>prices</strong> collection.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="json"><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="nt">&quot;_id&quot;</span> <span class="p">:</span> <span class="err">ObjectId(</span><span class="s2">&quot;52e05473c68f0b2a95e2b682&quot;</span><span class="err">)</span><span class="p">,</span>
+</span><span class="line">  <span class="nt">&quot;product_id&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span><span class="line">  <span class="nt">&quot;price&quot;</span> <span class="p">:</span> <span class="mi">99</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I want to end up with this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="json"><span class="line"><span class="p">{</span> <span class="nt">&quot;_id&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nt">&quot;value&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="nt">&quot;title&quot;</span> <span class="p">:</span> <span class="s2">&quot;Sharpie&quot;</span><span class="p">,</span> <span class="nt">&quot;price&quot;</span> <span class="p">:</span> <span class="mi">99</span> <span class="p">}</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Here’s what you can do. Insert your data first.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">db</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&quot;product_id&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span> <span class="o">:</span> <span class="s2">&quot;Sharpie&quot;</span><span class="p">});</span>
+</span><span class="line"><span class="nx">db</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&quot;product_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span> <span class="o">:</span> <span class="s2">&quot;Sticky&quot;</span><span class="p">});</span>
+</span><span class="line"><span class="nx">db</span><span class="p">.</span><span class="nx">prices</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&quot;product_id&quot;</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="mi">99</span><span class="p">});</span>
+</span><span class="line"><span class="nx">db</span><span class="p">.</span><span class="nx">prices</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="s2">&quot;product_id&quot;</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="mi">30</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then you build maps to get key/value from the documents</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">products_map</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">emit</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">product_id</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">title</span><span class="p">});</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">prices_map</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">emit</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">product_id</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">price</span><span class="p">});</span>
+</span><span class="line"><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then you build your reduce function</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">r</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">values</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">      <span class="s2">&quot;title&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span class="line">      <span class="s2">&quot;price&quot;</span> <span class="o">:</span> <span class="s2">&quot;&quot;</span>
+</span><span class="line">    <span class="p">};</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">values</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">if</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">title</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span><span class="nx">result</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">title</span><span class="p">;}</span>
+</span><span class="line">
+</span><span class="line">      <span class="k">if</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">price</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span><span class="nx">result</span><span class="p">.</span><span class="nx">price</span> <span class="o">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">price</span><span class="p">;}</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>Then you run your map/reduce function.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">res</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">mapReduce</span><span class="p">(</span><span class="nx">products_map</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="p">{</span><span class="nx">out</span><span class="o">:</span> <span class="p">{</span><span class="nx">reduce</span> <span class="o">:</span> <span class="s1">&#39;joined&#39;</span><span class="p">}});</span>
+</span><span class="line"><span class="nx">res</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">prices</span><span class="p">.</span><span class="nx">mapReduce</span><span class="p">(</span><span class="nx">prices_map</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="p">{</span><span class="nx">out</span><span class="o">:</span> <span class="p">{</span><span class="nx">reduce</span> <span class="o">:</span> <span class="s1">&#39;joined&#39;</span><span class="p">}});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>Then you will get another collection <strong>joined</strong> with the information you want. One caveat is right now map/reduce function will result in <strong>value : { “field” : “value” }</strong>.</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Jan 23rd, 2014</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -839,43 +980,6 @@ Dec 5th, 2013</div>
 
 
 	<a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/knowledges/'>knowledges</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/another-success-perfect-brew/">
-		
-			Another Success for My Perfect Brew.</a>
-	</h2>
-	<div class="entry-content">
-		<p><img src="http://upload.wikimedia.org/wikipedia/commons/d/d2/Aeropress_setup.jpg" title="AeroPress" /></p>
-
-<p>So after my first post <a href="https://www.noppanit.com/my-quest-to-find-my-perfect-brew/" title="Perfect brew.">my quest to find my perfect brew</a>. Rather than spending a fortune for a grinder and espresso machine, I decided to go step by step. I ordered my first <a href="http://aerobie.com/products/aeropress.htm" title="AeroPress">AeroPress</a>. After just one sip, I can taste the difference right away. The coffee from this little piece of plastic is amazing. I brewed my coffee with my already grounded coffee from Starbuck and even that the result is remarkable. It’s very smooth and rich than the french press method. I guess it’s because of shorter extraction of the coffee and the micro filter which will keep the small particles so you won’t test the bitterness of the coffee. If you want to take your brew to a different level I highly recommend AeroPress. I’m not saying to a higher level because some people might like the bitterness of the coffee which sometime I like. But I think you should totally try AeroPress, It’s totally worth the money. My quest will continue to a grinder and in search of my perfect coffee beans.</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Sep 29th, 2013</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
 
 
 </div>

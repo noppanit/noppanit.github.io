@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Just for fun, I wanted to learn how to do linear regression and here’s the example I come up with. Let’s say you have a historical data of 1000 &hellip;">
+	<meta name="description" content="I’m a big fan of TDD. I get nervous every time when I put some code it without having tests. I’m developing a simple jQuery plugin and I think hey &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,367 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/how-to-start-doing-tdd-for-jquery-plugin/">
+		
+			How to Start Doing TDD for jQuery Plugin.</a>
+	</h2>
+	<div class="entry-content">
+		<p>I’m a big fan of TDD. I get nervous every time when I put some code it without having tests. I’m developing a simple jQuery plugin and I think hey we can TDD this.</p>
+
+<h2 id="what-is-it">What is it?</h2>
+
+<p>The plugin is really simple. It turns ul tag to be taggable field. It’s similar to <a href="http://aehlke.github.io/tag-it/">tag-it</a> but with a lot less functionalities and doesn’t depend on jquery-ui</p>
+
+<h2 id="what-you-need">What you need</h2>
+
+<p>I decided to use Karma because I’m going to test a lot of behaviours and Karma seems like a good fit as it run on real browser. Here’s how I setup my project.</p>
+
+<p>I chose jasmine-jquery because it’s easier to create some element to test and it’s easy to setup.</p>
+
+<p>This is my <strong>gulpfile.js</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">karma</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-karma&#39;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">testFiles</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class="line">  <span class="s1">&#39;tests/vendors/jquery-1.11.3.min.js&#39;</span><span class="p">,</span>
+</span><span class="line">  <span class="s1">&#39;tests/vendors/jasmine-jquery.js&#39;</span><span class="p">,</span>
+</span><span class="line">  <span class="s1">&#39;src/**/*.js&#39;</span><span class="p">,</span>
+</span><span class="line">  <span class="s1">&#39;tests/spec/**/*.js&#39;</span>
+</span><span class="line"><span class="p">];</span>
+</span><span class="line"><span class="cm">/**</span>
+</span><span class="line"><span class="cm"> * Run test once and exit</span>
+</span><span class="line"><span class="cm"> */</span>
+</span><span class="line"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">testFiles</span><span class="p">)</span>
+</span><span class="line">    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">karma</span><span class="p">({</span>
+</span><span class="line">      <span class="nx">configFile</span><span class="o">:</span> <span class="s1">&#39;karma.conf.js&#39;</span><span class="p">,</span>
+</span><span class="line">      <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;run&#39;</span>
+</span><span class="line">    <span class="p">}))</span>
+</span><span class="line">  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="c1">// Make sure failed tests cause gulp to exit non-zero </span>
+</span><span class="line">    <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">testFiles</span><span class="p">)</span>
+</span><span class="line">    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">karma</span><span class="p">({</span>
+</span><span class="line">      <span class="nx">configFile</span><span class="o">:</span> <span class="s1">&#39;karma.conf.js&#39;</span><span class="p">,</span>
+</span><span class="line">      <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;watch&#39;</span>
+</span><span class="line">    <span class="p">}));</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This is my <strong>karma.conf.js</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">config</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
+</span><span class="line">    <span class="nx">browsers</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;PhantomJS&#39;</span><span class="p">],</span>
+</span><span class="line">    <span class="nx">frameworks</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;jasmine&#39;</span><span class="p">]</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line"><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Here’s my first test</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Taggify&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">fixture</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">fixture</span> <span class="o">=</span> <span class="nx">setFixtures</span><span class="p">(</span><span class="s1">&#39;&lt;ul id=&quot;tag&quot;&gt;&lt;/ul&gt;&#39;</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;#tag&#39;</span><span class="p">).</span><span class="nx">taggify</span><span class="p">();</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should initialize text box&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You will see that the test failed now we implement some code.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">taggify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">function</span> <span class="nx">create</span><span class="p">(</span><span class="nx">$theElement</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input class=&quot;tag-input&quot;&gt;&lt;/input&gt;&#39;</span><span class="p">)</span>
+</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
+</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</span><span class="line">      <span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">$theElement</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Now the test passed.</p>
+
+<p>Now let’s add some event so when you hit enter the tag is added. So, I added one more test</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line">  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should add a tag&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">input</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">Event</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">keyCode</span><span class="o">:</span> <span class="mi">13</span> <span class="p">}));</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">var</span> <span class="nx">tags</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.tag-label&#39;</span><span class="p">);</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">tag</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="nx">tags</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">tag</span><span class="p">.</span><span class="nx">html</span><span class="p">()).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">tags</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
+</span><span class="line">  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Now the test failed.</p>
+
+<p>I’ll fix the test by doing this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">taggify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">function</span> <span class="nx">create</span><span class="p">(</span><span class="nx">$theElement</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input class=&quot;tag-input&quot;&gt;&lt;/input&gt;&#39;</span><span class="p">)</span>
+</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
+</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</span><span class="line">      <span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">$input</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">===</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="kd">var</span> <span class="nx">tagText</span> <span class="o">=</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line">        <span class="kd">var</span> <span class="nx">$span</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;tag-label&quot;&gt;&lt;/span&gt;&#39;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">        <span class="nx">$span</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">tagText</span><span class="p">).</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li class=&quot;tag-choice&quot;&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
+</span><span class="line">        <span class="nx">$theElement</span><span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">$span</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
+</span><span class="line">        <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</span><span class="line">      <span class="p">}</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">$theElement</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Now I want to add some negative test case.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line">  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should not add a tag&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">input</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">Event</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">keyCode</span><span class="o">:</span> <span class="mi">13</span> <span class="p">}));</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">tags</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.tag-label&#39;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">tags</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">).</span><span class="nx">toBeFalsy</span><span class="p">();</span>
+</span><span class="line">  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Oops the test failed, looks like I missed something</p>
+
+<p>I will fix the test by</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">taggify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">function</span> <span class="nx">create</span><span class="p">(</span><span class="nx">$theElement</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input class=&quot;tag-input&quot;&gt;&lt;/input&gt;&#39;</span><span class="p">)</span>
+</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
+</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</span><span class="line">      <span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">$input</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">===</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="kd">var</span> <span class="nx">tagText</span> <span class="o">=</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
+</span><span class="line">        <span class="k">if</span><span class="p">(</span><span class="nx">tagText</span> <span class="o">!==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">          <span class="kd">var</span> <span class="nx">$span</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;tag-label&quot;&gt;&lt;/span&gt;&#39;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">          <span class="nx">$span</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">tagText</span><span class="p">).</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li class=&quot;tag-choice&quot;&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
+</span><span class="line">          <span class="nx">$theElement</span><span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">$span</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
+</span><span class="line">          <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">      <span class="p">}</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">$theElement</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>That’s it. I hope you enjoy and love TDD more. And here’s the <a href="https://github.com/noppanit/taggify">github repo</a></p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Jul 9th, 2015</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -1222,263 +1583,6 @@ Nov 22nd, 2014</div>
 
 
 	<a class='category' href='/blog/categories/javascript/'>javascript</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/create-simple-vagrant-plugin/">
-		
-			How to Create a Simple Vagrant Plugin.</a>
-	</h2>
-	<div class="entry-content">
-		<p>I have been searching all over the Internet to find how to create a vagrant plugin. <a href="https://docs.vagrantup.com/v2/plugins/index.html" title="vagrant plugin">Vagrant homepage</a> has information on how to create a vagrant plugin, but I would like to give a real world example. The plugin I’m going to create is <strong><a href="https://github.com/noppanit/vagrant-ls" title="vagrant-ls">vagrant-ls</a></strong> which is inspired by <strong><a href="https://github.com/joshmcarthur/vagrant-list" title="vagrant-list">vagrant-list</a></strong>.</p>
-
-<h2 id="how-do-you-start">How do you start</h2>
-
-<p>Vagrant that you installed already won’t work with local developing plugin. So, I recommend you to create a new gemset for your plugin. If you haven’t used <a href="http://rvm.io/" title="rvm">RVM</a>, I highly recommend you use it now. It’s awesome!.</p>
-
-<p>Once you have RVM installed you can create a gemset using this command <strong>rvm gemset create vagrant-ls</strong>. Then <strong>rvm gemset use vagrant-ls</strong> (Just in case). I recommend you do this for each of your ruby project. It helps you separate your gems, and it won’t mess up with different versions of your gems. First thing that you have to install is Bundler <strong>gem install bundler</strong>. It’s because we will use Bundler to manage all of our dependencies. Then you can create <strong>Gemfile</strong>.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">source</span> <span class="s2">&quot;https://rubygems.org&quot;</span>
-</span><span class="line">
-</span><span class="line"><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
-</span><span class="line">  <span class="n">gem</span> <span class="s2">&quot;vagrant&quot;</span><span class="p">,</span> <span class="ss">git</span><span class="p">:</span> <span class="s2">&quot;https://github.com/mitchellh/vagrant.git&quot;</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="n">group</span> <span class="ss">:plugins</span> <span class="k">do</span>
-</span><span class="line">  <span class="n">gem</span> <span class="s2">&quot;vagrant-ls&quot;</span><span class="p">,</span> <span class="ss">path</span><span class="p">:</span> <span class="s2">&quot;.&quot;</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>This is the most basic you would need for your plugin development. If you wonder what is <em>group :plugins</em>
-. <a href="https://docs.vagrantup.com/v2/plugins/development-basics.html">Vagrant plugin</a> has already explained that. This will load your local plugin automatically without doing <em>bundle exec vagrant install plugin vagrant-ls</em> which will not quite work anyway.</p>
-
-<p>Then you can create your gemspec file. I name it <strong>vagrant-ls.gemspec</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s1">&#39;../lib/vagrant-ls/version&#39;</span><span class="p">,</span> <span class="bp">__FILE__</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line"><span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">name</span>            <span class="o">=</span> <span class="s1">&#39;vagrant-ls&#39;</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">version</span>         <span class="o">=</span> <span class="no">Vagrant</span><span class="o">::</span><span class="no">Ls</span><span class="o">::</span><span class="no">VERSION</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">date</span>            <span class="o">=</span> <span class="s1">&#39;2014-11-18&#39;</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">summary</span>         <span class="o">=</span> <span class="s2">&quot;List all vms&quot;</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">description</span>     <span class="o">=</span> <span class="s2">&quot;A simple vagrant plugin for listing all vms&quot;</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">authors</span>         <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;Noppanit Charassinvichai&quot;</span><span class="o">]</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">email</span>           <span class="o">=</span> <span class="s1">&#39;noppanit.c@gmail.com&#39;</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">files</span>           <span class="o">=</span> <span class="sb">`git ls-files`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="vg">$\</span><span class="p">)</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">executables</span>     <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">%r{^bin/}</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="p">}</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">require_paths</span>   <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;lib&#39;</span><span class="o">]</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">homepage</span>        <span class="o">=</span> <span class="s1">&#39;https://github.com/noppanit/vagrant-ls&#39;</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">license</span>         <span class="o">=</span> <span class="s1">&#39;GNU&#39;</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Then you crate <strong>Rakefile</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
-</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;bundler/setup&#39;</span>
-</span><span class="line"><span class="no">Bundler</span><span class="o">::</span><span class="no">GemHelper</span><span class="o">.</span><span class="n">install_tasks</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Then you move on to create your plugin using this <a href="http://guides.rubygems.org/patterns/" title="gem pattern">pattern</a>.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># lib/vagrant-ls.rb</span>
-</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;bundler&#39;</span>
-</span><span class="line">
-</span><span class="line"><span class="k">begin</span>
-</span><span class="line">  <span class="nb">require</span> <span class="s1">&#39;vagrant&#39;</span>
-</span><span class="line"><span class="k">rescue</span> <span class="no">LoadError</span>
-</span><span class="line">  <span class="no">Bundler</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:default</span><span class="p">,</span> <span class="ss">:development</span><span class="p">)</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;vagrant-ls/plugin&#39;</span>
-</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;vagrant-ls/command&#39;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>I almost forget you need to create VERSION file for gemspec to get your version number</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># lib/vagrant-ls/version.rb</span>
-</span><span class="line"><span class="k">module</span> <span class="nn">Vagrant</span>
-</span><span class="line">    <span class="k">module</span> <span class="nn">Ls</span>
-</span><span class="line">        <span class="no">VERSION</span> <span class="o">=</span> <span class="s1">&#39;0.0.1&#39;</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-<p>Then you create your plugin class, this will be the place where vagrant finds information about your plugin.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># lib/vagrant-ls/plugin.rb</span>
-</span><span class="line"><span class="k">module</span> <span class="nn">Vagrant</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">module</span> <span class="nn">Ls</span>
-</span><span class="line">
-</span><span class="line">        <span class="k">class</span> <span class="nc">Plugin</span> <span class="o">&lt;</span> <span class="no">Vagrant</span><span class="o">.</span><span class="n">plugin</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
-</span><span class="line">          <span class="nb">name</span> <span class="s2">&quot;List&quot;</span>
-</span><span class="line">
-</span><span class="line">          <span class="n">description</span> <span class="o">&lt;&lt;-</span><span class="no">DESC</span>
-</span><span class="line"><span class="sh">          This plugin &#39;ls&#39; all of the vms running inside the machine</span>
-</span><span class="line"><span class="no">          DESC</span>
-</span><span class="line">
-</span><span class="line">          <span class="n">command</span> <span class="s1">&#39;ls&#39;</span> <span class="k">do</span>
-</span><span class="line">            <span class="n">require_relative</span> <span class="s1">&#39;command&#39;</span>
-</span><span class="line">            <span class="no">Command</span>
-</span><span class="line">          <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">        <span class="k">end</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>This is where you will name your command.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">command</span> <span class="s1">&#39;ls&#39;</span> <span class="k">do</span>
-</span><span class="line"><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Last one, this is where vagrant will know how to execute your plugin</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># lib/vagrant-ls/command.rb</span>
-</span><span class="line"><span class="k">module</span> <span class="nn">Vagrant</span>
-</span><span class="line">    <span class="k">module</span> <span class="nn">Ls</span>
-</span><span class="line">        <span class="k">class</span> <span class="nc">Command</span> <span class="o">&lt;</span> <span class="no">Vagrant</span><span class="o">.</span><span class="n">plugin</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="ss">:command</span><span class="p">)</span>
-</span><span class="line">            <span class="k">def</span> <span class="nf">execute</span>
-</span><span class="line">                <span class="nb">exec</span><span class="p">(</span><span class="s1">&#39;VBoxManage list vms&#39;</span><span class="p">)</span>
-</span><span class="line">                <span class="mi">0</span>
-</span><span class="line">            <span class="k">end</span>
-</span><span class="line">        <span class="k">end</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>I just run <strong>VBoxManage</strong> command to list all of the vms. Once you are done, you are ready to test your plugin.</p>
-
-<p>You can run this command</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">bundle <span class="nb">exec </span>vagrant ls
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>. If everything is correct, it should list all of your vms with the name of your vms, so you know where you are you running all those vms.</p>
-
-<h2 id="publish-your-gem">Publish your gem</h2>
-
-<p>Now, it’s time to spread the love of your gem. You need to build your gem first. Remember the Rakefile? You can just run <em>rake build</em></p>
-
-<p>It will pack your gem to <strong>.pkg</strong> folder. Then you can just run</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">gem push pkg/vagrant-ls-0.0.1.gem
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>. That’s it you have your gem published. If you look for <a href="http://guides.rubygems.org/publishing/">documentation</a> for publishing your gem.</p>
-
-<p>You can find my repository <a href="https://github.com/noppanit/vagrant-ls">here</a>. The reason I create this post is that, the plugin might evolve but this blog stays and it will be a good starting point for other people.</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Nov 21st, 2014</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
 
 
 </div>

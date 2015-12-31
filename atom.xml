@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-12-30T20:17:30-05:00</updated>
+  <updated>2015-12-30T20:57:23-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -12,6 +12,55 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Retrospective 2015]]></title>
+    <link href="https://www.noppanit.com/retrospective-2015/"/>
+    <updated>2015-12-24T14:26:19-05:00</updated>
+    <id>https://www.noppanit.com/retrospective-2015</id>
+    <content type="html"><![CDATA[<h1 id="reflections-on-20152015">Reflections on <a href="https://www.noppanit.com/2015/">2015</a></h1>
+
+<ol>
+  <li>I gotta say that my big win for 2015 is I deleted most of my social media accounts even I didn’t plan on doing that at all. I deleted my FB account a couple times in the past. I ended up getting it back. I increase Signal to Noise ration a lot by just deleting that. I used to spend at least 1-2 hour(s) on Facebook browsing what my friends have been doing. Sometimes, I got depressed because it seemed like all the people on Facebook they are on expensive vacation trips.</li>
+</ol>
+
+<p>At first, I was worried because I wouldn’t be able to get in touch with some of my friends and family. But I still talk to my family. We have LINE Messanger which we share pictures and videos. And all of friends that want to contact me, they always find a way to contact me if they want to contact me. I didn’t feel left out at all.</p>
+
+<p>One of the main reasons that I don’t seem to like Facebook as it’s been abused a lot. My mum is the best example, she reacts aggresively and unnecessary to political opinions.</p>
+
+<ol>
+  <li>
+    <p>I didn’t have any excuse for not running the Chicago Marathon but myself to blame. I didn’t train hard enough. I deferred it until 2016 and that would be my 2016 Resolutions.</p>
+  </li>
+  <li>
+    <p>I did learn Spanish. I signed up for the beginner class and now I’m on the second level. Yo hablo poco Espanol!</p>
+  </li>
+  <li>
+    <p>I didn’t learn to invest at all. But my knowledge on how to survive in the US has improved a lot (After spending almost $500 on my medical bill).</p>
+  </li>
+  <li>
+    <p>I went to Peru and it was awesome! I highly recommened anyone to do it.</p>
+  </li>
+</ol>
+
+<h1 id="summary">Summary</h1>
+
+<h2 id="move-to-the-us">Move to the US</h2>
+<p>I moved to the US a year ago. I didn’t regret the decision at all. I joined Fusion Media Network in 2015 as a Developer. However, as my curiosity in Data Science grows. I decided to join Condé Nast as a Data Engineer to quench my curiosity. It feels weird for the first month not building a website or web service. But I got to learn a whole new side of Engineering.</p>
+
+<h2 id="kollaboration">Kollaboration</h2>
+<p>I joined <a href="http://www.kollab.nyc/">Kollaboration</a> as a Technical Director to help out my friend. Unfortunetely, I failed on Time management and I didn’t have enough time to contribute. I’ll devote 2016 to improve my Time management skill.</p>
+
+<h2 id="germany">Germany</h2>
+<p>I met with a bunch of ex-Thoughtworker friends in Germany and I had a blast. I realised how much I love spending time in Germany. I love Berlin and I love the culture over there. People are nice and the coffee is the best I’ve had anywhere. I also received the saddest news whilst I was in Germany.</p>
+
+<h2 id="thailand">Thailand</h2>
+<p>I spoke in <a href="http://www.agiletourbkk.org/">Agile Tour Bangkok 2015</a>. My talk wasn’t that popular because I was up against with some big names but I did send my message to the audience and I got some positive feedback.</p>
+
+<h2 id="habit">Habit</h2>
+<p>I found the <a href="https://habitica.com">task management</a> board that works for me. I didn’t say it’s the best because certainly it lacks a lot of features but it works for me. Will have to come up with another post for this one.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Cosine Similarity for Dummies]]></title>
@@ -2162,238 +2211,6 @@
 <p>Now it will only take <strong>2ms</strong> to execute the snippet. It’s because the event is added to one element not 1000 of them.</p>
 
 <p>This is just an easy example that you can do it yourself to improve your performance.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to create a simple vagrant plugin.]]></title>
-    <link href="https://www.noppanit.com/create-simple-vagrant-plugin/"/>
-    <updated>2014-11-21T00:00:00-05:00</updated>
-    <id>https://www.noppanit.com/create-simple-vagrant-plugin</id>
-    <content type="html"><![CDATA[<p>I have been searching all over the Internet to find how to create a vagrant plugin. <a href="https://docs.vagrantup.com/v2/plugins/index.html" title="vagrant plugin">Vagrant homepage</a> has information on how to create a vagrant plugin, but I would like to give a real world example. The plugin I’m going to create is <strong><a href="https://github.com/noppanit/vagrant-ls" title="vagrant-ls">vagrant-ls</a></strong> which is inspired by <strong><a href="https://github.com/joshmcarthur/vagrant-list" title="vagrant-list">vagrant-list</a></strong>.</p>
-
-<h2 id="how-do-you-start">How do you start</h2>
-
-<p>Vagrant that you installed already won’t work with local developing plugin. So, I recommend you to create a new gemset for your plugin. If you haven’t used <a href="http://rvm.io/" title="rvm">RVM</a>, I highly recommend you use it now. It’s awesome!.</p>
-
-<p>Once you have RVM installed you can create a gemset using this command <strong>rvm gemset create vagrant-ls</strong>. Then <strong>rvm gemset use vagrant-ls</strong> (Just in case). I recommend you do this for each of your ruby project. It helps you separate your gems, and it won’t mess up with different versions of your gems. First thing that you have to install is Bundler <strong>gem install bundler</strong>. It’s because we will use Bundler to manage all of our dependencies. Then you can create <strong>Gemfile</strong>.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">source</span> <span class="s2">&quot;https://rubygems.org&quot;</span>
-</span><span class="line">
-</span><span class="line"><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
-</span><span class="line">  <span class="n">gem</span> <span class="s2">&quot;vagrant&quot;</span><span class="p">,</span> <span class="ss">git</span><span class="p">:</span> <span class="s2">&quot;https://github.com/mitchellh/vagrant.git&quot;</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="n">group</span> <span class="ss">:plugins</span> <span class="k">do</span>
-</span><span class="line">  <span class="n">gem</span> <span class="s2">&quot;vagrant-ls&quot;</span><span class="p">,</span> <span class="ss">path</span><span class="p">:</span> <span class="s2">&quot;.&quot;</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>This is the most basic you would need for your plugin development. If you wonder what is <em>group :plugins</em>
-. <a href="https://docs.vagrantup.com/v2/plugins/development-basics.html">Vagrant plugin</a> has already explained that. This will load your local plugin automatically without doing <em>bundle exec vagrant install plugin vagrant-ls</em> which will not quite work anyway.</p>
-
-<p>Then you can create your gemspec file. I name it <strong>vagrant-ls.gemspec</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s1">&#39;../lib/vagrant-ls/version&#39;</span><span class="p">,</span> <span class="bp">__FILE__</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line"><span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">name</span>            <span class="o">=</span> <span class="s1">&#39;vagrant-ls&#39;</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">version</span>         <span class="o">=</span> <span class="no">Vagrant</span><span class="o">::</span><span class="no">Ls</span><span class="o">::</span><span class="no">VERSION</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">date</span>            <span class="o">=</span> <span class="s1">&#39;2014-11-18&#39;</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">summary</span>         <span class="o">=</span> <span class="s2">&quot;List all vms&quot;</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">description</span>     <span class="o">=</span> <span class="s2">&quot;A simple vagrant plugin for listing all vms&quot;</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">authors</span>         <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;Noppanit Charassinvichai&quot;</span><span class="o">]</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">email</span>           <span class="o">=</span> <span class="s1">&#39;noppanit.c@gmail.com&#39;</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">files</span>           <span class="o">=</span> <span class="sb">`git ls-files`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="vg">$\</span><span class="p">)</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">executables</span>     <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">%r{^bin/}</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="p">}</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">require_paths</span>   <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;lib&#39;</span><span class="o">]</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">homepage</span>        <span class="o">=</span> <span class="s1">&#39;https://github.com/noppanit/vagrant-ls&#39;</span>
-</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">license</span>         <span class="o">=</span> <span class="s1">&#39;GNU&#39;</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Then you crate <strong>Rakefile</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
-</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;bundler/setup&#39;</span>
-</span><span class="line"><span class="no">Bundler</span><span class="o">::</span><span class="no">GemHelper</span><span class="o">.</span><span class="n">install_tasks</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Then you move on to create your plugin using this <a href="http://guides.rubygems.org/patterns/" title="gem pattern">pattern</a>.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># lib/vagrant-ls.rb</span>
-</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;bundler&#39;</span>
-</span><span class="line">
-</span><span class="line"><span class="k">begin</span>
-</span><span class="line">  <span class="nb">require</span> <span class="s1">&#39;vagrant&#39;</span>
-</span><span class="line"><span class="k">rescue</span> <span class="no">LoadError</span>
-</span><span class="line">  <span class="no">Bundler</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:default</span><span class="p">,</span> <span class="ss">:development</span><span class="p">)</span>
-</span><span class="line"><span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;vagrant-ls/plugin&#39;</span>
-</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;vagrant-ls/command&#39;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>I almost forget you need to create VERSION file for gemspec to get your version number</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># lib/vagrant-ls/version.rb</span>
-</span><span class="line"><span class="k">module</span> <span class="nn">Vagrant</span>
-</span><span class="line">    <span class="k">module</span> <span class="nn">Ls</span>
-</span><span class="line">        <span class="no">VERSION</span> <span class="o">=</span> <span class="s1">&#39;0.0.1&#39;</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-<p>Then you create your plugin class, this will be the place where vagrant finds information about your plugin.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># lib/vagrant-ls/plugin.rb</span>
-</span><span class="line"><span class="k">module</span> <span class="nn">Vagrant</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">module</span> <span class="nn">Ls</span>
-</span><span class="line">
-</span><span class="line">        <span class="k">class</span> <span class="nc">Plugin</span> <span class="o">&lt;</span> <span class="no">Vagrant</span><span class="o">.</span><span class="n">plugin</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
-</span><span class="line">          <span class="nb">name</span> <span class="s2">&quot;List&quot;</span>
-</span><span class="line">
-</span><span class="line">          <span class="n">description</span> <span class="o">&lt;&lt;-</span><span class="no">DESC</span>
-</span><span class="line"><span class="sh">          This plugin &#39;ls&#39; all of the vms running inside the machine</span>
-</span><span class="line"><span class="no">          DESC</span>
-</span><span class="line">
-</span><span class="line">          <span class="n">command</span> <span class="s1">&#39;ls&#39;</span> <span class="k">do</span>
-</span><span class="line">            <span class="n">require_relative</span> <span class="s1">&#39;command&#39;</span>
-</span><span class="line">            <span class="no">Command</span>
-</span><span class="line">          <span class="k">end</span>
-</span><span class="line">
-</span><span class="line">        <span class="k">end</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>This is where you will name your command.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">command</span> <span class="s1">&#39;ls&#39;</span> <span class="k">do</span>
-</span><span class="line"><span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Last one, this is where vagrant will know how to execute your plugin</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># lib/vagrant-ls/command.rb</span>
-</span><span class="line"><span class="k">module</span> <span class="nn">Vagrant</span>
-</span><span class="line">    <span class="k">module</span> <span class="nn">Ls</span>
-</span><span class="line">        <span class="k">class</span> <span class="nc">Command</span> <span class="o">&lt;</span> <span class="no">Vagrant</span><span class="o">.</span><span class="n">plugin</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="ss">:command</span><span class="p">)</span>
-</span><span class="line">            <span class="k">def</span> <span class="nf">execute</span>
-</span><span class="line">                <span class="nb">exec</span><span class="p">(</span><span class="s1">&#39;VBoxManage list vms&#39;</span><span class="p">)</span>
-</span><span class="line">                <span class="mi">0</span>
-</span><span class="line">            <span class="k">end</span>
-</span><span class="line">        <span class="k">end</span>
-</span><span class="line">    <span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>I just run <strong>VBoxManage</strong> command to list all of the vms. Once you are done, you are ready to test your plugin.</p>
-
-<p>You can run this command</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">bundle <span class="nb">exec </span>vagrant ls
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>. If everything is correct, it should list all of your vms with the name of your vms, so you know where you are you running all those vms.</p>
-
-<h2 id="publish-your-gem">Publish your gem</h2>
-
-<p>Now, it’s time to spread the love of your gem. You need to build your gem first. Remember the Rakefile? You can just run <em>rake build</em></p>
-
-<p>It will pack your gem to <strong>.pkg</strong> folder. Then you can just run</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">gem push pkg/vagrant-ls-0.0.1.gem
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>. That’s it you have your gem published. If you look for <a href="http://guides.rubygems.org/publishing/">documentation</a> for publishing your gem.</p>
-
-<p>You can find my repository <a href="https://github.com/noppanit/vagrant-ls">here</a>. The reason I create this post is that, the plugin might evolve but this blog stays and it will be a good starting point for other people.</p>
 
 ]]></content>
   </entry>

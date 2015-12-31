@@ -7,7 +7,8 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="If you work on web development you probably have heard AngularJs at some point. It’s a framework created by people at Google. So, we can be sure in &hellip;">
+	<meta name="description" content="&lt;/img&gt;
+&lt;/br&gt; This has just happened to be last night when I was on a phone and I didn’t notice that my battery was about to run out. So &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +84,50 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/htc-one-wont-turn-on-after-battery-completely-drained/">
+		
+			HTC One Won&#8217;t Turn on After Battery Completely Drained.</a>
+	</h2>
+	<div class="entry-content">
+		<p><img class="cool_border" width="250" src="https://upload.wikimedia.org/wikipedia/commons/3/3d/HTC_One_Diagonal_View.jpg" />&lt;/img&gt;<br />
+&lt;/br&gt;</p>
+
+<p>This has just happened to be last night when I was on a phone and I didn’t notice that my battery was about to run out. So, I kept talking and suddenly my phone went off. I quickly plugged my phone into the wall charger again and push the power button in hope that it would give me the HTC One logo once again. But my hope was in vain, nothing showed up it was just a blank black screen. This has to me before when I was using Blackberry Bold 9700. What I did was that I pulled the battery out and put it back in again, and it worked. Now, HTC One doesn’t have back cover so you cannot pull the battery out. I searched all over the Internet but no luck as the phone is quite new and I guess no one has been this dumb like me. Here’s what I did to get my phone back on again.</p>
+
+<ol>
+  <li>Charge your phone to the wall charger again for at least 1 hour just to give your battery a kick.</li>
+  <li>Press the <strong>Volume Down</strong> button and press the <strong>Power</strong> button together for as long as you can. Some says for 10 seconds but for me it was longer than that.</li>
+  <li>If you’re lucky you phone will turn on and give you some options. You can choose <strong>Fast boot</strong> by using <strong>Volume Up/Down</strong> button to choose between options and use the <strong>Power</strong> button to select.</li>
+  <li>And yeh! Your phone will reboot. Never ever let your battery die again.</li>
+</ol>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Jul 12th, 2013</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -853,91 +898,6 @@ Mar 10th, 2013</div>
 
 
 	<a class='category' href='/blog/categories/javascript/'>javascript</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/flask-and-rq-example-for-heroku/">
-		
-			Flask and RQ Example for Heroku</a>
-	</h2>
-	<div class="entry-content">
-		<p>I have been struggling to find any example on the Internet on how to do long polling on Heroku with Flask and RQ. I know it’s relatively easy, but I just want to make it clear for my future self.</p>
-
-<p>It’s really simple.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/get_word_count&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;POST&#39;</span><span class="p">])</span>
-</span><span class="line"><span class="k">def</span> <span class="nf">get_word_count</span><span class="p">():</span>
-</span><span class="line">    <span class="n">data_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-</span><span class="line">    <span class="n">job</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">word_counter</span><span class="o">.</span><span class="n">count_words</span><span class="p">,</span> <span class="n">data_json</span><span class="p">[</span><span class="s">&quot;sentence&quot;</span><span class="p">])</span>
-</span><span class="line">    <span class="k">return</span> <span class="n">job</span><span class="o">.</span><span class="n">key</span>
-</span><span class="line">
-</span><span class="line"><span class="nd">@app.route</span><span class="p">(</span><span class="s">&quot;/get_word_count_result/&lt;job_key&gt;&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
-</span><span class="line"><span class="k">def</span> <span class="nf">get_word_count_result</span><span class="p">(</span><span class="n">job_key</span><span class="p">):</span>
-</span><span class="line">    <span class="n">job_key</span> <span class="o">=</span> <span class="n">job_key</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;rq:job:&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
-</span><span class="line">    <span class="n">job</span> <span class="o">=</span> <span class="n">Job</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">job_key</span><span class="p">,</span> <span class="n">connection</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="n">job</span><span class="o">.</span><span class="n">is_finished</span><span class="p">):</span>
-</span><span class="line">        <span class="k">return</span> <span class="s">&quot;Not yet&quot;</span><span class="p">,</span> <span class="mi">202</span>
-</span><span class="line">    <span class="k">else</span><span class="p">:</span>
-</span><span class="line">        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">),</span> <span class="mi">200</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The key is here</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="n">job</span> <span class="o">=</span> <span class="n">Job</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">job_key</span><span class="p">,</span> <span class="n">connection</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The fetch command is used to get the job by job_id, you can also use</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="n">get_current_job</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>as well, but I just want to make it clear that if there are more concurrent requests coming in, I’ll get the right result back.</p>
-
-<p>I posted an example here. <a href="https://github.com/noppanit/heroku-flask-rq-worker" title="Python with RQ on Heroku">https://github.com/noppanit/heroku-flask-rq-worker</a></p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Mar 8th, 2013</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/python/'>python</a>
 
 
 </div>
