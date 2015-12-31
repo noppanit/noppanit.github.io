@@ -140,7 +140,7 @@
 
 <p>It makes sense right? I want to stub something from <code>models.person.get_name</code> so I’m telling <code>mock</code> to stub that class but my test failed miserably.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>tests/test_phonebook.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -154,20 +154,20 @@
 <span class="line-number">12</span>
 <span class="line-number">13</span>
 <span class="line-number">14</span>
-</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="n">tests</span><span class="o">/</span><span class="n">test_phonebook</span><span class="o">.</span><span class="n">py</span> <span class="n">F</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">tests/test_phonebook.py F
 </span><span class="line">
-</span><span class="line"><span class="o">===================================================================================</span> <span class="n">FAILURES</span> <span class="o">===================================================================================</span>
-</span><span class="line"><span class="n">_________________________________________________________________________</span> <span class="n">PhonebookTestCase</span><span class="o">.</span><span class="n">test_main</span> <span class="n">__________________________________________________________________________</span>
+</span><span class="line">=================================================================================== FAILURES ===================================================================================
+</span><span class="line">_________________________________________________________________________ PhonebookTestCase.test_main __________________________________________________________________________
 </span><span class="line">
-</span><span class="line"><span class="bp">self</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">tests</span><span class="o">.</span><span class="n">test_phonebook</span><span class="o">.</span><span class="n">PhonebookTestCase</span> <span class="n">testMethod</span><span class="o">=</span><span class="n">test_main</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">mock_person</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">MagicMock</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;get_name&#39;</span> <span class="nb">id</span><span class="o">=</span><span class="s">&#39;4460968592&#39;</span><span class="o">&gt;</span>
+</span><span class="line">self = &lt;tests.test_phonebook.PhonebookTestCase testMethod=test_main&gt;, mock_person = &lt;MagicMock name='get_name' id='4460968592'&gt;
 </span><span class="line">
-</span><span class="line">    <span class="nd">@mock.patch</span><span class="p">(</span><span class="s">&#39;models.person.get_name&#39;</span><span class="p">)</span>
-</span><span class="line">    <span class="k">def</span> <span class="nf">test_main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock_person</span><span class="p">):</span>
-</span><span class="line">        <span class="n">mock_person</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="s">&#39;Another Name&#39;</span>
-</span><span class="line"><span class="o">&gt;</span>       <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s">&#39;Another Name&#39;</span><span class="p">,</span> <span class="n">Phonebook</span><span class="p">()</span><span class="o">.</span><span class="n">lookup</span><span class="p">())</span>
-</span><span class="line"><span class="n">E</span>       <span class="ne">AssertionError</span><span class="p">:</span> <span class="s">&#39;Another Name&#39;</span> <span class="o">!=</span> <span class="s">&#39;John Doe&#39;</span>
-</span><span class="line"><span class="n">E</span>       <span class="o">-</span> <span class="n">Another</span> <span class="n">Name</span>
-</span><span class="line"><span class="n">E</span>       <span class="o">+</span> <span class="n">Noppanit</span>
+</span><span class="line">    @mock.patch('models.person.get_name')
+</span><span class="line">    def test_main(self, mock_person):
+</span><span class="line">        mock_person.return_value = 'Another Name'
+</span><span class="line">&gt;       self.assertEqual('Another Name', Phonebook().lookup())
+</span><span class="line">E       AssertionError: 'Another Name' != 'John Doe'
+</span><span class="line">E       - Another Name
+</span><span class="line">E       + Noppanit
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Why? Because <code>patch</code> behaves differently than what we expected. This is explained in <a href="http://www.voidspace.org.uk/python/mock/patch.html#where-to-patch">Where to patch</a>. I’m going to summarize for you. Basically, <code>patch</code> is going to take effect from where it is looked up… For me after reading that I’m still confused. I might be the only one who’s confused here so I’m going to continue writing.</p>

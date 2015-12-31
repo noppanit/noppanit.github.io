@@ -92,11 +92,12 @@
 
 <p>User 1 likes these movies</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td><td class="code"><pre><code class=""><span class="line">['Superman', 'Walking Dead', 'CSI']</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>User 2 likes these movies</p>
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td><td class="code"><pre><code class=""><span class="line">['Superman', 'Walking Dead', 'CSI']</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Even without any algorithm we can say that two users like the same movies. But we want the algorithm to tell us that the two users are very similar. Before we get into the mathematical formula world. We have to understand what a vector is?</p>
@@ -126,7 +127,7 @@
 
 <p>Ok. enough about explanation, show me the code.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -134,14 +135,15 @@
 <span class="line-number">6</span>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">import numpy as np
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 </span><span class="line">
-</span><span class="line">def cosin_sim(v, w):
-</span><span class="line">    return np.dot(v, w) / np.math.sqrt(np.dot(v, v) * np.dot(w, w))
+</span><span class="line"><span class="k">def</span> <span class="nf">cosin_sim</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
 </span><span class="line">
-</span><span class="line"># 1 if movie is in the list of movies and 0 is not. 
-</span><span class="line">cosin_sim([1, 1, 1], [1, 1, 1])
-</span><span class="line"># 1.0</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line"><span class="c"># 1 if movie is in the list of movies and 0 is not. </span>
+</span><span class="line"><span class="n">cosin_sim</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span class="line"><span class="c"># 1.0</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>In the perfect example, we can see that the two users have the same interests.</p>
 

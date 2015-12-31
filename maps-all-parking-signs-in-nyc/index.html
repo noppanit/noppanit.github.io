@@ -155,30 +155,33 @@
 <span class="line-number">15</span>
 <span class="line-number">16</span>
 <span class="line-number">17</span>
-</pre></td><td class="code"><pre><code class="R"><span class="line">data <span class="o">=</span> read.csv<span class="p">(</span><span class="s">&#39;./parking_regulation.csv&#39;</span><span class="p">)</span>
+<span class="line-number">18</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">
+</span><span class="line">data = read.csv('./parking_regulation.csv')
 </span><span class="line">
-</span><span class="line"><span class="kn">library</span><span class="p">(</span>proj4<span class="p">)</span>
-</span><span class="line">proj4string <span class="o">&lt;-</span> <span class="s">&quot;+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs&quot;</span>
-</span><span class="line">latlong_list<span class="o">&lt;-</span><span class="kt">list</span><span class="p">()</span>
-</span><span class="line">calculate_long_lat <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">,</span>y<span class="p">)</span> <span class="p">{</span>
+</span><span class="line">library(proj4)
+</span><span class="line">proj4string &lt;- "+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs"
+</span><span class="line">latlong_list&lt;-list()
+</span><span class="line">calculate_long_lat &lt;- function(x,y) {
+</span><span class="line">  
+</span><span class="line">  # Source data
+</span><span class="line">  xy &lt;- data.frame(x=x, y=y)
+</span><span class="line">  
+</span><span class="line">  # Transformed data
+</span><span class="line">  pj &lt;- project(xy, proj4string, inverse=TRUE)
+</span><span class="line">  latlon &lt;- data.frame(lat=pj$y, lon=pj$x)
+</span><span class="line">  latlong_list[['latlong']] &lt;- latlon
+</span><span class="line">}
 </span><span class="line">
-</span><span class="line">  <span class="c1"># Source data</span>
-</span><span class="line">  xy <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>x<span class="o">=</span>x<span class="p">,</span> y<span class="o">=</span>y<span class="p">)</span>
-</span><span class="line">
-</span><span class="line">  <span class="c1"># Transformed data</span>
-</span><span class="line">  pj <span class="o">&lt;-</span> project<span class="p">(</span>xy<span class="p">,</span> proj4string<span class="p">,</span> inverse<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
-</span><span class="line">  latlon <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>lat<span class="o">=</span>pj<span class="o">$</span>y<span class="p">,</span> lon<span class="o">=</span>pj<span class="o">$</span>x<span class="p">)</span>
-</span><span class="line">  latlong_list<span class="p">[[</span><span class="s">&#39;latlong&#39;</span><span class="p">]]</span> <span class="o">&lt;-</span> latlon
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="kp">apply</span><span class="p">(</span>data<span class="p">[,</span><span class="kt">c</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">)],</span> <span class="m">1</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span>y<span class="p">)</span> calculate_long_lat<span class="p">(</span>y<span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">],</span> y<span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">]))</span>
+</span><span class="line">apply(data[,c('x','y')], 1, function(y) calculate_long_lat(y['x'], y['y']))
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The result is not quite accurate which I think it’s because I need to find a correct <strong>proj4string</strong>.</p>
 
 <p>Python has the same wrapper which is quite what I want as well.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>python </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -190,19 +193,18 @@
 <span class="line-number">10</span>
 <span class="line-number">11</span>
 <span class="line-number">12</span>
-</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Proj</span>
-</span><span class="line"><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">from pyproj import Proj
+</span><span class="line">import pandas as pd
 </span><span class="line">
-</span><span class="line"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&#39;parking_regulation.csv&#39;</span><span class="p">)</span>
+</span><span class="line">data = pd.read_csv('parking_regulation.csv')
 </span><span class="line">
-</span><span class="line"><span class="n">p</span> <span class="o">=</span> <span class="n">Proj</span><span class="p">(</span><span class="s">r&#39;+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs&#39;</span><span class="p">)</span>
+</span><span class="line">p = Proj(r'+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs')
 </span><span class="line">
-</span><span class="line"><span class="k">def</span> <span class="nf">cal_long_lat</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
-</span><span class="line">    <span class="k">return</span> <span class="n">p</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">],</span><span class="n">inverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class="line">def cal_long_lat(row):
+</span><span class="line">    return p(row['x'], row['y'],inverse=True)
 </span><span class="line">
-</span><span class="line"><span class="n">data</span><span class="p">[</span><span class="s">&#39;lon&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;lat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">apply</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">cal_long_lat</span> <span class="p">(</span><span class="n">row</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-</span><span class="line"><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line">data['lon'], data['lat'] = zip(data.apply (lambda row: cal_long_lat (row),axis=1))
+</span><span class="line">data.head()</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>I will need to learn more about State Pane and what is the correct format.</p>
 

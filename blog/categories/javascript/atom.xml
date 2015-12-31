@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-11-23T10:32:55-05:00</updated>
+  <updated>2015-12-30T20:17:30-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -22,21 +22,24 @@
 
 <p>I’m trying to create a bot to report me back the performance of my site in desktop and mobile mode. So, I thought it would be easy since Google has an <a href="https://developers.google.com/speed/docs/insights/v2/getting-started">API</a> for that already so I went ahead and did this.</p>
 
-<p>``` javascript
-var request = require(‘request’);
+<p>``` javascript</p>
+
+<p>var request = require(‘request’);
 var urlToGetTheScore = ‘https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=desktop&amp;fields=ruleGroups’</p>
 
 <p>request.get(urlToGetTheScore, function (error, response, body) {
   if(error) console.log(error);</p>
 
 <p>console.log(JSON.parse(body).ruleGroups.SPEED.score);
-});
-```</p>
+});</p>
+
+<p>```</p>
 
 <p>It’s pretty easy and straight forward right but now that would only return the score of desktop. I need the score of my mobile site as well. So, I added more code to be like this.</p>
 
-<p>``` javascript
-var request = require(‘request’);</p>
+<p>``` javascript</p>
+
+<p>var request = require(‘request’);</p>
 
 <p>var urlToGetTheScoreDesktop = ‘https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=desktop&amp;fields=ruleGroups’</p>
 
@@ -52,13 +55,15 @@ var request = require(‘request’);</p>
   if(error) console.log(error);</p>
 
 <p>console.log(JSON.parse(body).ruleGroups.SPEED.score);
-});
-```</p>
+});</p>
+
+<p>```</p>
 
 <p>That’s great but I want to return both scores to a client so I can report the scores rather than printing them to the console. Since, <strong>request</strong> is asynchronous you cannot guarantee which score would come first. So, I thought it’s easy. I just need to call one request after the other. So, I came up with this.</p>
 
-<p>``` javascript
-var request = require(‘request’);</p>
+<p>``` javascript</p>
+
+<p>var request = require(‘request’);</p>
 
 <p>var urlToGetTheScoreDesktop = ‘https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=desktop&amp;fields=ruleGroups’</p>
 
@@ -74,13 +79,16 @@ var request = require(‘request’);</p>
 
 <pre><code>var mobileScore = JSON.parse(body).ruleGroups.SPEED.score;
 
-console.log('desktop score is ' + desktopScore + ' and mobile score is ' + mobileScore);   }); }); ```
+console.log('desktop score is ' + desktopScore + ' and mobile score is ' + mobileScore);   }); });
 </code></pre>
+
+<p>```</p>
 
 <p>Look at how ugly it is. Now I want to make it prettier. So, I will use Promise to make it look nicer. As a good engineer I need to create a test first.</p>
 
-<p>``` javascript
-var perfModule = require(‘./pagespeed’),
+<p>``` javascript</p>
+
+<p>var perfModule = require(‘./pagespeed’),
 sinon = require(‘sinon’),
 request = require(‘request’),
 expect = require(‘expect.js’);</p>
@@ -98,15 +106,17 @@ var server;
       expect(msg).to.eql(‘desktop speed is 10 and mobile speed is 10’);
     });
   });
-});
-```</p>
+});</p>
+
+<p>```</p>
 
 <p>I’m using <a href="http://sinonjs.org/">Sinon.js</a> as the mocking framework and <a href="http://mochajs.org/">Mocha</a> as the testing framework which are pretty standard.</p>
 
 <p>Now I can start refactor my code. At first, I wrote some code like this, just to make it work.</p>
 
-<p>``` javascript
-var request = require(‘request’);</p>
+<p>``` javascript</p>
+
+<p>var request = require(‘request’);</p>
 
 <p>var getSpeed = function(strategy) {
   var url = ‘https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;strategy=’+ strategy + ‘&amp;fields=ruleGroups’
@@ -128,13 +138,15 @@ var request = require(‘request’);</p>
 <p>});
 };</p>
 
-<p>exports.pagespeed = pagespeed;
-```</p>
+<p>exports.pagespeed = pagespeed;</p>
+
+<p>```</p>
 
 <p>Any good JavaScript developer would be like, WTH!. You still have callbacks. I thought Promise would solve that issue already! Now, I could use the power of <strong>Promise.all</strong> which takes array of promises and return array of results. My final code would look something like this.</p>
 
-<p>``` javascript
-var request = require(‘request’),
+<p>``` javascript</p>
+
+<p>var request = require(‘request’),
 Promise = require(‘promise’);</p>
 
 <p>var getSpeed = function(strategy) {
@@ -157,8 +169,9 @@ Promise = require(‘promise’);</p>
 console.log(error);   }); };
 </code></pre>
 
-<p>exports.pagespeed = pagespeed;
-```</p>
+<p>exports.pagespeed = pagespeed;</p>
+
+<p>```</p>
 
 <p>I’m not an expert in Promise and I welcome any feedback that would help improve my code.</p>
 
@@ -199,11 +212,11 @@ $('#ul li').on('click', function() {
   <li></li>
   // 999 more <li>
 
-```
-
-Then we will have JavaScript like this
-
-``` html
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>Then we will have JavaScript like this
+</span></code></pre></td></tr></table></div></figure> html
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
     $('#parent li').on('click', function() {
@@ -211,18 +224,25 @@ Then we will have JavaScript like this
     });
 
 </script>
-```
-
-If you open your html page on Chrome you should see something like this.  
-{% img https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png %}
-
-If you go down to where JavaScript is executed You will see it takes around **37ms** to execute the snippet.  
-
-{% img https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png %}
-
-Now change your snippet to be event delegation
-
-``` html
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>If you open your html page on Chrome you should see something like this.  
+</span><span class='line'><img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png">
+</span><span class='line'>
+</span><span class='line'>If you go down to where JavaScript is executed You will see it takes around **37ms** to execute the snippet.  
+</span><span class='line'>
+</span><span class='line'><img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png">
+</span><span class='line'>
+</span><span class='line'>Now change your snippet to be event delegation
+</span></code></pre></td></tr></table></div></figure> html
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
     $('#parent').on('click', 'li', function() {
@@ -234,7 +254,7 @@ Now change your snippet to be event delegation
 
 And refresh the page you should see something like this.  
 
-{% img https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png %}
+<img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png">
 
 Now it will only take **2ms** to execute the snippet. It&#8217;s because the event is added to one element not 1000 of them. 
 
@@ -321,11 +341,11 @@ $('#link1').on('click', function (e) {
 
 <p>This is the results of optimisation.</p>
 
-<p>{% img http://www.noppanit.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-09-at-19.45.38.png %}</p>
+<p><img src="http://www.noppanit.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-09-at-19.45.38.png"></p>
 
 <p>And this is the result of non-optimized version.</p>
 
-<p>{% img http://www.noppanit.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-09-at-19.46.59.png %}</p>
+<p><img src="http://www.noppanit.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-09-at-19.46.59.png"></p>
 
 <p>It’s clear to see that the optimized version takes shorter to load the script, where as the non-optimized version in the files might be smaller but with a lot of calls, it takes longer to load all the scripts.</p>
 

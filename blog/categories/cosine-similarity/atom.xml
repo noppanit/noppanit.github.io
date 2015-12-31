@@ -4,7 +4,7 @@
   <title><![CDATA[Category: cosine similarity | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/cosine-similarity/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-11-23T10:32:55-05:00</updated>
+  <updated>2015-12-30T20:17:30-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -26,12 +26,13 @@
 
 <p>User 1 likes these movies</p>
 
-<p><code>
+<p><code>plain
 ['Superman', 'Walking Dead', 'CSI']
 </code></p>
 
-<p>User 2 likes these movies
-<code>
+<p>User 2 likes these movies</p>
+
+<p><code>plain
 ['Superman', 'Walking Dead', 'CSI']
 </code></p>
 
@@ -40,7 +41,7 @@
 <h1 id="whats-a-vector">What’s a vector?</h1>
 <p>In Pyhsics, a vector has two things; magnitude and direction which can be written as</p>
 
-<p>{% img /wp-content/uploads/2015/11/vector.png Vector %}</p>
+<p><img src="/wp-content/uploads/2015/11/vector.png" title="Vector" ></p>
 
 <p>I’d like to explain what a vector is but this <a href="http://immersivemath.com/ila/ch02_vectors/ch02.html">site</a> explains a lot better.</p>
 
@@ -50,7 +51,7 @@
 
 <h1 id="cosine-similarity">Cosine Similarity</h1>
 
-<p>{% img /wp-content/uploads/2015/11/cosine_similarity.gif Cosine Similarity %}</p>
+<p><img src="/wp-content/uploads/2015/11/cosine_similarity.gif" title="Cosine Similarity" ></p>
 
 <p>In order to find the angle between the two vectors, we need to find the dot product of the two vectors as the formula below.</p>
 
@@ -62,7 +63,7 @@
 
 <p>Ok. enough about explanation, show me the code.</p>
 
-<p>```
+<p>``` python
 import numpy as np</p>
 
 <p>def cosin_sim(v, w):
@@ -70,8 +71,9 @@ import numpy as np</p>
 
 <h1 id="if-movie-is-in-the-list-of-movies-and-0-is-not">1 if movie is in the list of movies and 0 is not.</h1>
 <p>cosin_sim([1, 1, 1], [1, 1, 1])
-# 1.0
-```</p>
+# 1.0</p>
+
+<p>```</p>
 
 <p>In the perfect example, we can see that the two users have the same interests.</p>
 

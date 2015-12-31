@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-11-23T10:32:55-05:00</updated>
+  <updated>2015-12-30T20:17:30-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -120,16 +120,19 @@ subl .
 
 <p>So, Haml actually is just a static class that you can call anywhere, but where you call inside Sinatra or Rails controller. You could just use</p>
 
-<p><code>
-haml :my_view
-</code></p>
+<p>```</p>
+
+<p>haml :my_view</p>
+
+<p>```</p>
 
 <p>However, if you do this outside Sinatra, you would get an exception that haml is not found or something close.</p>
 
 <p>So here’s just a simple solution plus I’ve added how to call helper in that as well.</p>
 
-<p>``` ruby
- base = Class.new do
+<p>``` ruby</p>
+
+<p>base = Class.new do
     include Sinatra::DateTimeHelper # This is the helper that you want to include in Haml.
   end.new</p>
 
@@ -137,8 +140,9 @@ haml :my_view
 
 <p>engine = Haml::Engine.new(IO.read(_feed_partial_path))
   rendered = engine.render(base, :var_to_inject =&gt; var_to_inject) # or if you don’t want to use helper it could be just engine.render(Object.new, :var_to_inject =&gt; var_to_inject)
-  puts rendered
-```</p>
+  puts rendered</p>
+
+<p>```</p>
 
 <p>That’s it nice and easy!</p>
 ]]></content>
@@ -160,9 +164,11 @@ haml :my_view
 
 <p>Ok! gem installed, ruby installed. Let’s start with installing some gems</p>
 
-<p><code>bash
-gem install twitter_oauth
-</code></p>
+<p>``` bash</p>
+
+<p>gem install twitter_oauth</p>
+
+<p>```</p>
 
 <p>If you need to know what OAuth is, I suggest you read this great article <a href="http://hueniverse.com/2007/10/beginners-guide-to-oauth-part-i-overview/">http://hueniverse.com/2007/10/beginners-guide-to-oauth-part-i-overview/</a></p>
 
@@ -175,8 +181,9 @@ gem install twitter_oauth
 
 <p>You will want, consumer_key, consumer_secret. You can get them from your application setting page, then click on My Access Token on the right-hand sided bar. Note down Access Token and Access Token Secret. Then you’re good to go.</p>
 
-<p>``` ruby
-#!/usr/bin/env ruby</p>
+<p>``` ruby</p>
+
+<h1 id="usrbinenv-ruby">!/usr/bin/env ruby</h1>
 
 <p>require ‘rubygems’
 require ‘twitter_oauth’</p>
@@ -215,20 +222,25 @@ TWITTER_ACCESS_SECRET = ‘Your Access Token Secret’</p>
     puts tweet[‘text’] + “ @FROM #{tweet[‘user’][‘name’]}”
     puts “\n”
   }
-end
-```</p>
+end</p>
+
+<p>```</p>
 
 <p>This is just an example of my application which I use it on terminal. You can run the app by typing</p>
 
-<p><code>bash
-ruby thenameofthisapplication.rb
-</code></p>
+<p>``` bash</p>
+
+<p>ruby thenameofthisapplication.rb</p>
+
+<p>```</p>
 
 <p>or you can use symbolic link to /usr/bin and type</p>
 
-<p><code>bash
-./thenameofthisapplication
-</code></p>
+<p>``` bash</p>
+
+<p>./thenameofthisapplication</p>
+
+<p>```</p>
 
 <p>It’s totally up to you.</p>
 

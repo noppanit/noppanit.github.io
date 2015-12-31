@@ -1,0 +1,1561 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>My Blog</title>
+	<meta name="author" content="Noppanit Charassinvichai">
+
+	
+	<meta name="description" content="Just for fun, I wanted to learn how to do linear regression and here’s the example I come up with. Let’s say you have a historical data of 1000 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="My Blog" type="application/atom+xml">
+	<link rel="canonical" href=" https://www.noppanit.com/posts/2/index.html" />
+	<link href="/favicon.png" rel="shortcut icon">
+	<style>
+		@font-face{font-family:'FontAwesome';src:url("/font/fontawesome-webfont.eot");src:url("/font/fontawesome-webfont.eot?#iefix") format("embedded-opentype"),url("/font/fontawesome-webfont.woff") format("woff"),url("/font/fontawesome-webfont.ttf") format("truetype"),url("/font/fontawesome-webfont.svgz#FontAwesomeRegular") format("svg"),url("/font/fontawesome-webfont.svg#FontAwesomeRegular") format("svg");font-weight:normal;font-style:normal}*{margin:0;padding:0}body{font-family:"HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:300;font-size:14px;background:#eee;color:#666}@media screen and (max-width: 1040px){body{margin:0 20px}}@media screen and (max-width: 600px){body{font-size:13px}}h1{font-size:1.8em}h2{font-size:1.5em}h3{font-size:1.3em}a{text-decoration:none;outline-width:0;color:#258fb8}.alignleft{float:left}.alignright{float:right}.clearfix{*zoom:1}.clearfix:after{content:"";display:table;clear:both}.inner{width:1000px;margin:0 auto}@media screen and (max-width: 1040px){.inner{width:100%}}.pullquote-right:before,.pullquote-left:before{padding:0;border:none;content:attr(data-pullquote);float:right;width:45%;margin:.5em 0 1em 1.5em;position:relative;top:7px;font-size:1.4em;line-height:1.45em}.pullquote-left:before{float:left;margin:.5em 1.5em 1em 0}#header{height:30px;padding:30px 0;border-bottom:1px solid #ddd;line-height:30px}@media screen and (max-width: 1040px){#header{height:auto;position:relative;padding-bottom:10px}}#header a{color:#666;-moz-transition:color 0.3s;-o-transition:color 0.3s;-webkit-transition:color 0.3s;transition:color 0.3s}#header a:hover{color:#258fb8}#header h1{float:left;font-weight:300;font-size:30px}@media screen and (max-width: 1040px){#header h1{float:none}}#main-nav{float:left;margin-left:30px}@media screen and (max-width: 1040px){#main-nav{float:none;margin-left:0;margin-top:15px}}@media screen and (max-width: 600px){#main-nav>ul{display:none}}#main-nav>ul>li{margin-left:50px;display:inline-block;vertical-align:middle;*vertical-align:auto;*zoom:1;*display:inline}@media screen and (max-width: 1040px){#main-nav>ul>li{margin-left:0;margin-right:50px}#main-nav>ul>li:last-of-type{margin-right:0}}#main-nav>ul>li:hover>a{color:#258fb8}#main-nav>ul>li>a{padding:38px 0;margin-top:-38px}#main-nav>ul>li>a:after{content:"\f078";color:#ccc;font:12px FontAwesome;padding-left:10px}#main-nav>ul>li>a:only-child:after{content:""}@media screen and (max-width: 1040px){#main-nav>ul>li>a{padding:18px 0}}#main-nav>ul ul{position:absolute;top:60px;left:-15px;z-index:10;white-space:nowrap;background:#ddd;border:1px solid #ccc;list-style:none;display:none;-moz-box-shadow:0 4px 8px rgba(0,0,0,0.1);-webkit-box-shadow:0 4px 8px rgba(0,0,0,0.1);box-shadow:0 4px 8px rgba(0,0,0,0.1);-moz-border-radius:0 0 5px 5px;-webkit-border-radius:0;border-radius:0 0 5px 5px}@media screen and (max-width: 1040px){#main-nav>ul ul{top:40px}}#main-nav>ul ul ul{-moz-border-radius:0 5px 5px 5px;-webkit-border-radius:0;border-radius:0 5px 5px 5px}#main-nav>ul ul li{border-top:1px solid #eee;border-bottom:1px solid #ccc}#main-nav>ul ul li:hover{background:#d5d5d5}#main-nav>ul ul li:first-of-type{border-top:none}#main-nav>ul ul li:first-of-type ul{-moz-border-radius:0 0 5px 5px;-webkit-border-radius:0;border-radius:0 0 5px 5px}#main-nav>ul ul li:last-of-type{border-bottom:none}#main-nav>ul ul li>a{display:block;padding:5px 15px}#main-nav>ul ul li>a:after{content:"\f054";color:#999;font:12px FontAwesome;padding-left:10px}#main-nav>ul ul li>a:hover{color:#666}#main-nav>ul ul li>a:only-child:after{content:""}#main-nav>ul ul ul{top:0;left:100%}#main-nav>ul li{position:relative}#main-nav>ul li:hover>ul{display:block}#main-nav select{display:none;margin-bottom:10px}@media screen and (max-width: 600px){#main-nav select{display:block}}#mobile-nav{display:none;height:37px;position:relative}@media screen and (max-width: 600px){#mobile-nav{display:block}}#mobile-nav a{display:block}#mobile-nav .button{cursor:pointer}#mobile-nav .container{display:none}#mobile-nav .menu{position:relative;width:100%}#mobile-nav .menu .button{background:#f2f2f2;border:1px solid #ddd;color:#999;padding:0 60px 0 10px;position:relative;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}#mobile-nav .menu .button:hover{color:#999}#mobile-nav .menu .button.on{color:#666;-moz-border-radius:5px 5px 5px 0;-webkit-border-radius:5px;border-radius:5px 5px 5px 0}#mobile-nav .menu .button.on:before{content:"\f077"}#mobile-nav .menu .button:before{content:"\f078";color:#ddd;font:16px FontAwesome;line-height:30px;position:absolute;top:0;right:40px}#mobile-nav .menu .container{background:#f2f2f2;border:1px solid #ddd;border-top:none;position:absolute;top:31px;z-index:1;-moz-border-radius:0 0 5px 5px;-webkit-border-radius:0;border-radius:0 0 5px 5px}#mobile-nav .menu .container ul{list-style:none}#mobile-nav .menu .container ul ul{margin-left:20px}#mobile-nav .menu .container a{padding:0 10px}#mobile-nav .search{position:absolute;top:0;right:0}#mobile-nav .search .button{background:#ddd;width:30px;height:30px;position:absolute;top:1px;right:-1px;-moz-border-radius:0 5px 5px 0;-webkit-border-radius:0;border-radius:0 5px 5px 0}#mobile-nav .search .button:before{content:"\f002";color:#f2f2f2;font:20px FontAwesome;line-height:30px;position:absolute;top:0;left:7px}#mobile-nav .search .button.on{background:#ccc}#mobile-nav .search .button.on:before{content:"\f00d"}#mobile-nav .search .container{position:absolute;right:51px;z-index:1}#mobile-nav .search input[type="text"]{background:#fff;border:1px solid #ddd;border-right:none;color:#999;font:13px "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;height:30px;width:100%;padding:0 10px;-moz-border-radius:5px 0 0 5px;-webkit-border-radius:5px;border-radius:5px 0 0 5px}@media screen and (max-width: 1040px){#sub-nav{position:absolute;top:30px;right:0}}@media screen and (max-width: 600px){#sub-nav{display:none}}#sub-nav .search{float:left;margin-top:1px;position:relative}@media screen and (max-width: 1040px){#sub-nav .search{float:none;margin-top:15px}}#sub-nav .search:before{content:"\f002";color:#ccc;font:18px FontAwesome;line-height:30px;position:absolute;top:0;right:125px}#sub-nav .search input[type="text"]{background:#f2f2f2;color:#999;border:1px solid #ddd;font:13px "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;padding:6px 15px 6px 35px;width:100px;-moz-transition:0.3s;-o-transition:0.3s;-webkit-transition:0.3s;transition:0.3s;-moz-border-radius:15px;-webkit-border-radius:15px;border-radius:15px}#sub-nav .search input[type="text"]:focus,#sub-nav .search input[type="text"]:active{background:#fff;border-top:1px solid #ccc;color:#666;outline:none}#sub-nav .social{float:left;margin-right:15px}@media screen and (max-width: 1040px){#sub-nav .social{float:none;margin-right:0}#sub-nav .social a:last-of-type{margin-right:0}}#sub-nav .social a{-moz-border-radius:50%;-webkit-border-radius:50%;border-radius:50%;display:inline-block;vertical-align:middle;*vertical-align:auto;*zoom:1;*display:inline;text-indent:-9999px;margin-right:15px;opacity:0.5;width:28px;height:28px;-moz-transition:0.3s;-o-transition:0.3s;-webkit-transition:0.3s;transition:0.3s}#sub-nav .social a:hover{opacity:1}#sub-nav .social a.facebook{background:url('/images/social/facebook.png?1443976015') center no-repeat #3B5998;border:1px solid #3B5998}#sub-nav .social a.facebook:hover{border:1px solid #2d4373}#sub-nav .social a.google{background:url('/images/social/google.png?1443976015') center no-repeat #C83D20;border:1px solid #C83D20}#sub-nav .social a.google:hover{border:1px solid #9c3019}#sub-nav .social a.twitter{background:url('/images/social/twitter.png?1443976015') center no-repeat #55CFF8;border:1px solid #55CFF8}#sub-nav .social a.twitter:hover{border:1px solid #24c1f6}#sub-nav .social a.github{background:url('/images/social/github.png?1443976015') center no-repeat #afb6ca;border:1px solid #afb6ca}#sub-nav .social a.github:hover{border:1px solid #909ab6}#sub-nav .social a.coderwall{background:url('/images/social/coderwall.png?1443976015') center no-repeat #3a729f;border:1px solid #3a729f}#sub-nav .social a.coderwall:hover{border:1px solid #2c577a}#sub-nav .social a.pinboard{background:url('/images/social/pinboard.png?1443976015') center no-repeat #0066c8;border:1px solid #3a729f}#sub-nav .social a.pinboard:hover{border:1px solid #0052cc}#sub-nav .social a.linkedin{background:url('/images/social/linkedin.png?1443976015') center no-repeat #005A87;border:1px solid #005A87}#sub-nav .social a.linkedin:hover{border:1px solid #003854}#sub-nav .social a.pinterest{background:url('/images/social/pinterest.png?1443976015') center no-repeat #be4037;border:1px solid #be4037}#sub-nav .social a.pinterest:hover{border:1px solid #96332c}#sub-nav .social a.delicious{background:url('/images/social/delicious.png?1443976015') center no-repeat #3271cb;border:1px solid #3271cb}#sub-nav .social a.delicious:hover{border:1px solid #285aa2}#sub-nav .social a.rss{background:url('/images/social/rss.png?1443976015') center no-repeat #ef7522;border:1px solid #ef7522}#sub-nav .social a.rss:hover{border:1px solid #cf5d0f}#sub-nav .social a.instagram{background:url('/images/social/instagram.png?1443976015') center no-repeat #406e95;border:1px solid #406e95}#sub-nav .social a.instagram:hover{border:1px solid #315471}#pagenavi{padding:20px 0;height:20px;line-height:20px;position:relative;border-top:1px solid #fff;border-bottom:1px solid #ddd}#pagenavi a:hover{text-decoration:underline}#pagenavi .prev,#pagenavi .next{position:absolute}#pagenavi .prev{padding-left:30px;left:0}#pagenavi .prev:before{content:"\f060";font:1.3em FontAwesome;position:absolute;left:0}#pagenavi .next{padding-right:30px;right:0}#pagenavi .next:before{content:"\f061";font:1.3em FontAwesome;position:absolute;right:0}#pagenavi .center{text-align:center;width:100%;display:block}@media screen and (max-width: 400px){#pagenavi .center{display:none}}article{border-bottom:1px solid #ddd;border-top:1px solid #fff;padding:30px 0;position:relative}@media screen and (max-width: 800px){article{padding-bottom:15px}}@media screen and (max-width: 600px){article{padding:15px 0}}article h2.title{font-size:1.8em;font-weight:300;line-height:35px;margin-bottom:20px}article h2.title a{color:#666}article .entry-content{line-height:2;text-align:justify}article .entry-content a:hover{text-decoration:underline}article .entry-content .more-link{display:block;margin-top:16px;padding-left:30px;position:relative}article .entry-content .more-link:before{content:"\f061";font:1.3em FontAwesome;line-height:1.6em;position:absolute;left:0}article .entry-content p,article .entry-content blockquote,article .entry-content ul,article .entry-content ol,article .entry-content dl,article .entry-content table,article .entry-content iframe,article .entry-content h1,article .entry-content h2,article .entry-content h3,article .entry-content h4,article .entry-content h5,article .entry-content h6,article .entry-content .video-container{margin-top:10px}article .entry-content ul,article .entry-content ol,article .entry-content dl{margin-left:20px}article .entry-content ul ul,article .entry-content ul ol,article .entry-content ul dl,article .entry-content ol ul,article .entry-content ol ol,article .entry-content ol dl,article .entry-content dl ul,article .entry-content dl ol,article .entry-content dl dl{margin-top:0}article .entry-content strong{font-weight:bold}article .entry-content em{font-style:italic}article .entry-content p{margin-top:10px}article .entry-content h2{font-weight:300;border-bottom:1px solid #ddd;position:relative}article .entry-content h2:before{content:"";position:absolute;bottom:-2px;border-bottom:1px solid #fff;width:100%}article .entry-content img,article .entry-content video{max-width:100%;height:auto}article .entry-content blockquote{background:#ddd;border-left:5px solid #ccc;padding:15px 20px;margin-top:10px}article .entry-content blockquote>p:first-of-type{margin-top:0}article .entry-content iframe{border:none}article .entry-content table{background:#ddd;border:1px solid #ccc;border-spacing:0;margin-top:10px}article .entry-content table th{background:#ccc;padding:0 15px}article .entry-content table td{text-align:center}article .entry-content table tr:nth-of-type(2n){background:#d5d5d5}article .entry-content .caption{display:block;font-size:0.9em;color:#999;padding-left:25px;position:relative}article .entry-content .caption:before{content:"\f040";color:#ccc;font:1.3em FontAwesome;line-height:1.6em;position:absolute;left:0}article .entry-content .video-container{position:relative;padding-bottom:56.25%;padding-top:30px;height:0;overflow:hidden}article .entry-content .video-container iframe,article .entry-content .video-container object,article .entry-content .video-container embed{position:absolute;top:0;left:0;width:100%;height:100%;margin-top:0}.share{padding:15px 0;border-top:1px solid #fff;border-bottom:1px solid #ddd}.post h2.title,.post .entry-content{margin-left:200px}@media screen and (max-width: 800px){.post h2.title,.post .entry-content{margin-left:0}}.post .meta{position:absolute;top:85px;line-height:2;font-size:0.9em;color:#999;width:170px}@media screen and (max-width: 800px){.post .meta{margin-top:15px;position:static;width:auto}}.post .meta a{color:#999;-moz-transition:0.3s;-o-transition:0.3s;-webkit-transition:0.3s;transition:0.3s}.post .meta a:hover{color:#666}.post .meta .date,.post .meta .tags,.post .meta .comments{padding-left:30px;position:relative}.post .meta .date:before,.post .meta .tags:before,.post .meta .comments:before{color:#ccc;font:1.3em FontAwesome;line-height:1.6em;position:absolute;left:0}@media screen and (max-width: 800px){.post .meta .date,.post .meta .tags,.post .meta .comments{display:inline-block;vertical-align:middle;*vertical-align:auto;*zoom:1;*display:inline;margin-right:30px}}.post .meta .date:before{content:"\f073"}.post .meta .tags:before{content:"\f02c"}.post .meta .comments:before{content:"\f075"}.archives{position:relative}.archives:last-of-type:before{content:"";position:absolute;bottom:0;width:200px;border-top:1px solid #ddd}.archives .year{line-height:35px;width:200px;position:absolute;top:0;padding-top:15px;border-top:1px solid #fff}.archives .year:before{content:"";position:absolute;top:-2px;width:100%;border-top:1px solid #ddd}@media screen and (max-width: 600px){.archives .year{position:relative;width:100%}}.archives article{margin-left:200px;padding:15px 0}@media screen and (max-width: 600px){.archives article{margin-left:0}.archives article:first-of-type{border-top:none;padding-top:30px}}.archives article .title{margin-bottom:0}.archives article .meta{line-height:2;font-size:0.9em;color:#999;margin-top:15px}@media screen and (max-width: 600px){.archives article .meta{display:none}}.archives article .meta a{color:#999;-moz-transition:0.3s;-o-transition:0.3s;-webkit-transition:0.3s;transition:0.3s}.archives article .meta a:hover{color:#666}.archives article .meta .date,.archives article .meta .tags,.archives article .meta .comments{padding-left:30px;position:relative}.archives article .meta .date:before,.archives article .meta .tags:before,.archives article .meta .comments:before{color:#ccc;font:1.3em FontAwesome;line-height:1.6em;position:absolute;left:0}@media screen and (max-width: 600px){.archives article .meta .date,.archives article .meta .tags,.archives article .meta .comments{display:inline-block;vertical-align:middle;*vertical-align:auto;*zoom:1;*display:inline;margin-right:30px}}.archives article .meta .date:before{content:"\f073"}.archives article .meta .tags:before{content:"\f02c"}.archives article .meta .comments:before{content:"\f075"}#comment{padding:30px 0;border-top:1px solid #fff;border-bottom:1px solid #ddd}#comment h2.title{font-size:25px;font-weight:300;line-height:35px;margin-bottom:20px}footer{padding:15px 0;border-top:1px solid #fff;text-align:center;font-size:0.9em}article code,article pre{background:#ddd;border:1px solid #ccc;font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace}article code{font-size:0.9em;padding:1px 3px;margin:0 3px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}article pre{font-size:1 / 0.9em;line-height:1.5;margin-top:10px;padding:5px 15px;overflow-x:auto;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}article pre code{background:none;border:none;padding:0;margin:0;-moz-border-radius:0;-webkit-border-radius:0;border-radius:0}figure.code{background:#ddd;border:1px solid #ccc;margin-top:10px;padding:5px 15px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}figure.code figcaption{font-size:0.9em;position:relative}figure.code figcaption span{margin:-5px -15px 0;padding:5px 15px;display:block;background:url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2NjY2NjYyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2RkZGRkZCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');background:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #cccccc),color-stop(100%, #dddddd));background:-moz-linear-gradient(top, #cccccc,#dddddd);background:-webkit-linear-gradient(top, #cccccc,#dddddd);background:linear-gradient(to bottom, #cccccc,#dddddd)}figure.code figcaption span:empty{display:none}figure.code figcaption a{position:absolute;top:5px;right:0}figure.code code,figure.code pre{background:none;border:none;padding:0;margin:0;-moz-border-radius:0;-webkit-border-radius:0;border-radius:0}figure.code .highlight{overflow-x:auto}figure.code .line-numbers{border-right:1px solid #ccc;font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;padding-right:15px;text-align:right}figure.code table{border:none;text-align:left;margin-top:0}figure.code table td{text-align:left}figure.code td.code{width:100%;padding-left:15px;overflow-x:auto}.entry-content .gist{background:#ddd;color:#666;padding:30px 15px 5px;margin-top:10px;border:1px solid #ccc;position:relative;overflow:hidden;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}.entry-content .gist .gist-file{margin:0}.entry-content .gist .gist-file .gist-data{background:none;border:none}.entry-content .gist .gist-file .gist-data pre{font:Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;line-height:inherit;text-align:left}.entry-content .gist .gist-file .gist-meta{font:300 0.9em "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;line-height:1.5;margin:0 -16px -6px;padding:5px 15px;background:url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2RkZGRkZCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2NjY2NjYyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');background:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dddddd),color-stop(100%, #cccccc));background:-moz-linear-gradient(top, #dddddd,#cccccc);background:-webkit-linear-gradient(top, #dddddd,#cccccc);background:linear-gradient(to bottom, #dddddd,#cccccc)}.entry-content .gist .gist-file .gist-meta a{color:#258fb8}.entry-content .gist .gist-file .gist-meta a:first-of-type{position:absolute;top:5px;right:15px;z-index:1}.entry-content .gist .gist-file .gist-meta a:nth-of-type(2){position:absolute;top:0;left:0;padding:5px 15px;width:100%;background:url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2NjY2NjYyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2RkZGRkZCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');background:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #cccccc),color-stop(100%, #dddddd));background:-moz-linear-gradient(top, #cccccc,#dddddd);background:-webkit-linear-gradient(top, #cccccc,#dddddd);background:linear-gradient(to bottom, #cccccc,#dddddd)}figure.code .c,.gist-highlight .c{color:#93a1a1 !important;font-style:italic !important}figure.code .cm,.gist-highlight .cm{color:#93a1a1 !important;font-style:italic !important}figure.code .cp,.gist-highlight .cp{color:#93a1a1 !important;font-style:italic !important}figure.code .c1,.gist-highlight .c1{color:#93a1a1 !important;font-style:italic !important}figure.code .cs,.gist-highlight .cs{color:#93a1a1 !important;font-weight:bold !important;font-style:italic !important}figure.code .err,.gist-highlight .err{color:#dc322f !important;background:none !important}figure.code .k,.gist-highlight .k{color:#cb4b16 !important}figure.code .o,.gist-highlight .o{color:#586e75 !important;font-weight:bold !important}figure.code .p,.gist-highlight .p{color:#586e75 !important}figure.code .ow,.gist-highlight .ow{color:#2aa198 !important;font-weight:bold !important}figure.code .gd,.gist-highlight .gd{color:#586e75 !important;background-color:#f5c5b6 !important;display:inline-block}figure.code .gd .x,.gist-highlight .gd .x{color:#586e75 !important;background-color:#f1b1a4 !important;display:inline-block}figure.code .ge,.gist-highlight .ge{color:#586e75 !important;font-style:italic !important}figure.code .gh,.gist-highlight .gh{color:#93a1a1 !important}figure.code .gi,.gist-highlight .gi{color:#586e75 !important;background-color:#e5e3b6 !important;display:inline-block}figure.code .gi .x,.gist-highlight .gi .x{color:#586e75 !important;background-color:#cdd188 !important;display:inline-block}figure.code .gs,.gist-highlight .gs{color:#586e75 !important;font-weight:bold !important}figure.code .gu,.gist-highlight .gu{color:#6c71c4 !important}figure.code .kc,.gist-highlight .kc{color:#859900 !important;font-weight:bold !important}figure.code .kd,.gist-highlight .kd{color:#268bd2 !important}figure.code .kp,.gist-highlight .kp{color:#cb4b16 !important;font-weight:bold !important}figure.code .kr,.gist-highlight .kr{color:#d33682 !important;font-weight:bold !important}figure.code .kt,.gist-highlight .kt{color:#2aa198 !important}figure.code .n,.gist-highlight .n{color:#268bd2 !important}figure.code .na,.gist-highlight .na{color:#268bd2 !important}figure.code .nb,.gist-highlight .nb{color:#859900 !important}figure.code .nc,.gist-highlight .nc{color:#d33682 !important}figure.code .no,.gist-highlight .no{color:#b58900 !important}figure.code .nl,.gist-highlight .nl{color:#859900 !important}figure.code .ne,.gist-highlight .ne{color:#268bd2 !important;font-weight:bold !important}figure.code .nf,.gist-highlight .nf{color:#268bd2 !important;font-weight:bold !important}figure.code .nn,.gist-highlight .nn{color:#b58900 !important}figure.code .nt,.gist-highlight .nt{color:#268bd2 !important;font-weight:bold !important}figure.code .nx,.gist-highlight .nx{color:#b58900 !important}figure.code .vg,.gist-highlight .vg{color:#268bd2 !important}figure.code .vi,.gist-highlight .vi{color:#268bd2 !important}figure.code .nv,.gist-highlight .nv{color:#268bd2 !important}figure.code .mf,.gist-highlight .mf{color:#2aa198 !important}figure.code .m,.gist-highlight .m{color:#2aa198 !important}figure.code .mh,.gist-highlight .mh{color:#2aa198 !important}figure.code .mi,.gist-highlight .mi{color:#2aa198 !important}figure.code .s,.gist-highlight .s{color:#2aa198 !important}figure.code .sd,.gist-highlight .sd{color:#2aa198 !important}figure.code .s2,.gist-highlight .s2{color:#2aa198 !important}figure.code .se,.gist-highlight .se{color:#dc322f !important}figure.code .si,.gist-highlight .si{color:#268bd2 !important}figure.code .sr,.gist-highlight .sr{color:#2aa198 !important}figure.code .s1,.gist-highlight .s1{color:#2aa198 !important}#banner{color:#999;padding:30px 0;line-height:30px;text-align:center;position:relative;display:none;border-top:1px solid #fff;border-bottom:1px solid #ddd}#banner:hover a{color:#258fb8}#banner a{color:#999;-moz-transition:0.3s;-o-transition:0.3s;-webkit-transition:0.3s;transition:0.3s}#banner a:hover{text-decoration:underline}#banner small{position:absolute;right:0;bottom:0}#banner .loading{background:url('/images/loading_pacman.gif?1443976015') center no-repeat;text-indent:-9999px}#banner .container{height:30px;overflow:hidden;position:relative;display:none}#banner .container .feed{list-style:none;position:absolute;top:0;width:100%}#banner .container .feed li{position:relative}#banner .container .feed li small{position:absolute;right:0}/*! fancyBox v2.0.6 fancyapps.com | fancyapps.com/fancybox/#license */.fancybox-tmp iframe,.fancybox-tmp object{vertical-align:top;padding:0;margin:0}.fancybox-wrap{position:absolute;top:0;left:0;z-index:8020}.fancybox-skin{position:relative;padding:0;margin:0;background:#f9f9f9;color:#444;text-shadow:none;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px}.fancybox-opened{z-index:8030}.fancybox-opened .fancybox-skin{-moz-box-shadow:0 10px 25px rgba(0,0,0,0.5);-webkit-box-shadow:0 10px 25px rgba(0,0,0,0.5);box-shadow:0 10px 25px rgba(0,0,0,0.5)}.fancybox-outer,.fancybox-inner{padding:0;margin:0;position:relative;outline:none}.fancybox-inner{overflow:hidden}.fancybox-type-iframe .fancybox-inner{-webkit-overflow-scrolling:touch}.fancybox-error{color:#444;font:14px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;margin:0;padding:10px}.fancybox-image,.fancybox-iframe{display:block;width:100%;height:100%;border:0;padding:0;margin:0;vertical-align:top}.fancybox-image{max-width:100%;max-height:100%}#fancybox-loading,.fancybox-close,.fancybox-prev span,.fancybox-next span{background-image:url('/images/fancybox/fancybox_sprite.png?1443976015')}#fancybox-loading{position:fixed;top:50%;left:50%;margin-top:-22px;margin-left:-22px;background-position:0 -108px;opacity:0.8;cursor:pointer;z-index:8020}#fancybox-loading div{width:44px;height:44px;background:url('/images/fancybox/fancybox_loading.gif?1443976015') center center no-repeat}.fancybox-close{position:absolute;top:-18px;right:-18px;width:36px;height:36px;cursor:pointer;z-index:8040}.fancybox-nav{position:absolute;top:0;width:40%;height:100%;cursor:pointer;background:transparent url('/images/fancybox/blank.gif?1443976015');-webkit-tap-highlight-color:transparent;z-index:8040}.fancybox-prev{left:0}.fancybox-next{right:0}.fancybox-nav span{position:absolute;top:50%;width:36px;height:34px;margin-top:-18px;cursor:pointer;z-index:8040;visibility:hidden}.fancybox-prev span{left:20px;background-position:0 -36px}.fancybox-next span{right:20px;background-position:0 -72px}.fancybox-nav:hover span{visibility:visible}.fancybox-tmp{position:absolute;top:-9999px;left:-9999px;padding:0;overflow:visible;visibility:hidden}#fancybox-overlay{position:absolute;top:0;left:0;overflow:hidden;display:none;z-index:8010;background:#000}#fancybox-overlay.overlay-fixed{position:fixed;bottom:0;right:0}.fancybox-title{visibility:hidden;font:normal 13px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;position:relative;text-shadow:none;z-index:8050}.fancybox-opened .fancybox-title{visibility:visible}.fancybox-title-float-wrap{position:absolute;bottom:0;right:50%;margin-bottom:-35px;z-index:8030;text-align:center}.fancybox-title-float-wrap .child{display:inline-block;margin-right:-100%;padding:2px 20px;background:transparent;background:rgba(0,0,0,0.8);text-shadow:0 1px 2px #222;color:#FFF;font-weight:bold;line-height:24px;white-space:nowrap;-moz-border-radius:15px;-webkit-border-radius:15px;border-radius:15px}.fancybox-title-outside-wrap{position:relative;margin-top:10px;color:#fff}.fancybox-title-inside-wrap{margin-top:10px}.fancybox-title-over-wrap{position:absolute;bottom:0;left:0;color:#fff;padding:10px;background:#000;background:rgba(0,0,0,0.8)}
+
+	</style>
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">My Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+	<li><a href="/about">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+	<li><a href="/about">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:www.noppanit.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/noppanit" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/noppanit" title="GitHub">GitHub</a>
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="https://www.google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:www.noppanit.com">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/the-most-basic-example-of-linear-regression/">
+		
+			The Most Basic Example of Linear Regression</a>
+	</h2>
+	<div class="entry-content">
+		<p>Just for fun, I wanted to learn how to do linear regression and here’s the example I come up with.</p>
+
+<p>Let’s say you have a historical data of 1000 people who dined in your restaurant and left a tip. This is going to be perfect data because I generated. In the real world you will not find something like this.</p>
+
+<p>If you don’t understand Linear Regression like me before I wrote this post, I recommend you to read this <a href="http://onlinestatbook.com/2/regression/intro.html">basic linear regression.</a>.</p>
+
+<p>The idea is that you have two variables. In this case, it’s <strong>tips</strong> and <strong>total amount of bill</strong>. You should explore the data by plotting the graph of these two variables. From my generated data you will get something like this.</p>
+
+<p><img src="wp-content/uploads/2015/07/Screenshot-2015-07-07-00.54.42.jpg" title="Linear Regression" /></p>
+
+<p>You can clearly see that there’s a strong correlation between the amount of tip and meal.</p>
+
+<p>Now if you can find the slope of the graph and intercept you should be able to use the formula.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">Y = MX + C
+</span><span class="line">
+</span><span class="line">M = slope of the graph
+</span><span class="line">C = Intercept</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>If you’re lazy to look at my <a href="https://github.com/noppanit/linear-regression-basic">notebook</a>.</p>
+
+<p>Then you can run this code.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</span><span class="line"><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+</span><span class="line">
+</span><span class="line"><span class="n">total_bills</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</span><span class="line"><span class="n">tips</span> <span class="o">=</span> <span class="n">total_bills</span> <span class="o">*</span> <span class="mf">0.10</span>
+</span><span class="line">
+</span><span class="line"><span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;tips&#39;</span><span class="p">)</span>
+</span><span class="line"><span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">total_bills</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;total_bills&#39;</span><span class="p">)</span>
+</span><span class="line"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">total_bills</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">tips</span><span class="p">)</span>
+</span><span class="line"><span class="n">predicted_tips</span> <span class="o">=</span> <span class="p">(</span><span class="n">slope</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span> <span class="o">+</span> <span class="n">intercept</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The result is $7 which corresponds to the 10% tip.</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Jul 7th, 2015</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/example-how-did-i-convert-async-code-to-sync-code-with-promise/">
+		
+			Example: How Did I Convert Async Code to Sync Code With Promise.</a>
+	</h2>
+	<div class="entry-content">
+		<p>I’ve just finished my first refactor to convert my node.js code to be more promisey (I believe that’s the word they use these days). There’s lots of documents out there to do this. However, I thought I should contribute more to help me understand more and might get some feedback from people who’s seen it as well.</p>
+
+<p>I’m trying to create a bot to report me back the performance of my site in desktop and mobile mode. So, I thought it would be easy since Google has an <a href="https://developers.google.com/speed/docs/insights/v2/getting-started">API</a> for that already so I went ahead and did this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">urlToGetTheScore</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=desktop&amp;amp;fields=ruleGroups&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScore</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It’s pretty easy and straight forward right but now that would only return the score of desktop. I need the score of my mobile site as well. So, I added more code to be like this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">urlToGetTheScoreDesktop</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=desktop&amp;amp;fields=ruleGroups&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">urlToGetTheScoreMobile</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=mobile&amp;amp;fields=ruleGroups&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScoreDesktop</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScoreMobile</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>That’s great but I want to return both scores to a client so I can report the scores rather than printing them to the console. Since, <strong>request</strong> is asynchronous you cannot guarantee which score would come first. So, I thought it’s easy. I just need to call one request after the other. So, I came up with this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">urlToGetTheScoreDesktop</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=desktop&amp;amp;fields=ruleGroups&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">urlToGetTheScoreMobile</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=mobile&amp;amp;fields=ruleGroups&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScoreDesktop</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">var</span> <span class="nx">desktopScore</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">  <span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScoreMobile</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">var</span> <span class="nx">mobileScore</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;desktop score is &#39;</span> <span class="o">+</span> <span class="nx">desktopScore</span> <span class="o">+</span> <span class="s1">&#39; and mobile score is &#39;</span> <span class="o">+</span> <span class="nx">mobileScore</span><span class="p">);</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Look at how ugly it is. Now I want to make it prettier. So, I will use Promise to make it look nicer. As a good engineer I need to create a test first.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">perfModule</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./pagespeed&#39;</span><span class="p">),</span>
+</span><span class="line"><span class="nx">sinon</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sinon&#39;</span><span class="p">),</span>
+</span><span class="line"><span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">),</span>
+</span><span class="line"><span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;expect.js&#39;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Performance&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">server</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="s1">&#39;get&#39;</span><span class="p">).</span><span class="nx">yields</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">ruleGroups</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">SPEED</span><span class="o">:</span> <span class="p">{</span><span class="nx">score</span><span class="o">:</span><span class="mi">10</span><span class="p">}}</span> <span class="p">}));</span>
+</span><span class="line">    <span class="nx">done</span><span class="p">();</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should send performance stats to chat room&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">perfModule</span><span class="p">.</span><span class="nx">pagespeed</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">donotknow</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="nx">done</span><span class="p">();</span>
+</span><span class="line">      <span class="nx">expect</span><span class="p">(</span><span class="nx">msg</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eql</span><span class="p">(</span><span class="s1">&#39;desktop speed is 10 and mobile speed is 10&#39;</span><span class="p">);</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I’m using <a href="http://sinonjs.org/">Sinon.js</a> as the mocking framework and <a href="http://mochajs.org/">Mocha</a> as the testing framework which are pretty standard.</p>
+
+<p>Now I can start refactor my code. At first, I wrote some code like this, just to make it work.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">getSpeed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">strategy</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=&#39;</span><span class="o">+</span> <span class="nx">strategy</span> <span class="o">+</span> <span class="s1">&#39;&amp;amp;fields=ruleGroups&#39;</span>
+</span><span class="line">  <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+</span><span class="line">      <span class="nx">resolve</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">pagespeed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">getSpeed</span><span class="p">(</span><span class="s1">&#39;desktop&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">desktopSpeed</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">getSpeed</span><span class="p">(</span><span class="s1">&#39;mobile&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">mobileSpeed</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;desktop speed is &#39;</span> <span class="o">+</span> <span class="nx">desktopSpeed</span> <span class="o">+</span> <span class="s1">&#39; and mobile speed is &#39;</span> <span class="o">+</span> <span class="nx">mobileSpeed</span><span class="p">);</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">exports</span><span class="p">.</span><span class="nx">pagespeed</span> <span class="o">=</span> <span class="nx">pagespeed</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Any good JavaScript developer would be like, WTH!. You still have callbacks. I thought Promise would solve that issue already! Now, I could use the power of <strong>Promise.all</strong> which takes array of promises and return array of results. My final code would look something like this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">),</span>
+</span><span class="line"><span class="nx">Promise</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;promise&#39;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">getSpeed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">strategy</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http%3A%2F%2Ffusion.net&amp;amp;strategy=&#39;</span><span class="o">+</span> <span class="nx">strategy</span> <span class="o">+</span> <span class="s1">&#39;&amp;amp;fields=ruleGroups&#39;</span>
+</span><span class="line">  <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+</span><span class="line">      <span class="nx">resolve</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">pagespeed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">getSpeed</span><span class="p">(</span><span class="s1">&#39;desktop&#39;</span><span class="p">),</span> <span class="nx">getSpeed</span><span class="p">(</span><span class="s1">&#39;mobile&#39;</span><span class="p">)]).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">speed</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">desktop</span> <span class="o">=</span> <span class="nx">speed</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">mobile</span> <span class="o">=</span> <span class="nx">speed</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s1">&#39;desktop speed is &#39;</span> <span class="o">+</span> <span class="nx">desktop</span> <span class="o">+</span> <span class="s1">&#39; and mobile speed is &#39;</span> <span class="o">+</span> <span class="nx">mobile</span><span class="p">);</span>
+</span><span class="line">  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">exports</span><span class="p">.</span><span class="nx">pagespeed</span> <span class="o">=</span> <span class="nx">pagespeed</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I’m not an expert in Promise and I welcome any feedback that would help improve my code.</p>
+
+<p>Reference<br />
+<a href="http://www.html5rocks.com/en/tutorials/es6/promises/">ES6 Promises</a><br />
+<a href="http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html">We have a problem with promises</a></p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+May 24th, 2015</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>javascript</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/rise-of-the-slackbots/">
+		
+			Rise of the (Slack)Bots.</a>
+	</h2>
+	<div class="entry-content">
+		<p><a href="http://fusion.net">Fusion</a> tech team just had a hackday in the theme of “Slackbot”. We brainstormed what or how do we make the job of editorial or engineering team easier. We threw a bunch of ideas and my team decided to create a bot that can interact with you in a number of ways or encourage you to fix or debug code. We tried to make it funny and in the same time useful for our daily routine.</p>
+
+<p>My colleague <a href="https://twitter.com/danielbachhuber">Daniel Bachhuber</a> came up with the name Rubberduck which I believe he got it from <a href="http://en.wikipedia.org/wiki/Rubber_duck_debugging">here</a>. The idea of the bot is easy. If you have used Slack you must have seen Slackbot before where it guides you how to use Slack or the bot can help you change your profile picture.</p>
+
+<p>We spent a good one hour to find the best possible solution for creating a bot and we found <a href="https://github.com/silentrob/superscript/">Superscript</a>, which has a client for Slack. It’s perfect!.</p>
+
+<p>We’ve also opensourced the <a href="https://github.com/fusioneng/rubberduck-bot">bot</a> which you can clone and play around with it as well.</p>
+
+<p>The first plugin we are thinking is performance bot where the bot can report the current performance of a website instead of going to a dashboard. It’s because we have remote team. So, having a bit giant board wouldn’t make much sense since some of our folks are distributed and we mainly use Slack for any communication.</p>
+
+<p><img src="/wp-content/uploads/2015/05/Screenshot-2015-05-23-19.42.23.jpg" title="rubberduck bot" /></p>
+
+<p>Now, go ahead and create your own bot!.</p>
+
+<p> </p>
+
+<p>Check this out. <a href="https://medium.com/@rob_ellis/slack-superscript-rise-of-the-bots-bba8506a043c">Rise of the bots</a></p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+May 23rd, 2015</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/installing-ssl-on-amazon-cloudfront/">
+		
+			Installing SSL on Amazon CloudFront</a>
+	</h2>
+	<div class="entry-content">
+		<p>We have just installed SSL on our Amazon CloudFront. We followed this <a href="https://bryce.fisher-fleig.org/blog/setting-up-ssl-on-aws-cloudfront-and-s3/">blog post</a> from Bryce which I think it’s really good already. However, I was stuck on the last part where you have to upload the certificate to IAM. The difference is that I had to concatenate the crt files myself and I didn’t know how to do it. So I spent quite a long time to figure it out. I thought I would write this so it might help save sometime for anybody.</p>
+
+<p>If your SSL providers gave you the chained certificate already, then you don’t have to do anything else. However, when I downloaded my crt files I found this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">my_domain.crt
+</span><span class="line">AddTrustExternalCARoot.crt
+</span><span class="line">TrustedSecureCertificateAuthority5.crt
+</span><span class="line">USERTrustRSAAddTrustCA.rt</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And I’m shocked. So, I thought I would need to upload all of them three times which I did but only one got through and I thought the others must have been backup or some kind (I know I’m pretty stupid). So, I used <a href="https://www.digicert.com/help/">SSL Checker</a> to check and the site said my trust is broken. I thought how could it be I did everything right.</p>
+
+<p>It turned out that I didn’t upload all of the chained certificate. So, I went again and I tried to upload the second file which I got a nice error from Amazon that my certificate is malformed. I’m stumped again.</p>
+
+<p>After a lot of digging and reading. I have to figured out the order of certificates and concatenate all the certificates in the right order until the root. You can ask your SSL provider if you want a quicker answer but I went the hard way.</p>
+
+<p>You can run this command</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">openssl x509 -text -noout -in your_domain.crt
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You should start with your <strong>domain.crt</strong> file which will be something like this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">Certificate:
+</span><span class="line">    Data:
+</span><span class="line">        Version: <span class="m">3</span> <span class="o">(</span>0x2<span class="o">)</span>
+</span><span class="line">        Serial Number:
+</span><span class="line">            xxxxxx
+</span><span class="line">        Signature Algorithm: xxxxx
+</span><span class="line">        Issuer: <span class="nv">C</span><span class="o">=</span>US, <span class="nv">ST</span><span class="o">=</span>DE, <span class="nv">L</span><span class="o">=</span>Wilmington, <span class="nv">O</span><span class="o">=</span>Corporation Service Company, <span class="nv">CN</span><span class="o">=</span>Trusted Secure Certificate Authority 5
+</span><span class="line">        Validity
+</span><span class="line">            Not Before:
+</span><span class="line">            Not After :
+</span><span class="line">        Subject: <span class="nv">C</span><span class="o">=</span>US/postalCode<span class="o">=</span>x, <span class="nv">ST</span><span class="o">=</span>xx, <span class="nv">L</span><span class="o">=</span>xxx, <span class="nv">O</span><span class="o">=</span>xxx, LLC, <span class="nv">OU</span><span class="o">=</span>xxx, <span class="nv">OU</span><span class="o">=</span>xxx, <span class="nv">CN</span><span class="o">=</span>xxx
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>You just need to look for Issuer which will tell you what is your next immediate certificate. In this case Trusted Secure Certificate Authority 5 is my first certificate and then you go on and do the next one.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">openssl x509 -text -noout -in TrustedSecureCertificateAuthority5.crt
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You will get something like this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">Certificate:
+</span><span class="line">    Data:
+</span><span class="line">        Version: <span class="m">3</span> <span class="o">(</span>0x2<span class="o">)</span>
+</span><span class="line">        Serial Number:
+</span><span class="line">            xxxxx
+</span><span class="line">        Signature Algorithm: xxxx
+</span><span class="line">        Issuer: <span class="nv">C</span><span class="o">=</span>US, <span class="nv">ST</span><span class="o">=</span>New Jersey, <span class="nv">L</span><span class="o">=</span>Jersey City, <span class="nv">O</span><span class="o">=</span>The USERTRUST Network, <span class="nv">CN</span><span class="o">=</span>USERTrust RSA Certification Authority
+</span><span class="line">        Validity
+</span><span class="line">            Not Before: Sep <span class="m">10</span> 00:00:00 <span class="m">2014</span> GMT
+</span><span class="line">            Not After : Sep  <span class="m">9</span> 23:59:59 <span class="m">2024</span> GMT
+</span><span class="line">        Subject: <span class="nv">C</span><span class="o">=</span>US, <span class="nv">ST</span><span class="o">=</span>DE, <span class="nv">L</span><span class="o">=</span>Wilmington, <span class="nv">O</span><span class="o">=</span>Corporation Service Company, <span class="nv">CN</span><span class="o">=</span>Trusted Secure Certificate Authority 5
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It means <strong>USERTrust</strong> is the next certificate then repeat the process again until you see this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">Certificate:
+</span><span class="line">    Data:
+</span><span class="line">        Version: <span class="m">3</span> <span class="o">(</span>0x2<span class="o">)</span>
+</span><span class="line">        Serial Number: xxxx
+</span><span class="line">        Signature Algorithm: xxxxx
+</span><span class="line">        Issuer: <span class="nv">C</span><span class="o">=</span>SE, <span class="nv">O</span><span class="o">=</span>AddTrust AB, <span class="nv">OU</span><span class="o">=</span>AddTrust External TTP Network, <span class="nv">CN</span><span class="o">=</span>AddTrust External CA Root
+</span><span class="line">        Validity
+</span><span class="line">            Not Before: May <span class="m">30</span> 10:48:38 <span class="m">2000</span> GMT
+</span><span class="line">            Not After : May <span class="m">30</span> 10:48:38 <span class="m">2020</span> GMT
+</span><span class="line">        Subject: <span class="nv">C</span><span class="o">=</span>SE, <span class="nv">O</span><span class="o">=</span>AddTrust AB, <span class="nv">OU</span><span class="o">=</span>AddTrust External TTP Network, <span class="nv">CN</span><span class="o">=</span>AddTrust External CA Root
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>If <strong>Issuer</strong> is the same as <strong>Subject</strong> that means this certificate is the root which is going to be the last. Now, what you can do is to concatenate in the correct order of all the certificates.</p>
+
+<p>You can use this command or you can use your favourite editor to do as well.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">cat first_crt second_crt third_crt &gt; your_pem_file
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then when you’re ready to upload the certificate to Amazon you can just do this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">aws iam upload-server-certificate --server-certificate-name your_domain <span class="se">\</span>
+</span><span class="line">--certificate-body file://your_domain.crt <span class="se">\</span>
+</span><span class="line">--private-key file://your_domain.private <span class="se">\</span>
+</span><span class="line">--certificate-chain file://your_pem_file <span class="se">\</span>
+</span><span class="line">--path /cloudfront/
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The <strong>–certificate-chain</strong> should be your concatenated certificates.</p>
+
+<p>The format of the <strong>pem</strong> should be something like this.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">-----BEGIN CERTIFICATE-----
+</span><span class="line">Intermediate certificate 2
+</span><span class="line">-----END CERTIFICATE-----
+</span><span class="line">-----BEGIN CERTIFICATE-----
+</span><span class="line">Intermediate certificate 1
+</span><span class="line">-----END CERTIFICATE-----
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+May 22nd, 2015</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/security/'>security</a>, <a class='category' href='/blog/categories/techniques/'>techniques</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/what-should-you-expect-for-salkantay-trek-to-machu-picchu/">
+		
+			What Should You Expect for Salkantay Trek to Machu Picchu</a>
+	</h2>
+	<div class="entry-content">
+		<p>I’m not really a travel blogger but I’ll try to share my experience as much as possible. I’ve just come back from Peru (Machu Picchu). Me and a bunch of my friends did the Salkantay trek which hike from Cusco (sort of) to Machu Picchu. It’s a 5 days 4 nights trip. The hike is really challenging physically and mentally. You will experience altitude sickness and soreness from your body. Funny thing is I didn’t feel a thing at the highest peak, some of my friends experienced different symptoms. One of the best I’ve heard is; “It’s like EDM concert banging in my head”.</p>
+
+<h2 id="stay-warm">Stay warm</h2>
+
+<p>You really need to dress warm because you will be walking at the altitude around 14,000 feet which is going to be quite cold. I’d suggest a lot of layers instead of big puffy jacket. Base layer is really important and a good fleece. One thing that you can’t miss out is a good pair of wool socks.</p>
+
+<h2 id="prepare-for-the-rain">Prepare for the rain</h2>
+
+<p>It’s going to rain. What you really need is a good rain jacket and or Pancho is you want. I find rain jacket is enough to keep you dry. However, what really important is waterproof hiking shoes or you need extra pairs of socks. If you have your camera, rain cover for your bag and camera are really crucial.</p>
+
+<h2 id="prepare-for-the-altitude">Prepare for the altitude</h2>
+
+<p>If you think you will be affected by the altitude, please consult with your doctor to get some pills. I didn’t really get any headache while hiking on the high altitude but everybody is different.</p>
+
+<h2 id="what-you-don8217t-really-need">What you don’t really need</h2>
+
+<p>Water is what you really need. But you can get water at every stop along the trail. What you don’t really need is water purification. However, it’s just a small pack if you don’t mind carrying that.</p>
+
+<h2 id="pack-light">Pack light</h2>
+
+<p>I found myself overpack for the hike and I exhausted myself on the third day. If you think you’re going to need snacks. I suggest having <a href="http://www.starburst.com/">starburst</a>. My friend gave away two starbursts at every stop point which I think they really keep me going in terms of energy. I had my raw almonds and dry berries which helped a lot.</p>
+
+<h2 id="sleep-comfy">Sleep comfy</h2>
+
+<p>Sleeping bag is a must. However, I had a really good night sleep with my <a href="http://www.rei.com/product/866771/sea-to-summit-aeros-pillow-premium">camping pillow</a> and it’s inflatable and really light.</p>
+
+<h2 id="taking-pictures-of-the-locals">Taking pictures of the locals</h2>
+
+<p>If you walk around in Cusco, you might find local people dressing in traditional custom. If you take a picture of them, they might ask you for some money. I gave them 1 soles and it was enough. And make sure you ask their permission before you take a picture of them.</p>
+
+<p><a data-flickr-embed="true" href="https://www.flickr.com/photos/pinkcarnation/17626431306/in/dateposted-ff/" title="Peru-1093710.jpg"><img src="https://farm9.staticflickr.com/8837/17626431306_853767fc9e_z.jpg" width="640" height="423" alt="Peru-1093710.jpg" /></a><script async="" src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
+
+<h2 id="coca-leaves">Coca leaves</h2>
+
+<p>The locals told us to chew coca leaves to prevent the tiredness and altitude sickness. To be honest, they didn’t help much but I really like the coca tea in the morning.</p>
+
+<p><a data-flickr-embed="true" href="https://www.flickr.com/photos/pinkcarnation/17465382290/in/dateposted-ff/" title="Peru-1093841.jpg"><img src="https://farm8.staticflickr.com/7770/17465382290_7dfcc888d1_z.jpg" width="640" height="431" alt="Peru-1093841.jpg" /></a><script async="" src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
+
+<h2 id="local-food">Local food</h2>
+
+<p>Peruvian cuisine is really interesting or at least from my point of view. I had Guinea pig and Alpaca. I like Alpaca but the Guinea pig is not really my jam. At least I tried.</p>
+
+<p><a data-flickr-embed="true" href="https://www.flickr.com/photos/pinkcarnation/17627373766/in/dateposted-ff/" title="Peru-1094221.jpg"><img src="https://farm6.staticflickr.com/5441/17627373766_e4568e063a_z.jpg" width="640" height="444" alt="Peru-1094221.jpg" /></a><script async="" src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
+
+<h2 id="machu-picchu">Machu Picchu</h2>
+
+<p><a data-flickr-embed="true" href="https://www.flickr.com/photos/pinkcarnation/17653773851/in/dateposted-ff/" title="Peru-1094213.jpg"><img src="https://farm9.staticflickr.com/8707/17653773851_aa6c40a15e_z.jpg" width="640" height="431" alt="Peru-1094213.jpg" /></a><script async="" src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
+
+<h2 id="good-view-from-your-tent">Good view from your tent</h2>
+
+<p><a data-flickr-embed="true" href="https://www.flickr.com/photos/pinkcarnation/17653136981/in/dateposted-ff/" title="Peru-1093869.jpg"><img src="https://farm8.staticflickr.com/7656/17653136981_03874afb08_z.jpg" width="640" height="431" alt="Peru-1093869.jpg" /></a><script async="" src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+May 18th, 2015</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/travel/'>travel</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/how-to-stop-repainting-your-sticky-bar-on-scroll/">
+		
+			How to Stop Repainting Your Sticky Bar on Scroll?</a>
+	</h2>
+	<div class="entry-content">
+		<p>Everybody loves sticky bar. Or I should say every UX loves sticky bar. You probable have seen that from almost all major websites. Twitter or Facebook all has the top nav bar which sticks to the top and follows you when you scroll down the page. However, there’s one thing that I have noticed if you use Google Chrome Dev Tool to see the paint area. You will see that the nav bar gets repaint every time you scroll up and down.</p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2015/04/Screenshot_2015-04-14_01_13_55.png" /></p>
+
+<p>Also, if you use Timeline to record the activity you will notice a lot of Repaint happening which leads to bad scrolling performance.</p>
+
+<p>The easy fix would be to put</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">backface-visibility</span><span class="o">:</span> <span class="nt">hidden</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>on your navbar which will stop the repaint on scroll.</p>
+
+<h3 id="why-that-fixes-it">Why that fixes it?</h3>
+
+<p>I don’t want to try answer this myself as this <a href="http://benfrain.com/improving-css-performance-fixed-position-elements/">article</a> answers everything.</p>
+
+<h3 id="try-it-yourself">Try it yourself</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="cp">&lt;!doctype&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;html&gt;</span>
+</span><span class="line"><span class="nt">&lt;head&gt;</span>
+</span><span class="line"><span class="nt">&lt;style&gt;</span>
+</span><span class="line">	<span class="nt">li</span> <span class="p">{</span>
+</span><span class="line">    		<span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="p">;</span>
+</span><span class="line">		<span class="k">margin-left</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
+</span><span class="line">	<span class="p">}</span>
+</span><span class="line">	<span class="nt">body</span> <span class="p">{</span>
+</span><span class="line">		<span class="k">font-size</span><span class="o">:</span> <span class="m">24px</span><span class="p">;</span>
+</span><span class="line">	<span class="p">}</span>
+</span><span class="line">	<span class="nt">nav</span> <span class="p">{</span>
+</span><span class="line">		<span class="k">background-color</span><span class="o">:</span> <span class="nb">gray</span><span class="p">;</span>
+</span><span class="line">		<span class="k">position</span><span class="o">:</span> <span class="k">fixed</span><span class="p">;</span>
+</span><span class="line">	<span class="p">}</span>
+</span><span class="line"><span class="nt">&lt;/style&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;/head&gt;</span>
+</span><span class="line"><span class="nt">&lt;body&gt;</span>
+</span><span class="line">	<span class="nt">&lt;nav&gt;</span>
+</span><span class="line">		<span class="nt">&lt;ul&gt;</span>
+</span><span class="line">			<span class="nt">&lt;li&gt;</span>Menu1<span class="nt">&lt;/li&gt;</span>
+</span><span class="line">			<span class="nt">&lt;li&gt;</span>Menu2<span class="nt">&lt;/li&gt;</span>
+</span><span class="line">			<span class="nt">&lt;li&gt;</span>Menu3<span class="nt">&lt;/li&gt;</span>
+</span><span class="line">			<span class="nt">&lt;li&gt;</span>Menu4<span class="nt">&lt;/li&gt;</span>
+</span><span class="line">		<span class="nt">&lt;/ul&gt;</span>
+</span><span class="line">	<span class="nt">&lt;/nav&gt;</span>
+</span><span class="line">	<span class="nt">&lt;section&gt;</span>
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">		<span class="nt">&lt;p&gt;</span>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">	
+</span><span class="line">	
+</span><span class="line">	
+</span><span class="line">	<span class="nt">&lt;/section&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;/body&gt;</span>
+</span><span class="line"><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">backface-visibility</span><span class="o">:</span> <span class="nt">hidden</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>to the navbar and you can measure the performance by using Timeline again you will notice the difference.</p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png" /></p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Apr 14th, 2015</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/you-should-check-in-your-dependencies/">
+		
+			You Should Check in Your Dependencies.</a>
+	</h2>
+	<div class="entry-content">
+		<p>I’m not sure who started this pattern so I can’t really refer back but if you know please comment below and I will update the post. I’m sure all of you have heard that you should not check in anything that can be generated to Source control. It’s long been a common pattern. However, lately I have been checking in my dependencies into my source control and it works really well for small to medium project. Here’s why.</p>
+
+<h3 id="isolate-you-from-any-network-failures">Isolate you from any network failures.</h3>
+
+<p>I know you might say that it rarely happens to me so why should I care about this. I hear you. It rarely happens to me as well but when it did happen I got really frustrated. Especially, when your CI failed without any reason and you found out that one of your dependencies doesn’t get downloaded properly.</p>
+
+<h3 id="ci-failure">CI failure</h3>
+
+<p>This frustrates me the most and it’s one of the reasons why I started doing this. More than often that my CI failed and it’s because of dependencies didn’t get resolved or compiled properly and people just kept running it over and over again. To eliminate this problem and let CI just run the tests save me a lot of pulling my hair time.</p>
+
+<h3 id="check-out-and-go">Check out and Go!</h3>
+
+<p>This pattern I have learnt while I was working with ThoughtWorks that it’s so frustrated when you are joining a project and you spend almost half a day just to get your machine up and running and run the build script to download all the dependencies. I believed that’s one of the reasons why Chef and Puppet exist. It’s so easy when you checkout a project from your source control and you can start coding right away or even run all the tests.</p>
+
+<p>I also have this support from my <a href="http://scottmuc.com/" title="Scott Muc">friend</a></p>
+
+<blockquote class="twitter-tweet" lang="en">
+  <p>
+    <a href="https://twitter.com/noppanit">@noppanit</a> I've been a fan of that technique for a long time now.
+  </p>
+  
+  <p>
+    &mdash; Scott Myц (@ScottMuc) <a href="https://twitter.com/ScottMuc/status/579739745921724416">March 22, 2015</a>
+  </p>
+</blockquote>
+
+<p>Srini also pointed out that you shouldn’t do that for internal project dependencies</p>
+
+<blockquote class="twitter-tweet" lang="en">
+  <p>
+    <a href="https://twitter.com/ScottMuc">@ScottMuc</a> <a href="https://twitter.com/noppanit">@noppanit</a> agree. It's good for external libraries and toolset libraries. Not good for internal project dependencies.
+  </p>
+  
+  <p>
+    &mdash; Srinivasan Raguraman (@sragu) <a href="https://twitter.com/sragu/status/579762369041186816">March 22, 2015</a>
+  </p>
+</blockquote>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>I know people might argue that it doesn’t really work for big project because of the size of the repository. That’s why I mention small to medium project. It works really well with small projects. Another point to mention is that every developer might have different environment for example, Windows VS Linux which node_modules might not work for both environments. I solve that problem by using Vagrant so everybody has the same environment.</p>
+
+<p>Inspiration
+<a href="https://www.dzombak.com/blog/2014/03/including-pods-in-source-control.html">https://www.dzombak.com/blog/2014/03/including-pods-in-source-control.html</a></p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Mar 28th, 2015</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/2015/">
+		
+			My 2015</a>
+	</h2>
+	<div class="entry-content">
+		<p>I just want to take a break from writing about technical posts to just talk about myself a little bit. I’m inspired by Scott Muc’s <a href="http://scottmuc.com/my-resolutions-for-2015/" title="Scott's 2015 Resolution">post</a> about his 2015 Resolutions. Before getting into 2015 I want to take a step back and review my 2014</p>
+
+<h2 id="my-2014">My 2014</h2>
+
+<ul>
+  <li>I got the opportunity to work in Turkey as part of my consulting job with <a href="http://www.thoughtworks.com/" title="ThougthWorks">ThoughtWorks</a>. I can count Turkey to be my 6th country I have lived and worked in. I used to work and live in Thailand, China, India, United Kingdom, Germany, Turkey.</li>
+  <li>Learned C#. C# is the first language I learnt at school when Windows Form was a big thing. I loved it but then the web took over and I felt in love with Java instead and never look back. The project in Turkey is C# so I got to relearn that again and I can say that I like it more than Java now. The language is nicer and more functional. I can do more stuff with less code.</li>
+  <li>Moved to the US.</li>
+</ul>
+
+<h2 id="my-2015">My 2015</h2>
+
+<h3 id="move-to-the-us-and-join-fusion">Move to the US and join Fusion</h3>
+
+<p>I decided to join <a href="http://fusion.net">Fusion</a> and left my glamorous consulting job. Partly because of the city. I felt in love with New York City when I was there in 2013 for a conference and I thought it would be nice to live here. When the opportunity came I took it immediately. Now two months passed by and I still love the city and my job. Much to explore and lots of places to travel in the US. Fusion is also the first place I get to know what’s like to work remotely. I absolutely love it. I get to be anywhere and also do what I love which is coding. I will write another post about remote collaboration later. Fusion is a media company which is a new field that I haven’t explored before.</p>
+
+<h3 id="join-kollaboration">Join Kollaboration</h3>
+
+<p>I join <a href="http://www.kollaborationnewyork.org" title="Kollaboration New York">Kollaboration</a> New York as a Technical Director because of my roommate <a href="https://www.linkedin.com/in/tannerchung" title="Tanner Chung">Tanner Chung</a>. Kollaboration is a non-profit organization that help and promote Asian American artists through entertainment. In this organization, I get to learn what’s like to be Asian American. I’m asian myself but I was born in Asia. So, I didn’t know the problems a lot of asian people living abroad having.</p>
+
+<h2 id="what-i-want-to-do-in-2015">What I want to do in 2015</h2>
+
+<h3 id="learn-to-invest">Learn to invest</h3>
+
+<p>Who doesn’t want to have money? I’m going to learn how to invest my saving and will keep posting the results.</p>
+
+<h3 id="travel-across-america">Travel across America</h3>
+
+<p>When I was living in Europe, you can get to a lot of countries in just 2-3 hours but in America everywhere is so big and South American has always been my dream location.</p>
+
+<h3 id="learn-spanish">Learn Spanish</h3>
+
+<p>My previous goal leads to this goal. I speak Thai, English and Mandarin. I learnt German before but didn’t really get anywhere. This year I’m going to learn Spanish and make it my fourth language. I love languages and it’s fun to talk to the locals and amazed them with their language.</p>
+
+<h3 id="run-a-marathon">Run a marathon</h3>
+
+<p>My friend Rajveer and <a href="https://twitter.com/sragu">Srini</a> inspire me to running. I’m a chubby guy and I really want to get into shape. Running a marathon takes a lot out of you mentally and physically. I thought if I could do it at least for once, I’d accomplish something.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>I started off 2015 pretty good. I went to India for my friend’s wedding in Rajasthan. I went to US west coast to experience super cold whether. I learned PHP and WordPress and improved my JavaScript skills which I will continue doing that.</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Feb 5th, 2015</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/event-delegation-javascript-fast-fast/">
+		
+			Event Delegation in JavaScript Is Fast but How Fast?</a>
+	</h2>
+	<div class="entry-content">
+		<p>People say always use event delegation for adding event because it’s faster. But how fast exactly? I really want to create a test case for this, but I couldn’t figure out how to run B<a href="http://benchmarkjs.com/" title="benchmark.js">enchmark.js</a> in browser. So, I thought we could just use Chrome Developer Tool to achieve this.</p>
+
+<h2 id="what-are-we-measuring">What are we measuring?</h2>
+
+<p>As I said in the beginning, we want to know how fast event delegation is compared to direct binding that most people do. For example, I’ve always seen people do this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#ul li&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="c1">// doing something amazing.</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>What is actually doing is, jQuery will add the event to each of the <strong>li</strong> in the DOM. If you have 3-4 lis, then I don’t think it’s going to make a big difference. However, if you have a thousand lis, you will see some difference. I’ll show you by using Chrome Developer Tool.</p>
+
+<h2 id="what-do-we-need">What do we need?</h2>
+
+<p>We need some basic HTML</p>
+
+<p>It’s going to be something like this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">&quot;parent&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;li&gt;&lt;/li&gt;</span>
+</span><span class="line">  // 999 more <span class="nt">&lt;li&gt;</span>
+</span><span class="line"><span class="nt">&lt;/ul&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then we will have JavaScript like this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://code.jquery.com/jquery-1.11.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class="line"><span class="nt">&lt;script&gt;</span>
+</span><span class="line">    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#parent li&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;you clicked me!&#39;</span><span class="p">);</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>If you open your html page on Chrome you should see something like this.<br />
+<img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png" /></p>
+
+<p>If you go down to where JavaScript is executed You will see it takes around <strong>37ms</strong> to execute the snippet.</p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png" /></p>
+
+<p>Now change your snippet to be event delegation</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://code.jquery.com/jquery-1.11.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class="line"><span class="nt">&lt;script&gt;</span>
+</span><span class="line">    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#parent&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="s1">&#39;li&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;you clicked me!&#39;</span><span class="p">);</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And refresh the page you should see something like this.</p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png" /></p>
+
+<p>Now it will only take <strong>2ms</strong> to execute the snippet. It’s because the event is added to one element not 1000 of them.</p>
+
+<p>This is just an easy example that you can do it yourself to improve your performance.</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Nov 22nd, 2014</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>javascript</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/create-simple-vagrant-plugin/">
+		
+			How to Create a Simple Vagrant Plugin.</a>
+	</h2>
+	<div class="entry-content">
+		<p>I have been searching all over the Internet to find how to create a vagrant plugin. <a href="https://docs.vagrantup.com/v2/plugins/index.html" title="vagrant plugin">Vagrant homepage</a> has information on how to create a vagrant plugin, but I would like to give a real world example. The plugin I’m going to create is <strong><a href="https://github.com/noppanit/vagrant-ls" title="vagrant-ls">vagrant-ls</a></strong> which is inspired by <strong><a href="https://github.com/joshmcarthur/vagrant-list" title="vagrant-list">vagrant-list</a></strong>.</p>
+
+<h2 id="how-do-you-start">How do you start</h2>
+
+<p>Vagrant that you installed already won’t work with local developing plugin. So, I recommend you to create a new gemset for your plugin. If you haven’t used <a href="http://rvm.io/" title="rvm">RVM</a>, I highly recommend you use it now. It’s awesome!.</p>
+
+<p>Once you have RVM installed you can create a gemset using this command <strong>rvm gemset create vagrant-ls</strong>. Then <strong>rvm gemset use vagrant-ls</strong> (Just in case). I recommend you do this for each of your ruby project. It helps you separate your gems, and it won’t mess up with different versions of your gems. First thing that you have to install is Bundler <strong>gem install bundler</strong>. It’s because we will use Bundler to manage all of our dependencies. Then you can create <strong>Gemfile</strong>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">source</span> <span class="s2">&quot;https://rubygems.org&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
+</span><span class="line">  <span class="n">gem</span> <span class="s2">&quot;vagrant&quot;</span><span class="p">,</span> <span class="ss">git</span><span class="p">:</span> <span class="s2">&quot;https://github.com/mitchellh/vagrant.git&quot;</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="n">group</span> <span class="ss">:plugins</span> <span class="k">do</span>
+</span><span class="line">  <span class="n">gem</span> <span class="s2">&quot;vagrant-ls&quot;</span><span class="p">,</span> <span class="ss">path</span><span class="p">:</span> <span class="s2">&quot;.&quot;</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This is the most basic you would need for your plugin development. If you wonder what is <em>group :plugins</em>
+. <a href="https://docs.vagrantup.com/v2/plugins/development-basics.html">Vagrant plugin</a> has already explained that. This will load your local plugin automatically without doing <em>bundle exec vagrant install plugin vagrant-ls</em> which will not quite work anyway.</p>
+
+<p>Then you can create your gemspec file. I name it <strong>vagrant-ls.gemspec</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s1">&#39;../lib/vagrant-ls/version&#39;</span><span class="p">,</span> <span class="bp">__FILE__</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">name</span>            <span class="o">=</span> <span class="s1">&#39;vagrant-ls&#39;</span>
+</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">version</span>         <span class="o">=</span> <span class="no">Vagrant</span><span class="o">::</span><span class="no">Ls</span><span class="o">::</span><span class="no">VERSION</span>
+</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">date</span>            <span class="o">=</span> <span class="s1">&#39;2014-11-18&#39;</span>
+</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">summary</span>         <span class="o">=</span> <span class="s2">&quot;List all vms&quot;</span>
+</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">description</span>     <span class="o">=</span> <span class="s2">&quot;A simple vagrant plugin for listing all vms&quot;</span>
+</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">authors</span>         <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;Noppanit Charassinvichai&quot;</span><span class="o">]</span>
+</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">email</span>           <span class="o">=</span> <span class="s1">&#39;noppanit.c@gmail.com&#39;</span>
+</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">files</span>           <span class="o">=</span> <span class="sb">`git ls-files`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="vg">$\</span><span class="p">)</span>
+</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">executables</span>     <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">%r{^bin/}</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="p">}</span>
+</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">require_paths</span>   <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;lib&#39;</span><span class="o">]</span>
+</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">homepage</span>        <span class="o">=</span> <span class="s1">&#39;https://github.com/noppanit/vagrant-ls&#39;</span>
+</span><span class="line">  <span class="n">s</span><span class="o">.</span><span class="n">license</span>         <span class="o">=</span> <span class="s1">&#39;GNU&#39;</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then you crate <strong>Rakefile</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;bundler/setup&#39;</span>
+</span><span class="line"><span class="no">Bundler</span><span class="o">::</span><span class="no">GemHelper</span><span class="o">.</span><span class="n">install_tasks</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then you move on to create your plugin using this <a href="http://guides.rubygems.org/patterns/" title="gem pattern">pattern</a>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># lib/vagrant-ls.rb</span>
+</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;bundler&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="k">begin</span>
+</span><span class="line">  <span class="nb">require</span> <span class="s1">&#39;vagrant&#39;</span>
+</span><span class="line"><span class="k">rescue</span> <span class="no">LoadError</span>
+</span><span class="line">  <span class="no">Bundler</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:default</span><span class="p">,</span> <span class="ss">:development</span><span class="p">)</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;vagrant-ls/plugin&#39;</span>
+</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;vagrant-ls/command&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I almost forget you need to create VERSION file for gemspec to get your version number</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># lib/vagrant-ls/version.rb</span>
+</span><span class="line"><span class="k">module</span> <span class="nn">Vagrant</span>
+</span><span class="line">    <span class="k">module</span> <span class="nn">Ls</span>
+</span><span class="line">        <span class="no">VERSION</span> <span class="o">=</span> <span class="s1">&#39;0.0.1&#39;</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>Then you create your plugin class, this will be the place where vagrant finds information about your plugin.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># lib/vagrant-ls/plugin.rb</span>
+</span><span class="line"><span class="k">module</span> <span class="nn">Vagrant</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">module</span> <span class="nn">Ls</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">class</span> <span class="nc">Plugin</span> <span class="o">&lt;</span> <span class="no">Vagrant</span><span class="o">.</span><span class="n">plugin</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+</span><span class="line">          <span class="nb">name</span> <span class="s2">&quot;List&quot;</span>
+</span><span class="line">
+</span><span class="line">          <span class="n">description</span> <span class="o">&lt;&lt;-</span><span class="no">DESC</span>
+</span><span class="line"><span class="sh">          This plugin &#39;ls&#39; all of the vms running inside the machine</span>
+</span><span class="line"><span class="no">          DESC</span>
+</span><span class="line">
+</span><span class="line">          <span class="n">command</span> <span class="s1">&#39;ls&#39;</span> <span class="k">do</span>
+</span><span class="line">            <span class="n">require_relative</span> <span class="s1">&#39;command&#39;</span>
+</span><span class="line">            <span class="no">Command</span>
+</span><span class="line">          <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">end</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This is where you will name your command.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="n">command</span> <span class="s1">&#39;ls&#39;</span> <span class="k">do</span>
+</span><span class="line"><span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Last one, this is where vagrant will know how to execute your plugin</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1"># lib/vagrant-ls/command.rb</span>
+</span><span class="line"><span class="k">module</span> <span class="nn">Vagrant</span>
+</span><span class="line">    <span class="k">module</span> <span class="nn">Ls</span>
+</span><span class="line">        <span class="k">class</span> <span class="nc">Command</span> <span class="o">&lt;</span> <span class="no">Vagrant</span><span class="o">.</span><span class="n">plugin</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="ss">:command</span><span class="p">)</span>
+</span><span class="line">            <span class="k">def</span> <span class="nf">execute</span>
+</span><span class="line">                <span class="nb">exec</span><span class="p">(</span><span class="s1">&#39;VBoxManage list vms&#39;</span><span class="p">)</span>
+</span><span class="line">                <span class="mi">0</span>
+</span><span class="line">            <span class="k">end</span>
+</span><span class="line">        <span class="k">end</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I just run <strong>VBoxManage</strong> command to list all of the vms. Once you are done, you are ready to test your plugin.</p>
+
+<p>You can run this command</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">bundle <span class="nb">exec </span>vagrant ls
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>. If everything is correct, it should list all of your vms with the name of your vms, so you know where you are you running all those vms.</p>
+
+<h2 id="publish-your-gem">Publish your gem</h2>
+
+<p>Now, it’s time to spread the love of your gem. You need to build your gem first. Remember the Rakefile? You can just run <em>rake build</em></p>
+
+<p>It will pack your gem to <strong>.pkg</strong> folder. Then you can just run</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">gem push pkg/vagrant-ls-0.0.1.gem
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>. That’s it you have your gem published. If you look for <a href="http://guides.rubygems.org/publishing/">documentation</a> for publishing your gem.</p>
+
+<p>You can find my repository <a href="https://github.com/noppanit/vagrant-ls">here</a>. The reason I create this post is that, the plugin might evolve but this blog stays and it will be a good starting point for other people.</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Nov 21st, 2014</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
+
+<nav id="pagenavi">
+    
+        
+            <a href="/" class="prev">Prev</a>
+        
+    
+    
+        <a href="/posts/3" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2015
+
+    Noppanit Charassinvichai
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<!-- <script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'noppanit';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//go.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-11403715-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+
+</body>
+</html>

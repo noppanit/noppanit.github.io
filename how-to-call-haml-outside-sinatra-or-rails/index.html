@@ -89,7 +89,10 @@
 <p>So, Haml actually is just a static class that you can call anywhere, but where you call inside Sinatra or Rails controller. You could just use</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">haml :my_view</span></code></pre></td></tr></table></div></figure></notextile></div>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">
+</span><span class="line">haml :my_view
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>However, if you do this outside Sinatra, you would get an exception that haml is not found or something close.</p>
 
@@ -104,6 +107,7 @@
 <span class="line-number">7</span>
 <span class="line-number">8</span>
 <span class="line-number">9</span>
+<span class="line-number">10</span>
 </pre></td><td class="code"><pre><code class="ruby"><span class="line"> <span class="n">base</span> <span class="o">=</span> <span class="no">Class</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span>
 </span><span class="line">    <span class="kp">include</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">DateTimeHelper</span> <span class="c1"># This is the helper that you want to include in Haml.</span>
 </span><span class="line">  <span class="k">end</span><span class="o">.</span><span class="n">new</span>
@@ -113,6 +117,7 @@
 </span><span class="line">  <span class="n">engine</span> <span class="o">=</span> <span class="no">Haml</span><span class="o">::</span><span class="no">Engine</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">IO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">_feed_partial_path</span><span class="p">))</span>
 </span><span class="line">  <span class="n">rendered</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="ss">:var_to_inject</span> <span class="o">=&gt;</span> <span class="n">var_to_inject</span><span class="p">)</span> <span class="c1"># or if you don&#39;t want to use helper it could be just engine.render(Object.new, :var_to_inject =&gt; var_to_inject)</span>
 </span><span class="line">  <span class="nb">puts</span> <span class="n">rendered</span>
+</span><span class="line">
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>That’s it nice and easy!</p>

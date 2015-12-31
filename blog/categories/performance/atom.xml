@@ -4,7 +4,7 @@
   <title><![CDATA[Category: performance | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/performance/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-11-23T10:32:55-05:00</updated>
+  <updated>2015-12-30T20:17:30-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -31,44 +31,47 @@
 
 <p>You are a general, your home country is at war and you have to fight for your country. You are given a group of soldiers. You want to come up with a strategy to win the battle. Here’s the example of the soldiers.</p>
 
-<p><code>
-[
+<p>```</p>
+
+<p>[
     {
-        "category": "machine-gun",
-        "id": 0,
-        "name": "D408CF"
+        “category”: “machine-gun”,
+        “id”: 0,
+        “name”: “D408CF”
     },
     {
-        "category": "machine-gun",
-        "id": 1,
-        "name": "C0BAD7"
+        “category”: “machine-gun”,
+        “id”: 1,
+        “name”: “C0BAD7”
     },
     {
-        "category": "rocket-man",
-        "id": 2,
-        "name": "04B5E4"
+        “category”: “rocket-man”,
+        “id”: 2,
+        “name”: “04B5E4”
     },
     {
-        "category": "rocket-man",
-        "id": 3,
-        "name": "22F3CF"
+        “category”: “rocket-man”,
+        “id”: 3,
+        “name”: “22F3CF”
     },
     {
-        "category": "machine-gun",
-        "id": 4,
-        "name": "811E8A"
+        “category”: “machine-gun”,
+        “id”: 4,
+        “name”: “811E8A”
     }
     ,
-    ...
-]
-</code></p>
+    …
+]</p>
+
+<p>```</p>
 
 <p>You came out of a high-profile meeting and all the generals agree that this formation will be best to fight the enemy; <em>infantry</em>, <em>machine-gun</em> and <em>rocket-man</em>. How can I rearrange this quick enough because we’re going to attack tomorrow? Simple I go ahead and write the code.</p>
 
 <p>First, let’s generate a bunch of soldiers</p>
 
-<p>``` python
-class Soldier(object):
+<p>``` python</p>
+
+<p>class Soldier(object):
     def <strong>init</strong>(self, id, name, category):
         self.id = id
         self.name = name
@@ -79,13 +82,15 @@ class Soldier(object):
 <p>soldiers = []
 for i in range(0, number_of_soldier):
     name = str(uuid.uuid4().get_hex().upper()[0:6])
-    soldiers.append(Soldier(i, name, random.choice(categories)))
-```</p>
+    soldiers.append(Soldier(i, name, random.choice(categories)))</p>
+
+<p>```</p>
 
 <p>Then let’s rearrange them.</p>
 
-<p>``` python
-import json
+<p>``` python</p>
+
+<p>import json
 import uuid
 import random
 import time</p>
@@ -105,15 +110,17 @@ s_list = []
 </code></pre>
 
 <p>end = time.time()
-print(end - start)
-```</p>
+print(end - start)</p>
+
+<p>```</p>
 
 <p>It works, but you’re too late you can’t form the soldiers in time. If you take a closer look, this algorithm takes <em>O(n</em>m)* for the time complexity given the number of soldiers is <em>n</em> and the <em>category</em> is <em>m</em>. If you have a million soldiers and a million categories you would get <em>O(n^2)</em>. How can we make this one faster?</p>
 
 <p>Here’s my second version. Hmm, rearrange into category… category is bucket. How about using map?</p>
 
-<p>``` python
-from collections import defaultdict</p>
+<p>``` python</p>
+
+<p>from collections import defaultdict</p>
 
 <p>start = time.time()
 map_of_soldiers = defaultdict(list)</p>
@@ -132,10 +139,12 @@ print(end - start)</p>
 
 <p>This is the time difference of those two algorithms.</p>
 
-<p><code>
-0.00743103027344
-0.00331783294678
-</code></p>
+<p>```</p>
+
+<p>0.00743103027344
+0.00331783294678</p>
+
+<p>```</p>
 
 <p>By just changing the data structure, you can see that the <em>map</em> version is almost twice as fast. I hope I can demostrate how choosing the right algorithm matters in your program.</p>
 
@@ -155,11 +164,11 @@ print(end - start)</p>
 
 <p>Here’s my before performance from Google PageSpeed.</p>
 
-<p>{% img /wp-content/uploads/2015/10/google-pagespeed-before.jpg Google PageSpeed before performance %}</p>
+<p><img src="/wp-content/uploads/2015/10/google-pagespeed-before.jpg" title="Google PageSpeed before performance" ></p>
 
 <p>And from webpagetest.org</p>
 
-<p>{% img /wp-content/uploads/2015/10/before-perf-noppanit-com.jpg Webpagetest before performance %}</p>
+<p><img src="/wp-content/uploads/2015/10/before-perf-noppanit-com.jpg" title="Webpagetest before performance" ></p>
 
 <p>In a nutshell, my page starts to render in <em>2.4s</em> and finishes in <em>4s</em>. Yikes! I wouldn’t even want to wait for my site to load. Let’s see where’s the lowest hanging fruit.</p>
 
@@ -185,11 +194,13 @@ sips -s format jpeg your_png.png --out your_pic.jpg
 
 <p>I use <a href="https://github.com/tommy351/Octopress-Theme-Slash">Slash</a> theme and when I look at the CSS, it’s only 22K. So why not just inline it and save one more request for the browser. So, in <em>_includes/head.html</em> you can change the line that includes your stylesheet to be.</p>
 
-<p>{% codeblock html %}
-	<style>
-		{\% include screen.css %} # delete '\' in front of % before you paste this snippet
-	</style>
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>html </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;style>
+</span><span class='line'>		{\% include screen.css %} # delete '\' in front of % before you paste this snippet
+</span><span class='line'>	&lt;/style></span></code></pre></td></tr></table></div></figure></p>
 
 <p>This might be different from theme to theme but it shouldn’t be difficult to find that out.</p>
 
@@ -199,13 +210,13 @@ sips -s format jpeg your_png.png --out your_pic.jpg
 
 <p>Here’s my after performance from Google PageSpeed.</p>
 
-<p>{% img /wp-content/uploads/2015/10/google-pagespeed-after.jpg Google PageSpeed after %}</p>
+<p><img src="/wp-content/uploads/2015/10/google-pagespeed-after.jpg" title="Google PageSpeed after" ></p>
 
 <p>It’s a lot better now but there’s one tiny problem with mobile which I’ll write another blog post about that.</p>
 
 <p>Let’s have a look at webpagetest now.</p>
 
-<p>{% img /wp-content/uploads/2015/10/webpagetest-after.jpg Webpagetest After %}</p>
+<p><img src="/wp-content/uploads/2015/10/webpagetest-after.jpg" title="Webpagetest After" ></p>
 
 <p>A lot better! It’s still not the best but now my page loads within <em>0.5s</em> and finishes in <em>1.9s</em>. However, there’s still a lot to work on mobile.</p>
 
