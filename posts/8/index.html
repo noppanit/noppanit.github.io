@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="For the last few days I have been busy in this amazing 29c3 conference in Hamburg, Germany (Not in NewYork). Basically, it’s a conference about &hellip;">
+	<meta name="description" content="I guess everybody loves Sublime Text2. I switched from TextMate to Sublime Text 2 and I absolutely love it. Now, when you are writing some tests and &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,79 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/diy-run-rspec-test-inside-sublime-text-2/">
+		
+			DIY : Run RSpec Test Inside Sublime Text 2</a>
+	</h2>
+	<div class="entry-content">
+		<p>I guess everybody loves Sublime Text2. I switched from TextMate to Sublime Text 2 and I absolutely love it. Now, when you are writing some tests and want to run it immediately rather than keep switching windows to your terminal you can run your spec inside Sublime Text 2.</p>
+
+<p>There are lots of Packages out there you can just install and use it, but I just wanted to show another way of doing it. You could write your own little Package as well.</p>
+
+<p>Sublime Text 2 comes with a nice functionality called <a href="http://docs.sublimetext.info/en/latest/file_processing/build_systems.html" title="Sublime Text 2 build system">Build System</a> where you can create your own command and run it by using <strong>cmb+b</strong> (If you are a MAC user).</p>
+
+<p>First thing first, I hope you use <strong>rvm</strong> so if you haven’t done this already you need to create symbolic link like <a href="http://www.sublimetext.com/docs/2/osx_command_line.html">this page</a>. Then if you want to open your project you can just do this command inside your project. This way, sublime will hook up with rvm nicely.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">subl .
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then you go to <strong>Tools &gt; Build System &gt; New Build System</strong>. It will open a new editor then you place this code.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="json"><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="nt">&quot;cmd&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;rspec&quot;</span><span class="p">,</span> <span class="s2">&quot;-I ${file_path}&quot;</span><span class="p">,</span> <span class="s2">&quot;$file&quot;</span><span class="p">],</span>
+</span><span class="line">  <span class="nt">&quot;file_regex&quot;</span><span class="p">:</span> <span class="s2">&quot;# ([A-Za-z:0-9_./ ]+rb):([0-9]+)&quot;</span><span class="p">,</span>
+</span><span class="line">  <span class="nt">&quot;working_dir&quot;</span><span class="p">:</span> <span class="s2">&quot;${project_path:${folder:${file_path}}}&quot;</span><span class="p">,</span>
+</span><span class="line">  <span class="nt">&quot;selector&quot;</span><span class="p">:</span> <span class="s2">&quot;source.ruby&quot;</span><span class="p">,</span>
+</span><span class="line">
+</span><span class="line">  <span class="nt">&quot;windows&quot;</span><span class="p">:</span>
+</span><span class="line">  <span class="p">{</span>
+</span><span class="line">    <span class="nt">&quot;cmd&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;rspec.bat&quot;</span><span class="p">,</span> <span class="s2">&quot;-I ${file_path}&quot;</span><span class="p">,</span> <span class="s2">&quot;$file&quot;</span><span class="p">]</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then you choose the new Build System you just created and hit this combo <strong>cmd+b</strong>. Hooray!</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Dec 30th, 2012</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/sublime-text2/'>sublime text2</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -712,45 +785,6 @@ Apr 1st, 2012</div>
 </div>
 </article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/ipad-3g-or-wifi-which-one-to-choose-my-own-experience/">
-		
-			iPad 3G or Wifi Which One to Choose &#8211; My Own Experience.</a>
-	</h2>
-	<div class="entry-content">
-		<p>The new iPad is coming out and everybody is very excited about that, even myself but I’ve got my iPad2 already which I can’t really afford a new one. BTW, that’s not the point about this post. Before I got my iPad and I was researching extensively which one to get 3G or wifi. I found some article suggesting that people should just get the wifi one, it’s not worth getting the 3G one because you can hardly use it, because right now you could find free wifi hotspots just about everywhere and every hotel or building provides free wifi as well. However, here’s my point why you should get the 3G one.</p>
-
-<p>– The sim card is quite cheap now to get the 500MB. I use <a href="http://giffgaff.com/" title="Giffgaff">giffgaff</a> and it works just fine.<br />
-– Even though you get a free wifi just about everywhere, what about the place where you might want to use it? or even on the train? and you don’t want to pay a ludicrous fee.<br />
-– Even though you get a free wifi just about everywhere, sometimes it’s just not good enough. I’m a regular traveller, and sometimes I have to stay outside of wifi coverage. Having 3G access really saves my life a couple times, by helping me booking some tickets or replying some emails. Or stop me from getting bored waiting for transportation.</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Mar 15th, 2012</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
-
-
-</div>
-	
-</div>
-</article>
-
 <nav id="pagenavi">
     
         
@@ -763,7 +797,7 @@ Mar 15th, 2012</div>
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav>
 </div>
-	<footer id="footer" class="inner">Copyright &copy; 2015
+	<footer id="footer" class="inner">Copyright &copy; 2016
 
     Noppanit Charassinvichai
 

@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2015-12-30T21:00:35-05:00</updated>
+  <updated>2016-01-01T23:49:58-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -12,6 +12,47 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[2016]]></title>
+    <link href="https://www.noppanit.com/2016/"/>
+    <updated>2016-01-01T11:29:38-05:00</updated>
+    <id>https://www.noppanit.com/2016</id>
+    <content type="html"><![CDATA[<h2 id="goals-for-2016">Goals for 2016</h2>
+
+<p>I want to make this a habit for me that I want to make goals for every year and commit to them. So, here’s what I want to achieve in 2016.</p>
+
+<h3 id="fitness-psychically-and-mentally">Fitness, psychically and mentally.</h3>
+
+<p>I know everyone makes this a New Year resolution. But I really want to make this true this year. I’m not much overweight and I lift. I’m really into 5x5 program and I’ve just busted my plateau from last year. This year, I want to be more consistent. Another important thing is I’m going to run a marathon this year as I didn’t do it last year even if it’s just going to be me.</p>
+
+<p>Progress
+1. Squat 185lb
+2. Oh Press 80lb
+3. Deadlift 265lb
+4. Barbell Row 170lb</p>
+
+<p>I’d like to increase every move by at least 25lb by the end of this year.</p>
+
+<p>The most important thing for me this year is my mental hygiene. When I was a monk, I used to meditate 30 minutes a day but once I got out of it I never did it. I’m going to make this my mission to meditate 10-15 minutes a day before going to bed. I added this as my daily habit on my habitica.</p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2016/01/habitica.png" /></p>
+
+<p>This resolution kinda sums everything that I want 2016 to be. I just want to be a happy me. If something’s going to create more stress I’m just going to say no.</p>
+
+<h3 id="reach-level-of-my-fluency-in-spanish">Reach level of my fluency in Spanish</h3>
+
+<p>I’ve just started learning Spanish a couple months ago and I like the language. There’s levels of fluency but I want to be able to make at least basic conversation. I should be comfortable ordering meals in Spanish restaurants in New York city. I’m planning to travel in South America and I would like to be able to make conversation with local people. I don’t want to be able to read news or make business conversation.</p>
+
+<h3 id="become-a-data-scientist">Become a Data Scientist</h3>
+
+<p>It wouldn’t be complete without a technical goal. I’ve just changed my career as my interests in data grew. Now I’m a Data Engineer. My day to day job is to create and maintain data pipeline for an organization. I still build stuff but it’s just different product. I like my job now but I would like to get involved more in the science. I’m taking Statistics courses and learning some algorithms to analyse a large dataset. I don’t have a degree in maths so it’s going to be a challenge for me but hey challenge accepted.</p>
+
+<h3 id="travel">Travel</h3>
+
+<p>I know this is everyone’s resolution. I have been to a lot of countries when I was working with ThoughtWorks. I’d like to go to less countries but spend more time to learn the culture and talking to local people. I used to just go to different countries to hangout by the bar or restaurant but this year I’m going to make less trips but more meaningful.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Retrospective 2015]]></title>
@@ -2120,97 +2161,6 @@
 <h2 id="summary">Summary</h2>
 
 <p>I started off 2015 pretty good. I went to India for my friend’s wedding in Rajasthan. I went to US west coast to experience super cold whether. I learned PHP and WordPress and improved my JavaScript skills which I will continue doing that.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Event delegation in JavaScript is fast but how fast?]]></title>
-    <link href="https://www.noppanit.com/event-delegation-javascript-fast-fast/"/>
-    <updated>2014-11-22T00:00:00-05:00</updated>
-    <id>https://www.noppanit.com/event-delegation-javascript-fast-fast</id>
-    <content type="html"><![CDATA[<p>People say always use event delegation for adding event because it’s faster. But how fast exactly? I really want to create a test case for this, but I couldn’t figure out how to run B<a href="http://benchmarkjs.com/" title="benchmark.js">enchmark.js</a> in browser. So, I thought we could just use Chrome Developer Tool to achieve this.</p>
-
-<h2 id="what-are-we-measuring">What are we measuring?</h2>
-
-<p>As I said in the beginning, we want to know how fast event delegation is compared to direct binding that most people do. For example, I’ve always seen people do this</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#ul li&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="c1">// doing something amazing.</span>
-</span><span class="line"><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>What is actually doing is, jQuery will add the event to each of the <strong>li</strong> in the DOM. If you have 3-4 lis, then I don’t think it’s going to make a big difference. However, if you have a thousand lis, you will see some difference. I’ll show you by using Chrome Developer Tool.</p>
-
-<h2 id="what-do-we-need">What do we need?</h2>
-
-<p>We need some basic HTML</p>
-
-<p>It’s going to be something like this</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">&quot;parent&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">  <span class="nt">&lt;li&gt;&lt;/li&gt;</span>
-</span><span class="line">  // 999 more <span class="nt">&lt;li&gt;</span>
-</span><span class="line"><span class="nt">&lt;/ul&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Then we will have JavaScript like this</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://code.jquery.com/jquery-1.11.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class="line"><span class="nt">&lt;script&gt;</span>
-</span><span class="line">    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#parent li&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;you clicked me!&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="p">});</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;/script&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>If you open your html page on Chrome you should see something like this.<br />
-<img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png" /></p>
-
-<p>If you go down to where JavaScript is executed You will see it takes around <strong>37ms</strong> to execute the snippet.</p>
-
-<p><img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png" /></p>
-
-<p>Now change your snippet to be event delegation</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://code.jquery.com/jquery-1.11.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class="line"><span class="nt">&lt;script&gt;</span>
-</span><span class="line">    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#parent&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="s1">&#39;li&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;you clicked me!&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="p">});</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;/script&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>And refresh the page you should see something like this.</p>
-
-<p><img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png" /></p>
-
-<p>Now it will only take <strong>2ms</strong> to execute the snippet. It’s because the event is added to one element not 1000 of them.</p>
-
-<p>This is just an easy example that you can do it yourself to improve your performance.</p>
 
 ]]></content>
   </entry>

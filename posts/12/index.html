@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Have you ever had a problem using somebody method with the same name. Well, Have you ever thought why javascript don’t have package or namespaces &hellip;">
+	<meta name="description" content="In the economic down turn, I have an interesting idea at least for me to experiment on how one asian man can be living in the UK. I know that this &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,42 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/one-asian-in-britain/">
+		
+			One Asian in Britain.</a>
+	</h2>
+	<div class="entry-content">
+		<p>In the economic down turn, I have an interesting idea at least for me to experiment on how one asian man can be living in the UK. I know that this is the the right time, it is not always the right time actually. I don’t know. I hope that everybody could have at least one chance in their live.</p>
+
+<p>I am going to the UK, because I really do not like my country now. I have high hope. However, I have at least two years to prove myself that am I capable of doing something that everyday says that it is hard YOU CAN’T DO IT MAN. Well, I’m gonna prove it later.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Aug 3rd, 2009</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -571,89 +607,6 @@ Mar 29th, 2008</div>
 </div>
 </article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/tutorial-my-java-world-part-1-eclipse-ejb-jboss-ant/">
-		
-			Tutorial : My Java World Eclipse + EJB + JBoss + Ant. Part 1</a>
-	</h2>
-	<div class="entry-content">
-		<p>Now, I have been struggling in job finding world. I tested a lot, and all about J2EE blah blah and I completely failed. So, I decided to write this topic to record my understand about EJB. I will program EJB from scratch, without using any tools, or as less as possible.</p>
-
-<p>I am using these tools<br />
-1. <a href="http://www.eclipse.org/downloads/">Eclipse</a><br />
-2. J2EE 5.04<br />
-3. <a href="http://labs.jboss.com/projects/download/">JBoss 4.22</a><br />
-4. Ant 1.7</p>
-
-<p>First thing first after you installed JDK, you have to set variables in. Control Panel -&gt; System -&gt; Advance -&gt; Environment Variables. Like the picture below.</p>
-
-<p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/1.jpg" alt="" /></p>
-
-<p>After I have set the JAVA_HOME variable, the next thing is I have to create an EJB project.</p>
-
-<p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/2.jpg" height="523" width="618" /></p>
-
-<p>You will get something like this</p>
-
-<p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/3.jpg" height="252" width="246" /></p>
-
-<p>The Next thing is, you have to add J2EE library to the project. So, all the J2EE jars can be used in the project. The jars come from C:\Sun\SDK\lib &lt;– according to my computer, which installed J2EE 5.04</p>
-
-<p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/4.jpg" alt="" /></p>
-
-<p>In this project, I’m using Remote interface, because I wanted to show how the EJB can be connected via another J2EE container. So, After importing the j2EE jars, we have to create two interfaces which are Remote interface and Remote home interface. I’m creating com.noppanit.interfaces and com.noppanit.bean package. The bean package is for SessionBean.</p>
-
-<p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/5.jpg" height="259" width="352" /></p>
-
-<p>HelloEJB.java is a Remote interface. It has to extend javax.ejb.EJBObject and has business method interface which throws RemoteException. Like this.</p>
-
-<p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/6.jpg" height="217" width="533" /></p>
-
-<p>HelloEJBHome.java is a Remote home interface. It has to extend javax.ejb.EJBHome and has at least one creat(); method which return the Remote interface and throws RemoteException, CreateException.</p>
-
-<p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/7.jpg" alt="" /></p>
-
-<p>The last one is SessionBean. It has to implement javax.ejb.SessionBean and has ejbActivate, ejbPassivate, ejbRemove, setSessionContext, and business methods.</p>
-
-<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/8.jpg"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/81.jpg" height="216" width="200" /></a></p>
-
-<p>The next thing is ejb-jar.xml. It’s a deployment descriptor. This xml file is for J2EE container, the file will be looked by the J2EE container. So, it can know that what type of this EJB is, and what is the name of this EJB, etc.</p>
-
-<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/9.jpg"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/91.jpg" height="74" width="200" /></a></p>
-
-<p>Now, the process of creating EJB is finished. The next thing is, we have to create build.xml, an ANT file. The ANT file is used for cleaning, compiling, deploying to application server. Actually, we can use Eclipse to do all these things, but I want to create this project from scratch.</p>
-
-<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/10.jpg"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/101.jpg" height="203" width="200" /></a></p>
-
-<p>After the deploying, jboss should see the EJB in its container and is ready to be used via JNDI.?? the next Chapter I will be using ordinary Java application client call the EJB. Actually, we must use web container to call the EJB.</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Mar 27th, 2008</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/java/'>java</a>
-
-
-</div>
-	
-</div>
-</article>
-
 <nav id="pagenavi">
     
         
@@ -666,7 +619,7 @@ Mar 27th, 2008</div>
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav>
 </div>
-	<footer id="footer" class="inner">Copyright &copy; 2015
+	<footer id="footer" class="inner">Copyright &copy; 2016
 
     Noppanit Charassinvichai
 

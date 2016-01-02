@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="So after my first post my quest to find my perfect brew. Rather than spending a fortune for a grinder and espresso machine, I decided to go step by &hellip;">
+	<meta name="description" content="I know that these days we’re in the era of cheap memory. You can pretty much get 8GB of memory on a Notebook off the shelf. I can still remember in &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,266 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/lesson-learnt-basic-java-memory-consumption-memory-cache/">
+		
+			Lesson Learnt : Basic Java Memory Consumption for In-memory Cache.</a>
+	</h2>
+	<div class="entry-content">
+		<p>I know that these days we’re in the era of cheap memory. You can pretty much get 8GB of memory on a Notebook off the shelf. I can still remember in the past when I was playing with my 486DX with 64Mb or memory and it was too fast! yeah. People might question what am I doing using a lot of memory and why would you care. In my case, I’m building a cache which I have to pretty much hold every single object inside the memory. I have over 1 million objects. Well it’s just 1 million objects which it’s not a big deal but I have to index and make it searchable which I was told to use hibernate search. Hiberate search is pretty much a wrapper on top of Lucene. That’s why my my cache it’s very memory consuming. So, I have to be very careful what I put in my domain object. The example I’m using it’s just a basic example which in the real project there will be much more than just this.</p>
+
+<p>For example, I have one <strong>Store</strong> object which it has a method to return jsonified string. So, what I did I just passed <strong>ObjectMapper</strong> to transform my object to be json. However, what I didn’t realise was that if I passed that from the constructor my object has to store <strong>ObjectMapper</strong> inside the object as well and <strong>ObjectMapper</strong> is a really beefy object. So, If I created a million objects I have to hold another million objects of ObjectMapper as well. So, I just had to pass <strong>ObjectMapper</strong> just when I want to use it. And that save me a lot of memory.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+<span class="line-number">63</span>
+<span class="line-number">64</span>
+<span class="line-number">65</span>
+<span class="line-number">66</span>
+<span class="line-number">67</span>
+<span class="line-number">68</span>
+<span class="line-number">69</span>
+<span class="line-number">70</span>
+<span class="line-number">71</span>
+<span class="line-number">72</span>
+<span class="line-number">73</span>
+<span class="line-number">74</span>
+<span class="line-number">75</span>
+<span class="line-number">76</span>
+<span class="line-number">77</span>
+<span class="line-number">78</span>
+<span class="line-number">79</span>
+<span class="line-number">80</span>
+<span class="line-number">81</span>
+<span class="line-number">82</span>
+<span class="line-number">83</span>
+<span class="line-number">84</span>
+<span class="line-number">85</span>
+<span class="line-number">86</span>
+<span class="line-number">87</span>
+<span class="line-number">88</span>
+<span class="line-number">89</span>
+<span class="line-number">90</span>
+<span class="line-number">91</span>
+<span class="line-number">92</span>
+<span class="line-number">93</span>
+<span class="line-number">94</span>
+<span class="line-number">95</span>
+<span class="line-number">96</span>
+<span class="line-number">97</span>
+<span class="line-number">98</span>
+<span class="line-number">99</span>
+<span class="line-number">100</span>
+<span class="line-number">101</span>
+<span class="line-number">102</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">noppanit</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kn">import</span> <span class="nn">com.fasterxml.jackson.annotation.JsonAutoDetect</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">com.fasterxml.jackson.annotation.JsonInclude</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">com.fasterxml.jackson.core.JsonProcessingException</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">com.fasterxml.jackson.databind.ObjectMapper</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kn">import</span> <span class="nn">static</span> <span class="n">com</span><span class="o">.</span><span class="na">fasterxml</span><span class="o">.</span><span class="na">jackson</span><span class="o">.</span><span class="na">annotation</span><span class="o">.</span><span class="na">JsonAutoDetect</span><span class="o">.</span><span class="na">Visibility</span><span class="o">.</span><span class="na">ANY</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">static</span> <span class="n">com</span><span class="o">.</span><span class="na">fasterxml</span><span class="o">.</span><span class="na">jackson</span><span class="o">.</span><span class="na">annotation</span><span class="o">.</span><span class="na">JsonAutoDetect</span><span class="o">.</span><span class="na">Visibility</span><span class="o">.</span><span class="na">NONE</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestMemoryConsumption</span> <span class="o">{</span>
+</span><span class="line">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">MEGABYTE</span> <span class="o">=</span> <span class="mi">1024L</span> <span class="o">*</span> <span class="mi">1024L</span><span class="o">;</span>
+</span><span class="line">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">LOOP</span> <span class="o">=</span> <span class="mi">1000000</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">long</span> <span class="nf">bytesToMegabytes</span><span class="o">(</span><span class="kt">long</span> <span class="n">bytes</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">bytes</span> <span class="o">/</span> <span class="n">MEGABYTE</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="nd">@Test</span>
+</span><span class="line">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testMemoryConsumption</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">ObjectMapper</span> <span class="n">objectMapper</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ObjectMapper</span><span class="o">();</span>
+</span><span class="line">        <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+</span><span class="line">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">LOOP</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">StoreWithToJson</span> <span class="n">storeWithToJson</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">StoreWithToJson</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="s">&quot;description&quot;</span><span class="o">,</span> <span class="n">objectMapper</span><span class="o">);</span>
+</span><span class="line">            <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">i</span><span class="o">),</span> <span class="n">storeWithToJson</span><span class="o">);</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">        <span class="n">printMemoryConsumption</span><span class="o">();</span>
+</span><span class="line">
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="nd">@Test</span>
+</span><span class="line">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testMemoryConsumptionWithoutObjectMapper</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+</span><span class="line">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">LOOP</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">Store</span> <span class="n">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Store</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="s">&quot;description&quot;</span><span class="o">);</span>
+</span><span class="line">            <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">i</span><span class="o">),</span> <span class="n">store</span><span class="o">);</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">        <span class="n">printMemoryConsumption</span><span class="o">();</span>
+</span><span class="line">
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">printMemoryConsumption</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">Runtime</span> <span class="n">runtime</span> <span class="o">=</span> <span class="n">Runtime</span><span class="o">.</span><span class="na">getRuntime</span><span class="o">();</span>
+</span><span class="line">        <span class="n">runtime</span><span class="o">.</span><span class="na">gc</span><span class="o">();</span>
+</span><span class="line">        <span class="n">System</span><span class="o">.</span><span class="na">runFinalization</span><span class="o">();</span>
+</span><span class="line">        <span class="kt">long</span> <span class="n">memory</span> <span class="o">=</span> <span class="n">runtime</span><span class="o">.</span><span class="na">totalMemory</span><span class="o">()</span> <span class="o">-</span> <span class="n">runtime</span><span class="o">.</span><span class="na">freeMemory</span><span class="o">();</span>
+</span><span class="line">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Used memory is bytes: &quot;</span> <span class="o">+</span> <span class="n">memory</span><span class="o">);</span>
+</span><span class="line">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Used memory is megabytes: &quot;</span>
+</span><span class="line">                <span class="o">+</span> <span class="n">bytesToMegabytes</span><span class="o">(</span><span class="n">memory</span><span class="o">));</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nd">@JsonInclude</span><span class="o">(</span><span class="n">JsonInclude</span><span class="o">.</span><span class="na">Include</span><span class="o">.</span><span class="na">NON_NULL</span><span class="o">)</span>
+</span><span class="line"><span class="nd">@JsonAutoDetect</span><span class="o">(</span><span class="n">fieldVisibility</span> <span class="o">=</span> <span class="n">JsonAutoDetect</span><span class="o">.</span><span class="na">Visibility</span><span class="o">.</span><span class="na">NONE</span><span class="o">,</span> <span class="n">getterVisibility</span> <span class="o">=</span> <span class="n">ANY</span><span class="o">,</span> <span class="n">setterVisibility</span> <span class="o">=</span> <span class="n">NONE</span><span class="o">)</span>
+</span><span class="line"><span class="kd">class</span> <span class="nc">StoreWithToJson</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+</span><span class="line">    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span><span class="line">    <span class="kd">private</span> <span class="n">String</span> <span class="n">description</span><span class="o">;</span>
+</span><span class="line">    <span class="kd">private</span> <span class="n">ObjectMapper</span> <span class="n">mapper</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">public</span> <span class="nf">StoreWithToJson</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">description</span><span class="o">,</span> <span class="n">ObjectMapper</span> <span class="n">mapper</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+</span><span class="line">        <span class="k">this</span><span class="o">.</span><span class="na">description</span> <span class="o">=</span> <span class="n">description</span><span class="o">;</span>
+</span><span class="line">        <span class="k">this</span><span class="o">.</span><span class="na">mapper</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toJson</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">JsonProcessingException</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">mapper</span><span class="o">.</span><span class="na">writeValueAsString</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">description</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line"><span class="kd">class</span> <span class="nc">Store</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+</span><span class="line">    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span><span class="line">    <span class="kd">private</span> <span class="n">String</span> <span class="n">description</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">public</span> <span class="nf">Store</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">description</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+</span><span class="line">        <span class="k">this</span><span class="o">.</span><span class="na">description</span> <span class="o">=</span> <span class="n">description</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">description</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Result from passing <strong>ObjectMapper</strong> from the constructor.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">Used</span> <span class="n">memory</span> <span class="n">is</span> <span class="nl">bytes:</span> <span class="mi">3723968</span>
+</span><span class="line"><span class="n">Used</span> <span class="n">memory</span> <span class="n">is</span> <span class="nl">megabytes:</span> <span class="mi">3</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Result from passing <strong>ObjectMapper</strong> just when I want to use it.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">Used</span> <span class="n">memory</span> <span class="n">is</span> <span class="nl">bytes:</span> <span class="mi">1928536</span>
+</span><span class="line"><span class="n">Used</span> <span class="n">memory</span> <span class="n">is</span> <span class="nl">megabytes:</span> <span class="mi">1</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I know this might be obvious for some people but if you have the same problems as myself this might help shed some lights to something else.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Dec 5th, 2013</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -739,78 +999,6 @@ Aug 11th, 2013</div>
 </div>
 </article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/keep-your-data-more-secure-than-it-already-is/">
-		
-			Keep Your Data More Secure Than It Already Is My Version.</a>
-	</h2>
-	<div class="entry-content">
-		<p>For the last couple of weeks I have been researching how to secure my personal data, I think it’s mainly because the emergence of <a href="https://en.wikipedia.org/wiki/PRISM_(surveillance_program)" title="PRISM">PRISM</a> or <a href="http://www.washingtonpost.com/wp-srv/special/politics/prism-collection-documents/" title="PRISM slides">NSA scandal</a>. However, I’m pretty sure if the government wants to access your data they can do one way or another. So, you absolutely cannot avoid that.</p>
-
-<p>So, I decided to secure my data the other way, Password. Ola Bini has <a href="https://olabini.com/blog/2012/08/passwords-are-terrible/" title="Why password are terrible">blogged</a> about why we shouldn’t use the same password for every website. And if you’re like me and other people you probably use the same password for more than one website. If you forget about it then that’s why the reset password functionality is for. My <a href="http://suksant.com/" title="Suksant">friend</a> has mentioned this approach where he use a complicated password and tried to remember it, if he forgot about it then he would just reset it.</p>
-
-<p>And you will see news everyday about how every major website has been hacked <a href="http://www.huffingtonpost.com/2012/11/08/twitter-hacked-password-reset-request-_n_2093596.html" title="Twitter password hacked">here</a> and <a href="http://edition.cnn.com/2012/07/12/tech/web/yahoo-users-hacked/" title="yahoo password hacked">here</a>, just examples and I’m sure there’s much more. Some people might say, if your password has been exposed no matter how string it is it’s just a matter of typing. It’s true but if you’re password is hacked in an encoded form then it might take longer to crack it. I’m not saying it’s not possible to crack it, because according to the famous <a href="https://en.wikipedia.org/wiki/Moore's_law" title="Moore's law">Moore’s law</a> anything is possible. So, the only thing you can do is to slow the bad guy down.</p>
-
-<p>So, what action do I take?</p>
-
-<ol>
-  <li>
-    <p>Email, I depend my life on Google. Simply, I just turned on <a href="https://support.google.com/accounts/answer/180744?hl=en" title="2-way authentication">2-way authentication</a>. And I download <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" title="Google Authenticator">Google Authenticator</a> app on my phone. So, every time I need to access my email from else where I need to enter a random code from my phone on the website. This will give you something more secured. I also use this app for other websites such as DropBox as well. So, I just turn on 2-way authentication on every website that provide this mechanism.</p>
-  </li>
-  <li>
-    <p>Password manager, I rely my life on <a href="https://agilebits.com/" title="1password">1Password</a>. This is a nice application to generate strong password for you and remember it for you. Instead of remember all strong password from millions of websites, you just have to remember one strong password for the master password for 1password and it will take care of the rest for you. Of course, we have to trust our life with this company. But from what I have googled they’re pretty reliable. And my company provides the license to purchase the app. I have used the app on my Mac and my android phone. It’s pretty good so far. This is a nice <a href="http://arstechnica.com/information-technology/2013/06/the-secret-to-online-safety-lies-random-characters-and-a-password-manager/">article</a> about 1Password so you can give it a go. They also have browser plugin so you can login to the website from the plugin.</p>
-  </li>
-  <li>
-    <p>Secure browser, this is nothing to do with security, because no matter what you do you still need a browser to check everything, email, news and other stuff. I use <a href="http://www.torproject.us/projects/torbrowser.html.en" title="Tor">Tor</a> bundle browser to browse a little more securely. Tor will create a secure channel for you to browser anonymously. Of course, there’s no real way to do that, but something is better than nothing. Tor creates proxy channels so bad guy cannot track you who you are and where you’re from. It’s slow, but if you want to keep your online browsing anonymous. Tor is a good start. Nobody likes to be tracked everything you do online, at least I don’t like it.</p>
-  </li>
-  <li>
-    <p>Forget Google, this might sound crazy but as we know the main revenue of Google is advertisement. They will do what ever they can to give you relevant ads so you can click on them. The more you click the richer they are. So, I change my searching experience to <a href="https://duckduckgo.com" title="DuckDuckGo">duckduckgo</a>. They claim that they don’t store anything. So, you can be fairly sure that what ever you do on their website they don’t store your behaviour. Such as, what you click first or your search terms. Of course, I still use Google because admittedly they’re the best out there right now.</p>
-  </li>
-  <li>
-    <p>Logout, this is really simple but most people don’t do it because it’s not convenient. No matter how strong your password is if you don’t logout I just have to open your browser and access your email or Facebook. I don’t even have to crack it.</p>
-  </li>
-  <li>
-    <p>If you want everything to be secure, then it might be easier to just don’t store it on the cloud. You can start closing down your accounts from website you hardly use.</p>
-  </li>
-  <li>
-    <p>These days, you can use Gmail, Facebook or Twitter to signup for most websites. You may grant access to those websites with your Facebook account, but if you don’t use it anymore then you can revoke the access. Otherwise, they can use your details without knowing your password at all.</p>
-  </li>
-  <li>
-    <p>HTTPS, this is simple if you use Tor, because Tor will try to use HTTPS whenever possible. And yeh, something is better than nothing. HTTPS is a secure way to do everything online. If you have to give out your credit card number for online shopping, please look for a padlock or green bar on your browser to make sure that you use a secure channel. Just secure everything.</p>
-  </li>
-</ol>
-
-<p>These are just simple actions you can take to secure your life. Most people might say I have nothing to hide so why bother (I got this quote from Ola Bini). Yes, it might be true but if you have nothing to hide so why don’t you just lay around your credit card or your photos for everybody to see.</p>
-
-<p>What else did I miss?</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Jul 31st, 2013</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
-
-
-</div>
-	
-</div>
-</article>
-
 <nav id="pagenavi">
     
         
@@ -823,7 +1011,7 @@ Jul 31st, 2013</div>
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav>
 </div>
-	<footer id="footer" class="inner">Copyright &copy; 2015
+	<footer id="footer" class="inner">Copyright &copy; 2016
 
     Noppanit Charassinvichai
 

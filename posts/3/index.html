@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I have been searching all over the Internet to find how to create a vagrant plugin. Vagrant homepage has information on how to create a vagrant &hellip;">
+	<meta name="description" content="People say always use event delegation for adding event because it’s faster. But how fast exactly? I really want to create a test case for this, but &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,122 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/event-delegation-javascript-fast-fast/">
+		
+			Event Delegation in JavaScript Is Fast but How Fast?</a>
+	</h2>
+	<div class="entry-content">
+		<p>People say always use event delegation for adding event because it’s faster. But how fast exactly? I really want to create a test case for this, but I couldn’t figure out how to run B<a href="http://benchmarkjs.com/" title="benchmark.js">enchmark.js</a> in browser. So, I thought we could just use Chrome Developer Tool to achieve this.</p>
+
+<h2 id="what-are-we-measuring">What are we measuring?</h2>
+
+<p>As I said in the beginning, we want to know how fast event delegation is compared to direct binding that most people do. For example, I’ve always seen people do this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#ul li&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="c1">// doing something amazing.</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>What is actually doing is, jQuery will add the event to each of the <strong>li</strong> in the DOM. If you have 3-4 lis, then I don’t think it’s going to make a big difference. However, if you have a thousand lis, you will see some difference. I’ll show you by using Chrome Developer Tool.</p>
+
+<h2 id="what-do-we-need">What do we need?</h2>
+
+<p>We need some basic HTML</p>
+
+<p>It’s going to be something like this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">&quot;parent&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;li&gt;&lt;/li&gt;</span>
+</span><span class="line">  // 999 more <span class="nt">&lt;li&gt;</span>
+</span><span class="line"><span class="nt">&lt;/ul&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then we will have JavaScript like this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://code.jquery.com/jquery-1.11.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class="line"><span class="nt">&lt;script&gt;</span>
+</span><span class="line">    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#parent li&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;you clicked me!&#39;</span><span class="p">);</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>If you open your html page on Chrome you should see something like this.<br />
+<img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png" /></p>
+
+<p>If you go down to where JavaScript is executed You will see it takes around <strong>37ms</strong> to execute the snippet.</p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png" /></p>
+
+<p>Now change your snippet to be event delegation</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://code.jquery.com/jquery-1.11.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class="line"><span class="nt">&lt;script&gt;</span>
+</span><span class="line">    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#parent&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="s1">&#39;li&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;you clicked me!&#39;</span><span class="p">);</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And refresh the page you should see something like this.</p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png" /></p>
+
+<p>Now it will only take <strong>2ms</strong> to execute the snippet. It’s because the event is added to one element not 1000 of them.</p>
+
+<p>This is just an easy example that you can do it yourself to improve your performance.</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Nov 22nd, 2014</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>javascript</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -770,53 +886,6 @@ Mar 2nd, 2014</div>
 </div>
 </article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/example-require-js-optimizer/">
-		
-			Example of Require.js Optimizer.</a>
-	</h2>
-	<div class="entry-content">
-		<p>I decided to write this blog post to show how easy it is to setup require.js optimizer and how many bytes it saves.</p>
-
-<p>To make it as simple as possible, I created this repository on <a href="https://github.com/noppanit/requirejs-optimization-example" title="Require.js optimisation example">github</a> to show the real example.</p>
-
-<p>This is the results of optimisation.</p>
-
-<p><img src="http://www.noppanit.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-09-at-19.45.38.png" /></p>
-
-<p>And this is the result of non-optimized version.</p>
-
-<p><img src="http://www.noppanit.com/wp-content/uploads/2014/02/Screen-Shot-2014-02-09-at-19.46.59.png" /></p>
-
-<p>It’s clear to see that the optimized version takes shorter to load the script, where as the non-optimized version in the files might be smaller but with a lot of calls, it takes longer to load all the scripts.</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Feb 9th, 2014</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/javascript/'>javascript</a>
-
-
-</div>
-	
-</div>
-</article>
-
 <nav id="pagenavi">
     
         
@@ -829,7 +898,7 @@ Feb 9th, 2014</div>
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav>
 </div>
-	<footer id="footer" class="inner">Copyright &copy; 2015
+	<footer id="footer" class="inner">Copyright &copy; 2016
 
     Noppanit Charassinvichai
 

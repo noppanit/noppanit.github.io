@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I have been struggling to find any example on the Internet on how to do long polling on Heroku with Flask and RQ. I know it’s relatively easy, but I &hellip;">
+	<meta name="description" content="Right now, I’m trying to do HTML5 file upload but I also want to write some test as well. So, I just want to post it here. http://postposttechnical. &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,298 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/javascript-tdd-on-file-upload/">
+		
+			JavaScript TDD on on File Upload.</a>
+	</h2>
+	<div class="entry-content">
+		<p>Right now, I’m trying to do HTML5 file upload but I also want to write some test as well. So, I just want to post it here. <a href="http://postposttechnical.com/2011/03/spying-with-jasmine/">http://postposttechnical.com/2011/03/spying-with-jasmine/</a> This blog post really inspires me on how to use Jasmine to drive JavaScript test. Maybe my code is wrong, but any feedback is welcome.</p>
+
+<p>So, I have this code</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">Uploader</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">this</span><span class="p">.</span><span class="nx">file</span> <span class="o">=</span> <span class="nx">file</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">Uploader</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span>  <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">function</span> <span class="nx">upload_file</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">file_content</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">var</span> <span class="nx">file_data</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FormData</span><span class="p">();</span>
+</span><span class="line">    <span class="nx">file_data</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">,</span> <span class="nx">file</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">file_data</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;mimetype&#39;</span><span class="p">,</span> <span class="nx">file</span><span class="p">.</span><span class="nx">type</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">file_data</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="nx">file_content</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">file_data</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="nx">file</span><span class="p">.</span><span class="nx">size</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class="line">          <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;/upload/file&quot;</span><span class="p">,</span>
+</span><span class="line">          <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+</span><span class="line">          <span class="nx">data</span><span class="o">:</span> <span class="nx">file_content</span><span class="p">,</span>
+</span><span class="line">          <span class="nx">contentType</span><span class="o">:</span> <span class="nx">file</span><span class="p">.</span><span class="nx">type</span><span class="p">,</span>
+</span><span class="line">          <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">
+</span><span class="line">          <span class="p">},</span>
+</span><span class="line">          <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">
+</span><span class="line">          <span class="p">},</span>
+</span><span class="line">          <span class="nx">xhr</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">              <span class="nx">myXhr</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajaxSettings</span><span class="p">.</span><span class="nx">xhr</span><span class="p">();</span>
+</span><span class="line">              <span class="k">if</span><span class="p">(</span><span class="nx">myXhr</span><span class="p">.</span><span class="nx">upload</span><span class="p">){</span>
+</span><span class="line">                  <span class="nx">myXhr</span><span class="p">.</span><span class="nx">upload</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;progress&#39;</span><span class="p">,</span> <span class="nx">options</span><span class="p">.</span><span class="nx">progressbar</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+</span><span class="line">              <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="line">                  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Upload progress is not supported.&quot;</span><span class="p">);</span>
+</span><span class="line">              <span class="p">}</span>
+</span><span class="line">              <span class="k">return</span> <span class="nx">myXhr</span><span class="p">;</span>
+</span><span class="line">          <span class="p">}</span>
+</span><span class="line">      <span class="p">});</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">function</span> <span class="nx">showPreview</span><span class="p">(</span><span class="nx">file_content</span><span class="p">,</span> <span class="nx">thumbnailDiv</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">image</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;img&quot;</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">image</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span>  <span class="nx">file_content</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">thumbnailDiv</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">image</span><span class="p">);</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">return</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">upload</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span>
+</span><span class="line">        <span class="nx">file_content</span> <span class="o">=</span> <span class="p">{},</span>
+</span><span class="line">        <span class="nx">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FileReader</span><span class="p">();</span>
+</span><span class="line">
+</span><span class="line">      <span class="nx">reader</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">file_content</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span>
+</span><span class="line">
+</span><span class="line">        <span class="nx">showPreview</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">result</span><span class="p">,</span> <span class="nx">options</span><span class="p">.</span><span class="nx">thumbnailDiv</span><span class="p">);</span>
+</span><span class="line">        <span class="nx">upload_file</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">file</span><span class="p">,</span> <span class="nx">file_content</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</span><span class="line">      <span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">
+</span><span class="line">      <span class="nx">reader</span><span class="p">.</span><span class="nx">readAsDataURL</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">file</span><span class="p">);</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line"><span class="p">})();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And this is my test</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Uploader&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">eventListener</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">fakeFile</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class="line">
+</span><span class="line">  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">    <span class="nx">spyOn</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="s2">&quot;ajax&quot;</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">eventListener</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">();</span>
+</span><span class="line">    <span class="nx">spyOn</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="s2">&quot;FileReader&quot;</span><span class="p">).</span><span class="nx">andReturn</span><span class="p">({</span>
+</span><span class="line">      <span class="nx">addEventListener</span><span class="o">:</span> <span class="nx">eventListener</span><span class="p">,</span>
+</span><span class="line">      <span class="nx">readAsDataURL</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="c1">// do nothing.</span>
+</span><span class="line">      <span class="p">}</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">uploader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uploader</span><span class="p">(</span><span class="nx">fakeFile</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should upload a file successfully&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">thumbnailElement</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;&lt;div&gt;&lt;/div&gt;&quot;</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">uploader</span><span class="p">.</span><span class="nx">upload</span><span class="p">({</span>
+</span><span class="line">      <span class="nx">progressbar</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">
+</span><span class="line">      <span class="p">},</span>
+</span><span class="line">      <span class="nx">thumbnailDiv</span> <span class="o">:</span> <span class="nx">thumbnailElement</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">eventListener</span><span class="p">.</span><span class="nx">mostRecentCall</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">eventListener</span><span class="p">.</span><span class="nx">mostRecentCall</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]({</span>
+</span><span class="line">      <span class="nx">target</span> <span class="o">:</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">result</span> <span class="o">:</span> <span class="s1">&#39;file content&#39;</span>
+</span><span class="line">      <span class="p">}</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">.</span><span class="nx">mostRecentCall</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;url&quot;</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s2">&quot;/upload/file&quot;</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">.</span><span class="nx">mostRecentCall</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;type&quot;</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">);</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">  <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should show a preview image&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">thumbnailElement</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">thumbnailElement</span><span class="p">.</span><span class="nx">append</span> <span class="o">=</span> <span class="nx">jasmine</span><span class="p">.</span><span class="nx">createSpy</span><span class="p">(</span><span class="s2">&quot;fake thumbnail div&quot;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">uploader</span><span class="p">.</span><span class="nx">upload</span><span class="p">({</span>
+</span><span class="line">      <span class="nx">progressbar</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">
+</span><span class="line">      <span class="p">},</span>
+</span><span class="line">      <span class="nx">thumbnailDiv</span> <span class="o">:</span> <span class="nx">thumbnailElement</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">eventListener</span><span class="p">.</span><span class="nx">mostRecentCall</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]({</span>
+</span><span class="line">      <span class="nx">target</span> <span class="o">:</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">result</span> <span class="o">:</span> <span class="s1">&#39;file_content&#39;</span>
+</span><span class="line">      <span class="p">}</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">thumbnailElement</span><span class="p">.</span><span class="nx">append</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+</span><span class="line">    <span class="nx">hasFileSrc</span> <span class="o">=</span> <span class="nx">thumbnailElement</span><span class="p">.</span><span class="nx">append</span><span class="p">.</span><span class="nx">mostRecentCall</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">src</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;file_content&quot;</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">hasFileSrc</span><span class="p">).</span><span class="nx">toNotEqual</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I had to spy on FileReader in order to test it. But it really help me improve my code.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Mar 10th, 2013</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>javascript</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -697,79 +989,6 @@ Dec 30th, 2012</div>
 </div>
 </article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/diy-run-rspec-test-inside-sublime-text-2/">
-		
-			DIY : Run RSpec Test Inside Sublime Text 2</a>
-	</h2>
-	<div class="entry-content">
-		<p>I guess everybody loves Sublime Text2. I switched from TextMate to Sublime Text 2 and I absolutely love it. Now, when you are writing some tests and want to run it immediately rather than keep switching windows to your terminal you can run your spec inside Sublime Text 2.</p>
-
-<p>There are lots of Packages out there you can just install and use it, but I just wanted to show another way of doing it. You could write your own little Package as well.</p>
-
-<p>Sublime Text 2 comes with a nice functionality called <a href="http://docs.sublimetext.info/en/latest/file_processing/build_systems.html" title="Sublime Text 2 build system">Build System</a> where you can create your own command and run it by using <strong>cmb+b</strong> (If you are a MAC user).</p>
-
-<p>First thing first, I hope you use <strong>rvm</strong> so if you haven’t done this already you need to create symbolic link like <a href="http://www.sublimetext.com/docs/2/osx_command_line.html">this page</a>. Then if you want to open your project you can just do this command inside your project. This way, sublime will hook up with rvm nicely.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">subl .
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Then you go to <strong>Tools &gt; Build System &gt; New Build System</strong>. It will open a new editor then you place this code.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="json"><span class="line"><span class="p">{</span>
-</span><span class="line">  <span class="nt">&quot;cmd&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;rspec&quot;</span><span class="p">,</span> <span class="s2">&quot;-I ${file_path}&quot;</span><span class="p">,</span> <span class="s2">&quot;$file&quot;</span><span class="p">],</span>
-</span><span class="line">  <span class="nt">&quot;file_regex&quot;</span><span class="p">:</span> <span class="s2">&quot;# ([A-Za-z:0-9_./ ]+rb):([0-9]+)&quot;</span><span class="p">,</span>
-</span><span class="line">  <span class="nt">&quot;working_dir&quot;</span><span class="p">:</span> <span class="s2">&quot;${project_path:${folder:${file_path}}}&quot;</span><span class="p">,</span>
-</span><span class="line">  <span class="nt">&quot;selector&quot;</span><span class="p">:</span> <span class="s2">&quot;source.ruby&quot;</span><span class="p">,</span>
-</span><span class="line">
-</span><span class="line">  <span class="nt">&quot;windows&quot;</span><span class="p">:</span>
-</span><span class="line">  <span class="p">{</span>
-</span><span class="line">    <span class="nt">&quot;cmd&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;rspec.bat&quot;</span><span class="p">,</span> <span class="s2">&quot;-I ${file_path}&quot;</span><span class="p">,</span> <span class="s2">&quot;$file&quot;</span><span class="p">]</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Then you choose the new Build System you just created and hit this combo <strong>cmd+b</strong>. Hooray!</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Dec 30th, 2012</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/sublime-text2/'>sublime text2</a>
-
-
-</div>
-	
-</div>
-</article>
-
 <nav id="pagenavi">
     
         
@@ -782,7 +1001,7 @@ Dec 30th, 2012</div>
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav>
 </div>
-	<footer id="footer" class="inner">Copyright &copy; 2015
+	<footer id="footer" class="inner">Copyright &copy; 2016
 
     Noppanit Charassinvichai
 
