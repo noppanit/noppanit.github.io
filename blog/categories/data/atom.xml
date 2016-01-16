@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: data | My Blog]]></title>
+  <link href="https://www.noppanit.com/blog/categories/data/atom.xml" rel="self"/>
+  <link href="https://www.noppanit.com/"/>
+  <updated>2016-01-16T18:20:33-05:00</updated>
+  <id>https://www.noppanit.com/</id>
+  <author>
+    <name><![CDATA[Noppanit Charassinvichai]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Round to the left most digit]]></title>
+    <link href="https://www.noppanit.com/round-to-the-left-most-digit/"/>
+    <updated>2016-01-16T17:30:37-05:00</updated>
+    <id>https://www.noppanit.com/round-to-the-left-most-digit</id>
+    <content type="html"><![CDATA[<p>It’s probably unusual for me to write anything about Math. I hated math and I failed the subject all the time. But I got pretty excited when I knew this trick from my colleague. I also asked this question at <a href="http://math.stackexchange.com/questions/1604448/how-to-find-out-if-a-number-is-a-hundred-or-thousand/1604474#1604474">stackoverflow</a>.</p>
+
+<h3 id="the-problem">The problem</h3>
+
+<p>Let’s say you have a number <code>423</code> and you want to round the number to the nearest left-most digit which in this case it’s <code>4</code>. If you want to round to the left-most digit it’s going to be <code>400</code>.</p>
+
+<h3 id="the-solution">The solution</h3>
+<p>The solution is quiet simple. You just need to get the place value of the number, take the number in question divided by the place value and <code>floor</code> the number then multiply the result with the place value again. That’s it! Simple right?</p>
+
+<p>So, the place value of <code>423</code> is <code>100</code>.</p>
+
+<p>\begin{align}
+\frac{423}{100}
+\end{align}</p>
+
+<p>which you will get <code>4.23</code>. The you <code>floor</code> the number</p>
+
+<p><code>javascript
+  Math.floor(4.23); // 4
+</code></p>
+
+<p>And then you multiple <code>4</code> with <code>100</code> to get the rounded number.</p>
+
+<p>\begin{align}
+{400}\cdot{100} = {400}
+\end{align}</p>
+
+<p>The problem is how are we going to get the <code>place value</code> of the number?</p>
+
+<p>You want <a href="https://en.wikipedia.org/wiki/Logarithm">logarithm</a>.</p>
+
+<p>The idea of this is to reverse the operation of exponentiation. For example, the <code>log10</code> of <code>423</code> is <code>2.62634036738</code> then <code>10^2.62634036738</code> equals <code>423</code>. But you want the place value. You would need to round the <code>2.62634036738</code> which is going to be <code>2</code> then <code>10^2</code> is <code>100</code>. There! you get the place value of the <code>4</code>.</p>
+
+<p>\begin{align}
+d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
+\cdot
+10^{\lfloor\log_{10} n\rfloor}
+\end{align}</p>
+
+<h3 id="show-me-the-code">Show me the code</h3>
+
+<p>``` javascript
+n = 423
+d = Math.floor(Math.log10(n))</p>
+
+<p>Math.floor(n / Math.pow(10, d)) * Math.pow(10, d) // 400
+```</p>
+
+]]></content>
+  </entry>
+  
+</feed>

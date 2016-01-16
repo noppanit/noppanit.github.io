@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2016-01-01T23:52:07-05:00</updated>
+  <updated>2016-01-16T18:20:33-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Round to the left most digit]]></title>
+    <link href="https://www.noppanit.com/round-to-the-left-most-digit/"/>
+    <updated>2016-01-16T17:30:37-05:00</updated>
+    <id>https://www.noppanit.com/round-to-the-left-most-digit</id>
+    <content type="html"><![CDATA[<p>It’s probably unusual for me to write anything about Math. I hated math and I failed the subject all the time. But I got pretty excited when I knew this trick from my colleague. I also asked this question at <a href="http://math.stackexchange.com/questions/1604448/how-to-find-out-if-a-number-is-a-hundred-or-thousand/1604474#1604474">stackoverflow</a>.</p>
+
+<h3 id="the-problem">The problem</h3>
+
+<p>Let’s say you have a number <code>423</code> and you want to round the number to the nearest left-most digit which in this case it’s <code>4</code>. If you want to round to the left-most digit it’s going to be <code>400</code>.</p>
+
+<h3 id="the-solution">The solution</h3>
+<p>The solution is quiet simple. You just need to get the place value of the number, take the number in question divided by the place value and <code>floor</code> the number then multiply the result with the place value again. That’s it! Simple right?</p>
+
+<p>So, the place value of <code>423</code> is <code>100</code>.</p>
+
+<p>\begin{align}
+\frac{423}{100}
+\end{align}</p>
+
+<p>which you will get <code>4.23</code>. The you <code>floor</code> the number</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line">  <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="mf">4.23</span><span class="p">);</span> <span class="c1">// 4</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And then you multiple <code>4</code> with <code>100</code> to get the rounded number.</p>
+
+<p>\begin{align}
+{400}\cdot{100} = {400}
+\end{align}</p>
+
+<p>The problem is how are we going to get the <code>place value</code> of the number?</p>
+
+<p>You want <a href="https://en.wikipedia.org/wiki/Logarithm">logarithm</a>.</p>
+
+<p>The idea of this is to reverse the operation of exponentiation. For example, the <code>log10</code> of <code>423</code> is <code>2.62634036738</code> then <code>10^2.62634036738</code> equals <code>423</code>. But you want the place value. You would need to round the <code>2.62634036738</code> which is going to be <code>2</code> then <code>10^2</code> is <code>100</code>. There! you get the place value of the <code>4</code>.</p>
+
+<p>\begin{align}
+d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
+\cdot
+10^{\lfloor\log_{10} n\rfloor}
+\end{align}</p>
+
+<h3 id="show-me-the-code">Show me the code</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">n</span> <span class="o">=</span> <span class="mi">423</span>
+</span><span class="line"><span class="nx">d</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">log10</span><span class="p">(</span><span class="nx">n</span><span class="p">))</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">n</span> <span class="o">/</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nx">d</span><span class="p">))</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nx">d</span><span class="p">)</span> <span class="c1">// 400</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2016]]></title>
@@ -2111,56 +2170,6 @@
 
 <p>Inspiration
 <a href="https://www.dzombak.com/blog/2014/03/including-pods-in-source-control.html">https://www.dzombak.com/blog/2014/03/including-pods-in-source-control.html</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[My 2015]]></title>
-    <link href="https://www.noppanit.com/2015/"/>
-    <updated>2015-02-05T00:00:00-05:00</updated>
-    <id>https://www.noppanit.com/2015</id>
-    <content type="html"><![CDATA[<p>I just want to take a break from writing about technical posts to just talk about myself a little bit. I’m inspired by Scott Muc’s <a href="http://scottmuc.com/my-resolutions-for-2015/" title="Scott's 2015 Resolution">post</a> about his 2015 Resolutions. Before getting into 2015 I want to take a step back and review my 2014</p>
-
-<h2 id="my-2014">My 2014</h2>
-
-<ul>
-  <li>I got the opportunity to work in Turkey as part of my consulting job with <a href="http://www.thoughtworks.com/" title="ThougthWorks">ThoughtWorks</a>. I can count Turkey to be my 6th country I have lived and worked in. I used to work and live in Thailand, China, India, United Kingdom, Germany, Turkey.</li>
-  <li>Learned C#. C# is the first language I learnt at school when Windows Form was a big thing. I loved it but then the web took over and I felt in love with Java instead and never look back. The project in Turkey is C# so I got to relearn that again and I can say that I like it more than Java now. The language is nicer and more functional. I can do more stuff with less code.</li>
-  <li>Moved to the US.</li>
-</ul>
-
-<h2 id="my-2015">My 2015</h2>
-
-<h3 id="move-to-the-us-and-join-fusion">Move to the US and join Fusion</h3>
-
-<p>I decided to join <a href="http://fusion.net">Fusion</a> and left my glamorous consulting job. Partly because of the city. I felt in love with New York City when I was there in 2013 for a conference and I thought it would be nice to live here. When the opportunity came I took it immediately. Now two months passed by and I still love the city and my job. Much to explore and lots of places to travel in the US. Fusion is also the first place I get to know what’s like to work remotely. I absolutely love it. I get to be anywhere and also do what I love which is coding. I will write another post about remote collaboration later. Fusion is a media company which is a new field that I haven’t explored before.</p>
-
-<h3 id="join-kollaboration">Join Kollaboration</h3>
-
-<p>I join <a href="http://www.kollaborationnewyork.org" title="Kollaboration New York">Kollaboration</a> New York as a Technical Director because of my roommate <a href="https://www.linkedin.com/in/tannerchung" title="Tanner Chung">Tanner Chung</a>. Kollaboration is a non-profit organization that help and promote Asian American artists through entertainment. In this organization, I get to learn what’s like to be Asian American. I’m asian myself but I was born in Asia. So, I didn’t know the problems a lot of asian people living abroad having.</p>
-
-<h2 id="what-i-want-to-do-in-2015">What I want to do in 2015</h2>
-
-<h3 id="learn-to-invest">Learn to invest</h3>
-
-<p>Who doesn’t want to have money? I’m going to learn how to invest my saving and will keep posting the results.</p>
-
-<h3 id="travel-across-america">Travel across America</h3>
-
-<p>When I was living in Europe, you can get to a lot of countries in just 2-3 hours but in America everywhere is so big and South American has always been my dream location.</p>
-
-<h3 id="learn-spanish">Learn Spanish</h3>
-
-<p>My previous goal leads to this goal. I speak Thai, English and Mandarin. I learnt German before but didn’t really get anywhere. This year I’m going to learn Spanish and make it my fourth language. I love languages and it’s fun to talk to the locals and amazed them with their language.</p>
-
-<h3 id="run-a-marathon">Run a marathon</h3>
-
-<p>My friend Rajveer and <a href="https://twitter.com/sragu">Srini</a> inspire me to running. I’m a chubby guy and I really want to get into shape. Running a marathon takes a lot out of you mentally and physically. I thought if I could do it at least for once, I’d accomplish something.</p>
-
-<h2 id="summary">Summary</h2>
-
-<p>I started off 2015 pretty good. I went to India for my friend’s wedding in Rajasthan. I went to US west coast to experience super cold whether. I learned PHP and WordPress and improved my JavaScript skills which I will continue doing that.</p>
 
 ]]></content>
   </entry>

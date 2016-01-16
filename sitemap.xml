@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.noppanit.com/round-to-the-left-most-digit/</loc>
+    <lastmod>2016-01-16T17:30:37-05:00</lastmod>
+  </url>
+  <url>
     <loc>https://www.noppanit.com/2016/</loc>
     <lastmod>2016-01-01T11:29:38-05:00</lastmod>
   </url>
@@ -596,39 +600,12 @@
     <loc>https://www.noppanit.com/blog/categories/resolutions/</loc>
   </url>
   <url>
-    <loc>https://www.noppanit.com/posts/2/</loc>
+    <loc>https://www.noppanit.com/blog/categories/math/</loc>
   </url>
   <url>
-    <loc>https://www.noppanit.com/posts/3/</loc>
+    <loc>https://www.noppanit.com/blog/categories/data/</loc>
   </url>
   <url>
-    <loc>https://www.noppanit.com/posts/4/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/5/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/6/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/7/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/8/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/9/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/10/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/11/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/12/</loc>
-  </url>
-  <url>
-    <loc>https://www.noppanit.com/posts/13/</loc>
+    <loc>https://www.noppanit.com/blog/categories/scrience/</loc>
   </url>
 </urlset>
