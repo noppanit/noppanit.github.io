@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="People would think why would you want to do that. Well, in my case I just want to use haml to generate html for me in Test so that I could inject &hellip;">
+	<meta name="description" content="This is just another application that choose to implement in nodejs, because it’s easy and very useful to use. What do you usually do when you need &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,45 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/my-flash-card-from-nodejs/">
+		
+			My Flash Card From NodeJs.</a>
+	</h2>
+	<div class="entry-content">
+		<p>This is just another application that choose to implement in nodejs, because it’s easy and very useful to use. What do you usually do when you need to learn a new language? You have to remember as many as vocabularies right? Here’s what I used to do when I was learning Chinese. Have a deck of story cards and wrote down vocabulary on one side and meaning on the other side.</p>
+
+<p>My application <a href="https://github.com/noppanit/my-flash-card" title="MY Flash Card">https://github.com/noppanit/my-flash-card</a> is to demonstrate how easy it is to write an application in NodeJs with a touch of CSS3 to make it elegant.</p>
+
+<p>My first version is using json as a mean of database, but the next version I’m going to use RedisToGo because I’m hosting this application on heroku.</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+May 6th, 2012</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -784,188 +823,6 @@ Apr 5th, 2011</div>
 
 
 	<a class='category' href='/blog/categories/mac-osx/'>mac osx</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/git-interrupted-workflow-what-will-you-do/">
-		
-			Git &#8211; Interrupted Workflow, What Will You Do?</a>
-	</h2>
-	<div class="entry-content">
-		<p>When you’re working on something intensively and you haven’t finished the thing, suddenly somebody just wants you to do something again which is more important. Normally, what you will do is to create a new branch and commit your changes to the new branch and switch back to the master branch and do the other thing and reset the working directory.</p>
-
-<p>or something like this. I’ve taken this example from <a href="http://www.kernel.org/pub/software/scm/git/docs/git-stash.html">http://www.kernel.org/pub/software/scm/git/docs/git-stash.html</a></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="c"># ... hack hack hack ...</span>
-</span><span class="line">git checkout -b my_wip
-</span><span class="line">git commit -a -m <span class="s2">&quot;WIP&quot;</span>
-</span><span class="line">git checkout master
-</span><span class="line">edit emergency fix
-</span><span class="line">git commit -a -m <span class="s2">&quot;Fix in a hurry&quot;</span>
-</span><span class="line">git checkout my_wip
-</span><span class="line">git reset --soft HEAD^
-</span><span class="line"><span class="c"># ... continue hacking ...</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>But there is other way to do this by using git stash. Or something like this</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="c"># ... hack hack hack ...</span>
-</span><span class="line">git stash
-</span><span class="line">edit emergency fix
-</span><span class="line">git commit -a -m <span class="s2">&quot;Fix in a hurry&quot;</span>
-</span><span class="line">git stash pop
-</span><span class="line"><span class="c"># ... continue hacking ...</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Well, I just wanted to give an example of git stash so you can get more understanding of what is happening in git stash</p>
-
-<p>first you need a clean directory to start git</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">mkdir gitstash <span class="o">&amp;&amp;</span> <span class="nb">cd </span>gitstash <span class="o">&amp;&amp;</span> git init
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Now you create a new file to work on</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">touch main
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>And you edit the file main like you’re working with something</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">I<span class="err">&#39;</span>m working on something important.
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>And you use git add to track the file</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">git add .
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>And you commit your change</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">git commit -m <span class="s2">&quot;Initial Revision&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>You will see something like this</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="o">[</span>master <span class="o">(</span>root-commit<span class="o">)</span> 95616b9<span class="o">]</span> Initial Revision
-</span><span class="line"> <span class="m">1</span> files changed, <span class="m">1</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
-</span><span class="line"> create mode <span class="m">100644</span> main
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Then you keep working of the file main, so the file main would look like this</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">I<span class="err">&#39;</span>m working on something important.
-</span><span class="line">
-</span><span class="line">Something which is also important.
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Then somebody just interrupted you and asked you to fix something which is might impact the work that you’re working on right now. So, what you need to do is to use git stash to clean your working directory.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">git stash
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>You would see something like this to confirm that you have saved the working directory</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">Saved working directory and index state WIP on master: 95616b9 Initial Revision
-</span><span class="line">HEAD is now at 95616b9 Initial Revision
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Now you’re main file would look something like this. It’s like the file main is rolled back to the HEAD commit</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">I<span class="err">&#39;</span>m working on something important.
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Now you edit the file main to be something like this.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">I<span class="err">&#39;</span>m working on something important. Something which is very very important.
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>And you commit this change</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">git commit -am <span class="s2">&quot;Fixed something&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Now you can go back and keep working on what you’ve left off by using this command</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">git stash pop
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>You will see something like this</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">Auto-merging main
-</span><span class="line">CONFLICT <span class="o">(</span>content<span class="o">)</span>: Merge conflict in main
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Git will try and merge the change for you, if Git cannot merge the file for you, you have to merge it by yourself manually. In this case, the main file has to be merge manually. I just use vimdiff to merge.</p>
-
-<p>Now you’re main file will look something like this</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">I<span class="err">&#39;</span>m working on something important. Something which is very very important.
-</span><span class="line">
-</span><span class="line">Something which is also important.
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Mar 30th, 2011</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
 
 
 </div>

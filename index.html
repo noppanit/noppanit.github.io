@@ -7,7 +7,8 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="It’s probably unusual for me to write anything about Math. I hated math and I failed the subject all the time. But I got pretty excited when I knew &hellip;">
+	<meta name="description" content="Performance matters
+I think we can all agree that performance is one of the most important things in any application. That’s why we have performance &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +84,203 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/gatling-cluster/">
+		
+			Gatling Cluster</a>
+	</h2>
+	<div class="entry-content">
+		<h3 id="performance-matters">Performance matters</h3>
+<p>I think we can all agree that performance is one of the most important things in any application. That’s why we have performance or load testing. There’s a lot of tools out there we can choose from. But for this tutorial I pick <a href="http://gatling.io/#/">Gatling</a>.</p>
+
+<p>Now it’s easy to say I want to generate 1,000,000 requests and hit the machine as hard as possible. In reality, your machine won’t be able to do that due to OS or Network Card limitations. The most common thing is <code>ulimit</code></p>
+
+<p>Gatling has a way to <a href="http://gatling.io/docs/1.5.6/user_documentation/cookbooks/scaling_out.html">scale out</a> the test scenario to different machines but there’s not enough documentation on the website.</p>
+
+<p>Credit goes to <a href="http://www.nimrodstech.com/gatling-cluster-load-testing/">nimrodtech</a> for creating the script but I adapted a bit so if anybody wants to grab this please feel free.</p>
+
+<p>My version assumes that you’re using EC2 instance and the directory structures are different between the host and local.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+<span class="line-number">63</span>
+<span class="line-number">64</span>
+<span class="line-number">65</span>
+<span class="line-number">66</span>
+<span class="line-number">67</span>
+<span class="line-number">68</span>
+<span class="line-number">69</span>
+<span class="line-number">70</span>
+<span class="line-number">71</span>
+<span class="line-number">72</span>
+<span class="line-number">73</span>
+<span class="line-number">74</span>
+<span class="line-number">75</span>
+<span class="line-number">76</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">#Assuming same user name for all hosts
+</span><span class="line">USER_NAME='ubuntu'
+</span><span class="line">
+</span><span class="line">#Remote hosts list
+</span><span class="line">HOSTS=( IP_ADDRESSES )
+</span><span class="line">PEM_FILE=~/.ssh/your_pem.pem
+</span><span class="line">
+</span><span class="line">#You should change all of this values to suit your structure
+</span><span class="line">CURRENT_DIRECTORY=$(pwd)
+</span><span class="line">GATLING_LOCAL_HOME=$CURRENT_DIRECTORY/performance/gatling
+</span><span class="line">GATLING_REMOTE_HOME=/home/ubuntu/gatling
+</span><span class="line">
+</span><span class="line">GATLING_LOCAL_SIMULATIONS_DIR=$GATLING_LOCAL_HOME/user-files/simulations/
+</span><span class="line">GATLING_REMOTE_SIMULATIONS_DIR=$GATLING_REMOTE_HOME/user-files/simulations/
+</span><span class="line">
+</span><span class="line">GATLING_LOCAL_RUNNER=$GATLING_LOCAL_HOME/bin/gatling.sh
+</span><span class="line">GATLING_REMOTE_RUNNER=$GATLING_REMOTE_HOME/bin/gatling.sh
+</span><span class="line">
+</span><span class="line">#Change to your simulation class name
+</span><span class="line">SIMULATION_NAME='YOUR_SIMULATION'
+</span><span class="line">
+</span><span class="line">#No need to change this
+</span><span class="line">GATLING_LOCAL_REPORT_DIR=$GATLING_LOCAL_HOME/results/
+</span><span class="line">GATLING_REMOTE_REPORT_DIR=$GATLING_REMOTE_HOME/results/
+</span><span class="line">
+</span><span class="line">GATHER_REPORTS_DIR=~/Downloads/reports/
+</span><span class="line">
+</span><span class="line">echo "Starting Gatling cluster run for simulation: $SIMULATION_NAME"
+</span><span class="line">
+</span><span class="line">echo "Cleaning previous runs from localhost"
+</span><span class="line">rm -rf $GATLING_LOCAL_REPORT_DIR
+</span><span class="line">mkdir $GATLING_LOCAL_REPORT_DIR
+</span><span class="line">rm -rf $GATLING_LOCAL_REPORT_DIR
+</span><span class="line">
+</span><span class="line">rm -rf $GATHER_REPORTS_DIR
+</span><span class="line">mkdir -p $GATHER_REPORTS_DIR
+</span><span class="line">
+</span><span class="line">for HOST in "${HOSTS[@]}"
+</span><span class="line">do
+</span><span class="line">  echo "Cleaning previous runs from host: $HOST"
+</span><span class="line">  ssh -i $PEM_FILE -n -f $USER_NAME@$HOST "sh -c 'rm -rf $GATLING_REMOTE_REPORT_DIR'"
+</span><span class="line">done
+</span><span class="line">
+</span><span class="line">for HOST in "${HOSTS[@]}"
+</span><span class="line">do
+</span><span class="line">  echo "Copying simulations to host: $HOST"
+</span><span class="line">  scp -i $PEM_FILE -r $GATLING_LOCAL_SIMULATIONS_DIR/* $USER_NAME@$HOST:$GATLING_REMOTE_SIMULATIONS_DIR
+</span><span class="line">done
+</span><span class="line">
+</span><span class="line">for HOST in "${HOSTS[@]}"
+</span><span class="line">do
+</span><span class="line">  echo "Running simulation on host: $HOST"
+</span><span class="line">  ssh -i $PEM_FILE -n -f $USER_NAME@$HOST "sh -c 'nohup $GATLING_REMOTE_RUNNER -nr -s $SIMULATION_NAME &gt; $GATLING_REMOTE_HOME/run.log 2&gt;&amp;1 &amp;'"
+</span><span class="line">done
+</span><span class="line">
+</span><span class="line">echo "Running simulation on localhost"
+</span><span class="line">$GATLING_LOCAL_RUNNER -nr -s $SIMULATION_NAME
+</span><span class="line">
+</span><span class="line">echo "Gathering result file from localhost"
+</span><span class="line">ls -t $GATLING_LOCAL_REPORT_DIR | head -n 1 | xargs -I {} mv ${GATLING_LOCAL_REPORT_DIR}{} ${GATLING_LOCAL_REPORT_DIR}report
+</span><span class="line">cp ${GATLING_LOCAL_REPORT_DIR}report/simulation.log $GATHER_REPORTS_DIR
+</span><span class="line">
+</span><span class="line">
+</span><span class="line">for HOST in "${HOSTS[@]}"
+</span><span class="line">do
+</span><span class="line">  echo "Gathering result file from host: $HOST"
+</span><span class="line">  ssh -i $PEM_FILE -n -f $USER_NAME@$HOST "sh -c 'ls -t $GATLING_REMOTE_REPORT_DIR | head -n 1 | xargs -I {} mv ${GATLING_REMOTE_REPORT_DIR}{} ${GATLING_REMOTE_REPORT_DIR}report'"
+</span><span class="line">  scp -i $PEM_FILE $USER_NAME@$HOST:${GATLING_REMOTE_REPORT_DIR}report/simulation.log ${GATHER_REPORTS_DIR}simulation-$HOST.log
+</span><span class="line">done
+</span><span class="line">
+</span><span class="line">mv $GATHER_REPORTS_DIR $GATLING_LOCAL_REPORT_DIR
+</span><span class="line">echo "Aggregating simulations"
+</span><span class="line">$GATLING_LOCAL_RUNNER -ro reports
+</span><span class="line">
+</span><span class="line">#using macOSX
+</span><span class="line">open ${GATLING_LOCAL_REPORT_DIR}reports/index.html</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Feb 17th, 2016</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/performance/'>performance</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -1108,87 +1306,6 @@ Oct 7th, 2015</div>
 
 
 Oct 2nd, 2015</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/code-review-with-the-world/">
-		
-			Code Review With the World</a>
-	</h2>
-	<div class="entry-content">
-		<h2 id="tldr">TL;DR</h2>
-
-<p>If you don’t know <a href="http://codereview.stackexchange.com/">Code Review Stackoverflow</a> you gotta get on it now. It works and it’s awesome.</p>
-
-<h2 id="longer-version">Longer version</h2>
-
-<p>In Agile world, everybody is talking about fail fast and faster feedback. If you’re a serious coder then code review and feedback are just as important. If you’re like me (maybe I’m alone), I used to hate code review so much because I don’t want someone to criticize my work, coding is like an art. You spent a lot of time on a piece of code and somebody just come in and say it sucks or why would you do something like that?. Not everybody is a great coder like Linus Torvalds or Ryan Dahl. Especially me, Because of rigorous code review I came from the worst coder every to bad coder (I’m still bad and I’m still learning). I believe the best way to learn any skill is first you have to be wrong and learn from your mistakes. The quickest way to do that is to code a lot and get your code reviewed by someone who’s a stronger coder than you, which you will have a lot on the Internet. If you work with some of the best programmers in your life then you’re lucky. But not everybody is that fortunate. I’ve found a better solution. <a href="http://codereview.stackexchange.com/">http://codereview.stackexchange.com/</a></p>
-
-<h2 id="let8217s-get-to-the-meat">Let’s get to the meat</h2>
-
-<p>For example, I wrote this piece of code to learn about dynamic programming.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>python </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">import sys
-</span><span class="line">coins = [1, 3, 5]
-</span><span class="line">min_coin = [sys.maxint] * 20
-</span><span class="line">min_coin[] = 
-</span><span class="line">
-</span><span class="line">for min_of_i in range(20):
-</span><span class="line">    for c in coins:
-</span><span class="line">        if c &lt;= min_of_i and (min_coin[min_of_i - c] + 1 &lt; min_coin[min_of_i]):
-</span><span class="line">                min_coin[min_of_i] = min_coin[min_of_i - c] + 1</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>I know that my code is not bad (or maybe is really bad), but let’s see what I get out of it from this <a href="http://codereview.stackexchange.com/questions/92811/find-the-minimum-number-of-coins">thread</a>. From within a day I have at least 2-3 points to make my code a lot better. Not only that I learn more about Python, I also learn how to optimize the script.</p>
-
-<p>If you want to learn a new language fast, you need to learn from the expert. In just a few days I improved my code substantially. The best thing about the Internet is, you will have someone to review the reviewer as well. So, you can be sure to some extent that the one who answered your question is trustworthy.</p>
-
-<p>Now you might wonder, how about <a href="http://stackoverflow.com/">http://stackoverflow.com/</a>? I use Stackoverflow too but Stackoverflow has its own purpose. If you’re stuck in some problem and you can’t really wrap your head around it posting to Stackoverflow will give you answer in no time. However, if you ask somebody on Stackoverflow to review your code, it’s likely that your thread will be voted down or closed.</p>
-
-<h2 id="what-about-if-you-only-have-an-idea">What about if you only have an idea.</h2>
-
-<p>I always have new idea and somehow I want experts to review or confirm my idea so I don’t waste time building something that somebody has done it before. Then, Stackoverflow or codereview.stackoverflow.com is not really the place you’d go for. That’s what I love about <a href="http://Quora.com">Quora.com</a>.</p>
-
-<p>For example, I wanted to understand more about machine learning and I couldn’t really ask on <a href="http://stats.stackexchange.com">stats.stackexchange.com</a>. That’s why I turned to Quora. For example, this <a href="https://www.quora.com/How-do-I-start-if-I-want-to-build-a-model-to-predict-if-a-tweet-will-go-viral/answer/Shankar-Iyer-5?__snids__=1350032536&amp;__nsrc__=2">thread</a>, I got a really detailed response from whom I can trust because of the number of upvotes.</p>
-
-<h2 id="some-note">Some note</h2>
-
-<p>I have one bad habit of just copying and pasting someone else’s code. Once you received the feedback, don’t just copy and paste that. Or if you get feedback from Github don’t just merge that right away. You will not fully understand the concept behind that. In the book I read recently, <a href="http://www.amazon.com/o/ASIN/039916524X/sciencefriday/">A Mind For Numbers</a>, Barbara taught us about how we can master in math and science and she explains that we have two modes of learning, focused and diffuse mode. If you just copy and paste someone else’s work, then you just imagine that you understand what’s going on. The best way to learn that is to actually do it and go into diffuse mode which is just close your eyes and think about it and go back to focused mode to do that again. I made a big mistake as an Engineer (I still do) that I just copy someone else’s code and I think that I understand that fully which I don’t. So, don’t just copy the feedback and commit that make sure you fully understand the code and actually type it. Barbara also suggested that writing is better than just typing but I think it might be difficult for us programmers.</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Sep 22nd, 2015</div>
 	<div class="tags">
 
 

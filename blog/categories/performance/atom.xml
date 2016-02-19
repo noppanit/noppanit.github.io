@@ -4,7 +4,7 @@
   <title><![CDATA[Category: performance | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/performance/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2016-01-16T18:20:33-05:00</updated>
+  <updated>2016-02-18T19:43:56-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -12,6 +12,103 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Gatling Cluster]]></title>
+    <link href="https://www.noppanit.com/gatling-cluster/"/>
+    <updated>2016-02-17T20:28:25-05:00</updated>
+    <id>https://www.noppanit.com/gatling-cluster</id>
+    <content type="html"><![CDATA[<h3 id="performance-matters">Performance matters</h3>
+<p>I think we can all agree that performance is one of the most important things in any application. That’s why we have performance or load testing. There’s a lot of tools out there we can choose from. But for this tutorial I pick <a href="http://gatling.io/#/">Gatling</a>.</p>
+
+<p>Now it’s easy to say I want to generate 1,000,000 requests and hit the machine as hard as possible. In reality, your machine won’t be able to do that due to OS or Network Card limitations. The most common thing is <code>ulimit</code></p>
+
+<p>Gatling has a way to <a href="http://gatling.io/docs/1.5.6/user_documentation/cookbooks/scaling_out.html">scale out</a> the test scenario to different machines but there’s not enough documentation on the website.</p>
+
+<p>Credit goes to <a href="http://www.nimrodstech.com/gatling-cluster-load-testing/">nimrodtech</a> for creating the script but I adapted a bit so if anybody wants to grab this please feel free.</p>
+
+<p>My version assumes that you’re using EC2 instance and the directory structures are different between the host and local.</p>
+
+<p>```
+#Assuming same user name for all hosts
+USER_NAME=’ubuntu’</p>
+
+<h1 id="remote-hosts-list">Remote hosts list</h1>
+<p>HOSTS=( IP_ADDRESSES )
+PEM_FILE=~/.ssh/your_pem.pem</p>
+
+<h1 id="you-should-change-all-of-this-values-to-suit-your-structure">You should change all of this values to suit your structure</h1>
+<p>CURRENT_DIRECTORY=$(pwd)
+GATLING_LOCAL_HOME=$CURRENT_DIRECTORY/performance/gatling
+GATLING_REMOTE_HOME=/home/ubuntu/gatling</p>
+
+<p>GATLING_LOCAL_SIMULATIONS_DIR=$GATLING_LOCAL_HOME/user-files/simulations/
+GATLING_REMOTE_SIMULATIONS_DIR=$GATLING_REMOTE_HOME/user-files/simulations/</p>
+
+<p>GATLING_LOCAL_RUNNER=$GATLING_LOCAL_HOME/bin/gatling.sh
+GATLING_REMOTE_RUNNER=$GATLING_REMOTE_HOME/bin/gatling.sh</p>
+
+<h1 id="change-to-your-simulation-class-name">Change to your simulation class name</h1>
+<p>SIMULATION_NAME=’YOUR_SIMULATION’</p>
+
+<h1 id="no-need-to-change-this">No need to change this</h1>
+<p>GATLING_LOCAL_REPORT_DIR=$GATLING_LOCAL_HOME/results/
+GATLING_REMOTE_REPORT_DIR=$GATLING_REMOTE_HOME/results/</p>
+
+<p>GATHER_REPORTS_DIR=~/Downloads/reports/</p>
+
+<p>echo “Starting Gatling cluster run for simulation: $SIMULATION_NAME”</p>
+
+<p>echo “Cleaning previous runs from localhost”
+rm -rf $GATLING_LOCAL_REPORT_DIR
+mkdir $GATLING_LOCAL_REPORT_DIR
+rm -rf $GATLING_LOCAL_REPORT_DIR</p>
+
+<p>rm -rf $GATHER_REPORTS_DIR
+mkdir -p $GATHER_REPORTS_DIR</p>
+
+<p>for HOST in “${HOSTS[@]}”
+do
+  echo “Cleaning previous runs from host: $HOST”
+  ssh -i $PEM_FILE -n -f $USER_NAME@$HOST “sh -c ‘rm -rf $GATLING_REMOTE_REPORT_DIR’”
+done</p>
+
+<p>for HOST in “${HOSTS[@]}”
+do
+  echo “Copying simulations to host: $HOST”
+  scp -i $PEM_FILE -r $GATLING_LOCAL_SIMULATIONS_DIR/* $USER_NAME@$HOST:$GATLING_REMOTE_SIMULATIONS_DIR
+done</p>
+
+<p>for HOST in “${HOSTS[@]}”
+do
+  echo “Running simulation on host: $HOST”
+  ssh -i $PEM_FILE -n -f $USER_NAME@$HOST “sh -c ‘nohup $GATLING_REMOTE_RUNNER -nr -s $SIMULATION_NAME &gt; $GATLING_REMOTE_HOME/run.log 2&gt;&amp;1 &amp;’”
+done</p>
+
+<p>echo “Running simulation on localhost”
+$GATLING_LOCAL_RUNNER -nr -s $SIMULATION_NAME</p>
+
+<p>echo “Gathering result file from localhost”
+ls -t $GATLING_LOCAL_REPORT_DIR | head -n 1 | xargs -I {} mv ${GATLING_LOCAL_REPORT_DIR}{} ${GATLING_LOCAL_REPORT_DIR}report
+cp ${GATLING_LOCAL_REPORT_DIR}report/simulation.log $GATHER_REPORTS_DIR</p>
+
+<p>for HOST in “${HOSTS[@]}”
+do
+  echo “Gathering result file from host: $HOST”
+  ssh -i $PEM_FILE -n -f $USER_NAME@$HOST “sh -c ‘ls -t $GATLING_REMOTE_REPORT_DIR | head -n 1 | xargs -I {} mv ${GATLING_REMOTE_REPORT_DIR}{} ${GATLING_REMOTE_REPORT_DIR}report’”
+  scp -i $PEM_FILE $USER_NAME@$HOST:${GATLING_REMOTE_REPORT_DIR}report/simulation.log ${GATHER_REPORTS_DIR}simulation-$HOST.log
+done</p>
+
+<p>mv $GATHER_REPORTS_DIR $GATLING_LOCAL_REPORT_DIR
+echo “Aggregating simulations”
+$GATLING_LOCAL_RUNNER -ro reports</p>
+
+<h1 id="using-macosx">using macOSX</h1>
+<p>open ${GATLING_LOCAL_REPORT_DIR}reports/index.html
+```</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Why algorithm matters?]]></title>

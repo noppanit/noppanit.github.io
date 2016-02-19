@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2016-01-16T18:20:33-05:00</updated>
+  <updated>2016-02-18T19:43:56-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -12,6 +12,178 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Gatling Cluster]]></title>
+    <link href="https://www.noppanit.com/gatling-cluster/"/>
+    <updated>2016-02-17T20:28:25-05:00</updated>
+    <id>https://www.noppanit.com/gatling-cluster</id>
+    <content type="html"><![CDATA[<h3 id="performance-matters">Performance matters</h3>
+<p>I think we can all agree that performance is one of the most important things in any application. That’s why we have performance or load testing. There’s a lot of tools out there we can choose from. But for this tutorial I pick <a href="http://gatling.io/#/">Gatling</a>.</p>
+
+<p>Now it’s easy to say I want to generate 1,000,000 requests and hit the machine as hard as possible. In reality, your machine won’t be able to do that due to OS or Network Card limitations. The most common thing is <code>ulimit</code></p>
+
+<p>Gatling has a way to <a href="http://gatling.io/docs/1.5.6/user_documentation/cookbooks/scaling_out.html">scale out</a> the test scenario to different machines but there’s not enough documentation on the website.</p>
+
+<p>Credit goes to <a href="http://www.nimrodstech.com/gatling-cluster-load-testing/">nimrodtech</a> for creating the script but I adapted a bit so if anybody wants to grab this please feel free.</p>
+
+<p>My version assumes that you’re using EC2 instance and the directory structures are different between the host and local.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+<span class="line-number">63</span>
+<span class="line-number">64</span>
+<span class="line-number">65</span>
+<span class="line-number">66</span>
+<span class="line-number">67</span>
+<span class="line-number">68</span>
+<span class="line-number">69</span>
+<span class="line-number">70</span>
+<span class="line-number">71</span>
+<span class="line-number">72</span>
+<span class="line-number">73</span>
+<span class="line-number">74</span>
+<span class="line-number">75</span>
+<span class="line-number">76</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">#Assuming same user name for all hosts
+</span><span class="line">USER_NAME='ubuntu'
+</span><span class="line">
+</span><span class="line">#Remote hosts list
+</span><span class="line">HOSTS=( IP_ADDRESSES )
+</span><span class="line">PEM_FILE=~/.ssh/your_pem.pem
+</span><span class="line">
+</span><span class="line">#You should change all of this values to suit your structure
+</span><span class="line">CURRENT_DIRECTORY=$(pwd)
+</span><span class="line">GATLING_LOCAL_HOME=$CURRENT_DIRECTORY/performance/gatling
+</span><span class="line">GATLING_REMOTE_HOME=/home/ubuntu/gatling
+</span><span class="line">
+</span><span class="line">GATLING_LOCAL_SIMULATIONS_DIR=$GATLING_LOCAL_HOME/user-files/simulations/
+</span><span class="line">GATLING_REMOTE_SIMULATIONS_DIR=$GATLING_REMOTE_HOME/user-files/simulations/
+</span><span class="line">
+</span><span class="line">GATLING_LOCAL_RUNNER=$GATLING_LOCAL_HOME/bin/gatling.sh
+</span><span class="line">GATLING_REMOTE_RUNNER=$GATLING_REMOTE_HOME/bin/gatling.sh
+</span><span class="line">
+</span><span class="line">#Change to your simulation class name
+</span><span class="line">SIMULATION_NAME='YOUR_SIMULATION'
+</span><span class="line">
+</span><span class="line">#No need to change this
+</span><span class="line">GATLING_LOCAL_REPORT_DIR=$GATLING_LOCAL_HOME/results/
+</span><span class="line">GATLING_REMOTE_REPORT_DIR=$GATLING_REMOTE_HOME/results/
+</span><span class="line">
+</span><span class="line">GATHER_REPORTS_DIR=~/Downloads/reports/
+</span><span class="line">
+</span><span class="line">echo "Starting Gatling cluster run for simulation: $SIMULATION_NAME"
+</span><span class="line">
+</span><span class="line">echo "Cleaning previous runs from localhost"
+</span><span class="line">rm -rf $GATLING_LOCAL_REPORT_DIR
+</span><span class="line">mkdir $GATLING_LOCAL_REPORT_DIR
+</span><span class="line">rm -rf $GATLING_LOCAL_REPORT_DIR
+</span><span class="line">
+</span><span class="line">rm -rf $GATHER_REPORTS_DIR
+</span><span class="line">mkdir -p $GATHER_REPORTS_DIR
+</span><span class="line">
+</span><span class="line">for HOST in "${HOSTS[@]}"
+</span><span class="line">do
+</span><span class="line">  echo "Cleaning previous runs from host: $HOST"
+</span><span class="line">  ssh -i $PEM_FILE -n -f $USER_NAME@$HOST "sh -c 'rm -rf $GATLING_REMOTE_REPORT_DIR'"
+</span><span class="line">done
+</span><span class="line">
+</span><span class="line">for HOST in "${HOSTS[@]}"
+</span><span class="line">do
+</span><span class="line">  echo "Copying simulations to host: $HOST"
+</span><span class="line">  scp -i $PEM_FILE -r $GATLING_LOCAL_SIMULATIONS_DIR/* $USER_NAME@$HOST:$GATLING_REMOTE_SIMULATIONS_DIR
+</span><span class="line">done
+</span><span class="line">
+</span><span class="line">for HOST in "${HOSTS[@]}"
+</span><span class="line">do
+</span><span class="line">  echo "Running simulation on host: $HOST"
+</span><span class="line">  ssh -i $PEM_FILE -n -f $USER_NAME@$HOST "sh -c 'nohup $GATLING_REMOTE_RUNNER -nr -s $SIMULATION_NAME &gt; $GATLING_REMOTE_HOME/run.log 2&gt;&amp;1 &amp;'"
+</span><span class="line">done
+</span><span class="line">
+</span><span class="line">echo "Running simulation on localhost"
+</span><span class="line">$GATLING_LOCAL_RUNNER -nr -s $SIMULATION_NAME
+</span><span class="line">
+</span><span class="line">echo "Gathering result file from localhost"
+</span><span class="line">ls -t $GATLING_LOCAL_REPORT_DIR | head -n 1 | xargs -I {} mv ${GATLING_LOCAL_REPORT_DIR}{} ${GATLING_LOCAL_REPORT_DIR}report
+</span><span class="line">cp ${GATLING_LOCAL_REPORT_DIR}report/simulation.log $GATHER_REPORTS_DIR
+</span><span class="line">
+</span><span class="line">
+</span><span class="line">for HOST in "${HOSTS[@]}"
+</span><span class="line">do
+</span><span class="line">  echo "Gathering result file from host: $HOST"
+</span><span class="line">  ssh -i $PEM_FILE -n -f $USER_NAME@$HOST "sh -c 'ls -t $GATLING_REMOTE_REPORT_DIR | head -n 1 | xargs -I {} mv ${GATLING_REMOTE_REPORT_DIR}{} ${GATLING_REMOTE_REPORT_DIR}report'"
+</span><span class="line">  scp -i $PEM_FILE $USER_NAME@$HOST:${GATLING_REMOTE_REPORT_DIR}report/simulation.log ${GATHER_REPORTS_DIR}simulation-$HOST.log
+</span><span class="line">done
+</span><span class="line">
+</span><span class="line">mv $GATHER_REPORTS_DIR $GATLING_LOCAL_REPORT_DIR
+</span><span class="line">echo "Aggregating simulations"
+</span><span class="line">$GATLING_LOCAL_RUNNER -ro reports
+</span><span class="line">
+</span><span class="line">#using macOSX
+</span><span class="line">open ${GATLING_LOCAL_REPORT_DIR}reports/index.html</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Round to the left most digit]]></title>
@@ -2117,59 +2289,6 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
 <p>to the navbar and you can measure the performance by using Timeline again you will notice the difference.</p>
 
 <p><img src="https://www.noppanit.com/wp-content/uploads/2015/04/Screenshot-2015-04-14-01.20.04.png" /></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[You should check in your dependencies.]]></title>
-    <link href="https://www.noppanit.com/you-should-check-in-your-dependencies/"/>
-    <updated>2015-03-28T00:00:00-04:00</updated>
-    <id>https://www.noppanit.com/you-should-check-in-your-dependencies</id>
-    <content type="html"><![CDATA[<p>I’m not sure who started this pattern so I can’t really refer back but if you know please comment below and I will update the post. I’m sure all of you have heard that you should not check in anything that can be generated to Source control. It’s long been a common pattern. However, lately I have been checking in my dependencies into my source control and it works really well for small to medium project. Here’s why.</p>
-
-<h3 id="isolate-you-from-any-network-failures">Isolate you from any network failures.</h3>
-
-<p>I know you might say that it rarely happens to me so why should I care about this. I hear you. It rarely happens to me as well but when it did happen I got really frustrated. Especially, when your CI failed without any reason and you found out that one of your dependencies doesn’t get downloaded properly.</p>
-
-<h3 id="ci-failure">CI failure</h3>
-
-<p>This frustrates me the most and it’s one of the reasons why I started doing this. More than often that my CI failed and it’s because of dependencies didn’t get resolved or compiled properly and people just kept running it over and over again. To eliminate this problem and let CI just run the tests save me a lot of pulling my hair time.</p>
-
-<h3 id="check-out-and-go">Check out and Go!</h3>
-
-<p>This pattern I have learnt while I was working with ThoughtWorks that it’s so frustrated when you are joining a project and you spend almost half a day just to get your machine up and running and run the build script to download all the dependencies. I believed that’s one of the reasons why Chef and Puppet exist. It’s so easy when you checkout a project from your source control and you can start coding right away or even run all the tests.</p>
-
-<p>I also have this support from my <a href="http://scottmuc.com/" title="Scott Muc">friend</a></p>
-
-<blockquote class="twitter-tweet" lang="en">
-  <p>
-    <a href="https://twitter.com/noppanit">@noppanit</a> I've been a fan of that technique for a long time now.
-  </p>
-  
-  <p>
-    &mdash; Scott Myц (@ScottMuc) <a href="https://twitter.com/ScottMuc/status/579739745921724416">March 22, 2015</a>
-  </p>
-</blockquote>
-
-<p>Srini also pointed out that you shouldn’t do that for internal project dependencies</p>
-
-<blockquote class="twitter-tweet" lang="en">
-  <p>
-    <a href="https://twitter.com/ScottMuc">@ScottMuc</a> <a href="https://twitter.com/noppanit">@noppanit</a> agree. It's good for external libraries and toolset libraries. Not good for internal project dependencies.
-  </p>
-  
-  <p>
-    &mdash; Srinivasan Raguraman (@sragu) <a href="https://twitter.com/sragu/status/579762369041186816">March 22, 2015</a>
-  </p>
-</blockquote>
-
-<h3 id="conclusion">Conclusion</h3>
-
-<p>I know people might argue that it doesn’t really work for big project because of the size of the repository. That’s why I mention small to medium project. It works really well with small projects. Another point to mention is that every developer might have different environment for example, Windows VS Linux which node_modules might not work for both environments. I solve that problem by using Vagrant so everybody has the same environment.</p>
-
-<p>Inspiration
-<a href="https://www.dzombak.com/blog/2014/03/including-pods-in-source-control.html">https://www.dzombak.com/blog/2014/03/including-pods-in-source-control.html</a></p>
 
 ]]></content>
   </entry>
