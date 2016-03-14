@@ -7,7 +7,20 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="This is just another application that choose to implement in nodejs, because it’s easy and very useful to use. What do you usually do when you need &hellip;">
+	<meta name="description" content="I guess everybody is familiar with the concept of classes in Javascript. For example, 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+var Adder = function() { this.a &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +96,112 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/javascript-prototype-alternative/">
+		
+			Javascript Prototype Alternative.</a>
+	</h2>
+	<div class="entry-content">
+		<p>I guess everybody is familiar with the concept of classes in Javascript. For example,</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">Adder</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">   <span class="k">this</span><span class="p">.</span><span class="nx">a</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span><span class="p">;</span>
+</span><span class="line">   <span class="k">this</span><span class="p">.</span><span class="nx">b</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">Adder</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">   <span class="nx">add</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value1</span><span class="p">,</span> <span class="nx">value2</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">       <span class="k">return</span> <span class="nx">value1</span> <span class="o">+</span> <span class="nx">value2</span><span class="p">;</span>
+</span><span class="line">   <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">adder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Adder</span><span class="p">();</span>
+</span><span class="line"><span class="nx">adder</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This type is fine in most cases, but the downside of this pattern is that you’re exposing add function to the outside world via prototype, and it’s not good for object-oriented concept. You could easily tamper with function add by doing this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">adder</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">.</span><span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And if you run this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">adder</span><span class="p">.</span><span class="nx">add</span><span class="p">();</span> <span class="c1">// undefined</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You will get an error because you’ve tampered with function add already.</p>
+
+<p>In order to prevent this to happen you could do something like this. Like this we’re exposing just the function but not via prototype.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">Adder</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">value1</span><span class="p">,</span> <span class="nx">value2</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="nx">value1</span> <span class="o">+</span> <span class="nx">value2</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">return</span> <span class="p">{</span>
+</span><span class="line">        <span class="nx">add</span> <span class="o">:</span> <span class="nx">add</span>
+</span><span class="line">    <span class="p">};</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">adder</span> <span class="o">=</span> <span class="nx">Adder</span><span class="p">();</span>
+</span><span class="line"><span class="nx">adder</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// 3</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Reference: http://nodetuts.com/tutorials/28-javascript-classes-prototypes-and-closures.html</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+May 9th, 2012</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>javascript</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -756,73 +875,6 @@ Apr 26th, 2011</div>
 
 
 	<a class='category' href='/blog/categories/java/'>java</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/mac-osx-override-rm-to-delete-files-to-trash/">
-		
-			Mac OSX: Override Rm to Delete Files to .Trash</a>
-	</h2>
-	<div class="entry-content">
-		<p>So silly of me I have just “accidentally” deleted my home directory T_T. There is a way to help that by override rm command to move file to .Trash.</p>
-
-<p>Just copy this code to ~/.bash_profile and restart your terminal.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">function rm () {
-</span><span class="line">  local path
-</span><span class="line">  for path in "$@"; do
-</span><span class="line">    # ignore any arguments
-</span><span class="line">    if [[ "$path" = -* ]]; then :
-</span><span class="line">    else
-</span><span class="line">      local dst=${path##*/}
-</span><span class="line">      # append the time if necessary
-</span><span class="line">      while [ -e ~/.Trash/"$dst" ]; do
-</span><span class="line">        dst="$dst "$(date +%H-%M-%S)
-</span><span class="line">      done
-</span><span class="line">      mv "$path" ~/.Trash/"$dst"
-</span><span class="line">    fi
-</span><span class="line">  done
-</span><span class="line">}</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Apr 5th, 2011</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/mac-osx/'>mac osx</a>
 
 
 </div>

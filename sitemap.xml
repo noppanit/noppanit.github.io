@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.noppanit.com/how-to-change-your-habit-one-task-at-a-time/</loc>
+    <lastmod>2016-03-02T08:49:31-05:00</lastmod>
+  </url>
+  <url>
     <loc>https://www.noppanit.com/gatling-cluster/</loc>
     <lastmod>2016-02-17T20:28:25-05:00</lastmod>
   </url>
@@ -611,5 +615,14 @@
   </url>
   <url>
     <loc>https://www.noppanit.com/blog/categories/scrience/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/blog/categories/habit/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/blog/categories/performance/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/blog/categories/productivity/</loc>
   </url>
 </urlset>

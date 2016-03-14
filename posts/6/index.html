@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I have found this definition of programmer which is really funny and true. Programmer n. (proh-gram-er) an organism that turns caffeine and pizza &hellip;">
+	<meta name="description" content="This blog post is kinda lame, but I got so excited to get something worked in R. I have been wondering what I have been doing for the last years. I’ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,96 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/how-many-tweets-i-have-tweeted-in-the-past/">
+		
+			How Many Tweets I Have Tweeted in the Past?</a>
+	</h2>
+	<div class="entry-content">
+		<p>This blog post is kinda lame, but I got so excited to get something worked in R. I have been wondering what I have been doing for the last years.</p>
+
+<p>I’m sitting at my desk and thinking how can I know that. Then, yeah I can analyse my own tweets. So, I downloaded all my tweets from Twitter and started crushing some number.</p>
+
+<p>I’m guessing you can use this code as the format of the csv file should be the same.</p>
+
+<p>If you haven’t done this already.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">install.packages("plyr")
+</span><span class="line">install.packages("ggplot2")</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">library(plyr)
+</span><span class="line">library(ggplot2)
+</span><span class="line">
+</span><span class="line">#Load all your tweets
+</span><span class="line">tweets&lt;-read.delim("data/tweets.csv", sep=",")
+</span><span class="line">
+</span><span class="line">#Convert timestamp to Date in R
+</span><span class="line">tweets$timestamp&lt;-as.POSIXlt(tweets$timestamp, format="%Y-%m-%d %H:%M:%S +0000")
+</span><span class="line">
+</span><span class="line">#Get month in JAN-DEC format
+</span><span class="line">tweets$month = strftime(tweets$timestamp, "%b")
+</span><span class="line">#Get year in 2011-20xx format
+</span><span class="line">tweets$year = strftime(tweets$timestamp, "%Y")
+</span><span class="line">
+</span><span class="line">#Then start counting for each month compare to each year
+</span><span class="line">timestamps_month = count(tweets, vars = c("month","year"))
+</span><span class="line">
+</span><span class="line">#Then just plot the graph
+</span><span class="line">ggplot(data = timestamps_month) + geom_bar(aes(x = month, y = freq, fill = year), stat="identity", position = "dodge")
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This is what I have been tweets for the past years. Interestingly I tweeted a lot back in 2010, hmm I was wondering what did I tweet. Well I gotta go to bed will find out tomorrow. What’s yours?</p>
+
+<p><a href="https://www.noppanit.com/wp-content/uploads/2013/08/Screen-Shot-2013-08-22-at-00.21.04.png"><img src="https://www.noppanit.com/wp-content/uploads/2013/08/Screen-Shot-2013-08-22-at-00.21.04.png" alt="My tweets" class="aligncenter size-full wp-image-1151 cool_border" /></a></p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Aug 22nd, 2013</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/r/'>r</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -655,65 +745,6 @@ May 6th, 2013</div>
 
 
 Apr 20th, 2013</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/why-i-join-live-below-the-line/">
-		
-			Why I Join Live Below the Line?</a>
-	</h2>
-	<div class="entry-content">
-		<p>I believe all of us have heard this problem before through all kinds of channels, the Internet, TV, Facebook, Twitter, from your friends or even seeing themselves from guys on the street.</p>
-
-<p>But why I join this <a href="https://www.livebelowtheline.com" title="live below the line" target="_blank">programme</a>?, at first I heard this challenge from my friend, <a href="https://twitter.com/CEPitchford" title="Clair Pitchford" target="_blank">Clair Pitchford</a>. Live Below the Line, it’s a challenge where you have to<br />
-spend under 1 pound a day for 5 days and you raise money for the needy. Why £1? The short version is that you will be under extreme poverty if you only have $1.25 to spend in one day, more information can be found <a href="https://www.livebelowtheline.com/uk-why-1" title="why £1" target="_blank">here</a>.</p>
-
-<p>I’m from Thailand. Thailand is not a poor country after all, compare to India, Africa or other third-world countries. But we do have a hugh gap between the rich and the poor. I don’t come from a poor background but my family struggled quite a bit when I was a child. Sometime we didn’t have enough food and a lot of debt to pay. I was too young to remember any of those hard times.</p>
-
-<p>Now I work in the UK, my life is better and I have a reasonably good job. Plus, I travel a lot I have been to many countries around Europe and Asia. I have seen and met a lot of rough sleepers. Some of them are legit, but some of them they just want to buy some drink. One time, I got stopped by a homeless asking for 50p to buy a beer, I thought he was honest so I gave him 50p. Some of them told me a lot of story how poor they are, kids and lot of stuff so they can get some money. Sometime I feel sorry for those people, I’m sure you have asked this question yourself sometime as well. But we also have to accept the reality that we cannot help those people with just a few pennies. Even though we have lots and lots of organisations trying to help those people, we still have poverty, malnutrition children and people who don’t have access to clean water. So what can we do?</p>
-
-<iframe src="https://embed-ssl.ted.com/talks/bono_the_good_news_on_poverty_yes_there_s_good_news.html" width="560" height="315" frameborder="0" scrolling="no" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-<p>However, we have some good news as well.</p>
-
-<p>For the past years, I have worked with 2 organisations in Thailand and in India. <a href="http://goodwillthailand.org/" title="Goodwill Thailand">Goodwill Thailand</a>, the organisation helps disadvantaged women in Thailand by educating them and training them. I know this organisation through my friend, she has worked with this organisation before so I joined later.</p>
-
-<p>What I did was that I volunteered just 2 hours of my weekend time to teach them English and how to use computer. English course in Thailand is quite expensive and not everybody can afford the course. Just this it will help them to get a better job and better quality of life. If they can just make a simple conversation in English they can work as a receptionist in a hotel instead of a cleaner (Apologises, I don’t mean to be disrespectful about any professions). Or they can be a baby sitter for expats in Bangkok which they will get paid more than minimum average. The minimum wage in Thailand is 10 dollars a day.</p>
-
-<p>The second organisation is <a href="http://www.sukrupa.org" title="Sukrupa">Sukrupa</a>. This organisations helps deprived children in Bangalore by giving them education and even helping their parents. The programme is initiated by Krupa which I had a chance to know when when I was in Bangalore for a six-week training from ThoughtWorks. We were bought in to help them develop a website to get more traction on the Internet. So, they can raise more money to help all the children.</p>
-
-<p>Back to Live Below the Line, as I have worked with two organisations I have realised that with my current status the best way to fight this problem is to donate skills and create awareness. If I can help them get back on their feet quickly, then they can help themselves later. If we give them food once they’ve eaten that food, it’s gone. If we teach them to cook the food, they can produce the food for the rest of their life. Also, another reason is that if I can create more awareness so more people know and realise the problem even to the top where powerful people can really make a different.</p>
-
-<p>More video that inspires me.</p>
-
-<iframe src="https://embed-ssl.ted.com/talks/dan_pallotta_the_way_we_think_about_charity_is_dead_wrong.html" width="560" height="315" frameborder="0" scrolling="no" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-
-<p><a href="https://www.livebelowtheline.com/me/noppanit" title="noppanit">My Live Below the Line</a></p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Apr 4th, 2013</div>
 	<div class="tags">
 
 
