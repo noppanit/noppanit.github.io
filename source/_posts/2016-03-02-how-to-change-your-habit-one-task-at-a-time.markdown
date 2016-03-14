@@ -45,6 +45,8 @@ This is the best thing about Habitica. It's open source. You can fork the reposi
 
 Let's change your bad habit one task at a time! Come and say hi to me on Habitica or let me know how you use Habitica to change your habit.
 
+All after I finished this post I get to tick it off my list!
+
   [1]: https://habitica.com
   [2]: http://scottmuc.com/
   [3]: https://www.coffitivity.com/
