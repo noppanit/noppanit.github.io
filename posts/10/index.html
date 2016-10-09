@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="So silly of me I have just “accidentally” deleted my home directory T_T. There is a way to help that by override rm command to move file to .Trash. &hellip;">
+	<meta name="description" content="When I was in TWU I was assigned to implement a simple program in Java Command line. I was ok but when I came to TDD approach I really didn’t know &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,278 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/test-command-line-program/">
+		
+			Test Command Line Program</a>
+	</h2>
+	<div class="entry-content">
+		<p>When I was in TWU I was assigned to implement a simple program in Java Command line. I was ok but when I came to TDD approach I really didn’t know what to do and test command-line in JUnit. I googled but I found nothing. However, after <a href="http://www.markhneedham.com/">Mark Needham</a> shows us in code and it was rather easy to do that. So I think I would write the example so that I could remember.</p>
+
+<p>If you have a program like this. How would you test it in JUnit?</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">launchApp</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span><span class="line">	<span class="n">InputStreamReader</span> <span class="n">inputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+</span><span class="line">	<span class="n">BufferedReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">BufferedReader</span><span class="o">(</span><span class="n">inputStream</span><span class="o">);</span>
+</span><span class="line">	<span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
+</span><span class="line">	<span class="kt">int</span> <span class="n">choice</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+</span><span class="line">	<span class="k">switch</span><span class="o">(</span> <span class="n">choice</span> <span class="o">)</span>
+</span><span class="line">	<span class="o">{</span>
+</span><span class="line">		<span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+</span><span class="line">			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Print 0&quot;</span><span class="o">);</span>
+</span><span class="line">			<span class="k">break</span><span class="o">;</span>
+</span><span class="line">		<span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+</span><span class="line">			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Print 1&quot;</span><span class="o">);</span>
+</span><span class="line">			<span class="k">break</span><span class="o">;</span>
+</span><span class="line">		<span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+</span><span class="line">			<span class="kt">int</span> <span class="n">anotherChoice</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">reader</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+</span><span class="line">			<span class="k">if</span><span class="o">(</span> <span class="n">anotherChoice</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">)</span>
+</span><span class="line">			<span class="o">{</span>
+</span><span class="line">				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Print Toy&quot;</span><span class="o">);</span>
+</span><span class="line">			<span class="o">}</span>
+</span><span class="line">			<span class="k">else</span>
+</span><span class="line">			<span class="o">{</span>
+</span><span class="line">				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Print Something Else&quot;</span><span class="o">);</span>
+</span><span class="line">			<span class="o">}</span>
+</span><span class="line">			<span class="k">break</span><span class="o">;</span>
+</span><span class="line">	<span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>What he pointed out to test this kind of program is to implement a queue in InputStreamReader.</p>
+
+<p>This is the example</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">class</span> <span class="nc">StubbedInputStream</span> <span class="kd">extends</span> <span class="n">InputStream</span> <span class="o">{</span>
+</span><span class="line">	<span class="kd">private</span> <span class="n">Queue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">input</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line">	<span class="kd">public</span> <span class="nf">StubbedInputStream</span><span class="o">(</span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">		<span class="k">this</span><span class="o">.</span><span class="na">input</span> <span class="o">=</span> <span class="n">input</span><span class="o">;</span>
+</span><span class="line">	<span class="o">}</span>
+</span><span class="line">
+</span><span class="line">	<span class="nd">@Override</span>
+</span><span class="line">		<span class="kd">public</span> <span class="kt">int</span> <span class="nf">read</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span><span class="line">			<span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">bytes</span><span class="o">);</span>    <span class="c1">//To change body of overridden methods use File | Settings | File Templates.</span>
+</span><span class="line">		<span class="o">}</span>
+</span><span class="line">
+</span><span class="line">	<span class="nd">@Override</span>
+</span><span class="line">		<span class="kd">public</span> <span class="kt">int</span> <span class="nf">read</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i1</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span><span class="line">			<span class="k">if</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+</span><span class="line">				<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+</span><span class="line">			<span class="o">}</span>
+</span><span class="line">
+</span><span class="line">			<span class="kt">int</span> <span class="n">byteLocation</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class="line">			<span class="k">for</span><span class="o">(</span><span class="kt">byte</span> <span class="n">b</span> <span class="o">:</span> <span class="n">input</span><span class="o">.</span><span class="na">remove</span><span class="o">().</span><span class="na">getBytes</span><span class="o">())</span> <span class="o">{</span>
+</span><span class="line">				<span class="n">bytes</span><span class="o">[</span><span class="n">byteLocation</span><span class="o">]</span> <span class="o">=</span> <span class="n">b</span><span class="o">;</span>
+</span><span class="line">				<span class="n">byteLocation</span><span class="o">++;</span>
+</span><span class="line">			<span class="o">}</span>
+</span><span class="line">			<span class="n">bytes</span><span class="o">[</span><span class="n">byteLocation</span><span class="o">]</span> <span class="o">=</span> <span class="s">&quot;\n&quot;</span><span class="o">.</span><span class="na">getBytes</span><span class="o">()[</span><span class="mi">0</span><span class="o">];</span>
+</span><span class="line">			<span class="k">return</span> <span class="n">byteLocation</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class="line">		<span class="o">}</span>
+</span><span class="line">
+</span><span class="line">	<span class="nd">@Override</span>
+</span><span class="line">		<span class="kd">public</span> <span class="kt">int</span> <span class="nf">read</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span><span class="line">			<span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class="line">		<span class="o">}</span>
+</span><span class="line">
+</span><span class="line">	<span class="kd">public</span> <span class="kd">static</span> <span class="n">InputStreamBuilder</span> <span class="nf">stubInputStream</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">		<span class="k">return</span> <span class="k">new</span> <span class="nf">InputStreamBuilder</span><span class="o">();</span>
+</span><span class="line">	<span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And …</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">InputStreamBuilder</span> <span class="o">{</span>
+</span><span class="line">	<span class="kd">private</span> <span class="n">Queue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">values</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
+</span><span class="line">
+</span><span class="line">	<span class="kd">public</span> <span class="n">InputStreamBuilder</span> <span class="nf">toReturn</span><span class="o">(</span><span class="n">String</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">		<span class="k">this</span><span class="o">.</span><span class="na">values</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+</span><span class="line">		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+</span><span class="line">	<span class="o">}</span>
+</span><span class="line">
+</span><span class="line">	<span class="kd">public</span> <span class="n">InputStreamBuilder</span> <span class="nf">then</span><span class="o">(</span><span class="n">String</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">		<span class="k">this</span><span class="o">.</span><span class="na">values</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+</span><span class="line">		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+</span><span class="line">	<span class="o">}</span>
+</span><span class="line">
+</span><span class="line">	<span class="kd">public</span> <span class="n">StubbedInputStream</span> <span class="nf">atSomePoint</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">		<span class="k">return</span> <span class="k">new</span> <span class="nf">StubbedInputStream</span><span class="o">(</span><span class="n">values</span><span class="o">);</span>
+</span><span class="line">	<span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>When you want to test the command-line program you can do something like this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainTest</span> <span class="o">{</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">private</span> <span class="n">PrintStream</span> <span class="n">console</span><span class="o">;</span>
+</span><span class="line">    <span class="kd">private</span> <span class="n">ByteArrayOutputStream</span> <span class="n">outputStream</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="nd">@Before</span>
+</span><span class="line">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">before</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">console</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">;</span>
+</span><span class="line">        <span class="n">outputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ByteArrayOutputStream</span><span class="o">();</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="nd">@Test</span>
+</span><span class="line">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">mainTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">System</span><span class="o">.</span><span class="na">setOut</span><span class="o">(</span><span class="k">new</span> <span class="nf">PrintStream</span><span class="o">(</span><span class="n">outputStream</span><span class="o">));</span>
+</span><span class="line">        <span class="n">System</span><span class="o">.</span><span class="na">setIn</span><span class="o">(</span><span class="n">stubInputStream</span><span class="o">().</span><span class="na">toReturn</span><span class="o">(</span><span class="s">&quot;0&quot;</span><span class="o">).</span><span class="na">atSomePoint</span><span class="o">());</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">new</span> <span class="nf">Main</span><span class="o">().</span><span class="na">launchApp</span><span class="o">();</span>
+</span><span class="line">
+</span><span class="line">        <span class="n">assertThat</span><span class="o">(</span><span class="n">outputStream</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="n">containsString</span><span class="o">(</span><span class="s">&quot;Print 0&quot;</span><span class="o">));</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="nd">@Test</span>
+</span><span class="line">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">mainTestNextCase</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">System</span><span class="o">.</span><span class="na">setOut</span><span class="o">(</span><span class="k">new</span> <span class="nf">PrintStream</span><span class="o">(</span><span class="n">outputStream</span><span class="o">));</span>
+</span><span class="line">        <span class="n">System</span><span class="o">.</span><span class="na">setIn</span><span class="o">(</span><span class="n">stubInputStream</span><span class="o">().</span><span class="na">toReturn</span><span class="o">(</span><span class="s">&quot;2&quot;</span><span class="o">).</span><span class="na">then</span><span class="o">(</span><span class="s">&quot;0&quot;</span><span class="o">).</span><span class="na">atSomePoint</span><span class="o">());</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">new</span> <span class="nf">Main</span><span class="o">().</span><span class="na">launchApp</span><span class="o">();</span>
+</span><span class="line">
+</span><span class="line">        <span class="n">assertThat</span><span class="o">(</span><span class="n">outputStream</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="n">containsString</span><span class="o">(</span><span class="s">&quot;Print Toy&quot;</span><span class="o">));</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Apr 26th, 2011</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>java</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -1424,49 +1696,6 @@ Jan 19th, 2011</div>
 
 
 	<a class='category' href='/blog/categories/java/'>java</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/why-dummy-text-from-web-template-has-to-be-lorem-ipsum/">
-		
-			Why Dummy Text From Web Template Has to Be &#8220;Lorem Ipsum&#8221;</a>
-	</h2>
-	<div class="entry-content">
-		<p>Ever wonder why dummy text or banner text on web templates or Microsoft Word Templates has to begin with “Lorem ipsum dolor sit amet…” and go on and on. Do you even know what this means? Well I don’t. But I found an answer that might explain all of this.</p>
-
-<p>First, after google announced that they have added Latin as one of the languages they can translate. This is the meaning of “Lorem ipsum dolor sit amet”, “<label for="start">We</label> <label for="start">pain is love itself” and I still don’t understand what it means. And I found a website that can help my understanding. </label></p>
-
-<p>This is what they say “The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ‘lorem ipsum’ will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)”</p>
-
-<p>And I think this is pretty good, it’s like when you want to test your program you need to use real data and not just “1234” and “asdf”. It’s unreadable.</p>
-
-<p>For more information click on <a href="http://www.lipsum.com/">http://www.lipsum.com/ </a></p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Jan 16th, 2011</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
 
 
 </div>

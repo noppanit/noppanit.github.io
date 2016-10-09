@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.noppanit.com/what-is-going-on-under-your-javascript-code/</loc>
+    <lastmod>2016-10-04T01:41:25-04:00</lastmod>
+  </url>
+  <url>
     <loc>https://www.noppanit.com/how-to-change-your-habit-one-task-at-a-time/</loc>
     <lastmod>2016-03-02T08:49:31-05:00</lastmod>
   </url>
@@ -624,5 +628,11 @@
   </url>
   <url>
     <loc>https://www.noppanit.com/blog/categories/productivity/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/blog/categories/v8/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/blog/categories/assembly/</loc>
   </url>
 </urlset>
