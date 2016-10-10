@@ -4,7 +4,7 @@
   <title><![CDATA[Category: v8 | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/v8/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2016-10-09T10:27:24-04:00</updated>
+  <updated>2016-10-10T14:20:31-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -28,7 +28,7 @@
 <p>I couldn’t answer and I didn’t get the job. I just recently became a JavaScript developer because of my interest in front-end and back-end in the same time. Knowing JavaScript allows me to get the best of both worlds. However, the only thing I know about JavaScript is that it’s something to do with V8 and I had no idea what’s going on under the hood. So, I took the time to really understand how JavaScript works and the history behind it. So, I started with the task a computer does best; executing commands or how does a computer execute a command.</p>
 
 <h2 id="how-does-computer-works">How does computer works?</h2>
-<p>One of the best movies for me is “The Core” where “Rat” had to hack the Internet to control the flow of information. The hacker claims that he only knew one language, “zeros and ones”. At the time, I understood that it’s something to do with binary number, and I thought that it’s just hollywood didn’t understand how computer works.</p>
+<p>One of the best movies for me is “The Core” where “Rat” had to hack the Internet to control the flow of information. The hacker claims that he only knew one language, “zeros and ones”. At the time, I understood that it’s something to do with binary number, and I thought that it’s just hollywood talk and these people didn’t know what they were talking. I have to write <code>print('Hello');</code> to print <code>Hello</code> on my console, it has nothing to do with zeros or ones.</p>
 
 <p>So, I started digging and I found <a href="https://m.reddit.com/r/learnprogramming/comments/1pv40y/for_those_of_you_wondering_how_code_becomes_ones/">this</a>.</p>
 
@@ -199,7 +199,7 @@ ast_id  pc_offset  loop_depth</p>
 
 <p>```</p>
 
-<p>Now, in theory you can grab the hex code and run that in C and you should be able to get the same result. I haven’t tried it please let me know if it works or not.</p>
+<p>~~Now, in theory you can grab the hex code and run that in C and you should be able to get the same result. I haven’t tried it please let me know if it works or not.~~ It wouldn’t work because the generated code has fixed memory address from when the program was executed.</p>
 
 <p>What I learn from this post is how is my JavaScript code executed in my computer and the next time I got asked, I will be able to answer that interview question. Sometimes, it’s nicer to be asked a question like this than how to revert a binary tree on a whiteboard. Don’t you think?</p>
 
