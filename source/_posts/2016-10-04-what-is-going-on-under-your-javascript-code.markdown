@@ -181,7 +181,7 @@ RelocInfo (size = 6)
 
 ```
 
-Now, in theory you can grab the hex code and run that in C and you should be able to get the same result. I haven't tried it please let me know if it works or not. 
+~~Now, in theory you can grab the hex code and run that in C and you should be able to get the same result. I haven't tried it please let me know if it works or not.~~ It wouldn't work because the generated code has fixed memory address from when the program was executed.
 
 What I learn from this post is how is my JavaScript code executed in my computer and the next time I got asked, I will be able to answer that interview question. Sometimes, it's nicer to be asked a question like this than how to revert a binary tree on a whiteboard. Don't you think? 
 
