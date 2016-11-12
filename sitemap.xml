@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.noppanit.com/game-of-life-for-dummies/</loc>
+    <lastmod>2016-11-11T23:10:25-05:00</lastmod>
+  </url>
+  <url>
     <loc>https://www.noppanit.com/what-is-going-on-under-your-javascript-code/</loc>
     <lastmod>2016-10-04T01:41:25-04:00</lastmod>
   </url>
@@ -634,6 +638,12 @@
   </url>
   <url>
     <loc>https://www.noppanit.com/blog/categories/assembly/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/blog/categories/algorithm/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/blog/categories/game-of-life/</loc>
   </url>
   <url>
     <loc>https://www.noppanit.com/posts/2/</loc>

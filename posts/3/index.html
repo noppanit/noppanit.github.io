@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I’m not really a travel blogger but I’ll try to share my experience as much as possible. I’ve just come back from Peru (Machu Picchu). Me and a &hellip;">
+	<meta name="description" content="We have just installed SSL on our Amazon CloudFront. We followed this blog post from Bryce which I think it’s really good already. However, I was &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,184 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/installing-ssl-on-amazon-cloudfront/">
+		
+			Installing SSL on Amazon CloudFront</a>
+	</h2>
+	<div class="entry-content">
+		<p>We have just installed SSL on our Amazon CloudFront. We followed this <a href="https://bryce.fisher-fleig.org/blog/setting-up-ssl-on-aws-cloudfront-and-s3/">blog post</a> from Bryce which I think it’s really good already. However, I was stuck on the last part where you have to upload the certificate to IAM. The difference is that I had to concatenate the crt files myself and I didn’t know how to do it. So I spent quite a long time to figure it out. I thought I would write this so it might help save sometime for anybody.</p>
+
+<p>If your SSL providers gave you the chained certificate already, then you don’t have to do anything else. However, when I downloaded my crt files I found this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">my_domain.crt
+</span><span class="line">AddTrustExternalCARoot.crt
+</span><span class="line">TrustedSecureCertificateAuthority5.crt
+</span><span class="line">USERTrustRSAAddTrustCA.rt</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And I’m shocked. So, I thought I would need to upload all of them three times which I did but only one got through and I thought the others must have been backup or some kind (I know I’m pretty stupid). So, I used <a href="https://www.digicert.com/help/">SSL Checker</a> to check and the site said my trust is broken. I thought how could it be I did everything right.</p>
+
+<p>It turned out that I didn’t upload all of the chained certificate. So, I went again and I tried to upload the second file which I got a nice error from Amazon that my certificate is malformed. I’m stumped again.</p>
+
+<p>After a lot of digging and reading. I have to figured out the order of certificates and concatenate all the certificates in the right order until the root. You can ask your SSL provider if you want a quicker answer but I went the hard way.</p>
+
+<p>You can run this command</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">openssl x509 -text -noout -in your_domain.crt
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You should start with your <strong>domain.crt</strong> file which will be something like this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">Certificate:
+</span><span class="line">    Data:
+</span><span class="line">        Version: <span class="m">3</span> <span class="o">(</span>0x2<span class="o">)</span>
+</span><span class="line">        Serial Number:
+</span><span class="line">            xxxxxx
+</span><span class="line">        Signature Algorithm: xxxxx
+</span><span class="line">        Issuer: <span class="nv">C</span><span class="o">=</span>US, <span class="nv">ST</span><span class="o">=</span>DE, <span class="nv">L</span><span class="o">=</span>Wilmington, <span class="nv">O</span><span class="o">=</span>Corporation Service Company, <span class="nv">CN</span><span class="o">=</span>Trusted Secure Certificate Authority 5
+</span><span class="line">        Validity
+</span><span class="line">            Not Before:
+</span><span class="line">            Not After :
+</span><span class="line">        Subject: <span class="nv">C</span><span class="o">=</span>US/postalCode<span class="o">=</span>x, <span class="nv">ST</span><span class="o">=</span>xx, <span class="nv">L</span><span class="o">=</span>xxx, <span class="nv">O</span><span class="o">=</span>xxx, LLC, <span class="nv">OU</span><span class="o">=</span>xxx, <span class="nv">OU</span><span class="o">=</span>xxx, <span class="nv">CN</span><span class="o">=</span>xxx
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>You just need to look for Issuer which will tell you what is your next immediate certificate. In this case Trusted Secure Certificate Authority 5 is my first certificate and then you go on and do the next one.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">openssl x509 -text -noout -in TrustedSecureCertificateAuthority5.crt
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You will get something like this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">Certificate:
+</span><span class="line">    Data:
+</span><span class="line">        Version: <span class="m">3</span> <span class="o">(</span>0x2<span class="o">)</span>
+</span><span class="line">        Serial Number:
+</span><span class="line">            xxxxx
+</span><span class="line">        Signature Algorithm: xxxx
+</span><span class="line">        Issuer: <span class="nv">C</span><span class="o">=</span>US, <span class="nv">ST</span><span class="o">=</span>New Jersey, <span class="nv">L</span><span class="o">=</span>Jersey City, <span class="nv">O</span><span class="o">=</span>The USERTRUST Network, <span class="nv">CN</span><span class="o">=</span>USERTrust RSA Certification Authority
+</span><span class="line">        Validity
+</span><span class="line">            Not Before: Sep <span class="m">10</span> 00:00:00 <span class="m">2014</span> GMT
+</span><span class="line">            Not After : Sep  <span class="m">9</span> 23:59:59 <span class="m">2024</span> GMT
+</span><span class="line">        Subject: <span class="nv">C</span><span class="o">=</span>US, <span class="nv">ST</span><span class="o">=</span>DE, <span class="nv">L</span><span class="o">=</span>Wilmington, <span class="nv">O</span><span class="o">=</span>Corporation Service Company, <span class="nv">CN</span><span class="o">=</span>Trusted Secure Certificate Authority 5
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It means <strong>USERTrust</strong> is the next certificate then repeat the process again until you see this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">Certificate:
+</span><span class="line">    Data:
+</span><span class="line">        Version: <span class="m">3</span> <span class="o">(</span>0x2<span class="o">)</span>
+</span><span class="line">        Serial Number: xxxx
+</span><span class="line">        Signature Algorithm: xxxxx
+</span><span class="line">        Issuer: <span class="nv">C</span><span class="o">=</span>SE, <span class="nv">O</span><span class="o">=</span>AddTrust AB, <span class="nv">OU</span><span class="o">=</span>AddTrust External TTP Network, <span class="nv">CN</span><span class="o">=</span>AddTrust External CA Root
+</span><span class="line">        Validity
+</span><span class="line">            Not Before: May <span class="m">30</span> 10:48:38 <span class="m">2000</span> GMT
+</span><span class="line">            Not After : May <span class="m">30</span> 10:48:38 <span class="m">2020</span> GMT
+</span><span class="line">        Subject: <span class="nv">C</span><span class="o">=</span>SE, <span class="nv">O</span><span class="o">=</span>AddTrust AB, <span class="nv">OU</span><span class="o">=</span>AddTrust External TTP Network, <span class="nv">CN</span><span class="o">=</span>AddTrust External CA Root
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>If <strong>Issuer</strong> is the same as <strong>Subject</strong> that means this certificate is the root which is going to be the last. Now, what you can do is to concatenate in the correct order of all the certificates.</p>
+
+<p>You can use this command or you can use your favourite editor to do as well.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">cat first_crt second_crt third_crt &gt; your_pem_file
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then when you’re ready to upload the certificate to Amazon you can just do this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">aws iam upload-server-certificate --server-certificate-name your_domain <span class="se">\</span>
+</span><span class="line">--certificate-body file://your_domain.crt <span class="se">\</span>
+</span><span class="line">--private-key file://your_domain.private <span class="se">\</span>
+</span><span class="line">--certificate-chain file://your_pem_file <span class="se">\</span>
+</span><span class="line">--path /cloudfront/
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The <strong>–certificate-chain</strong> should be your concatenated certificates.</p>
+
+<p>The format of the <strong>pem</strong> should be something like this.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">-----BEGIN CERTIFICATE-----
+</span><span class="line">Intermediate certificate 2
+</span><span class="line">-----END CERTIFICATE-----
+</span><span class="line">-----BEGIN CERTIFICATE-----
+</span><span class="line">Intermediate certificate 1
+</span><span class="line">-----END CERTIFICATE-----
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+May 22nd, 2015</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/security/'>security</a>, <a class='category' href='/blog/categories/techniques/'>techniques</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -980,51 +1158,6 @@ Oct 7th, 2014</div>
 
 
 Jul 20th, 2014</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/alright-charge-phone-shavers-outlet/">
-		
-			It&#8217;s Alright to Charge Your Phone on &#8216;Shavers Only&#8217; Outlet.</a>
-	</h2>
-	<div class="entry-content">
-		<p><strong>Problem</strong></p>
-
-<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/21/ShaverSocketUK.jpg/170px-ShaverSocketUK.jpg" title="Shavers only outlet" /></p>
-
-<p>I believe everyone has the same problem once in a while or often that you forget your phone charger. Or even you didn’t forget your phone charger if you travel between UK and Europe you might forget the converter or adapter. If you stay in a hotel you must have seen one of those Shaver-only outlets. You would think that it’s clearly said that it’s for shaver only. So, I cannot use it for anything else. One day, I travel from Europe to the UK and the socket is different. Europe has one of those two-prong socket, and in the UK they use the big three-leg socket.</p>
-
-<p>Then what can you do? I did some research on some myths. I have also tried it myself. It’s ok to charge your phone with those sockets.</p>
-
-<p><strong>Solution</strong></p>
-
-<p>Modern adapter if you flip it up and have a look you will see this sign or similar to this. “Travel adapter 110V – 240V” What this means is that this adapter will transform the current range from 110 – 220V to be usable for your appliance. There’s a reference <a href="http://blog.fosketts.net/2013/02/03/shavers-electrical-outlet/">here</a>. However, those outlets are not suitable for charging your big electronic equipments such as laptop or blow dryer. Once in a while it should be ok to use the outlet to charge your phone. Especially, if you travel from Europe you must have the two-prong socket adapter which is suitable for the outlet.</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Jul 7th, 2014</div>
 	<div class="tags">
 
 

@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="When I was in TWU I was assigned to implement a simple program in Java Command line. I was ok but when I came to TDD approach I really didn’t know &hellip;">
+	<meta name="description" content="Today I had a chance to involve in Design Jam from my colleague Eewei from Thoughtworks. The idea of this event is to get together with the team in &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,72 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/my-first-thought-on-design-jam/">
+		
+			My First Thought on Design Jam</a>
+	</h2>
+	<div class="entry-content">
+		<p>Today I had a chance to involve in Design Jam from my colleague <a href="http://www.eewei.com/">Eewei</a> from Thoughtworks. The idea of this event is to get together with the team in every role (Dev, PM, QA, or as many roles as you could find in your team) to gather ideas as much as possible to solve a problem in design. After you’ve given a problem to solve, you will be divided into teams and work out the a possible solution to your problem.</p>
+
+<p>The problem that we were trying to solve was</p>
+
+<p>**“Going to the cinema used to be a fun social event for people of all ages. Today consumers prefer to watch movies on their phones, laptops and home cinema systems. How do we make the cinema experience at your local theatre more engaging and attractive? Create a mobile app that will get consumers going to the cinema again.” **</p>
+
+<p>Your team will have to think how to design a mobile app for a young busy professional woman who also has just started to date someone. The rules of this game, would be “no rules” you can think of anything you could possibly think of.</p>
+
+<p>We had some templates that we need to fill in, such as follows:</p>
+
+<ul>
+  <li>Rules</li>
+  <li>Team 1 in action</li>
+  <li>Team 2 in action</li>
+  <li>Empathy mapping – Who will use it? This helps understand what the users motivations are</li>
+  <li>Elevator pitch – sum up what your app d</li>
+  <li>Features – what is the min and max delightful set?</li>
+  <li>User journeys – what is the happy path?</li>
+  <li>Paper protoypes of the killer apps!</li>
+  <li>Presentations – sell it to the dragons den in one sentence!</li>
+  <li>Feedback/Retro! fyi, sad feedback was that they wanted more time and to develop the app. I see that as positive!</li>
+</ul>
+
+<p>My surprises would be I’ve neven thought we’d come up with all these ideas in 1.30 hr. And you could get as much as ideas without any boundaries. It is an awesome game that you could play with your team if you need as much as ideas possible to solve a problem.</p>
+
+<p>Reference : <a href="http://www.designjams.org/wiki/Design_Jam_London_1">http://www.designjams.org/wiki/Design_Jam_London_1</a></p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2011/06/Camden-20110623-00022.jpg" title="User Journey" /></p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2011/06/Westminster-20110623-00024-300x225.jpg" title="Design Jam" /></p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2011/06/IMG-20110623-00019-300x225.jpg" /></p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Jun 25th, 2011</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -1539,159 +1605,6 @@ First let’s create a Product class</p>
 
 
 Feb 6th, 2011</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/java/'>java</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/dependency-injection-with-spring-by-example/">
-		
-			Dependency Injection With Spring by Example</a>
-	</h2>
-	<div class="entry-content">
-		<p>I think every developer these days have heard this term “Dependency Injection” or “Inversion of Control” before Martin Fowler coined the term “Dependency Injection”. And how many people are confused by that? Or may be I’m the only one who does not know what it means by injecting something into something and every developer should be happy about it.</p>
-
-<p>I really recommend you to read this article first by <a href="http://www.martinfowler.com/articles/injection.html">Martin Folwer</a>, he has explained it in a very simple way and easy to understand. Additionally, I cannot think of any simpler example to explain than of Martin’s article. So, please do read Martin’s article and Spring in Action for more information.</p>
-
-<p>So, in my example and this is purely from my understanding.</p>
-
-<p>A class student that needs to go to school. You can see that student class is tightly coupled with the class FindARouteToSchool. You can’t have Student without FindARouteToSchool. This is not so bad, but many developers find it not flexible enough. We need to promote loosely coupled.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span>
-</span><span class="line"><span class="o">{</span>
-</span><span class="line">	<span class="n">FindARouteToSchool</span> <span class="n">findARoute</span><span class="o">;</span>
-</span><span class="line">
-</span><span class="line">	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">goToSchool</span><span class="o">()</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="n">findARoute</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">GoByBus</span><span class="o">();</span>
-</span><span class="line">		<span class="n">findARoute</span><span class="o">.</span><span class="na">go</span><span class="o">();</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line">
-</span><span class="line">	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span> <span class="n">String</span> <span class="n">args</span><span class="o">[]</span> <span class="o">)</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="k">new</span> <span class="nf">Student</span><span class="o">().</span><span class="na">goToSchool</span><span class="o">();</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line">
-</span><span class="line"><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>So, we need something that can inject something into the Student class, so the class is not dependent to FindARouteToSchool. I have chosen Spring to solve the problem and create a setter object to set a reference of the class FindARouteToSchool.</p>
-
-<p>This is the new Student class which has one more method to set FindARouteToSchool reference.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span>
-</span><span class="line"><span class="o">{</span>
-</span><span class="line">	<span class="n">FindARouteToSchool</span> <span class="n">findARoute</span><span class="o">;</span>
-</span><span class="line">
-</span><span class="line">	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setFindARoute</span><span class="o">(</span><span class="n">FindARouteToSchool</span> <span class="n">findARoute</span><span class="o">)</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="k">this</span><span class="o">.</span><span class="na">findARoute</span> <span class="o">=</span> <span class="n">findARoute</span><span class="o">;</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line">
-</span><span class="line">	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">goToSchool</span><span class="o">()</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="n">findARoute</span><span class="o">.</span><span class="na">go</span><span class="o">();</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line">
-</span><span class="line">	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span> <span class="n">String</span> <span class="n">args</span><span class="o">[]</span> <span class="o">)</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="n">ApplicationContext</span> <span class="n">ctx</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ClassPathXmlApplicationContext</span><span class="o">(</span><span class="s">&quot;spring-idol.xml&quot;</span><span class="o">);</span>
-</span><span class="line">		<span class="n">Student</span> <span class="n">student</span> <span class="o">=</span> <span class="o">(</span><span class="n">Student</span><span class="o">)</span> <span class="n">ctx</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&quot;student&quot;</span><span class="o">);</span>
-</span><span class="line">		<span class="n">student</span><span class="o">.</span><span class="na">goToSchool</span><span class="o">();</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line"><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>This is the XML configure file of Spring</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-</span><span class="line"><span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.springframework.org/schema/beans&quot;</span>
-</span><span class="line">  <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
-</span><span class="line">  <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.springframework.org/schema/beans </span>
-</span><span class="line"><span class="s">  http://www.springframework.org/schema/beans/spring-beans-2.0.xsd&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">
-</span><span class="line">  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;goByTube&quot;</span>
-</span><span class="line">    <span class="na">class=</span><span class="s">&quot;com.noppanit.GoByTube&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">
-</span><span class="line">  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;student&quot;</span> <span class="na">class=</span><span class="s">&quot;com.noppanit.Student&quot;</span> <span class="nt">&gt;</span>
-</span><span class="line">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;findARoute&quot;</span> <span class="na">ref=</span><span class="s">&quot;goByTube&quot;</span><span class="nt">&gt;&lt;/property&gt;</span>
-</span><span class="line">  <span class="nt">&lt;/bean&gt;</span>
-</span><span class="line"><span class="nt">&lt;/beans&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Jan 19th, 2011</div>
 	<div class="tags">
 
 
