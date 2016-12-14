@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I have been travelling a lot due to work and sometimes I’m tried of getting to the airport, catching the train or getting on a crowded bus. So, I &hellip;">
+	<meta name="description" content="You guys must have heard about PageSpeed test from Google. It’s a really cool plugin for Chrome to let you know how you can optimize your webpage &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,53 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/enable-defalter-compression-for-sinatra-on-herok/">
+		
+			Enable Defalter Compression for Sinatra on Heroku</a>
+	</h2>
+	<div class="entry-content">
+		<p>You guys must have heard about PageSpeed test from Google. It’s a really cool plugin for Chrome to let you know how you can optimize your webpage faster. I have been using it for a while but I couldn’t get my head around gzip compression which it seems that Google has taken that seriously. If you want the science bit. Here’s the <a href="https://developers.google.com/speed/articles/gzip" title="gzip">article</a> from Google.</p>
+
+<p>And here’s the quickstart bit. The most simplest way is to put the compression in <strong>config.ru</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="s1">&#39;./server&#39;</span>
+</span><span class="line"><span class="n">use</span> <span class="no">Rack</span><span class="o">::</span><span class="no">Deflater</span>
+</span><span class="line"><span class="n">run</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Application</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And that’s it I hope this will save you sometime.</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Jan 15th, 2013</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>ruby</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -763,50 +810,6 @@ Nov 18th, 2012</div>
 
 
 Oct 23rd, 2012</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/travel/'>travel</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/beef-noodle-in-hamburg/">
-		
-			Beef Noodle in Hamburg</a>
-	</h2>
-	<div class="entry-content">
-		<p>Well, I know I have been posting about something else other than geeky stuff. But it’s good to do something else and as my twitter bio said. I’m foodie. So, one day I was working in Hamburg and got bored and craved for Chinese food. After a little asking on my old friend “Google” I ran into this post. <a href="http://mealbymel.blogspot.de/2011/09/meister-lo-nudelhaus.html" title="Meister-lo-Nudelhaus">http://mealbymel.blogspot.de/2011/09/meister-lo-nudelhaus.html</a> and I went. My first impression would be that the restaurant is compact, you can see an open kitchen. As I said I craved for Chinese food, so I didn’t even look at the menu and ordered “Beef noodle”. This is what I get, my picture is not that good but the taste says different.</p>
-
-<p><img src="https://www.noppanit.com/wp-content/uploads/2012/10/2012-09-26-19.17.27-236x300.jpg" /></p>
-
-<p>I’m a little disappointed by the noodle as the blog above said but the meat which is the heart of this dish is delicious. It’s chunky and meaty, and the soup is clear and not too strong. The location is not quite good as it’s quite a walk from the station and to get there by Bahn. And I guess that’s why they can keep the cost down as for the appetiser, noodle and a melon cost me just 8 euros. If you’re in Hamburg and want to have taste some authentic Taiwanese, you should try it out. And I’d go back there if I have a chance.</p>
-
-<p><strong>Meister Lo’s Nudelhaus</strong><br />
-Wandsbeker Chausse 40<br />
-22089 Hamburg<br />
-U1-Wartenau</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Oct 3rd, 2012</div>
 	<div class="tags">
 
 

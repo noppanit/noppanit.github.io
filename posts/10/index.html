@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Today I had a chance to involve in Design Jam from my colleague Eewei from Thoughtworks. The idea of this event is to get together with the team in &hellip;">
+	<meta name="description" content="Last week I helped out my friends Eewei and Jill in Future of web app conference in London. Unfortunately, I couldn’t be in the conference. They &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,47 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/thoughts-on-jquery-mobile/">
+		
+			Thoughts on jQuery Mobile</a>
+	</h2>
+	<div class="entry-content">
+		<p>Last week I helped out my friends <a href="http://www.eewei.com" title="Eewei">Eewei</a> and <a href="http://www.fab.co.uk">Jill</a> in <a href="http://futureofwebapps.com/london-2011/">Future of web app conference</a> in London. Unfortunately, I couldn’t be in the conference. They presented this really amazing called <a href="http://jquerymobile.com/">jQuery Mobile</a></p>
+
+<p>So, you’re allowed to transform a simple html website to be operational in modern mobile devies, such as iPhone, BB or Android phones. What you need to do it just add a javascript file and a css file from jQueryMobile site and that’s it. Bam! you have a ready to go mobile website in a min. Interesting to point out is that it’s still in a development stage and the latest release when I’m writing this is just a RC1. So, if you try it now you might be getting some bugs or some unresponsive actions when clicking buttons. Also, when you include the javascript src file and the css version, the version of the two files need to be corresponded, otherwise it might not be working correctly.</p>
+
+<p>You can say that these days more and more people are browsing websites from mobile devices. Also, it can be said that IE6 has been holding our back on development of javascript or css on desktop for years now (You might have to include a number of different versions of CSS files for different browsers). Whilst on mobile devices IE doesn’t have any effects on development. Furthermore, developing native apps for just iPhone or Android might be a daunting task for most people who don’t have any background on Objective-C. Therefore, I think HTML5 for mobile devices might be a better idea to go than starting to build a native app these days.</p>
+
+<p>I have also built a simple webapp from Rails3 and jQuery Mobile deployed on Heroku. If anybody’s interested. <a href="https://github.com/noppanit/jquery-mobile-example">https://github.com/noppanit/jquery-mobile-example</a></p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Oct 6th, 2011</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/rails/'>rails</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -1234,377 +1275,6 @@ Feb 17th, 2011</div>
 
 
 Feb 13th, 2011</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/java/'>java</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/java-builder-pattern-want-to-avoid-getters-and-setters/">
-		
-			Java Builder Pattern: Want to Avoid Getters and Setters to Create an Object?</a>
-	</h2>
-	<div class="entry-content">
-		<p>Have you ever get bored of setting lots of properties to create an object? Have you ever considered an alternate way to create an object? Well, I got one. It’s called Builder Pattern. It’s another way to create an object. I’m trying to make this as easier as possible but I will need to be technical as well. So, here is a simple of builder diagram.</p>
-
-<div style="width: 543px" class="wp-caption alignnone">
-  <img alt="Builder Pattern" src="http://upload.wikimedia.org/wikipedia/en/6/6e/Builder2.png" title="Builder Pattern" width="533" height="240" />
-  
-  <p class="wp-caption-text">
-    Builder Pattern Diagram
-  </p>
-</div>
-
-<p>Start from <strong>Builder</strong><br />
-Builder is the abstract class where you form a skeleton of a object you want to create; in other words, a base class for every concreate builder.</p>
-
-<p><strong>Concrete Builder</strong><br />
-Concrete Builder classes are extended from the Builder.</p>
-
-<p><strong>Director</strong><br />
-The Director class is to control everything and responsible to control the sequence of object creation.</p>
-
-<p><strong>Product</strong><br />
-Product can be seen as the model class.</p>
-
-<p>However, it will be easier if you look at the example below.<br />
-First let’s create a Product class</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-<span class="line-number">50</span>
-<span class="line-number">51</span>
-<span class="line-number">52</span>
-<span class="line-number">53</span>
-<span class="line-number">54</span>
-<span class="line-number">55</span>
-<span class="line-number">56</span>
-<span class="line-number">57</span>
-<span class="line-number">58</span>
-<span class="line-number">59</span>
-<span class="line-number">60</span>
-<span class="line-number">61</span>
-<span class="line-number">62</span>
-<span class="line-number">63</span>
-<span class="line-number">64</span>
-<span class="line-number">65</span>
-<span class="line-number">66</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span>
-</span><span class="line"><span class="o">{</span>
-</span><span class="line">	<span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-</span><span class="line">	<span class="kd">private</span> <span class="n">String</span> <span class="n">description</span><span class="o">;</span>
-</span><span class="line">	<span class="kd">private</span> <span class="n">String</span> <span class="n">model</span><span class="o">;</span>
-</span><span class="line">
-</span><span class="line">	<span class="cm">/**</span>
-</span><span class="line"><span class="cm">	 * Get the name</span>
-</span><span class="line"><span class="cm">	 *</span>
-</span><span class="line"><span class="cm">	 * @return the name</span>
-</span><span class="line"><span class="cm">	 */</span>
-</span><span class="line">	<span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="k">return</span> <span class="n">name</span><span class="o">;</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line">
-</span><span class="line">	<span class="cm">/**</span>
-</span><span class="line"><span class="cm">	 * Set the name</span>
-</span><span class="line"><span class="cm">	 *</span>
-</span><span class="line"><span class="cm">	 * @param name the name to set</span>
-</span><span class="line"><span class="cm">	 */</span>
-</span><span class="line">	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line">
-</span><span class="line">	<span class="cm">/**</span>
-</span><span class="line"><span class="cm">	 * Get the description</span>
-</span><span class="line"><span class="cm">	 *</span>
-</span><span class="line"><span class="cm">	 * @return the description</span>
-</span><span class="line"><span class="cm">	 */</span>
-</span><span class="line">	<span class="kd">public</span> <span class="n">String</span> <span class="nf">getDescription</span><span class="o">()</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="k">return</span> <span class="n">description</span><span class="o">;</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line">
-</span><span class="line">	<span class="cm">/**</span>
-</span><span class="line"><span class="cm">	 * Set the description</span>
-</span><span class="line"><span class="cm">	 *</span>
-</span><span class="line"><span class="cm">	 * @param description the description to set</span>
-</span><span class="line"><span class="cm">	 */</span>
-</span><span class="line">	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDescription</span><span class="o">(</span><span class="n">String</span> <span class="n">description</span><span class="o">)</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="k">this</span><span class="o">.</span><span class="na">description</span> <span class="o">=</span> <span class="n">description</span><span class="o">;</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line">
-</span><span class="line">	<span class="cm">/**</span>
-</span><span class="line"><span class="cm">	 * Get the model</span>
-</span><span class="line"><span class="cm">	 *</span>
-</span><span class="line"><span class="cm">	 * @return the model</span>
-</span><span class="line"><span class="cm">	 */</span>
-</span><span class="line">	<span class="kd">public</span> <span class="n">String</span> <span class="nf">getModel</span><span class="o">()</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="k">return</span> <span class="n">model</span><span class="o">;</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line">
-</span><span class="line">	<span class="cm">/**</span>
-</span><span class="line"><span class="cm">	 * Set the model</span>
-</span><span class="line"><span class="cm">	 *</span>
-</span><span class="line"><span class="cm">	 * @param model the model to set</span>
-</span><span class="line"><span class="cm">	 */</span>
-</span><span class="line">	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setModel</span><span class="o">(</span><span class="n">String</span> <span class="n">model</span><span class="o">)</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="k">this</span><span class="o">.</span><span class="na">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">;</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line"><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Then we create an abstract class to be a base class</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">FactoryAbstract</span>
-</span><span class="line"><span class="o">{</span>
-</span><span class="line">	<span class="kd">protected</span> <span class="n">Car</span> <span class="n">car</span><span class="o">;</span>
-</span><span class="line">
-</span><span class="line">	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">createACar</span><span class="o">()</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="k">this</span><span class="o">.</span><span class="na">car</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Car</span><span class="o">();</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line">
-</span><span class="line">	<span class="kd">public</span> <span class="n">Car</span> <span class="nf">getCar</span><span class="o">()</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">car</span><span class="o">;</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line">
-</span><span class="line">	<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">buildName</span><span class="o">();</span>
-</span><span class="line">	<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">buildDescription</span><span class="o">();</span>
-</span><span class="line">	<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">buildModel</span><span class="o">();</span>
-</span><span class="line"><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Then, create a concrete class</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ToyotaCreator</span> <span class="kd">extends</span> <span class="n">FactoryAbstract</span>
-</span><span class="line"><span class="o">{</span>
-</span><span class="line">
-</span><span class="line">	<span class="nd">@Override</span>
-</span><span class="line">	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">buildDescription</span><span class="o">()</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="n">car</span><span class="o">.</span><span class="na">setDescription</span><span class="o">(</span><span class="s">&quot;Toyota hybrid-power&quot;</span><span class="o">);</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line">
-</span><span class="line">	<span class="nd">@Override</span>
-</span><span class="line">	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">buildModel</span><span class="o">()</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="n">car</span><span class="o">.</span><span class="na">setModel</span><span class="o">(</span><span class="s">&quot;Prius&quot;</span><span class="o">);</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line">
-</span><span class="line">	<span class="nd">@Override</span>
-</span><span class="line">	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">buildName</span><span class="o">()</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="n">car</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&quot;Toyota&quot;</span><span class="o">);</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line"><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The last one is the Director</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Director</span>
-</span><span class="line"><span class="o">{</span>
-</span><span class="line">	<span class="kd">private</span> <span class="n">FactoryAbstract</span> <span class="n">factory</span><span class="o">;</span>
-</span><span class="line">
-</span><span class="line">	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setConcreteClass</span><span class="o">(</span> <span class="n">FactoryAbstract</span> <span class="n">factoryAbstract</span> <span class="o">)</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="k">this</span><span class="o">.</span><span class="na">factory</span> <span class="o">=</span> <span class="n">factoryAbstract</span><span class="o">;</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line">
-</span><span class="line">	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">constructACar</span><span class="o">()</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="n">factory</span><span class="o">.</span><span class="na">createACar</span><span class="o">();</span>
-</span><span class="line">		<span class="n">factory</span><span class="o">.</span><span class="na">buildName</span><span class="o">();</span>
-</span><span class="line">		<span class="n">factory</span><span class="o">.</span><span class="na">buildDescription</span><span class="o">();</span>
-</span><span class="line">		<span class="n">factory</span><span class="o">.</span><span class="na">buildModel</span><span class="o">();</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line">
-</span><span class="line">	<span class="kd">public</span> <span class="n">Car</span> <span class="nf">getCar</span><span class="o">()</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="k">return</span> <span class="n">factory</span><span class="o">.</span><span class="na">getCar</span><span class="o">();</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line"><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>And a client to test the pattern</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span>
-</span><span class="line"><span class="o">{</span>
-</span><span class="line">
-</span><span class="line">	<span class="cm">/**</span>
-</span><span class="line"><span class="cm">	 * @param args</span>
-</span><span class="line"><span class="cm">	 */</span>
-</span><span class="line">	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>
-</span><span class="line">	<span class="o">{</span>
-</span><span class="line">		<span class="n">FactoryAbstract</span> <span class="n">factory</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ToyotaCreator</span><span class="o">();</span>
-</span><span class="line">		<span class="n">Director</span> <span class="n">director</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Director</span><span class="o">();</span>
-</span><span class="line">		<span class="n">director</span><span class="o">.</span><span class="na">setConcreteClass</span><span class="o">(</span> <span class="n">factory</span> <span class="o">);</span>
-</span><span class="line">		<span class="n">director</span><span class="o">.</span><span class="na">constructACar</span><span class="o">();</span>
-</span><span class="line">
-</span><span class="line">		<span class="n">Car</span> <span class="n">aCar</span> <span class="o">=</span> <span class="n">director</span><span class="o">.</span><span class="na">getCar</span><span class="o">();</span>
-</span><span class="line">
-</span><span class="line">		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">aCar</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">);</span>
-</span><span class="line">		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="s">&quot;Description: &quot;</span> <span class="o">+</span> <span class="n">aCar</span><span class="o">.</span><span class="na">getDescription</span><span class="o">()</span> <span class="o">);</span>
-</span><span class="line">		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="s">&quot;Model: &quot;</span> <span class="o">+</span> <span class="n">aCar</span><span class="o">.</span><span class="na">getModel</span><span class="o">()</span> <span class="o">);</span>
-</span><span class="line">	<span class="o">}</span>
-</span><span class="line">
-</span><span class="line"><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Feb 6th, 2011</div>
 	<div class="tags">
 
 

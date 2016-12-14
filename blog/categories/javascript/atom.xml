@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2016-11-12T14:05:01-05:00</updated>
+  <updated>2016-12-13T20:31:51-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -421,11 +421,11 @@ $('#ul li').on('click', function() {
   <li></li>
   // 999 more <li>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>Then we will have JavaScript like this
-</span></code></pre></td></tr></table></div></figure> html
+```
+
+Then we will have JavaScript like this
+
+``` html
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
     $('#parent li').on('click', function() {
@@ -433,25 +433,18 @@ $('#ul li').on('click', function() {
     });
 
 </script>
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>If you open your html page on Chrome you should see something like this.  
-</span><span class='line'><img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png">
-</span><span class='line'>
-</span><span class='line'>If you go down to where JavaScript is executed You will see it takes around **37ms** to execute the snippet.  
-</span><span class='line'>
-</span><span class='line'><img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png">
-</span><span class='line'>
-</span><span class='line'>Now change your snippet to be event delegation
-</span></code></pre></td></tr></table></div></figure> html
+```
+
+If you open your html page on Chrome you should see something like this.  
+{% img https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png %}
+
+If you go down to where JavaScript is executed You will see it takes around **37ms** to execute the snippet.  
+
+{% img https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png %}
+
+Now change your snippet to be event delegation
+
+``` html
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
     $('#parent').on('click', 'li', function() {
@@ -463,7 +456,7 @@ $('#ul li').on('click', function() {
 
 And refresh the page you should see something like this.  
 
-<img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png">
+{% img https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png %}
 
 Now it will only take **2ms** to execute the snippet. It&#8217;s because the event is added to one element not 1000 of them. 
 

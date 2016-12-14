@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2016-11-12T14:05:01-05:00</updated>
+  <updated>2016-12-13T20:31:26-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -12,6 +12,50 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[A must item while travelling in Japan]]></title>
+    <link href="https://www.noppanit.com/a-must-item-while-travelling-in-japan/"/>
+    <updated>2016-12-05T17:36:29-05:00</updated>
+    <id>https://www.noppanit.com/a-must-item-while-travelling-in-japan</id>
+    <content type="html"><![CDATA[<h2 id="what-is-this-item">What is this item?</h2>
+<p>Short answer is. A pocket Wifi. Or some sort of a way for you to have Internet at your finger tip.</p>
+
+<h2 id="why-this-article">Why this article?</h2>
+<p>I don’t usually write anything when I’m travelling, but I think this is quiet a different experience I have from other countries I have been to.</p>
+
+<p>I have been to more than 30 countries and I did not experience language barrier as much as I experienced in Japan. Granted, I speak Mandarin so I don’t have a problem in China. I got by easily even in Russia and country like Turkey.</p>
+
+<p>If you’re one of those want-to-unplug travellers, then this article is not for you. If I go hiking, usually I would not care about connectedness. I want to just go out and experience the nature. But for this trip, I visited mostly big cities and I wanted to get as much information I need especially Tokyo.</p>
+
+<p>Japan has one of the most complex train systems in the world. In Tokyo, you have two companies for Subway and multiple train operators. City Mapper helps a lot with the subways but it still lacks information about other train systems to get you to other parts of the city. Uber and Taxi in Toyko are very expensive in my opinion. I used Google Maps all the time and it saved me time and money.</p>
+
+<p>Subway stations in Tokyo is enormous if you get off wrong exit you might have to walk at least 10-15 minutes to get to your destination. Google Maps has very clear indication of where to exit closest to your destination.</p>
+
+<p>I used Google Translate to communicate with one shop assistant because we wanted to get our shoes fixed and he didn’t speak a single English word. So, we handed the phone for him to speak and Google Translate to translate to English for us. It helped tremendously!</p>
+
+<p>If your phone operator has affordable roaming option like T-Mobile in the US then you’re all set.</p>
+
+<h2 id="how-to-get-one-of-those-pocket-wifis">How to get one of those Pocket Wifis</h2>
+<p>I researched quite a bit and I chose this <a href="http://www.globaladvancedcomm.com/">http://www.globaladvancedcomm.com/</a>. It’s really easy.</p>
+
+<p>I ordered online two days before my departure and it only costed me $140 for the whole 15 days in Japan. I shared the wifi with 2 other friends. You can choose for them to deliver the wifi to your hotel. When I arrived to the hotel it was waiting for me at the reception.</p>
+
+<p>This is what you get in the envelop.</p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2016/12/Wifi.jpeg" width="300" /></p>
+
+<p>This is the return envelop that you need to drop in a mailbox</p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2016/12/Envelop.jpeg" width="300" /></p>
+
+<p>Mailbox at Haneda airport</p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2016/12/Mailbox.jpeg" width="300" /></p>
+
+<p>During the whole trip, there wasn’t even one occasion where the wifi didn’t work. I got the connection the whole time and the battery lasted for at least from 9am to 7pm. If you have a power bank it can easily last until the end of the day. If you have more devices, I believe you will need to choose the premium one with faster speed.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Game of life for dummies]]></title>
@@ -2650,32 +2694,6 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
 <p>Reference<br />
 <a href="http://www.html5rocks.com/en/tutorials/es6/promises/">ES6 Promises</a><br />
 <a href="http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html">We have a problem with promises</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rise of the (Slack)Bots.]]></title>
-    <link href="https://www.noppanit.com/rise-of-the-slackbots/"/>
-    <updated>2015-05-23T00:00:00-04:00</updated>
-    <id>https://www.noppanit.com/rise-of-the-slackbots</id>
-    <content type="html"><![CDATA[<p><a href="http://fusion.net">Fusion</a> tech team just had a hackday in the theme of “Slackbot”. We brainstormed what or how do we make the job of editorial or engineering team easier. We threw a bunch of ideas and my team decided to create a bot that can interact with you in a number of ways or encourage you to fix or debug code. We tried to make it funny and in the same time useful for our daily routine.</p>
-
-<p>My colleague <a href="https://twitter.com/danielbachhuber">Daniel Bachhuber</a> came up with the name Rubberduck which I believe he got it from <a href="http://en.wikipedia.org/wiki/Rubber_duck_debugging">here</a>. The idea of the bot is easy. If you have used Slack you must have seen Slackbot before where it guides you how to use Slack or the bot can help you change your profile picture.</p>
-
-<p>We spent a good one hour to find the best possible solution for creating a bot and we found <a href="https://github.com/silentrob/superscript/">Superscript</a>, which has a client for Slack. It’s perfect!.</p>
-
-<p>We’ve also opensourced the <a href="https://github.com/fusioneng/rubberduck-bot">bot</a> which you can clone and play around with it as well.</p>
-
-<p>The first plugin we are thinking is performance bot where the bot can report the current performance of a website instead of going to a dashboard. It’s because we have remote team. So, having a bit giant board wouldn’t make much sense since some of our folks are distributed and we mainly use Slack for any communication.</p>
-
-<p><img src="https://www.noppanit.com/wp-content/uploads/2015/05/Screenshot-2015-05-23-19.42.23.jpg" title="rubberduck bot" /></p>
-
-<p>Now, go ahead and create your own bot!.</p>
-
-<p> </p>
-
-<p>Check this out. <a href="https://medium.com/@rob_ellis/slack-superscript-rise-of-the-bots-bba8506a043c">Rise of the bots</a></p>
 
 ]]></content>
   </entry>

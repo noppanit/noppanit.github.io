@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="If you have been to one of those technical interviews, you will like this. Google: 90% of our engineers use the software you wrote (Homebrew), but &hellip;">
+	<meta name="description" content="After I switched to Octopress, I knew that I wanted to write about performance and SSL. Those are the main reasons why I switched. Last year, Google &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,101 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/why-you-should-or-should-not-ssl-your-blog/">
+		
+			Why You Should or Should Not SSL Your Blog</a>
+	</h2>
+	<div class="entry-content">
+		<p>After I switched to Octopress, I knew that I wanted to write about performance and SSL. Those are the main reasons why I switched.</p>
+
+<p>Last year, Google <a href="http://googlewebmastercentral.blogspot.com/2014/08/https-as-ranking-signal.html">announced</a> that they will include Https as a single in their ranking. So, if you want to be the cool kid, go and SSL your site now. But what does SSL really do to your site? Have you seen that in action? I only know that from reading all the blog posts about this. In this blog, I’ll show you what SSL does to your site.</p>
+
+<p>Thanks to my friend <a href="https://twitter.com/suksant">Suksant</a> who helped me conducting the test.</p>
+
+<h2 id="what-will-you-need">What will you need?</h2>
+
+<ol>
+  <li><a href="https://www.wireshark.org/">Wireshare</a> is a network protocal analysis.</li>
+</ol>
+
+<h2 id="simple-website">Simple website.</h2>
+
+<p>I’ve created a simple <a href="https://github.com/noppanit/SSL-Show-and-tell">site</a> that you can fake login form. So, you can go ahead and deploy that to your heroku. I chose Heroku as the platform of choice because you can try the site with and without SSL.</p>
+
+<h2 id="setup-your-wireshark">Setup your wireshark</h2>
+
+<p>There’s a couple things you need to do before you can capture the password.</p>
+
+<ol>
+  <li>Open your wireshark and go to <em>Capture -&gt; Interfaces</em> and click <em>en0</em> that should be your Wifi connection.</li>
+</ol>
+
+<p><img src="/wp-content/uploads/2015/10/wireshark-setup-interface.jpg" title="Wireshark Interfaces" /></p>
+
+<p>Then click ‘Start’ to capture the packets</p>
+
+<ol>
+  <li>In the <em>Filter</em> section, put this <em>frame contains topsecret</em> (That’s going to be your password)</li>
+</ol>
+
+<p><img src="/wp-content/uploads/2015/10/wireshark-filter.jpg" title="Wireshark filter" /></p>
+
+<h2 id="capture-the-password">Capture the password</h2>
+
+<ol>
+  <li>I deployed the application <a href="http://ssl-show-and-tell.herokuapp.com/login">here</a>. Go ahead and enter “username” in username and “topsecretpassword” in password It could be anything. Try to check if the URL is not SSL.</li>
+</ol>
+
+<p><img src="/wp-content/uploads/2015/10/form-to-submit-without-ssl.jpg" title="Form submit" /></p>
+
+<ol>
+  <li>Once you’ve submitted your password, you should see that Wireshark has captured something already.</li>
+</ol>
+
+<p><img src="/wp-content/uploads/2015/10/wireshark-captured-password.jpg" title="Wireshark with password" /></p>
+
+<p>without even trying to do anything hard. You can clearly see the password.</p>
+
+<h2 id="now-with-ssl">Now with SSL.</h2>
+
+<ol>
+  <li>Change your URL to be <em>https:</em></li>
+  <li>You will not find anything with your password on Wireshark</li>
+</ol>
+
+<h2 id="what-gives">What gives?</h2>
+
+<p>In conclusion, what have we learned here? SSL encrypts everything being sent to the server will be encrypted. It’s safer and make the site more trustworthy. However, if you’re just running a blog you probably won’t need SSL. If you have a website that capture anything from the user then big ‘YES’ you need SSL. For me, I just want to be a cool kid so I SSLed my site.</p>
+
+<h2 id="reference">Reference</h2>
+<ol>
+  <li><a href="https://samsclass.info/120/proj/p3-wireshark.htm">Wireshark tutorial</a></li>
+</ol>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Oct 9th, 2015</div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -1581,57 +1676,6 @@ May 24th, 2015</div>
 
 
 	<a class='category' href='/blog/categories/javascript/'>javascript</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/rise-of-the-slackbots/">
-		
-			Rise of the (Slack)Bots.</a>
-	</h2>
-	<div class="entry-content">
-		<p><a href="http://fusion.net">Fusion</a> tech team just had a hackday in the theme of “Slackbot”. We brainstormed what or how do we make the job of editorial or engineering team easier. We threw a bunch of ideas and my team decided to create a bot that can interact with you in a number of ways or encourage you to fix or debug code. We tried to make it funny and in the same time useful for our daily routine.</p>
-
-<p>My colleague <a href="https://twitter.com/danielbachhuber">Daniel Bachhuber</a> came up with the name Rubberduck which I believe he got it from <a href="http://en.wikipedia.org/wiki/Rubber_duck_debugging">here</a>. The idea of the bot is easy. If you have used Slack you must have seen Slackbot before where it guides you how to use Slack or the bot can help you change your profile picture.</p>
-
-<p>We spent a good one hour to find the best possible solution for creating a bot and we found <a href="https://github.com/silentrob/superscript/">Superscript</a>, which has a client for Slack. It’s perfect!.</p>
-
-<p>We’ve also opensourced the <a href="https://github.com/fusioneng/rubberduck-bot">bot</a> which you can clone and play around with it as well.</p>
-
-<p>The first plugin we are thinking is performance bot where the bot can report the current performance of a website instead of going to a dashboard. It’s because we have remote team. So, having a bit giant board wouldn’t make much sense since some of our folks are distributed and we mainly use Slack for any communication.</p>
-
-<p><img src="/wp-content/uploads/2015/05/Screenshot-2015-05-23-19.42.23.jpg" title="rubberduck bot" /></p>
-
-<p>Now, go ahead and create your own bot!.</p>
-
-<p> </p>
-
-<p>Check this out. <a href="https://medium.com/@rob_ellis/slack-superscript-rise-of-the-bots-bba8506a043c">Rise of the bots</a></p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-May 23rd, 2015</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
 
 
 </div>
