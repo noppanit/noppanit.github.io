@@ -4,7 +4,7 @@
   <title><![CDATA[Category: knowledges | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/knowledges/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2016-12-13T20:31:51-05:00</updated>
+  <updated>2016-12-24T10:59:49-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -52,13 +52,13 @@
 
 <p><a href="http://www.webpagetest.org/result/151002_33_7N6/1/details/">noppanit.com performance</a></p>
 
-<p>{% img /wp-content/uploads/2015/10/before-perf-noppanit-com.jpg %}</p>
+<p><img src="/wp-content/uploads/2015/10/before-perf-noppanit-com.jpg"></p>
 
 <h3 id="after">After</h3>
 
 <p><a href="http://www.webpagetest.org/result/151002_NG_7P4/2/details/">noppanit.github.io performance</a></p>
 
-<p>{% img /wp-content/uploads/2015/10/after-perf-noppanit-com.jpg %}</p>
+<p><img src="/wp-content/uploads/2015/10/after-perf-noppanit-com.jpg"></p>
 
 <p>The numbers don’t lie. After I switched to Octopress, my website renders in <em>1.392s</em>. That’s without doing anything else. I’m going to write another blog post how I tune my blog to get the most out of it. WordPress is a great framework but when it comes to performance tuning, it requires a lot of hacking.</p>
 
@@ -128,17 +128,25 @@ find . -type f -exec gsed -i "s/\(title: .*\)/\1\ncomments: true/" {} \;
 
 <p>For example, I wrote this piece of code to learn about dynamic programming.</p>
 
-<p>{% codeblock python %}
-import sys
-coins = [1, 3, 5]
-min_coin = [sys.maxint] * 20
-min_coin[] =</p>
-
-<p>for min_of_i in range(20):
-    for c in coins:
-        if c &lt;= min_of_i and (min_coin[min_of_i - c] + 1 &lt; min_coin[min_of_i]):
-                min_coin[min_of_i] = min_coin[min_of_i - c] + 1
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>python </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>import sys
+</span><span class='line'>coins = [1, 3, 5]
+</span><span class='line'>min_coin = [sys.maxint] * 20
+</span><span class='line'>min_coin[] =&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>for min_of_i in range(20):
+</span><span class='line'>    for c in coins:
+</span><span class='line'>        if c &lt;= min_of_i and (min_coin[min_of_i - c] + 1 &lt; min_coin[min_of_i]):
+</span><span class='line'>                min_coin[min_of_i] = min_coin[min_of_i - c] + 1</span></code></pre></td></tr></table></div></figure></p>
 
 <p>I know that my code is not bad (or maybe is really bad), but let’s see what I get out of it from this <a href="http://codereview.stackexchange.com/questions/92811/find-the-minimum-number-of-coins">thread</a>. From within a day I have at least 2-3 points to make my code a lot better. Not only that I learn more about Python, I also learn how to optimize the script.</p>
 
@@ -178,11 +186,11 @@ min_coin[] =</p>
 
 <p>Here’s the example.</p>
 
-<p>{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.jpg Parking signs on Qgis %}</p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.jpg" title="Parking signs on Qgis" ></p>
 
 <p>One thing I learnt was that you cannot just click <strong>Open</strong> and choose the file. What you need to do is to <string>Add Vector Layer&lt;/strong&gt;. You can use shortcut **Ctrl+Shift+v**</string></p>
 
-<p>{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.jpg Add Vector Layer %}</p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.jpg" title="Add Vector Layer" ></p>
 
 <h2 id="export-to-google-fusion">Export to Google Fusion</h2>
 
@@ -190,27 +198,27 @@ min_coin[] =</p>
 
 <p>In QGis you can download the file as CSV. It’s in <strong>Layer &gt; Save As</strong>. You just need to make sure that <strong>Geometry</strong> has to be set so you get the coordinates.</p>
 
-<p>{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.jpg Save to CSV %}</p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.jpg" title="Save to CSV" ></p>
 
 <h2 id="import-to-google-fusion-table">Import to Google Fusion Table</h2>
 
 <p>Now we can use that CSV to import to Google Fusion. It would look something like this.</p>
 
-<p>{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.jpg Google Fusion Table %}</p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.jpg" title="Google Fusion Table" ></p>
 
 <p>what you need to make sure is that you need to specify which fields are Lat, Long so Google can plot that for you.</p>
 
 <p>Here’s how you do it.</p>
 
-<p>{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.jpg %}</p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.jpg"></p>
 
 <p>The click <strong>change</strong> You will see something like this and you can choose which field you want to be Longitude or Latitude.</p>
 
-<p>{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.jpg Set Location %}</p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.jpg" title="Set Location" ></p>
 
 <p>Once the coordinates have set we can go to Map tab and see beautiful little dots that show where all the signs are in NYC.</p>
 
-<p>{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.jpg Parking signs in Google Fusion Table %}</p>
+<p><img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.jpg" title="Parking signs in Google Fusion Table" ></p>
 
 <p>Walla! Now you have something you can build an application on top of it. The next post, I will create an application on top of this map to make use of our data.</p>
 
@@ -244,20 +252,31 @@ calculate_long_lat &lt;- function(x,y) {</p>
 
 <p>Python has the same wrapper which is quite what I want as well.</p>
 
-<p>{% codeblock python %}
-from pyproj import Proj
-import pandas as pd</p>
-
-<p>data = pd.read_csv(‘parking_regulation.csv’)</p>
-
-<p>p = Proj(r’+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs’)</p>
-
-<p>def cal_long_lat(row):
-    return p(row[‘x’], row[‘y’],inverse=True)</p>
-
-<p>data[‘lon’], data[‘lat’] = zip(data.apply (lambda row: cal_long_lat (row),axis=1))
-data.head()
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>python </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>from pyproj import Proj
+</span><span class='line'>import pandas as pd&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>data = pd.read_csv(‘parking_regulation.csv’)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>p = Proj(r’+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs’)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>def cal_long_lat(row):
+</span><span class='line'>    return p(row[‘x’], row[‘y’],inverse=True)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>data[‘lon’], data[‘lat’] = zip(data.apply (lambda row: cal_long_lat (row),axis=1))
+</span><span class='line'>data.head()</span></code></pre></td></tr></table></div></figure></p>
 
 <p>I will need to learn more about State Pane and what is the correct format.</p>
 

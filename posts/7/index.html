@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I have been working with AngularJs and I loved it, but occasionally I ran into some problems and the documentation is not that reliable. So, I’m &hellip;">
+	<meta name="description" content="I have just rolled off from a project using AngularJS and Play 2.1.1. It was a mobile website, I wish I could include the site here as well but it’s &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,118 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/my-thoughts-on-play-2-1-1-java/">
+		
+			My Thoughts on Play 2.1.1 (Java)</a>
+	</h2>
+	<div class="entry-content">
+		<p>I have just rolled off from a project using AngularJS and Play 2.1.1. It was a mobile website, I wish I could include the site here as well but it’s still in development. We are using Play! 2.1.1 Java and AngularJs to build a mobile website. So, I’d like to summarise my thoughts here.</p>
+
+<h1 id="play-framework-211">Play Framework 2.1.1</h1>
+
+<p>It’s a really good framework if you want to start something quickly. It’s like Rail in Java. You have everything in this framework, ORM, LESS, RequireJS and also some caching strategy. If in the future, I have a requirement to create a prototype in Java I would choose this framework for sure (Who would create a prototype in Java anyways), buy hey! it can be that who knows. By the way, there are some downsides. As Play considers everything in static. That makes testing quite tricky. For example, every controller is statically created, if you want to have something injected to your controller you have to create a custom global configuration for Play!. Here’s the example.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class=""><span class="line"># Global object class
+</span><span class="line"># ~~~~~
+</span><span class="line"># Define the Global object class for this application.
+</span><span class="line"># Default to Global in the root package.
+</span><span class="line">application.global=global.CustomGlobal</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kn">package</span> <span class="n">global</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// CAUTION: this class name must be specified in application.conf</span>
+</span><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomGlobal</span> <span class="kd">extends</span> <span class="n">GlobalSettings</span> <span class="o">{</span>
+</span><span class="line">   <span class="kd">private</span> <span class="kd">static</span> <span class="n">MutablePicoContainer</span> <span class="n">dependencies</span> <span class="o">=</span> <span class="n">wireUpDependencies</span><span class="o">();</span>
+</span><span class="line">
+</span><span class="line">   <span class="kd">private</span> <span class="kd">static</span> <span class="n">MutablePicoContainer</span> <span class="nf">wireUpDependencies</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">         <span class="n">MutablePicoContainer</span> <span class="n">container</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">DefaultPicoContainer</span><span class="o">();</span>
+</span><span class="line">         <span class="c1">// Do some injections.</span>
+</span><span class="line">   <span class="o">}</span>
+</span><span class="line">   <span class="nd">@Override</span>
+</span><span class="line">    <span class="kd">public</span> <span class="o">&lt;</span><span class="n">A</span><span class="o">&gt;</span> <span class="n">A</span> <span class="nf">getControllerInstance</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">A</span><span class="o">&gt;</span> <span class="n">aControllerClass</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">dependencies</span><span class="o">.</span><span class="na">getComponent</span><span class="o">(</span><span class="n">aControllerClass</span><span class="o">);</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then in <strong>/routes</strong> you can use <strong>@</strong> to say not create a controller statically.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">GET</span>     <span class="o">/</span>                               <span class="nd">@controllers.coop.main.Application.index</span><span class="o">(</span><span class="n">any</span> <span class="o">=</span> <span class="s">&quot;none&quot;</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Other thing is EBean which comes with Play!. EBean is built on top of JPA. However, this means you have to learn a new framework if you know Hibernate already. They are quite close. Other than that, I think Play! is great. If you have time you might want to have a look at <a href="http://dropwizard.codahale.com/" title="DropWizard">DropWizard</a> if you just want to create a RESTFul service or <a href="http://www.sparkjava.com/download.html" title="SPARK">SPARK</a> for a sinatra-like java framework.</p>
+
+<h2 id="ebean-query-tuning">EBean Query tuning</h2>
+
+<p>EBean is like another version of Hibernate. It’s basically an ORM framework. There’s a catch in EBean if you turn the showing query on and if you join two or three tables and you use RawSql EBean will fire a lot of query to fetch each and every row you want to use. You will see a massive log. That hurts the performance. If you could use basic EBean for example.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">List</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span> <span class="n">orders</span> <span class="o">=</span>
+</span><span class="line">    <span class="n">Ebean</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">Order</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+</span><span class="line">        <span class="o">.</span><span class="na">fetch</span><span class="o">(</span><span class="s">&quot;customer&quot;</span><span class="o">)</span>
+</span><span class="line">        <span class="o">.</span><span class="na">findList</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>If you use .fetch(“customer”) it will just fire one query. So be careful. If you see a performance hit in your app and if it’s because of database. Check this <a href="http://www.avaje.org/ebean/introquery_joinquery.html" title="EBean join query.">link</a>. So, keep an eye on your performance because the peak might be on your query.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Play! is a good framework for doing something really quick and you don’t want to get your hands dirty with Spring or pure Java servlet. My biggest catch for Play! for me is the ability to write tests and to inject something to a controller. That means it’s hard to write unit-test but you can still write integration tests. If you’re ok with this fact I guess Play! is a good framework to look out for.</p>
+
+<p>Also, Play! documentation is quite incomplete. And every version is really different than the prior version. So, please be careful to choose the write version of your documentation otherwise you might be scratching your head for a long time until you figure it out you’re looking at the wrong documentation.</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Jul 1st, 2013</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -846,70 +958,6 @@ Feb 11th, 2013</div>
 
 
 	<a class='category' href='/blog/categories/database/'>database</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/lesson-learnt-from-data-cleansing/">
-		
-			Lesson Learnt From Data Cleansing. Part I</a>
-	</h2>
-	<div class="entry-content">
-		<p>Lately, I have been experimenting on <a href="http://www.kaggle.com/c/event-recommendation-engine-challenge">Kaggle competition</a>. This is the one I chose because I want to use neo4j to give some recommendation or in a sense I want to do unsupervised learning. From day one I faced a lot of problem dealing with a lot of data and they are not clean in a way. For example, in this competition, there is users dataset which contains all the users. And there is a friend dataset which contains all the friends. The data look like this.</p>
-
-<p><img src="https://www.noppanit.com/wp-content/uploads/2013/02/Screen-shot-2013-02-01-at-00.08.50.png" alt="users dataset" class="aligncenter size-full wp-image-1028 cool_border" /></p>
-
-<p><img src="https://www.noppanit.com/wp-content/uploads/2013/02/Screen-shot-2013-02-01-at-00.08.28.png" alt="friends dataset" class="aligncenter size-full wp-image-1029 cool_border" /></p>
-
-<p>The first dataset I could dump everything into neo4j without any problem because it’s just 30000 records it only took me 5 mins to do it. However, the second dataset was kind of a problem because the column <strong>friends</strong> not all of the ids exist in users database which means the users don’t exist. So, I had to check if the ids exist in user dataset or not. It turned out that the friends dataset is quite large (about 50 MB) and it could be 3000 ids in one column. So, my first thought would be just to do it one by one.</p>
-
-<p><strong>Frist attempt</strong><br />
-So, what I did first was to dump the whole users dataset to neo4j. And then for loop to check if id exists then insert if not just ignore it. I used cypher to check if the id exists. It turned out that I left my computer for 24 hours and it went just only 10% of the data. It was really slow. One thing from this was that I used neography which means it’s using REST api which usually it’s slower than embedded code. And I couldn’t wait for a whole week just to import the data. So, I moved on. The slow part was the checking every time so I guess it would be nice to clean the data before I dump that to neo4j.</p>
-
-<p><strong>Second attempt</strong><br />
-I tried to use Google Refine to cross check two datasets but it couldn’t even pass the stage <strong>“split multi-valued cells”</strong> which to split column values to rows. Google Refine uses too much ram. I even tried to start EC2 instance but it froze along the way as well. I posted the question and got the solution <a href="http://stackoverflow.com/questions/14636919/google-refine-cross-reference-between-row-and-column">here</a></p>
-
-<p><strong>Third attempt</strong><br />
-I used MySQL to join the tables and and check if the ids exist. Dumping all the data to MySQL was pretty easy my plain old PHP and MySQL. It turned out the friends dataset got around 38 Million rows. And here’s the script I used to check if the id doesn’t exit spit it out and delete it.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line"> SELECT uf.id, uf.friend_id, u.user_id FROM eventify.UserFriends uf LEFT JOIN eventify.Users u on uf.friend_id = u.user_id WHERE u.user_id is NULL LIMIT 1</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>It was also really slow since I just use my Macbook and didn’t even turn MySQL performance. So I moved on again.</p>
-
-<p><strong>Final attempt</strong><br />
-I couldn’t believe that this will be the simplest and most effective way. What I did was to dump the whole users dataset to <strong>Hash</strong> in Ruby and check the friends dataset which surprisingly it only took Ruby 10 mins to do that. Then it only took Ruby and neo4j around 2 hours to import the cleaned data.</p>
-
-<blockquote>
-  <p>So lesson learnt for me was if anything can be done in memory do that first.</p>
-</blockquote>
-
-<p>I’ll try to dump the rest in and blog about how did I get on with recommendation engine from neo4j.</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Feb 7th, 2013</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ruby/'>ruby</a>
 
 
 </div>

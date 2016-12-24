@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2016-12-13T20:31:26-05:00</updated>
+  <updated>2016-12-24T10:59:49-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[python-request Connection aborted and broken pipe error]]></title>
+    <link href="https://www.noppanit.com/python-request-connection-aborted-and-broken-pipe-error/"/>
+    <updated>2016-12-24T10:53:50-05:00</updated>
+    <id>https://www.noppanit.com/python-request-connection-aborted-and-broken-pipe-error</id>
+    <content type="html"><![CDATA[<p>Ever wondered why your long running python script just bombs out mid-way?</p>
+
+<p>If you have seen this error</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="n">ConnectionError</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;Connection aborted.&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="s">&#39;Broken pipe&#39;</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It might be that the script takes longer than expected and SSL got cut off before it has the chance to finish the request. This is what I do and it seems to be working. In your <code>~/.ssh/config</code> add this to your configuration.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">Host *
+</span><span class="line">    ServerAliveInterval 300
+</span><span class="line">    ServerAliveCountMax 2
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>What this does is it’s going to send a NULL packet to the other side every 300 seconds and give up after 2 tries.</p>
+
+<p>Hope this helps everyone.</p>
+
+<p>Reference:
+1. <a href="https://patrickmn.com/aside/how-to-keep-alive-ssh-sessions/">How to keep alive ssh session</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[A must item while travelling in Japan]]></title>
@@ -49,7 +81,7 @@
 
 <p><img src="https://www.noppanit.com/wp-content/uploads/2016/12/Envelop.jpeg" width="300" /></p>
 
-<p>Mailbox at Haneda airport</p>
+<p>Mailbox at Haneda airport to return the wifi.</p>
 
 <p><img src="https://www.noppanit.com/wp-content/uploads/2016/12/Mailbox.jpeg" width="300" /></p>
 
@@ -2424,276 +2456,6 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The result is $7 which corresponds to the 10% tip.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Example: How did I convert async code to sync code with Promise.]]></title>
-    <link href="https://www.noppanit.com/example-how-did-i-convert-async-code-to-sync-code-with-promise/"/>
-    <updated>2015-05-24T00:00:00-04:00</updated>
-    <id>https://www.noppanit.com/example-how-did-i-convert-async-code-to-sync-code-with-promise</id>
-    <content type="html"><![CDATA[<p>I’ve just finished my first refactor to convert my node.js code to be more promisey (I believe that’s the word they use these days). There’s lots of documents out there to do this. However, I thought I should contribute more to help me understand more and might get some feedback from people who’s seen it as well.</p>
-
-<p>I’m trying to create a bot to report me back the performance of my site in desktop and mobile mode. So, I thought it would be easy since Google has an <a href="https://developers.google.com/speed/docs/insights/v2/getting-started">API</a> for that already so I went ahead and did this.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
-</span><span class="line"><span class="kd">var</span> <span class="nx">urlToGetTheScore</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=desktop&amp;amp;fields=ruleGroups&#39;</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScore</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
-</span><span class="line"><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>It’s pretty easy and straight forward right but now that would only return the score of desktop. I need the score of my mobile site as well. So, I added more code to be like this.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">urlToGetTheScoreDesktop</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=desktop&amp;amp;fields=ruleGroups&#39;</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">urlToGetTheScoreMobile</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=mobile&amp;amp;fields=ruleGroups&#39;</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScoreDesktop</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
-</span><span class="line"><span class="p">});</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScoreMobile</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
-</span><span class="line"><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>That’s great but I want to return both scores to a client so I can report the scores rather than printing them to the console. Since, <strong>request</strong> is asynchronous you cannot guarantee which score would come first. So, I thought it’s easy. I just need to call one request after the other. So, I came up with this.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">urlToGetTheScoreDesktop</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=desktop&amp;amp;fields=ruleGroups&#39;</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">urlToGetTheScoreMobile</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=mobile&amp;amp;fields=ruleGroups&#39;</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScoreDesktop</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">  <span class="kd">var</span> <span class="nx">desktopScore</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">;</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlToGetTheScoreMobile</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">    <span class="kd">var</span> <span class="nx">mobileScore</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">;</span>
-</span><span class="line">
-</span><span class="line">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;desktop score is &#39;</span> <span class="o">+</span> <span class="nx">desktopScore</span> <span class="o">+</span> <span class="s1">&#39; and mobile score is &#39;</span> <span class="o">+</span> <span class="nx">mobileScore</span><span class="p">);</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line"><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Look at how ugly it is. Now I want to make it prettier. So, I will use Promise to make it look nicer. As a good engineer I need to create a test first.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">perfModule</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./pagespeed&#39;</span><span class="p">),</span>
-</span><span class="line"><span class="nx">sinon</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sinon&#39;</span><span class="p">),</span>
-</span><span class="line"><span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">),</span>
-</span><span class="line"><span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;expect.js&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Performance&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line"><span class="kd">var</span> <span class="nx">server</span><span class="p">;</span>
-</span><span class="line">  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="s1">&#39;get&#39;</span><span class="p">).</span><span class="nx">yields</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">ruleGroups</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">SPEED</span><span class="o">:</span> <span class="p">{</span><span class="nx">score</span><span class="o">:</span><span class="mi">10</span><span class="p">}}</span> <span class="p">}));</span>
-</span><span class="line">    <span class="nx">done</span><span class="p">();</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should send performance stats to chat room&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">perfModule</span><span class="p">.</span><span class="nx">pagespeed</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">donotknow</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">      <span class="nx">done</span><span class="p">();</span>
-</span><span class="line">      <span class="nx">expect</span><span class="p">(</span><span class="nx">msg</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">eql</span><span class="p">(</span><span class="s1">&#39;desktop speed is 10 and mobile speed is 10&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="p">});</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line"><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>I’m using <a href="http://sinonjs.org/">Sinon.js</a> as the mocking framework and <a href="http://mochajs.org/">Mocha</a> as the testing framework which are pretty standard.</p>
-
-<p>Now I can start refactor my code. At first, I wrote some code like this, just to make it work.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">getSpeed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">strategy</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http://www.noppanit.com&amp;amp;strategy=&#39;</span><span class="o">+</span> <span class="nx">strategy</span> <span class="o">+</span> <span class="s1">&#39;&amp;amp;fields=ruleGroups&#39;</span>
-</span><span class="line">  <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">      <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-</span><span class="line">      <span class="nx">resolve</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
-</span><span class="line">    <span class="p">});</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line"><span class="p">};</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">pagespeed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">getSpeed</span><span class="p">(</span><span class="s1">&#39;desktop&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">desktopSpeed</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">getSpeed</span><span class="p">(</span><span class="s1">&#39;mobile&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">mobileSpeed</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;desktop speed is &#39;</span> <span class="o">+</span> <span class="nx">desktopSpeed</span> <span class="o">+</span> <span class="s1">&#39; and mobile speed is &#39;</span> <span class="o">+</span> <span class="nx">mobileSpeed</span><span class="p">);</span>
-</span><span class="line">    <span class="p">});</span>
-</span><span class="line">
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line"><span class="p">};</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">exports</span><span class="p">.</span><span class="nx">pagespeed</span> <span class="o">=</span> <span class="nx">pagespeed</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Any good JavaScript developer would be like, WTH!. You still have callbacks. I thought Promise would solve that issue already! Now, I could use the power of <strong>Promise.all</strong> which takes array of promises and return array of results. My final code would look something like this.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">),</span>
-</span><span class="line"><span class="nx">Promise</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;promise&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">getSpeed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">strategy</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=http%3A%2F%2Ffusion.net&amp;amp;strategy=&#39;</span><span class="o">+</span> <span class="nx">strategy</span> <span class="o">+</span> <span class="s1">&#39;&amp;amp;fields=ruleGroups&#39;</span>
-</span><span class="line">  <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">      <span class="k">if</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-</span><span class="line">      <span class="nx">resolve</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">).</span><span class="nx">ruleGroups</span><span class="p">.</span><span class="nx">SPEED</span><span class="p">.</span><span class="nx">score</span><span class="p">);</span>
-</span><span class="line">    <span class="p">});</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line"><span class="p">};</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">pagespeed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">getSpeed</span><span class="p">(</span><span class="s1">&#39;desktop&#39;</span><span class="p">),</span> <span class="nx">getSpeed</span><span class="p">(</span><span class="s1">&#39;mobile&#39;</span><span class="p">)]).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">speed</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">desktop</span> <span class="o">=</span> <span class="nx">speed</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">mobile</span> <span class="o">=</span> <span class="nx">speed</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
-</span><span class="line">
-</span><span class="line">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s1">&#39;desktop speed is &#39;</span> <span class="o">+</span> <span class="nx">desktop</span> <span class="o">+</span> <span class="s1">&#39; and mobile speed is &#39;</span> <span class="o">+</span> <span class="nx">mobile</span><span class="p">);</span>
-</span><span class="line">  <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line"><span class="p">};</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">exports</span><span class="p">.</span><span class="nx">pagespeed</span> <span class="o">=</span> <span class="nx">pagespeed</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>I’m not an expert in Promise and I welcome any feedback that would help improve my code.</p>
-
-<p>Reference<br />
-<a href="http://www.html5rocks.com/en/tutorials/es6/promises/">ES6 Promises</a><br />
-<a href="http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html">We have a problem with promises</a></p>
 
 ]]></content>
   </entry>
