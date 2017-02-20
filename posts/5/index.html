@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Istanbul is the next closest thing I could come during Christmas. It’s just 4-hour from London and it’s a fantastic place to visit. I know when you &hellip;">
+	<meta name="description" content="I just want to write this post for myself and lucky people who found this post from Google. The world has come to the era of functional. When I pair &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,128 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/thinking-functionally-for-idiots/">
+		
+			Thinking Functionally for Idiots.</a>
+	</h2>
+	<div class="entry-content">
+		<p>I just want to write this post for myself and lucky people who found this post from Google. The world has come to the era of functional. When I pair with my colleagues I always hear “That’s not so functional” or “Should we use Guava or functional Java” or “Wouldn’t it be easier if we use Scala”?. What do these mean? Why should I have to care if my code looks functional and what benefits do I get. This post is going to be a really easy post to follow that’s why the title “Thinking functionally for idiots”. If you want more technical I highly recommend this <a href="http://www.ibm.com/developerworks/java/library/j-ft1/index.html" title="Thinking functionally Part I">post</a> from Neal Ford.</p>
+
+<p><strong>Why functional programming?</strong><br />
+There are a few concepts of functional programming but you can find the full concepts <a href="https://en.wikipedia.org/wiki/Functional_programming#Concepts">here</a>. I don’t really want to explain about higher-order or first-class functions because someone else can explain it better than myself. In summary, I really think the benefits of doing functional programming is you tend to avoid bugs and the code might be more readable. These can be achieved by avoiding state and mutable data which most of the sites seem to refer to these two benefits. I would like to show this in a simple example.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span> <span class="o">,</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line"><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">multipledByTwo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span>
+</span><span class="line">
+</span><span class="line"><span class="k">for</span><span class="o">(</span><span class="n">Integer</span> <span class="n">number</span> <span class="o">:</span> <span class="n">numbers</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">	<span class="n">multipledByTwo</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">number</span> <span class="o">*</span> <span class="mi">2</span><span class="o">);</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You can see that this piece of code is really simple and what it’s doing is just multiply every element of the list by two. What’s wrong with this piece of code? First of all, <strong>multipledByTwo</strong> list acts like a temporary list which holds the answer and programmer can do something else with it.</p>
+
+<p>Let’s see another example. This is the modified version to be more functional.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="c1">// Interface</span>
+</span><span class="line"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Function</span><span class="o">&lt;</span><span class="n">S</span><span class="o">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">T</span> <span class="nf">apply</span><span class="o">(</span><span class="n">S</span> <span class="n">in</span><span class="o">);</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// MappingClass</span>
+</span><span class="line"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">MappingClass</span><span class="o">&lt;</span><span class="n">S</span><span class="o">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+</span><span class="line">    <span class="kd">protected</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">map</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">,</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">S</span><span class="o">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">fun</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;();</span>
+</span><span class="line">        <span class="k">for</span><span class="o">(</span><span class="n">S</span> <span class="n">item</span> <span class="o">:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">fun</span><span class="o">.</span><span class="na">apply</span><span class="o">(</span><span class="n">item</span><span class="o">));</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// To Test</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="n">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">);</span>
+</span><span class="line">        <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">results</span> <span class="o">=</span> <span class="n">map</span><span class="o">(</span><span class="n">numbers</span><span class="o">,</span> <span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
+</span><span class="line">            <span class="nd">@Override</span>
+</span><span class="line">            <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">apply</span><span class="o">(</span><span class="n">Integer</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">                <span class="k">return</span> <span class="n">input</span> <span class="o">*</span> <span class="mi">2</span><span class="o">;</span>
+</span><span class="line">            <span class="o">}</span>
+</span><span class="line">        <span class="o">});</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">return</span> <span class="n">results</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>We create one generic function which is the interface <strong>Function</strong> this will represent higher-order function which we can parse to another method. Then we create a recursive method which will execute the function and put in another list. This way we don’t create mutable object and we don’t retain any state. What comes in the function comes out as the results.</p>
+
+<p>What do you think? Is this better than the other? If it’s Java I highly doubt that. Java is still not mature enough to do functional programming. But things are looking better in Java 8.</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Jan 20th, 2014</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>java</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -761,56 +883,6 @@ Sep 29th, 2013</div>
 </div>
 </article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/agile-thailand-2013-agile-in-startup/">
-		
-			Agile Thailand 2013 &#8211; Agile in Startup</a>
-	</h2>
-	<div class="entry-content">
-		<p>I got the privilege to be a speaker at Agile Thailand 2013. I submitted a talk on the topic “Agile in Startup” and got accepted. I didn’t have any experience to present in the public before and I thought this would be a good opportunity because I have had some experience in startups and it was in my language so it’s easier for me to practice.</p>
-
-<p>Agile Thailand which was organised by Agile66, a group of top leading agile evangelists in Thailand which some of whom I know personally and worked with in the past. I was really excited because this was going to be my first event as a speaker as I spent the last two years attending conferences and wondering how it’s going to be like in on the other side. To be standing on the stage freaking out and don’t know what to speak to hundred of people. I kept thinking about like “that slides are so bad”, “that guy didn’t prepare anything he just turned up and talked”. I could do that I thought. Now I realised that it’s not an easy job to prepare slides in a way that people will understand the stuff coming out of your month. And how to get attention from a couple hundred of people who turn up in your session hoping to get something out of it.</p>
-
-<h2 id="how-do-i-prepare-the-slides">How do I prepare the slides</h2>
-
-<p>I had to admin I have never prepared any slides before and I was really nervous. But at ThoughtWorks I have seen many good and bad slides and wondering how people prepare good slides. I found this book on the shelf at the office and some of my co-workers recommended this book “<a href="http://www.amazon.co.uk/Presentation-Zen-Simple-Design-Delivery/dp/0321811984/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1379975645&amp;sr=1-1&amp;keywords=presentation+zen">Presentation Zen</a>“. So, I decided to give it a go. The book taught me how to deliver good slides which not just putting some bullet points in the slides along side with some pictures and expect that the audience will get what are you trying to say. Most of the time during the talk people should pay attention to you and not the slides. They should just glance your slide while listening to you. So, I cut all my text and swapped with images instead. In summary, the audience should not be reading the slide, they should be listening to you.</p>
-
-<p>Here’s the slides I used at the conference.</p>
-
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/wz2Ag4fywp2Lq7" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen=""> </iframe>
-<div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/ncharassinvichai/agile-thailand-2013-agile-in-startup" title="Agile Thailand 2013 - Agile in Startup" target="_blank">Agile Thailand 2013 - Agile in Startup</a> </strong> from <strong><a href="//www.slideshare.net/ncharassinvichai" target="_blank">Noppanit Charassinvichai</a></strong> </div>
-
-<h2 id="feedback">Feedback</h2>
-
-<p>Feedback or take aways I got from this conference was that I should be more prepared and keeping the time. I was rushing at the end of my talk and was not able to deliver what I wanted to say the most. Seconds, I need to prepare in advance and set the expectation what kind of audience I will be getting. Are they technical people? Or they are just business people? Will they be able to understand what I wanted to say? Last, I need to pick just one specific topic and talk about it rather than trying to fit a broad topic in just one hour.</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Sep 23rd, 2013</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/conference/'>conference</a>
-
-
-</div>
-	
-</div>
-</article>
-
 <nav id="pagenavi">
     
         
@@ -823,7 +895,7 @@ Sep 23rd, 2013</div>
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav>
 </div>
-	<footer id="footer" class="inner">Copyright &copy; 2016
+	<footer id="footer" class="inner">Copyright &copy; 2017
 
     Noppanit Charassinvichai
 

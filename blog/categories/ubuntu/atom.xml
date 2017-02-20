@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ubuntu | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/ubuntu/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2016-12-24T10:59:49-05:00</updated>
+  <updated>2017-02-20T13:32:04+07:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Mastering Vi Common in just 10 minutes]]></title>
     <link href="https://www.noppanit.com/masteing-vi-common-in-just-10-minutes/"/>
-    <updated>2010-01-05T00:00:00-05:00</updated>
+    <updated>2010-01-05T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/masteing-vi-common-in-just-10-minutes</id>
     <content type="html"><![CDATA[<p>I have just finished my Unix exam. I know somebody hates VI very much, because it is very hard to use. It is so command-line, something like that. But learning to use this editor is very useful because you never know when will you unable to use X-Window or when will you face with command-line configuration.</p>
 

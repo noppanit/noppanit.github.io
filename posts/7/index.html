@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I have just rolled off from a project using AngularJS and Play 2.1.1. It was a mobile website, I wish I could include the site here as well but it’s &hellip;">
+	<meta name="description" content="If you work on web development you probably have heard AngularJs at some point. It’s a framework created by people at Google. So, we can be sure in &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,65 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/my-thoughts-on-angularjs/">
+		
+			My Thoughts on AngularJs</a>
+	</h2>
+	<div class="entry-content">
+		<p>If you work on web development you probably have heard <a href="http://angularjs.org/" title="angularjs">AngularJs</a> at some point. It’s a framework created by people at Google. So, we can be sure in some level for people who working behind this project. To summarise this project in short, I’d say it’s a framework to help you build a web application in an MVC-style same as <a href="http://backbonejs.org/" title="backbone.js">Backbone.js</a> but easier I’d say. AngularJs extends HTML instead of fighting with the language, so you can easily write your own HTML to manipulate your page. I’d recommend have a look at the <a href="http://docs.angularjs.org/tutorial" title="angularjs tutorial">documentation</a> to understand more of AngularJs.</p>
+
+<h2 id="single-page-app">Single-page app</h2>
+
+<p>I guess this is a really buzz word for 2013. Single-page apps utilises AJAX to build a single page web application. So, user gets the same feeling as using native mobile application. I’d say this is the strongest point in AngularJs, if you’re thinking of building a simple single-page app AngularJs is worth to have a look for. However, you can also build a single-page application easily yourself but if you’re lazy like me, have a look at <a href="https://github.com/angular/angular-seed" title="angular-seed">angular-seed</a> to get you started quickly.</p>
+
+<h2 id="off-line-application">Off-line application</h2>
+
+<p>One thing that I really like about AngularJs is, it somehow enforces you to use client-side templating. So, you can make a request to your server and return data in JSON format which you can use AngularJs to manipulate that data to build a webpage. Also, you can cache those data in LocalStorage or use Browser caching so if users’ phone doesn’t have signal they can still use your application. Of course you can do the same with client-side templating like <a href="http://mustache.github.io/" title="mustache">mustache</a>.</p>
+
+<h2 id="learning-curve">Learning Curve</h2>
+
+<p>I’d said this is the biggest flaw of AngularJs because the documentation is not quite extensive. However, you can get by by asking people at stackoverflow or google forum. They’re plenty of people who can support you. Also, if you’re new to AngularJs it might take sometime to learn how to use AngularJs correctly. AngularJs would allow you to do anything as long as you’re not doing anything severely bad. AngularJs also won’t complain anything if you’re not following the desired design pattern. I’d strongly suggest you have a look at this <a href="https://www.youtube.com/watch?v=ZhfUv0spHCY" title="AngularJs Best Practices">video</a> to learn how to do things in AngularJs from the creators of AngularJs. It took me a while and a lot of trial-and-errors. For example, you can use <strong>$http</strong> instead of <strong>resource</strong>.</p>
+
+<h2 id="performance">Performance</h2>
+
+<p>If you search this ‘performance angularjs’ you’d find a lot of articles complaining about performance of AngularJs, which I also have encountered myself on my project. AngularJs uses technique called dirty-checking, which will check for changes of each object in your model. If you have a lot of objects in your model it’d substantially hurt your performance of the application. You have to keep an eye on the performance of your application and I’d suggest you use <a href="https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk?hl=en">AngularJs-Batarang</a> to find the hot spot. But most cases, it’s because you’re loading too many objects or please consider using pagination (I know I hate that too!). Lazy loading is also the technique I use to overcome this issue. Generally speaking, if you’re not doing something crazy I’d say angularjs is pretty fast and slick.</p>
+
+<h2 id="jquery">jQuery</h2>
+
+<p>One thing that I’d avoid as much as possible to do on mobile application is jQuery. It’s a huge framework for mobile phone. AngularJs comes with jQuery-lite which you can use popular methods like in jQuery without loading the whole jQuery framework in your application. So, if you think you have to use jQuery in your Angualarjs application please think twice. If you need to manipulate DOM you can try plain-old javascript to do that first, if it’s getting bloated then you can try jQuery but you have to keep an eye on the performance as well.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>In general, AngularJs is a good framework if you want to do single-page application or normal web-application in MVC style. I tried Backbone.js and I felt it’s really hard to grasp the concept. I find AngularJs more natural and intuitive. Performance is a big thing in AngularJs so you have to keep an eye on that if you have a lot of objects on your webpage it’ll hurt the load time because of dirty-checking.</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Jul 9th, 2013</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>javascript</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -886,85 +945,6 @@ Mar 8th, 2013</div>
 </div>
 </article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/lesson-learnt-from-data-cleansing-part-ii/">
-		
-			Lesson Learnt From Data Cleansing. Part II</a>
-	</h2>
-	<div class="entry-content">
-		<p>Ok as I have done the <a href="https://www.noppanit.com/lesson-learnt-from-data-cleansing/" title="data cleansing part I">part I</a> I have learnt another thing from data cleansing. I believe the best tool for data analysis is <a href="http://www.r-project.org/" title="R">R</a> but the learning is quite steep but I’m trying to learn it right now. Hopefully if I can get some results from this with neo4j I could move on to use R to get some more statistical results.</p>
-
-<p>Now, the second challenge I got was that the CSV file is about 1GB with around 100 columns and I was trying to use Ruby to parse that. Obviously, I got <strong>Killed</strong> results from my Terminal even before I got to the first line. So, Ruby has to load everything into memory and parse that. But as I’m running everything in my small Mac. It seems to be quite a challenging. So, what I have done is to dump everything to MySQL. This time works really good. MySQL has <a href="http://dev.mysql.com/doc/refman/5.1/en/load-data.html" title="Load data mysql">LOAD DATA FILE</a> which can load CSV file into a table. It only took me around <string>20 seconds&lt;/strong&gt; to load 1GB of CSV into a table. I dumped the table out and it was around 1GB which is not too bad. Now the next challenge was that I also had to filter out the events that were created by real users (I&#8217;m doing this [Kaggle competition][4]). I had around 3 million rows which is now that much. And I used MySQL which comes with XAMPP. My first query took me around 8 hours without spitting any results back. So, I gave up and did a couple research on how to make MySQL faster, but I&#8217;m not a DBA and I didn&#8217;t have time to read the whole book about MySQL performance tuning.</string></p>
-
-<p><strong>First attempt</strong><br />
-Index joined columns and changed the table schema to something small. I used <strong>VARCHAR(50)</strong> instead of <strong>VARCHAR(255)</strong> and of course I used <strong>NUMBER(3)</strong> instead of <strong>VARCHAR(5)</strong></p>
-
-<p>Still, I couldn’t get the results back in 1 hour which I think MySQL is better than that.</p>
-
-<p><strong>Second attempt</strong><br />
-So, I moved on to the next one. It looked like everybody on the Internet suggested <strong>key_buffer_size</strong> or <strong>key_buffer</strong> to 4G. And changed some of the variables to pimp MySQL up a little bit.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">  * query\_cache\_type = 1
-</span><span class="line">  * query\_cache\_size = 128M
-</span><span class="line">  * query\_cache\_limit = 128M&gt;</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Still, I couldn’t get the results back.</p>
-
-<p>And suddenly I caught something in my <strong>my.cnf</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class=""><span class="line"># Example MySQL config file for small systems.
-</span><span class="line"># This is for a system with little memory (&lt;= 64M) where MySQL is only used
-</span><span class="line"># from time to time and it's important that the mysqld daemon
-</span><span class="line"># doesn't use much resources.
-</span><span class="line">#
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>What is said was that XAMPP is tuned for a very small computer to be able to run basic PHP and MySQL application which is why my MySQL performed really bad in this case.</p>
-
-<p><strong>Final attempt</strong><br />
-I started my EC2 instance with 7GB of memory and installed MySQL (normal one) also some of the performance tuning variables. Now, I got the results back in just under 20 seconds to join two tables with around 3 millions rows.</p>
-
-<blockquote>
-  <p>Lesson learnt: Do not use MySQL from XAMPP for data that is big and use query that would get smaller results. For example, in my case instead of filtering out user_ids that don’t exist in Users table. I filtered user_ids that exist instead.</p>
-</blockquote>
-
-<p>I also thought about of using BigQuery from Google but I guess my data is rather small and can hardly be called big data. Next time, I might try to use BigQuery just for fun.</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Feb 11th, 2013</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/database/'>database</a>
-
-
-</div>
-	
-</div>
-</article>
-
 <nav id="pagenavi">
     
         
@@ -977,7 +957,7 @@ Feb 11th, 2013</div>
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav>
 </div>
-	<footer id="footer" class="inner">Copyright &copy; 2016
+	<footer id="footer" class="inner">Copyright &copy; 2017
 
     Noppanit Charassinvichai
 

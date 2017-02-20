@@ -4,7 +4,7 @@
   <title><![CDATA[Category: cosine similarity | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/cosine-similarity/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2016-12-24T10:59:49-05:00</updated>
+  <updated>2017-02-20T13:32:04+07:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Cosine Similarity for Dummies]]></title>
     <link href="https://www.noppanit.com/cosine-similarity-for-dummies/"/>
-    <updated>2015-10-29T21:35:17-04:00</updated>
+    <updated>2015-10-30T08:35:17+07:00</updated>
     <id>https://www.noppanit.com/cosine-similarity-for-dummies</id>
     <content type="html"><![CDATA[<p>Have you ever wonder how recommender system works? Or How Spotify or Amazon recommends what songs you might like or what product you might like to buy. I do. In this post, I’m going to try to explain how the recommendation algorithm works. First, let’s create a perfect scenario. I like to create an ideal example, it’s easier to understand.</p>
 

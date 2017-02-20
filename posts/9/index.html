@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I usually don’t blog about my trip, but this one it’s a bit different because I only had one day and I think Liechtenstein is a really nice country &hellip;">
+	<meta name="description" content="There are a lot of ways to scrape data out of a website, you could use any of your favourite computer language to GET a webpage and use HTML parser &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,103 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/google-refine-the-best-way-to-scrape-data-from-websites-that-i-like/">
+		
+			Google Refine the Best Way to Scrape Data From Websites That I Like.</a>
+	</h2>
+	<div class="entry-content">
+		<p>There are a lot of ways to scrape data out of a website, you could use any of your favourite computer language to GET a webpage and use HTML parser to get the data you need. But Google Refine comes with a lots of techniques to manipulate the data you scrapped and then export in any format you like with little or less coding. If you don’t know what Google Refine is I recommend watching some of the videos on their website <a href="http://code.google.com/p/google-refine/">here</a>.</p>
+
+<p>I think I cannot demonstrate how to scrape a website from any website, so I’m going to use my site for an example.</p>
+
+<ol>
+  <li>I would start with Excel and put the URL I want to scrape in the second row. I could have put in the first row but I would have to change the configuration in Google Refine.</li>
+</ol>
+
+<p><a href="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.31.01.png"><img src="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.31.01-300x87.png" alt="" title="Excel" width="300" height="87" class="alignnone size-medium wp-image-894" /></a></p>
+
+<ol>
+  <li>Create a project in Google Refine.</li>
+</ol>
+
+<p><a href="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.34.04.png"><img src="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.34.04-300x116.png" alt="" title="Create project Google Refine" width="300" height="116" class="alignnone size-medium wp-image-896" /></a></p>
+
+<ol>
+  <li>If successful you would see this.</li>
+</ol>
+
+<p><a href="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.34.35.png"><img src="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.34.35-300x121.png" alt="" title="Google Refine" width="300" height="121" class="alignnone size-medium wp-image-897" /></a></p>
+
+<ol>
+  <li>Then we will fetch the url.</li>
+</ol>
+
+<p><a href="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.36.31.png"><img src="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.36.31-300x276.png" alt="" title="Fetching url" width="300" height="276" class="alignnone size-medium wp-image-898" /></a></p>
+
+<ol>
+  <li>You can set the delay and give the column a name then click Ok. You can also use some formular or expression</li>
+</ol>
+
+<p><a href="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.37.31.png"><img src="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.37.31-300x228.png" alt="" title="Google Refine" width="300" height="228" class="alignnone size-medium wp-image-899" /></a></p>
+
+<ol>
+  <li>Then you would see that the content has been fetch and put into the column we named.</li>
+</ol>
+
+<p><a href="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.39.01.png"><img src="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.39.01-300x170.png" alt="" title="Page Content" width="300" height="170" class="alignnone size-medium wp-image-900" /></a></p>
+
+<ol>
+  <li>Then we will only extract the title of the page. Now this one is tricky because every website has its own HTML and we need to adapt the expression.</li>
+</ol>
+
+<p><a href="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.42.59.png"><img src="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.42.59-300x224.png" alt="" title="Google Refine Edit Column" width="300" height="224" class="alignnone size-medium wp-image-901" /></a></p>
+
+<p><a href="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.46.37.png"><img src="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.46.37-300x214.png" alt="" title="GREL" width="300" height="214" class="alignnone size-medium wp-image-903" /></a></p>
+
+<p>For this example I use this expression. So that means get me “#main-content article header h2 a” and “join” with “,”</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">forEach<span class="o">(</span>value.parseHtml<span class="o">()</span>.select<span class="o">(</span><span class="s2">&quot;#main-content article header h2 a&quot;</span><span class="o">)</span>, e, e.innerHtml<span class="o">())</span>.join<span class="o">(</span><span class="s2">&quot;,&quot;</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ol>
+  <li>Then we will change the shape of this data to be each title per row by using “Split multi-values cells”</li>
+</ol>
+
+<p><a href="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.48.17.png"><img src="https://www.noppanit.com/wp-content/uploads/2012/11/Screen-shot-2012-11-19-at-00.48.17-300x116.png" alt="" title="Split multi-valued cells" width="300" height="116" class="alignnone size-medium wp-image-904" /></a></p>
+
+<p>That’s it. But there are a lot of ways you could use Google Refine to manipulate your data. One thing that you need to be careful if you’re fetching a large data, if Google Refine could not finish the process in one go. You might have to start it over. So, if your connection is not reliable I would suggest using Amazon EC2. You could easily deploy Google Refine on the cloud. Also, do give a lot of memore to start Google Refine, otherwise you might get OutOfMemory in the middle of the process.</p>
+
+<p>One thing that I found out and I haven’t researched it throughly but I think Google Refine lacks is the ability to extract text by regular expression. You could match a text with regular expression but you cannot extract the text you want. But overall, it’s still the best tool for the job.</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Nov 18th, 2012</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -559,84 +656,6 @@ Feb 18th, 2012</div>
 </div>
 </article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/cucumber-capybara-sinatra/">
-		
-			Cucumber + Capybara + Sinatra</a>
-	</h2>
-	<div class="entry-content">
-		<p>This post is not to provide a tutorial of how to combine those three awesome applications together, but it might stop you from scratching your head when the test cannot be run correctly.</p>
-
-<ol>
-  <li>You need to have Sinatra in subclass style rather than classic style. <a href="http://www.sinatrarb.com/intro.html#Using%20a%20Classic%20Style%20Application%20with%20a%20config.ru" title="Sinatra subclass">Sinatra subclass-style</a></li>
-  <li>This is quite importance, you might find some website that is using Spec. but you need to change it to be “RSpec” in order for it to work.</li>
-</ol>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">),</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;/server.rb&#39;</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;rspec&#39;</span>
-</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;rspec/expectations&#39;</span>
-</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;rack/test&#39;</span>
-</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;capybara&#39;</span>
-</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;capybara/cucumber&#39;</span>
-</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;capybara/envjs&#39;</span>
-</span><span class="line">
-</span><span class="line"><span class="no">App</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="ss">:environment</span><span class="p">,</span> <span class="ss">:test</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line"><span class="no">World</span> <span class="k">do</span>
-</span><span class="line">  <span class="no">Capybara</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="no">App</span>
-</span><span class="line">  <span class="no">Capybara</span><span class="o">.</span><span class="n">javascript_driver</span> <span class="o">=</span> <span class="ss">:envjs</span>
-</span><span class="line">  <span class="kp">include</span> <span class="no">Capybara</span>
-</span><span class="line">  <span class="kp">include</span> <span class="no">RSpec</span><span class="o">::</span><span class="no">Expectations</span>
-</span><span class="line">  <span class="kp">include</span> <span class="no">RSpec</span><span class="o">::</span><span class="no">Matchers</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Jan 15th, 2012</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
-
-
-</div>
-	
-</div>
-</article>
-
 <nav id="pagenavi">
     
         
@@ -649,7 +668,7 @@ Jan 15th, 2012</div>
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav>
 </div>
-	<footer id="footer" class="inner">Copyright &copy; 2016
+	<footer id="footer" class="inner">Copyright &copy; 2017
 
     Noppanit Charassinvichai
 

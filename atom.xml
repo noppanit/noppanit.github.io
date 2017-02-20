@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2016-12-24T10:59:49-05:00</updated>
+  <updated>2017-02-20T13:32:04+07:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,9 +14,54 @@
 
   
   <entry>
+    <title type="html"><![CDATA[OSX convert raw DNG to JPG]]></title>
+    <link href="https://www.noppanit.com/osx-convert-raw-dng-to-jpg/"/>
+    <updated>2017-02-20T13:23:19+07:00</updated>
+    <id>https://www.noppanit.com/osx-convert-raw-dng-to-jpg</id>
+    <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>I like shooting raw and I’m still doing it. However, there’s a time when I had to Airdrop jpeg to my phone and I didn’t want to go into the trouble of import all the photos to Lightroom and export them again. So I turned to Google and here’s what I found.</p>
+
+<p>I’m lazy and I do most things in my terminal. Here’s the way you can do the same if you want to just quickly convert raw images to jpg.</p>
+
+<h2 id="solution">Solution</h2>
+
+<ol>
+  <li>You need <a href="http://www.cybercom.net/~dcoffin/dcraw">dcraw</a> which you can use <code>brew</code> to install</li>
+</ol>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">brew install dcraw
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ol>
+  <li>
+    <p>You need <a href="http://www.ijg.org/">cjpeg</a> which is from <code>libjpeg</code> so most likely you will have that already. Otherwise you can install by following these steps from <a href="http://www.mutaku.com/wp/index.php/2011/02/cook-your-raw-photos-into-jpeg-with-linux/">here</a></p>
+  </li>
+  <li>
+    <p>Go into your raw photos folder and run this command</p>
+  </li>
+</ol>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="k">for</span> i in *<span class="p">;</span> <span class="k">do</span> dcraw -c <span class="s2">&quot;$i&quot;</span> <span class="p">|</span> cjpeg -quality <span class="m">100</span> -optimize -progressive &gt; <span class="k">$(</span><span class="nb">echo</span> <span class="k">$(</span>basename <span class="s2">&quot;$i&quot;</span> <span class="s2">&quot;.crw&quot;</span><span class="k">)</span>.jpg<span class="k">)</span><span class="p">;</span> <span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This command will loop through all the files inside the folder and run <code>dcraw</code> command for each file then pipe it through <code>cjpeg</code> and same to the original name with <code>jpg</code> extension.</p>
+
+<p>I didn’t really check the quality as I just wanted to quickly post on Twitter.</p>
+
+<h3 id="reference">Reference</h3>
+<ol>
+  <li><a href="http://www.mutaku.com/wp/index.php/2011/02/cook-your-raw-photos-into-jpeg-with-linux/">http://www.mutaku.com/wp/index.php/2011/02/cook-your-raw-photos-into-jpeg-with-linux/</a></li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[python-request Connection aborted and broken pipe error]]></title>
     <link href="https://www.noppanit.com/python-request-connection-aborted-and-broken-pipe-error/"/>
-    <updated>2016-12-24T10:53:50-05:00</updated>
+    <updated>2016-12-24T22:53:50+07:00</updated>
     <id>https://www.noppanit.com/python-request-connection-aborted-and-broken-pipe-error</id>
     <content type="html"><![CDATA[<p>Ever wondered why your long running python script just bombs out mid-way?</p>
 
@@ -41,14 +86,14 @@
 <p>Hope this helps everyone.</p>
 
 <p>Reference:
-1. <a href="https://patrickmn.com/aside/how-to-keep-alive-ssh-sessions/">How to keep alive ssh session</a></p>
+- <a href="https://patrickmn.com/aside/how-to-keep-alive-ssh-sessions/">How to keep alive ssh session</a></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[A must item while travelling in Japan]]></title>
     <link href="https://www.noppanit.com/a-must-item-while-travelling-in-japan/"/>
-    <updated>2016-12-05T17:36:29-05:00</updated>
+    <updated>2016-12-06T05:36:29+07:00</updated>
     <id>https://www.noppanit.com/a-must-item-while-travelling-in-japan</id>
     <content type="html"><![CDATA[<h2 id="what-is-this-item">What is this item?</h2>
 <p>Short answer is. A pocket Wifi. Or some sort of a way for you to have Internet at your finger tip.</p>
@@ -92,7 +137,7 @@
   <entry>
     <title type="html"><![CDATA[Game of life for dummies]]></title>
     <link href="https://www.noppanit.com/game-of-life-for-dummies/"/>
-    <updated>2016-11-11T23:10:25-05:00</updated>
+    <updated>2016-11-12T11:10:25+07:00</updated>
     <id>https://www.noppanit.com/game-of-life-for-dummies</id>
     <content type="html"><![CDATA[<h2 id="game-of-life">Game of life</h2>
 
@@ -505,7 +550,7 @@
   <entry>
     <title type="html"><![CDATA[What is going on under your JavaScript code]]></title>
     <link href="https://www.noppanit.com/what-is-going-on-under-your-javascript-code/"/>
-    <updated>2016-10-04T01:41:25-04:00</updated>
+    <updated>2016-10-04T12:41:25+07:00</updated>
     <id>https://www.noppanit.com/what-is-going-on-under-your-javascript-code</id>
     <content type="html"><![CDATA[<p><strong>Disclaimer</strong></p>
 
@@ -796,7 +841,7 @@ Follow this <a href="https://github.com/v8/v8/wiki/Using%20Git">instruction</a>.
   <entry>
     <title type="html"><![CDATA[How to change your habit one task at a time]]></title>
     <link href="https://www.noppanit.com/how-to-change-your-habit-one-task-at-a-time/"/>
-    <updated>2016-03-02T08:49:31-05:00</updated>
+    <updated>2016-03-02T20:49:31+07:00</updated>
     <id>https://www.noppanit.com/how-to-change-your-habit-one-task-at-a-time</id>
     <content type="html"><![CDATA[<h2 id="are-you-struggling-to-get-anything-done">Are you struggling to get anything done?</h2>
 <p>Now we have this amazing tool that could change your life… I present to you <a href="https://habitica.com">Habitica</a>. If you click now you will get this tool for free. Does that sound like a Direct TV ad?.</p>
@@ -844,7 +889,7 @@ I wake up every morning, make my bed and click the checkbox. I earn XP and I fee
   <entry>
     <title type="html"><![CDATA[Gatling Cluster]]></title>
     <link href="https://www.noppanit.com/gatling-cluster/"/>
-    <updated>2016-02-17T20:28:25-05:00</updated>
+    <updated>2016-02-18T08:28:25+07:00</updated>
     <id>https://www.noppanit.com/gatling-cluster</id>
     <content type="html"><![CDATA[<h3 id="performance-matters">Performance matters</h3>
 <p>I think we can all agree that performance is one of the most important things in any application. That’s why we have performance or load testing. There’s a lot of tools out there we can choose from. But for this tutorial I pick <a href="http://gatling.io/#/">Gatling</a>.</p>
@@ -1016,7 +1061,7 @@ I wake up every morning, make my bed and click the checkbox. I earn XP and I fee
   <entry>
     <title type="html"><![CDATA[Round to the left most digit]]></title>
     <link href="https://www.noppanit.com/round-to-the-left-most-digit/"/>
-    <updated>2016-01-16T17:30:37-05:00</updated>
+    <updated>2016-01-17T05:30:37+07:00</updated>
     <id>https://www.noppanit.com/round-to-the-left-most-digit</id>
     <content type="html"><![CDATA[<p>It’s probably unusual for me to write anything about Math. I hated math and I failed the subject all the time. But I got pretty excited when I knew this trick from my colleague. I also asked this question at <a href="http://math.stackexchange.com/questions/1604448/how-to-find-out-if-a-number-is-a-hundred-or-thousand/1604474#1604474">stackoverflow</a>.</p>
 
@@ -1075,7 +1120,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[2016]]></title>
     <link href="https://www.noppanit.com/2016/"/>
-    <updated>2016-01-01T11:29:38-05:00</updated>
+    <updated>2016-01-01T23:29:38+07:00</updated>
     <id>https://www.noppanit.com/2016</id>
     <content type="html"><![CDATA[<h2 id="goals-for-2016">Goals for 2016</h2>
 
@@ -1116,7 +1161,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Retrospective 2015]]></title>
     <link href="https://www.noppanit.com/retrospective-2015/"/>
-    <updated>2015-12-24T14:26:19-05:00</updated>
+    <updated>2015-12-25T02:26:19+07:00</updated>
     <id>https://www.noppanit.com/retrospective-2015</id>
     <content type="html"><![CDATA[<h1 id="reflections-on-20152015">Reflections on <a href="https://www.noppanit.com/2015/">2015</a></h1>
 
@@ -1165,7 +1210,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Cosine Similarity for Dummies]]></title>
     <link href="https://www.noppanit.com/cosine-similarity-for-dummies/"/>
-    <updated>2015-10-29T21:35:17-04:00</updated>
+    <updated>2015-10-30T08:35:17+07:00</updated>
     <id>https://www.noppanit.com/cosine-similarity-for-dummies</id>
     <content type="html"><![CDATA[<p>Have you ever wonder how recommender system works? Or How Spotify or Amazon recommends what songs you might like or what product you might like to buy. I do. In this post, I’m going to try to explain how the recommendation algorithm works. First, let’s create a perfect scenario. I like to create an ideal example, it’s easier to understand.</p>
 
@@ -1236,7 +1281,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Python's Monkey patch for Dummies]]></title>
     <link href="https://www.noppanit.com/pythons-monkey-patch/"/>
-    <updated>2015-10-25T19:00:27-04:00</updated>
+    <updated>2015-10-26T06:00:27+07:00</updated>
     <id>https://www.noppanit.com/pythons-monkey-patch</id>
     <content type="html"><![CDATA[<p>Alright, I’m going to cut to the chase here. I’m having problems with Monkey patching in Python and I want to make it clear for myself and anybody who might stumble upon my post in the future. So, what’s the big deal here?</p>
 
@@ -1380,7 +1425,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Why you should or should not SSL your blog]]></title>
     <link href="https://www.noppanit.com/why-you-should-or-should-not-ssl-your-blog/"/>
-    <updated>2015-10-09T17:02:25-04:00</updated>
+    <updated>2015-10-10T04:02:25+07:00</updated>
     <id>https://www.noppanit.com/why-you-should-or-should-not-ssl-your-blog</id>
     <content type="html"><![CDATA[<p>After I switched to Octopress, I knew that I wanted to write about performance and SSL. Those are the main reasons why I switched.</p>
 
@@ -1454,7 +1499,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Why algorithm matters?]]></title>
     <link href="https://www.noppanit.com/why-algorithm-matters/"/>
-    <updated>2015-10-08T15:55:29-04:00</updated>
+    <updated>2015-10-09T02:55:29+07:00</updated>
     <id>https://www.noppanit.com/why-algorithm-matters</id>
     <content type="html"><![CDATA[<p>If you have been to one of those technical interviews, you will like this.</p>
 
@@ -1655,7 +1700,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Octopress on crack]]></title>
     <link href="https://www.noppanit.com/octopress-on-crack/"/>
-    <updated>2015-10-07T22:44:22-04:00</updated>
+    <updated>2015-10-08T09:44:22+07:00</updated>
     <id>https://www.noppanit.com/octopress-on-crack</id>
     <content type="html"><![CDATA[<p>I believe you will find a ton of blogs writing about makeing Octopress faster. I believe nearly everyone who migrated their blog to Octopress, the first post would be the migration and the next would be performance tuning. I want to be the cool kid so here you go.</p>
 
@@ -1732,7 +1777,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Migrated from WordPress to Octopress]]></title>
     <link href="https://www.noppanit.com/migrated-from-wordpress-to-octopress"/>
-    <updated>2015-10-02T15:39:34-04:00</updated>
+    <updated>2015-10-03T02:39:34+07:00</updated>
     <id>https://www.noppanit.com/migrated-from-wordpress-to-octopress</id>
     <content type="html"><![CDATA[<p>I have heard so much about Octopress but I haven’t got the time to actually get to know what it can offer. Finally, this week I finally made the time to migrate my blog to Octopress and I love it. Thanks to <a href="https://habitica.com">HabitRPG</a> and Pomodoro (These will be another blog).</p>
 
@@ -1830,7 +1875,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Code Review with the world]]></title>
     <link href="https://www.noppanit.com/code-review-with-the-world/"/>
-    <updated>2015-09-22T00:00:00-04:00</updated>
+    <updated>2015-09-22T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/code-review-with-the-world</id>
     <content type="html"><![CDATA[<h2 id="tldr">TL;DR</h2>
 
@@ -1886,7 +1931,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Maps all parking signs in NYC.]]></title>
     <link href="https://www.noppanit.com/maps-all-parking-signs-in-nyc/"/>
-    <updated>2015-07-30T00:00:00-04:00</updated>
+    <updated>2015-07-30T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/maps-all-parking-signs-in-nyc</id>
     <content type="html"><![CDATA[<p>This post might be too easy for any Data-viz people but as a beginner tapping in this area. It took me quite a long time to figure it out so I just want to share this hoping that it might save people’s time.</p>
 
@@ -2020,7 +2065,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[I&#8217;m never going back to modern editor again.]]></title>
     <link href="https://www.noppanit.com/im-never-going-back-to-modern-editor-again/"/>
-    <updated>2015-07-17T00:00:00-04:00</updated>
+    <updated>2015-07-17T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/im-never-going-back-to-modern-editor-again</id>
     <content type="html"><![CDATA[<p>Ok, the title might be a little bit exaggerating. But let me clear this up first. I still use modern editors, TextMate, Atom.io or IntelliJ. They are pros and cons. But here’s my real answer if people ask me. I want to be the cool kid!.</p>
 
@@ -2062,7 +2107,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[How to start doing TDD for jQuery plugin.]]></title>
     <link href="https://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin/"/>
-    <updated>2015-07-09T00:00:00-04:00</updated>
+    <updated>2015-07-09T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin</id>
     <content type="html"><![CDATA[<p>I’m a big fan of TDD. I get nervous every time when I put some code it without having tests. I’m developing a simple jQuery plugin and I think hey we can TDD this.</p>
 
@@ -2391,71 +2436,6 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>That’s it. I hope you enjoy and love TDD more. And here’s the <a href="https://github.com/noppanit/taggify">github repo</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[The most basic example of Linear Regression]]></title>
-    <link href="https://www.noppanit.com/the-most-basic-example-of-linear-regression/"/>
-    <updated>2015-07-07T00:00:00-04:00</updated>
-    <id>https://www.noppanit.com/the-most-basic-example-of-linear-regression</id>
-    <content type="html"><![CDATA[<p>Just for fun, I wanted to learn how to do linear regression and here’s the example I come up with.</p>
-
-<p>Let’s say you have a historical data of 1000 people who dined in your restaurant and left a tip. This is going to be perfect data because I generated. In the real world you will not find something like this.</p>
-
-<p>If you don’t understand Linear Regression like me before I wrote this post, I recommend you to read this <a href="http://onlinestatbook.com/2/regression/intro.html">basic linear regression.</a>.</p>
-
-<p>The idea is that you have two variables. In this case, it’s <strong>tips</strong> and <strong>total amount of bill</strong>. You should explore the data by plotting the graph of these two variables. From my generated data you will get something like this.</p>
-
-<p><img src="wp-content/uploads/2015/07/Screenshot-2015-07-07-00.54.42.jpg" title="Linear Regression" /></p>
-
-<p>You can clearly see that there’s a strong correlation between the amount of tip and meal.</p>
-
-<p>Now if you can find the slope of the graph and intercept you should be able to use the formula.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">Y = MX + C
-</span><span class="line">
-</span><span class="line">M = slope of the graph
-</span><span class="line">C = Intercept</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>If you’re lazy to look at my <a href="https://github.com/noppanit/linear-regression-basic">notebook</a>.</p>
-
-<p>Then you can run this code.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-</span><span class="line"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-</span><span class="line"><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-</span><span class="line">
-</span><span class="line"><span class="n">total_bills</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-</span><span class="line"><span class="n">tips</span> <span class="o">=</span> <span class="n">total_bills</span> <span class="o">*</span> <span class="mf">0.10</span>
-</span><span class="line">
-</span><span class="line"><span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;tips&#39;</span><span class="p">)</span>
-</span><span class="line"><span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">total_bills</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;total_bills&#39;</span><span class="p">)</span>
-</span><span class="line"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line"><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">total_bills</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">tips</span><span class="p">)</span>
-</span><span class="line"><span class="n">predicted_tips</span> <span class="o">=</span> <span class="p">(</span><span class="n">slope</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span> <span class="o">+</span> <span class="n">intercept</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The result is $7 which corresponds to the 10% tip.</p>
 
 ]]></content>
   </entry>

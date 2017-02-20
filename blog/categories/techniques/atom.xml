@@ -4,7 +4,7 @@
   <title><![CDATA[Category: techniques | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/techniques/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2016-12-24T10:59:49-05:00</updated>
+  <updated>2017-02-20T13:32:04+07:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Installing SSL on Amazon CloudFront]]></title>
     <link href="https://www.noppanit.com/installing-ssl-on-amazon-cloudfront/"/>
-    <updated>2015-05-22T00:00:00-04:00</updated>
+    <updated>2015-05-22T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/installing-ssl-on-amazon-cloudfront</id>
     <content type="html"><![CDATA[<p>We have just installed SSL on our Amazon CloudFront. We followed this <a href="https://bryce.fisher-fleig.org/blog/setting-up-ssl-on-aws-cloudfront-and-s3/">blog post</a> from Bryce which I think it’s really good already. However, I was stuck on the last part where you have to upload the certificate to IAM. The difference is that I had to concatenate the crt files myself and I didn’t know how to do it. So I spent quite a long time to figure it out. I thought I would write this so it might help save sometime for anybody.</p>
 
@@ -130,7 +130,7 @@ Intermediate certificate 1
   <entry>
     <title type="html"><![CDATA[How to : A Hand-made cigarette]]></title>
     <link href="https://www.noppanit.com/how-to-a-hand-made-cigarette/"/>
-    <updated>2007-12-12T00:00:00-05:00</updated>
+    <updated>2007-12-12T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/how-to-a-hand-made-cigarette</id>
     <content type="html"><![CDATA[<p>I have been astonishing by this hand-made cigarette in England. It is made by my friend- Not. It is step by step. It’s dead simple. Have a good look.</p>
 
@@ -159,7 +159,7 @@ Intermediate certificate 1
   <entry>
     <title type="html"><![CDATA[HowTo : CPL Filter]]></title>
     <link href="https://www.noppanit.com/howto-cpl-filter/"/>
-    <updated>2007-07-17T00:00:00-04:00</updated>
+    <updated>2007-07-17T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/howto-cpl-filter</id>
     <content type="html"><![CDATA[<p>This topic I will record about how to use CPL filter, because I have bought this filter about 5 months. However, I couldn’t use it well, until now.</p>
 

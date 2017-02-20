@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="This rarely happens and you would be surprised what is the cause of this. Recently, I have just finished a mobile site using knockout.js. I have &hellip;">
+	<meta name="description" content="I recently moved to NYC and I just got a pre-paid T-Mobile just to try it out how it goes. And this is what I tweeted and got a reply back from T- &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,45 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/twitter-good-tool-customer-support-used-carefully/">
+		
+			Twitter Is a Good Tool for Customer Support if Used Carefully.</a>
+	</h2>
+	<div class="entry-content">
+		<p>I recently moved to NYC and I just got a pre-paid T-Mobile just to try it out how it goes. And this is what I tweeted and got a reply back from T-Mobile.</p>
+
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">After just one week of <a href="https://twitter.com/TMobile">@TMobile</a> in NYC. I&#39;m not quite impressed with the coverage. <a href="https://twitter.com/hashtag/hmm?src=hash">#hmm</a></p>&mdash; Noppanit (Toy) (@noppanit) <a href="https://twitter.com/noppanit/status/519437198610137088">October 7, 2014</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>I think they might have got hundred of tweets a day. So they might have slipped. The first when I read this I quickly scrolled up to see if I got a typo. But they’re right though I chose T-Mobile. Just a little laugh for me today.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Oct 7th, 2014</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -662,128 +701,6 @@ Jan 23rd, 2014</div>
 </div>
 </article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/thinking-functionally-for-idiots/">
-		
-			Thinking Functionally for Idiots.</a>
-	</h2>
-	<div class="entry-content">
-		<p>I just want to write this post for myself and lucky people who found this post from Google. The world has come to the era of functional. When I pair with my colleagues I always hear “That’s not so functional” or “Should we use Guava or functional Java” or “Wouldn’t it be easier if we use Scala”?. What do these mean? Why should I have to care if my code looks functional and what benefits do I get. This post is going to be a really easy post to follow that’s why the title “Thinking functionally for idiots”. If you want more technical I highly recommend this <a href="http://www.ibm.com/developerworks/java/library/j-ft1/index.html" title="Thinking functionally Part I">post</a> from Neal Ford.</p>
-
-<p><strong>Why functional programming?</strong><br />
-There are a few concepts of functional programming but you can find the full concepts <a href="https://en.wikipedia.org/wiki/Functional_programming#Concepts">here</a>. I don’t really want to explain about higher-order or first-class functions because someone else can explain it better than myself. In summary, I really think the benefits of doing functional programming is you tend to avoid bugs and the code might be more readable. These can be achieved by avoiding state and mutable data which most of the sites seem to refer to these two benefits. I would like to show this in a simple example.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span> <span class="o">,</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">);</span>
-</span><span class="line">
-</span><span class="line"><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">multipledByTwo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span>
-</span><span class="line">
-</span><span class="line"><span class="k">for</span><span class="o">(</span><span class="n">Integer</span> <span class="n">number</span> <span class="o">:</span> <span class="n">numbers</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">	<span class="n">multipledByTwo</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">number</span> <span class="o">*</span> <span class="mi">2</span><span class="o">);</span>
-</span><span class="line"><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>You can see that this piece of code is really simple and what it’s doing is just multiply every element of the list by two. What’s wrong with this piece of code? First of all, <strong>multipledByTwo</strong> list acts like a temporary list which holds the answer and programmer can do something else with it.</p>
-
-<p>Let’s see another example. This is the modified version to be more functional.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="c1">// Interface</span>
-</span><span class="line"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Function</span><span class="o">&lt;</span><span class="n">S</span><span class="o">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
-</span><span class="line">    <span class="n">T</span> <span class="nf">apply</span><span class="o">(</span><span class="n">S</span> <span class="n">in</span><span class="o">);</span>
-</span><span class="line"><span class="o">}</span>
-</span><span class="line">
-</span><span class="line"><span class="c1">// MappingClass</span>
-</span><span class="line"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">MappingClass</span><span class="o">&lt;</span><span class="n">S</span><span class="o">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
-</span><span class="line">    <span class="kd">protected</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">map</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">,</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">S</span><span class="o">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">fun</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">        <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;();</span>
-</span><span class="line">        <span class="k">for</span><span class="o">(</span><span class="n">S</span> <span class="n">item</span> <span class="o">:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">            <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">fun</span><span class="o">.</span><span class="na">apply</span><span class="o">(</span><span class="n">item</span><span class="o">));</span>
-</span><span class="line">        <span class="o">}</span>
-</span><span class="line">        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
-</span><span class="line">    <span class="o">}</span>
-</span><span class="line"><span class="o">}</span>
-</span><span class="line">
-</span><span class="line"><span class="c1">// To Test</span>
-</span><span class="line">
-</span><span class="line">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>
-</span><span class="line">        <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="n">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">);</span>
-</span><span class="line">        <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">results</span> <span class="o">=</span> <span class="n">map</span><span class="o">(</span><span class="n">numbers</span><span class="o">,</span> <span class="k">new</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
-</span><span class="line">            <span class="nd">@Override</span>
-</span><span class="line">            <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">apply</span><span class="o">(</span><span class="n">Integer</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">                <span class="k">return</span> <span class="n">input</span> <span class="o">*</span> <span class="mi">2</span><span class="o">;</span>
-</span><span class="line">            <span class="o">}</span>
-</span><span class="line">        <span class="o">});</span>
-</span><span class="line">
-</span><span class="line">        <span class="k">return</span> <span class="n">results</span><span class="o">;</span>
-</span><span class="line">    <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>We create one generic function which is the interface <strong>Function</strong> this will represent higher-order function which we can parse to another method. Then we create a recursive method which will execute the function and put in another list. This way we don’t create mutable object and we don’t retain any state. What comes in the function comes out as the results.</p>
-
-<p>What do you think? Is this better than the other? If it’s Java I highly doubt that. Java is still not mature enough to do functional programming. But things are looking better in Java 8.</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Jan 20th, 2014</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/java/'>java</a>
-
-
-</div>
-	
-</div>
-</article>
-
 <nav id="pagenavi">
     
         
@@ -796,7 +713,7 @@ Jan 20th, 2014</div>
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav>
 </div>
-	<footer id="footer" class="inner">Copyright &copy; 2016
+	<footer id="footer" class="inner">Copyright &copy; 2017
 
     Noppanit Charassinvichai
 

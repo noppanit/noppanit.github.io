@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Alright, I’m going to cut to the chase here. I’m having problems with Monkey patching in Python and I want to make it clear for myself and anybody &hellip;">
+	<meta name="description" content="Have you ever wonder how recommender system works? Or How Spotify or Amazon recommends what songs you might like or what product you might like to &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,102 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/cosine-similarity-for-dummies/">
+		
+			Cosine Similarity for Dummies</a>
+	</h2>
+	<div class="entry-content">
+		<p>Have you ever wonder how recommender system works? Or How Spotify or Amazon recommends what songs you might like or what product you might like to buy. I do. In this post, I’m going to try to explain how the recommendation algorithm works. First, let’s create a perfect scenario. I like to create an ideal example, it’s easier to understand.</p>
+
+<p>Let’s say you have a very simple data of movies that users like collected from your site and you would like to match those people together based on their interests. How would you do that? One of the most popular methods is <a href="https://en.wikipedia.org/wiki/Cosine_similarity">Cosine Similarity</a>. When I first saw the name I was so confused; why Cosine? I remember when I was a kid I remembered my teacher told me about trigonometry so why does it have to do with that?</p>
+
+<p>Here’s the sample data.</p>
+
+<p>User 1 likes these movies</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">['Superman', 'Walking Dead', 'CSI']</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>User 2 likes these movies</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">['Superman', 'Walking Dead', 'CSI']</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Even without any algorithm we can say that two users like the same movies. But we want the algorithm to tell us that the two users are very similar. Before we get into the mathematical formula world. We have to understand what a vector is?</p>
+
+<h1 id="whats-a-vector">What’s a vector?</h1>
+<p>In Pyhsics, a vector has two things; magnitude and direction which can be written as</p>
+
+<p><img src="/wp-content/uploads/2015/11/vector.png" title="Vector" /></p>
+
+<p>I’d like to explain what a vector is but this <a href="http://immersivemath.com/ila/ch02_vectors/ch02.html">site</a> explains a lot better.</p>
+
+<p>However, in Computer Science, 1-dimentional array is called a <a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>. But <code>list</code> in Python cannot perform vector operation so we have to use <code>numpy</code> or you have to build your own which I don’t recommend.</p>
+
+<p>Now we know what a vector is but how does it relate to Cosine Similarity. In a nutshell, Cosine Similarity is <a href="http://blog.christianperone.com/2013/09/machine-learning-cosine-similarity-for-vector-space-models-part-iii/">a measure that calculates the cosine of the angle between them</a>.</p>
+
+<h1 id="cosine-similarity">Cosine Similarity</h1>
+
+<p><img src="/wp-content/uploads/2015/11/cosine_similarity.gif" title="Cosine Similarity" /></p>
+
+<p>In order to find the angle between the two vectors, we need to find the dot product of the two vectors as the formula below.</p>
+
+<p>\begin{align}
+\text{cosine-similarity}(A,B) = \frac{\left&lt;A,B\right&gt;}{||A||\cdot||B||}
+\end{align}</p>
+
+<h1 id="show-me-the-code">Show me the code</h1>
+
+<p>Ok. enough about explanation, show me the code.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">cosin_sim</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+</span><span class="line">
+</span><span class="line"><span class="c"># 1 if movie is in the list of movies and 0 is not. </span>
+</span><span class="line"><span class="n">cosin_sim</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</span><span class="line"><span class="c"># 1.0</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>In the perfect example, we can see that the two users have the same interests.</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Oct 30th, 2015</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/cosine-similarity/'>cosine similarity</a>, <a class='category' href='/blog/categories/machine-learning/'>machine learning</a>, <a class='category' href='/blog/categories/python/'>python</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -241,7 +337,7 @@
 
 
 
-Oct 25th, 2015</div>
+Oct 26th, 2015</div>
 	<div class="tags">
 
 
@@ -340,7 +436,7 @@ Oct 25th, 2015</div>
 
 
 
-Oct 9th, 2015</div>
+Oct 10th, 2015</div>
 	<div class="tags">
 
 </div>
@@ -562,7 +658,7 @@ Oct 9th, 2015</div>
 
 
 
-Oct 8th, 2015</div>
+Oct 9th, 2015</div>
 	<div class="tags">
 
 
@@ -664,7 +760,7 @@ Oct 8th, 2015</div>
 
 
 
-Oct 7th, 2015</div>
+Oct 8th, 2015</div>
 	<div class="tags">
 
 
@@ -787,7 +883,7 @@ Oct 7th, 2015</div>
 
 
 
-Oct 2nd, 2015</div>
+Oct 3rd, 2015</div>
 	<div class="tags">
 
 
@@ -1467,96 +1563,6 @@ Jul 9th, 2015</div>
 </div>
 </article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/the-most-basic-example-of-linear-regression/">
-		
-			The Most Basic Example of Linear Regression</a>
-	</h2>
-	<div class="entry-content">
-		<p>Just for fun, I wanted to learn how to do linear regression and here’s the example I come up with.</p>
-
-<p>Let’s say you have a historical data of 1000 people who dined in your restaurant and left a tip. This is going to be perfect data because I generated. In the real world you will not find something like this.</p>
-
-<p>If you don’t understand Linear Regression like me before I wrote this post, I recommend you to read this <a href="http://onlinestatbook.com/2/regression/intro.html">basic linear regression.</a>.</p>
-
-<p>The idea is that you have two variables. In this case, it’s <strong>tips</strong> and <strong>total amount of bill</strong>. You should explore the data by plotting the graph of these two variables. From my generated data you will get something like this.</p>
-
-<p><img src="wp-content/uploads/2015/07/Screenshot-2015-07-07-00.54.42.jpg" title="Linear Regression" /></p>
-
-<p>You can clearly see that there’s a strong correlation between the amount of tip and meal.</p>
-
-<p>Now if you can find the slope of the graph and intercept you should be able to use the formula.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">Y = MX + C
-</span><span class="line">
-</span><span class="line">M = slope of the graph
-</span><span class="line">C = Intercept</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>If you’re lazy to look at my <a href="https://github.com/noppanit/linear-regression-basic">notebook</a>.</p>
-
-<p>Then you can run this code.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-</span><span class="line"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-</span><span class="line"><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-</span><span class="line">
-</span><span class="line"><span class="n">total_bills</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-</span><span class="line"><span class="n">tips</span> <span class="o">=</span> <span class="n">total_bills</span> <span class="o">*</span> <span class="mf">0.10</span>
-</span><span class="line">
-</span><span class="line"><span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;tips&#39;</span><span class="p">)</span>
-</span><span class="line"><span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">total_bills</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;total_bills&#39;</span><span class="p">)</span>
-</span><span class="line"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line"><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">total_bills</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">tips</span><span class="p">)</span>
-</span><span class="line"><span class="n">predicted_tips</span> <span class="o">=</span> <span class="p">(</span><span class="n">slope</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span> <span class="o">+</span> <span class="n">intercept</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The result is $7 which corresponds to the 10% tip.</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Jul 7th, 2015</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
-
-
-</div>
-	
-</div>
-</article>
-
 <nav id="pagenavi">
     
         
@@ -1569,7 +1575,7 @@ Jul 7th, 2015</div>
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav>
 </div>
-	<footer id="footer" class="inner">Copyright &copy; 2016
+	<footer id="footer" class="inner">Copyright &copy; 2017
 
     Noppanit Charassinvichai
 

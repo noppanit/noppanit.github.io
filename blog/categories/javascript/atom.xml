@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2016-12-24T10:59:49-05:00</updated>
+  <updated>2017-02-20T13:32:04+07:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[What is going on under your JavaScript code]]></title>
     <link href="https://www.noppanit.com/what-is-going-on-under-your-javascript-code/"/>
-    <updated>2016-10-04T01:41:25-04:00</updated>
+    <updated>2016-10-04T12:41:25+07:00</updated>
     <id>https://www.noppanit.com/what-is-going-on-under-your-javascript-code</id>
     <content type="html"><![CDATA[<p><strong>Disclaimer</strong></p>
 
@@ -225,7 +225,7 @@ ast_id  pc_offset  loop_depth</p>
   <entry>
     <title type="html"><![CDATA[Example: How did I convert async code to sync code with Promise.]]></title>
     <link href="https://www.noppanit.com/example-how-did-i-convert-async-code-to-sync-code-with-promise/"/>
-    <updated>2015-05-24T00:00:00-04:00</updated>
+    <updated>2015-05-24T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/example-how-did-i-convert-async-code-to-sync-code-with-promise</id>
     <content type="html"><![CDATA[<p>I’ve just finished my first refactor to convert my node.js code to be more promisey (I believe that’s the word they use these days). There’s lots of documents out there to do this. However, I thought I should contribute more to help me understand more and might get some feedback from people who’s seen it as well.</p>
 
@@ -394,7 +394,7 @@ console.log(error);   }); };
   <entry>
     <title type="html"><![CDATA[Event delegation in JavaScript is fast but how fast?]]></title>
     <link href="https://www.noppanit.com/event-delegation-javascript-fast-fast/"/>
-    <updated>2014-11-22T00:00:00-05:00</updated>
+    <updated>2014-11-22T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/event-delegation-javascript-fast-fast</id>
     <content type="html"><![CDATA[<p>People say always use event delegation for adding event because it’s faster. But how fast exactly? I really want to create a test case for this, but I couldn’t figure out how to run B[enchmark.js][1] in browser. So, I thought we could just use Chrome Developer Tool to achieve this.</p>
 
@@ -480,7 +480,7 @@ This is just an easy example that you can do it yourself to improve your perform
   <entry>
     <title type="html"><![CDATA[Knockout.js virtual elements are being stripped out from mobile.]]></title>
     <link href="https://www.noppanit.com/knockout-js-virtual-elements-stripped-mobile/"/>
-    <updated>2014-10-07T00:00:00-04:00</updated>
+    <updated>2014-10-07T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/knockout-js-virtual-elements-stripped-mobile</id>
     <content type="html"><![CDATA[<p>This rarely happens and you would be surprised what is the cause of this. Recently, I have just finished a mobile site using knockout.js. I have used a fair amount of Virtual Elements in Knockout.js. But weirdly enough one day my Manager came in and talk to my <a href="https://twitter.com/sragu" title="Srini">tech lead</a> (@sragu) that the site is not working. We quickly checked with our live site and everything was ok yet the site from his phone wasn’t working at all.</p>
 
@@ -500,7 +500,7 @@ Cache-Control: no-transform
   <entry>
     <title type="html"><![CDATA[Contextual Preloading for Ajax request.]]></title>
     <link href="https://www.noppanit.com/contextual-preloading-ajax-request/"/>
-    <updated>2014-05-10T00:00:00-04:00</updated>
+    <updated>2014-05-10T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/contextual-preloading-ajax-request</id>
     <content type="html"><![CDATA[<p>I have just heard this from my friend <a href="https://twitter.com/rajveerr" title="rajveerr twitter">@rajveerr</a> about pre-loading at the global level, this concept is not new but I have just learned it.. Usually and I think everyone has done it before. People would do something like this.</p>
 

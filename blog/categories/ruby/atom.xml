@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2016-12-24T10:59:49-05:00</updated>
+  <updated>2017-02-20T13:32:04+07:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Lesson learnt from data cleansing. Part I]]></title>
     <link href="https://www.noppanit.com/lesson-learnt-from-data-cleansing/"/>
-    <updated>2013-02-07T00:00:00-05:00</updated>
+    <updated>2013-02-07T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/lesson-learnt-from-data-cleansing</id>
     <content type="html"><![CDATA[<p>Lately, I have been experimenting on <a href="http://www.kaggle.com/c/event-recommendation-engine-challenge">Kaggle competition</a>. This is the one I chose because I want to use neo4j to give some recommendation or in a sense I want to do unsupervised learning. From day one I faced a lot of problem dealing with a lot of data and they are not clean in a way. For example, in this competition, there is users dataset which contains all the users. And there is a friend dataset which contains all the friends. The data look like this.</p>
 
@@ -56,7 +56,7 @@ I couldn’t believe that this will be the simplest and most effective way. What
   <entry>
     <title type="html"><![CDATA[Enable Defalter compression for Sinatra on Heroku]]></title>
     <link href="https://www.noppanit.com/enable-defalter-compression-for-sinatra-on-herok/"/>
-    <updated>2013-01-15T00:00:00-05:00</updated>
+    <updated>2013-01-15T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/enable-defalter-compression-for-sinatra-on-herok</id>
     <content type="html"><![CDATA[<p>You guys must have heard about PageSpeed test from Google. It’s a really cool plugin for Chrome to let you know how you can optimize your webpage faster. I have been using it for a while but I couldn’t get my head around gzip compression which it seems that Google has taken that seriously. If you want the science bit. Here’s the <a href="https://developers.google.com/speed/articles/gzip" title="gzip">article</a> from Google.</p>
 
@@ -76,7 +76,7 @@ run Sinatra::Application
   <entry>
     <title type="html"><![CDATA[DIY : Run RSpec test inside Sublime Text 2]]></title>
     <link href="https://www.noppanit.com/diy-run-rspec-test-inside-sublime-text-2/"/>
-    <updated>2012-12-30T00:00:00-05:00</updated>
+    <updated>2012-12-30T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/diy-run-rspec-test-inside-sublime-text-2</id>
     <content type="html"><![CDATA[<p>I guess everybody loves Sublime Text2. I switched from TextMate to Sublime Text 2 and I absolutely love it. Now, when you are writing some tests and want to run it immediately rather than keep switching windows to your terminal you can run your spec inside Sublime Text 2.</p>
 
@@ -114,7 +114,7 @@ subl .
   <entry>
     <title type="html"><![CDATA[How to call haml outside sinatra or Rails?]]></title>
     <link href="https://www.noppanit.com/how-to-call-haml-outside-sinatra-or-rails/"/>
-    <updated>2012-04-01T00:00:00-04:00</updated>
+    <updated>2012-04-01T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/how-to-call-haml-outside-sinatra-or-rails</id>
     <content type="html"><![CDATA[<p>People would think why would you want to do that. Well, in my case I just want to use haml to generate html for me in Test so that I could inject that in to Pusher to test the functionality of the feed page. I could use static html string, but if I change haml I don’t want to come back to the test and change the string again.</p>
 
@@ -151,7 +151,7 @@ subl .
   <entry>
     <title type="html"><![CDATA[Ruby : Command-line twitter client made easy]]></title>
     <link href="https://www.noppanit.com/ruby-command-line-twitter-client-made-easy/"/>
-    <updated>2011-02-27T00:00:00-05:00</updated>
+    <updated>2011-02-27T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/ruby-command-line-twitter-client-made-easy</id>
     <content type="html"><![CDATA[<p>Have you every told off that you’re playing in your work? Why do you have to open a browser twitter.com to be so obvious that you’re not doing your job well. Well, you can build a command-line twitter client very easy. So, you will be one of the geeks who use terminal all the time and your boss won’t know that you’re on twitter all the time.</p>
 

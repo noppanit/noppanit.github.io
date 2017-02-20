@@ -4,7 +4,7 @@
   <title><![CDATA[Category: knowledges | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/knowledges/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2016-12-24T10:59:49-05:00</updated>
+  <updated>2017-02-20T13:32:04+07:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Migrated from WordPress to Octopress]]></title>
     <link href="https://www.noppanit.com/migrated-from-wordpress-to-octopress"/>
-    <updated>2015-10-02T15:39:34-04:00</updated>
+    <updated>2015-10-03T02:39:34+07:00</updated>
     <id>https://www.noppanit.com/migrated-from-wordpress-to-octopress</id>
     <content type="html"><![CDATA[<p>I have heard so much about Octopress but I haven’t got the time to actually get to know what it can offer. Finally, this week I finally made the time to migrate my blog to Octopress and I love it. Thanks to <a href="https://habitica.com">HabitRPG</a> and Pomodoro (These will be another blog).</p>
 
@@ -114,7 +114,7 @@ find . -type f -exec gsed -i "s/\(title: .*\)/\1\ncomments: true/" {} \;
   <entry>
     <title type="html"><![CDATA[Code Review with the world]]></title>
     <link href="https://www.noppanit.com/code-review-with-the-world/"/>
-    <updated>2015-09-22T00:00:00-04:00</updated>
+    <updated>2015-09-22T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/code-review-with-the-world</id>
     <content type="html"><![CDATA[<h2 id="tldr">TL;DR</h2>
 
@@ -170,7 +170,7 @@ find . -type f -exec gsed -i "s/\(title: .*\)/\1\ncomments: true/" {} \;
   <entry>
     <title type="html"><![CDATA[Maps all parking signs in NYC.]]></title>
     <link href="https://www.noppanit.com/maps-all-parking-signs-in-nyc/"/>
-    <updated>2015-07-30T00:00:00-04:00</updated>
+    <updated>2015-07-30T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/maps-all-parking-signs-in-nyc</id>
     <content type="html"><![CDATA[<p>This post might be too easy for any Data-viz people but as a beginner tapping in this area. It took me quite a long time to figure it out so I just want to share this hoping that it might save people’s time.</p>
 
@@ -288,7 +288,7 @@ calculate_long_lat &lt;- function(x,y) {</p>
   <entry>
     <title type="html"><![CDATA[I&#8217;m never going back to modern editor again.]]></title>
     <link href="https://www.noppanit.com/im-never-going-back-to-modern-editor-again/"/>
-    <updated>2015-07-17T00:00:00-04:00</updated>
+    <updated>2015-07-17T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/im-never-going-back-to-modern-editor-again</id>
     <content type="html"><![CDATA[<p>Ok, the title might be a little bit exaggerating. But let me clear this up first. I still use modern editors, TextMate, Atom.io or IntelliJ. They are pros and cons. But here’s my real answer if people ask me. I want to be the cool kid!.</p>
 
@@ -330,7 +330,7 @@ calculate_long_lat &lt;- function(x,y) {</p>
   <entry>
     <title type="html"><![CDATA[How to start doing TDD for jQuery plugin.]]></title>
     <link href="https://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin/"/>
-    <updated>2015-07-09T00:00:00-04:00</updated>
+    <updated>2015-07-09T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin</id>
     <content type="html"><![CDATA[<p>I’m a big fan of TDD. I get nervous every time when I put some code it without having tests. I’m developing a simple jQuery plugin and I think hey we can TDD this.</p>
 

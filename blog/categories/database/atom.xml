@@ -4,7 +4,7 @@
   <title><![CDATA[Category: database | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/database/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2016-12-24T10:59:49-05:00</updated>
+  <updated>2017-02-20T13:32:04+07:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Lesson learnt from data cleansing. Part II]]></title>
     <link href="https://www.noppanit.com/lesson-learnt-from-data-cleansing-part-ii/"/>
-    <updated>2013-02-11T00:00:00-05:00</updated>
+    <updated>2013-02-11T00:00:00+07:00</updated>
     <id>https://www.noppanit.com/lesson-learnt-from-data-cleansing-part-ii</id>
     <content type="html"><![CDATA[<p>Ok as I have done the <a href="https://www.noppanit.com/lesson-learnt-from-data-cleansing/" title="data cleansing part I">part I</a> I have learnt another thing from data cleansing. I believe the best tool for data analysis is <a href="http://www.r-project.org/" title="R">R</a> but the learning is quite steep but I’m trying to learn it right now. Hopefully if I can get some results from this with neo4j I could move on to use R to get some more statistical results.</p>
 
