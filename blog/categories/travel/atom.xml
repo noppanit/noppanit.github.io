@@ -4,7 +4,7 @@
   <title><![CDATA[Category: travel | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/travel/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2017-02-20T13:32:04+07:00</updated>
+  <updated>2017-02-25T22:44:36-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,9 +14,25 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Pay in local currency while you are travelling. It is cheaper]]></title>
+    <link href="https://www.noppanit.com/pay-in-local-currency-while-you-are-travelling-it-is-cheaper/"/>
+    <updated>2017-02-25T22:20:49-05:00</updated>
+    <id>https://www.noppanit.com/pay-in-local-currency-while-you-are-travelling-it-is-cheaper</id>
+    <content type="html"><![CDATA[<h2 id="should-you-pay-in-local-or-home-currency-while-travelling">Should you pay in local or home currency while travelling?</h2>
+<p>Short answer. Pay in local currency. For example, I have a credit card from the US and I’m going to be in Hong Kong for my vacation. I should pay in Hong Kong dollar.</p>
+
+<p>Long answer. There’s something about <a href="https://en.wikipedia.org/wiki/Dynamic_currency_conversion">DCC</a> that you have to pay a small fee for the customer to see the amount in home currency in the receipt. Here’s an example.</p>
+
+<p>{% img /wp-content/uploads/2017/02/credit-card-receipt.jpg 250 250 ‘Credit card receipt’ %}</p>
+
+<p>If I had paid in US dollar, I would have paid \$0.81 more. It doesn’t seem like a lot but it definitely adds up. I checked my credit card transaction and it showed \$19.33. It’s also good if you can get the card that doesn’t charge foreign transaction fee.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[A must item while travelling in Japan]]></title>
     <link href="https://www.noppanit.com/a-must-item-while-travelling-in-japan/"/>
-    <updated>2016-12-06T05:36:29+07:00</updated>
+    <updated>2016-12-05T17:36:29-05:00</updated>
     <id>https://www.noppanit.com/a-must-item-while-travelling-in-japan</id>
     <content type="html"><![CDATA[<h2 id="what-is-this-item">What is this item?</h2>
 <p>Short answer is. A pocket Wifi. Or some sort of a way for you to have Internet at your finger tip.</p>
@@ -43,15 +59,15 @@
 
 <p>This is what you get in the envelop.</p>
 
-<p><img src="/wp-content/uploads/2016/12/Wifi.jpeg" width="300"></p>
+<p>{% img /wp-content/uploads/2016/12/Wifi.jpeg 300px What you get in the envelop %}</p>
 
 <p>This is the return envelop that you need to drop in a mailbox</p>
 
-<p><img src="/wp-content/uploads/2016/12/Envelop.jpeg" width="300"></p>
+<p>{% img /wp-content/uploads/2016/12/Envelop.jpeg 300px Envelop %}</p>
 
 <p>Mailbox at Haneda airport to return the wifi.</p>
 
-<p><img src="/wp-content/uploads/2016/12/Mailbox.jpeg" width="300"></p>
+<p>{% img /wp-content/uploads/2016/12/Mailbox.jpeg 300px Mailbox %}</p>
 
 <p>During the whole trip, there wasn’t even one occasion where the wifi didn’t work. I got the connection the whole time and the battery lasted for at least from 9am to 7pm. If you have a power bank it can easily last until the end of the day. If you have more devices, I believe you will need to choose the premium one with faster speed.</p>
 ]]></content>
@@ -60,7 +76,7 @@
   <entry>
     <title type="html"><![CDATA[What should you expect for Salkantay trek to Machu Picchu]]></title>
     <link href="https://www.noppanit.com/what-should-you-expect-for-salkantay-trek-to-machu-picchu/"/>
-    <updated>2015-05-18T00:00:00+07:00</updated>
+    <updated>2015-05-18T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/what-should-you-expect-for-salkantay-trek-to-machu-picchu</id>
     <content type="html"><![CDATA[<p>I’m not really a travel blogger but I’ll try to share my experience as much as possible. I’ve just come back from Peru (Machu Picchu). Me and a bunch of my friends did the Salkantay trek which hike from Cusco (sort of) to Machu Picchu. It’s a 5 days 4 nights trip. The hike is really challenging physically and mentally. You will experience altitude sickness and soreness from your body. Funny thing is I didn’t feel a thing at the highest peak, some of my friends experienced different symptoms. One of the best I’ve heard is; “It’s like EDM concert banging in my head”.</p>
 
@@ -120,17 +136,17 @@
   <entry>
     <title type="html"><![CDATA[Ziferblat, Pay-per-minute cafe in Moscow, Russia.]]></title>
     <link href="https://www.noppanit.com/ziferblat-pay-per-minute-cafe-moscow-russia/"/>
-    <updated>2014-05-18T00:00:00+07:00</updated>
+    <updated>2014-05-18T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/ziferblat-pay-per-minute-cafe-moscow-russia</id>
     <content type="html"><![CDATA[<p>If you’re in Moscow and you want somewhere to just sit down and catch up with some stuff. Or you just want to have a place to read. I recommend <a href="http://pushkin.ziferblat.net/en/" title="Ziferblat">Ziferblat</a>, it’s pay-per-minute cafe in Central Moscow.</p>
 
 <p>Just 5-min walk from Tverskaya Station (Тверская). Then look for this sign.</p>
 
-<p><img src="https://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-22.52.43.png"></p>
+<p>{% img https://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-22.52.43.png %}</p>
 
 <p>You have to ring the bell and the security guard will buzz you in then you have to walk upstairs (2nd floor). Unfortunately, at least when I was there people speak little English but understandable. Also, the people are really friendly over there. You just need to tell your name and pay at the end when you’re ready to rome Moscow again.</p>
 
-<p><img src="https://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-23.08.45.png"></p>
+<p>{% img https://www.noppanit.com/wp-content/uploads/2014/05/Screen-Shot-2014-05-18-at-23.08.45.png %}</p>
 
 ]]></content>
   </entry>
@@ -138,7 +154,7 @@
   <entry>
     <title type="html"><![CDATA[Bouldering gym in Kadıköy, Istanbul]]></title>
     <link href="https://www.noppanit.com/bouldering-gym-kadikoy-istanbul/"/>
-    <updated>2014-03-02T00:00:00+07:00</updated>
+    <updated>2014-03-02T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/bouldering-gym-kadikoy-istanbul</id>
     <content type="html"><![CDATA[<p>I would like to just contribute more to the bouldering in Istanbul. Since, I have been in Istanbul for over a month and I like bouldering. However, after a bit of searching I found little information about bouldering gyms in Istanbul. So far, I have been to two gyms and I’d like to share one of them first.</p>
 
@@ -151,39 +167,17 @@ This one is quite easy to get to and the location on the map below is quite accu
 
 <p><strong>Some pics</strong></p>
 
-<p><img src="https://www.noppanit.com/wp-content/uploads/2014/03/20140302_141441.jpg"></p>
+<p>{% img https://www.noppanit.com/wp-content/uploads/2014/03/20140302_141441.jpg %}</p>
 
-<p><img src="https://www.noppanit.com/wp-content/uploads/2014/03/20140302_141348.jpg"></p>
+<p>{% img https://www.noppanit.com/wp-content/uploads/2014/03/20140302_141348.jpg %}</p>
 
-<p><img src="https://www.noppanit.com/wp-content/uploads/2014/03/20140302_141636.jpg"></p>
+<p>{% img https://www.noppanit.com/wp-content/uploads/2014/03/20140302_141636.jpg %}</p>
 
 <p><strong>Price</strong><br />
 It’s only 15 TL for a day pass.</p>
 
 <p><strong>Official address</strong><br />
 <span class="adr"><br /> <span class="street-address">Nüzhetefendi Sokak No:54 (Rıhtım caddesinin 3 üst paraleli)</span><br /> <span class="locality">Kadıköy</span>&lt;/br&gt;<br /> <span class="region">Istanbul</span><br /> </span></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[You have never been clean, if you haven&#8217;t been to the Turkish bath.]]></title>
-    <link href="https://www.noppanit.com/never-clean-havent-turkish-bath/"/>
-    <updated>2013-12-27T00:00:00+07:00</updated>
-    <id>https://www.noppanit.com/never-clean-havent-turkish-bath</id>
-    <content type="html"><![CDATA[<p>Istanbul is the next closest thing I could come during Christmas. It’s just 4-hour from London and it’s a fantastic place to visit. I know when you think about Turkey you would think about the mosques, markets and kebap. There’s nothing wrong with that and I really enjoy walking around the buzzling Grand Bazaar (Büyük Çarşı). But there’s one thing I think everybody should be doing while you’re in Turkey is the Turkish bath.</p>
-
-<p>There’s a saying I don’t remember who so I couldn’t quote here. “You have never been clean, if you haven’t been to the Turkish bath” and I think it’s really true.</p>
-
-<p>Some people might say, I wouldn’t want a sweaty dude to scrub or massage yourself. But I think you should try everything until you can say you hate it.</p>
-
-<p>So, I have scouted over the Internet and I found the article from the <a href="http://www.theguardian.com/travel/2013/mar/22/istanbul-karakoy-top-10-cafes-shops-galleries" title="guardian">Guardian</a> and <a href="http://www.tripadvisor.co.uk/Attraction_Review-g293974-d3626134-Reviews-Kilic_Ali_Pasa_Hamami-Istanbul.html" title="trip advisor">Trip Advisor</a>. I found this place <a href="http://kilicalipasahamami.com/">Kilic Ali Pasa</a>. So, I booked the place.</p>
-
-<p>The first experience when you walked in, you will be greeted with a welcome drink and the staff will be giving you choices. You can choose to scrub yourself or you can have somebody to help you. After that, you change clothes to just the towel then the staff will guide you to Göbektaşı; the room with a big marble table in the middle. You will heat yourself up to be ready. The staff will pour hot and warm water to get your body ready then he will make you embarrassed by exfoliating your body from head to toe. I shower twice a day and I can still see my dead skin coming off. Then the staff will start the Köpük which is bubble soap wash. Then he will massage you a bit. After, everything is done he will lead you to the lounge area where you can sit and relax for as long as you want. You can you the bath again as many times as you want as well.</p>
-
-<p>It’s a very relaxing bath and I think everybody should try at least for once so you will know whether you like it. I know I will come back for another Hamami for sure.</p>
-
-<p>A little tip or actually my own mistake, bring your clean clothes with you or if you want to put on your dirty clothes when you’re super clean.</p>
 
 ]]></content>
   </entry>

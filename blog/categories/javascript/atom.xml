@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2017-02-20T13:32:04+07:00</updated>
+  <updated>2017-02-25T22:44:36-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[What is going on under your JavaScript code]]></title>
     <link href="https://www.noppanit.com/what-is-going-on-under-your-javascript-code/"/>
-    <updated>2016-10-04T12:41:25+07:00</updated>
+    <updated>2016-10-04T01:41:25-04:00</updated>
     <id>https://www.noppanit.com/what-is-going-on-under-your-javascript-code</id>
     <content type="html"><![CDATA[<p><strong>Disclaimer</strong></p>
 
@@ -225,7 +225,7 @@ ast_id  pc_offset  loop_depth</p>
   <entry>
     <title type="html"><![CDATA[Example: How did I convert async code to sync code with Promise.]]></title>
     <link href="https://www.noppanit.com/example-how-did-i-convert-async-code-to-sync-code-with-promise/"/>
-    <updated>2015-05-24T00:00:00+07:00</updated>
+    <updated>2015-05-24T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/example-how-did-i-convert-async-code-to-sync-code-with-promise</id>
     <content type="html"><![CDATA[<p>I’ve just finished my first refactor to convert my node.js code to be more promisey (I believe that’s the word they use these days). There’s lots of documents out there to do this. However, I thought I should contribute more to help me understand more and might get some feedback from people who’s seen it as well.</p>
 
@@ -394,7 +394,7 @@ console.log(error);   }); };
   <entry>
     <title type="html"><![CDATA[Event delegation in JavaScript is fast but how fast?]]></title>
     <link href="https://www.noppanit.com/event-delegation-javascript-fast-fast/"/>
-    <updated>2014-11-22T00:00:00+07:00</updated>
+    <updated>2014-11-22T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/event-delegation-javascript-fast-fast</id>
     <content type="html"><![CDATA[<p>People say always use event delegation for adding event because it’s faster. But how fast exactly? I really want to create a test case for this, but I couldn’t figure out how to run B[enchmark.js][1] in browser. So, I thought we could just use Chrome Developer Tool to achieve this.</p>
 
@@ -421,11 +421,11 @@ $('#ul li').on('click', function() {
   <li></li>
   // 999 more <li>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>Then we will have JavaScript like this
-</span></code></pre></td></tr></table></div></figure> html
+```
+
+Then we will have JavaScript like this
+
+``` html
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
     $('#parent li').on('click', function() {
@@ -433,25 +433,18 @@ $('#ul li').on('click', function() {
     });
 
 </script>
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>If you open your html page on Chrome you should see something like this.  
-</span><span class='line'><img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png">
-</span><span class='line'>
-</span><span class='line'>If you go down to where JavaScript is executed You will see it takes around **37ms** to execute the snippet.  
-</span><span class='line'>
-</span><span class='line'><img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png">
-</span><span class='line'>
-</span><span class='line'>Now change your snippet to be event delegation
-</span></code></pre></td></tr></table></div></figure> html
+```
+
+If you open your html page on Chrome you should see something like this.  
+{% img https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png %}
+
+If you go down to where JavaScript is executed You will see it takes around **37ms** to execute the snippet.  
+
+{% img https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png %}
+
+Now change your snippet to be event delegation
+
+``` html
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
     $('#parent').on('click', 'li', function() {
@@ -463,7 +456,7 @@ $('#ul li').on('click', function() {
 
 And refresh the page you should see something like this.  
 
-<img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png">
+{% img https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png %}
 
 Now it will only take **2ms** to execute the snippet. It&#8217;s because the event is added to one element not 1000 of them. 
 
@@ -480,7 +473,7 @@ This is just an easy example that you can do it yourself to improve your perform
   <entry>
     <title type="html"><![CDATA[Knockout.js virtual elements are being stripped out from mobile.]]></title>
     <link href="https://www.noppanit.com/knockout-js-virtual-elements-stripped-mobile/"/>
-    <updated>2014-10-07T00:00:00+07:00</updated>
+    <updated>2014-10-07T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/knockout-js-virtual-elements-stripped-mobile</id>
     <content type="html"><![CDATA[<p>This rarely happens and you would be surprised what is the cause of this. Recently, I have just finished a mobile site using knockout.js. I have used a fair amount of Virtual Elements in Knockout.js. But weirdly enough one day my Manager came in and talk to my <a href="https://twitter.com/sragu" title="Srini">tech lead</a> (@sragu) that the site is not working. We quickly checked with our live site and everything was ok yet the site from his phone wasn’t working at all.</p>
 
@@ -500,7 +493,7 @@ Cache-Control: no-transform
   <entry>
     <title type="html"><![CDATA[Contextual Preloading for Ajax request.]]></title>
     <link href="https://www.noppanit.com/contextual-preloading-ajax-request/"/>
-    <updated>2014-05-10T00:00:00+07:00</updated>
+    <updated>2014-05-10T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/contextual-preloading-ajax-request</id>
     <content type="html"><![CDATA[<p>I have just heard this from my friend <a href="https://twitter.com/rajveerr" title="rajveerr twitter">@rajveerr</a> about pre-loading at the global level, this concept is not new but I have just learned it.. Usually and I think everyone has done it before. People would do something like this.</p>
 

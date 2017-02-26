@@ -4,7 +4,7 @@
   <title><![CDATA[Category: performance, | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/performance/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2017-02-20T13:32:04+07:00</updated>
+  <updated>2017-02-25T22:44:36-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[How to change your habit one task at a time]]></title>
     <link href="https://www.noppanit.com/how-to-change-your-habit-one-task-at-a-time/"/>
-    <updated>2016-03-02T20:49:31+07:00</updated>
+    <updated>2016-03-02T08:49:31-05:00</updated>
     <id>https://www.noppanit.com/how-to-change-your-habit-one-task-at-a-time</id>
     <content type="html"><![CDATA[<h2 id="are-you-struggling-to-get-anything-done">Are you struggling to get anything done?</h2>
 <p>Now we have this amazing tool that could change your life… I present to you <a href="https://habitica.com">Habitica</a>. If you click now you will get this tool for free. Does that sound like a Direct TV ad?.</p>
@@ -38,7 +38,7 @@ I use Habitica for anything that I want to make myself doing it or I want to cha
 <p>Another example of how I changed my habit is making my bed. I created a task to make my bed every morning. It might sound too simple but it really did change my habit. Now I make my bed everyday without even knowing it.
 I wake up every morning, make my bed and click the checkbox. I earn XP and I feel good about it.</p>
 
-<p><img src="/wp-content/uploads/2016/03/make-bed.png" title="Habitica Habit" ></p>
+<p>{% img /wp-content/uploads/2016/03/make-bed.png Habitica Habit %}</p>
 
 <p>Another example would be that I could finish my Coursera course that I have always wanted to do for a long time. I used to sign up to all the classes on Coursera and I ended up not passing even the first week. Now I can force myself to finish the course week by week. If I don’t do it in time, my character dies, loses all the golds and one rare item.</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mac osx | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/mac-osx/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2017-02-20T13:32:04+07:00</updated>
+  <updated>2017-02-25T22:44:36-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Mac OSX: override rm to delete files to .Trash]]></title>
     <link href="https://www.noppanit.com/mac-osx-override-rm-to-delete-files-to-trash/"/>
-    <updated>2011-04-05T00:00:00+07:00</updated>
+    <updated>2011-04-05T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/mac-osx-override-rm-to-delete-files-to-trash</id>
     <content type="html"><![CDATA[<p>So silly of me I have just “accidentally” deleted my home directory T_T. There is a way to help that by override rm command to move file to .Trash.</p>
 
@@ -45,7 +45,7 @@ function rm () {
   <entry>
     <title type="html"><![CDATA[Mastering Vi Common in just 10 minutes]]></title>
     <link href="https://www.noppanit.com/masteing-vi-common-in-just-10-minutes/"/>
-    <updated>2010-01-05T00:00:00+07:00</updated>
+    <updated>2010-01-05T00:00:00-05:00</updated>
     <id>https://www.noppanit.com/masteing-vi-common-in-just-10-minutes</id>
     <content type="html"><![CDATA[<p>I have just finished my Unix exam. I know somebody hates VI very much, because it is very hard to use. It is so command-line, something like that. But learning to use this editor is very useful because you never know when will you unable to use X-Window or when will you face with command-line configuration.</p>
 

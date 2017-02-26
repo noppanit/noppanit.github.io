@@ -7,10 +7,14 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="So, without boring introduction. But you need to install some library for Perl as well by using cpan. 1
+	<meta name="description" content="Well, the topic pretty says everything. So, here’s the solution. 1
 2
-cpan install JSON
-cpan install REST:: &hellip;">
+3
+4
+5
+6
+final ByteArrayOutputStream myOut = new ByteArrayOutputStream();
+System &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -86,6 +90,219 @@ cpan install REST:: &hellip;">
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/how-to-java-capture-output-from-console/">
+		
+			How to : Java Capture Output From Console</a>
+	</h2>
+	<div class="entry-content">
+		<p>Well, the topic pretty says everything. So, here’s the solution.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">final</span> <span class="n">ByteArrayOutputStream</span> <span class="n">myOut</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ByteArrayOutputStream</span><span class="o">();</span>
+</span><span class="line"><span class="n">System</span><span class="o">.</span><span class="na">setOut</span><span class="o">(</span><span class="k">new</span> <span class="nf">PrintStream</span><span class="o">(</span><span class="n">myOut</span><span class="o">));</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// test stuff here...</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">final</span> <span class="n">String</span> <span class="n">standardOutput</span> <span class="o">=</span> <span class="n">myOut</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The idea is just redirect the System.out to another PrintStream and you can use information in the PrintStream.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Mar 1st, 2011</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>java</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/ruby-command-line-twitter-client-made-easy/">
+		
+			Ruby : Command-line Twitter Client Made Easy</a>
+	</h2>
+	<div class="entry-content">
+		<p>Have you every told off that you’re playing in your work? Why do you have to open a browser twitter.com to be so obvious that you’re not doing your job well. Well, you can build a command-line twitter client very easy. So, you will be one of the geeks who use terminal all the time and your boss won’t know that you’re on twitter all the time.</p>
+
+<p>I will start with installing Ruby and Gem, because I wanted to save time building this program from scratch as much as possible. So, a couples of useful gems would be really helpful.</p>
+
+<p>if you’re new to ruby and use mac same as me, I suggest you install ruby by following this great article.
+<a href="http://hivelogic.com/articles/ruby-rails-leopard">http://hivelogic.com/articles/ruby-rails-leopard</a></p>
+
+<p>You can use a great application of all time like MacPort.</p>
+
+<p>Ok! gem installed, ruby installed. Let’s start with installing some gems</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">gem install twitter_oauth
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>If you need to know what OAuth is, I suggest you read this great article <a href="http://hueniverse.com/2007/10/beginners-guide-to-oauth-part-i-overview/">http://hueniverse.com/2007/10/beginners-guide-to-oauth-part-i-overview/</a></p>
+
+<p>Basically, OAuth is a helper to help you login to twitter.com without exposing or sending your login details over the Internet. It’s like public and private key. But If you’re doing for a single-user like me, then you don’t have to worry anything about this. You just need 4 keys to access twitter APIs.</p>
+
+<p>First, you will need to register your app with Twitter. Go to this page and follow the steps. <a href="http://twitter.com/apps">http://twitter.com/apps</a></p>
+
+<p>Now you will need four keys to work, go to this page to get all those keys.
+<a href="https://dev.twitter.com/apps">https://dev.twitter.com/apps</a></p>
+
+<p>You will want, consumer_key, consumer_secret. You can get them from your application setting page, then click on My Access Token on the right-hand sided bar. Note down Access Token and Access Token Secret. Then you’re good to go.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+</span><span class="line"><span class="nb">require</span> <span class="s1">&#39;twitter_oauth&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="no">TWITTER_CONSUMER_KEY</span> <span class="o">=</span> <span class="s1">&#39;Your Consumer Key&#39;</span>
+</span><span class="line"><span class="no">TWITTER_CONSUMER_SECRET</span> <span class="o">=</span> <span class="s1">&#39;Your Consumer Secret&#39;</span>
+</span><span class="line"><span class="no">TWITTER_ACCESS_TOKEN</span> <span class="o">=</span> <span class="s1">&#39;Your Access Token&#39;</span>
+</span><span class="line"><span class="no">TWITTER_ACCESS_SECRET</span> <span class="o">=</span> <span class="s1">&#39;Your Access Token Secret&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="n">client</span> <span class="o">=</span> <span class="no">TwitterOAuth</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span><span class="line">  <span class="ss">:consumer_key</span> <span class="o">=&gt;</span> <span class="no">TWITTER_CONSUMER_KEY</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">:consumer_secret</span> <span class="o">=&gt;</span> <span class="no">TWITTER_CONSUMER_SECRET</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">:token</span> <span class="o">=&gt;</span> <span class="no">TWITTER_ACCESS_TOKEN</span><span class="p">,</span>
+</span><span class="line">  <span class="ss">:secret</span> <span class="o">=&gt;</span> <span class="no">TWITTER_ACCESS_SECRET</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="k">case</span> <span class="no">ARGV</span><span class="o">[]</span>
+</span><span class="line"> <span class="k">when</span> <span class="s2">&quot;-l&quot;</span>
+</span><span class="line">  <span class="n">timeline</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">home_timeline</span><span class="p">()</span>
+</span><span class="line">  <span class="n">timeline</span> <span class="o">=</span> <span class="n">timeline</span><span class="o">.</span><span class="n">reverse</span>
+</span><span class="line">  <span class="n">timeline</span><span class="o">.</span><span class="n">each</span><span class="p">{</span> <span class="o">|</span><span class="n">tweet</span><span class="o">|</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="n">tweet</span><span class="o">[</span><span class="s1">&#39;text&#39;</span><span class="o">]</span> <span class="o">+</span> <span class="s2">&quot; @FROM </span><span class="si">#{</span><span class="n">tweet</span><span class="o">[</span><span class="s1">&#39;user&#39;</span><span class="o">][</span><span class="s1">&#39;name&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"> <span class="k">when</span> <span class="s2">&quot;-u&quot;</span>
+</span><span class="line">  <span class="k">if</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">nil?</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s2">&quot;Please enter your status:&quot;</span>
+</span><span class="line">    <span class="n">status</span> <span class="o">=</span> <span class="no">STDIN</span><span class="o">.</span><span class="n">readline</span><span class="o">.</span><span class="n">chomp</span>
+</span><span class="line">    <span class="n">client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">status</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class="line">  <span class="k">else</span>
+</span><span class="line">    <span class="n">client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="no">ARGV</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"> <span class="k">when</span> <span class="s2">&quot;-m&quot;</span>
+</span><span class="line">  <span class="n">mentions</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">mentions</span><span class="p">()</span>
+</span><span class="line">  <span class="n">mentions</span> <span class="o">=</span> <span class="n">mentions</span><span class="o">.</span><span class="n">reverse</span>
+</span><span class="line">  <span class="n">mentions</span><span class="o">.</span><span class="n">each</span><span class="p">{</span> <span class="o">|</span><span class="n">tweet</span><span class="o">|</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="n">tweet</span><span class="o">[</span><span class="s1">&#39;text&#39;</span><span class="o">]</span> <span class="o">+</span> <span class="s2">&quot; @FROM </span><span class="si">#{</span><span class="n">tweet</span><span class="o">[</span><span class="s1">&#39;user&#39;</span><span class="o">][</span><span class="s1">&#39;name&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class="line">    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This is just an example of my application which I use it on terminal. You can run the app by typing</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">ruby thenameofthisapplication.rb
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>or you can use symbolic link to /usr/bin and type</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">./thenameofthisapplication
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It’s totally up to you.</p>
+
+<p>The Ruby API I used in this example is from this <a href="https://github.com/moomerman/twitter_oauth">https://github.com/moomerman/twitter_oauth</a></p>
+
+<p>And this is the Twitter API that you can have a look.
+<a href="http://apiwiki.twitter.com/w/page/22554679/Twitter-API-Documentation">http://apiwiki.twitter.com/w/page/22554679/Twitter-API-Documentation</a></p>
+
+<p>In this way, you can design your application to be whatever you want and when you’re at work, you’ll be on terminal on the time.</p>
+
+<p>Good luck!</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Feb 27th, 2011</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ruby/'>ruby</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -1084,92 +1301,6 @@ Oct 16th, 2010</div>
 
 
 Sep 2nd, 2010</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/tutorial-how-to-test-recordstore-with-emulator/">
-		
-			Tutorial : J2ME and Netbeans : How to Test RecordStore With Emulator</a>
-	</h2>
-	<div class="entry-content">
-		<p>I’m using Netbeans 6.9 and implementing RecordStore and I want to test that with emulator. How would I do that? because every time I close the emulator, the state will be deleted or gone in some way.</p>
-
-<p>This is my way of doing that. Basically, you just have to actually install the application in the emulator and when you exit the application you can enter the application again. Just like in a real phone.</p>
-
-<p>So, you just have to use OTA install.</p>
-
-<p>In Netbeans 6.9.<br />
-1. right click on your project and click “properties”<br />
-2. In running click at “Execute through OTA (Over the air provisioning)”.<br />
-3. That’s it, so when you start the application, it will be actually installed inside emulator and you can close and open the application anytime you want.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Aug 11th, 2010</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/j2me/'>j2me</a>, <a class='category' href='/blog/categories/java/'>java</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/if-xml-file-is-too-big-for-ajax/">
-		
-			If XML File Is Too Big for AJAX</a>
-	</h2>
-	<div class="entry-content">
-		<p>http://www.developer.com/lang/php/article.php/3897851/article.htm</p>
-
-<p>I found this article which is quite useful. What will you do if XML file is too big.</p>
-
-<ol>
-  <li>Transform the XML documents into a character string.</li>
-  <li>Split the character string into equal chunks (400 characters).</li>
-  <li>Save each chunk as a value in an array.</li>
-  <li>Transfer the chunks one by one using the Ajax mechanism into the final XML document.</li>
-</ol>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Aug 11th, 2010</div>
 	<div class="tags">
 
 

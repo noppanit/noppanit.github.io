@@ -4,7 +4,7 @@
   <title><![CDATA[Category: j2me | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/j2me/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2017-02-20T13:32:04+07:00</updated>
+  <updated>2017-02-25T22:44:36-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Tutorial : J2ME and Netbeans : How to test RecordStore with emulator]]></title>
     <link href="https://www.noppanit.com/tutorial-how-to-test-recordstore-with-emulator/"/>
-    <updated>2010-08-11T00:00:00+07:00</updated>
+    <updated>2010-08-11T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/tutorial-how-to-test-recordstore-with-emulator</id>
     <content type="html"><![CDATA[<p>I’m using Netbeans 6.9 and implementing RecordStore and I want to test that with emulator. How would I do that? because every time I close the emulator, the state will be deleted or gone in some way.</p>
 

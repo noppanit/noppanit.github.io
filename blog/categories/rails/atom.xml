@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rails | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2017-02-20T13:32:04+07:00</updated>
+  <updated>2017-02-25T22:44:36-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Thoughts on jQuery Mobile]]></title>
     <link href="https://www.noppanit.com/thoughts-on-jquery-mobile/"/>
-    <updated>2011-10-06T00:00:00+07:00</updated>
+    <updated>2011-10-06T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/thoughts-on-jquery-mobile</id>
     <content type="html"><![CDATA[<p>Last week I helped out my friends <a href="http://www.eewei.com" title="Eewei">Eewei</a> and <a href="http://www.fab.co.uk">Jill</a> in <a href="http://futureofwebapps.com/london-2011/">Future of web app conference</a> in London. Unfortunately, I couldn’t be in the conference. They presented this really amazing called <a href="http://jquerymobile.com/">jQuery Mobile</a></p>
 

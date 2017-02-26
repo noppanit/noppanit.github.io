@@ -4,7 +4,7 @@
   <title><![CDATA[Category: security | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/security/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2017-02-20T13:32:04+07:00</updated>
+  <updated>2017-02-25T22:44:36-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Installing SSL on Amazon CloudFront]]></title>
     <link href="https://www.noppanit.com/installing-ssl-on-amazon-cloudfront/"/>
-    <updated>2015-05-22T00:00:00+07:00</updated>
+    <updated>2015-05-22T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/installing-ssl-on-amazon-cloudfront</id>
     <content type="html"><![CDATA[<p>We have just installed SSL on our Amazon CloudFront. We followed this <a href="https://bryce.fisher-fleig.org/blog/setting-up-ssl-on-aws-cloudfront-and-s3/">blog post</a> from Bryce which I think it’s really good already. However, I was stuck on the last part where you have to upload the certificate to IAM. The difference is that I had to concatenate the crt files myself and I didn’t know how to do it. So I spent quite a long time to figure it out. I thought I would write this so it might help save sometime for anybody.</p>
 

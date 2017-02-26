@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2017-02-20T13:32:04+07:00</updated>
+  <updated>2017-02-25T22:43:37-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,9 +14,34 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Pay in local currency while you are travelling. It is cheaper]]></title>
+    <link href="https://www.noppanit.com/pay-in-local-currency-while-you-are-travelling-it-is-cheaper/"/>
+    <updated>2017-02-25T22:20:49-05:00</updated>
+    <id>https://www.noppanit.com/pay-in-local-currency-while-you-are-travelling-it-is-cheaper</id>
+    <content type="html"><![CDATA[<h2 id="should-you-pay-in-local-or-home-currency-while-travelling">Should you pay in local or home currency while travelling?</h2>
+<p>Short answer. Pay in local currency. For example, I have a credit card from the US and I’m going to be in Hong Kong for my vacation. I should pay in Hong Kong dollar.</p>
+
+<p>Long answer. There’s something about <a href="https://en.wikipedia.org/wiki/Dynamic_currency_conversion">DCC</a> that you have to pay a small fee for the customer to see the amount in home currency in the receipt. Here’s an example.</p>
+
+<p><img src="https://www.noppanit.com/wp-content/uploads/2017/02/credit-card-receipt.jpg" width="250" height="250" title="'Credit card receipt'" /></p>
+
+<p>If I had paid in US dollar, I would have paid \$0.81 more. It doesn’t seem like a lot but it definitely adds up. I checked my credit card transaction and it showed \$19.33. It’s also good if you can get the card that’s free foreign transaction fee.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Reservoir sampling of size 1]]></title>
+    <link href="https://www.noppanit.com/reservoir-sampling-of-size-1/"/>
+    <updated>2017-02-20T02:27:44-05:00</updated>
+    <id>https://www.noppanit.com/reservoir-sampling-of-size-1</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[OSX convert raw DNG to JPG]]></title>
     <link href="https://www.noppanit.com/osx-convert-raw-dng-to-jpg/"/>
-    <updated>2017-02-20T13:23:19+07:00</updated>
+    <updated>2017-02-20T01:23:19-05:00</updated>
     <id>https://www.noppanit.com/osx-convert-raw-dng-to-jpg</id>
     <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
 
@@ -61,7 +86,7 @@
   <entry>
     <title type="html"><![CDATA[python-request Connection aborted and broken pipe error]]></title>
     <link href="https://www.noppanit.com/python-request-connection-aborted-and-broken-pipe-error/"/>
-    <updated>2016-12-24T22:53:50+07:00</updated>
+    <updated>2016-12-24T10:53:50-05:00</updated>
     <id>https://www.noppanit.com/python-request-connection-aborted-and-broken-pipe-error</id>
     <content type="html"><![CDATA[<p>Ever wondered why your long running python script just bombs out mid-way?</p>
 
@@ -93,7 +118,7 @@
   <entry>
     <title type="html"><![CDATA[A must item while travelling in Japan]]></title>
     <link href="https://www.noppanit.com/a-must-item-while-travelling-in-japan/"/>
-    <updated>2016-12-06T05:36:29+07:00</updated>
+    <updated>2016-12-05T17:36:29-05:00</updated>
     <id>https://www.noppanit.com/a-must-item-while-travelling-in-japan</id>
     <content type="html"><![CDATA[<h2 id="what-is-this-item">What is this item?</h2>
 <p>Short answer is. A pocket Wifi. Or some sort of a way for you to have Internet at your finger tip.</p>
@@ -137,7 +162,7 @@
   <entry>
     <title type="html"><![CDATA[Game of life for dummies]]></title>
     <link href="https://www.noppanit.com/game-of-life-for-dummies/"/>
-    <updated>2016-11-12T11:10:25+07:00</updated>
+    <updated>2016-11-11T23:10:25-05:00</updated>
     <id>https://www.noppanit.com/game-of-life-for-dummies</id>
     <content type="html"><![CDATA[<h2 id="game-of-life">Game of life</h2>
 
@@ -550,7 +575,7 @@
   <entry>
     <title type="html"><![CDATA[What is going on under your JavaScript code]]></title>
     <link href="https://www.noppanit.com/what-is-going-on-under-your-javascript-code/"/>
-    <updated>2016-10-04T12:41:25+07:00</updated>
+    <updated>2016-10-04T01:41:25-04:00</updated>
     <id>https://www.noppanit.com/what-is-going-on-under-your-javascript-code</id>
     <content type="html"><![CDATA[<p><strong>Disclaimer</strong></p>
 
@@ -841,7 +866,7 @@ Follow this <a href="https://github.com/v8/v8/wiki/Using%20Git">instruction</a>.
   <entry>
     <title type="html"><![CDATA[How to change your habit one task at a time]]></title>
     <link href="https://www.noppanit.com/how-to-change-your-habit-one-task-at-a-time/"/>
-    <updated>2016-03-02T20:49:31+07:00</updated>
+    <updated>2016-03-02T08:49:31-05:00</updated>
     <id>https://www.noppanit.com/how-to-change-your-habit-one-task-at-a-time</id>
     <content type="html"><![CDATA[<h2 id="are-you-struggling-to-get-anything-done">Are you struggling to get anything done?</h2>
 <p>Now we have this amazing tool that could change your life… I present to you <a href="https://habitica.com">Habitica</a>. If you click now you will get this tool for free. Does that sound like a Direct TV ad?.</p>
@@ -889,7 +914,7 @@ I wake up every morning, make my bed and click the checkbox. I earn XP and I fee
   <entry>
     <title type="html"><![CDATA[Gatling Cluster]]></title>
     <link href="https://www.noppanit.com/gatling-cluster/"/>
-    <updated>2016-02-18T08:28:25+07:00</updated>
+    <updated>2016-02-17T20:28:25-05:00</updated>
     <id>https://www.noppanit.com/gatling-cluster</id>
     <content type="html"><![CDATA[<h3 id="performance-matters">Performance matters</h3>
 <p>I think we can all agree that performance is one of the most important things in any application. That’s why we have performance or load testing. There’s a lot of tools out there we can choose from. But for this tutorial I pick <a href="http://gatling.io/#/">Gatling</a>.</p>
@@ -1061,7 +1086,7 @@ I wake up every morning, make my bed and click the checkbox. I earn XP and I fee
   <entry>
     <title type="html"><![CDATA[Round to the left most digit]]></title>
     <link href="https://www.noppanit.com/round-to-the-left-most-digit/"/>
-    <updated>2016-01-17T05:30:37+07:00</updated>
+    <updated>2016-01-16T17:30:37-05:00</updated>
     <id>https://www.noppanit.com/round-to-the-left-most-digit</id>
     <content type="html"><![CDATA[<p>It’s probably unusual for me to write anything about Math. I hated math and I failed the subject all the time. But I got pretty excited when I knew this trick from my colleague. I also asked this question at <a href="http://math.stackexchange.com/questions/1604448/how-to-find-out-if-a-number-is-a-hundred-or-thousand/1604474#1604474">stackoverflow</a>.</p>
 
@@ -1120,7 +1145,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[2016]]></title>
     <link href="https://www.noppanit.com/2016/"/>
-    <updated>2016-01-01T23:29:38+07:00</updated>
+    <updated>2016-01-01T11:29:38-05:00</updated>
     <id>https://www.noppanit.com/2016</id>
     <content type="html"><![CDATA[<h2 id="goals-for-2016">Goals for 2016</h2>
 
@@ -1161,7 +1186,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Retrospective 2015]]></title>
     <link href="https://www.noppanit.com/retrospective-2015/"/>
-    <updated>2015-12-25T02:26:19+07:00</updated>
+    <updated>2015-12-24T14:26:19-05:00</updated>
     <id>https://www.noppanit.com/retrospective-2015</id>
     <content type="html"><![CDATA[<h1 id="reflections-on-20152015">Reflections on <a href="https://www.noppanit.com/2015/">2015</a></h1>
 
@@ -1210,7 +1235,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Cosine Similarity for Dummies]]></title>
     <link href="https://www.noppanit.com/cosine-similarity-for-dummies/"/>
-    <updated>2015-10-30T08:35:17+07:00</updated>
+    <updated>2015-10-29T21:35:17-04:00</updated>
     <id>https://www.noppanit.com/cosine-similarity-for-dummies</id>
     <content type="html"><![CDATA[<p>Have you ever wonder how recommender system works? Or How Spotify or Amazon recommends what songs you might like or what product you might like to buy. I do. In this post, I’m going to try to explain how the recommendation algorithm works. First, let’s create a perfect scenario. I like to create an ideal example, it’s easier to understand.</p>
 
@@ -1281,7 +1306,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Python's Monkey patch for Dummies]]></title>
     <link href="https://www.noppanit.com/pythons-monkey-patch/"/>
-    <updated>2015-10-26T06:00:27+07:00</updated>
+    <updated>2015-10-25T19:00:27-04:00</updated>
     <id>https://www.noppanit.com/pythons-monkey-patch</id>
     <content type="html"><![CDATA[<p>Alright, I’m going to cut to the chase here. I’m having problems with Monkey patching in Python and I want to make it clear for myself and anybody who might stumble upon my post in the future. So, what’s the big deal here?</p>
 
@@ -1425,7 +1450,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Why you should or should not SSL your blog]]></title>
     <link href="https://www.noppanit.com/why-you-should-or-should-not-ssl-your-blog/"/>
-    <updated>2015-10-10T04:02:25+07:00</updated>
+    <updated>2015-10-09T17:02:25-04:00</updated>
     <id>https://www.noppanit.com/why-you-should-or-should-not-ssl-your-blog</id>
     <content type="html"><![CDATA[<p>After I switched to Octopress, I knew that I wanted to write about performance and SSL. Those are the main reasons why I switched.</p>
 
@@ -1499,7 +1524,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Why algorithm matters?]]></title>
     <link href="https://www.noppanit.com/why-algorithm-matters/"/>
-    <updated>2015-10-09T02:55:29+07:00</updated>
+    <updated>2015-10-08T15:55:29-04:00</updated>
     <id>https://www.noppanit.com/why-algorithm-matters</id>
     <content type="html"><![CDATA[<p>If you have been to one of those technical interviews, you will like this.</p>
 
@@ -1700,7 +1725,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Octopress on crack]]></title>
     <link href="https://www.noppanit.com/octopress-on-crack/"/>
-    <updated>2015-10-08T09:44:22+07:00</updated>
+    <updated>2015-10-07T22:44:22-04:00</updated>
     <id>https://www.noppanit.com/octopress-on-crack</id>
     <content type="html"><![CDATA[<p>I believe you will find a ton of blogs writing about makeing Octopress faster. I believe nearly everyone who migrated their blog to Octopress, the first post would be the migration and the next would be performance tuning. I want to be the cool kid so here you go.</p>
 
@@ -1777,7 +1802,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Migrated from WordPress to Octopress]]></title>
     <link href="https://www.noppanit.com/migrated-from-wordpress-to-octopress"/>
-    <updated>2015-10-03T02:39:34+07:00</updated>
+    <updated>2015-10-02T15:39:34-04:00</updated>
     <id>https://www.noppanit.com/migrated-from-wordpress-to-octopress</id>
     <content type="html"><![CDATA[<p>I have heard so much about Octopress but I haven’t got the time to actually get to know what it can offer. Finally, this week I finally made the time to migrate my blog to Octopress and I love it. Thanks to <a href="https://habitica.com">HabitRPG</a> and Pomodoro (These will be another blog).</p>
 
@@ -1875,7 +1900,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Code Review with the world]]></title>
     <link href="https://www.noppanit.com/code-review-with-the-world/"/>
-    <updated>2015-09-22T00:00:00+07:00</updated>
+    <updated>2015-09-22T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/code-review-with-the-world</id>
     <content type="html"><![CDATA[<h2 id="tldr">TL;DR</h2>
 
@@ -1931,7 +1956,7 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
   <entry>
     <title type="html"><![CDATA[Maps all parking signs in NYC.]]></title>
     <link href="https://www.noppanit.com/maps-all-parking-signs-in-nyc/"/>
-    <updated>2015-07-30T00:00:00+07:00</updated>
+    <updated>2015-07-30T00:00:00-04:00</updated>
     <id>https://www.noppanit.com/maps-all-parking-signs-in-nyc</id>
     <content type="html"><![CDATA[<p>This post might be too easy for any Data-viz people but as a beginner tapping in this area. It took me quite a long time to figure it out so I just want to share this hoping that it might save people’s time.</p>
 
@@ -2058,384 +2083,6 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
 <p>I will need to learn more about State Pane and what is the correct format.</p>
 
 <p>This article takes 2 pomodoros to complete.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[I&#8217;m never going back to modern editor again.]]></title>
-    <link href="https://www.noppanit.com/im-never-going-back-to-modern-editor-again/"/>
-    <updated>2015-07-17T00:00:00+07:00</updated>
-    <id>https://www.noppanit.com/im-never-going-back-to-modern-editor-again</id>
-    <content type="html"><![CDATA[<p>Ok, the title might be a little bit exaggerating. But let me clear this up first. I still use modern editors, TextMate, Atom.io or IntelliJ. They are pros and cons. But here’s my real answer if people ask me. I want to be the cool kid!.</p>
-
-<table>
-  <tbody>
-    <tr>
-      <td>I don’t know if you’re like me but I get asked almost all the time I go to a meetup or conference, “What’s your favourite editor”?. People almost always say Vim</td>
-      <td>Emacs. I tried both of them in the past and gave up more than I can remember because of all the shortcuts and plugins and I just get too frustrated to use either of them. Finally, I have made a decision that I’m going to stick with Vim for a month and let’s see if at the end of the month I still can’t use it. It’s been almost a month and I’d say I’m never going back to modern editors again (at least when I’m coding scripting languages). Here’s why.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="it8217s-just-easier">It’s just easier</h3>
-
-<p>I know it’s not really easier than TextMate or Sublime. You still have to learn a lot of shortcuts and commands. Also, bare-bone Vim just doesn’t have when you get in TextMate or Sublime (e.g, Find file, Command+T, Directory structure or code completion). However, after you powered through that learning phrase everything is just natural to you.</p>
-
-<p>If you want to clear any trailing whitespaces you just have to type <strong>%s/\s+$//</strong> and hit enter. If you want to run some external command you can always do in Vim. For example, if you just want to <strong>git status</strong> you can install <a href="https://github.com/tpope/vim-fugitive">Git wrapper</a> or you can just run <strong>:!git status</strong>. You don’t even need to go to your terminal which I think it’s faster.</p>
-
-<p>If you’re a good engineer, you will always do TDD. Going back and fourth between the editor and terminal, it’s just too annoying. I remember when I was coding Java I can just hit Cmd+t in IntelliJ or .NET and you see green bars. Isn’t it just awesome? I realised that TextMate and Sublime have plugins to do that as well or you can just write your own plugin or package. I tried a couple of plugins and they never work for me. In Vim, it just works!.</p>
-
-<h3 id="community">Community</h3>
-
-<table>
-  <tbody>
-    <tr>
-      <td>If Vim</td>
-      <td>Emacs doesn’t do what you want, you will almost always find the plugin that does it for you. Currently, my standard plugins are. <strong>NERDTree</strong>, <strong>CommandT</strong>, <strong>vim-fugitive</strong>, <strong>vim-rooter</strong>, <strong>vim-virtualenv</strong>. All these plugins just make my Vim functions the same as Atom.io or Sublime.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="not-for-everyone">Not for everyone</h3>
-
-<p>I have to admit that the first few weeks I got really frustrated. I almost banged my keyboard against the monitor. I found myself opening Atom.io every time I couldn’t do some basic editing in Vim. For example, using <strong>vimgrep</strong> wasn’t what I expected and I ended up googling a lot. Now I get the hang of it and I don’t use Atom anymore. The worst case is I will just use command line instead.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to start doing TDD for jQuery plugin.]]></title>
-    <link href="https://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin/"/>
-    <updated>2015-07-09T00:00:00+07:00</updated>
-    <id>https://www.noppanit.com/how-to-start-doing-tdd-for-jquery-plugin</id>
-    <content type="html"><![CDATA[<p>I’m a big fan of TDD. I get nervous every time when I put some code it without having tests. I’m developing a simple jQuery plugin and I think hey we can TDD this.</p>
-
-<h2 id="what-is-it">What is it?</h2>
-
-<p>The plugin is really simple. It turns ul tag to be taggable field. It’s similar to <a href="http://aehlke.github.io/tag-it/">tag-it</a> but with a lot less functionalities and doesn’t depend on jquery-ui</p>
-
-<h2 id="what-you-need">What you need</h2>
-
-<p>I decided to use Karma because I’m going to test a lot of behaviours and Karma seems like a good fit as it run on real browser. Here’s how I setup my project.</p>
-
-<p>I chose jasmine-jquery because it’s easier to create some element to test and it’s easy to setup.</p>
-
-<p>This is my <strong>gulpfile.js</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp&#39;</span><span class="p">);</span>
-</span><span class="line"><span class="kd">var</span> <span class="nx">karma</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-karma&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">var</span> <span class="nx">testFiles</span> <span class="o">=</span> <span class="p">[</span>
-</span><span class="line">  <span class="s1">&#39;tests/vendors/jquery-1.11.3.min.js&#39;</span><span class="p">,</span>
-</span><span class="line">  <span class="s1">&#39;tests/vendors/jasmine-jquery.js&#39;</span><span class="p">,</span>
-</span><span class="line">  <span class="s1">&#39;src/**/*.js&#39;</span><span class="p">,</span>
-</span><span class="line">  <span class="s1">&#39;tests/spec/**/*.js&#39;</span>
-</span><span class="line"><span class="p">];</span>
-</span><span class="line"><span class="cm">/**</span>
-</span><span class="line"><span class="cm"> * Run test once and exit</span>
-</span><span class="line"><span class="cm"> */</span>
-</span><span class="line"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">testFiles</span><span class="p">)</span>
-</span><span class="line">    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">karma</span><span class="p">({</span>
-</span><span class="line">      <span class="nx">configFile</span><span class="o">:</span> <span class="s1">&#39;karma.conf.js&#39;</span><span class="p">,</span>
-</span><span class="line">      <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;run&#39;</span>
-</span><span class="line">    <span class="p">}))</span>
-</span><span class="line">  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="c1">// Make sure failed tests cause gulp to exit non-zero </span>
-</span><span class="line">    <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line"><span class="p">});</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">testFiles</span><span class="p">)</span>
-</span><span class="line">    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">karma</span><span class="p">({</span>
-</span><span class="line">      <span class="nx">configFile</span><span class="o">:</span> <span class="s1">&#39;karma.conf.js&#39;</span><span class="p">,</span>
-</span><span class="line">      <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;watch&#39;</span>
-</span><span class="line">    <span class="p">}));</span>
-</span><span class="line"><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>This is my <strong>karma.conf.js</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">config</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
-</span><span class="line">    <span class="nx">browsers</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;PhantomJS&#39;</span><span class="p">],</span>
-</span><span class="line">    <span class="nx">frameworks</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;jasmine&#39;</span><span class="p">]</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line"><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Here’s my first test</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Taggify&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="kd">var</span> <span class="nx">fixture</span><span class="p">;</span>
-</span><span class="line">  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">fixture</span> <span class="o">=</span> <span class="nx">setFixtures</span><span class="p">(</span><span class="s1">&#39;&lt;ul id=&quot;tag&quot;&gt;&lt;/ul&gt;&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;#tag&#39;</span><span class="p">).</span><span class="nx">taggify</span><span class="p">();</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should initialize text box&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line">
-</span><span class="line"><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>You will see that the test failed now we implement some code.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">taggify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
-</span><span class="line">  <span class="p">};</span>
-</span><span class="line">
-</span><span class="line">  <span class="kd">function</span> <span class="nx">create</span><span class="p">(</span><span class="nx">$theElement</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input class=&quot;tag-input&quot;&gt;&lt;/input&gt;&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">    <span class="nx">$theElement</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line"><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Now the test passed.</p>
-
-<p>Now let’s add some event so when you hit enter the tag is added. So, I added one more test</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line">  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should add a tag&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">input</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">Event</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">keyCode</span><span class="o">:</span> <span class="mi">13</span> <span class="p">}));</span>
-</span><span class="line">
-</span><span class="line">    <span class="kd">var</span> <span class="nx">tags</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.tag-label&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">tag</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="nx">tags</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-</span><span class="line">
-</span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">tag</span><span class="p">.</span><span class="nx">html</span><span class="p">()).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">tags</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">).</span><span class="nx">toBeTruthy</span><span class="p">();</span>
-</span><span class="line">  <span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Now the test failed.</p>
-
-<p>I’ll fix the test by doing this.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">taggify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
-</span><span class="line">  <span class="p">};</span>
-</span><span class="line">
-</span><span class="line">  <span class="kd">function</span> <span class="nx">create</span><span class="p">(</span><span class="nx">$theElement</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input class=&quot;tag-input&quot;&gt;&lt;/input&gt;&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">    <span class="nx">$input</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">      <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">===</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">        <span class="kd">var</span> <span class="nx">tagText</span> <span class="o">=</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
-</span><span class="line">
-</span><span class="line">        <span class="kd">var</span> <span class="nx">$span</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;tag-label&quot;&gt;&lt;/span&gt;&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">        <span class="nx">$span</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">tagText</span><span class="p">).</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li class=&quot;tag-choice&quot;&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
-</span><span class="line">        <span class="nx">$theElement</span><span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">$span</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
-</span><span class="line">        <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
-</span><span class="line">      <span class="p">}</span>
-</span><span class="line">    <span class="p">});</span>
-</span><span class="line">
-</span><span class="line">    <span class="nx">$theElement</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line"><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Now I want to add some negative test case.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line">  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should not add a tag&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">input</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">Event</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">keyCode</span><span class="o">:</span> <span class="mi">13</span> <span class="p">}));</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">tags</span> <span class="o">=</span> <span class="nx">fixture</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.tag-label&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">    <span class="nx">expect</span><span class="p">(</span><span class="nx">tags</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">).</span><span class="nx">toBeFalsy</span><span class="p">();</span>
-</span><span class="line">  <span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Oops the test failed, looks like I missed something</p>
-
-<p>I will fix the test by</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">taggify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
-</span><span class="line">  <span class="p">};</span>
-</span><span class="line">
-</span><span class="line">  <span class="kd">function</span> <span class="nx">create</span><span class="p">(</span><span class="nx">$theElement</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;input class=&quot;tag-input&quot;&gt;&lt;/input&gt;&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">)</span>
-</span><span class="line">      <span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">    <span class="nx">$input</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">      <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">===</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">        <span class="kd">var</span> <span class="nx">tagText</span> <span class="o">=</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
-</span><span class="line">        <span class="k">if</span><span class="p">(</span><span class="nx">tagText</span> <span class="o">!==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">          <span class="kd">var</span> <span class="nx">$span</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;span class=&quot;tag-label&quot;&gt;&lt;/span&gt;&#39;</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line">          <span class="nx">$span</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">tagText</span><span class="p">).</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;li class=&quot;tag-choice&quot;&gt;&lt;/li&gt;&#39;</span><span class="p">);</span>
-</span><span class="line">          <span class="nx">$theElement</span><span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">$span</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
-</span><span class="line">          <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
-</span><span class="line">        <span class="p">}</span>
-</span><span class="line">      <span class="p">}</span>
-</span><span class="line">    <span class="p">});</span>
-</span><span class="line">
-</span><span class="line">    <span class="nx">$theElement</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">parent</span><span class="p">());</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line"><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>That’s it. I hope you enjoy and love TDD more. And here’s the <a href="https://github.com/noppanit/taggify">github repo</a></p>
 
 ]]></content>
   </entry>

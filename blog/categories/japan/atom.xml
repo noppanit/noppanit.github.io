@@ -4,7 +4,7 @@
   <title><![CDATA[Category: japan | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/japan/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2017-02-20T13:32:04+07:00</updated>
+  <updated>2017-02-25T22:44:36-05:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[A must item while travelling in Japan]]></title>
     <link href="https://www.noppanit.com/a-must-item-while-travelling-in-japan/"/>
-    <updated>2016-12-06T05:36:29+07:00</updated>
+    <updated>2016-12-05T17:36:29-05:00</updated>
     <id>https://www.noppanit.com/a-must-item-while-travelling-in-japan</id>
     <content type="html"><![CDATA[<h2 id="what-is-this-item">What is this item?</h2>
 <p>Short answer is. A pocket Wifi. Or some sort of a way for you to have Internet at your finger tip.</p>
@@ -43,15 +43,15 @@
 
 <p>This is what you get in the envelop.</p>
 
-<p><img src="/wp-content/uploads/2016/12/Wifi.jpeg" width="300"></p>
+<p>{% img /wp-content/uploads/2016/12/Wifi.jpeg 300px What you get in the envelop %}</p>
 
 <p>This is the return envelop that you need to drop in a mailbox</p>
 
-<p><img src="/wp-content/uploads/2016/12/Envelop.jpeg" width="300"></p>
+<p>{% img /wp-content/uploads/2016/12/Envelop.jpeg 300px Envelop %}</p>
 
 <p>Mailbox at Haneda airport to return the wifi.</p>
 
-<p><img src="/wp-content/uploads/2016/12/Mailbox.jpeg" width="300"></p>
+<p>{% img /wp-content/uploads/2016/12/Mailbox.jpeg 300px Mailbox %}</p>
 
 <p>During the whole trip, there wasn’t even one occasion where the wifi didn’t work. I got the connection the whole time and the battery lasted for at least from 9am to 7pm. If you have a power bank it can easily last until the end of the day. If you have more devices, I believe you will need to choose the premium one with faster speed.</p>
 ]]></content>

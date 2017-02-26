@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Vignettes mean the edges of the image. I think but I’m not sure. So, let’s get to the point. How do I do it? In Photoshop, go to Filter -&gt; &hellip;">
+	<meta name="description" content="I’m using Netbeans 6.9 and implementing RecordStore and I want to test that with emulator. How would I do that? because every time I close the &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,92 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/tutorial-how-to-test-recordstore-with-emulator/">
+		
+			Tutorial : J2ME and Netbeans : How to Test RecordStore With Emulator</a>
+	</h2>
+	<div class="entry-content">
+		<p>I’m using Netbeans 6.9 and implementing RecordStore and I want to test that with emulator. How would I do that? because every time I close the emulator, the state will be deleted or gone in some way.</p>
+
+<p>This is my way of doing that. Basically, you just have to actually install the application in the emulator and when you exit the application you can enter the application again. Just like in a real phone.</p>
+
+<p>So, you just have to use OTA install.</p>
+
+<p>In Netbeans 6.9.<br />
+1. right click on your project and click “properties”<br />
+2. In running click at “Execute through OTA (Over the air provisioning)”.<br />
+3. That’s it, so when you start the application, it will be actually installed inside emulator and you can close and open the application anytime you want.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Aug 11th, 2010</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/j2me/'>j2me</a>, <a class='category' href='/blog/categories/java/'>java</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/if-xml-file-is-too-big-for-ajax/">
+		
+			If XML File Is Too Big for AJAX</a>
+	</h2>
+	<div class="entry-content">
+		<p>http://www.developer.com/lang/php/article.php/3897851/article.htm</p>
+
+<p>I found this article which is quite useful. What will you do if XML file is too big.</p>
+
+<ol>
+  <li>Transform the XML documents into a character string.</li>
+  <li>Split the character string into equal chunks (400 characters).</li>
+  <li>Save each chunk as a value in an array.</li>
+  <li>Transfer the chunks one by one using the Ajax mechanism into the final XML document.</li>
+</ol>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Aug 11th, 2010</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -679,120 +765,6 @@ Oct 6th, 2009</div>
 
 
 	<a class='category' href='/blog/categories/java/'>java</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/one-asian-in-britain/">
-		
-			One Asian in Britain.</a>
-	</h2>
-	<div class="entry-content">
-		<p>In the economic down turn, I have an interesting idea at least for me to experiment on how one asian man can be living in the UK. I know that this is the the right time, it is not always the right time actually. I don’t know. I hope that everybody could have at least one chance in their live.</p>
-
-<p>I am going to the UK, because I really do not like my country now. I have high hope. However, I have at least two years to prove myself that am I capable of doing something that everyday says that it is hard YOU CAN’T DO IT MAN. Well, I’m gonna prove it later.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Aug 3rd, 2009</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/tutorial-namespaces-for-javascript/">
-		
-			Tutorial : Namespaces for Javascript</a>
-	</h2>
-	<div class="entry-content">
-		<p>Have you ever had a problem using somebody method with the same name. Well, Have you ever thought why javascript don’t have package or namespaces like other languages. Well, change your mind. This is how you will be implementing namespaces for javascript.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="k">if</span> <span class="p">(</span> <span class="nx">com</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="k">typeof</span><span class="p">(</span> <span class="nx">com</span> <span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;object&quot;</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class="line">	<span class="kd">var</span> <span class="nx">com</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="k">if</span> <span class="p">(</span> <span class="nx">com</span><span class="p">.</span><span class="nx">noppanit</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="k">typeof</span><span class="p">(</span> <span class="nx">com</span><span class="p">.</span><span class="nx">noppanit</span> <span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;object&quot;</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class="line">	<span class="nx">com</span><span class="p">.</span><span class="nx">noppanit</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">com</span><span class="p">.</span><span class="nx">noppanit</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class="line">	<span class="nx">message</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
-</span><span class="line">  	<span class="p">{</span>
-</span><span class="line">    		<span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">);</span>
-</span><span class="line">  	<span class="p">},</span>
-</span><span class="line">  	<span class="nx">message1</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
-</span><span class="line">  	<span class="p">{</span>
-</span><span class="line">    		<span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;test1&#39;</span><span class="p">);</span>
-</span><span class="line">  	<span class="p">}</span>
-</span><span class="line"><span class="p">};</span>
-</span><span class="line">
-</span><span class="line"><span class="nx">com</span><span class="p">.</span><span class="nx">noppanit</span><span class="p">.</span><span class="nx">message</span><span class="p">();</span>
-</span><span class="line"><span class="nx">com</span><span class="p">.</span><span class="nx">noppanit</span><span class="p">.</span><span class="nx">message1</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Jan 27th, 2009</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/javascript/'>javascript</a>
 
 
 </div>
