@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2017-02-25T22:44:36-05:00</updated>
+  <updated>2017-08-28T21:59:09-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -12,6 +12,64 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Lower your Redis memory footprint by a few lines of code]]></title>
+    <link href="https://www.noppanit.com/lower-your-redis-memory-footprint-by-a-few-lines-of-code/"/>
+    <updated>2017-04-18T14:48:38-04:00</updated>
+    <id>https://www.noppanit.com/lower-your-redis-memory-footprint-by-a-few-lines-of-code</id>
+    <content type="html"><![CDATA[<p>If you have Redis as your cache for your application you might want to lower your memory footprint by compressing your data. This will save you at least 50% of your memory usage for your Redis which will save you money.</p>
+
+<p>The code sample is for node.js but the concept work for any language.</p>
+
+<p>``` javascript</p>
+
+<p>const zlib = require(‘zlib’);
+const redis = require(‘redis’);
+const Promise = require(‘bluebird’);</p>
+
+<p>Promise.promisifyAll(redis.RedisClient.prototype);
+Promise.promisifyAll(redis.Multi.prototype);</p>
+
+<p>function set(key, value, expiration) {
+  const expire = expiration || config.redis.expirationInSeconds;
+  return zipAsync(Buffer.from(value)).then((compressed) =&gt; {
+    return compressed.toString(‘base64’);
+  }).then((compressed) =&gt; {
+    return redisClient.setexAsync(key, expire, compressed);
+  })
+}</p>
+
+<p>function get(key) {
+  return redisClient.getAsync(key).then((cachedResponse) =&gt; {
+    if (!cachedResponse) {
+      return null;
+    }
+    return gunzipAsync(Buffer.from(cachedResponse, ‘base64’)).catch(() =&gt; {
+      // Just in case if any cache is not compressed
+      return cachedResponse;
+    });
+  }).then(response =&gt; {
+    return response ? response.toString() : response;
+  });
+}</p>
+
+<p>```</p>
+
+<p>You don’t need to use Bluebird if you don’t want to.</p>
+
+<p>Now the problem is I can’t just go in to my Redis and <code>Get ${key}</code> I want because it won’t be readable. You can just do this.</p>
+
+<p>``` bash
+redis-cli -h 127.0.0.1 GET “${YOUR_KEY}” | base64 -D | gzip -d | jq</p>
+
+<p>```</p>
+
+<p>I use <code>jq</code> because I <code>JSON.stringify</code> my value</p>
+
+<p>We lower our cache node from 16GB to just 3GB.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[What is going on under your JavaScript code]]></title>
@@ -421,11 +479,11 @@ $('#ul li').on('click', function() {
   <li></li>
   // 999 more <li>
 
-```
-
-Then we will have JavaScript like this
-
-``` html
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>Then we will have JavaScript like this
+</span></code></pre></td></tr></table></div></figure> html
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
     $('#parent li').on('click', function() {
@@ -433,18 +491,25 @@ Then we will have JavaScript like this
     });
 
 </script>
-```
-
-If you open your html page on Chrome you should see something like this.  
-{% img https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png %}
-
-If you go down to where JavaScript is executed You will see it takes around **37ms** to execute the snippet.  
-
-{% img https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png %}
-
-Now change your snippet to be event delegation
-
-``` html
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>If you open your html page on Chrome you should see something like this.  
+</span><span class='line'><img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.06.19-PM.png">
+</span><span class='line'>
+</span><span class='line'>If you go down to where JavaScript is executed You will see it takes around **37ms** to execute the snippet.  
+</span><span class='line'>
+</span><span class='line'><img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.07.18-PM.png">
+</span><span class='line'>
+</span><span class='line'>Now change your snippet to be event delegation
+</span></code></pre></td></tr></table></div></figure> html
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
     $('#parent').on('click', 'li', function() {
@@ -456,7 +521,7 @@ Now change your snippet to be event delegation
 
 And refresh the page you should see something like this.  
 
-{% img https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png %}
+<img src="https://www.noppanit.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-21-at-7.12.02-PM.png">
 
 Now it will only take **2ms** to execute the snippet. It&#8217;s because the event is added to one element not 1000 of them. 
 
@@ -486,48 +551,6 @@ This is just an easy example that you can do it yourself to improve your perform
 <p><code>
 Cache-Control: no-transform
 </code></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Contextual Preloading for Ajax request.]]></title>
-    <link href="https://www.noppanit.com/contextual-preloading-ajax-request/"/>
-    <updated>2014-05-10T00:00:00-04:00</updated>
-    <id>https://www.noppanit.com/contextual-preloading-ajax-request</id>
-    <content type="html"><![CDATA[<p>I have just heard this from my friend <a href="https://twitter.com/rajveerr" title="rajveerr twitter">@rajveerr</a> about pre-loading at the global level, this concept is not new but I have just learned it.. Usually and I think everyone has done it before. People would do something like this.</p>
-
-<p><code>javascript
-$('#link1').on('click', function (e) {
-    // Do some funky spinning wheel
-    $.ajax({
-        url: '/echo/json',
-        success : function (data) {
-            // Cancel that funky spinning wheel
-        }
-    });
-});
-</code></p>
-
-<p>And you have to do this for every single ajax request. So, here’s how you would do that in a contextual level.</p>
-
-<iframe width="100%" height="300" src="//jsfiddle.net/noppanit/y63n5/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p>The trick is that in each ajax request you need to add context option. I used zepto as an example but jquery should work the same. The reason is that is <strong>e.target</strong> behaves differently each browser. Also, usually Ajax request would be fired from <strong>#document</strong> level that means your <strong>e.target</strong> would be your &lt;/p&gt;</p>
-
-<p><code>javascript
-$('#link1').on('click', function (e) {
-    $.ajax({
-        url: '/echo/json',
-        &lt;strong&gt;context: e.target&lt;/strong&gt;,
-        success : function (data) {
-            console.log(data);
-        }
-    });
-});
-</code></p>
-
-<p>By doing this if you want your pre-loader you just need to add <strong>.ajaxContainer</strong> class to your container.</p>
 
 ]]></content>
   </entry>

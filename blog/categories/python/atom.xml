@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2017-02-25T22:44:36-05:00</updated>
+  <updated>2017-08-28T21:59:09-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -308,7 +308,7 @@ n = len(board[0]) if m else 0</p>
 <h1 id="whats-a-vector">What’s a vector?</h1>
 <p>In Pyhsics, a vector has two things; magnitude and direction which can be written as</p>
 
-<p>{% img /wp-content/uploads/2015/11/vector.png Vector %}</p>
+<p><img src="/wp-content/uploads/2015/11/vector.png" title="Vector" ></p>
 
 <p>I’d like to explain what a vector is but this <a href="http://immersivemath.com/ila/ch02_vectors/ch02.html">site</a> explains a lot better.</p>
 
@@ -318,7 +318,7 @@ n = len(board[0]) if m else 0</p>
 
 <h1 id="cosine-similarity">Cosine Similarity</h1>
 
-<p>{% img /wp-content/uploads/2015/11/cosine_similarity.gif Cosine Similarity %}</p>
+<p><img src="/wp-content/uploads/2015/11/cosine_similarity.gif" title="Cosine Similarity" ></p>
 
 <p>In order to find the angle between the two vectors, we need to find the dot product of the two vectors as the formula below.</p>
 

@@ -7,8 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Should you pay in local or home currency while travelling?
-Short answer. Pay in local currency. For example, I have a credit card from the US and I’ &hellip;">
+	<meta name="description" content="If you have Redis as your cache for your application you might want to lower your memory footprint by compressing your data. This will save you at &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -89,6 +88,114 @@ Short answer. Pay in local currency. For example, I have a credit card from the 
     <article class="post">
 	<h2 class="title">
 		
+		<a href="/lower-your-redis-memory-footprint-by-a-few-lines-of-code/">
+		
+			Lower Your Redis Memory Footprint by a Few Lines of Code</a>
+	</h2>
+	<div class="entry-content">
+		<p>If you have Redis as your cache for your application you might want to lower your memory footprint by compressing your data. This will save you at least 50% of your memory usage for your Redis which will save you money.</p>
+
+<p>The code sample is for node.js but the concept work for any language.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kr">const</span> <span class="nx">zlib</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;zlib&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="kr">const</span> <span class="nx">redis</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;redis&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="kr">const</span> <span class="nx">Promise</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;bluebird&#39;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">Promise</span><span class="p">.</span><span class="nx">promisifyAll</span><span class="p">(</span><span class="nx">redis</span><span class="p">.</span><span class="nx">RedisClient</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+</span><span class="line"><span class="nx">Promise</span><span class="p">.</span><span class="nx">promisifyAll</span><span class="p">(</span><span class="nx">redis</span><span class="p">.</span><span class="nx">Multi</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">function</span> <span class="nx">set</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">expiration</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="kr">const</span> <span class="nx">expire</span> <span class="o">=</span> <span class="nx">expiration</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">redis</span><span class="p">.</span><span class="nx">expirationInSeconds</span><span class="p">;</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">zipAsync</span><span class="p">(</span><span class="nx">Buffer</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">value</span><span class="p">)).</span><span class="nx">then</span><span class="p">((</span><span class="nx">compressed</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">compressed</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;base64&#39;</span><span class="p">);</span>
+</span><span class="line">  <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">compressed</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">redisClient</span><span class="p">.</span><span class="nx">setexAsync</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">expire</span><span class="p">,</span> <span class="nx">compressed</span><span class="p">);</span>
+</span><span class="line">  <span class="p">})</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">function</span> <span class="nx">get</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">redisClient</span><span class="p">.</span><span class="nx">getAsync</span><span class="p">(</span><span class="nx">key</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">cachedResponse</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">cachedResponse</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">gunzipAsync</span><span class="p">(</span><span class="nx">Buffer</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">cachedResponse</span><span class="p">,</span> <span class="s1">&#39;base64&#39;</span><span class="p">)).</span><span class="k">catch</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">      <span class="c1">// Just in case if any cache is not compressed</span>
+</span><span class="line">      <span class="k">return</span> <span class="nx">cachedResponse</span><span class="p">;</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">response</span> <span class="o">?</span> <span class="nx">response</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">:</span> <span class="nx">response</span><span class="p">;</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You don’t need to use Bluebird if you don’t want to.</p>
+
+<p>Now the problem is I can’t just go in to my Redis and <code>Get ${key}</code> I want because it won’t be readable. You can just do this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">redis-cli -h 127.0.0.1 GET <span class="s2">&quot;${YOUR_KEY}&quot;</span> <span class="p">|</span> base64 -D <span class="p">|</span> gzip -d <span class="p">|</span> jq
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I use <code>jq</code> because I <code>JSON.stringify</code> my value</p>
+
+<p>We lower our cache node from 16GB to just 3GB.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Apr 18th, 2017</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/performance/'>performance</a>
+
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
 		<a href="/pay-in-local-currency-while-you-are-travelling-it-is-cheaper/">
 		
 			Pay in Local Currency While You Are Travelling. It Is Cheaper</a>
@@ -101,7 +208,7 @@ Short answer. Pay in local currency. For example, I have a credit card from the 
 
 <p><img src="/wp-content/uploads/2017/02/credit-card-receipt.jpg" width="250" height="250" title="'Credit card receipt'" /></p>
 
-<p>If I had paid in US dollar, I would have paid \$0.81 more. It doesn’t seem like a lot but it definitely adds up. I checked my credit card transaction and it showed \$19.33. It’s also good if you can get the card that’s free foreign transaction fee.</p>
+<p>If I had paid in US dollar, I would have paid \$0.81 more. It doesn’t seem like a lot but it definitely adds up. I checked my credit card transaction and it showed \$19.33. It’s also good if you can get the card that doesn’t charge foreign transaction fee.</p>
 
 		
 		
@@ -130,12 +237,57 @@ Feb 25th, 2017</div>
     <article class="post">
 	<h2 class="title">
 		
-		<a href="/reservoir-sampling-of-size-1/">
+		<a href="/reservoir-sampling/">
 		
-			Reservoir Sampling of Size 1</a>
+			Reservoir Sampling</a>
 	</h2>
 	<div class="entry-content">
-		
+		<p>I have been working with Stream processing a lot lately. Here’s my usecase.</p>
+
+<h2 id="problem">Problem:</h2>
+
+<p>I have a stream of pageviews. But I don’t want to process every single pageview, because then I will process one pageview over and over again.
+How do I sample the data so that I process just a subset of data but with equal probability of processing each pageview.</p>
+
+<p>For example,</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">[pageview1, pageview2, pageview1, pageview3]</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Now I want to choose 3 pageviews out of 4</p>
+
+<h2 id="solution">Solution:</h2>
+<p>We choose <code>[pageview1, pageview2, pageview1]</code> as the initial reservior. Then I choose pageview3 with a probability of 3/4</p>
+
+<h2 id="code">Code</h2>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kr">const</span> <span class="nx">samples</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class="line"><span class="kr">const</span> <span class="nx">sampleSize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span><span class="line"><span class="nx">pageviews</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">record</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">if</span> <span class="p">(</span><span class="nx">samples</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="nx">sampleSize</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">samples</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">record</span><span class="p">);</span>
+</span><span class="line">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">let</span> <span class="nx">rand</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">index</span><span class="p">);</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="nx">rand</span> <span class="o">&lt;</span> <span class="nx">sampleSize</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="nx">samples</span><span class="p">[</span><span class="nx">rand</span><span class="p">]</span> <span class="o">=</span> <span class="nx">record</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I might not explain the math clearly, because I’m not very good at math. If you want to know more I recommend <a href="https://gregable.com/2007/10/reservoir-sampling.html">this</a> and <a href="https://jeremykun.com/2013/07/05/reservoir-sampling/">this</a> and <a href="https://discuss.leetcode.com/topic/53753/brief-explanation-for-reservoir-sampling">this</a> and <a href="http://austinrochford.com/posts/2014-11-30-reservoir-sampling.html">this</a>. There’s also my <a href="https://stackoverflow.com/questions/42046581/is-sample-size-of-1-consider-reservoir-sampling/42053227?noredirect=1#comment71830111_42053227">question</a> on SO about proof.</p>
+
 
 		
 		
@@ -1369,90 +1521,6 @@ Feb 17th, 2016</div>
 
 
 	<a class='category' href='/blog/categories/performance/'>performance</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/round-to-the-left-most-digit/">
-		
-			Round to the Left Most Digit</a>
-	</h2>
-	<div class="entry-content">
-		<p>It’s probably unusual for me to write anything about Math. I hated math and I failed the subject all the time. But I got pretty excited when I knew this trick from my colleague. I also asked this question at <a href="http://math.stackexchange.com/questions/1604448/how-to-find-out-if-a-number-is-a-hundred-or-thousand/1604474#1604474">stackoverflow</a>.</p>
-
-<h3 id="the-problem">The problem</h3>
-
-<p>Let’s say you have a number <code>423</code> and you want to round the number to the nearest left-most digit which in this case it’s <code>4</code>. If you want to round to the left-most digit it’s going to be <code>400</code>.</p>
-
-<h3 id="the-solution">The solution</h3>
-<p>The solution is quiet simple. You just need to get the place value of the number, take the number in question divided by the place value and <code>floor</code> the number then multiply the result with the place value again. That’s it! Simple right?</p>
-
-<p>So, the place value of <code>423</code> is <code>100</code>.</p>
-
-<p>\begin{align}
-\frac{423}{100}
-\end{align}</p>
-
-<p>which you will get <code>4.23</code>. The you <code>floor</code> the number</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line">  <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="mf">4.23</span><span class="p">);</span> <span class="c1">// 4</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>And then you multiple <code>4</code> with <code>100</code> to get the rounded number.</p>
-
-<p>\begin{align}
-{400}\cdot{100} = {400}
-\end{align}</p>
-
-<p>The problem is how are we going to get the <code>place value</code> of the number?</p>
-
-<p>You want <a href="https://en.wikipedia.org/wiki/Logarithm">logarithm</a>.</p>
-
-<p>The idea of this is to reverse the operation of exponentiation. For example, the <code>log10</code> of <code>423</code> is <code>2.62634036738</code> then <code>10^2.62634036738</code> equals <code>423</code>. But you want the place value. You would need to round the <code>2.62634036738</code> which is going to be <code>2</code> then <code>10^2</code> is <code>100</code>. There! you get the place value of the <code>4</code>.</p>
-
-<p>\begin{align}
-d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
-\cdot
-10^{\lfloor\log_{10} n\rfloor}
-\end{align}</p>
-
-<h3 id="show-me-the-code">Show me the code</h3>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">n</span> <span class="o">=</span> <span class="mi">423</span>
-</span><span class="line"><span class="nx">d</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">log10</span><span class="p">(</span><span class="nx">n</span><span class="p">))</span>
-</span><span class="line">
-</span><span class="line"><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">n</span> <span class="o">/</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nx">d</span><span class="p">))</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nx">d</span><span class="p">)</span> <span class="c1">// 400</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Jan 16th, 2016</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/data/'>data</a>, <a class='category' href='/blog/categories/math/'>math,</a>, <a class='category' href='/blog/categories/scrience/'>scrience</a>
 
 
 </div>

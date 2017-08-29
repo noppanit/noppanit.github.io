@@ -7,14 +7,16 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Well, the topic pretty says everything. So, here’s the solution. 1
+	<meta name="description" content="So, for example if you have a 2 dimensional array.
+1
 2
 3
-4
-5
-6
-final ByteArrayOutputStream myOut = new ByteArrayOutputStream();
-System &hellip;">
+1 2 3 4 5 6 7 8 9
+the neighbours of “5” is
+1
+2
+3
+1 2 3 4 6 7 8 9 the neighbours of “9” &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +92,153 @@ System &hellip;">
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/how-to-find-neighbours-of-2-dimensional-array/">
+		
+			How to Find Neighbours of 2 Dimensional Array</a>
+	</h2>
+	<div class="entry-content">
+		<p>So, for example if you have a 2 dimensional array.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">1 2 3  
+</span><span class="line">4 5 6  
+</span><span class="line">7 8 9</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>the neighbours of “5” is</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">1 2 3  
+</span><span class="line">4 6  
+</span><span class="line">7 8 9</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>the neighbours of “9” would be</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">5 6  
+</span><span class="line">8</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Without further ado, here is the algorithm.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">][</span><span class="mi">3</span><span class="o">];</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">initialiseArray</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">        <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class="line">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="o">;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">;</span> <span class="n">row</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class="line">            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="o">;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">;</span> <span class="n">col</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class="line">                <span class="n">array</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">=</span> <span class="n">counter</span><span class="o">;</span>
+</span><span class="line">                <span class="n">counter</span><span class="o">++;</span>
+</span><span class="line">            <span class="o">}</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">initialiseArray</span><span class="o">();</span>
+</span><span class="line">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="o">;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">;</span> <span class="n">row</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class="line">            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="o">;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">;</span> <span class="n">col</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class="line">                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]);</span>
+</span><span class="line">                <span class="k">if</span><span class="o">(</span> <span class="n">col</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">)</span>
+</span><span class="line">                <span class="o">{</span>
+</span><span class="line">                    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;\n&quot;</span><span class="o">);</span>
+</span><span class="line">                <span class="o">}</span>
+</span><span class="line">            <span class="o">}</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">        <span class="n">neighbours</span><span class="o">();</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">neighbours</span><span class="o">()</span>
+</span><span class="line">    <span class="o">{</span>
+</span><span class="line">        <span class="c1">// the position of a cell that you want to display its neighbours</span>
+</span><span class="line">        <span class="kt">int</span> <span class="n">posX</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+</span><span class="line">        <span class="kt">int</span> <span class="n">posY</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">for</span><span class="o">(</span> <span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="n">posX</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">row</span> <span class="o">&lt;=</span> <span class="n">posX</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">row</span><span class="o">++)</span>
+</span><span class="line">        <span class="o">{</span>
+</span><span class="line">            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span>  <span class="n">posY</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>  <span class="n">col</span> <span class="o">&lt;=</span> <span class="n">posY</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">col</span><span class="o">++)</span>
+</span><span class="line">            <span class="o">{</span>
+</span><span class="line">                <span class="k">if</span><span class="o">(</span> <span class="o">!(</span><span class="n">posX</span> <span class="o">==</span> <span class="n">row</span> <span class="o">&amp;&amp;</span>  <span class="n">posY</span> <span class="o">==</span> <span class="n">col</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="o">&amp;&amp;</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="o">)</span>
+</span><span class="line">                <span class="o">{</span>
+</span><span class="line">                    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]);</span>
+</span><span class="line">                <span class="o">}</span>
+</span><span class="line">            <span class="o">}</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Mar 20th, 2011</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>java</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -1246,61 +1395,6 @@ Dec 8th, 2010</div>
 
 
 Oct 16th, 2010</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/tutorial-java-random-with-scaling/">
-		
-			Tutorial : Java Random With Scaling</a>
-	</h2>
-	<div class="entry-content">
-		<p>I have been playing around with Random class in Java. Unfortunately, this class doesn’t provide us some methods we need. Such as, limit the range between -50,50 or get random double from 1 – 1000. Something like this we can fine tune. I copied some good practice from this <a href="http://www.cs.geneseo.edu/~baldwin/reference/random.html">website</a>.</p>
-
-<p>Here are some examples of these operations:</p>
-
-<ul>
-  <li>Suppose you are writing a game program that simulates throwing dice, and so need a random integer in the range 1 to 6. “nextInt” can give you one in the range 0 to 5, and you can translate this to the range you need:</li>
-</ul>
-
-<p>int throw = generator.nextInt(6) + 1;</p>
-
-<ul>
-  <li>In drawing a pattern made up of random lines, you want to pick a random angle between 0 and 360 degrees at which to draw a line. The angle can be any real number. The “nextDouble” message will give you a random real number, but between 0 and 1. You can use scaling to turn this into a real number between 0 and 360:</li>
-</ul>
-
-<p>double angle = generator.nextDouble() * 360.0;</p>
-
-<ul>
-  <li>Suppose the same pattern-drawing program also needs to pick random lengths for the lines, but that the lines should never be shorter than 10 units, nor longer than 50. Line lengths can be any real number between these limits. Thus you need random lengths from a 40-unit range starting at 10. You can use scaling and translation together to generate these numbers from “nextDouble”:</li>
-</ul>
-
-<p>double length = generator.nextDouble() * 40.0 + 10.0;</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Sep 2nd, 2010</div>
 	<div class="tags">
 
 

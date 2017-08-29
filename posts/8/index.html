@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="Right now, I’m trying to do HTML5 file upload but I also want to write some test as well. So, I just want to post it here. http://postposttechnical. &hellip;">
+	<meta name="description" content="I think everybody might know this campaign from Microsoft, http://www.scroogled.com/. Microsoft claims that they don’t index our email or track &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,46 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/maybe-i-have-just-got-scroogled/">
+		
+			Maybe I Have Just Got Scroogled?</a>
+	</h2>
+	<div class="entry-content">
+		<p>I think everybody might know this campaign from Microsoft, <a href="http://www.scroogled.com/">http://www.scroogled.com/</a>. Microsoft claims that they don’t index our email or track everything in our life in order to sell ads and Google is evil and we should switch to outlook.com. At first I think it’s cool if I could get some really cool ads or relevant ads but after seeing this I’m kinda scared of Google now.</p>
+
+<p><img src="http://www.noppanit.com/wp-content/uploads/2013/03/Screen-Shot-2013-03-15-at-09.08.49.png" /></p>
+
+<p>Exactly I’m not English but I work in London and I’ve been sent to Germany for 9 months now for work. So, I’m kinda an expat from England. Also, recently I have been talking to the finance team of my company about tax refund because I’ve been spending time in Germany more than 163 days. Of course, I’m using Gmail as the form of communication.</p>
+
+<p>The ad is super accurate, but the question is about the privacy. Is it good to have Google indies all of your data including your private conversation in order to get relevant ads? Well, I don’t know but if looking at the other way around it’s good for business because they can really focus on correct target customers.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Mar 15th, 2013</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -899,71 +939,6 @@ Jan 1st, 2013</div>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>I decided to use <strong>chi_sq</strong> as suggested in <a href="http://streamhacker.com/tag/bigrams/" title="stream hacker bigrams">this post</a>. However, the accuracy has gone down significantly to <strong>19.7530864198%</strong>. I guess this might be that my document (~100 document for each sentiment) is not large enough to use bigrams. But this is just my conclusion. I’m going to try to increase the dataset and test it again.</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-Dec 30th, 2012</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/python/'>python</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/first-experiment-on-naive-bayes-with-nltk/">
-		
-			First Experiment on Naive Bayes With NLTK</a>
-	</h2>
-	<div class="entry-content">
-		<p>I have been experimenting with Natural Language Processing on Text classification for a while now. So, I’m going to write a little journal on my blog. There are lots of academic papers or event commercial API on the Internet for sentiment analysis. But most of them only classify sentiment into <strong>negative</strong>, <strong>positive</strong> and <strong>neutral</strong>. My experiment will be based on <a href="http://en.wikipedia.org/wiki/Plutchik%27s_Wheel_of_Emotions#Plutchik.27s_wheel_of_emotions" title="Plutchik wheel of emotions">Plutchik’s wheel of emotions</a> which will classify a text into one of the eight emotions.</p>
-
-<p>For the purpose to get things done really fast, I use the example from <a href="http://www.laurentluce.com/posts/twitter-sentiment-analysis-using-python-and-nltk/" title="twitter sentiment analysis">Laurent’s blog</a>. But you can use <a href="https://github.com/japerk/nltk-trainer" title="nltk trainer">nltk-trainer</a> to train the classifier without a single line of python code.</p>
-
-<p>Most papers suggest that <a href="http://en.wikipedia.org/wiki/Bag-of-words_model" title="bag of words model">bag-of-words model</a> is one of the best techniques o classify text. So, I decided to use this method. However, this is about sentiment analysis so I used only Adjectives for feature extraction. The result is unacceptable with only <strong>19.7530864198 %</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">pos_tag</span> <span class="ow">in</span> <span class="n">nltk</span><span class="o">.</span><span class="n">pos_tag</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
-</span><span class="line">   <span class="k">if</span> <span class="n">pos_tag</span> <span class="o">==</span> <span class="s">&#39;ADJ&#39;</span><span class="p">:</span>
-</span><span class="line">      <span class="n">filtered_words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The second attempt I decided to fall back to bag-of-words model, and the result has gone up to <strong>61.316872428 %</strong></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="n">filtered_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">words</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>So, I moved on and try to clean up the text a bit by cleaning stopwords, stripping ‘RT’ or ‘rt’ for retweet, deleting @peoplename and tokenise word by whitespace. So, “i’m” stays as one word and not [“i”, “‘m”]. The result has gone up to <strong>69.9588477366 %</strong>.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="c"># stripping and cleaning.</span>
-</span><span class="line"><span class="c"># this is for stripping out the stopwords by using &lt;a href=&quot;http://nltk.googlecode.com/svn/trunk/doc/book/ch02.html&quot; title=&quot;NLTK Text Corpora&quot;&gt;NLTK Text Corpora&lt;/a&gt;</span>
-</span><span class="line"><span class="n">stripped_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">tokenized_text</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s">&#39;english&#39;</span><span class="p">)]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>I’ll keep experimenting and post some more techniques to see if I could get something out of this.</p>
 
 
 		

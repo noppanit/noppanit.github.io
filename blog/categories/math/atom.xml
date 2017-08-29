@@ -4,7 +4,7 @@
   <title><![CDATA[Category: math | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/math/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2017-02-25T22:44:36-05:00</updated>
+  <updated>2017-08-28T21:59:09-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -14,11 +14,46 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Reservoir sampling of size 1]]></title>
-    <link href="https://www.noppanit.com/reservoir-sampling-of-size-1/"/>
+    <title type="html"><![CDATA[Reservoir sampling]]></title>
+    <link href="https://www.noppanit.com/reservoir-sampling/"/>
     <updated>2017-02-20T02:27:44-05:00</updated>
-    <id>https://www.noppanit.com/reservoir-sampling-of-size-1</id>
-    <content type="html"><![CDATA[
+    <id>https://www.noppanit.com/reservoir-sampling</id>
+    <content type="html"><![CDATA[<p>I have been working with Stream processing a lot lately. Here’s my usecase.</p>
+
+<h2 id="problem">Problem:</h2>
+
+<p>I have a stream of pageviews. But I don’t want to process every single pageview, because then I will process one pageview over and over again.
+How do I sample the data so that I process just a subset of data but with equal probability of processing each pageview.</p>
+
+<p>For example,</p>
+
+<p><code>
+[pageview1, pageview2, pageview1, pageview3]
+</code></p>
+
+<p>Now I want to choose 3 pageviews out of 4</p>
+
+<h2 id="solution">Solution:</h2>
+<p>We choose <code>[pageview1, pageview2, pageview1]</code> as the initial reservior. Then I choose pageview3 with a probability of 3/4</p>
+
+<h2 id="code">Code</h2>
+<p><code>javascript
+const samples = [];
+const sampleSize = 10;
+pageviews.forEach((record, index) =&gt; {
+  if (samples.length &lt; sampleSize) {
+    samples.push(record);
+  } else {
+    let rand = Math.floor(Math.random() * index);
+    if (rand &lt; sampleSize) {
+      samples[rand] = record;
+    }
+  }
+});
+</code></p>
+
+<p>I might not explain the math clearly, because I’m not very good at math. If you want to know more I recommend <a href="https://gregable.com/2007/10/reservoir-sampling.html">this</a> and <a href="https://jeremykun.com/2013/07/05/reservoir-sampling/">this</a> and <a href="https://discuss.leetcode.com/topic/53753/brief-explanation-for-reservoir-sampling">this</a> and <a href="http://austinrochford.com/posts/2014-11-30-reservoir-sampling.html">this</a>. There’s also my <a href="https://stackoverflow.com/questions/42046581/is-sample-size-of-1-consider-reservoir-sampling/42053227?noredirect=1#comment71830111_42053227">question</a> on SO about proof.</p>
+
 ]]></content>
   </entry>
   

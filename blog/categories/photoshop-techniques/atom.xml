@@ -4,7 +4,7 @@
   <title><![CDATA[Category: photoshop techniques | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/photoshop-techniques/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2017-02-25T22:44:36-05:00</updated>
+  <updated>2017-08-28T21:59:09-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -25,7 +25,7 @@ In section vignette you can adjust amount and midpoint. You can choose to darken
 
 <p>Here’s an example.</p>
 
-<p>{% img https://www.noppanit.com/wp-content/uploads/2010/04/Screen-shot-2010-04-15-at-01.07.53-300x200.png %}</p>
+<p><img src="https://www.noppanit.com/wp-content/uploads/2010/04/Screen-shot-2010-04-15-at-01.07.53-300x200.png"></p>
 ]]></content>
   </entry>
   

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.noppanit.com/lower-your-redis-memory-footprint-by-a-few-lines-of-code/</loc>
+    <lastmod>2017-04-18T14:48:38-04:00</lastmod>
+  </url>
+  <url>
     <loc>https://www.noppanit.com/pay-in-local-currency-while-you-are-travelling-it-is-cheaper/</loc>
     <lastmod>2017-02-25T22:20:49-05:00</lastmod>
   </url>
   <url>
-    <loc>https://www.noppanit.com/reservoir-sampling-of-size-1/</loc>
+    <loc>https://www.noppanit.com/reservoir-sampling/</loc>
     <lastmod>2017-02-20T02:27:44-05:00</lastmod>
   </url>
   <url>
@@ -682,5 +686,44 @@
   </url>
   <url>
     <loc>https://www.noppanit.com/blog/categories/credit-card/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/posts/2/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/posts/3/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/posts/4/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/posts/5/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/posts/6/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/posts/7/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/posts/8/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/posts/9/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/posts/10/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/posts/11/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/posts/12/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/posts/13/</loc>
+  </url>
+  <url>
+    <loc>https://www.noppanit.com/posts/14/</loc>
   </url>
 </urlset>

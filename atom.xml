@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2017-02-25T22:43:37-05:00</updated>
+  <updated>2017-08-28T21:59:09-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -12,6 +12,89 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Lower your Redis memory footprint by a few lines of code]]></title>
+    <link href="https://www.noppanit.com/lower-your-redis-memory-footprint-by-a-few-lines-of-code/"/>
+    <updated>2017-04-18T14:48:38-04:00</updated>
+    <id>https://www.noppanit.com/lower-your-redis-memory-footprint-by-a-few-lines-of-code</id>
+    <content type="html"><![CDATA[<p>If you have Redis as your cache for your application you might want to lower your memory footprint by compressing your data. This will save you at least 50% of your memory usage for your Redis which will save you money.</p>
+
+<p>The code sample is for node.js but the concept work for any language.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kr">const</span> <span class="nx">zlib</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;zlib&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="kr">const</span> <span class="nx">redis</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;redis&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="kr">const</span> <span class="nx">Promise</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;bluebird&#39;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">Promise</span><span class="p">.</span><span class="nx">promisifyAll</span><span class="p">(</span><span class="nx">redis</span><span class="p">.</span><span class="nx">RedisClient</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+</span><span class="line"><span class="nx">Promise</span><span class="p">.</span><span class="nx">promisifyAll</span><span class="p">(</span><span class="nx">redis</span><span class="p">.</span><span class="nx">Multi</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">function</span> <span class="nx">set</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">expiration</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="kr">const</span> <span class="nx">expire</span> <span class="o">=</span> <span class="nx">expiration</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">redis</span><span class="p">.</span><span class="nx">expirationInSeconds</span><span class="p">;</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">zipAsync</span><span class="p">(</span><span class="nx">Buffer</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">value</span><span class="p">)).</span><span class="nx">then</span><span class="p">((</span><span class="nx">compressed</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">compressed</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;base64&#39;</span><span class="p">);</span>
+</span><span class="line">  <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">compressed</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">redisClient</span><span class="p">.</span><span class="nx">setexAsync</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">expire</span><span class="p">,</span> <span class="nx">compressed</span><span class="p">);</span>
+</span><span class="line">  <span class="p">})</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">function</span> <span class="nx">get</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">redisClient</span><span class="p">.</span><span class="nx">getAsync</span><span class="p">(</span><span class="nx">key</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">cachedResponse</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">cachedResponse</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">gunzipAsync</span><span class="p">(</span><span class="nx">Buffer</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">cachedResponse</span><span class="p">,</span> <span class="s1">&#39;base64&#39;</span><span class="p">)).</span><span class="k">catch</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">      <span class="c1">// Just in case if any cache is not compressed</span>
+</span><span class="line">      <span class="k">return</span> <span class="nx">cachedResponse</span><span class="p">;</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">response</span> <span class="o">?</span> <span class="nx">response</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">:</span> <span class="nx">response</span><span class="p">;</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You don’t need to use Bluebird if you don’t want to.</p>
+
+<p>Now the problem is I can’t just go in to my Redis and <code>Get ${key}</code> I want because it won’t be readable. You can just do this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">redis-cli -h 127.0.0.1 GET <span class="s2">&quot;${YOUR_KEY}&quot;</span> <span class="p">|</span> base64 -D <span class="p">|</span> gzip -d <span class="p">|</span> jq
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I use <code>jq</code> because I <code>JSON.stringify</code> my value</p>
+
+<p>We lower our cache node from 16GB to just 3GB.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Pay in local currency while you are travelling. It is cheaper]]></title>
@@ -25,16 +108,61 @@
 
 <p><img src="https://www.noppanit.com/wp-content/uploads/2017/02/credit-card-receipt.jpg" width="250" height="250" title="'Credit card receipt'" /></p>
 
-<p>If I had paid in US dollar, I would have paid \$0.81 more. It doesn’t seem like a lot but it definitely adds up. I checked my credit card transaction and it showed \$19.33. It’s also good if you can get the card that’s free foreign transaction fee.</p>
+<p>If I had paid in US dollar, I would have paid \$0.81 more. It doesn’t seem like a lot but it definitely adds up. I checked my credit card transaction and it showed \$19.33. It’s also good if you can get the card that doesn’t charge foreign transaction fee.</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Reservoir sampling of size 1]]></title>
-    <link href="https://www.noppanit.com/reservoir-sampling-of-size-1/"/>
+    <title type="html"><![CDATA[Reservoir sampling]]></title>
+    <link href="https://www.noppanit.com/reservoir-sampling/"/>
     <updated>2017-02-20T02:27:44-05:00</updated>
-    <id>https://www.noppanit.com/reservoir-sampling-of-size-1</id>
-    <content type="html"><![CDATA[
+    <id>https://www.noppanit.com/reservoir-sampling</id>
+    <content type="html"><![CDATA[<p>I have been working with Stream processing a lot lately. Here’s my usecase.</p>
+
+<h2 id="problem">Problem:</h2>
+
+<p>I have a stream of pageviews. But I don’t want to process every single pageview, because then I will process one pageview over and over again.
+How do I sample the data so that I process just a subset of data but with equal probability of processing each pageview.</p>
+
+<p>For example,</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">[pageview1, pageview2, pageview1, pageview3]</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Now I want to choose 3 pageviews out of 4</p>
+
+<h2 id="solution">Solution:</h2>
+<p>We choose <code>[pageview1, pageview2, pageview1]</code> as the initial reservior. Then I choose pageview3 with a probability of 3/4</p>
+
+<h2 id="code">Code</h2>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kr">const</span> <span class="nx">samples</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class="line"><span class="kr">const</span> <span class="nx">sampleSize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span><span class="line"><span class="nx">pageviews</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">record</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">if</span> <span class="p">(</span><span class="nx">samples</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="nx">sampleSize</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">samples</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">record</span><span class="p">);</span>
+</span><span class="line">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">let</span> <span class="nx">rand</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">index</span><span class="p">);</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="nx">rand</span> <span class="o">&lt;</span> <span class="nx">sampleSize</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="nx">samples</span><span class="p">[</span><span class="nx">rand</span><span class="p">]</span> <span class="o">=</span> <span class="nx">record</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I might not explain the math clearly, because I’m not very good at math. If you want to know more I recommend <a href="https://gregable.com/2007/10/reservoir-sampling.html">this</a> and <a href="https://jeremykun.com/2013/07/05/reservoir-sampling/">this</a> and <a href="https://discuss.leetcode.com/topic/53753/brief-explanation-for-reservoir-sampling">this</a> and <a href="http://austinrochford.com/posts/2014-11-30-reservoir-sampling.html">this</a>. There’s also my <a href="https://stackoverflow.com/questions/42046581/is-sample-size-of-1-consider-reservoir-sampling/42053227?noredirect=1#comment71830111_42053227">question</a> on SO about proof.</p>
+
 ]]></content>
   </entry>
   
@@ -1949,140 +2077,6 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
 <h2 id="some-note">Some note</h2>
 
 <p>I have one bad habit of just copying and pasting someone else’s code. Once you received the feedback, don’t just copy and paste that. Or if you get feedback from Github don’t just merge that right away. You will not fully understand the concept behind that. In the book I read recently, <a href="http://www.amazon.com/o/ASIN/039916524X/sciencefriday/">A Mind For Numbers</a>, Barbara taught us about how we can master in math and science and she explains that we have two modes of learning, focused and diffuse mode. If you just copy and paste someone else’s work, then you just imagine that you understand what’s going on. The best way to learn that is to actually do it and go into diffuse mode which is just close your eyes and think about it and go back to focused mode to do that again. I made a big mistake as an Engineer (I still do) that I just copy someone else’s code and I think that I understand that fully which I don’t. So, don’t just copy the feedback and commit that make sure you fully understand the code and actually type it. Barbara also suggested that writing is better than just typing but I think it might be difficult for us programmers.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Maps all parking signs in NYC.]]></title>
-    <link href="https://www.noppanit.com/maps-all-parking-signs-in-nyc/"/>
-    <updated>2015-07-30T00:00:00-04:00</updated>
-    <id>https://www.noppanit.com/maps-all-parking-signs-in-nyc</id>
-    <content type="html"><![CDATA[<p>This post might be too easy for any Data-viz people but as a beginner tapping in this area. It took me quite a long time to figure it out so I just want to share this hoping that it might save people’s time.</p>
-
-<p>Parking in NYC is really a pain, especially street parking where there’re lots of signs and regulations. There are some apps on Android and iPhone that you can download and see signs but I haven’t been able to find the one that suits my needs. I want an application that can tell me where to circle arounds on which day and time to find parking spot. For example, I parked my car on a Tuesday which has street cleaning on Wednesday and Friday from 8:30 to 9:30. That means I have to move the car on Wednesday morning to find a spot for Friday. The problem is I don’t know what’s around me. The closest application I find is <a href="http://www.nycparklife.com/streetparker/">http://www.nycparklife.com/streetparker/</a> which it doesn’t have Manhattan.</p>
-
-<h2 id="getting-the-data">Getting the data</h2>
-
-<p>So, I googled and thank NYC.gov that provides the <a href="http://www.nyc.gov/html/dot/html/about/datafeeds.shtml#parking">data</a> for us. First, I played around with the csv files but they don’t have coordinates that I can place location on the map. And I have no experience dealing with shapefiles.</p>
-
-<h2 id="extracting-the-data">Extracting the data</h2>
-
-<p>After a few hours of mangling and munching the csv with Pandas and R. I would not be able to get the exact locations of all the signs. So I turned to shapefile hoping that I might get lucky. And I found this <a href="http://www.shpescape.com/">http://www.shpescape.com/</a> which promised to transform shapefile to <a href="https://support.google.com/fusiontables/answer/2571232?hl=en">Google Fusion Table</a>. Awesome! I went ahead and tried it. It works great! but it only gives you the first 100,000 rows. So dug deeper. After another few hours of googling I found <a href="http://www.qgis.org/en/site/">qGis</a> which is a opensource project that you can use to open and view shapefile.</p>
-
-<p>Here’s the example.</p>
-
-<p><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.jpg" title="Parking signs on Qgis" /></p>
-
-<p>One thing I learnt was that you cannot just click <strong>Open</strong> and choose the file. What you need to do is to <string>Add Vector Layer&lt;/strong&gt;. You can use shortcut **Ctrl+Shift+v**</string></p>
-
-<p><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.jpg" title="Add Vector Layer" /></p>
-
-<h2 id="export-to-google-fusion">Export to Google Fusion</h2>
-
-<p>Now what we need is to import what we have to Google Fusion Table. How are we going to turn this beautiful layer to Google Maps. We need CSV…</p>
-
-<p>In QGis you can download the file as CSV. It’s in <strong>Layer &gt; Save As</strong>. You just need to make sure that <strong>Geometry</strong> has to be set so you get the coordinates.</p>
-
-<p><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.jpg" title="Save to CSV" /></p>
-
-<h2 id="import-to-google-fusion-table">Import to Google Fusion Table</h2>
-
-<p>Now we can use that CSV to import to Google Fusion. It would look something like this.</p>
-
-<p><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.jpg" title="Google Fusion Table" /></p>
-
-<p>what you need to make sure is that you need to specify which fields are Lat, Long so Google can plot that for you.</p>
-
-<p>Here’s how you do it.</p>
-
-<p><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.jpg" /></p>
-
-<p>The click <strong>change</strong> You will see something like this and you can choose which field you want to be Longitude or Latitude.</p>
-
-<p><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.jpg" title="Set Location" /></p>
-
-<p>Once the coordinates have set we can go to Map tab and see beautiful little dots that show where all the signs are in NYC.</p>
-
-<p><img src="https://www.noppanit.com/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.jpg" title="Parking signs in Google Fusion Table" /></p>
-
-<p>Walla! Now you have something you can build an application on top of it. The next post, I will create an application on top of this map to make use of our data.</p>
-
-<h2 id="things-i-have-tried-and-failed">Things I have tried and failed</h2>
-
-<p>I’ve tried using <a href="https://github.com/OSGeo/proj.4">Proj4</a> on both R and Python to convert X,Y WGS84 to Lat, Long. Here’s my little snippet.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">
-</span><span class="line">data = read.csv('./parking_regulation.csv')
-</span><span class="line">
-</span><span class="line">library(proj4)
-</span><span class="line">proj4string &lt;- "+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs"
-</span><span class="line">latlong_list&lt;-list()
-</span><span class="line">calculate_long_lat &lt;- function(x,y) {
-</span><span class="line">  
-</span><span class="line">  # Source data
-</span><span class="line">  xy &lt;- data.frame(x=x, y=y)
-</span><span class="line">  
-</span><span class="line">  # Transformed data
-</span><span class="line">  pj &lt;- project(xy, proj4string, inverse=TRUE)
-</span><span class="line">  latlon &lt;- data.frame(lat=pj$y, lon=pj$x)
-</span><span class="line">  latlong_list[['latlong']] &lt;- latlon
-</span><span class="line">}
-</span><span class="line">
-</span><span class="line">apply(data[,c('x','y')], 1, function(y) calculate_long_lat(y['x'], y['y']))
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The result is not quite accurate which I think it’s because I need to find a correct <strong>proj4string</strong>.</p>
-
-<p>Python has the same wrapper which is quite what I want as well.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>python </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">from pyproj import Proj
-</span><span class="line">import pandas as pd
-</span><span class="line">
-</span><span class="line">data = pd.read_csv('parking_regulation.csv')
-</span><span class="line">
-</span><span class="line">p = Proj(r'+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs')
-</span><span class="line">
-</span><span class="line">def cal_long_lat(row):
-</span><span class="line">    return p(row['x'], row['y'],inverse=True)
-</span><span class="line">
-</span><span class="line">data['lon'], data['lat'] = zip(data.apply (lambda row: cal_long_lat (row),axis=1))
-</span><span class="line">data.head()</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>I will need to learn more about State Pane and what is the correct format.</p>
-
-<p>This article takes 2 pomodoros to complete.</p>
 
 ]]></content>
   </entry>
