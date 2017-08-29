@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | My Blog]]></title>
   <link href="https://www.noppanit.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2017-08-28T21:59:09-04:00</updated>
+  <updated>2017-08-28T22:03:51-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -60,10 +60,9 @@ Promise.promisifyAll(redis.Multi.prototype);</p>
 
 <p>Now the problem is I can’t just go in to my Redis and <code>Get ${key}</code> I want because it won’t be readable. You can just do this.</p>
 
-<p>``` bash
-redis-cli -h 127.0.0.1 GET “${YOUR_KEY}” | base64 -D | gzip -d | jq</p>
-
-<p>```</p>
+<p><code>bash
+redis-cli -h 127.0.0.1 GET "${YOUR_KEY}" | base64 -D | gzip -d | jq
+</code></p>
 
 <p>I use <code>jq</code> because I <code>JSON.stringify</code> my value</p>
 
