@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="https://www.noppanit.com/atom.xml" rel="self"/>
   <link href="https://www.noppanit.com/"/>
-  <updated>2017-08-28T22:03:51-04:00</updated>
+  <updated>2017-10-14T10:50:11-04:00</updated>
   <id>https://www.noppanit.com/</id>
   <author>
     <name><![CDATA[Noppanit Charassinvichai]]></name>
@@ -12,6 +12,187 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How I learn to love awk]]></title>
+    <link href="https://www.noppanit.com/how-i-learn-to-love-awk/"/>
+    <updated>2017-10-14T10:24:39-04:00</updated>
+    <id>https://www.noppanit.com/how-i-learn-to-love-awk</id>
+    <content type="html"><![CDATA[<h2 id="problem-statement">Problem statement</h2>
+
+<p>I’m writing a Jenkins job to produce a file with a list of canonical urls from two separate sources. One source looks like this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">File brand_urls
+</span><span class="line">
+</span><span class="line">&quot;url1&quot;,&quot;brand&quot;
+</span><span class="line">&quot;url2&quot;,&quot;brand&quot;
+</span><span class="line">&quot;url3&quot;,&quot;brand1&quot;
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The second looks like this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">File url.json after manipulation using jq
+</span><span class="line">
+</span><span class="line">The source looks like this
+</span><span class="line">
+</span><span class="line">[{
+</span><span class="line">  slug: &quot;brand&quot;,
+</span><span class="line">  ...,
+</span><span class="line">  domain: {
+</span><span class="line">    production: &#39;www.domain.com&#39;
+</span><span class="line">  }
+</span><span class="line"> }, {
+</span><span class="line">  slug: &quot;brand1&quot;,
+</span><span class="line">  ...,
+</span><span class="line">  domain: {
+</span><span class="line">    production: &#39;www.domain1.com&#39;
+</span><span class="line">}]
+</span><span class="line">
+</span><span class="line"># echo $BRAND_JSON | jq -r &#39;.[] | [.domain.production,.slug] | @csv&#39; &gt;&gt; slug.json
+</span><span class="line">
+</span><span class="line">&quot;domain&quot;,&quot;brand&quot;
+</span><span class="line">&quot;doamin1&quot;,&quot;brand1&quot;
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>What I want is</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">&quot;domain/url1&quot;
+</span><span class="line">&quot;domain/url2&quot;
+</span><span class="line">&quot;domain1/url3&quot;
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Basically, I want to join two files together by <code>brand</code> which I could have done that in SQL.</p>
+
+<p>So my initial thought would be something like this</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nv">BRAND_JSON</span><span class="o">=</span><span class="k">$(</span>curl url.json<span class="k">)</span>
+</span><span class="line">
+</span><span class="line"><span class="k">while</span> <span class="nv">IFS</span><span class="o">=</span> <span class="nb">read</span> -r line
+</span><span class="line"><span class="k">do</span>
+</span><span class="line">  <span class="nv">BRAND</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> awk -F<span class="s1">&#39;,&#39;</span> <span class="s1">&#39;{print $2}&#39;</span> <span class="p">|</span> sed <span class="s2">&quot;s/\&quot;//g&quot;</span><span class="k">)</span>
+</span><span class="line">  <span class="nv">URI</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> awk -F<span class="s1">&#39;,&#39;</span> <span class="s1">&#39;{print $1}&#39;</span> <span class="p">|</span> sed <span class="s2">&quot;s/\&quot;//g&quot;</span><span class="k">)</span>
+</span><span class="line">  <span class="nb">echo</span> <span class="nv">$BRAND</span>
+</span><span class="line">  <span class="nv">DOMAIN</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$BRAND_JSON</span> <span class="p">|</span> jq -r <span class="s2">&quot;.[] | select(.slug==\&quot;$BRAND\&quot;) | .domain.production&quot;</span><span class="k">)</span>
+</span><span class="line">  <span class="nb">echo</span> <span class="nv">$DOMAIN</span>
+</span><span class="line">  <span class="nb">echo</span> <span class="nv">$URI</span>
+</span><span class="line">  <span class="nb">echo</span> <span class="s2">&quot;https://$DOMAIN/$URI&quot;</span> &gt;&gt; urls
+</span><span class="line"><span class="k">done</span> &lt; <span class="s2">&quot;brand_urls&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This is way too slow because I have about 900k of urls to filter and every url will do a O(n) search. Also, I created a lot of sub-shells</p>
+
+<p>And I thought hmm if I can make that a constant operation using some kind of Map then it would be a lot faster. I immediately thought of Map or associative array but my shell doesn’t have associative just yet. People might wonder why can’t I just use python or node script to manipulate that. I could have but I just want a script to run in Jenkins and bash is available already. I don’t have to install any runtime.</p>
+
+<h2 id="awk-to-the-rescue">Awk to the rescue</h2>
+<p>Awk already has associate array!</p>
+
+<p>Here’s my updated version of the code</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nv">INPUTFILE</span><span class="o">=</span><span class="s2">&quot;slug.json&quot;</span>
+</span><span class="line"><span class="nv">DATAFILE</span><span class="o">=</span><span class="s2">&quot;brand_urls&quot;</span>
+</span><span class="line"><span class="nv">OUTFILE</span><span class="o">=</span><span class="s2">&quot;all_urls&quot;</span>
+</span><span class="line">
+</span><span class="line">awk <span class="s1">&#39;BEGIN {</span>
+</span><span class="line"><span class="s1">  # mapping brand.json</span>
+</span><span class="line"><span class="s1">  while (getline &lt; &quot;&#39;</span><span class="s2">&quot;$INPUTFILE&quot;</span><span class="s1">&#39;&quot;)</span>
+</span><span class="line"><span class="s1">  {</span>
+</span><span class="line"><span class="s1">    split($0,ft,&quot;,&quot;);</span>
+</span><span class="line"><span class="s1">    domain=ft[1];</span>
+</span><span class="line"><span class="s1">    gsub(/&quot;/, &quot;&quot;, domain);</span>
+</span><span class="line"><span class="s1">    slug=ft[2];</span>
+</span><span class="line"><span class="s1">    gsub(/&quot;/, &quot;&quot;, slug);</span>
+</span><span class="line"><span class="s1">    key=slug;</span>
+</span><span class="line"><span class="s1">    data=domain;</span>
+</span><span class="line"><span class="s1">    domainMap[key]=data;</span>
+</span><span class="line"><span class="s1">  }</span>
+</span><span class="line"><span class="s1">  close(&quot;&#39;</span><span class="s2">&quot;$INPUTFILE&quot;</span><span class="s1">&#39;&quot;);</span>
+</span><span class="line"><span class="s1">  while (getline &lt; &quot;&#39;</span><span class="s2">&quot;$DATAFILE&quot;</span><span class="s1">&#39;&quot;)</span>
+</span><span class="line"><span class="s1">    {</span>
+</span><span class="line"><span class="s1">      split($0,ft,&quot;,&quot;);</span>
+</span><span class="line"><span class="s1">      uri=ft[1];</span>
+</span><span class="line"><span class="s1">      gsub(/&quot;/, &quot;&quot;, uri);</span>
+</span><span class="line"><span class="s1">      slug=ft[2];</span>
+</span><span class="line"><span class="s1">      gsub(/&quot;/, &quot;&quot;, slug);</span>
+</span><span class="line"><span class="s1">      domain=domainMap[slug]; </span>
+</span><span class="line"><span class="s1">      printf &quot;https://%s/%s\n&quot;, domain, uri &gt; &quot;&#39;</span><span class="s2">&quot;$OUTFILE&quot;</span><span class="s1">&#39;&quot;;</span>
+</span><span class="line"><span class="s1">    }</span>
+</span><span class="line"><span class="s1">}&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I copied the script from <a href="https://magvar.wordpress.com/2011/05/18/awking-it-how-to-load-a-file-into-an-array-in-awk/">here</a></p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Lower your Redis memory footprint by a few lines of code]]></title>
@@ -2021,62 +2202,6 @@ d = \lfloor\frac{n}{10^{\lfloor\log_{10} n \rfloor}} \rfloor
 <ol>
   <li><a href="http://jason.pureconcepts.net/2013/01/migrating-wordpress-octopress/">Migrating from WordPress to Octopress</a></li>
 </ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Code Review with the world]]></title>
-    <link href="https://www.noppanit.com/code-review-with-the-world/"/>
-    <updated>2015-09-22T00:00:00-04:00</updated>
-    <id>https://www.noppanit.com/code-review-with-the-world</id>
-    <content type="html"><![CDATA[<h2 id="tldr">TL;DR</h2>
-
-<p>If you don’t know <a href="http://codereview.stackexchange.com/">Code Review Stackoverflow</a> you gotta get on it now. It works and it’s awesome.</p>
-
-<h2 id="longer-version">Longer version</h2>
-
-<p>In Agile world, everybody is talking about fail fast and faster feedback. If you’re a serious coder then code review and feedback are just as important. If you’re like me (maybe I’m alone), I used to hate code review so much because I don’t want someone to criticize my work, coding is like an art. You spent a lot of time on a piece of code and somebody just come in and say it sucks or why would you do something like that?. Not everybody is a great coder like Linus Torvalds or Ryan Dahl. Especially me, Because of rigorous code review I came from the worst coder every to bad coder (I’m still bad and I’m still learning). I believe the best way to learn any skill is first you have to be wrong and learn from your mistakes. The quickest way to do that is to code a lot and get your code reviewed by someone who’s a stronger coder than you, which you will have a lot on the Internet. If you work with some of the best programmers in your life then you’re lucky. But not everybody is that fortunate. I’ve found a better solution. <a href="http://codereview.stackexchange.com/">http://codereview.stackexchange.com/</a></p>
-
-<h2 id="let8217s-get-to-the-meat">Let’s get to the meat</h2>
-
-<p>For example, I wrote this piece of code to learn about dynamic programming.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>python </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">import sys
-</span><span class="line">coins = [1, 3, 5]
-</span><span class="line">min_coin = [sys.maxint] * 20
-</span><span class="line">min_coin[] = 
-</span><span class="line">
-</span><span class="line">for min_of_i in range(20):
-</span><span class="line">    for c in coins:
-</span><span class="line">        if c &lt;= min_of_i and (min_coin[min_of_i - c] + 1 &lt; min_coin[min_of_i]):
-</span><span class="line">                min_coin[min_of_i] = min_coin[min_of_i - c] + 1</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>I know that my code is not bad (or maybe is really bad), but let’s see what I get out of it from this <a href="http://codereview.stackexchange.com/questions/92811/find-the-minimum-number-of-coins">thread</a>. From within a day I have at least 2-3 points to make my code a lot better. Not only that I learn more about Python, I also learn how to optimize the script.</p>
-
-<p>If you want to learn a new language fast, you need to learn from the expert. In just a few days I improved my code substantially. The best thing about the Internet is, you will have someone to review the reviewer as well. So, you can be sure to some extent that the one who answered your question is trustworthy.</p>
-
-<p>Now you might wonder, how about <a href="http://stackoverflow.com/">http://stackoverflow.com/</a>? I use Stackoverflow too but Stackoverflow has its own purpose. If you’re stuck in some problem and you can’t really wrap your head around it posting to Stackoverflow will give you answer in no time. However, if you ask somebody on Stackoverflow to review your code, it’s likely that your thread will be voted down or closed.</p>
-
-<h2 id="what-about-if-you-only-have-an-idea">What about if you only have an idea.</h2>
-
-<p>I always have new idea and somehow I want experts to review or confirm my idea so I don’t waste time building something that somebody has done it before. Then, Stackoverflow or codereview.stackoverflow.com is not really the place you’d go for. That’s what I love about <a href="http://Quora.com">Quora.com</a>.</p>
-
-<p>For example, I wanted to understand more about machine learning and I couldn’t really ask on <a href="http://stats.stackexchange.com">stats.stackexchange.com</a>. That’s why I turned to Quora. For example, this <a href="https://www.quora.com/How-do-I-start-if-I-want-to-build-a-model-to-predict-if-a-tweet-will-go-viral/answer/Shankar-Iyer-5?__snids__=1350032536&amp;__nsrc__=2">thread</a>, I got a really detailed response from whom I can trust because of the number of upvotes.</p>
-
-<h2 id="some-note">Some note</h2>
-
-<p>I have one bad habit of just copying and pasting someone else’s code. Once you received the feedback, don’t just copy and paste that. Or if you get feedback from Github don’t just merge that right away. You will not fully understand the concept behind that. In the book I read recently, <a href="http://www.amazon.com/o/ASIN/039916524X/sciencefriday/">A Mind For Numbers</a>, Barbara taught us about how we can master in math and science and she explains that we have two modes of learning, focused and diffuse mode. If you just copy and paste someone else’s work, then you just imagine that you understand what’s going on. The best way to learn that is to actually do it and go into diffuse mode which is just close your eyes and think about it and go back to focused mode to do that again. I made a big mistake as an Engineer (I still do) that I just copy someone else’s code and I think that I understand that fully which I don’t. So, don’t just copy the feedback and commit that make sure you fully understand the code and actually type it. Barbara also suggested that writing is better than just typing but I think it might be difficult for us programmers.</p>
 
 ]]></content>
   </entry>

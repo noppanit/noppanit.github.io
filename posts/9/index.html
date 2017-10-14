@@ -7,7 +7,7 @@
 	<meta name="author" content="Noppanit Charassinvichai">
 
 	
-	<meta name="description" content="I have been experimenting with Natural Language Processing on Text classification for a while now. So, I’m going to write a little journal on my &hellip;">
+	<meta name="description" content="From my last post I experimented with some of the techniques such as stopwords and bag-of-words model. I yielded some acceptable results. This post &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -83,6 +83,61 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/second-sentiment-analysis-experiment-on-naive-bayes-with-nltk-bigrams/">
+		
+			Second Sentiment Analysis Experiment on Naive Bayes With NLTK : Bigrams</a>
+	</h2>
+	<div class="entry-content">
+		<p>From my <a href="https://www.noppanit.com/first-experiment-on-naive-bayes-with-nltk/" title="first experiment on naive bayes with sentiment analysis">last post</a> I experimented with some of the techniques such as stopwords and bag-of-words model. I yielded some acceptable results. This post, I’m going to try with bigrams to see if I can increase the accuracy.</p>
+
+<p>I changed the code a little bit to be</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">from</span> <span class="nn">nltk.collocations</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span class="line">
+</span><span class="line"><span class="n">tokenized_text</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">wordpunct_tokenize</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+</span><span class="line"><span class="n">tokenized_text</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokenized_text</span><span class="p">]</span>
+</span><span class="line">
+</span><span class="line"><span class="n">finder</span> <span class="o">=</span> <span class="n">BigramCollocationFinder</span><span class="o">.</span><span class="n">from_words</span><span class="p">(</span><span class="n">tokenized_text</span><span class="p">)</span>
+</span><span class="line"><span class="n">bigrammed_words</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">finder</span><span class="o">.</span><span class="n">nbest</span><span class="p">(</span><span class="n">bigram_measures</span><span class="o">.</span><span class="n">chi_sq</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I decided to use <strong>chi_sq</strong> as suggested in <a href="http://streamhacker.com/tag/bigrams/" title="stream hacker bigrams">this post</a>. However, the accuracy has gone down significantly to <strong>19.7530864198%</strong>. I guess this might be that my document (~100 document for each sentiment) is not large enough to use bigrams. But this is just my conclusion. I’m going to try to increase the dataset and test it again.</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+Dec 30th, 2012</div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/python/'>python</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -734,45 +789,6 @@ May 9th, 2012</div>
 
 
 	<a class='category' href='/blog/categories/javascript/'>javascript</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/my-flash-card-from-nodejs/">
-		
-			My Flash Card From NodeJs.</a>
-	</h2>
-	<div class="entry-content">
-		<p>This is just another application that choose to implement in nodejs, because it’s easy and very useful to use. What do you usually do when you need to learn a new language? You have to remember as many as vocabularies right? Here’s what I used to do when I was learning Chinese. Have a deck of story cards and wrote down vocabulary on one side and meaning on the other side.</p>
-
-<p>My application <a href="https://github.com/noppanit/my-flash-card" title="MY Flash Card">https://github.com/noppanit/my-flash-card</a> is to demonstrate how easy it is to write an application in NodeJs with a touch of CSS3 to make it elegant.</p>
-
-<p>My first version is using json as a mean of database, but the next version I’m going to use RedisToGo because I’m hosting this application on heroku.</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-May 6th, 2012</div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/knowledges/'>knowledges</a>
 
 
 </div>
