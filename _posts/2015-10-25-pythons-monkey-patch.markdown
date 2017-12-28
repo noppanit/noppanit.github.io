@@ -11,7 +11,8 @@ Alright, I'm going to cut to the chase here. I'm having problems with Monkey pat
 
 Let's say you have a model
 
-``` python models/person.py
+``` python 
+models/person.py
 def get_name():
 	// Doing some database lookup
 	// But I'm going to return a hard-coded name for now
@@ -20,7 +21,8 @@ def get_name():
 
 And you have a Phonebook class that's trying to access the database
 
-``` python models/phonebook.py
+``` python 
+models/phonebook.py
 from models.person import get_name
 
 class Phonebook(object):
@@ -33,7 +35,8 @@ Now, we know that `get_name` is accessing some database and we don't want that t
 
 Coming from Java, I'd write my test like this.
 
-``` python tests/test_phonebook.py
+``` python 
+tests/test_phonebook.py
 from unittest import TestCase, mock
 from models.phonebook import Phonebook
 
@@ -70,13 +73,15 @@ Why? Because `patch` behaves differently than what we expected. This is explaine
 
 If we take a closer look how [import][2] behaves in Python, it would be clearer.
 
-``` python models/phonebook.py
+``` python 
+models/phonebook.py
 from models.person import get_name
 ```
 
 The line says please import `get_name` to the namespace in `models/phonebook.py`. So, when we want to use it we can just called `get_name()` without having to write `models.person.get_name()` Now if you change your code to be
 
-``` python models/phonebook.py
+``` python 
+models/phonebook.py
 import models.person
 
 class Phonebook(object):
@@ -90,7 +95,8 @@ You test would pass. Because now our Phonebook is looking up `models.person.get_
 
 Now if you want the old test to work, your `patch` has to be changed to
 
-``` python tests/test_phonebook.py
+``` python 
+tests/test_phonebook.py
 
 from unittest import TestCase, mock
 from models.phonebook import Phonebook
