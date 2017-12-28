@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Noppanit</title>
-  <meta name="description" content="My personal adventure">
+  <title>Why you should or should not SSL your blog</title>
+  <meta name="description" content="After I switched to Octopress, I knew that I wanted to write about performance and SSL. Those are the main reasons why I switched.">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/404">
+  <link rel="canonical" href="http://localhost:4000/why-you-should-or-should-not-ssl-your-blog.html">
   <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
   
   
@@ -63,26 +63,90 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Why you should or should not SSL your blog</h1>
+    <p class="post-meta">
+      <time datetime="2015-10-09T17:02:25-04:00" itemprop="datePublished">
+        
+        Oct 9, 2015
+      </time>
+      </p>
+  </header>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="post-content" itemprop="articleBody">
+    <p>After I switched to Octopress, I knew that I wanted to write about performance and SSL. Those are the main reasons why I switched.</p>
+
+<p>Last year, Google <a href="http://googlewebmastercentral.blogspot.com/2014/08/https-as-ranking-signal.html">announced</a> that they will include Https as a single in their ranking. So, if you want to be the cool kid, go and SSL your site now. But what does SSL really do to your site? Have you seen that in action? I only know that from reading all the blog posts about this. In this blog, I’ll show you what SSL does to your site.</p>
+
+<p>Thanks to my friend <a href="https://twitter.com/suksant">Suksant</a> who helped me conducting the test.</p>
+
+<h2 id="what-will-you-need">What will you need?</h2>
+
+<ol>
+  <li><a href="https://www.wireshark.org/">Wireshare</a> is a network protocal analysis.</li>
+</ol>
+
+<h2 id="simple-website">Simple website.</h2>
+
+<p>I’ve created a simple <a href="https://github.com/noppanit/SSL-Show-and-tell">site</a> that you can fake login form. So, you can go ahead and deploy that to your heroku. I chose Heroku as the platform of choice because you can try the site with and without SSL.</p>
+
+<h2 id="setup-your-wireshark">Setup your wireshark</h2>
+
+<p>There’s a couple things you need to do before you can capture the password.</p>
+
+<ol>
+  <li>Open your wireshark and go to <em>Capture -&gt; Interfaces</em> and click <em>en0</em> that should be your Wifi connection.</li>
+</ol>
+
+<p><img src="/wp-content/uploads/2015/10/wireshark-setup-interface.jpg" alt="Wireshark Interfaces" /></p>
+
+<p>Then click ‘Start’ to capture the packets</p>
+
+<ol>
+  <li>In the <em>Filter</em> section, put this <em>frame contains topsecret</em> (That’s going to be your password)</li>
+</ol>
+
+<p><img src="/wp-content/uploads/2015/10/wireshark-filter.jpg" alt="Wireshark filter" /></p>
+
+<h2 id="capture-the-password">Capture the password</h2>
+
+<ol>
+  <li>I deployed the application <a href="http://ssl-show-and-tell.herokuapp.com/login">here</a>. Go ahead and enter “username” in username and “topsecretpassword” in password It could be anything. Try to check if the URL is not SSL.</li>
+</ol>
+
+<p><img src="/wp-content/uploads/2015/10/form-to-submit-without-ssl.jpg" alt="Form submit" /></p>
+
+<ol>
+  <li>Once you’ve submitted your password, you should see that Wireshark has captured something already.</li>
+</ol>
+
+<p><img src="/wp-content/uploads/2015/10/wireshark-captured-password.jpg" alt="Wireshark with password" /></p>
+
+<p>without even trying to do anything hard. You can clearly see the password.</p>
+
+<h2 id="now-with-ssl">Now with SSL.</h2>
+
+<ol>
+  <li>Change your URL to be <em>https:</em></li>
+  <li>You will not find anything with your password on Wireshark</li>
+</ol>
+
+<h2 id="what-gives">What gives?</h2>
+
+<p>In conclusion, what have we learned here? SSL encrypts everything being sent to the server will be encrypted. It’s safer and make the site more trustworthy. However, if you’re just running a blog you probably won’t need SSL. If you have a website that capture anything from the user then big ‘YES’ you need SSL. For me, I just want to be a cool kid so I SSLed my site.</p>
+
+<h2 id="reference">Reference</h2>
+<ol>
+  <li><a href="https://samsclass.info/120/proj/p3-wireshark.htm">Wireshark tutorial</a></li>
+</ol>
+
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>
