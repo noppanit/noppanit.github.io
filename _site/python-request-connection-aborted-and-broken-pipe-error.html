@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Noppanit</title>
-  <meta name="description" content="My personal adventure">
+  <title>python-request Connection aborted and broken pipe error</title>
+  <meta name="description" content="Ever wondered why your long running python script just bombs out mid-way?">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/404">
+  <link rel="canonical" href="http://localhost:4000/python-request-connection-aborted-and-broken-pipe-error.html">
   <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
   
   
@@ -63,26 +63,50 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">python-request Connection aborted and broken pipe error</h1>
+    <p class="post-meta">
+      <time datetime="2016-12-24T10:53:50-05:00" itemprop="datePublished">
+        
+        Dec 24, 2016
+      </time>
+      </p>
+  </header>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="post-content" itemprop="articleBody">
+    <p>Ever wondered why your long running python script just bombs out mid-way?</p>
+
+<p>If you have seen this error</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">ConnectionError</span><span class="p">:</span> <span class="p">(</span><span class="s">'Connection aborted.'</span><span class="p">,</span> <span class="n">error</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="s">'Broken pipe'</span><span class="p">))</span>
+
+</code></pre></div></div>
+
+<p>It might be that the script takes longer than expected and SSL got cut off before it has the chance to finish the request. This is what I do and it seems to be working. In your <code class="highlighter-rouge">~/.ssh/config</code> add this to your configuration.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Host <span class="k">*</span>
+    ServerAliveInterval 300
+    ServerAliveCountMax 2
+
+</code></pre></div></div>
+
+<p>What this does is it’s going to send a NULL packet to the other side every 300 seconds and give up after 2 tries.</p>
+
+<p>Hope this helps everyone.</p>
+
+<p>Reference:</p>
+<ul>
+  <li><a href="https://patrickmn.com/aside/how-to-keep-alive-ssh-sessions/">How to keep alive ssh session</a></li>
+</ul>
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>

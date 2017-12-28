@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Noppanit</title>
-  <meta name="description" content="My personal adventure">
+  <title>Reservoir sampling</title>
+  <meta name="description" content="I have been working with Stream processing a lot lately. Here’s my usecase.">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/404">
+  <link rel="canonical" href="http://localhost:4000/reservoir-sampling.html">
   <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
   
   
@@ -63,26 +63,58 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Reservoir sampling</h1>
+    <p class="post-meta">
+      <time datetime="2017-02-20T02:27:44-05:00" itemprop="datePublished">
+        
+        Feb 20, 2017
+      </time>
+      </p>
+  </header>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="post-content" itemprop="articleBody">
+    <p>I have been working with Stream processing a lot lately. Here’s my usecase.</p>
+
+<h2 id="problem">Problem:</h2>
+
+<p>I have a stream of pageviews. But I don’t want to process every single pageview, because then I will process one pageview over and over again.
+How do I sample the data so that I process just a subset of data but with equal probability of processing each pageview.</p>
+
+<p>For example,</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[pageview1, pageview2, pageview1, pageview3]
+</code></pre></div></div>
+
+<p>Now I want to choose 3 pageviews out of 4</p>
+
+<h2 id="solution">Solution:</h2>
+<p>We choose <code class="highlighter-rouge">[pageview1, pageview2, pageview1]</code> as the initial reservior. Then I choose pageview3 with a probability of 3/4</p>
+
+<h2 id="code">Code</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">samples</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">const</span> <span class="nx">sampleSize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nx">pageviews</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">record</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">samples</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="nx">sampleSize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">samples</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">record</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">rand</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">index</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">rand</span> <span class="o">&lt;</span> <span class="nx">sampleSize</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">samples</span><span class="p">[</span><span class="nx">rand</span><span class="p">]</span> <span class="o">=</span> <span class="nx">record</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>I might not explain the math clearly, because I’m not very good at math. If you want to know more I recommend <a href="https://gregable.com/2007/10/reservoir-sampling.html">this</a> and <a href="https://jeremykun.com/2013/07/05/reservoir-sampling/">this</a> and <a href="https://discuss.leetcode.com/topic/53753/brief-explanation-for-reservoir-sampling">this</a> and <a href="http://austinrochford.com/posts/2014-11-30-reservoir-sampling.html">this</a>. There’s also my <a href="https://stackoverflow.com/questions/42046581/is-sample-size-of-1-consider-reservoir-sampling/42053227?noredirect=1#comment71830111_42053227">question</a> on SO about proof.</p>
+
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>
