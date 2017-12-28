@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Public-key cryptography for dummies</title>
+  <meta name="description" content="For the last few days I have been busy in this amazing 29c3 conference in Hamburg, Germany (Not in NewYork). Basically, it’s a conference about everything th...">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/public-key-cryptography-for-dummies/">
+  <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+    
+    
+    <a class="site-title" href="/">Noppanit</a>
+  
+    
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+        </div>
+      </nav>
+    
+  </div>
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Public-key cryptography for dummies</h1>
+    <p class="post-meta">
+      <time datetime="2012-12-29T00:00:00-05:00" itemprop="datePublished">
+        
+        Dec 29, 2012
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Noppanit Charassinvichai</span></span>
+      </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>For the last few days I have been busy in this amazing <a href="http://events.ccc.de/congress/2012/wiki/Main_Page" title="29c3">29c3</a> conference in Hamburg, Germany (Not in NewYork). Basically, it’s a conference about everything that is about security and data. One thing that struck me was this talk <a href="http://events.ccc.de/congress/2012/Fahrplan/events/5275.en.html" title="RSA factorisation in the real world">RSA factorisation in the real world</a> from <a href="http://facthacks.cr.yp.to/" title="face hacks">facthack</a>. Why it struck me, it’s because we have been using it a lot but I think I know nothing about it. And every time you Google about it, you get a lot of mathematical examples (Of course the algorithm is about maths). So, I guess I would just want to write it down so I could remember it myself also if it would benefit others that’d be fantastic.</p>
+
+<p>So, we all like Wikipedia, here’s the <a href="http://en.wikipedia.org/wiki/Public-key_cryptography" title="public key cryptography">wiki</a> version. But if you’re lazy like me you might want to watch this video which I think they virtualise it pretty good.</p>
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/wXB-V_Keiu8" frameborder="0" allowfullscreen=""></iframe>
+
+<p>And here is my version of it. I think the concept is basic and really easy to understand, though it took me a couple days to understand it. Imagine you want to send a note to a girl you like across the room where you have a lot of friends who try to bully or mock you. I ask the girl to buy a box with a lock and a key so nobody with that key can open the box. Then, she will send me the box across the room, it may pass a lot of people but they cannot open the box without her key. I will put the message in the box and close it and send it back. Then she could open that box with her key. I know this is not exactly right, but the point is that she has a key which is private-key and the box is public-key. As the names suggest, public means it’s wide open you can send it to anywhere publicly, but the key is private and you keep it.</p>
+
+<p>Another example that I can think of is SSH. I’m gonna skip what SSH is but when you want to connect to the server you need to enter a password and then the connection is open. So, one example that I can think of is Github. When you create an account on Github, it asks you to upload your public key. You have to do <a href="https://help.github.com/articles/generating-ssh-keys" title="Github upload ssh keys">these steps</a></p>
+
+<p>First, you use this command to generate public/private keys</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-t</span> rsa <span class="nt">-C</span> <span class="s2">"your_email@youremail.com"</span>
+</code></pre></div></div>
+
+<p>Basically, that would generate public/private keys in your home folder. if you saved the keys in your home folder that you can view your keys.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> ~/.ssh/
+id_rsa    id_rsa.pub  known_hosts
+</code></pre></div></div>
+
+<p>file <strong>id_rsa.pub</strong> is your public key and <strong>id_rsa</strong> is your private key. Then you upload <strong>id_rsa.pub</strong> to Github and then you can connect to Github via SSH without having to use password every time. I think EC2 and Heroku are the same.</p>
+
+<p>Now, we all love coding what about in code? I have some example here which is in Python and I think all the languages are the same.</p>
+
+<p>I use the library <strong>rsa</strong>. You can install it easily</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install rsa
+</code></pre></div></div>
+
+<p>Then you can generate the keys.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">rsa</span>
+<span class="p">(</span><span class="n">public_key</span><span class="p">,</span> <span class="n">private_key</span><span class="p">)</span> <span class="o">=</span> <span class="n">rsa</span><span class="o">.</span><span class="n">new_keys</span><span class="p">(</span><span class="mi">2048</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>it might take a couple seconds to get the keys, but 2048 should be your standard by now. Now have a look at the keys</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; public_key
+PublicKey(29534209309072966342236728315019059662080809378008690867170941707045309003902270154173510852052110681489591796447806519430369798984624459707158855145174351259726003060555580062598516787344976412595591636803388841296208018460473115348727377101381087280966955180437218649614860816115625029885144484815954440118725591030107342156415013995103531215123098501644397412095363703762543423709714830195367078829211889094350240474706872694251558468928015513092692877035574929167783047652545773000357002867146591894383127690358099462086703188180088169904549856171296368406173474768408900722887810563868713819753518447862895139133, 65537)
+
+&gt;&gt;&gt; private_key
+PrivateKey(29534209309072966342236728315019059662080809378008690867170941707045309003902270154173510852052110681489591796447806519430369798984624459707158855145174351259726003060555580062598516787344976412595591636803388841296208018460473115348727377101381087280966955180437218649614860816115625029885144484815954440118725591030107342156415013995103531215123098501644397412095363703762543423709714830195367078829211889094350240474706872694251558468928015513092692877035574929167783047652545773000357002867146591894383127690358099462086703188180088169904549856171296368406173474768408900722887810563868713819753518447862895139133, 65537, 5853484973611070995305138533710462272468493110929015451938345695299014581865001251698425812248117332832877730809474936003800499244873691306228334673248236088203321082038488631354687192743395312925586153935017130164585592135482022296788377575565542253879179407642996063900505472336632032487580151280432952533330871039500260846987279615245989379283555335473200579408998561597984286865492093479293281454202362991371489340478090036107586685417432250640745863007335226075029799578308740141059780564838880874147399808234159082348507409570253455570613403424844782542465277813808638221548094905955710788792599684368754627553, 3048836616267442645717253566428183242785699256710435915408206917831986485110304443207329137538405008020749764914855054897471943691960276026164383471359068144785145380429590398022467222960109449831417790058882587360642554647616357991607084035635835566066548855867645483820873548134124697487374239771390745052467948610194583244121, 9687042313612202470579779908557945791161444599629082668056659471372738761222623451977742705688117439787620866981353449588434275887551340654960295016278042883725967841149851338806541074750203724704414741041773527871314525574722367110086522054749464369889004170596421460710729163676852042373)
+</code></pre></div></div>
+
+<p>You can see some prime numbers. Then, I will send the <strong>public_key</strong> to my friend, or Github. Now my friend with encrypt the message and send it back to me.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">crypto</span> <span class="o">=</span> <span class="n">rsa</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="s">"Encrypted_Message"</span><span class="p">,</span> <span class="n">public_key</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>You will get an encrypted message, we can take a peek let’s see what’s inside</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; crypto
+"\x95G\x0eZ\xad\xfb-\xe1\xd3\x8a\xa5\x0e;\xf2\xa4%\xc4@\x9f\xc8\xd9\xf8\xab\x9cI8\x83A/0\x9e\\\xc4_?\xa5\x12y\x12\xcfz E\xd4{d\xe6Hk\xaa\x88\xbe\x08\xd3S\x05c\xf5\x99&amp;\x19\x0bxHx/|\xb9\x85\x98\xa6\x8f\x7f\x13\x98/\xaed\x1a\xaaeOS(\xf2\xfcG\x19MH\xdd\xed\xdb\xe9\xdf\xd8k\x16xy\xb1\x12\x17\xfduG\xd57G\x02\xfe\x9e\x87\x02Z?\xf5\xc09,3\xd4b\x06\x11\xf1\xe2H\x7f\xa3?\xa8\x88\xef\x95\xc7\xb2\x7f\xa1y7u\xdf\x10%\xfbe*\xfd)\xae\xcb=\n\xddX:\xcd&amp;\xca\x85i:lJ\xc8tGg\x9b\xd9\x1c;`\xe4\x873\x82\x1d\x11\xc3P\xf8z\xa4eU\xa3V\\4\x8ai\xa7\x9a\xcfY\xfd\xed\x1b\xae\xb7\xe17\x163~\x1a\xbb\x0e\xd8w3#\x83\xea4\xb68\xa1\x9b\x88T'\x9c\xa9\x9a\xbc\x1f0FP[}\r\x908\x8b\x95\xa2\xf5\xb8\x16Xi\xd5\xd0&gt;o\xe5\x93\xabg\xa4\xe7L"
+</code></pre></div></div>
+
+<p>You can see it’s gibberish. Then my friend can send this <strong>crpyto</strong> back to me. And I’ll try to decrypt it.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rsa</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">crypto</span><span class="p">,</span><span class="n">private_key</span><span class="p">)</span>
+<span class="s">'Encrypted_Message'</span>
+</code></pre></div></div>
+
+<p>Now let’s try to decrypt the message with some other private key. You’ll get this.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="n">newpublic_key</span><span class="p">,</span><span class="n">newprivate_key</span><span class="p">)</span> <span class="o">=</span> <span class="n">rsa</span><span class="o">.</span><span class="n">newkeys</span><span class="p">(</span><span class="mi">2048</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">rsa</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">crypto</span><span class="p">,</span> <span class="n">newprivate_key</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="n">File</span> <span class="s">"/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rsa/pkcs1.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">232</span><span class="p">,</span> <span class="ow">in</span> <span class="n">decrypt</span>
+    <span class="k">raise</span> <span class="n">DecryptionError</span><span class="p">(</span><span class="s">'Decryption failed'</span><span class="p">)</span>
+<span class="n">rsa</span><span class="o">.</span><span class="n">pkcs1</span><span class="o">.</span><span class="n">DecryptionError</span><span class="p">:</span> <span class="n">Decryption</span> <span class="n">failed</span>
+</code></pre></div></div>
+
+<p>If you’re interested some really hardcore stuff how to hack it. I recommend he talk from 29c3 conference.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/N5Wn6ZBLjgU" frameborder="0" allowfullscreen=""></iframe>
+
+
+  </div>
+
+  
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Noppanit</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              Noppanit
+            
+            </li>
+            
+            <li><a href="mailto:hi@noppanit.com">hi@noppanit.com</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/noppanit"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">noppanit</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/noppanit"><span class="icon icon--twitter"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">noppanit</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>My personal adventure</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</html>

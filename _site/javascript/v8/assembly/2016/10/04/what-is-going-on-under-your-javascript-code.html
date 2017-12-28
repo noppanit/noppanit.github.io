@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>What is going on under your JavaScript code</title>
+  <meta name="description" content="Disclaimer">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/javascript/v8/assembly/2016/10/04/what-is-going-on-under-your-javascript-code.html">
+  <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+    
+    
+    <a class="site-title" href="/">Noppanit</a>
+  
+    
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+        </div>
+      </nav>
+    
+  </div>
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">What is going on under your JavaScript code</h1>
+    <p class="post-meta">
+      <time datetime="2016-10-04T01:41:25-04:00" itemprop="datePublished">
+        
+        Oct 4, 2016
+      </time>
+      </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><strong>Disclaimer</strong></p>
+
+<p>I’m no expert in this field nor having a PhD in Compiler. This is just my pure curiosity and I hope to share of what I’ve discovered so people can continue their curiosity.</p>
+
+<h2 id="why-im-interested-in-this">Why I’m interested in this.</h2>
+<p>I was asked once during my technical interview, “What happen when you execute fs.readFileSync(‘’)”. What he meant was that how JavaScript code interacts with the machine under the hood. At the time, I thought I just wrote that code and there you go I got the content of the file.</p>
+
+<p>I couldn’t answer and I didn’t get the job. I just recently became a JavaScript developer because of my interest in front-end and back-end in the same time. Knowing JavaScript allows me to get the best of both worlds. However, the only thing I know about JavaScript is that it’s something to do with V8 and I had no idea what’s going on under the hood. So, I took the time to really understand how JavaScript works and the history behind it. So, I started with the task a computer does best; executing commands or how does a computer execute a command.</p>
+
+<h2 id="how-does-computer-works">How does computer works?</h2>
+<p>One of the best movies for me is “The Core” where “Rat” had to hack the Internet to control the flow of information. The hacker claims that he only knew one language, “zeros and ones”. At the time, I understood that it’s something to do with binary number, and I thought that it’s just hollywood talk and these people didn’t know what they were talking. I have to write <code class="highlighter-rouge">print('Hello');</code> to print <code class="highlighter-rouge">Hello</code> on my console, it has nothing to do with zeros or ones.</p>
+
+<p>So, I started digging and I found <a href="https://m.reddit.com/r/learnprogramming/comments/1pv40y/for_those_of_you_wondering_how_code_becomes_ones/">this</a>.</p>
+
+<p>Basically, when we execute a piece of code, the compiler compiles the code to a set of instructions which is Assembly. Then, we have an <a href="https://en.wikipedia.org/wiki/Assembly_language#Assembler">assembler</a> to translate the instructions to their numerical equivalents. For example,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ADD esp, 8
+</code></pre></div></div>
+
+<p>is translated in x86 architecture like this.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Raw Hex <span class="o">(</span>zero bytes <span class="k">in </span>bold<span class="o">)</span>:
+
+83C408   
+
+String Literal:
+
+<span class="s2">"</span><span class="se">\x</span><span class="s2">83</span><span class="se">\x</span><span class="s2">C4</span><span class="se">\x</span><span class="s2">08"</span>
+
+Array Literal:
+
+<span class="o">{</span> 0x83, 0xC4, 0x08 <span class="o">}</span>
+
+Disassembly:
+0:  83 c4 08                add    esp,0x8
+
+</code></pre></div></div>
+
+<p>Notice the HEX code <code class="highlighter-rouge">83C408</code> which you can translate to binary number later for the computer to understand.</p>
+
+<p>You can use this <a href="https://defuse.ca/online-x86-assembler.htm">online assembler</a> to play with it.</p>
+
+<h2 id="how-does-javascript-engine-v8-work">How does JavaScript engine (v8) work?</h2>
+<p>In a nutshell, V8 <a href="http://thibaultlaurens.github.io/javascript/2013/04/29/how-the-v8-engine-works/">translates JavaScript</a>
+code to machine code with <em>JIT (Just-In-Time) compiler</em>.</p>
+
+<p>There are <a href="http://www.mattzeunert.com/2015/08/19/viewing-assembly-code-generated-by-v8.html">four main stages</a> of how the code passes through V8.</p>
+
+<ol>
+  <li>
+    <p>JavaScript - Your code</p>
+  </li>
+  <li>
+    <p>Hydrogen - Intermediate code</p>
+  </li>
+  <li>
+    <p>Lithium - Machine specific code</p>
+  </li>
+  <li>
+    <p>Machine Code - This is what your computer understand.</p>
+  </li>
+</ol>
+
+<p>In this post we’re going to see the assembly code which is the machine specific code.</p>
+
+<h2 id="show-me-the-code">Show me the code</h2>
+<p>Enough talking. Now show me the code you say. Let’s say you have a simple function to add two numbers together like this.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>To view the machine code in Assembly you need to install V8. First you need to install <a href="https://www.chromium.org/developers/how-tos/install-depot-tools">depot-tools</a>. Once you install <code class="highlighter-rouge">depot-tools</code> you can run
+Follow this <a href="https://github.com/v8/v8/wiki/Using%20Git">instruction</a>.</p>
+
+<p><em>Note</em>: The documentation of how to install V8 is subject to change. So, please refer to <a href="https://github.com/v8/v8/wiki/Building%20with%20GN">link</a>.</p>
+
+<p>In order to get <code class="highlighter-rouge">V8</code> you need to run. You will also need <code class="highlighter-rouge">Python 2</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fetch v8
+<span class="nb">cd </span>v8
+</code></pre></div></div>
+
+<p>The script will take sometime to finish. It will fetch V8 source code. Then you need to build all the dependencies by running.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gclient sync
+</code></pre></div></div>
+
+<p>Now you need to install D8. The next step is going to take a long time. So, get yourself a nice cup of coffee.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make x64.release <span class="nv">objectprint</span><span class="o">=</span>on <span class="nv">disassembler</span><span class="o">=</span>on
+</code></pre></div></div>
+
+<p>Once everything is in place, you’re ready to see how your code is communicating with your CPU.</p>
+
+<p>You can do this to get the assembly code</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>out/x64.release
+./d8 <span class="nt">--print-code</span> ~/Downloads/add.js
+</code></pre></div></div>
+
+<p>This is what you’re likely going to see.</p>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">---</span> <span class="n">Raw</span> <span class="n">source</span> <span class="o">---</span>
+<span class="n">function</span> <span class="k">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="err">{</span>
+  <span class="n">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="c">;</span>
+<span class="err">}</span>
+
+
+<span class="o">---</span> <span class="n">Code</span> <span class="o">---</span>
+<span class="n">source_position</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">kind</span> <span class="o">=</span> <span class="n">FUNCTION</span>
+<span class="n">compiler</span> <span class="o">=</span> <span class="n">full</span><span class="o">-</span><span class="n">codegen</span>
+<span class="n">Instructions</span> <span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">140</span><span class="p">)</span>
+<span class="mh">0x27f3928043e0</span>     <span class="mi">0</span>  <span class="mi">55</span>             <span class="k">push</span> <span class="n">rbp</span>
+<span class="mh">0x27f3928043e1</span>     <span class="mi">1</span>  <span class="mi">4889</span><span class="n">e5</span>         <span class="n">REX</span><span class="p">.</span><span class="n">W</span> <span class="k">movq</span> <span class="n">rbp</span><span class="p">,</span><span class="n">rsp</span>
+<span class="mh">0x27f3928043e4</span>     <span class="mi">4</span>  <span class="mi">56</span>             <span class="k">push</span> <span class="n">rsi</span>
+<span class="mh">0x27f3928043e5</span>     <span class="mi">5</span>  <span class="mi">57</span>             <span class="k">push</span> <span class="n">rdi</span>
+<span class="mh">0x27f3928043e6</span>     <span class="mi">6</span>  <span class="mi">488</span><span class="n">b4f2f</span>       <span class="n">REX</span><span class="p">.</span><span class="n">W</span> <span class="k">movq</span> <span class="n">rcx</span><span class="p">,</span><span class="err">[</span><span class="n">rdi</span><span class="o">+</span><span class="mh">0x2f</span><span class="err">]</span>
+<span class="mh">0x27f3928043ea</span>    <span class="mi">10</span>  <span class="mi">488</span><span class="n">b490f</span>       <span class="n">REX</span><span class="p">.</span><span class="n">W</span> <span class="k">movq</span> <span class="n">rcx</span><span class="p">,</span><span class="err">[</span><span class="n">rcx</span><span class="o">+</span><span class="mh">0xf</span><span class="err">]</span>
+<span class="mh">0x27f3928043ee</span>    <span class="mi">14</span>  <span class="mi">83411</span><span class="n">b01</span>       <span class="n">addl</span> <span class="err">[</span><span class="n">rcx</span><span class="o">+</span><span class="mh">0x1b</span><span class="err">]</span><span class="p">,</span><span class="mh">0x1</span>
+<span class="mh">0x27f3928043f2</span>    <span class="mi">18</span>  <span class="mi">49</span><span class="n">ba81bb8a39e52a0000</span> <span class="n">REX</span><span class="p">.</span><span class="n">W</span> <span class="k">movq</span> <span class="n">r10</span><span class="p">,</span><span class="mh">0x2ae5398abb81</span>    <span class="c">;; object: 0x2ae5398abb81 &lt;FixedArray[2]&gt;</span>
+<span class="mh">0x27f3928043fc</span>    <span class="mi">28</span>  <span class="mi">4152</span>           <span class="k">push</span> <span class="n">r10</span>
+<span class="mh">0x27f3928043fe</span>    <span class="mi">30</span>  <span class="mi">6</span><span class="n">a00</span>           <span class="k">push</span> <span class="mh">0x0</span>
+<span class="mh">0x27f392804400</span>    <span class="mi">32</span>  <span class="mi">488</span><span class="n">b45f0</span>       <span class="n">REX</span><span class="p">.</span><span class="n">W</span> <span class="k">movq</span> <span class="n">rax</span><span class="p">,</span><span class="err">[</span><span class="n">rbp</span><span class="o">-</span><span class="mh">0x10</span><span class="err">]</span>
+<span class="mh">0x27f392804404</span>    <span class="mi">36</span>  <span class="mi">488</span><span class="n">b402f</span>       <span class="n">REX</span><span class="p">.</span><span class="n">W</span> <span class="k">movq</span> <span class="n">rax</span><span class="p">,</span><span class="err">[</span><span class="n">rax</span><span class="o">+</span><span class="mh">0x2f</span><span class="err">]</span>
+<span class="mh">0x27f392804408</span>    <span class="mi">40</span>  <span class="mi">488</span><span class="n">b400f</span>       <span class="n">REX</span><span class="p">.</span><span class="n">W</span> <span class="k">movq</span> <span class="n">rax</span><span class="p">,</span><span class="err">[</span><span class="n">rax</span><span class="o">+</span><span class="mh">0xf</span><span class="err">]</span>
+<span class="mh">0x27f39280440c</span>    <span class="mi">44</span>  <span class="mi">50</span>             <span class="k">push</span> <span class="n">rax</span>
+<span class="mh">0x27f39280440d</span>    <span class="mi">45</span>  <span class="n">b803000000</span>     <span class="n">movl</span> <span class="n">rax</span><span class="p">,</span><span class="mh">0x3</span>
+<span class="mh">0x27f392804412</span>    <span class="mi">50</span>  <span class="mi">48</span><span class="n">bb80753e1001000000</span> <span class="n">REX</span><span class="p">.</span><span class="n">W</span> <span class="k">movq</span> <span class="n">rbx</span><span class="p">,</span><span class="mh">0x1103e7580</span>
+<span class="mh">0x27f39280441c</span>    <span class="mi">60</span>  <span class="n">e81fffefff</span>     <span class="k">call</span> <span class="mh">0x27f392704340</span>     <span class="c">;; code: STUB, CEntryStub, minor: 8</span>
+<span class="mh">0x27f392804421</span>    <span class="mi">65</span>  <span class="mi">493</span><span class="n">ba5200c0000</span> <span class="n">REX</span><span class="p">.</span><span class="n">W</span> <span class="n">cmpq</span> <span class="n">rsp</span><span class="p">,</span><span class="err">[</span><span class="n">r13</span><span class="o">+</span><span class="mh">0xc20</span><span class="err">]</span>
+<span class="mh">0x27f392804428</span>    <span class="mi">72</span>  <span class="mi">7305</span>           <span class="k">jnc</span> <span class="mi">79</span>  <span class="p">(</span><span class="mh">0x27f39280442f</span><span class="p">)</span>
+<span class="mh">0x27f39280442a</span>    <span class="mi">74</span>  <span class="n">e811e6f4ff</span>     <span class="k">call</span> <span class="n">StackCheck</span>  <span class="p">(</span><span class="mh">0x27f392752a40</span><span class="p">)</span>    <span class="c">;; code: BUILTIN</span>
+<span class="mh">0x27f39280442f</span>    <span class="mi">79</span>  <span class="mi">498</span><span class="n">b45a0</span>       <span class="n">REX</span><span class="p">.</span><span class="n">W</span> <span class="k">movq</span> <span class="n">rax</span><span class="p">,</span><span class="err">[</span><span class="n">r13</span><span class="o">-</span><span class="mh">0x60</span><span class="err">]</span>
+<span class="mh">0x27f392804433</span>    <span class="mi">83</span>  <span class="mi">48</span><span class="n">bba9ba8a39e52a0000</span> <span class="n">REX</span><span class="p">.</span><span class="n">W</span> <span class="k">movq</span> <span class="n">rbx</span><span class="p">,</span><span class="mh">0x2ae5398abaa9</span>    <span class="c">;; object: 0x2ae5398abaa9 Cell for 6144</span>
+<span class="mh">0x27f39280443d</span>    <span class="mi">93</span>  <span class="mi">83430</span><span class="n">bd1</span>       <span class="n">addl</span> <span class="err">[</span><span class="n">rbx</span><span class="o">+</span><span class="mh">0xb</span><span class="err">]</span><span class="p">,</span><span class="mh">0xd1</span>
+<span class="mh">0x27f392804441</span>    <span class="mi">97</span>  <span class="mi">791</span><span class="n">f</span>           <span class="k">jns</span> <span class="mi">130</span>  <span class="p">(</span><span class="mh">0x27f392804462</span><span class="p">)</span>
+<span class="mh">0x27f392804443</span>    <span class="mi">99</span>  <span class="mi">50</span>             <span class="k">push</span> <span class="n">rax</span>
+<span class="mh">0x27f392804444</span>   <span class="mi">100</span>  <span class="n">e877e5f4ff</span>     <span class="k">call</span> <span class="n">InterruptCheck</span>  <span class="p">(</span><span class="mh">0x27f3927529c0</span><span class="p">)</span>    <span class="c">;; code: BUILTIN</span>
+<span class="mh">0x27f392804449</span>   <span class="mi">105</span>  <span class="mi">58</span>             <span class="k">pop</span> <span class="n">rax</span>
+<span class="mh">0x27f39280444a</span>   <span class="mi">106</span>  <span class="mi">48</span><span class="n">bba9ba8a39e52a0000</span> <span class="n">REX</span><span class="p">.</span><span class="n">W</span> <span class="k">movq</span> <span class="n">rbx</span><span class="p">,</span><span class="mh">0x2ae5398abaa9</span>    <span class="c">;; object: 0x2ae5398abaa9 Cell for 6144</span>
+<span class="mh">0x27f392804454</span>   <span class="mi">116</span>  <span class="mi">49</span><span class="n">ba0000000000180000</span> <span class="n">REX</span><span class="p">.</span><span class="n">W</span> <span class="k">movq</span> <span class="n">r10</span><span class="p">,</span><span class="mh">0x180000000000</span>
+<span class="mh">0x27f39280445e</span>   <span class="mi">126</span>  <span class="mi">4</span><span class="n">c895307</span>       <span class="n">REX</span><span class="p">.</span><span class="n">W</span> <span class="k">movq</span> <span class="err">[</span><span class="n">rbx</span><span class="o">+</span><span class="mh">0x7</span><span class="err">]</span><span class="p">,</span><span class="n">r10</span>
+<span class="mh">0x27f392804462</span>   <span class="mi">130</span>  <span class="n">c9</span>             <span class="n">leavel</span>
+<span class="mh">0x27f392804463</span>   <span class="mi">131</span>  <span class="n">c20800</span>         <span class="k">ret</span> <span class="mh">0x8</span>
+<span class="mh">0x27f392804466</span>   <span class="mi">134</span>  <span class="mi">6690</span>           <span class="k">nop</span>
+
+<span class="n">Source</span> <span class="n">positions</span><span class="o">:</span>
+ <span class="n">pc</span> <span class="n">offset</span>  <span class="n">position</span>
+         <span class="mi">0</span>         <span class="mi">0</span>
+       <span class="mi">130</span>        <span class="mi">35</span>  <span class="n">statement</span>
+
+<span class="n">Deoptimization</span> <span class="n">Output</span> <span class="n">Data</span> <span class="p">(</span><span class="n">deopt</span> <span class="n">points</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">Back</span> <span class="n">edges</span> <span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">ast_id</span>  <span class="n">pc_offset</span>  <span class="n">loop_depth</span>
+
+<span class="mh">0x2ae5398abbb9</span><span class="o">:</span> <span class="p">[TypeFeedbackInfo]</span>
+ <span class="o">-</span> <span class="n">ic_total_count</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ic_with_type_info_count</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ic_generic_count</span><span class="o">:</span> <span class="mi">0</span>
+
+<span class="n">RelocInfo</span> <span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span>
+<span class="mh">0x27f3928043f4</span>  <span class="n">embedded</span> <span class="n">object</span>  <span class="p">(</span><span class="mh">0x2ae5398abb81</span> <span class="o">&lt;</span><span class="n">FixedArray</span><span class="p">[2]</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="mh">0x27f39280441d</span>  <span class="n">code</span> <span class="n">target</span> <span class="p">(</span><span class="n">STUB</span><span class="p">)</span>  <span class="p">(</span><span class="mh">0x27f392704340</span><span class="p">)</span>
+<span class="mh">0x27f39280442b</span>  <span class="n">code</span> <span class="n">target</span> <span class="p">(</span><span class="n">BUILTIN</span><span class="p">)</span>  <span class="p">(</span><span class="mh">0x27f392752a40</span><span class="p">)</span>
+<span class="mh">0x27f392804435</span>  <span class="n">embedded</span> <span class="n">object</span>  <span class="p">(</span><span class="mh">0x2ae5398abaa9</span> <span class="n">Cell</span> <span class="n">for</span> <span class="mi">6144</span><span class="p">)</span>
+<span class="mh">0x27f392804445</span>  <span class="n">code</span> <span class="n">target</span> <span class="p">(</span><span class="n">BUILTIN</span><span class="p">)</span>  <span class="p">(</span><span class="mh">0x27f3927529c0</span><span class="p">)</span>
+<span class="mh">0x27f39280444c</span>  <span class="n">embedded</span> <span class="n">object</span>  <span class="p">(</span><span class="mh">0x2ae5398abaa9</span> <span class="n">Cell</span> <span class="n">for</span> <span class="mi">6144</span><span class="p">)</span>
+
+<span class="o">---</span> <span class="n">End</span> <span class="n">code</span> <span class="o">---</span>
+
+</code></pre></div></div>
+
+<p><del>Now, in theory you can grab the hex code and run that in C and you should be able to get the same result. I haven’t tried it please let me know if it works or not.</del> It wouldn’t work because the generated code has fixed memory address from when the program was executed.</p>
+
+<p>What I learn from this post is how is my JavaScript code executed in my computer and the next time I got asked, I will be able to answer that interview question. Sometimes, it’s nicer to be asked a question like this than how to revert a binary tree on a whiteboard. Don’t you think?</p>
+
+<p>More info</p>
+
+<ol>
+  <li>
+    <p><a href="https://gist.github.com/kevincennis/0cd2138c78a07412ef21">V8 Cheatsheet</a></p>
+  </li>
+  <li>
+    <p><a href="https://wingolog.org/archives/2011/06/08/what-does-v8-do-with-that-loop">What does V8 do with that loop</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.youtube.com/watch?v=yOyaJXpAYZQ">Comparing C to machine language (video)</a></p>
+  </li>
+  <li>
+    <p><a href="https://wingolog.org/archives/2011/08/02/a-closer-look-at-crankshaft-v8s-optimizing-compiler">A closer look at crankshaft v8s optimizing compiler</a></p>
+  </li>
+</ol>
+
+  </div>
+
+  
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Noppanit</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              Noppanit
+            
+            </li>
+            
+            <li><a href="mailto:hi@noppanit.com">hi@noppanit.com</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/noppanit"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">noppanit</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/noppanit"><span class="icon icon--twitter"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">noppanit</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>My personal adventure</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</html>
