@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Gatling Cluster"
 date: 2016-02-17 20:28:25 -0500
 comments: true

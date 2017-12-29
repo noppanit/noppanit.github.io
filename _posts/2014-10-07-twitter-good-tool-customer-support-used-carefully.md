@@ -2,8 +2,6 @@
 title: Twitter is a good tool for customer support if used carefully.
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /twitter-good-tool-customer-support-used-carefully/
 dsq_thread_id:
   - 3095784112
 categories:

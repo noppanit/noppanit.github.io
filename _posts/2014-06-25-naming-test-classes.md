@@ -2,8 +2,6 @@
 title: Naming test classes.
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /naming-test-classes/
 dsq_thread_id:
   - 2795166339
 categories:

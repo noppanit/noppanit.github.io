@@ -1,0 +1,128 @@
+
+<!doctype>
+<html lang="en">
+  <head>
+    <meta content='Tutorial : My Java World Eclipse + EJB + JBoss + Ant.  Part 1 - Noppanit' name='title' />
+    <meta content='Tutorial : My Java World Eclipse + EJB + JBoss + Ant.  Part 1 - Noppanit' name='og:title' />
+    <title>Tutorial : My Java World Eclipse + EJB + JBoss + Ant.  Part 1 - Noppanit</title>
+    <link href='http://localhost:4000/images/fav.png' rel='shortcut icon'>
+<link href='http://localhost:4000/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='http://localhost:4000/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <meta content='http://localhost:4000/posts/tutorial-my-java-world-part-1-eclipse-ejb-jboss-ant' property='og:url' />
+  <meta content="Now, I have been struggling in job finding world. I tested a lot, and all about J2EE blah blah and I completely faile..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+
+
+
+
+
+  </head>
+  <body class="lh-copy dark-gray pa0 f6 sans-serif bg-super-white">
+    <header class="tc mt4">
+      <a href="http://localhost:4000">
+        <img src="http://localhost:4000/images/scribble.png" alt="Home" width="53" height="59">
+      </a>
+      <p>Noppanit</p>
+    </header>
+    <div class="mw7 bg-white mt4 mb3 center br2-ns bt bb ba-ns b--light-gray">
+      <nav class="bb b--light-gray pv4 tc" aria-label="Main">
+        
+      </nav>
+
+      <main class="tl f6 relative pa4 pa5-ns overflow-hidden">
+        
+          <div class="mb4">
+            <div class="fw600 light-silver mt1">27 Mar 2008</div>
+            <h1 class="ttu f3 mt0 lh-title cb mb2">
+              
+              Tutorial : My Java World Eclipse + EJB + JBoss + Ant.  Part 1
+            </h1>
+            
+          </div>
+        
+        <div class="markdown-body">
+          <p>Now, I have been struggling in job finding world. I tested a lot, and all about J2EE blah blah and I completely failed. So, I decided to write this topic to record my understand about EJB. I will program EJB from scratch, without using any tools, or as less as possible.</p>
+
+<p>I am using these tools</p>
+<ol>
+  <li><a href="http://www.eclipse.org/downloads/">Eclipse</a></li>
+  <li>J2EE 5.04</li>
+  <li><a href="http://labs.jboss.com/projects/download/">JBoss 4.22</a></li>
+  <li>Ant 1.7</li>
+</ol>
+
+<p>First thing first after you installed JDK, you have to set variables in. Control Panel -&gt; System -&gt; Advance -&gt; Environment Variables. Like the picture below.</p>
+
+<p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/1.jpg" alt="" /></p>
+
+<p>After I have set the JAVA_HOME variable, the next thing is I have to create an EJB project.</p>
+
+<p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/2.jpg" height="523" width="618" /></p>
+
+<p>You will get something like this</p>
+
+<p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/3.jpg" height="252" width="246" /></p>
+
+<p>The Next thing is, you have to add J2EE library to the project. So, all the J2EE jars can be used in the project. The jars come from C:\Sun\SDK\lib &lt;– according to my computer, which installed J2EE 5.04</p>
+
+<p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/4.jpg" alt="" /></p>
+
+<p>In this project, I’m using Remote interface, because I wanted to show how the EJB can be connected via another J2EE container. So, After importing the j2EE jars, we have to create two interfaces which are Remote interface and Remote home interface. I’m creating com.noppanit.interfaces and com.noppanit.bean package. The bean package is for SessionBean.</p>
+
+<p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/5.jpg" height="259" width="352" /></p>
+
+<p>HelloEJB.java is a Remote interface. It has to extend javax.ejb.EJBObject and has business method interface which throws RemoteException. Like this.</p>
+
+<p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/6.jpg" height="217" width="533" /></p>
+
+<p>HelloEJBHome.java is a Remote home interface. It has to extend javax.ejb.EJBHome and has at least one creat(); method which return the Remote interface and throws RemoteException, CreateException.</p>
+
+<p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/7.jpg" alt="" /></p>
+
+<p>The last one is SessionBean. It has to implement javax.ejb.SessionBean and has ejbActivate, ejbPassivate, ejbRemove, setSessionContext, and business methods.</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/8.jpg"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/81.jpg" height="216" width="200" /></a></p>
+
+<p>The next thing is ejb-jar.xml. It’s a deployment descriptor. This xml file is for J2EE container, the file will be looked by the J2EE container. So, it can know that what type of this EJB is, and what is the name of this EJB, etc.</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/9.jpg"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/91.jpg" height="74" width="200" /></a></p>
+
+<p>Now, the process of creating EJB is finished. The next thing is, we have to create build.xml, an ANT file. The ANT file is used for cleaning, compiling, deploying to application server. Actually, we can use Eclipse to do all these things, but I want to create this project from scratch.</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/10.jpg"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/101.jpg" height="203" width="200" /></a></p>
+
+<p>After the deploying, jboss should see the EJB in its container and is ready to be used via JNDI.?? the next Chapter I will be using ordinary Java application client call the EJB. Actually, we must use web container to call the EJB.</p>
+
+
+        </div>
+        <p class="mt4">
+  Til next time,<br>
+  noppanit
+  <span class="silver">at 00:00</span>
+</p>
+<img src="http://localhost:4000/images/scribble3.png" alt="scribble" />
+
+      </main>
+      <section class="fixed-l mw7 center w-100 top-50 tc pb4 nt4">
+  
+    <a href="http://localhost:4000/posts/howto-cpl-filter" class="no-underline f1 light-blue hover-silver nl5 fl-l ph3">‹</a>
+  
+  
+    <a href="http://localhost:4000/posts/cheese-knives" class="no-underline f1 light-blue hover-silver nr5 fr-l ph3">›</a>
+  
+</section>
+    </div>
+    <footer class="mw7 center tc pt3 pb4 silver">
+      Built with Jekyll using <a href="http://github.com/muan/scribble" class="link silver hover-blue pv1">Scribble</a>.
+      <img src="http://localhost:4000/images/scribble2.png" alt="scribble" class="mt4 db center" />
+    </footer>
+  </body>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</html>

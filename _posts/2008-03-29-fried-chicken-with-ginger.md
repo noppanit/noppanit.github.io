@@ -2,10 +2,6 @@
 title: Fried chicken with ginger
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /fried-chicken-with-ginger/
-dsq_thread_id:
-  - 
 categories:
   - Thai dishes
 ---

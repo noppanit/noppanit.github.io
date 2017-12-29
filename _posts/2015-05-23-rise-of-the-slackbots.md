@@ -2,8 +2,6 @@
 title: Rise of the (Slack)Bots.
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /rise-of-the-slackbots/
 dsq_thread_id:
   - 3788776952
 categories:

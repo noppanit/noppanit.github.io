@@ -2,8 +2,6 @@
 title: My quest to find my perfect brew.
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /my-quest-to-find-my-perfect-brew/
 dsq_thread_id:
   - 1618784067
 categories:

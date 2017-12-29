@@ -2,8 +2,6 @@
 title: The perfect roast chicken
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /the-perfect-roast-chicken/
 dsq_thread_id:
   - 476874783
 categories:

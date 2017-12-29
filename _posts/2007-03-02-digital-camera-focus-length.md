@@ -2,8 +2,6 @@
 title: 'Digital Camera : Focus Length'
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /digital-camera-focus-length/
 dsq_thread_id:
   - 243602783
 categories:

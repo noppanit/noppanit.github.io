@@ -2,8 +2,6 @@
 title: Why I join Live Below the Line?
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /why-i-join-live-below-the-line/
 dsq_thread_id:
   - 1185221125
 categories:

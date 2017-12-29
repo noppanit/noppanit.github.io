@@ -2,8 +2,6 @@
 title: 'Tutorial : Struts version 1 in action'
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /tutorial-struts-version-1-in-action/
 dsq_thread_id:
   - 330021411
 categories:

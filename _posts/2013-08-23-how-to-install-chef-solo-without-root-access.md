@@ -2,8 +2,6 @@
 title: How to install Chef-Solo without root access?
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /how-to-install-chef-solo-without-root-access/
 dsq_thread_id:
   - 1630606804
 categories:

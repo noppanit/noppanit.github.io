@@ -1,0 +1,128 @@
+
+<!doctype>
+<html lang="en">
+  <head>
+    <meta content='How to install Chef-Solo without root access? - Noppanit' name='title' />
+    <meta content='How to install Chef-Solo without root access? - Noppanit' name='og:title' />
+    <title>How to install Chef-Solo without root access? - Noppanit</title>
+    <link href='http://localhost:4000/images/fav.png' rel='shortcut icon'>
+<link href='http://localhost:4000/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='http://localhost:4000/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <meta content='http://localhost:4000/posts/how-to-install-chef-solo-without-root-access' property='og:url' />
+  <meta content="I know the title it’s stupid. And if you arrived at this post, I know your this question will pop up in your head, “W..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+
+
+
+
+
+  </head>
+  <body class="lh-copy dark-gray pa0 f6 sans-serif bg-super-white">
+    <header class="tc mt4">
+      <a href="http://localhost:4000">
+        <img src="http://localhost:4000/images/scribble.png" alt="Home" width="53" height="59">
+      </a>
+      <p>Noppanit</p>
+    </header>
+    <div class="mw7 bg-white mt4 mb3 center br2-ns bt bb ba-ns b--light-gray">
+      <nav class="bb b--light-gray pv4 tc" aria-label="Main">
+        
+      </nav>
+
+      <main class="tl f6 relative pa4 pa5-ns overflow-hidden">
+        
+          <div class="mb4">
+            <div class="fw600 light-silver mt1">23 Aug 2013</div>
+            <h1 class="ttu f3 mt0 lh-title cb mb2">
+              
+              How to install Chef-Solo without root access?
+            </h1>
+            
+          </div>
+        
+        <div class="markdown-body">
+          <p>I know the title it’s stupid. And if you arrived at this post, I know your this question will pop up in your head, “Why on earth you want to do that?”. Chef is built in the assumption that it has root access and yeah it makes perfect sense. Without root access it’s like I want to hire a cleaner to clean my house but I want to get my house cleaned without giving my house key to the cleaner. It’s the same thing here.</p>
+
+<p>However, I’m here to just talk about how to do this in a very ugly and hacky way.</p>
+
+<p>Problem:<br />
+One day on a client side, they said we want you to deploy the application to our production VM server, but we cannot give you sudo or root access. Of course, it makes sense why would you give some guy root access. The IT guy gives me one folder which you can do anything as long as you stay inside that folder. We won’t have any problem because our app is basically just a java application with Jetty container, so it doesn’t matter where it lives. Now, here comes the problem we want to deploy our application anytime we want and we want to do the <a href="http://martinfowler.com/bliki/PhoenixServer.html" title="PhoenixServer">PhoenixServer</a> pattern. But in this case, it’s just going to be semi phoenixServer, because we’re not going to wipe the whole box out. So we thought, yeah we could use Chef to provision the server. Great!. But how can you even install Chef without sudo or root access? If you go to Chef and download the Linux version it will be an RPM which obviously it needs root access to install that, which we don’t have. Hmm, what are we gonna do?</p>
+
+<p>Solution:<br />
+So we thought, well we just need Chef-solo because it’s just going to be one server. Chef is written in Ruby and our Centos VM doesn’t even come Ruby. The problem gets bigger, how can we install Ruby without root access. Ha! now here’s the tricky part. Chef is Ruby, Ruby is C. We have C, so we could compile Ruby and use gem to install Chef. Woohoo! Sounds easy right? By the way, Chef comes with embedded-ruby already that’s why when you install Chef you don’t need to install Ruby first. The Chef guys cleverly embedded Ruby inside Chef with all the gems and deploy that to <strong>/opt/chef</strong>. You can find more information <a href="http://www.opscode.com/chef/install/" title="Chef install">here</a>. So, we could do the same thing but we need to compile Ruby and dependencies to our folder. Ok, I’ll cut to the chest now. All we need is Ruby and Chef gem. In order to install, ruby which I found out you just need three minimum libraries, zlib, yaml and openssl. Here’s how to do it.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#Install Openssl</span>
+wget https://www.openssl.org/source/openssl-1.0.0k.tar.gz
+<span class="nb">tar </span>zxvf openssl-1.0.0k.tar.gz
+<span class="nb">cd </span>openssl-1.0.0k
+./config shared <span class="nt">-fPIC</span> <span class="nt">--prefix</span><span class="o">=</span>/home/centos/ruby <span class="nt">--openssldir</span><span class="o">=</span>/home/centos/ruby/ssl
+make <span class="o">&amp;&amp;</span> make install
+<span class="nb">cd</span> /home/centos
+
+<span class="c">#Install zlib</span>
+wget http://zlib.net/zlib-1.2.8.tar.gz
+<span class="nb">tar </span>xzvf zlib-1.2.8.tar.gz
+<span class="nb">cd </span>zlib-1.2.8
+./configure <span class="nt">--prefix</span><span class="o">=</span>/home/centos/ruby
+make <span class="o">&amp;&amp;</span> make install
+<span class="nb">cd</span> /home/centos
+
+<span class="c">#Install Yaml</span>
+wget http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz
+<span class="nb">tar </span>xzvf yaml-0.1.4.tar.gz
+<span class="nb">cd </span>yaml-0.1.4
+./configure <span class="nt">--disable-install-doc</span> <span class="nt">--prefix</span><span class="o">=</span>/home/centos/ruby
+make <span class="o">&amp;&amp;</span> make install
+<span class="nb">cd</span> /home/centos
+
+<span class="c">#Install Ruby 1.9.3</span>
+wget ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p448.tar.gz
+<span class="nb">tar </span>xzvf ruby-1.9.3-p448.tar.gz
+<span class="nb">cd </span>ruby-1.9.3-p448
+./configure <span class="nt">--prefix</span><span class="o">=</span>/home/centos/ruby <span class="nt">--enable-shared</span> <span class="nt">--disable-install-doc</span> <span class="nt">--with-opt-dir</span><span class="o">=</span>/home/centos/ruby
+make <span class="o">&amp;&amp;</span> make install
+<span class="nb">cd</span> /home/centos
+
+<span class="c">#Install Chef gem</span>
+./ruby/bin/gem install <span class="nt">--no-rdoc</span> <span class="nt">--no-ri</span> chef
+</code></pre></div></div>
+
+<p>Please note that I installed ruby with chef to <strong>/home/centos/ruby</strong>, you need to change the path to where you want it to be, the same as chef guys decided <strong>/opt/chef</strong> is the best place for Chef to live. However, we don’t even have access to /opt.</p>
+
+<p>Once you run this piece of code in your VM you will have ruby folder which you can just zip it and deploy to your server. There you go, you just got your customised Chef-solo.</p>
+
+<p>I know it sounds stupid and it’s really hacky and ugly. But here’s what we found out so I want to blog it here so any lucky people might find this useful in the future.</p>
+
+
+        </div>
+        <p class="mt4">
+  Til next time,<br>
+  noppanit
+  <span class="silver">at 00:00</span>
+</p>
+<img src="http://localhost:4000/images/scribble3.png" alt="scribble" />
+
+      </main>
+      <section class="fixed-l mw7 center w-100 top-50 tc pb4 nt4">
+  
+    <a href="http://localhost:4000/posts/how-many-tweets-i-have-tweeted-in-the-past" class="no-underline f1 light-blue hover-silver nl5 fl-l ph3">‹</a>
+  
+  
+    <a href="http://localhost:4000/posts/paris-2013-food-quest" class="no-underline f1 light-blue hover-silver nr5 fr-l ph3">›</a>
+  
+</section>
+    </div>
+    <footer class="mw7 center tc pt3 pb4 silver">
+      Built with Jekyll using <a href="http://github.com/muan/scribble" class="link silver hover-blue pv1">Scribble</a>.
+      <img src="http://localhost:4000/images/scribble2.png" alt="scribble" class="mt4 db center" />
+    </footer>
+  </body>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</html>

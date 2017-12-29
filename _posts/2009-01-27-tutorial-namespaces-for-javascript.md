@@ -2,8 +2,6 @@
 title: 'Tutorial : Namespaces for javascript'
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /tutorial-namespaces-for-javascript/
 jd_tweet_this:
   - yes
 wp_jd_bitly:

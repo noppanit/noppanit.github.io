@@ -2,8 +2,6 @@
 title: 'Tutorial : J2ME and Netbeans : How to test RecordStore with emulator'
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /tutorial-how-to-test-recordstore-with-emulator/
 jd_tweet_this:
   - yes
 wp_jd_bitly:

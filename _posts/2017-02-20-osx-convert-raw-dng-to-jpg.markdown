@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "OSX convert raw DNG to JPG"
 date: 2017-02-20 13:23:19 +0700
 comments: true

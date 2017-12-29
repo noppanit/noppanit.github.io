@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Python's Monkey patch for Dummies"
 date: 2015-10-25 19:00:27 -0400
 comments: true

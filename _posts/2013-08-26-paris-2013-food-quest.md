@@ -2,8 +2,6 @@
 title: 'Paris 2013: Food quest.'
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /paris-2013-food-quest/
 dsq_thread_id:
   - 1653538500
 categories:

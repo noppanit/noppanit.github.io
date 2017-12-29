@@ -1,0 +1,98 @@
+
+<!doctype>
+<html lang="en">
+  <head>
+    <meta content='Tutorial : Java Random with scaling - Noppanit' name='title' />
+    <meta content='Tutorial : Java Random with scaling - Noppanit' name='og:title' />
+    <title>Tutorial : Java Random with scaling - Noppanit</title>
+    <link href='http://localhost:4000/images/fav.png' rel='shortcut icon'>
+<link href='http://localhost:4000/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='http://localhost:4000/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <meta content='http://localhost:4000/posts/tutorial-java-random-with-scaling' property='og:url' />
+  <meta content="I have been playing around with Random class in Java. Unfortunately, this class doesn’t provide us some methods we ne..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+
+
+
+
+
+  </head>
+  <body class="lh-copy dark-gray pa0 f6 sans-serif bg-super-white">
+    <header class="tc mt4">
+      <a href="http://localhost:4000">
+        <img src="http://localhost:4000/images/scribble.png" alt="Home" width="53" height="59">
+      </a>
+      <p>Noppanit</p>
+    </header>
+    <div class="mw7 bg-white mt4 mb3 center br2-ns bt bb ba-ns b--light-gray">
+      <nav class="bb b--light-gray pv4 tc" aria-label="Main">
+        
+      </nav>
+
+      <main class="tl f6 relative pa4 pa5-ns overflow-hidden">
+        
+          <div class="mb4">
+            <div class="fw600 light-silver mt1">02 Sep 2010</div>
+            <h1 class="ttu f3 mt0 lh-title cb mb2">
+              
+              Tutorial : Java Random with scaling
+            </h1>
+            
+          </div>
+        
+        <div class="markdown-body">
+          <p>I have been playing around with Random class in Java. Unfortunately, this class doesn’t provide us some methods we need. Such as, limit the range between -50,50 or get random double from 1 – 1000. Something like this we can fine tune. I copied some good practice from this <a href="http://www.cs.geneseo.edu/~baldwin/reference/random.html">website</a>.</p>
+
+<p>Here are some examples of these operations:</p>
+
+<ul>
+  <li>Suppose you are writing a game program that simulates throwing dice, and so need a random integer in the range 1 to 6. “nextInt” can give you one in the range 0 to 5, and you can translate this to the range you need:</li>
+</ul>
+
+<p>int throw = generator.nextInt(6) + 1;</p>
+
+<ul>
+  <li>In drawing a pattern made up of random lines, you want to pick a random angle between 0 and 360 degrees at which to draw a line. The angle can be any real number. The “nextDouble” message will give you a random real number, but between 0 and 1. You can use scaling to turn this into a real number between 0 and 360:</li>
+</ul>
+
+<p>double angle = generator.nextDouble() * 360.0;</p>
+
+<ul>
+  <li>Suppose the same pattern-drawing program also needs to pick random lengths for the lines, but that the lines should never be shorter than 10 units, nor longer than 50. Line lengths can be any real number between these limits. Thus you need random lengths from a 40-unit range starting at 10. You can use scaling and translation together to generate these numbers from “nextDouble”:</li>
+</ul>
+
+<p>double length = generator.nextDouble() * 40.0 + 10.0;</p>
+
+
+        </div>
+        <p class="mt4">
+  Til next time,<br>
+  noppanit
+  <span class="silver">at 00:00</span>
+</p>
+<img src="http://localhost:4000/images/scribble3.png" alt="scribble" />
+
+      </main>
+      <section class="fixed-l mw7 center w-100 top-50 tc pb4 nt4">
+  
+    <a href="http://localhost:4000/posts/tutorial-how-to-test-recordstore-with-emulator" class="no-underline f1 light-blue hover-silver nl5 fl-l ph3">‹</a>
+  
+  
+    <a href="http://localhost:4000/posts/google-analytics-iq-test-passed" class="no-underline f1 light-blue hover-silver nr5 fr-l ph3">›</a>
+  
+</section>
+    </div>
+    <footer class="mw7 center tc pt3 pb4 silver">
+      Built with Jekyll using <a href="http://github.com/muan/scribble" class="link silver hover-blue pv1">Scribble</a>.
+      <img src="http://localhost:4000/images/scribble2.png" alt="scribble" class="mt4 db center" />
+    </footer>
+  </body>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</html>

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "A must item while travelling in Japan"
 date: 2016-12-06 07:36:29 +0900
 comments: true

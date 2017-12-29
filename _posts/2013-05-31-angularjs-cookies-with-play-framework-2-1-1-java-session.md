@@ -2,8 +2,6 @@
 title: AngularJs Cookies with Play Framework 2.1.1 Java Session.
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /angularjs-cookies-with-play-framework-2-1-1-java-session/
 dsq_thread_id:
   - 1341282716
 categories:

@@ -2,8 +2,6 @@
 title: Why opensource is great for your learning? In my case, mozilla project.
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /opensource-great-learning-my-case-mozilla-project/
 dsq_thread_id:
   - 2054943408
 categories:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Retrospective 2015"
 date: 2015-12-24 14:26:19 -0500
 comments: true

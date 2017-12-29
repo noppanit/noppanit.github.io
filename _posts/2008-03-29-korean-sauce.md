@@ -2,8 +2,6 @@
 title: Korean sauce
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /korean-sauce/
 dsq_thread_id:
   - 288213513
 categories:
