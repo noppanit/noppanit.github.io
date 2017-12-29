@@ -1,0 +1,100 @@
+
+<!doctype>
+<html lang="en">
+  <head>
+    <meta content='How to index all wikipedia (English) data using Elasticsearch? - Noppanit' name='title' />
+    <meta content='How to index all wikipedia (English) data using Elasticsearch? - Noppanit' name='og:title' />
+    <title>How to index all wikipedia (English) data using Elasticsearch? - Noppanit</title>
+    <link href='http://localhost:4000/images/fav.png' rel='shortcut icon'>
+<link href='http://localhost:4000/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='http://localhost:4000/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <meta content='http://localhost:4000/posts/how-to-index-all-wikipedia-english-data-using-elasticsearc' property='og:url' />
+  <meta content="I have been researching on how to get a context out of a piece of text. There are lots of techniques to do that, Info..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+
+
+
+
+
+  </head>
+  <body class="lh-copy dark-gray pa0 f6 sans-serif bg-super-white">
+    <header class="tc mt4">
+      <a href="http://localhost:4000">
+        <img src="http://localhost:4000/images/scribble.png" alt="Home" width="53" height="59">
+      </a>
+      <p>Noppanit</p>
+    </header>
+    <div class="mw7 bg-white mt4 mb3 center br2-ns bt bb ba-ns b--light-gray">
+      <nav class="bb b--light-gray pv4 tc" aria-label="Main">
+        
+      </nav>
+
+      <main class="tl f6 relative pa4 pa5-ns overflow-hidden">
+        
+          <div class="mb4">
+            <div class="fw600 light-silver mt1">04 Apr 2013</div>
+            <h1 class="ttu f3 mt0 lh-title cb mb2">
+              
+              How to index all wikipedia (English) data using Elasticsearch?
+            </h1>
+            
+          </div>
+        
+        <div class="markdown-body">
+          <p>I have been researching on how to get a context out of a piece of text. There are lots of techniques to do that, Information Retriever, Noun Chunker, Text Classification and etc. One technique that I have been trying to do but it’s quite difficult because of the resources and cannot be done on-the-fly is from wikipedia. Wikipedia is like a central repository where human being can contribute to add more content for other people. So, every article is written by human with some potential keywords in the text. For example, if the article is about dog, it’s likely that in the text contains word “dog” or other synonyms. However, by just indexing all the wikipedia data is not quite enough, because that means you can only search through the content which Google or Bing is doing a better job obviously. What I’m interested in <a href="http://www.elasticsearch.org/" title="elasticsearch">Elasticsearch</a> is <a href="http://en.wikipedia.org/wiki/Cosine_similarity" title="cosine similarity">Cosine Similarity</a> which roughly speaking is a technique to determine how similar between two vectors. Elasticsearch provide just that which is <a href="http://www.elasticsearch.org/guide/reference/api/more-like-this/">“More like this”</a> functionality. More like this technique in elasticsearch is a way you can easily measure how similar two pieces of content is. The usage is easy, just index all the text you want it to be searchable and input another piece of text then elasticsearch will give you a score.</p>
+
+<p>Instead of doing everything yourself, Elasticsearch has a plugin called <a href="https://github.com/elasticsearch/elasticsearch-river-wikipedia" title="elasticsearch wikipedia">elasticsearch-river-wikipedia</a> which will do everything for you from downloading all the dumped wiki data to index all the data for you to search immediately. However, I found little documentation for this one on how to use this for a Elasticsearch virgin like me.</p>
+
+<p>So, here’s how I do it.</p>
+
+<p>First of course you need to install elasticsearch. If you’re on a Mac, I suggest you to use Homebrew.</p>
+
+<p>Then you need to install the plugin by following <a href="https://github.com/elasticsearch/elasticsearch-river-wikipedia">these steps</a>. And that should be it. However, I have looked at the plugin sourcecode and it will download the 30GB data and unzip it and index it for you in the background. There’s not logs or any indication. I find it quite hard to see when it’s finished. I actually had to listen to my CPU fan to stop then I realised that it’s done indexing. But here’s what I did to make it slightly faster and more obvious.</p>
+
+<p>The downloading takes a while depends on your connection. So, I suggest you to download the file <a href="http://download.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2" title="Wiki dump">yourself</a> and then unzip it. Then use this command to create index.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-XPUT</span> localhost:9203/_river/wikipedia/_meta <span class="nt">-d</span> <span class="s1">'
+{
+    "type" : "wikipedia",
+    "wikipedia" : {
+        "url" : "file:///${PATH_TO_YOUR_FOLDER}/enwiki-latest-pages-articles.xml"
+    }
+}
+'</span>
+</code></pre></div></div>
+
+<p>This will speed up the process a lot and it will reduce the chance that your JVM will face PERMGen exception because the plugin will try to unzip the 30GB data for you as well. Then just wait for the indexing to finish. You can try to see the status of your node from your browser by typing this http://localhost:9200/_stats in your favourite browser. The size of the finished index is around 40GB.</p>
+
+
+        </div>
+        <p class="mt4">
+  Til next time,<br>
+  noppanit
+  <span class="silver">at 00:00</span>
+</p>
+<img src="http://localhost:4000/images/scribble3.png" alt="scribble" />
+
+      </main>
+      <section class="fixed-l mw7 center w-100 top-50 tc pb4 nt4">
+  
+    <a href="http://localhost:4000/posts/maybe-i-have-just-got-scroogled" class="no-underline f1 light-blue hover-silver nl5 fl-l ph3">‹</a>
+  
+  
+    <a href="http://localhost:4000/posts/why-i-join-live-below-the-line" class="no-underline f1 light-blue hover-silver nr5 fr-l ph3">›</a>
+  
+</section>
+    </div>
+    <footer class="mw7 center tc pt3 pb4 silver">
+      Built with Jekyll using <a href="http://github.com/muan/scribble" class="link silver hover-blue pv1">Scribble</a>.
+      <img src="http://localhost:4000/images/scribble2.png" alt="scribble" class="mt4 db center" />
+    </footer>
+  </body>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</html>

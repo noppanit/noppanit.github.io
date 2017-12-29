@@ -1,0 +1,205 @@
+
+<!doctype>
+<html lang="en">
+  <head>
+    <meta content='Test Command Line Program - Noppanit' name='title' />
+    <meta content='Test Command Line Program - Noppanit' name='og:title' />
+    <title>Test Command Line Program - Noppanit</title>
+    <link href='http://localhost:4000/images/fav.png' rel='shortcut icon'>
+<link href='http://localhost:4000/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='http://localhost:4000/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <meta content='http://localhost:4000/posts/test-command-line-program' property='og:url' />
+  <meta content="When I was in TWU I was assigned to implement a simple program in Java Command line. I was ok but when I came to TDD ..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+
+
+
+
+
+  </head>
+  <body class="lh-copy dark-gray pa0 f6 sans-serif bg-super-white">
+    <header class="tc mt4">
+      <a href="http://localhost:4000">
+        <img src="http://localhost:4000/images/scribble.png" alt="Home" width="53" height="59">
+      </a>
+      <p>Noppanit</p>
+    </header>
+    <div class="mw7 bg-white mt4 mb3 center br2-ns bt bb ba-ns b--light-gray">
+      <nav class="bb b--light-gray pv4 tc" aria-label="Main">
+        
+      </nav>
+
+      <main class="tl f6 relative pa4 pa5-ns overflow-hidden">
+        
+          <div class="mb4">
+            <div class="fw600 light-silver mt1">26 Apr 2011</div>
+            <h1 class="ttu f3 mt0 lh-title cb mb2">
+              
+              Test Command Line Program
+            </h1>
+            
+          </div>
+        
+        <div class="markdown-body">
+          <p>When I was in TWU I was assigned to implement a simple program in Java Command line. I was ok but when I came to TDD approach I really didn’t know what to do and test command-line in JUnit. I googled but I found nothing. However, after <a href="http://www.markhneedham.com/">Mark Needham</a> shows us in code and it was rather easy to do that. So I think I would write the example so that I could remember.</p>
+
+<p>If you have a program like this. How would you test it in JUnit?</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">launchApp</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+	<span class="n">InputStreamReader</span> <span class="n">inputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">InputStreamReader</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+	<span class="n">BufferedReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span><span class="n">inputStream</span><span class="o">);</span>
+	<span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
+	<span class="kt">int</span> <span class="n">choice</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+	<span class="k">switch</span><span class="o">(</span> <span class="n">choice</span> <span class="o">)</span>
+	<span class="o">{</span>
+		<span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Print 0"</span><span class="o">);</span>
+			<span class="k">break</span><span class="o">;</span>
+		<span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Print 1"</span><span class="o">);</span>
+			<span class="k">break</span><span class="o">;</span>
+		<span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+			<span class="kt">int</span> <span class="n">anotherChoice</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">reader</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+			<span class="k">if</span><span class="o">(</span> <span class="n">anotherChoice</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">)</span>
+			<span class="o">{</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Print Toy"</span><span class="o">);</span>
+			<span class="o">}</span>
+			<span class="k">else</span>
+			<span class="o">{</span>
+				<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Print Something Else"</span><span class="o">);</span>
+			<span class="o">}</span>
+			<span class="k">break</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>What he pointed out to test this kind of program is to implement a queue in InputStreamReader.</p>
+
+<p>This is the example</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">StubbedInputStream</span> <span class="kd">extends</span> <span class="n">InputStream</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="n">Queue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">input</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">StubbedInputStream</span><span class="o">(</span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">input</span> <span class="o">=</span> <span class="n">input</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+		<span class="kd">public</span> <span class="kt">int</span> <span class="nf">read</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">bytes</span><span class="o">);</span>    <span class="c1">//To change body of overridden methods use File | Settings | File Templates.</span>
+		<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+		<span class="kd">public</span> <span class="kt">int</span> <span class="nf">read</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i1</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+				<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+			<span class="o">}</span>
+
+			<span class="kt">int</span> <span class="n">byteLocation</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">byte</span> <span class="n">b</span> <span class="o">:</span> <span class="n">input</span><span class="o">.</span><span class="na">remove</span><span class="o">().</span><span class="na">getBytes</span><span class="o">())</span> <span class="o">{</span>
+				<span class="n">bytes</span><span class="o">[</span><span class="n">byteLocation</span><span class="o">]</span> <span class="o">=</span> <span class="n">b</span><span class="o">;</span>
+				<span class="n">byteLocation</span><span class="o">++;</span>
+			<span class="o">}</span>
+			<span class="n">bytes</span><span class="o">[</span><span class="n">byteLocation</span><span class="o">]</span> <span class="o">=</span> <span class="s">"\n"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">()[</span><span class="mi">0</span><span class="o">];</span>
+			<span class="k">return</span> <span class="n">byteLocation</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+		<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+		<span class="kd">public</span> <span class="kt">int</span> <span class="nf">read</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="n">InputStreamBuilder</span> <span class="nf">stubInputStream</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="k">new</span> <span class="nf">InputStreamBuilder</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>And …</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">InputStreamBuilder</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="n">Queue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">values</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
+
+	<span class="kd">public</span> <span class="n">InputStreamBuilder</span> <span class="nf">toReturn</span><span class="o">(</span><span class="n">String</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">values</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="n">InputStreamBuilder</span> <span class="nf">then</span><span class="o">(</span><span class="n">String</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">values</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="n">StubbedInputStream</span> <span class="nf">atSomePoint</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="k">new</span> <span class="nf">StubbedInputStream</span><span class="o">(</span><span class="n">values</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>When you want to test the command-line program you can do something like this.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainTest</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="n">PrintStream</span> <span class="n">console</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">ByteArrayOutputStream</span> <span class="n">outputStream</span><span class="o">;</span>
+
+    <span class="nd">@Before</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">before</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">console</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">;</span>
+        <span class="n">outputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">mainTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">setOut</span><span class="o">(</span><span class="k">new</span> <span class="n">PrintStream</span><span class="o">(</span><span class="n">outputStream</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">setIn</span><span class="o">(</span><span class="n">stubInputStream</span><span class="o">().</span><span class="na">toReturn</span><span class="o">(</span><span class="s">"0"</span><span class="o">).</span><span class="na">atSomePoint</span><span class="o">());</span>
+
+        <span class="k">new</span> <span class="nf">Main</span><span class="o">().</span><span class="na">launchApp</span><span class="o">();</span>
+
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">outputStream</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"Print 0"</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">mainTestNextCase</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">setOut</span><span class="o">(</span><span class="k">new</span> <span class="n">PrintStream</span><span class="o">(</span><span class="n">outputStream</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">setIn</span><span class="o">(</span><span class="n">stubInputStream</span><span class="o">().</span><span class="na">toReturn</span><span class="o">(</span><span class="s">"2"</span><span class="o">).</span><span class="na">then</span><span class="o">(</span><span class="s">"0"</span><span class="o">).</span><span class="na">atSomePoint</span><span class="o">());</span>
+
+        <span class="k">new</span> <span class="nf">Main</span><span class="o">().</span><span class="na">launchApp</span><span class="o">();</span>
+
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">outputStream</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="n">containsString</span><span class="o">(</span><span class="s">"Print Toy"</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+        </div>
+        <p class="mt4">
+  Til next time,<br>
+  noppanit
+  <span class="silver">at 00:00</span>
+</p>
+<img src="http://localhost:4000/images/scribble3.png" alt="scribble" />
+
+      </main>
+      <section class="fixed-l mw7 center w-100 top-50 tc pb4 nt4">
+  
+    <a href="http://localhost:4000/posts/mac-osx-override-rm-to-delete-files-to-trash" class="no-underline f1 light-blue hover-silver nl5 fl-l ph3">‹</a>
+  
+  
+    <a href="http://localhost:4000/posts/my-first-thought-on-design-jam" class="no-underline f1 light-blue hover-silver nr5 fr-l ph3">›</a>
+  
+</section>
+    </div>
+    <footer class="mw7 center tc pt3 pb4 silver">
+      Built with Jekyll using <a href="http://github.com/muan/scribble" class="link silver hover-blue pv1">Scribble</a>.
+      <img src="http://localhost:4000/images/scribble2.png" alt="scribble" class="mt4 db center" />
+    </footer>
+  </body>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</html>

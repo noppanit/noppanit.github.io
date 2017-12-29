@@ -1,0 +1,144 @@
+
+<!doctype>
+<html lang="en">
+  <head>
+    <meta content='Ruby: Find unscrambled words from a list of scrambled words - Noppanit' name='title' />
+    <meta content='Ruby: Find unscrambled words from a list of scrambled words - Noppanit' name='og:title' />
+    <title>Ruby: Find unscrambled words from a list of scrambled words - Noppanit</title>
+    <link href='http://localhost:4000/images/fav.png' rel='shortcut icon'>
+<link href='http://localhost:4000/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='http://localhost:4000/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <meta content='http://localhost:4000/posts/ruby-find-unscrambled-words-from-a-list-of-scrambled-words' property='og:url' />
+  <meta content="Suppose you have a list of words, and you have another list of unscrambled words. How would you find unscrambled word..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+
+
+
+
+
+  </head>
+  <body class="lh-copy dark-gray pa0 f6 sans-serif bg-super-white">
+    <header class="tc mt4">
+      <a href="http://localhost:4000">
+        <img src="http://localhost:4000/images/scribble.png" alt="Home" width="53" height="59">
+      </a>
+      <p>Noppanit</p>
+    </header>
+    <div class="mw7 bg-white mt4 mb3 center br2-ns bt bb ba-ns b--light-gray">
+      <nav class="bb b--light-gray pv4 tc" aria-label="Main">
+        
+      </nav>
+
+      <main class="tl f6 relative pa4 pa5-ns overflow-hidden">
+        
+          <div class="mb4">
+            <div class="fw600 light-silver mt1">08 Dec 2010</div>
+            <h1 class="ttu f3 mt0 lh-title cb mb2">
+              
+              Ruby: Find unscrambled words from a list of scrambled words
+            </h1>
+            
+          </div>
+        
+        <div class="markdown-body">
+          <p>Suppose you have a list of words, and you have another list of unscrambled words. How would you find unscrambled words in the list of words. For example, you have a list of words:</p>
+
+<ol>
+  <li>testtest</li>
+  <li>apple</li>
+  <li>college</li>
+  <li>abcdefg</li>
+  <li>school<br />
+… and a lot more, says 1000 words</li>
+</ol>
+
+<p>And a list of unscrambled words</p>
+<ol>
+  <li>hoolsc</li>
+  <li>bgfedcba</li>
+  <li>ppale</li>
+</ol>
+
+<p>How would you know that the exact word of the list of unscrambled words? How would you know that “hoolsc” is “school”.</p>
+
+<p>Here is what I do, I use Ruby to create a hash and find the frequency of each character of each word. And compare the two hashs to see if they contain the same amount of characters. This might not be the most efficient way to do that, but it certainly the easiest way to do.</p>
+
+<p>For instance, “school” would have { “s” =&gt; 1, “c” =&gt; 1, “h” =&gt; 1, “o” =&gt; 2, “l” =&gt; 1} and “hoolsc” would be {“h” =&gt; 1, “o” =&gt; 2, “l” =&gt; 1, “s” =&gt; 1, “c” =&gt; 1}. They are different in the position of key, but they have the same number of keys and each key-value pair is equal to the element in the other hash.</p>
+
+<p>Here is the code I created<br />
+The words.txt is the list of scrambled words<br />
+and the wordlist.txt is the list of unscrambled words</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scrambled_words</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"words.txt"</span><span class="p">,</span><span class="s2">"r"</span><span class="p">)</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">scrambled_word</span> <span class="o">=</span> <span class="n">scrambled_words</span><span class="p">.</span><span class="nf">gets</span> <span class="p">)</span>
+
+  <span class="n">scrambled_word</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">scrambled_word</span><span class="si">}</span><span class="s2">"</span>
+  <span class="n">scrambled_word_array</span> <span class="o">=</span> <span class="n">scrambled_word</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sr">//</span><span class="p">)</span>
+  
+  <span class="n">scrambled_word_hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
+
+  <span class="k">for</span> <span class="n">word</span> <span class="k">in</span> <span class="n">scrambled_word_array</span>
+    <span class="k">if</span><span class="p">(</span> <span class="n">word</span> <span class="o">!=</span> <span class="s2">"</span><span class="se">\r</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="n">word</span> <span class="o">!=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+      <span class="n">scrambled_word_hash</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="n">word_list</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"wordlist.txt"</span><span class="p">,</span><span class="s2">"r"</span><span class="p">)</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">words</span> <span class="o">=</span> <span class="n">word_list</span><span class="p">.</span><span class="nf">gets</span><span class="p">)</span>
+
+      <span class="n">unscrambled_word</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">words</span><span class="si">}</span><span class="s2">"</span>
+      <span class="n">unscrambled_word_array</span> <span class="o">=</span> <span class="n">unscrambled_word</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sr">//</span><span class="p">)</span>
+
+      <span class="n">unscrambled_word_hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">()</span>
+      
+      <span class="k">for</span> <span class="n">word1</span> <span class="k">in</span> <span class="n">unscrambled_word_array</span>
+        <span class="k">if</span><span class="p">(</span> <span class="n">word1</span> <span class="o">!=</span> <span class="s2">"</span><span class="se">\r</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="n">word1</span> <span class="o">!=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+          <span class="n">unscrambled_word_hash</span><span class="p">[</span><span class="n">word1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+
+    <span class="k">if</span> <span class="n">scrambled_word_hash</span> <span class="o">==</span> <span class="n">unscrambled_word_hash</span>
+      <span class="nb">print</span> <span class="s2">"</span><span class="si">#{</span><span class="n">words</span><span class="si">}</span><span class="s2">,"</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+  <span class="n">word_list</span><span class="p">.</span><span class="nf">close</span>
+<span class="k">end</span>
+
+
+<span class="n">scrambled_words</span><span class="p">.</span><span class="nf">close</span>
+</code></pre></div></div>
+
+<p>You can get wordlist.txt from <a href="http://www.hackthissite.org/missions/prog/1/">http://www.hackthissite.org/missions/prog/1/</a> as well. It’s really fun.</p>
+
+        </div>
+        <p class="mt4">
+  Til next time,<br>
+  noppanit
+  <span class="silver">at 00:00</span>
+</p>
+<img src="http://localhost:4000/images/scribble3.png" alt="scribble" />
+
+      </main>
+      <section class="fixed-l mw7 center w-100 top-50 tc pb4 nt4">
+  
+    <a href="http://localhost:4000/posts/google-analytics-iq-test-passed" class="no-underline f1 light-blue hover-silver nl5 fl-l ph3">‹</a>
+  
+  
+    <a href="http://localhost:4000/posts/why-dummy-text-from-web-template-has-to-be-lorem-ipsum" class="no-underline f1 light-blue hover-silver nr5 fr-l ph3">›</a>
+  
+</section>
+    </div>
+    <footer class="mw7 center tc pt3 pb4 silver">
+      Built with Jekyll using <a href="http://github.com/muan/scribble" class="link silver hover-blue pv1">Scribble</a>.
+      <img src="http://localhost:4000/images/scribble2.png" alt="scribble" class="mt4 db center" />
+    </footer>
+  </body>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</html>
