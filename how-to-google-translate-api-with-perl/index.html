@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Noppanit</title>
-  <meta name="description" content="My personal adventure">
+  <title>How to : Google Translate API with Perl</title>
+  <meta name="description" content="So, without boring introduction.">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/404">
+  <link rel="canonical" href="http://localhost:4000/how-to-google-translate-api-with-perl/">
   <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
   
   
@@ -63,26 +63,65 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">How to : Google Translate API with Perl</h1>
+    <p class="post-meta">
+      <time datetime="2011-02-17T00:00:00-05:00" itemprop="datePublished">
+        
+        Feb 17, 2011
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Noppanit Charassinvichai</span></span>
+      </p>
+  </header>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="post-content" itemprop="articleBody">
+    <p>So, without boring introduction.</p>
+
+<p>But you need to install some library for Perl as well by using cpan.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cpan install JSON
+cpan install REST::Client
+</code></pre></div></div>
+
+<div class="language-perl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/perl</span>
+
+<span class="k">use</span> <span class="nn">REST::</span><span class="nv">Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nv">JSON</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">HTML::</span><span class="nv">Entities</span> <span class="sx">qw(decode_entities)</span><span class="p">;</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> 
+<span class="p">{</span>
+	<span class="k">print</span> <span class="s">"Please enter English word: "</span><span class="p">;</span>
+	<span class="nb">chop</span> <span class="p">(</span> <span class="nv">$_</span> <span class="o">=</span> <span class="p">);</span>
+
+	<span class="k">my</span> <span class="nv">$client</span> <span class="o">=</span> <span class="nn">REST::</span><span class="nv">Client</span><span class="o">-&gt;</span><span class="k">new</span><span class="p">();</span>
+	<span class="nv">$client</span><span class="o">-&gt;</span><span class="nv">GET</span><span class="p">(</span><span class="s">"https://www.googleapis.com/language/translate/v2?key=AIzaSyACJybEm6lyelnYHZzXfydtk-V6-Uz48bQ&amp;en&amp;target=fr&amp;q=$_"</span><span class="p">);</span>
+	<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nv">responseContent</span><span class="p">();</span>
+
+	<span class="nv">$json_text</span> <span class="o">=</span> <span class="nv">from_json</span><span class="p">(</span> <span class="nv">$response</span> <span class="p">);</span>
+
+	<span class="k">foreach</span> <span class="k">my</span> <span class="nv">$french</span><span class="p">(</span><span class="nv">@</span><span class="p">{</span><span class="nv">$json_text</span><span class="o">-&gt;</span><span class="p">{</span><span class="nv">data</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="nv">translations</span><span class="p">}})</span>
+	<span class="p">{</span>
+		<span class="k">my</span> <span class="nv">%ep_hash</span> <span class="o">=</span> <span class="p">();</span>
+		<span class="nv">$ep_hash</span><span class="p">{</span><span class="nv">translatedText</span><span class="p">}</span> <span class="o">=</span> <span class="s">"Translated to French: $french-&gt;{translatedText}"</span><span class="p">;</span>
+
+<span class="c1"># print french</span>
+		<span class="k">while</span> <span class="p">(</span><span class="k">my</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span> <span class="o">=</span> <span class="nb">each</span> <span class="p">(</span><span class="nv">%ep_hash</span><span class="p">))</span>
+		<span class="p">{</span>
+			<span class="k">print</span> <span class="nv">decode_entities</span><span class="p">(</span><span class="nv">$value</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">print</span> <span class="s">"\n"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>

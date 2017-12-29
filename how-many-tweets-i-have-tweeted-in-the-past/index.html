@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Noppanit</title>
-  <meta name="description" content="My personal adventure">
+  <title>How many tweets I have tweeted in the past?</title>
+  <meta name="description" content="This blog post is kinda lame, but I got so excited to get something worked in R. I have been wondering what I have been doing for the last years.">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/404">
+  <link rel="canonical" href="http://localhost:4000/how-many-tweets-i-have-tweeted-in-the-past/">
   <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
   
   
@@ -63,26 +63,64 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">How many tweets I have tweeted in the past?</h1>
+    <p class="post-meta">
+      <time datetime="2013-08-22T00:00:00-04:00" itemprop="datePublished">
+        
+        Aug 22, 2013
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Noppanit Charassinvichai</span></span>
+      </p>
+  </header>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="post-content" itemprop="articleBody">
+    <p>This blog post is kinda lame, but I got so excited to get something worked in R. I have been wondering what I have been doing for the last years.</p>
+
+<p>I’m sitting at my desk and thinking how can I know that. Then, yeah I can analyse my own tweets. So, I downloaded all my tweets from Twitter and started crushing some number.</p>
+
+<p>I’m guessing you can use this code as the format of the csv file should be the same.</p>
+
+<p>If you haven’t done this already.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>install.packages("plyr")
+install.packages("ggplot2")
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>library(plyr)
+library(ggplot2)
+
+#Load all your tweets
+tweets&lt;-read.delim("data/tweets.csv", sep=",")
+
+#Convert timestamp to Date in R
+tweets$timestamp&lt;-as.POSIXlt(tweets$timestamp, format="%Y-%m-%d %H:%M:%S +0000")
+
+#Get month in JAN-DEC format
+tweets$month = strftime(tweets$timestamp, "%b")
+#Get year in 2011-20xx format
+tweets$year = strftime(tweets$timestamp, "%Y")
+
+#Then start counting for each month compare to each year
+timestamps_month = count(tweets, vars = c("month","year"))
+
+#Then just plot the graph
+ggplot(data = timestamps_month) + geom_bar(aes(x = month, y = freq, fill = year), stat="identity", position = "dodge")
+
+</code></pre></div></div>
+
+<p>This is what I have been tweets for the past years. Interestingly I tweeted a lot back in 2010, hmm I was wondering what did I tweet. Well I gotta go to bed will find out tomorrow. What’s yours?</p>
+
+<p><a href="https://www.noppanit.com/wp-content/uploads/2013/08/Screen-Shot-2013-08-22-at-00.21.04.png"><img src="https://www.noppanit.com/wp-content/uploads/2013/08/Screen-Shot-2013-08-22-at-00.21.04.png" alt="My tweets" class="aligncenter size-full wp-image-1151 cool_border" /></a></p>
+
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>

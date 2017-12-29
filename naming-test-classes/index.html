@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Noppanit</title>
-  <meta name="description" content="My personal adventure">
+  <title>Naming test classes.</title>
+  <meta name="description" content="Normally, you would name your test class like this.">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/404">
+  <link rel="canonical" href="http://localhost:4000/naming-test-classes/">
   <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
   
   
@@ -63,26 +63,61 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Naming test classes.</h1>
+    <p class="post-meta">
+      <time datetime="2014-06-25T00:00:00-04:00" itemprop="datePublished">
+        
+        Jun 25, 2014
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Noppanit Charassinvichai</span></span>
+      </p>
+  </header>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="post-content" itemprop="articleBody">
+    <p>Normally, you would name your test class like this.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="n">Product</span> <span class="o">{</span>
+   <span class="c1">//some awesome code here!</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="n">ProductTest</span><span class="o">{</span>
+   <span class="c1">//some awesome test code here!</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>There’s two reasons why I would do this. First, to let IntelliJ find the test class easily and it’s easy to spot the test class when you scroll through.</p>
+
+<p>However, lately inspired by <a href="https://twitter.com/JeroenSoeters" title="Jeroen">@JeroenSoeters</a> my colleague which I don’t know where he got this from. I started naming test class like this.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="n">Product</span> <span class="o">{</span>
+   <span class="c1">//some awesome code here!</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="n">When_building_a_product</span> <span class="o">{</span>
+   <span class="c1">//some awesome test code here!</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="n">When_building_a_product_with_some_more_data</span> <span class="o">{</span>
+   <span class="c1">//some awesome test code here!</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>There’s one reason to do this I can think of. You can clearly see the purpose of this class and you can have multiple test classes or <strong>Product</strong> instead of having all the tests in one class and everything is cluttered so you have to scroll up and down</p>
+
+<p>Not everybody likes this convention. I hate it at first but I’m starting to use it more often and I like it. What do you guys think?</p>
+
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>

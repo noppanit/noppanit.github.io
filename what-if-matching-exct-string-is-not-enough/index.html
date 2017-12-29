@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Noppanit</title>
-  <meta name="description" content="My personal adventure">
+  <title>What if matching exact string is not enough, basic fuzzy search that you want to know.</title>
+  <meta name="description" content="First of all, I’m not a researcher what I post here is just my experiment that I do it myself.">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/404">
+  <link rel="canonical" href="http://localhost:4000/what-if-matching-exct-string-is-not-enough/">
   <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
   
   
@@ -63,26 +63,55 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">What if matching exact string is not enough, basic fuzzy search that you want to know.</h1>
+    <p class="post-meta">
+      <time datetime="2013-01-01T00:00:00-05:00" itemprop="datePublished">
+        
+        Jan 1, 2013
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Noppanit Charassinvichai</span></span>
+      </p>
+  </header>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="post-content" itemprop="articleBody">
+    <p>First of all, I’m not a researcher what I post here is just my experiment that I do it myself.</p>
+
+<p>I have this problem when I want to match string but not <strong>exact match</strong>. For example, I have this string <strong>“I really love The Matrix movie because of this quote ‘welcome to the real world’”</strong> and I have a bunch of tags in my database such as <strong>“The Matrix”, “welcome to the real world”, “red pill”, “blue pill”</strong>. So, if I want to match the tags with the string I could do regular expression like this or actually I could do the exact match and still get the correct one.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/.*world.*/
+</code></pre></div></div>
+
+<p>That would give me what I want. However, what if I have another movie <strong>“The day after tomorrow”</strong> with tags <strong>“world”</strong>. If I search with word that string against the tags I will get two movies. So, what can I do? I did some Google and found <a href="http://en.wikipedia.org/wiki/Approximate_string_matching">fuzzy search</a> and I picked <a href="http://en.wikipedia.org/wiki/Levenshtein_distance">“Levenshtein”</a>. I’m not good at maths so I can’t really explains in technical correctly. But basically, it’s a technique to look into two strings and count every time you have to <string>&#8220;edit&#8221;&lt;/strong&gt; to make the strings exact match. For example,</string></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>“I love you” # string 1
+
+“I also love you” # string 2
+</code></pre></div></div>
+
+<p>The distance would be <strong>1</strong> because it takes <strong>1</strong> edit to make the two strings exact match. We have to add <strong>also</strong> or delete <strong>also</strong> 1 time.</p>
+
+<p>So from the example above.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Distance 12</span>
+<span class="n">puts</span> <span class="n">Levenshtein</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="s">"welcome to the real world"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">" "</span><span class="p">),</span> <span class="s">"I really love The Matrix movie because of this quote 'welcome to the real world'"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">" "</span><span class="p">))</span>
+<span class="c"># Distance 15</span>
+<span class="n">puts</span> <span class="n">Levenshtein</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="s">"world"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">" "</span><span class="p">),</span> <span class="s">"I really love The Matrix movie because of this quote 'welcome to the real world'"</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">" "</span><span class="p">))</span>
+
+</code></pre></div></div>
+
+<p>So this way, the tag <strong>welcome to the real world</strong> is more likely to match with the string <strong>I really love The Matrix movie because of this quote ‘welcome to the real world</strong></p>
+
+<p>I use this <a href="http://rubygems.org/gems/levenshtein" title="levenshtein algorithm">Gem</a> for this experiment</p>
+
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>

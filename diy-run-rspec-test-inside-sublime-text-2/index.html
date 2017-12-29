@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Noppanit</title>
-  <meta name="description" content="My personal adventure">
+  <title>DIY : Run RSpec test inside Sublime Text 2</title>
+  <meta name="description" content="I guess everybody loves Sublime Text2. I switched from TextMate to Sublime Text 2 and I absolutely love it. Now, when you are writing some tests and want to ...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/404">
+  <link rel="canonical" href="http://localhost:4000/diy-run-rspec-test-inside-sublime-text-2/">
   <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
   
   
@@ -63,26 +63,54 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">DIY : Run RSpec test inside Sublime Text 2</h1>
+    <p class="post-meta">
+      <time datetime="2012-12-30T00:00:00-05:00" itemprop="datePublished">
+        
+        Dec 30, 2012
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Noppanit Charassinvichai</span></span>
+      </p>
+  </header>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="post-content" itemprop="articleBody">
+    <p>I guess everybody loves Sublime Text2. I switched from TextMate to Sublime Text 2 and I absolutely love it. Now, when you are writing some tests and want to run it immediately rather than keep switching windows to your terminal you can run your spec inside Sublime Text 2.</p>
+
+<p>There are lots of Packages out there you can just install and use it, but I just wanted to show another way of doing it. You could write your own little Package as well.</p>
+
+<p>Sublime Text 2 comes with a nice functionality called <a href="http://docs.sublimetext.info/en/latest/file_processing/build_systems.html" title="Sublime Text 2 build system">Build System</a> where you can create your own command and run it by using <strong>cmb+b</strong> (If you are a MAC user).</p>
+
+<p>First thing first, I hope you use <strong>rvm</strong> so if you haven’t done this already you need to create symbolic link like <a href="http://www.sublimetext.com/docs/2/osx_command_line.html">this page</a>. Then if you want to open your project you can just do this command inside your project. This way, sublime will hook up with rvm nicely.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>subl <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>Then you go to <strong>Tools &gt; Build System &gt; New Build System</strong>. It will open a new editor then you place this code.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"cmd"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"rspec"</span><span class="p">,</span><span class="w"> </span><span class="s2">"-I ${file_path}"</span><span class="p">,</span><span class="w"> </span><span class="s2">"$file"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"file_regex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"# ([A-Za-z:0-9_./ ]+rb):([0-9]+)"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"working_dir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${project_path:${folder:${file_path}}}"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"selector"</span><span class="p">:</span><span class="w"> </span><span class="s2">"source.ruby"</span><span class="p">,</span><span class="w">
+
+  </span><span class="s2">"windows"</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"cmd"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"rspec.bat"</span><span class="p">,</span><span class="w"> </span><span class="s2">"-I ${file_path}"</span><span class="p">,</span><span class="w"> </span><span class="s2">"$file"</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Then you choose the new Build System you just created and hit this combo <strong>cmd+b</strong>. Hooray!</p>
+
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>

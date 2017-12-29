@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Noppanit</title>
-  <meta name="description" content="My personal adventure">
+  <title>Knockout.js virtual elements are being stripped out from mobile.</title>
+  <meta name="description" content="This rarely happens and you would be surprised what is the cause of this. Recently, I have just finished a mobile site using knockout.js. I have used a fair ...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/404">
+  <link rel="canonical" href="http://localhost:4000/knockout-js-virtual-elements-stripped-mobile/">
   <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
   
   
@@ -63,26 +63,37 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Knockout.js virtual elements are being stripped out from mobile.</h1>
+    <p class="post-meta">
+      <time datetime="2014-10-07T00:00:00-04:00" itemprop="datePublished">
+        
+        Oct 7, 2014
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Noppanit Charassinvichai</span></span>
+      </p>
+  </header>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="post-content" itemprop="articleBody">
+    <p>This rarely happens and you would be surprised what is the cause of this. Recently, I have just finished a mobile site using knockout.js. I have used a fair amount of Virtual Elements in Knockout.js. But weirdly enough one day my Manager came in and talk to my <a href="https://twitter.com/sragu" title="Srini">tech lead</a> (@sragu) that the site is not working. We quickly checked with our live site and everything was ok yet the site from his phone wasn’t working at all.</p>
+
+<p>We spent quite a long time to find out the cause of this. We cleared the cache. We restarted the phone. Tried different browsers. Luckily, then we found out this <a href="http://stackoverflow.com/questions/4113268/how-to-stop-javascript-injection-from-vodafone-proxy">thread</a> from Stackoverflow.com.</p>
+
+<p>The cause of this is that Vodafone corporate network stripped out HTML comments to save and optimise the bandwidth.</p>
+
+<p>The solution is to set Cache-Control to no-transform and the problem solved. If you have the same problem as me then this is the solution.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Cache-Control: no-transform
+</code></pre></div></div>
+
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>

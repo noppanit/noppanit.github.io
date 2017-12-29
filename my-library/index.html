@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Noppanit</title>
-  <meta name="description" content="My personal adventure">
+  <title>My Library</title>
+  <meta name="description" content="Nowadays, we are swamped with information. For instance, I have lots of E-Books that have been written on plenty of CDs or DVDs, and they haven’t been read a...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/404">
+  <link rel="canonical" href="http://localhost:4000/my-library/">
   <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
   
   
@@ -63,26 +63,35 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">My Library</h1>
+    <p class="post-meta">
+      <time datetime="2008-05-13T00:00:00-04:00" itemprop="datePublished">
+        
+        May 13, 2008
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Noppanit Charassinvichai</span></span>
+      </p>
+  </header>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="post-content" itemprop="articleBody">
+    <p>Nowadays, we are swamped with information. For instance, I have lots of E-Books that have been written on plenty of CDs or DVDs, and they haven’t been read at all because they are on DVD. Moreover, I don’t even know where they are or which DVD is the right one for me. So, that’s why I came up with an idea that why don’t we do something. I found some software that can solve this problem, such as Google Desktop. But that software is not what I wanted, because I need something smaller.</p>
+
+<p>When I was working with the old company, I had a chance to know <a href="http://lucene.apache.org/" target="_blank">Lucene</a>. This project is under Apache, so it is reliable. This project, briefly, is full-text search engine, like Google. But it is written in JAVA and other platforms as well. Documents will be indexed and searched through Lucene engine.</p>
+
+<p>Here’s my plan.</p>
+
+<p>So, I am creating an web application. The input for this application is folder that contains files, such as PDFs and CHMs or any other documents that user wants to index. The application will index though those files and use filename as a keyword with a description field that I created. Those files will be searched by filename or description. This is just my idea!!. Personally, I am using the description field as DVD name. Hence, when I search by filename or description, the application will tell me where are the files I’m looking for and which DVD that they are kept.</p>
+
+<p>The advantage of this application is an offline search. If user uses files or folders searching on window. The files have to be actually on Hard Driver. On the other hand, the application collects just filename and description and write into index files. So, when we search, we search through the index files.</p>
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>

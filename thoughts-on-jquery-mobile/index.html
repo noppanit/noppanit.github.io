@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Noppanit</title>
-  <meta name="description" content="My personal adventure">
+  <title>Thoughts on jQuery Mobile</title>
+  <meta name="description" content="Last week I helped out my friends Eewei and Jill in Future of web app conference in London. Unfortunately, I couldn’t be in the conference. They presented th...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/404">
+  <link rel="canonical" href="http://localhost:4000/thoughts-on-jquery-mobile/">
   <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
   
   
@@ -63,26 +63,34 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Thoughts on jQuery Mobile</h1>
+    <p class="post-meta">
+      <time datetime="2011-10-06T00:00:00-04:00" itemprop="datePublished">
+        
+        Oct 6, 2011
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Noppanit Charassinvichai</span></span>
+      </p>
+  </header>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="post-content" itemprop="articleBody">
+    <p>Last week I helped out my friends <a href="http://www.eewei.com" title="Eewei">Eewei</a> and <a href="http://www.fab.co.uk">Jill</a> in <a href="http://futureofwebapps.com/london-2011/">Future of web app conference</a> in London. Unfortunately, I couldn’t be in the conference. They presented this really amazing called <a href="http://jquerymobile.com/">jQuery Mobile</a></p>
+
+<p>So, you’re allowed to transform a simple html website to be operational in modern mobile devies, such as iPhone, BB or Android phones. What you need to do it just add a javascript file and a css file from jQueryMobile site and that’s it. Bam! you have a ready to go mobile website in a min. Interesting to point out is that it’s still in a development stage and the latest release when I’m writing this is just a RC1. So, if you try it now you might be getting some bugs or some unresponsive actions when clicking buttons. Also, when you include the javascript src file and the css version, the version of the two files need to be corresponded, otherwise it might not be working correctly.</p>
+
+<p>You can say that these days more and more people are browsing websites from mobile devices. Also, it can be said that IE6 has been holding our back on development of javascript or css on desktop for years now (You might have to include a number of different versions of CSS files for different browsers). Whilst on mobile devices IE doesn’t have any effects on development. Furthermore, developing native apps for just iPhone or Android might be a daunting task for most people who don’t have any background on Objective-C. Therefore, I think HTML5 for mobile devices might be a better idea to go than starting to build a native app these days.</p>
+
+<p>I have also built a simple webapp from Rails3 and jQuery Mobile deployed on Heroku. If anybody’s interested. <a href="https://github.com/noppanit/jquery-mobile-example">https://github.com/noppanit/jquery-mobile-example</a></p>
+
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>

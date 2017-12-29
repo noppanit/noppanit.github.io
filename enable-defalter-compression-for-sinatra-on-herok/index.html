@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Noppanit</title>
-  <meta name="description" content="My personal adventure">
+  <title>Enable Defalter compression for Sinatra on Heroku</title>
+  <meta name="description" content="You guys must have heard about PageSpeed test from Google. It’s a really cool plugin for Chrome to let you know how you can optimize your webpage faster. I h...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/404">
+  <link rel="canonical" href="http://localhost:4000/enable-defalter-compression-for-sinatra-on-herok/">
   <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
   
   
@@ -63,26 +63,37 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Enable Defalter compression for Sinatra on Heroku</h1>
+    <p class="post-meta">
+      <time datetime="2013-01-15T00:00:00-05:00" itemprop="datePublished">
+        
+        Jan 15, 2013
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Noppanit Charassinvichai</span></span>
+      </p>
+  </header>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="post-content" itemprop="articleBody">
+    <p>You guys must have heard about PageSpeed test from Google. It’s a really cool plugin for Chrome to let you know how you can optimize your webpage faster. I have been using it for a while but I couldn’t get my head around gzip compression which it seems that Google has taken that seriously. If you want the science bit. Here’s the <a href="https://developers.google.com/speed/articles/gzip" title="gzip">article</a> from Google.</p>
+
+<p>And here’s the quickstart bit. The most simplest way is to put the compression in <strong>config.ru</strong></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'./server'</span>
+<span class="n">use</span> <span class="no">Rack</span><span class="o">::</span><span class="no">Deflater</span>
+<span class="n">run</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Application</span>
+</code></pre></div></div>
+
+<p>And that’s it I hope this will save you sometime.</p>
+
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>

@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Noppanit</title>
-  <meta name="description" content="My personal adventure">
+  <title>Second sentiment analysis experiment on Naive Bayes with NLTK : Bigrams</title>
+  <meta name="description" content="From my last post I experimented with some of the techniques such as stopwords and bag-of-words model. I yielded some acceptable results. This post, I’m goin...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/404">
+  <link rel="canonical" href="http://localhost:4000/second-sentiment-analysis-experiment-on-naive-bayes-with-nltk-bigrams/">
   <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
   
   
@@ -63,26 +63,42 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Second sentiment analysis experiment on Naive Bayes with NLTK : Bigrams</h1>
+    <p class="post-meta">
+      <time datetime="2012-12-30T00:00:00-05:00" itemprop="datePublished">
+        
+        Dec 30, 2012
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Noppanit Charassinvichai</span></span>
+      </p>
+  </header>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="post-content" itemprop="articleBody">
+    <p>From my <a href="https://www.noppanit.com/first-experiment-on-naive-bayes-with-nltk/" title="first experiment on naive bayes with sentiment analysis">last post</a> I experimented with some of the techniques such as stopwords and bag-of-words model. I yielded some acceptable results. This post, I’m going to try with bigrams to see if I can increase the accuracy.</p>
+
+<p>I changed the code a little bit to be</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">nltk.collocations</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">tokenized_text</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">wordpunct_tokenize</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="n">tokenized_text</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokenized_text</span><span class="p">]</span>
+
+<span class="n">finder</span> <span class="o">=</span> <span class="n">BigramCollocationFinder</span><span class="o">.</span><span class="n">from_words</span><span class="p">(</span><span class="n">tokenized_text</span><span class="p">)</span>
+<span class="n">bigrammed_words</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">finder</span><span class="o">.</span><span class="n">nbest</span><span class="p">(</span><span class="n">bigram_measures</span><span class="o">.</span><span class="n">chi_sq</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+
+</code></pre></div></div>
+
+<p>I decided to use <strong>chi_sq</strong> as suggested in <a href="http://streamhacker.com/tag/bigrams/" title="stream hacker bigrams">this post</a>. However, the accuracy has gone down significantly to <strong>19.7530864198%</strong>. I guess this might be that my document (~100 document for each sentiment) is not large enough to use bigrams. But this is just my conclusion. I’m going to try to increase the dataset and test it again.</p>
+
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>

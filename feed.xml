@@ -1,14 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Noppanit</title>
-    <description>My personal adventure</description>
-    <link>http://localhost:4000</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    
-      <item>
-        <title>How I learn to love awk</title>
-        <description>&lt;h2 id=&quot;problem-statement&quot;&gt;Problem statement&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-12-28T15:12:26-05:00</updated><id>http://localhost:4000/</id><title type="html">Noppanit</title><subtitle>My personal adventure</subtitle><entry><title type="html">How I learn to love awk</title><link href="http://localhost:4000/how-i-learn-to-love-awk.html" rel="alternate" type="text/html" title="How I learn to love awk" /><published>2017-10-14T10:24:39-04:00</published><updated>2017-10-14T10:24:39-04:00</updated><id>http://localhost:4000/how-i-learn-to-love-awk</id><content type="html" xml:base="http://localhost:4000/how-i-learn-to-love-awk.html">&lt;h2 id=&quot;problem-statement&quot;&gt;Problem statement&lt;/h2&gt;
 
 &lt;p&gt;I’m writing a Jenkins job to produce a file with a list of canonical urls from two separate sources. One source looks like this&lt;/p&gt;
 
@@ -119,17 +109,7 @@ awk &lt;span class=&quot;s1&quot;&gt;'BEGIN {
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;I copied the script from &lt;a href=&quot;https://magvar.wordpress.com/2011/05/18/awking-it-how-to-load-a-file-into-an-array-in-awk/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Sat, 14 Oct 2017 10:24:39 -0400</pubDate>
-        <link>http://localhost:4000/posts/how-i-learn-to-love-awk</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/how-i-learn-to-love-awk</guid>
-      </item>
-    
-      <item>
-        <title>Lower your Redis memory footprint by a few lines of code</title>
-        <description>&lt;p&gt;If you have Redis as your cache for your application you might want to lower your memory footprint by compressing your data. This will save you at least 50% of your memory usage for your Redis which will save you money.&lt;/p&gt;
+&lt;p&gt;I copied the script from &lt;a href=&quot;https://magvar.wordpress.com/2011/05/18/awking-it-how-to-load-a-file-into-an-array-in-awk/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Problem statement</summary></entry><entry><title type="html">Lower your Redis memory footprint by a few lines of code</title><link href="http://localhost:4000/lower-your-redis-memory-footprint-by-a-few-lines-of-code.html" rel="alternate" type="text/html" title="Lower your Redis memory footprint by a few lines of code" /><published>2017-04-18T14:48:38-04:00</published><updated>2017-04-18T14:48:38-04:00</updated><id>http://localhost:4000/lower-your-redis-memory-footprint-by-a-few-lines-of-code</id><content type="html" xml:base="http://localhost:4000/lower-your-redis-memory-footprint-by-a-few-lines-of-code.html">&lt;p&gt;If you have Redis as your cache for your application you might want to lower your memory footprint by compressing your data. This will save you at least 50% of your memory usage for your Redis which will save you money.&lt;/p&gt;
 
 &lt;p&gt;The code sample is for node.js but the concept work for any language.&lt;/p&gt;
 
@@ -175,32 +155,46 @@ awk &lt;span class=&quot;s1&quot;&gt;'BEGIN {
 
 &lt;p&gt;I use &lt;code class=&quot;highlighter-rouge&quot;&gt;jq&lt;/code&gt; because I &lt;code class=&quot;highlighter-rouge&quot;&gt;JSON.stringify&lt;/code&gt; my value&lt;/p&gt;
 
-&lt;p&gt;We lower our cache node from 16GB to just 3GB.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 18 Apr 2017 14:48:38 -0400</pubDate>
-        <link>http://localhost:4000/posts/lower-your-redis-memory-footprint-by-a-few-lines-of-code</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/lower-your-redis-memory-footprint-by-a-few-lines-of-code</guid>
-      </item>
-    
-      <item>
-        <title>Pay in local currency while you are travelling. It is cheaper</title>
-        <description>&lt;h2 id=&quot;should-you-pay-in-local-or-home-currency-while-travelling&quot;&gt;Should you pay in local or home currency while travelling?&lt;/h2&gt;
+&lt;p&gt;We lower our cache node from 16GB to just 3GB.&lt;/p&gt;</content><author><name></name></author><summary type="html">If you have Redis as your cache for your application you might want to lower your memory footprint by compressing your data. This will save you at least 50% of your memory usage for your Redis which will save you money.</summary></entry><entry><title type="html">Pay in local currency while you are travelling. It is cheaper</title><link href="http://localhost:4000/pay-in-local-currency-while-you-are-travelling-it-is-cheaper.html" rel="alternate" type="text/html" title="Pay in local currency while you are travelling. It is cheaper" /><published>2017-02-25T22:20:49-05:00</published><updated>2017-02-25T22:20:49-05:00</updated><id>http://localhost:4000/pay-in-local-currency-while-you-are-travelling-it-is-cheaper</id><content type="html" xml:base="http://localhost:4000/pay-in-local-currency-while-you-are-travelling-it-is-cheaper.html">&lt;h2 id=&quot;should-you-pay-in-local-or-home-currency-while-travelling&quot;&gt;Should you pay in local or home currency while travelling?&lt;/h2&gt;
 &lt;p&gt;Short answer. Pay in local currency. For example, I have a credit card from the US and I’m going to be in Hong Kong for my vacation. I should pay in Hong Kong dollar.&lt;/p&gt;
 
 &lt;p&gt;Long answer. There’s something about &lt;a href=&quot;https://en.wikipedia.org/wiki/Dynamic_currency_conversion&quot;&gt;DCC&lt;/a&gt; that you have to pay a small fee for the customer to see the amount in home currency in the receipt. Here’s an example.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2017/02/credit-card-receipt.jpg&quot; width=&quot;250&quot; height=&quot;250&quot; alt=&quot;'Credit card receipt'&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;If I had paid in US dollar, I would have paid \$0.81 more. It doesn’t seem like a lot but it definitely adds up. I checked my credit card transaction and it showed \$19.33. It’s also good if you can get the card that doesn’t charge foreign transaction fee.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 25 Feb 2017 22:20:49 -0500</pubDate>
-        <link>http://localhost:4000/posts/pay-in-local-currency-while-you-are-travelling-it-is-cheaper</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/pay-in-local-currency-while-you-are-travelling-it-is-cheaper</guid>
-      </item>
-    
-      <item>
-        <title>OSX convert raw DNG to JPG</title>
-        <description>&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;
+&lt;p&gt;If I had paid in US dollar, I would have paid \$0.81 more. It doesn’t seem like a lot but it definitely adds up. I checked my credit card transaction and it showed \$19.33. It’s also good if you can get the card that doesn’t charge foreign transaction fee.&lt;/p&gt;</content><author><name></name></author><summary type="html">Should you pay in local or home currency while travelling? Short answer. Pay in local currency. For example, I have a credit card from the US and I’m going to be in Hong Kong for my vacation. I should pay in Hong Kong dollar.</summary></entry><entry><title type="html">Reservoir sampling</title><link href="http://localhost:4000/reservoir-sampling.html" rel="alternate" type="text/html" title="Reservoir sampling" /><published>2017-02-20T02:27:44-05:00</published><updated>2017-02-20T02:27:44-05:00</updated><id>http://localhost:4000/reservoir-sampling</id><content type="html" xml:base="http://localhost:4000/reservoir-sampling.html">&lt;p&gt;I have been working with Stream processing a lot lately. Here’s my usecase.&lt;/p&gt;
+
+&lt;h2 id=&quot;problem&quot;&gt;Problem:&lt;/h2&gt;
+
+&lt;p&gt;I have a stream of pageviews. But I don’t want to process every single pageview, because then I will process one pageview over and over again.
+How do I sample the data so that I process just a subset of data but with equal probability of processing each pageview.&lt;/p&gt;
+
+&lt;p&gt;For example,&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[pageview1, pageview2, pageview1, pageview3]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now I want to choose 3 pageviews out of 4&lt;/p&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution:&lt;/h2&gt;
+&lt;p&gt;We choose &lt;code class=&quot;highlighter-rouge&quot;&gt;[pageview1, pageview2, pageview1]&lt;/code&gt; as the initial reservior. Then I choose pageview3 with a probability of 3/4&lt;/p&gt;
+
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;samples&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sampleSize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;pageviews&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;record&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;samples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sampleSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;samples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;record&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rand&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rand&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sampleSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;samples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;record&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I might not explain the math clearly, because I’m not very good at math. If you want to know more I recommend &lt;a href=&quot;https://gregable.com/2007/10/reservoir-sampling.html&quot;&gt;this&lt;/a&gt; and &lt;a href=&quot;https://jeremykun.com/2013/07/05/reservoir-sampling/&quot;&gt;this&lt;/a&gt; and &lt;a href=&quot;https://discuss.leetcode.com/topic/53753/brief-explanation-for-reservoir-sampling&quot;&gt;this&lt;/a&gt; and &lt;a href=&quot;http://austinrochford.com/posts/2014-11-30-reservoir-sampling.html&quot;&gt;this&lt;/a&gt;. There’s also my &lt;a href=&quot;https://stackoverflow.com/questions/42046581/is-sample-size-of-1-consider-reservoir-sampling/42053227?noredirect=1#comment71830111_42053227&quot;&gt;question&lt;/a&gt; on SO about proof.&lt;/p&gt;</content><author><name></name></author><summary type="html">I have been working with Stream processing a lot lately. Here’s my usecase.</summary></entry><entry><title type="html">OSX convert raw DNG to JPG</title><link href="http://localhost:4000/osx-convert-raw-dng-to-jpg.html" rel="alternate" type="text/html" title="OSX convert raw DNG to JPG" /><published>2017-02-20T01:23:19-05:00</published><updated>2017-02-20T01:23:19-05:00</updated><id>http://localhost:4000/osx-convert-raw-dng-to-jpg</id><content type="html" xml:base="http://localhost:4000/osx-convert-raw-dng-to-jpg.html">&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;
 
 &lt;p&gt;I like shooting raw and I’m still doing it. However, there’s a time when I had to Airdrop jpeg to my phone and I didn’t want to go into the trouble of import all the photos to Lightroom and export them again. So I turned to Google and here’s what I found.&lt;/p&gt;
 
@@ -236,58 +230,7 @@ brew install dcraw
 &lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.mutaku.com/wp/index.php/2011/02/cook-your-raw-photos-into-jpeg-with-linux/&quot;&gt;http://www.mutaku.com/wp/index.php/2011/02/cook-your-raw-photos-into-jpeg-with-linux/&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        <pubDate>Mon, 20 Feb 2017 13:23:19 +0700</pubDate>
-        <link>http://localhost:4000/posts/osx-convert-raw-dng-to-jpg</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/osx-convert-raw-dng-to-jpg</guid>
-      </item>
-    
-      <item>
-        <title>Reservoir sampling</title>
-        <description>&lt;p&gt;I have been working with Stream processing a lot lately. Here’s my usecase.&lt;/p&gt;
-
-&lt;h2 id=&quot;problem&quot;&gt;Problem:&lt;/h2&gt;
-
-&lt;p&gt;I have a stream of pageviews. But I don’t want to process every single pageview, because then I will process one pageview over and over again.
-How do I sample the data so that I process just a subset of data but with equal probability of processing each pageview.&lt;/p&gt;
-
-&lt;p&gt;For example,&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[pageview1, pageview2, pageview1, pageview3]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now I want to choose 3 pageviews out of 4&lt;/p&gt;
-
-&lt;h2 id=&quot;solution&quot;&gt;Solution:&lt;/h2&gt;
-&lt;p&gt;We choose &lt;code class=&quot;highlighter-rouge&quot;&gt;[pageview1, pageview2, pageview1]&lt;/code&gt; as the initial reservior. Then I choose pageview3 with a probability of 3/4&lt;/p&gt;
-
-&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;samples&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sampleSize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;pageviews&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;record&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;samples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sampleSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;samples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;record&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rand&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rand&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sampleSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;samples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;record&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;I might not explain the math clearly, because I’m not very good at math. If you want to know more I recommend &lt;a href=&quot;https://gregable.com/2007/10/reservoir-sampling.html&quot;&gt;this&lt;/a&gt; and &lt;a href=&quot;https://jeremykun.com/2013/07/05/reservoir-sampling/&quot;&gt;this&lt;/a&gt; and &lt;a href=&quot;https://discuss.leetcode.com/topic/53753/brief-explanation-for-reservoir-sampling&quot;&gt;this&lt;/a&gt; and &lt;a href=&quot;http://austinrochford.com/posts/2014-11-30-reservoir-sampling.html&quot;&gt;this&lt;/a&gt;. There’s also my &lt;a href=&quot;https://stackoverflow.com/questions/42046581/is-sample-size-of-1-consider-reservoir-sampling/42053227?noredirect=1#comment71830111_42053227&quot;&gt;question&lt;/a&gt; on SO about proof.&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 20 Feb 2017 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/posts/reservoir-sampling</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/reservoir-sampling</guid>
-      </item>
-    
-      <item>
-        <title>python-request Connection aborted and broken pipe error</title>
-        <description>&lt;p&gt;Ever wondered why your long running python script just bombs out mid-way?&lt;/p&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">Problem</summary></entry><entry><title type="html">python-request Connection aborted and broken pipe error</title><link href="http://localhost:4000/python-request-connection-aborted-and-broken-pipe-error.html" rel="alternate" type="text/html" title="python-request Connection aborted and broken pipe error" /><published>2016-12-24T10:53:50-05:00</published><updated>2016-12-24T10:53:50-05:00</updated><id>http://localhost:4000/python-request-connection-aborted-and-broken-pipe-error</id><content type="html" xml:base="http://localhost:4000/python-request-connection-aborted-and-broken-pipe-error.html">&lt;p&gt;Ever wondered why your long running python script just bombs out mid-way?&lt;/p&gt;
 
 &lt;p&gt;If you have seen this error&lt;/p&gt;
 
@@ -312,16 +255,7 @@ Host &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
 &lt;p&gt;Reference:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://patrickmn.com/aside/how-to-keep-alive-ssh-sessions/&quot;&gt;How to keep alive ssh session&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sat, 24 Dec 2016 10:53:50 -0500</pubDate>
-        <link>http://localhost:4000/posts/python-request-connection-aborted-and-broken-pipe-error</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/python-request-connection-aborted-and-broken-pipe-error</guid>
-      </item>
-    
-      <item>
-        <title>A must item while travelling in Japan</title>
-        <description>&lt;h2 id=&quot;what-is-this-item&quot;&gt;What is this item?&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Ever wondered why your long running python script just bombs out mid-way?</summary></entry><entry><title type="html">A must item while travelling in Japan</title><link href="http://localhost:4000/a-must-item-while-travelling-in-japan.html" rel="alternate" type="text/html" title="A must item while travelling in Japan" /><published>2016-12-05T17:36:29-05:00</published><updated>2016-12-05T17:36:29-05:00</updated><id>http://localhost:4000/a-must-item-while-travelling-in-japan</id><content type="html" xml:base="http://localhost:4000/a-must-item-while-travelling-in-japan.html">&lt;h2 id=&quot;what-is-this-item&quot;&gt;What is this item?&lt;/h2&gt;
 &lt;p&gt;Short answer is. A pocket Wifi. Or some sort of a way for you to have Internet at your finger tip.&lt;/p&gt;
 
 &lt;h2 id=&quot;why-this-article&quot;&gt;Why this article?&lt;/h2&gt;
@@ -356,16 +290,7 @@ Host &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
 
 &lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2016/12/Mailbox.jpeg&quot; width=&quot;300px&quot; alt=&quot;Mailbox&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;During the whole trip, there wasn’t even one occasion where the wifi didn’t work. I got the connection the whole time and the battery lasted for at least from 9am to 7pm. If you have a power bank it can easily last until the end of the day. If you have more devices, I believe you will need to choose the premium one with faster speed.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 06 Dec 2016 07:36:29 +0900</pubDate>
-        <link>http://localhost:4000/posts/a-must-item-while-travelling-in-japan</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/a-must-item-while-travelling-in-japan</guid>
-      </item>
-    
-      <item>
-        <title>Game of life for dummies</title>
-        <description>&lt;h2 id=&quot;game-of-life&quot;&gt;Game of life&lt;/h2&gt;
+&lt;p&gt;During the whole trip, there wasn’t even one occasion where the wifi didn’t work. I got the connection the whole time and the battery lasted for at least from 9am to 7pm. If you have a power bank it can easily last until the end of the day. If you have more devices, I believe you will need to choose the premium one with faster speed.&lt;/p&gt;</content><author><name></name></author><summary type="html">What is this item? Short answer is. A pocket Wifi. Or some sort of a way for you to have Internet at your finger tip.</summary></entry><entry><title type="html">Game of life for dummies</title><link href="http://localhost:4000/game-of-life-for-dummies.html" rel="alternate" type="text/html" title="Game of life for dummies" /><published>2016-11-11T23:10:25-05:00</published><updated>2016-11-11T23:10:25-05:00</updated><id>http://localhost:4000/game-of-life-for-dummies</id><content type="html" xml:base="http://localhost:4000/game-of-life-for-dummies.html">&lt;h2 id=&quot;game-of-life&quot;&gt;Game of life&lt;/h2&gt;
 
 &lt;p&gt;It’s a &lt;a href=&quot;https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life&quot;&gt;game&lt;/a&gt; invented by the British mathematician John Horton Conway and the game goes like this.&lt;/p&gt;
 
@@ -613,16 +538,7 @@ And the dead cell that's going to come alive
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;This is because we want to just loop through the board once and if we change the number of the current cell to be ready for the next state, the later cell will get the wrong count. To &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp; 1&lt;/code&gt; means we just want to get the current state of the cell whether it’s dead or alive regardless of the total count of the surrounding cells.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 11 Nov 2016 23:10:25 -0500</pubDate>
-        <link>http://localhost:4000/posts/game-of-life-for-dummies</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/game-of-life-for-dummies</guid>
-      </item>
-    
-      <item>
-        <title>What is going on under your JavaScript code</title>
-        <description>&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This is because we want to just loop through the board once and if we change the number of the current cell to be ready for the next state, the later cell will get the wrong count. To &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp; 1&lt;/code&gt; means we just want to get the current state of the cell whether it’s dead or alive regardless of the total count of the surrounding cells.&lt;/p&gt;</content><author><name></name></author><summary type="html">Game of life</summary></entry><entry><title type="html">What is going on under your JavaScript code</title><link href="http://localhost:4000/what-is-going-on-under-your-javascript-code.html" rel="alternate" type="text/html" title="What is going on under your JavaScript code" /><published>2016-10-04T01:41:25-04:00</published><updated>2016-10-04T01:41:25-04:00</updated><id>http://localhost:4000/what-is-going-on-under-your-javascript-code</id><content type="html" xml:base="http://localhost:4000/what-is-going-on-under-your-javascript-code.html">&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;I’m no expert in this field nor having a PhD in Compiler. This is just my pure curiosity and I hope to share of what I’ve discovered so people can continue their curiosity.&lt;/p&gt;
 
@@ -815,16 +731,7 @@ Follow this &lt;a href=&quot;https://github.com/v8/v8/wiki/Using%20Git&quot;&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;a href=&quot;https://wingolog.org/archives/2011/08/02/a-closer-look-at-crankshaft-v8s-optimizing-compiler&quot;&gt;A closer look at crankshaft v8s optimizing compiler&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        <pubDate>Tue, 04 Oct 2016 12:41:25 +0700</pubDate>
-        <link>http://localhost:4000/posts/what-is-going-on-under-your-javascript-code</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/what-is-going-on-under-your-javascript-code</guid>
-      </item>
-    
-      <item>
-        <title>How to change your habit one task at a time</title>
-        <description>&lt;h2 id=&quot;are-you-struggling-to-get-anything-done&quot;&gt;Are you struggling to get anything done?&lt;/h2&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">Disclaimer</summary></entry><entry><title type="html">How to change your habit one task at a time</title><link href="http://localhost:4000/how-to-change-your-habit-one-task-at-a-time.html" rel="alternate" type="text/html" title="How to change your habit one task at a time" /><published>2016-03-02T08:49:31-05:00</published><updated>2016-03-02T08:49:31-05:00</updated><id>http://localhost:4000/how-to-change-your-habit-one-task-at-a-time</id><content type="html" xml:base="http://localhost:4000/how-to-change-your-habit-one-task-at-a-time.html">&lt;h2 id=&quot;are-you-struggling-to-get-anything-done&quot;&gt;Are you struggling to get anything done?&lt;/h2&gt;
 &lt;p&gt;Now we have this amazing tool that could change your life… I present to you &lt;a href=&quot;https://habitica.com&quot;&gt;Habitica&lt;/a&gt;. If you click now you will get this tool for free. Does that sound like a Direct TV ad?.&lt;/p&gt;
 
 &lt;p&gt;I’d like to write down my experience of how I use Habitica to change my bad habit one task at a time. I was introduced to this tool when I was visiting my friend &lt;a href=&quot;http://scottmuc.com/&quot;&gt;Scott Muc&lt;/a&gt; in Berlin. We were chatting about time management and productivity. He introduced me to &lt;a href=&quot;https://www.coffitivity.com/&quot;&gt;Cofitivity&lt;/a&gt; as well, which is also another great tool to increase your productivity. I guess I don’t have to tell you about pomodoro. After 4 months later, I’ve changed some of my bad habits. One of which is making my bed. It might sounds easy but I make my own bed everyday and even while I’m travelling.&lt;/p&gt;
@@ -862,13 +769,4 @@ I wake up every morning, make my bed and click the checkbox. I earn XP and I fee
 
 &lt;p&gt;Let’s change your bad habit one task at a time! Come and say hi to me on Habitica or let me know how you use Habitica to change your habit.&lt;/p&gt;
 
-&lt;p&gt;All after I finished this post I get to tick it off my list!&lt;/p&gt;
-
-</description>
-        <pubDate>Wed, 02 Mar 2016 08:49:31 -0500</pubDate>
-        <link>http://localhost:4000/posts/how-to-change-your-habit-one-task-at-a-time</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/how-to-change-your-habit-one-task-at-a-time</guid>
-      </item>
-    
-  </channel>
-</rss>
+&lt;p&gt;All after I finished this post I get to tick it off my list!&lt;/p&gt;</content><author><name></name></author><summary type="html">Are you struggling to get anything done? Now we have this amazing tool that could change your life… I present to you Habitica. If you click now you will get this tool for free. Does that sound like a Direct TV ad?.</summary></entry></feed>

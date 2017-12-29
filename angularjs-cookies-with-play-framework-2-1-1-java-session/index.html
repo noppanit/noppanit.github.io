@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Noppanit</title>
-  <meta name="description" content="My personal adventure">
+  <title>AngularJs Cookies with Play Framework 2.1.1 Java Session.</title>
+  <meta name="description" content="I have been working with AngularJs and I loved it, but occasionally I ran into some problems and the documentation is not that reliable. So, I’m helping them...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/404">
+  <link rel="canonical" href="http://localhost:4000/angularjs-cookies-with-play-framework-2-1-1-java-session/">
   <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
   
   
@@ -63,26 +63,31 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">AngularJs Cookies with Play Framework 2.1.1 Java Session.</h1>
+    <p class="post-meta">
+      <time datetime="2013-05-31T00:00:00-04:00" itemprop="datePublished">
+        
+        May 31, 2013
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Noppanit Charassinvichai</span></span>
+      </p>
+  </header>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="post-content" itemprop="articleBody">
+    <p>I have been working with AngularJs and I loved it, but occasionally I ran into some problems and the documentation is not that reliable. So, I’m helping them to increase the rank.</p>
+
+<p>Recently, I have this problem when Play saved some session in cookie already, but I can’t use $cookies from AngularJs to read the cookie. So, I started digging in and I found that those cookies are set with <strong>httpOnly</strong> by default. If you have that flag on any plugins (e.g, AngularJs) cannot read that cookie. So, it Play 1 you can set <strong>application.session.httpOnly=false</strong> but in Play 2.1 they changed to <strong>session.httpOnly=false</strong></p>
+
+<p>I’m hoping I can save some people’s time.</p>
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>

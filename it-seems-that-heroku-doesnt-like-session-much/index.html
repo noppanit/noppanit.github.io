@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Noppanit</title>
-  <meta name="description" content="My personal adventure">
+  <title>It seems that heroku doesn&amp;#8217;t like session much</title>
+  <meta name="description" content="Not sure if this only happens to me. But just sometimes heroku just give out “Application Error” for no reason on my application. No errors have been logged ...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/404">
+  <link rel="canonical" href="http://localhost:4000/it-seems-that-heroku-doesnt-like-session-much/">
   <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
   
   
@@ -63,26 +63,31 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">It seems that heroku doesn&amp;#8217;t like session much</h1>
+    <p class="post-meta">
+      <time datetime="2012-02-18T00:00:00-05:00" itemprop="datePublished">
+        
+        Feb 18, 2012
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Noppanit Charassinvichai</span></span>
+      </p>
+  </header>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="post-content" itemprop="articleBody">
+    <p>Not sure if this only happens to me. But just sometimes heroku just give out “Application Error” for no reason on my application. No errors have been logged in the console. So I send a couple email to herouk support but no luck, because there’s no log. So, I digged further. I found out that using http session on cloud might be a problem, because you don’t know where you application server will be or will it be scaled somewhere else. So, sometime the session is cut (It just my theory without any reference). So, please let me know if I’m wrong.</p>
+
+<p>This is how I solved the problem, I changed everything and used memcache instead and the problem is gone. Memcache is in-memeory cache system which you have store objects as well. And I’m sure that it’s scaleable. So, if you have the same problem as me I would suggest using memcache instead it’s easy.</p>
+
+<p>Ps. I use Sinatra.</p>
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>

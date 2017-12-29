@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Noppanit</title>
-  <meta name="description" content="My personal adventure">
+  <title>How to call haml outside sinatra or Rails?</title>
+  <meta name="description" content="People would think why would you want to do that. Well, in my case I just want to use haml to generate html for me in Test so that I could inject that in to ...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/404">
+  <link rel="canonical" href="http://localhost:4000/how-to-call-haml-outside-sinatra-or-rails/">
   <link rel="alternate" type="application/rss+xml" title="Noppanit" href="/feed.xml">
   
   
@@ -63,26 +63,53 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div class="container">
-  <h1>404</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">How to call haml outside sinatra or Rails?</h1>
+    <p class="post-meta">
+      <time datetime="2012-04-01T00:00:00-04:00" itemprop="datePublished">
+        
+        Apr 1, 2012
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Noppanit Charassinvichai</span></span>
+      </p>
+  </header>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="post-content" itemprop="articleBody">
+    <p>People would think why would you want to do that. Well, in my case I just want to use haml to generate html for me in Test so that I could inject that in to Pusher to test the functionality of the feed page. I could use static html string, but if I change haml I don’t want to come back to the test and change the string again.</p>
+
+<p>So, Haml actually is just a static class that you can call anywhere, but where you call inside Sinatra or Rails controller. You could just use</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+haml :my_view
+
+</code></pre></div></div>
+
+<p>However, if you do this outside Sinatra, you would get an exception that haml is not found or something close.</p>
+
+<p>So here’s just a simple solution plus I’ve added how to call helper in that as well.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ <span class="n">base</span> <span class="o">=</span> <span class="no">Class</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span>
+    <span class="kp">include</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">DateTimeHelper</span> <span class="c1"># This is the helper that you want to include in Haml.</span>
+  <span class="k">end</span><span class="p">.</span><span class="nf">new</span>
+  
+  <span class="n">_feed_partial_path</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="kp">__FILE__</span><span class="p">),</span> <span class="s2">".."</span><span class="p">,</span> <span class="s2">".."</span><span class="p">,</span> <span class="s2">"views"</span><span class="p">,</span> <span class="s2">"_feed_partial.haml"</span><span class="p">))</span>
+  
+  <span class="n">engine</span> <span class="o">=</span> <span class="no">Haml</span><span class="o">::</span><span class="no">Engine</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">IO</span><span class="p">.</span><span class="nf">read</span><span class="p">(</span><span class="n">_feed_partial_path</span><span class="p">))</span>
+  <span class="n">rendered</span> <span class="o">=</span> <span class="n">engine</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="ss">:var_to_inject</span> <span class="o">=&gt;</span> <span class="n">var_to_inject</span><span class="p">)</span> <span class="c1"># or if you don't want to use helper it could be just engine.render(Object.new, :var_to_inject =&gt; var_to_inject)</span>
+  <span class="nb">puts</span> <span class="n">rendered</span>
+  
+</code></pre></div></div>
+
+<p>That’s it nice and easy!</p>
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>
