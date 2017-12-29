@@ -1,0 +1,130 @@
+
+<!doctype>
+<html lang="en">
+  <head>
+    <meta content='Tutorial : Struts version 1 in action - Noppanit' name='title' />
+    <meta content='Tutorial : Struts version 1 in action - Noppanit' name='og:title' />
+    <title>Tutorial : Struts version 1 in action - Noppanit</title>
+    <link href='http://localhost:4000/images/fav.png' rel='shortcut icon'>
+<link href='http://localhost:4000/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='http://localhost:4000/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <meta content='http://localhost:4000/posts/tutorial-struts-version-1-in-action' property='og:url' />
+  <meta content="From the previous chapter, I wrote about how to build an EJB from scratch. This topic, I will be presenting how to co..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+
+
+
+
+
+  </head>
+  <body class="lh-copy dark-gray pa0 f6 sans-serif bg-super-white">
+    <header class="tc mt4">
+      <a href="http://localhost:4000">
+        <img src="http://localhost:4000/images/scribble.png" alt="Home" width="53" height="59">
+      </a>
+      <p>Noppanit</p>
+    </header>
+    <div class="mw7 bg-white mt4 mb3 center br2-ns bt bb ba-ns b--light-gray">
+      <nav class="bb b--light-gray pv4 tc" aria-label="Main">
+        
+      </nav>
+
+      <main class="tl f6 relative pa4 pa5-ns overflow-hidden">
+        
+          <div class="mb4">
+            <div class="fw600 light-silver mt1">20 Apr 2008</div>
+            <h1 class="ttu f3 mt0 lh-title cb mb2">
+              
+              Tutorial : Struts version 1 in action
+            </h1>
+            
+          </div>
+        
+        <div class="markdown-body">
+          <p>From the previous chapter, I wrote about how to build an EJB from scratch. This topic, I will be presenting how to combine struts version 1 with the previous topic.</p>
+
+<p>First, we need the latest <a href="http://struts.apache.org/download.cgi#struts138" target="_blank">struts version 1</a>. Actually, I wanted to write about struts2, but I don’t have enough energy to do that, because struts version2 is very difference to version1. So, I will write version 1 first and then migrate to version2 later.</p>
+
+<p><a href="http://www.roseindia.net/struts/struts1-vs-struts2.shtml" target="_blank">This is the difference between Struts1 and Struts2</a></p>
+
+<p><a href="http://www.roseindia.net/struts/struts1-vs-struts2.shtml" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/1-1.gif" alt="" width="232" height="288" /></a></p>
+
+<p>So, First we need to look at the hierarchy of the project. We have</p>
+
+<p><strong>src folder</strong>: where you can keep your .java files.<br />
+<strong>WebContent folder:</strong> where you can keep your content files, such as .jsp files and libs. In WebContent we have to create WEB-INF to store web.xml and struts-config.xml to tell struts that we are using Struts Framework. **<br />
+WebContent/WEB-INF/classes** <strong>folder</strong>: this folder we can keep our .class files.</p>
+
+<p>The next thing is we have to modified web.xml to tell java that we are going to use Struts and configure about struts-config.xml.</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/2-1.gif" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/2-1-1.gif" alt="" width="150" height="132" /></a></p>
+
+<p>Next, modified the index.jsp to use struts taglib</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/3-1.gif" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/3-1-1.gif" alt="" width="150" height="82" /></a></p>
+
+<p>Now, we are heading to code the main program. I have created TestStrutsEJBAction.java which is extended from org.apache.struts.action.Action in Struts1 we have to extend org.apache.struts.action.Action, but in Struts2 we don’t have to extend Action, just the class that implements execute method.</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/4-1.gif" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/4-1-1.gif" alt="" width="150" height="146" /></a></p>
+
+<p>After we have created Action class we have to create ActionForm that request the parameters from the form, or jsp file. This class have to extend ActionForm, or we can develop more than that by extending ValidateForm. This class have to have parameters that the names match the jsp file inside html:form.</p>
+
+<p><img src="http://i2.photobucket.com/albums/y41/newbie_toy/5-1.gif" alt="" /></p>
+
+<p>The last thing is the key file, struts-config.xml</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/6-1.gif" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/6-1-1.gif" alt="" /></a></p>
+
+<p>This is the end, the next thing is we pack this project and deploy to application server. We can use ANT or any framework you like.</p>
+
+<p><a href="http://i2.photobucket.com/albums/y41/newbie_toy/7-1.gif" target="_blank"><img src="http://i2.photobucket.com/albums/y41/newbie_toy/71.gif" alt="" width="150" height="81" /></a></p>
+
+<p>This is the example of my build.xml file, I use ANY, because I want to build my project from scratch. If you can use Eclipse to deploy to the application server, that’s fine. In build.xml I use war task to pack all the files you needed to WAR.</p>
+
+<p>So, I can summary into the following steps</p>
+
+<ol>
+  <li>Create Struts project and include all the filed the project need, such as struts libraries.</li>
+  <li>Config web.xml and struts.xml</li>
+  <li>Write Jsp file, modified by using struts taglib, you can use plain html if you want.</li>
+  <li>Write Action class which extends org…struts.action.Action.</li>
+  <li>Write ActionForm which extends org…struts.action.ActionForm.</li>
+  <li>Pack the project into war file.</li>
+  <li>Deploy into application server.</li>
+</ol>
+
+<p>Next topic, I will be improving this project by using AJAX.</p>
+
+
+        </div>
+        <p class="mt4">
+  Til next time,<br>
+  noppanit
+  <span class="silver">at 00:00</span>
+</p>
+<img src="http://localhost:4000/images/scribble3.png" alt="scribble" />
+
+      </main>
+      <section class="fixed-l mw7 center w-100 top-50 tc pb4 nt4">
+  
+    <a href="http://localhost:4000/posts/the-perfect-roast-chicken" class="no-underline f1 light-blue hover-silver nl5 fl-l ph3">‹</a>
+  
+  
+    <a href="http://localhost:4000/posts/my-library" class="no-underline f1 light-blue hover-silver nr5 fr-l ph3">›</a>
+  
+</section>
+    </div>
+    <footer class="mw7 center tc pt3 pb4 silver">
+      Built with Jekyll using <a href="http://github.com/muan/scribble" class="link silver hover-blue pv1">Scribble</a>.
+      <img src="http://localhost:4000/images/scribble2.png" alt="scribble" class="mt4 db center" />
+    </footer>
+  </body>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</html>
