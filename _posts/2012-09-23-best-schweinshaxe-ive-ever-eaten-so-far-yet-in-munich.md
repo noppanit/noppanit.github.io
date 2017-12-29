@@ -2,6 +2,8 @@
 title: 'Best Schweinshaxe I&#8217;ve ever eaten so far yet in Munich.'
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /best-schweinshaxe-ive-ever-eaten-so-far-yet-in-munich/
 dsq_thread_id:
   - 855546055
 categories:

@@ -2,6 +2,8 @@
 title: 'Mac OSX: override rm to delete files to .Trash'
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /mac-osx-override-rm-to-delete-files-to-trash/
 dsq_thread_id:
   - 271869184
 categories:

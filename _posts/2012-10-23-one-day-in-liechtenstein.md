@@ -2,6 +2,8 @@
 title: One day in Liechtenstein.
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /one-day-in-liechtenstein/
 dsq_thread_id:
   - 897395542
 categories:

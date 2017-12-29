@@ -2,6 +2,8 @@
 title: Live below the line
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /live-below-the-line/
 dsq_thread_id:
   - 1264943046
 categories:

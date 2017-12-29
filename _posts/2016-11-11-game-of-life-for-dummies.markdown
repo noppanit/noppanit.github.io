@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Game of life for dummies"
 date: 2016-11-11 23:10:25 -0500
 comments: true

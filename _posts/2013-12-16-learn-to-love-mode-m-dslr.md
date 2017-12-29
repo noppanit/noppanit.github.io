@@ -2,6 +2,8 @@
 title: 'How I learn to love mode &#8220;M&#8221; in DSLR.'
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /learn-to-love-mode-m-dslr/
 dsq_thread_id:
   - 2053680176
 categories:

@@ -2,6 +2,8 @@
 title: How to call haml outside sinatra or Rails?
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /how-to-call-haml-outside-sinatra-or-rails/
 dsq_thread_id:
   - 632879359
 categories:

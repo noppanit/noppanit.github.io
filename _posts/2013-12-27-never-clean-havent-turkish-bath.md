@@ -2,6 +2,8 @@
 title: 'You have never been clean, if you haven&#8217;t been to the Turkish bath.'
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /never-clean-havent-turkish-bath/
 dsq_thread_id:
   - 2091195522
 categories:

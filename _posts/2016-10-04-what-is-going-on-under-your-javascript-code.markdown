@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "What is going on under your JavaScript code"
 date: 2016-10-04 12:41:25 +0700
 comments: true

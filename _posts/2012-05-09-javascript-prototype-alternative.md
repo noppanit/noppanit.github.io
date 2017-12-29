@@ -2,6 +2,8 @@
 title: Javascript prototype alternative.
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /javascript-prototype-alternative/
 dsq_thread_id:
   - 683017564
 categories:

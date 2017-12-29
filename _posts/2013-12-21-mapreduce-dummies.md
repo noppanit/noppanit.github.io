@@ -2,6 +2,8 @@
 title: MapReduce for dummies.
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /mapreduce-dummies/
 dsq_thread_id:
   - 2065609458
 categories:

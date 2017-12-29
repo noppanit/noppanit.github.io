@@ -2,6 +2,8 @@
 title: I Have found my perfect travel tripod. Manfrotto Befree
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /found-perfect-travel-tripod-manfrotto-befree/
 dsq_thread_id:
   - 2055268500
 categories:

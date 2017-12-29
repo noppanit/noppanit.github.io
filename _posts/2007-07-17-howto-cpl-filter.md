@@ -2,13 +2,15 @@
 title: 'HowTo : CPL Filter'
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /howto-cpl-filter/
 dsq_thread_id:
   - 243616496
 categories:
   - Digital Camera
   - Techniques
 ---
-This topic I will record about how to use CPL filter, because I have bought this filter about 5 months. However, I couldn't use it well, until now.
+This topic I will record about how to use CPL filter, because I have bought this filter about 5 months. However, I couldn&#8217;t use it well, until now.
 
 The source of light coming from right hand. Therefore, I turned the ring on the filter directed to the source of light.
 

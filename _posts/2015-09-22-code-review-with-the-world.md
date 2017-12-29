@@ -2,6 +2,8 @@
 title: Code Review with the world
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /code-review-with-the-world/
 dsq_thread_id:
   - 4157005768
 categories:

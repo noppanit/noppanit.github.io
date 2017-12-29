@@ -2,6 +2,8 @@
 title: Contextual Preloading for Ajax request.
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /contextual-preloading-ajax-request/
 dsq_thread_id:
   - 2675297282
 categories:

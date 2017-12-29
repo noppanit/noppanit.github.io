@@ -2,6 +2,8 @@
 title: 'Tutorial : My Java World Eclipse + EJB + JBoss + Ant.  Part 1'
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /tutorial-my-java-world-part-1-eclipse-ejb-jboss-ant/
 dsq_thread_id:
   - 206181672
 categories:

@@ -2,6 +2,8 @@
 title: 'Java : Why do want to new different objects from one class'
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /java-why-do-want-to-new-different-objects-from-one-class/
 jd_tweet_this:
   - yes
 wp_jd_bitly:

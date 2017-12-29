@@ -2,6 +2,8 @@
 title: My Library
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /my-library/
 dsq_thread_id:
   - 1667976952
 categories:

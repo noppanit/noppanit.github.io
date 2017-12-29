@@ -2,6 +2,8 @@
 title: Lesson learnt from data cleansing. Part II
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /lesson-learnt-from-data-cleansing-part-ii/
 dsq_thread_id:
   - 1076247110
 categories:

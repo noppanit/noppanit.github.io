@@ -2,6 +2,8 @@
 title: Maybe I have just got scroogled?
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /maybe-i-have-just-got-scroogled/
 dsq_thread_id:
   - 1140478543
 categories:

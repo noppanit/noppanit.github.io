@@ -2,6 +2,8 @@
 title: Ziferblat, Pay-per-minute cafe in Moscow, Russia.
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /ziferblat-pay-per-minute-cafe-moscow-russia/
 dsq_thread_id:
   - 2695286144
 categories:

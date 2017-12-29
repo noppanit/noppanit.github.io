@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "How to change your habit one task at a time"
 date: 2016-03-02 08:49:31 -0500
 comments: true

@@ -2,6 +2,8 @@
 title: Does twitter marketing work for you? It works for me.
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /does-twitter-marketing-work-for-you-it-works-for-me/
 dsq_thread_id:
   - 1225869273
 categories:

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Cosine Similarity for Dummies"
 date: 2015-10-29 21:35:17 -0400
 comments: true

@@ -2,6 +2,8 @@
 title: First experiment on Naive Bayes with NLTK
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /first-experiment-on-naive-bayes-with-nltk/
 dsq_thread_id:
   - 999137193
 categories:

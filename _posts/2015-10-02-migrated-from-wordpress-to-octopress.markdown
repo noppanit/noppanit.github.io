@@ -1,7 +1,9 @@
 ---
+layout: post
 title: "Migrated from WordPress to Octopress"
 date: 2015-10-02 15:39:34 -0400
 comments: true
+permalink: /migrated-from-wordpress-to-octopress
 categories: 
   - Knowledges
 tags:

@@ -2,6 +2,8 @@
 title: 'HTC One won&#8217;t turn on after battery completely drained.'
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /htc-one-wont-turn-on-after-battery-completely-drained/
 dsq_thread_id:
   - 1492937219
 dsq_needs_sync:

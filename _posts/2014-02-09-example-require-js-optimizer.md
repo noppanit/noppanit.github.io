@@ -2,6 +2,8 @@
 title: Example of Require.js optimizer.
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /example-require-js-optimizer/
 dsq_thread_id:
   - 2242928658
 categories:

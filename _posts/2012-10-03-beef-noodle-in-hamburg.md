@@ -2,6 +2,8 @@
 title: Beef noodle in Hamburg
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /beef-noodle-in-hamburg/
 dsq_thread_id:
   - 869717788
 categories:

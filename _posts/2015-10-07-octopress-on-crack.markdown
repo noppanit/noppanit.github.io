@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Octopress on crack"
 date: 2015-10-07 22:44:22 -0400
 comments: true

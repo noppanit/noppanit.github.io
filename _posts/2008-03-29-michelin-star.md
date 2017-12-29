@@ -2,6 +2,8 @@
 title: Michelin Star
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /michelin-star/
 dsq_thread_id:
   - 1741955539
 categories:

@@ -1,8 +1,10 @@
 ---
+layout: post
 title: "Why algorithm matters?"
 date: 2015-10-08 15:55:29 -0400
 comments: true
 categories: 
+
  - performance
 ---
 

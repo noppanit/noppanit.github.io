@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Round to the left most digit"
 date: 2016-01-16 17:30:37 -0500
 comments: true

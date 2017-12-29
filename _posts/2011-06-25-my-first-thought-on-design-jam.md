@@ -2,6 +2,8 @@
 title: My first thought on Design Jam
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /my-first-thought-on-design-jam/
 dsq_thread_id:
   - 341840998
 categories:

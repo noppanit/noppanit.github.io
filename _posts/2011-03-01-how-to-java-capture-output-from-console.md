@@ -2,12 +2,14 @@
 title: 'How to : Java capture output from console'
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /how-to-java-capture-output-from-console/
 dsq_thread_id:
   - 243225146
 categories:
   - Java
 ---
-Well, the topic pretty says everything. So, here's the solution.
+Well, the topic pretty says everything. So, here&#8217;s the solution.
 
 ``` java
 final ByteArrayOutputStream myOut = new ByteArrayOutputStream();

@@ -2,6 +2,8 @@
 title: The most basic example of Linear Regression
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /the-most-basic-example-of-linear-regression/
 dsq_thread_id:
   - 3911356848
 categories:

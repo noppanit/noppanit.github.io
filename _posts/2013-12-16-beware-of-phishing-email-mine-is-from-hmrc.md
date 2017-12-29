@@ -2,6 +2,8 @@
 title: Beware of phishing email. Mine is from HMRC
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /beware-of-phishing-email-mine-is-from-hmrc/
 dsq_thread_id:
   - 2072041562
 categories:

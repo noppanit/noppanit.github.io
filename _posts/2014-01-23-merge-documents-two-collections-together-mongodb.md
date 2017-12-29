@@ -2,6 +2,8 @@
 title: Merge documents from two collections together in MongoDb
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /merge-documents-two-collections-together-mongodb/
 dsq_thread_id:
   - 2167431749
 categories:

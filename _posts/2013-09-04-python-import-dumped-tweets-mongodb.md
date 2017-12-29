@@ -2,6 +2,8 @@
 title: Python to import your dumped tweets to MongoDb
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /python-import-dumped-tweets-mongodb/
 dsq_thread_id:
   - 1707250802
 categories:

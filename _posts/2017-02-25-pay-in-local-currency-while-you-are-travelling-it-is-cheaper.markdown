@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "Pay in local currency while you are travelling. It is cheaper"
 date: 2017-02-25 22:20:49 -0500
 comments: true

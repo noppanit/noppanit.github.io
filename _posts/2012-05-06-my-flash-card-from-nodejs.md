@@ -2,6 +2,8 @@
 title: My Flash Card from NodeJs.
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /my-flash-card-from-nodejs/
 dsq_thread_id:
   - 677527261
 categories:

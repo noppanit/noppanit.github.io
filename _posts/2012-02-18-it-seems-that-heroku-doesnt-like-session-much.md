@@ -2,6 +2,8 @@
 title: 'It seems that heroku doesn&#8217;t like session much'
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /it-seems-that-heroku-doesnt-like-session-much/
 dsq_thread_id:
   - 581205191
 categories:

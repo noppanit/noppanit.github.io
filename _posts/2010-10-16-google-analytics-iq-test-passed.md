@@ -2,6 +2,8 @@
 title: 'Google Analytics IQ Test : Passed'
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /google-analytics-iq-test-passed/
 dsq_thread_id:
   - 183380466
 categories:

@@ -2,6 +2,8 @@
 title: The best hot chocolate
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /the-best-hot-chocolate/
 dsq_thread_id:
   - 608521549
 categories:

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "python-request Connection aborted and broken pipe error"
 date: 2016-12-24 10:53:50 -0500
 comments: true

@@ -2,6 +2,8 @@
 title: My thoughts on AngularJs
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /my-thoughts-on-angularjs/
 dsq_thread_id:
   - 1481581579
 categories:

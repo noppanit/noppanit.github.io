@@ -2,6 +2,8 @@
 title: Bouldering gym in Kadıköy, Istanbul
 comments: true
 author: Noppanit Charassinvichai
+layout: post
+permalink: /bouldering-gym-kadikoy-istanbul/
 dsq_thread_id:
   - 2347225392
 categories:
