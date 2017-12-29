@@ -2,8 +2,6 @@
 title: 'Tutorial &#8211; My Personal Dictionary by Google Translate'
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /tutorial-my-personal-dictionary-by-google-translate/
 jd_tweet_this:
   - yes
 wp_jd_bitly:

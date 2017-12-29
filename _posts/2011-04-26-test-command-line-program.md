@@ -2,8 +2,6 @@
 title: Test Command Line Program
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /test-command-line-program/
 dsq_thread_id:
   - 288650214
 categories:

@@ -1,0 +1,187 @@
+
+<!doctype>
+<html lang="en">
+  <head>
+    <meta content='Git &#8211; Interrupted workflow, what will you do? - Noppanit' name='title' />
+    <meta content='Git &#8211; Interrupted workflow, what will you do? - Noppanit' name='og:title' />
+    <title>Git &#8211; Interrupted workflow, what will you do? - Noppanit</title>
+    <link href='http://localhost:4000/images/fav.png' rel='shortcut icon'>
+<link href='http://localhost:4000/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='http://localhost:4000/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <meta content='http://localhost:4000/posts/git-interrupted-workflow-what-will-you-do' property='og:url' />
+  <meta content="When you’re working on something intensively and you haven’t finished the thing, suddenly somebody just wants you to ..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+
+
+
+
+
+  </head>
+  <body class="lh-copy dark-gray pa0 f6 sans-serif bg-super-white">
+    <header class="tc mt4">
+      <a href="http://localhost:4000">
+        <img src="http://localhost:4000/images/scribble.png" alt="Home" width="53" height="59">
+      </a>
+      <p>Noppanit</p>
+    </header>
+    <div class="mw7 bg-white mt4 mb3 center br2-ns bt bb ba-ns b--light-gray">
+      <nav class="bb b--light-gray pv4 tc" aria-label="Main">
+        
+      </nav>
+
+      <main class="tl f6 relative pa4 pa5-ns overflow-hidden">
+        
+          <div class="mb4">
+            <div class="fw600 light-silver mt1">30 Mar 2011</div>
+            <h1 class="ttu f3 mt0 lh-title cb mb2">
+              
+              Git &#8211; Interrupted workflow, what will you do?
+            </h1>
+            
+          </div>
+        
+        <div class="markdown-body">
+          <p>When you’re working on something intensively and you haven’t finished the thing, suddenly somebody just wants you to do something again which is more important. Normally, what you will do is to create a new branch and commit your changes to the new branch and switch back to the master branch and do the other thing and reset the working directory.</p>
+
+<p>or something like this. I’ve taken this example from <a href="http://www.kernel.org/pub/software/scm/git/docs/git-stash.html">http://www.kernel.org/pub/software/scm/git/docs/git-stash.html</a></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ... hack hack hack ...</span>
+git checkout <span class="nt">-b</span> my_wip
+git commit <span class="nt">-a</span> <span class="nt">-m</span> <span class="s2">"WIP"</span>
+git checkout master
+edit emergency fix
+git commit <span class="nt">-a</span> <span class="nt">-m</span> <span class="s2">"Fix in a hurry"</span>
+git checkout my_wip
+git reset <span class="nt">--soft</span> HEAD^
+<span class="c"># ... continue hacking ...</span>
+</code></pre></div></div>
+
+<p>But there is other way to do this by using git stash. Or something like this</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ... hack hack hack ...</span>
+git stash
+edit emergency fix
+git commit <span class="nt">-a</span> <span class="nt">-m</span> <span class="s2">"Fix in a hurry"</span>
+git stash pop
+<span class="c"># ... continue hacking ...</span>
+</code></pre></div></div>
+
+<p>Well, I just wanted to give an example of git stash so you can get more understanding of what is happening in git stash</p>
+
+<p>first you need a clean directory to start git</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir gitstash <span class="o">&amp;&amp;</span> <span class="nb">cd </span>gitstash <span class="o">&amp;&amp;</span> git init
+</code></pre></div></div>
+
+<p>Now you create a new file to work on</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>touch main
+</code></pre></div></div>
+
+<p>And you edit the file main like you’re working with something</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I'm working on something important.
+</code></pre></div></div>
+
+<p>And you use git add to track the file</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>And you commit your change</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-m</span> <span class="s2">"Initial Revision"</span>
+</code></pre></div></div>
+
+<p>You will see something like this</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[master (root-commit) 95616b9] Initial Revision
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+ create mode 100644 main
+</code></pre></div></div>
+
+<p>Then you keep working of the file main, so the file main would look like this</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I'm working on something important.
+
+Something which is also important.
+</code></pre></div></div>
+
+<p>Then somebody just interrupted you and asked you to fix something which is might impact the work that you’re working on right now. So, what you need to do is to use git stash to clean your working directory.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash
+</code></pre></div></div>
+
+<p>You would see something like this to confirm that you have saved the working directory</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Saved working directory and index state WIP on master: 95616b9 Initial Revision
+HEAD is now at 95616b9 Initial Revision
+</code></pre></div></div>
+
+<p>Now you’re main file would look something like this. It’s like the file main is rolled back to the HEAD commit</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I'm working on something important.
+</code></pre></div></div>
+
+<p>Now you edit the file main to be something like this.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I'm working on something important. Something which is very very important.
+</code></pre></div></div>
+
+<p>And you commit this change</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-am</span> <span class="s2">"Fixed something"</span>
+</code></pre></div></div>
+
+<p>Now you can go back and keep working on what you’ve left off by using this command</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash pop
+</code></pre></div></div>
+
+<p>You will see something like this</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Auto-merging main
+CONFLICT (content): Merge conflict in main
+</code></pre></div></div>
+
+<p>Git will try and merge the change for you, if Git cannot merge the file for you, you have to merge it by yourself manually. In this case, the main file has to be merge manually. I just use vimdiff to merge.</p>
+
+<p>Now you’re main file will look something like this</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I'm working on something important. Something which is very very important.
+
+Something which is also important.
+</code></pre></div></div>
+
+        </div>
+        <p class="mt4">
+  Til next time,<br>
+  noppanit
+  <span class="silver">at 00:00</span>
+</p>
+<img src="http://localhost:4000/images/scribble3.png" alt="scribble" />
+
+      </main>
+      <section class="fixed-l mw7 center w-100 top-50 tc pb4 nt4">
+  
+    <a href="http://localhost:4000/posts/how-to-find-neighbours-of-2-dimensional-array" class="no-underline f1 light-blue hover-silver nl5 fl-l ph3">‹</a>
+  
+  
+    <a href="http://localhost:4000/posts/mac-osx-override-rm-to-delete-files-to-trash" class="no-underline f1 light-blue hover-silver nr5 fr-l ph3">›</a>
+  
+</section>
+    </div>
+    <footer class="mw7 center tc pt3 pb4 silver">
+      Built with Jekyll using <a href="http://github.com/muan/scribble" class="link silver hover-blue pv1">Scribble</a>.
+      <img src="http://localhost:4000/images/scribble2.png" alt="scribble" class="mt4 db center" />
+    </footer>
+  </body>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</html>

@@ -2,8 +2,6 @@
 title: How to stop repainting your sticky bar on scroll?
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /how-to-stop-repainting-your-sticky-bar-on-scroll/
 dsq_thread_id:
   - 3679835020
 categories:

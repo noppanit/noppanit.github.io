@@ -2,8 +2,6 @@
 title: Another success for my perfect brew.
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /another-success-perfect-brew/
 dsq_thread_id:
   - 1808807019
 categories:

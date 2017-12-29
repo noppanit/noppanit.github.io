@@ -2,8 +2,6 @@
 title: JavaScript TDD on on file upload.
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /javascript-tdd-on-file-upload/
 dsq_thread_id:
   - 1127763222
 categories:

@@ -2,8 +2,6 @@
 title: How to create a simple vagrant plugin.
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /create-simple-vagrant-plugin/
 dsq_thread_id:
   - 3249131795
 categories:

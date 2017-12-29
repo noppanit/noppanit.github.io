@@ -2,8 +2,6 @@
 title: 'Forest walking in Luxembourg : Mullerthal Trail'
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /forest-walking-in-luxembourg-mullerthal-trail/
 dsq_thread_id:
   - 1019363311
 categories:

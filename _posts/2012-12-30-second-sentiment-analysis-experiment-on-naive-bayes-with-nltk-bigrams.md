@@ -2,8 +2,6 @@
 title: 'Second sentiment analysis experiment on Naive Bayes with NLTK : Bigrams'
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /second-sentiment-analysis-experiment-on-naive-bayes-with-nltk-bigrams/
 dsq_thread_id:
   - 999940855
 categories:

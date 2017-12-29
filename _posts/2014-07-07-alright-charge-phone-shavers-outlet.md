@@ -2,8 +2,6 @@
 title: 'It&#8217;s alright to charge your phone on &#8216;Shavers only&#8217; outlet.'
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /alright-charge-phone-shavers-outlet/
 dsq_thread_id:
   - 2825103620
 categories:

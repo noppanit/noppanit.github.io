@@ -1,0 +1,218 @@
+
+<!doctype>
+<html lang="en">
+  <head>
+    <meta content='How to create a simple vagrant plugin. - Noppanit' name='title' />
+    <meta content='How to create a simple vagrant plugin. - Noppanit' name='og:title' />
+    <title>How to create a simple vagrant plugin. - Noppanit</title>
+    <link href='http://localhost:4000/images/fav.png' rel='shortcut icon'>
+<link href='http://localhost:4000/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='http://localhost:4000/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <meta content='http://localhost:4000/posts/create-simple-vagrant-plugin' property='og:url' />
+  <meta content="I have been searching all over the Internet to find how to create a vagrant plugin. Vagrant homepage has information ..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+
+
+
+
+
+  </head>
+  <body class="lh-copy dark-gray pa0 f6 sans-serif bg-super-white">
+    <header class="tc mt4">
+      <a href="http://localhost:4000">
+        <img src="http://localhost:4000/images/scribble.png" alt="Home" width="53" height="59">
+      </a>
+      <p>Noppanit</p>
+    </header>
+    <div class="mw7 bg-white mt4 mb3 center br2-ns bt bb ba-ns b--light-gray">
+      <nav class="bb b--light-gray pv4 tc" aria-label="Main">
+        
+      </nav>
+
+      <main class="tl f6 relative pa4 pa5-ns overflow-hidden">
+        
+          <div class="mb4">
+            <div class="fw600 light-silver mt1">21 Nov 2014</div>
+            <h1 class="ttu f3 mt0 lh-title cb mb2">
+              
+              How to create a simple vagrant plugin.
+            </h1>
+            
+          </div>
+        
+        <div class="markdown-body">
+          <p>I have been searching all over the Internet to find how to create a vagrant plugin. <a href="https://docs.vagrantup.com/v2/plugins/index.html" title="vagrant plugin">Vagrant homepage</a> has information on how to create a vagrant plugin, but I would like to give a real world example. The plugin I’m going to create is <strong><a href="https://github.com/noppanit/vagrant-ls" title="vagrant-ls">vagrant-ls</a></strong> which is inspired by <strong><a href="https://github.com/joshmcarthur/vagrant-list" title="vagrant-list">vagrant-list</a></strong>.</p>
+
+<h2 id="how-do-you-start">How do you start</h2>
+
+<p>Vagrant that you installed already won’t work with local developing plugin. So, I recommend you to create a new gemset for your plugin. If you haven’t used <a href="http://rvm.io/" title="rvm">RVM</a>, I highly recommend you use it now. It’s awesome!.</p>
+
+<p>Once you have RVM installed you can create a gemset using this command <strong>rvm gemset create vagrant-ls</strong>. Then <strong>rvm gemset use vagrant-ls</strong> (Just in case). I recommend you do this for each of your ruby project. It helps you separate your gems, and it won’t mess up with different versions of your gems. First thing that you have to install is Bundler <strong>gem install bundler</strong>. It’s because we will use Bundler to manage all of our dependencies. Then you can create <strong>Gemfile</strong>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">source</span> <span class="s2">"https://rubygems.org"</span>
+
+<span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
+  <span class="n">gem</span> <span class="s2">"vagrant"</span><span class="p">,</span> <span class="ss">git: </span><span class="s2">"https://github.com/mitchellh/vagrant.git"</span>
+<span class="k">end</span>
+
+<span class="n">group</span> <span class="ss">:plugins</span> <span class="k">do</span>
+  <span class="n">gem</span> <span class="s2">"vagrant-ls"</span><span class="p">,</span> <span class="ss">path: </span><span class="s2">"."</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>This is the most basic you would need for your plugin development. If you wonder what is <em>group :plugins</em>
+. <a href="https://docs.vagrantup.com/v2/plugins/development-basics.html">Vagrant plugin</a> has already explained that. This will load your local plugin automatically without doing <em>bundle exec vagrant install plugin vagrant-ls</em> which will not quite work anyway.</p>
+
+<p>Then you can create your gemspec file. I name it <strong>vagrant-ls.gemspec</strong></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="s1">'../lib/vagrant-ls/version'</span><span class="p">,</span> <span class="kp">__FILE__</span><span class="p">)</span>
+
+<span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">name</span>            <span class="o">=</span> <span class="s1">'vagrant-ls'</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">version</span>         <span class="o">=</span> <span class="no">Vagrant</span><span class="o">::</span><span class="no">Ls</span><span class="o">::</span><span class="no">VERSION</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">date</span>            <span class="o">=</span> <span class="s1">'2014-11-18'</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">summary</span>         <span class="o">=</span> <span class="s2">"List all vms"</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">description</span>     <span class="o">=</span> <span class="s2">"A simple vagrant plugin for listing all vms"</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">authors</span>         <span class="o">=</span> <span class="p">[</span><span class="s2">"Noppanit Charassinvichai"</span><span class="p">]</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">email</span>           <span class="o">=</span> <span class="s1">'noppanit.c@gmail.com'</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">files</span>           <span class="o">=</span> <span class="sb">`git ls-files`</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="vg">$\</span><span class="p">)</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">executables</span>     <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="nf">files</span><span class="p">.</span><span class="nf">grep</span><span class="p">(</span><span class="sr">%r{^bin/}</span><span class="p">).</span><span class="nf">map</span><span class="p">{</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="no">File</span><span class="p">.</span><span class="nf">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="p">}</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">require_paths</span>   <span class="o">=</span> <span class="p">[</span><span class="s1">'lib'</span><span class="p">]</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">homepage</span>        <span class="o">=</span> <span class="s1">'https://github.com/noppanit/vagrant-ls'</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">license</span>         <span class="o">=</span> <span class="s1">'GNU'</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Then you crate <strong>Rakefile</strong></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'rubygems'</span>
+<span class="nb">require</span> <span class="s1">'bundler/setup'</span>
+<span class="no">Bundler</span><span class="o">::</span><span class="no">GemHelper</span><span class="p">.</span><span class="nf">install_tasks</span>
+</code></pre></div></div>
+
+<p>Then you move on to create your plugin using this <a href="http://guides.rubygems.org/patterns/" title="gem pattern">pattern</a>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># lib/vagrant-ls.rb</span>
+<span class="nb">require</span> <span class="s1">'bundler'</span>
+
+<span class="k">begin</span>
+  <span class="nb">require</span> <span class="s1">'vagrant'</span>
+<span class="k">rescue</span> <span class="no">LoadError</span>
+  <span class="no">Bundler</span><span class="p">.</span><span class="nf">require</span><span class="p">(</span><span class="ss">:default</span><span class="p">,</span> <span class="ss">:development</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="nb">require</span> <span class="s1">'vagrant-ls/plugin'</span>
+<span class="nb">require</span> <span class="s1">'vagrant-ls/command'</span>
+</code></pre></div></div>
+
+<p>I almost forget you need to create VERSION file for gemspec to get your version number</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># lib/vagrant-ls/version.rb</span>
+<span class="k">module</span> <span class="nn">Vagrant</span>
+    <span class="k">module</span> <span class="nn">Ls</span>
+        <span class="no">VERSION</span> <span class="o">=</span> <span class="s1">'0.0.1'</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>Then you create your plugin class, this will be the place where vagrant finds information about your plugin.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># lib/vagrant-ls/plugin.rb</span>
+<span class="k">module</span> <span class="nn">Vagrant</span>
+
+    <span class="k">module</span> <span class="nn">Ls</span>
+
+        <span class="k">class</span> <span class="nc">Plugin</span> <span class="o">&lt;</span> <span class="no">Vagrant</span><span class="p">.</span><span class="nf">plugin</span><span class="p">(</span><span class="s1">'2'</span><span class="p">)</span>
+          <span class="nb">name</span> <span class="s2">"List"</span>
+
+          <span class="n">description</span> <span class="o">&lt;&lt;-</span><span class="no">DESC</span><span class="sh">
+          This plugin 'ls' all of the vms running inside the machine
+</span><span class="no">          DESC</span>
+
+          <span class="n">command</span> <span class="s1">'ls'</span> <span class="k">do</span>
+            <span class="nb">require_relative</span> <span class="s1">'command'</span>
+            <span class="no">Command</span>
+          <span class="k">end</span>
+
+        <span class="k">end</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>This is where you will name your command.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">command</span> <span class="s1">'ls'</span> <span class="k">do</span>
+<span class="o">...</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Last one, this is where vagrant will know how to execute your plugin</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># lib/vagrant-ls/command.rb</span>
+<span class="k">module</span> <span class="nn">Vagrant</span>
+    <span class="k">module</span> <span class="nn">Ls</span>
+        <span class="k">class</span> <span class="nc">Command</span> <span class="o">&lt;</span> <span class="no">Vagrant</span><span class="p">.</span><span class="nf">plugin</span><span class="p">(</span><span class="s1">'2'</span><span class="p">,</span> <span class="ss">:command</span><span class="p">)</span>
+            <span class="k">def</span> <span class="nf">execute</span>
+                <span class="nb">exec</span><span class="p">(</span><span class="s1">'VBoxManage list vms'</span><span class="p">)</span>
+                <span class="mi">0</span>
+            <span class="k">end</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>I just run <strong>VBoxManage</strong> command to list all of the vms. Once you are done, you are ready to test your plugin.</p>
+
+<p>You can run this command</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>vagrant <span class="nb">ls</span>
+</code></pre></div></div>
+
+<p>. If everything is correct, it should list all of your vms with the name of your vms, so you know where you are you running all those vms.</p>
+
+<h2 id="publish-your-gem">Publish your gem</h2>
+
+<p>Now, it’s time to spread the love of your gem. You need to build your gem first. Remember the Rakefile? You can just run <em>rake build</em></p>
+
+<p>It will pack your gem to <strong>.pkg</strong> folder. Then you can just run</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem push pkg/vagrant-ls-0.0.1.gem
+</code></pre></div></div>
+
+<p>. That’s it you have your gem published. If you look for <a href="http://guides.rubygems.org/publishing/">documentation</a> for publishing your gem.</p>
+
+<p>You can find my repository <a href="https://github.com/noppanit/vagrant-ls">here</a>. The reason I create this post is that, the plugin might evolve but this blog stays and it will be a good starting point for other people.</p>
+
+
+        </div>
+        <p class="mt4">
+  Til next time,<br>
+  noppanit
+  <span class="silver">at 00:00</span>
+</p>
+<img src="http://localhost:4000/images/scribble3.png" alt="scribble" />
+
+      </main>
+      <section class="fixed-l mw7 center w-100 top-50 tc pb4 nt4">
+  
+    <a href="http://localhost:4000/posts/twitter-good-tool-customer-support-used-carefully" class="no-underline f1 light-blue hover-silver nl5 fl-l ph3">‹</a>
+  
+  
+    <a href="http://localhost:4000/posts/event-delegation-javascript-fast-fast" class="no-underline f1 light-blue hover-silver nr5 fr-l ph3">›</a>
+  
+</section>
+    </div>
+    <footer class="mw7 center tc pt3 pb4 silver">
+      Built with Jekyll using <a href="http://github.com/muan/scribble" class="link silver hover-blue pv1">Scribble</a>.
+      <img src="http://localhost:4000/images/scribble2.png" alt="scribble" class="mt4 db center" />
+    </footer>
+  </body>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</html>

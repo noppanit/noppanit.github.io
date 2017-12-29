@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "How I learn to love awk"
 date: 2017-10-14 10:24:39 -0400
 comments: true

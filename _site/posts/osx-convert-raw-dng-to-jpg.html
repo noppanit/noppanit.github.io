@@ -1,0 +1,113 @@
+
+<!doctype>
+<html lang="en">
+  <head>
+    <meta content='OSX convert raw DNG to JPG - Noppanit' name='title' />
+    <meta content='OSX convert raw DNG to JPG - Noppanit' name='og:title' />
+    <title>OSX convert raw DNG to JPG - Noppanit</title>
+    <link href='http://localhost:4000/images/fav.png' rel='shortcut icon'>
+<link href='http://localhost:4000/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='http://localhost:4000/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <meta content='http://localhost:4000/posts/osx-convert-raw-dng-to-jpg' property='og:url' />
+  <meta content="ProblemI like shooting raw and I’m still doing it. However, there’s a time when I had to Airdrop jpeg to my phone and..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+
+
+
+
+
+  </head>
+  <body class="lh-copy dark-gray pa0 f6 sans-serif bg-super-white">
+    <header class="tc mt4">
+      <a href="http://localhost:4000">
+        <img src="http://localhost:4000/images/scribble.png" alt="Home" width="53" height="59">
+      </a>
+      <p>Noppanit</p>
+    </header>
+    <div class="mw7 bg-white mt4 mb3 center br2-ns bt bb ba-ns b--light-gray">
+      <nav class="bb b--light-gray pv4 tc" aria-label="Main">
+        
+      </nav>
+
+      <main class="tl f6 relative pa4 pa5-ns overflow-hidden">
+        
+          <div class="mb4">
+            <div class="fw600 light-silver mt1">20 Feb 2017</div>
+            <h1 class="ttu f3 mt0 lh-title cb mb2">
+              
+              OSX convert raw DNG to JPG
+            </h1>
+            
+          </div>
+        
+        <div class="markdown-body">
+          <h2 id="problem">Problem</h2>
+
+<p>I like shooting raw and I’m still doing it. However, there’s a time when I had to Airdrop jpeg to my phone and I didn’t want to go into the trouble of import all the photos to Lightroom and export them again. So I turned to Google and here’s what I found.</p>
+
+<p>I’m lazy and I do most things in my terminal. Here’s the way you can do the same if you want to just quickly convert raw images to jpg.</p>
+
+<h2 id="solution">Solution</h2>
+
+<ol>
+  <li>You need <a href="http://www.cybercom.net/~dcoffin/dcraw">dcraw</a> which you can use <code class="highlighter-rouge">brew</code> to install</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+brew install dcraw
+
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>You need <a href="http://www.ijg.org/">cjpeg</a> which is from <code class="highlighter-rouge">libjpeg</code> so most likely you will have that already. Otherwise you can install by following these steps from <a href="http://www.mutaku.com/wp/index.php/2011/02/cook-your-raw-photos-into-jpeg-with-linux/">here</a></p>
+  </li>
+  <li>
+    <p>Go into your raw photos folder and run this command</p>
+  </li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>i <span class="k">in</span> <span class="k">*</span><span class="p">;</span> <span class="k">do </span>dcraw <span class="nt">-c</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> | cjpeg <span class="nt">-quality</span> 100 <span class="nt">-optimize</span> <span class="nt">-progressive</span> <span class="o">&gt;</span> <span class="k">$(</span><span class="nb">echo</span> <span class="k">$(</span>basename <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="s2">".crw"</span><span class="k">)</span>.jpg<span class="k">)</span><span class="p">;</span> <span class="k">done</span>
+</code></pre></div></div>
+
+<p>This command will loop through all the files inside the folder and run <code class="highlighter-rouge">dcraw</code> command for each file then pipe it through <code class="highlighter-rouge">cjpeg</code> and same to the original name with <code class="highlighter-rouge">jpg</code> extension.</p>
+
+<p>I didn’t really check the quality as I just wanted to quickly post on Twitter.</p>
+
+<h3 id="reference">Reference</h3>
+<ol>
+  <li><a href="http://www.mutaku.com/wp/index.php/2011/02/cook-your-raw-photos-into-jpeg-with-linux/">http://www.mutaku.com/wp/index.php/2011/02/cook-your-raw-photos-into-jpeg-with-linux/</a></li>
+</ol>
+
+        </div>
+        <p class="mt4">
+  Til next time,<br>
+  noppanit
+  <span class="silver">at 13:23</span>
+</p>
+<img src="http://localhost:4000/images/scribble3.png" alt="scribble" />
+
+      </main>
+      <section class="fixed-l mw7 center w-100 top-50 tc pb4 nt4">
+  
+    <a href="http://localhost:4000/posts/reservoir-sampling" class="no-underline f1 light-blue hover-silver nl5 fl-l ph3">‹</a>
+  
+  
+    <a href="http://localhost:4000/posts/pay-in-local-currency-while-you-are-travelling-it-is-cheaper" class="no-underline f1 light-blue hover-silver nr5 fr-l ph3">›</a>
+  
+</section>
+    </div>
+    <footer class="mw7 center tc pt3 pb4 silver">
+      Built with Jekyll using <a href="http://github.com/muan/scribble" class="link silver hover-blue pv1">Scribble</a>.
+      <img src="http://localhost:4000/images/scribble2.png" alt="scribble" class="mt4 db center" />
+    </footer>
+  </body>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</html>

@@ -2,8 +2,6 @@
 title: How to shoot astrophotography for absolute dummies, like me.
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /shoot-astrophotography-absolute-dummies-like/
 dsq_thread_id:
   - 2057369763
 categories:

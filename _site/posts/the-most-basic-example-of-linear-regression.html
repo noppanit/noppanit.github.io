@@ -1,0 +1,117 @@
+
+<!doctype>
+<html lang="en">
+  <head>
+    <meta content='The most basic example of Linear Regression - Noppanit' name='title' />
+    <meta content='The most basic example of Linear Regression - Noppanit' name='og:title' />
+    <title>The most basic example of Linear Regression - Noppanit</title>
+    <link href='http://localhost:4000/images/fav.png' rel='shortcut icon'>
+<link href='http://localhost:4000/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='http://localhost:4000/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <meta content='http://localhost:4000/posts/the-most-basic-example-of-linear-regression' property='og:url' />
+  <meta content="Just for fun, I wanted to learn how to do linear regression and here’s the example I come up with.Let’s say you have ..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+
+
+
+
+
+  </head>
+  <body class="lh-copy dark-gray pa0 f6 sans-serif bg-super-white">
+    <header class="tc mt4">
+      <a href="http://localhost:4000">
+        <img src="http://localhost:4000/images/scribble.png" alt="Home" width="53" height="59">
+      </a>
+      <p>Noppanit</p>
+    </header>
+    <div class="mw7 bg-white mt4 mb3 center br2-ns bt bb ba-ns b--light-gray">
+      <nav class="bb b--light-gray pv4 tc" aria-label="Main">
+        
+      </nav>
+
+      <main class="tl f6 relative pa4 pa5-ns overflow-hidden">
+        
+          <div class="mb4">
+            <div class="fw600 light-silver mt1">07 Jul 2015</div>
+            <h1 class="ttu f3 mt0 lh-title cb mb2">
+              
+              The most basic example of Linear Regression
+            </h1>
+            
+          </div>
+        
+        <div class="markdown-body">
+          <p>Just for fun, I wanted to learn how to do linear regression and here’s the example I come up with.</p>
+
+<p>Let’s say you have a historical data of 1000 people who dined in your restaurant and left a tip. This is going to be perfect data because I generated. In the real world you will not find something like this.</p>
+
+<p>If you don’t understand Linear Regression like me before I wrote this post, I recommend you to read this <a href="http://onlinestatbook.com/2/regression/intro.html">basic linear regression.</a>.</p>
+
+<p>The idea is that you have two variables. In this case, it’s <strong>tips</strong> and <strong>total amount of bill</strong>. You should explore the data by plotting the graph of these two variables. From my generated data you will get something like this.</p>
+
+<p><img src="wp-content/uploads/2015/07/Screenshot-2015-07-07-00.54.42.jpg" alt="Linear Regression" /></p>
+
+<p>You can clearly see that there’s a strong correlation between the amount of tip and meal.</p>
+
+<p>Now if you can find the slope of the graph and intercept you should be able to use the formula.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Y = MX + C
+
+M = slope of the graph
+C = Intercept
+</code></pre></div></div>
+
+<p>If you’re lazy to look at my <a href="https://github.com/noppanit/linear-regression-basic">notebook</a>.</p>
+
+<p>Then you can run this code.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">total_bills</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">tips</span> <span class="o">=</span> <span class="n">total_bills</span> <span class="o">*</span> <span class="mf">0.10</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'tips'</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">total_bills</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'total_bills'</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">total_bills</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">tips</span><span class="p">)</span>
+<span class="n">predicted_tips</span> <span class="o">=</span> <span class="p">(</span><span class="n">slope</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span> <span class="o">+</span> <span class="n">intercept</span>
+</code></pre></div></div>
+
+<p>The result is $7 which corresponds to the 10% tip.</p>
+
+
+        </div>
+        <p class="mt4">
+  Til next time,<br>
+  noppanit
+  <span class="silver">at 00:00</span>
+</p>
+<img src="http://localhost:4000/images/scribble3.png" alt="scribble" />
+
+      </main>
+      <section class="fixed-l mw7 center w-100 top-50 tc pb4 nt4">
+  
+    <a href="http://localhost:4000/posts/example-how-did-i-convert-async-code-to-sync-code-with-promise" class="no-underline f1 light-blue hover-silver nl5 fl-l ph3">‹</a>
+  
+  
+    <a href="http://localhost:4000/posts/how-to-start-doing-tdd-for-jquery-plugin" class="no-underline f1 light-blue hover-silver nr5 fr-l ph3">›</a>
+  
+</section>
+    </div>
+    <footer class="mw7 center tc pt3 pb4 silver">
+      Built with Jekyll using <a href="http://github.com/muan/scribble" class="link silver hover-blue pv1">Scribble</a>.
+      <img src="http://localhost:4000/images/scribble2.png" alt="scribble" class="mt4 db center" />
+    </footer>
+  </body>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</html>

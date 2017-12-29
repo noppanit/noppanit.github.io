@@ -2,8 +2,6 @@
 title: Cheese knives
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /cheese-knives/
 dsq_thread_id:
   - 246338605
 categories:

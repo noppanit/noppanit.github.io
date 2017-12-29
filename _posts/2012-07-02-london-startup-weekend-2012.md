@@ -2,8 +2,6 @@
 title: London Startup Weekend 2012.
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /london-startup-weekend-2012/
 dsq_thread_id:
   - 748625512
 categories:

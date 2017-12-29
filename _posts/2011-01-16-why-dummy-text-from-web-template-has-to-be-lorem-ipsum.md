@@ -2,8 +2,6 @@
 title: 'Why dummy text from web template has to be &#8220;Lorem Ipsum&#8221;'
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /why-dummy-text-from-web-template-has-to-be-lorem-ipsum/
 dsq_thread_id:
   - 210482267
 categories:

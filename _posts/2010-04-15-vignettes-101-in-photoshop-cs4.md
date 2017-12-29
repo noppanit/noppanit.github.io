@@ -2,8 +2,6 @@
 title: Vignettes 101 in Photoshop CS4
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /vignettes-101-in-photoshop-cs4/
 jd_tweet_this:
   - yes
 wp_jd_bitly:

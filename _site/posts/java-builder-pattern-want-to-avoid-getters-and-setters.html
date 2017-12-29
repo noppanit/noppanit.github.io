@@ -1,0 +1,266 @@
+
+<!doctype>
+<html lang="en">
+  <head>
+    <meta content='Java Builder Pattern: Want to avoid getters and setters to create an object? - Noppanit' name='title' />
+    <meta content='Java Builder Pattern: Want to avoid getters and setters to create an object? - Noppanit' name='og:title' />
+    <title>Java Builder Pattern: Want to avoid getters and setters to create an object? - Noppanit</title>
+    <link href='http://localhost:4000/images/fav.png' rel='shortcut icon'>
+<link href='http://localhost:4000/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='http://localhost:4000/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <meta content='http://localhost:4000/posts/java-builder-pattern-want-to-avoid-getters-and-setters' property='og:url' />
+  <meta content="Have you ever get bored of setting lots of properties to create an object? Have you ever considered an alternate way ..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+
+
+
+
+
+  </head>
+  <body class="lh-copy dark-gray pa0 f6 sans-serif bg-super-white">
+    <header class="tc mt4">
+      <a href="http://localhost:4000">
+        <img src="http://localhost:4000/images/scribble.png" alt="Home" width="53" height="59">
+      </a>
+      <p>Noppanit</p>
+    </header>
+    <div class="mw7 bg-white mt4 mb3 center br2-ns bt bb ba-ns b--light-gray">
+      <nav class="bb b--light-gray pv4 tc" aria-label="Main">
+        
+      </nav>
+
+      <main class="tl f6 relative pa4 pa5-ns overflow-hidden">
+        
+          <div class="mb4">
+            <div class="fw600 light-silver mt1">06 Feb 2011</div>
+            <h1 class="ttu f3 mt0 lh-title cb mb2">
+              
+              Java Builder Pattern: Want to avoid getters and setters to create an object?
+            </h1>
+            
+          </div>
+        
+        <div class="markdown-body">
+          <p>Have you ever get bored of setting lots of properties to create an object? Have you ever considered an alternate way to create an object? Well, I got one. It’s called Builder Pattern. It’s another way to create an object. I’m trying to make this as easier as possible but I will need to be technical as well. So, here is a simple of builder diagram.</p>
+
+<div style="width: 543px" class="wp-caption alignnone">
+  <img alt="Builder Pattern" src="http://upload.wikimedia.org/wikipedia/en/6/6e/Builder2.png" title="Builder Pattern" width="533" height="240" />
+  
+  <p class="wp-caption-text">
+    Builder Pattern Diagram
+  </p>
+</div>
+
+<p>Start from <strong>Builder</strong><br />
+Builder is the abstract class where you form a skeleton of a object you want to create; in other words, a base class for every concreate builder.</p>
+
+<p><strong>Concrete Builder</strong><br />
+Concrete Builder classes are extended from the Builder.</p>
+
+<p><strong>Director</strong><br />
+The Director class is to control everything and responsible to control the sequence of object creation.</p>
+
+<p><strong>Product</strong><br />
+Product can be seen as the model class.</p>
+
+<p>However, it will be easier if you look at the example below.<br />
+First let’s create a Product class</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span>
+<span class="o">{</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">description</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">model</span><span class="o">;</span>
+
+	<span class="cm">/**
+	 * Get the name
+	 *
+	 * @return the name
+	 */</span>
+	<span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span>
+	<span class="o">{</span>
+		<span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="cm">/**
+	 * Set the name
+	 *
+	 * @param name the name to set
+	 */</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span>
+	<span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="cm">/**
+	 * Get the description
+	 *
+	 * @return the description
+	 */</span>
+	<span class="kd">public</span> <span class="n">String</span> <span class="nf">getDescription</span><span class="o">()</span>
+	<span class="o">{</span>
+		<span class="k">return</span> <span class="n">description</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="cm">/**
+	 * Set the description
+	 *
+	 * @param description the description to set
+	 */</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDescription</span><span class="o">(</span><span class="n">String</span> <span class="n">description</span><span class="o">)</span>
+	<span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">description</span> <span class="o">=</span> <span class="n">description</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="cm">/**
+	 * Get the model
+	 *
+	 * @return the model
+	 */</span>
+	<span class="kd">public</span> <span class="n">String</span> <span class="nf">getModel</span><span class="o">()</span>
+	<span class="o">{</span>
+		<span class="k">return</span> <span class="n">model</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="cm">/**
+	 * Set the model
+	 *
+	 * @param model the model to set
+	 */</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setModel</span><span class="o">(</span><span class="n">String</span> <span class="n">model</span><span class="o">)</span>
+	<span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Then we create an abstract class to be a base class</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">FactoryAbstract</span>
+<span class="o">{</span>
+	<span class="kd">protected</span> <span class="n">Car</span> <span class="n">car</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">createACar</span><span class="o">()</span>
+	<span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">car</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Car</span><span class="o">();</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="n">Car</span> <span class="nf">getCar</span><span class="o">()</span>
+	<span class="o">{</span>
+		<span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">car</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">buildName</span><span class="o">();</span>
+	<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">buildDescription</span><span class="o">();</span>
+	<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">buildModel</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Then, create a concrete class</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ToyotaCreator</span> <span class="kd">extends</span> <span class="n">FactoryAbstract</span>
+<span class="o">{</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">buildDescription</span><span class="o">()</span>
+	<span class="o">{</span>
+		<span class="n">car</span><span class="o">.</span><span class="na">setDescription</span><span class="o">(</span><span class="s">"Toyota hybrid-power"</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">buildModel</span><span class="o">()</span>
+	<span class="o">{</span>
+		<span class="n">car</span><span class="o">.</span><span class="na">setModel</span><span class="o">(</span><span class="s">"Prius"</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">buildName</span><span class="o">()</span>
+	<span class="o">{</span>
+		<span class="n">car</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"Toyota"</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The last one is the Director</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Director</span>
+<span class="o">{</span>
+	<span class="kd">private</span> <span class="n">FactoryAbstract</span> <span class="n">factory</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setConcreteClass</span><span class="o">(</span> <span class="n">FactoryAbstract</span> <span class="n">factoryAbstract</span> <span class="o">)</span>
+	<span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">factory</span> <span class="o">=</span> <span class="n">factoryAbstract</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">constructACar</span><span class="o">()</span>
+	<span class="o">{</span>
+		<span class="n">factory</span><span class="o">.</span><span class="na">createACar</span><span class="o">();</span>
+		<span class="n">factory</span><span class="o">.</span><span class="na">buildName</span><span class="o">();</span>
+		<span class="n">factory</span><span class="o">.</span><span class="na">buildDescription</span><span class="o">();</span>
+		<span class="n">factory</span><span class="o">.</span><span class="na">buildModel</span><span class="o">();</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="n">Car</span> <span class="nf">getCar</span><span class="o">()</span>
+	<span class="o">{</span>
+		<span class="k">return</span> <span class="n">factory</span><span class="o">.</span><span class="na">getCar</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>And a client to test the pattern</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span>
+<span class="o">{</span>
+
+	<span class="cm">/**
+	 * @param args
+	 */</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>
+	<span class="o">{</span>
+		<span class="n">FactoryAbstract</span> <span class="n">factory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ToyotaCreator</span><span class="o">();</span>
+		<span class="n">Director</span> <span class="n">director</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Director</span><span class="o">();</span>
+		<span class="n">director</span><span class="o">.</span><span class="na">setConcreteClass</span><span class="o">(</span> <span class="n">factory</span> <span class="o">);</span>
+		<span class="n">director</span><span class="o">.</span><span class="na">constructACar</span><span class="o">();</span>
+
+		<span class="n">Car</span> <span class="n">aCar</span> <span class="o">=</span> <span class="n">director</span><span class="o">.</span><span class="na">getCar</span><span class="o">();</span>
+
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="s">"Name: "</span> <span class="o">+</span> <span class="n">aCar</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="s">"Description: "</span> <span class="o">+</span> <span class="n">aCar</span><span class="o">.</span><span class="na">getDescription</span><span class="o">()</span> <span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span> <span class="s">"Model: "</span> <span class="o">+</span> <span class="n">aCar</span><span class="o">.</span><span class="na">getModel</span><span class="o">()</span> <span class="o">);</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+        </div>
+        <p class="mt4">
+  Til next time,<br>
+  noppanit
+  <span class="silver">at 00:00</span>
+</p>
+<img src="http://localhost:4000/images/scribble3.png" alt="scribble" />
+
+      </main>
+      <section class="fixed-l mw7 center w-100 top-50 tc pb4 nt4">
+  
+    <a href="http://localhost:4000/posts/dependency-injection-with-spring-by-example" class="no-underline f1 light-blue hover-silver nl5 fl-l ph3">‹</a>
+  
+  
+    <a href="http://localhost:4000/posts/how-to-use-junit-to-test-java-command-line-program" class="no-underline f1 light-blue hover-silver nr5 fr-l ph3">›</a>
+  
+</section>
+    </div>
+    <footer class="mw7 center tc pt3 pb4 silver">
+      Built with Jekyll using <a href="http://github.com/muan/scribble" class="link silver hover-blue pv1">Scribble</a>.
+      <img src="http://localhost:4000/images/scribble2.png" alt="scribble" class="mt4 db center" />
+    </footer>
+  </body>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</html>

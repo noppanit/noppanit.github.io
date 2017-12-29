@@ -2,8 +2,6 @@
 title: I am never going back to modern editor again.
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /im-never-going-back-to-modern-editor-again/
 dsq_thread_id:
   - 3944024474
 categories:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Why you should or should not SSL your blog"
 date: 2015-10-09 17:02:25 -0400
 comments: true

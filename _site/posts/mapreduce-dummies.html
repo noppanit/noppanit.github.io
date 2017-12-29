@@ -1,0 +1,136 @@
+
+<!doctype>
+<html lang="en">
+  <head>
+    <meta content='MapReduce for dummies. - Noppanit' name='title' />
+    <meta content='MapReduce for dummies. - Noppanit' name='og:title' />
+    <title>MapReduce for dummies. - Noppanit</title>
+    <link href='http://localhost:4000/images/fav.png' rel='shortcut icon'>
+<link href='http://localhost:4000/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='http://localhost:4000/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <meta content='http://localhost:4000/posts/mapreduce-dummies' property='og:url' />
+  <meta content="If you are a programmer or work in IT organisations. You must have heard the term “MapReduce” at some point. Some of ..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+
+
+
+
+
+  </head>
+  <body class="lh-copy dark-gray pa0 f6 sans-serif bg-super-white">
+    <header class="tc mt4">
+      <a href="http://localhost:4000">
+        <img src="http://localhost:4000/images/scribble.png" alt="Home" width="53" height="59">
+      </a>
+      <p>Noppanit</p>
+    </header>
+    <div class="mw7 bg-white mt4 mb3 center br2-ns bt bb ba-ns b--light-gray">
+      <nav class="bb b--light-gray pv4 tc" aria-label="Main">
+        
+      </nav>
+
+      <main class="tl f6 relative pa4 pa5-ns overflow-hidden">
+        
+          <div class="mb4">
+            <div class="fw600 light-silver mt1">21 Dec 2013</div>
+            <h1 class="ttu f3 mt0 lh-title cb mb2">
+              
+              MapReduce for dummies.
+            </h1>
+            
+          </div>
+        
+        <div class="markdown-body">
+          <p>If you are a programmer or work in IT organisations. You must have heard the term “MapReduce” at some point. Some of you might be like myself, wondering what does it mean. It’s coined by very smart people from Google (<a href="https://en.wikipedia.org/wiki/Mapreduce" title="MapReduce">reference</a>). So, it must be good. Also, you must have heard this little project called “<a href="https://hadoop.apache.org/" title="Hadoop">Hadoop</a>” as an opensource for MapReduce. I have known it for a while but never get a full understanding of what it really means. People always mention that “Oh, you have a lot of data, MapReduce is very fast. Use that” but ever wonder why?</p>
+
+<p>So, I would like to explain this to my blog as Einstein once said &lt;a href=”http://www.brainyquote.com/quotes/quotes/a/alberteins383803.html#y5CAlRzOrI20wJPS.99”” title=”einstein quote”&gt;“If you can’t explain it simply, you don’t understand it well enough”&lt;/a&gt;.</p>
+
+<p>If you like reading then this <a href="https://www.usenix.org/legacy/publications/library/proceedings/osdi04/tech/full_papers/dean/dean_html/" title="MapReduce: Simplified Data Processing on Large Clusters">article</a> is for you, written by Jeff and Sanjay from Google.</p>
+
+<p>Here’s my version of what it means. MapReduce consists of two parts. Map and Reduce, Duh? I think the terms is a bit confusing if you don’t know what it means but I don’t know what to call it instead of this either. Let’s have a look at the first part Map.</p>
+
+<p>Map really is like what we know in every language. <strong>Map&lt;Key, Value&gt;</strong> in Java. It has key and value. For example, if your country wants to run an election, you have four parties to choose from Party A, Party B, Party C and Party D. It’d be like this.</p>
+
+<p><img src="http://www.noppanit.com/wp-content/uploads/2013/12/Screen-Shot-2013-12-21-at-21.34.00.png" alt="City eletion scores" /></p>
+
+<p>The key would be your party name. The value would be the votes for each of the key. So, this is how would you process in your computer. Let’s go back a little bit and have a look at raw data.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PartyA, 10
+PartyA, 5
+PartyA, 2
+PartyB, 5
+PartyB, 10
+PartyB, 20
+PartyB, 30
+PartyC, 9
+PartyC, 8
+PartyC, 7
+PartyC, 5
+PartyD, 2
+PartyD, 1
+PartyD, 8
+PartyD, 3
+</code></pre></div></div>
+
+<p>Then you would get something like this in Ruby. (If I show the code how I transformed this many ruby programmers might scream at me so you can do whatever you like to make it like that)</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"Party A"=&gt;[10, 5, 9, 2]}
+{"Party B"=&gt;[5, 10, 20, 30]}
+{"Party C"=&gt;[9, 8, 7, 5]}
+{"Party D"=&gt;[2, 1, 8, 3]}
+</code></pre></div></div>
+
+<p>Now the part “Map” is done we can do the next part which is reduce. Reduce is where you process your data at your will on each key to get one or zero result. In this case we want to get the summation of the votes on each party. Luckily ruby comes with this already.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[10, 5, 9, 2].reduce(:+) # =&gt; 26
+[5, 10, 20, 30].reduce(:+) # =&gt; 65
+[9, 8, 7, 5].reduce(:+) # =&gt; 29
+[2, 1, 8, 3].reduce(:+) # =&gt; 14
+</code></pre></div></div>
+
+<p>That’s it now we know that PartyB won the election.</p>
+
+<p>So, here’s the important question. Why it’s fast?<br />
+Imagine, if in your country you have 100 cities and each city sends all the cards to the capital city to count, the process would be sequential and might be slow. So, we delegate that to each city then send the final result back to the capital city. That’s why you will hear a lot of people talking about “node”, “cluster” or “distributed” in MapReduce, because we delegate that to thousands of machines connected together. The classic example on the Internet right now is word counts which imagine how many documents or websites Google has to process each day.</p>
+
+<p>That’s it. Any feedback is very welcome.</p>
+
+<p>Reference:<br />
+<a href="http://www-01.ibm.com/software/data/infosphere/hadoop/mapreduce/">http://www-01.ibm.com/software/data/infosphere/hadoop/mapreduce/</a><br />
+<a href="https://hadoop.apache.org/docs/r1.1.1/mapred_tutorial.html">https://hadoop.apache.org/docs/r1.1.1/mapred_tutorial.html</a><br />
+<a href="http://www.onebigfluke.com/2013/01/why-is-map-reduce-faster-practical.html">http://www.onebigfluke.com/2013/01/why-is-map-reduce-faster-practical.html</a><br />
+<a href="http://stevekrenzel.com/finding-friends-with-mapreduce">http://stevekrenzel.com/finding-friends-with-mapreduce</a></p>
+
+
+        </div>
+        <p class="mt4">
+  Til next time,<br>
+  noppanit
+  <span class="silver">at 00:00</span>
+</p>
+<img src="http://localhost:4000/images/scribble3.png" alt="scribble" />
+
+      </main>
+      <section class="fixed-l mw7 center w-100 top-50 tc pb4 nt4">
+  
+    <a href="http://localhost:4000/posts/shoot-astrophotography-absolute-dummies-like" class="no-underline f1 light-blue hover-silver nl5 fl-l ph3">‹</a>
+  
+  
+    <a href="http://localhost:4000/posts/never-clean-havent-turkish-bath" class="no-underline f1 light-blue hover-silver nr5 fr-l ph3">›</a>
+  
+</section>
+    </div>
+    <footer class="mw7 center tc pt3 pb4 silver">
+      Built with Jekyll using <a href="http://github.com/muan/scribble" class="link silver hover-blue pv1">Scribble</a>.
+      <img src="http://localhost:4000/images/scribble2.png" alt="scribble" class="mt4 db center" />
+    </footer>
+  </body>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</html>

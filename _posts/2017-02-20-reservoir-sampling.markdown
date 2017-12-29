@@ -1,7 +1,5 @@
 ---
-layout: post
 title: "Reservoir sampling"
-date: 2017-02-20 14:27:44 +0700
 comments: true
 categories: [algorithm, math]
 ---

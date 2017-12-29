@@ -2,8 +2,6 @@
 title: My experience Error 99 with Canon 400D
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /my-experience-error-99-with-canon-400d/
 dsq_thread_id:
   - 183380156
 categories:

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Lower your Redis memory footprint by a few lines of code"
 date: 2017-04-18 14:48:38 -0400
 comments: true

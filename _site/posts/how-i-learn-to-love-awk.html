@@ -1,0 +1,187 @@
+
+<!doctype>
+<html lang="en">
+  <head>
+    <meta content='How I learn to love awk - Noppanit' name='title' />
+    <meta content='How I learn to love awk - Noppanit' name='og:title' />
+    <title>How I learn to love awk - Noppanit</title>
+    <link href='http://localhost:4000/images/fav.png' rel='shortcut icon'>
+<link href='http://localhost:4000/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='http://localhost:4000/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <meta content='http://localhost:4000/posts/how-i-learn-to-love-awk' property='og:url' />
+  <meta content="Problem statementI’m writing a Jenkins job to produce a file with a list of canonical urls from two separate sources...." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+
+
+
+
+
+  </head>
+  <body class="lh-copy dark-gray pa0 f6 sans-serif bg-super-white">
+    <header class="tc mt4">
+      <a href="http://localhost:4000">
+        <img src="http://localhost:4000/images/scribble.png" alt="Home" width="53" height="59">
+      </a>
+      <p>Noppanit</p>
+    </header>
+    <div class="mw7 bg-white mt4 mb3 center br2-ns bt bb ba-ns b--light-gray">
+      <nav class="bb b--light-gray pv4 tc" aria-label="Main">
+        
+      </nav>
+
+      <main class="tl f6 relative pa4 pa5-ns overflow-hidden">
+        
+          <div class="mb4">
+            <div class="fw600 light-silver mt1">14 Oct 2017</div>
+            <h1 class="ttu f3 mt0 lh-title cb mb2">
+              
+              How I learn to love awk
+            </h1>
+            
+          </div>
+        
+        <div class="markdown-body">
+          <h2 id="problem-statement">Problem statement</h2>
+
+<p>I’m writing a Jenkins job to produce a file with a list of canonical urls from two separate sources. One source looks like this</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+File brand_urls
+
+"url1","brand"
+"url2","brand"
+"url3","brand1"
+
+</code></pre></div></div>
+
+<p>The second looks like this</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+File url.json after manipulation using jq
+
+The source looks like this
+
+[{
+  slug: "brand",
+  ...,
+  domain: {
+    production: 'www.domain.com'
+  }
+ }, {
+  slug: "brand1",
+  ...,
+  domain: {
+    production: 'www.domain1.com'
+}]
+
+# echo $BRAND_JSON | jq -r '.[] | [.domain.production,.slug] | @csv' &gt;&gt; slug.json
+
+"domain","brand"
+"doamin1","brand1"
+
+</code></pre></div></div>
+
+<p>What I want is</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+"domain/url1"
+"domain/url2"
+"domain1/url3"
+
+</code></pre></div></div>
+
+<p>Basically, I want to join two files together by <code class="highlighter-rouge">brand</code> which I could have done that in SQL.</p>
+
+<p>So my initial thought would be something like this</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nv">BRAND_JSON</span><span class="o">=</span><span class="k">$(</span>curl url.json<span class="k">)</span> 
+
+<span class="k">while </span><span class="nv">IFS</span><span class="o">=</span> <span class="nb">read</span> <span class="nt">-r</span> line
+<span class="k">do
+  </span><span class="nv">BRAND</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$line</span> | awk <span class="nt">-F</span><span class="s1">','</span> <span class="s1">'{print $2}'</span> | sed <span class="s2">"s/</span><span class="se">\"</span><span class="s2">//g"</span><span class="k">)</span>
+  <span class="nv">URI</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$line</span> | awk <span class="nt">-F</span><span class="s1">','</span> <span class="s1">'{print $1}'</span> | sed <span class="s2">"s/</span><span class="se">\"</span><span class="s2">//g"</span><span class="k">)</span>
+  <span class="nb">echo</span> <span class="nv">$BRAND</span>
+  <span class="nv">DOMAIN</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$BRAND_JSON</span> | jq <span class="nt">-r</span> <span class="s2">".[] | select(.slug==</span><span class="se">\"</span><span class="nv">$BRAND</span><span class="se">\"</span><span class="s2">) | .domain.production"</span><span class="k">)</span>
+  <span class="nb">echo</span> <span class="nv">$DOMAIN</span>
+  <span class="nb">echo</span> <span class="nv">$URI</span>
+  <span class="nb">echo</span> <span class="s2">"https://</span><span class="nv">$DOMAIN</span><span class="s2">/</span><span class="nv">$URI</span><span class="s2">"</span> <span class="o">&gt;&gt;</span> urls
+<span class="k">done</span> &lt; <span class="s2">"brand_urls"</span>
+
+</code></pre></div></div>
+
+<p>This is way too slow because I have about 900k of urls to filter and every url will do a O(n) search. Also, I created a lot of sub-shells</p>
+
+<p>And I thought hmm if I can make that a constant operation using some kind of Map then it would be a lot faster. I immediately thought of Map or associative array but my shell doesn’t have associative just yet. People might wonder why can’t I just use python or node script to manipulate that. I could have but I just want a script to run in Jenkins and bash is available already. I don’t have to install any runtime.</p>
+
+<h2 id="awk-to-the-rescue">Awk to the rescue</h2>
+<p>Awk already has associate array!</p>
+
+<p>Here’s my updated version of the code</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nv">INPUTFILE</span><span class="o">=</span><span class="s2">"slug.json"</span>
+<span class="nv">DATAFILE</span><span class="o">=</span><span class="s2">"brand_urls"</span>
+<span class="nv">OUTFILE</span><span class="o">=</span><span class="s2">"all_urls"</span>
+
+awk <span class="s1">'BEGIN {
+  # mapping brand.json
+  while (getline &lt; "'</span><span class="s2">"</span><span class="nv">$INPUTFILE</span><span class="s2">"</span><span class="s1">'")
+  {
+    split($0,ft,",");
+    domain=ft[1];
+    gsub(/"/, "", domain);
+    slug=ft[2];
+    gsub(/"/, "", slug);
+    key=slug;
+    data=domain;
+    domainMap[key]=data;
+  }
+  close("'</span><span class="s2">"</span><span class="nv">$INPUTFILE</span><span class="s2">"</span><span class="s1">'");
+  while (getline &lt; "'</span><span class="s2">"</span><span class="nv">$DATAFILE</span><span class="s2">"</span><span class="s1">'")
+    {
+      split($0,ft,",");
+      uri=ft[1];
+      gsub(/"/, "", uri);
+      slug=ft[2];
+      gsub(/"/, "", slug);
+      domain=domainMap[slug]; 
+      printf "https://%s/%s\n", domain, uri &gt; "'</span><span class="s2">"</span><span class="nv">$OUTFILE</span><span class="s2">"</span><span class="s1">'";
+    }
+}'</span>
+
+</code></pre></div></div>
+
+<p>I copied the script from <a href="https://magvar.wordpress.com/2011/05/18/awking-it-how-to-load-a-file-into-an-array-in-awk/">here</a></p>
+
+
+        </div>
+        <p class="mt4">
+  Til next time,<br>
+  noppanit
+  <span class="silver">at 10:24</span>
+</p>
+<img src="http://localhost:4000/images/scribble3.png" alt="scribble" />
+
+      </main>
+      <section class="fixed-l mw7 center w-100 top-50 tc pb4 nt4">
+  
+    <a href="http://localhost:4000/posts/lower-your-redis-memory-footprint-by-a-few-lines-of-code" class="no-underline f1 light-blue hover-silver nl5 fl-l ph3">‹</a>
+  
+  
+</section>
+    </div>
+    <footer class="mw7 center tc pt3 pb4 silver">
+      Built with Jekyll using <a href="http://github.com/muan/scribble" class="link silver hover-blue pv1">Scribble</a>.
+      <img src="http://localhost:4000/images/scribble2.png" alt="scribble" class="mt4 db center" />
+    </footer>
+  </body>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</html>

@@ -2,8 +2,6 @@
 title: 'iPad 3G or wifi which one to choose &#8211; My own experience.'
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /ipad-3g-or-wifi-which-one-to-choose-my-own-experience/
 dsq_thread_id:
   - 612224906
 categories:

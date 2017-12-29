@@ -2,8 +2,6 @@
 title: 'Git &#8211; Interrupted workflow, what will you do?'
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /git-interrupted-workflow-what-will-you-do/
 dsq_thread_id:
   - 266929628
 categories:

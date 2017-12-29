@@ -2,8 +2,6 @@
 title: Public-key cryptography for dummies
 comments: true
 author: Noppanit Charassinvichai
-layout: post
-permalink: /public-key-cryptography-for-dummies/
 dsq_thread_id:
   - 998839988
 categories:
