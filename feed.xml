@@ -3,8 +3,75 @@
   <channel>
     <title>Noppanit</title>
     <description>My personal adventure</description>
-    <link>https://www.noppanit.com</link>
-    <atom:link href="https://www.noppanit.com/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:4000</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>My resolutions for 2018</title>
+        <description>&lt;h1 id=&quot;reflections-on-2016&quot;&gt;Reflections on &lt;a href=&quot;https://www.noppanit.com/posts/2016&quot;&gt;2016&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;fitness-psychically-and-mentally&quot;&gt;Fitness, psychically and mentally.&lt;/h2&gt;
+
+&lt;p&gt;I stagnated physically. I didn’t increase any of my limits from last year. My mind was also really cluttered with personal issues.&lt;/p&gt;
+
+&lt;h2 id=&quot;spanish&quot;&gt;Spanish&lt;/h2&gt;
+
+&lt;p&gt;I didn’t follow through with my Spanish.&lt;/p&gt;
+
+&lt;h2 id=&quot;become-a-data-scientist&quot;&gt;Become a Data Scientist&lt;/h2&gt;
+
+&lt;p&gt;I didn’t become Data Scientist but I did joined Conde Nast as a Data Engineer which I work closely with Machine Learning engineers and Data Scientists. From this I realised that I enjoy building product and architecture more. On this point I don’t think I’m going to chase after this in 2018&lt;/p&gt;
+
+&lt;h2 id=&quot;travel&quot;&gt;Travel&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Argentina&lt;/li&gt;
+  &lt;li&gt;Mt. Rainer (More on this later)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;reflections-on-2017&quot;&gt;Reflections on 2017&lt;/h1&gt;
+
+&lt;p&gt;2017 was a painful year for me. I didn’t stick to my plan and I was completely detailed. One thing that I think I did greate was investment. I open a borkerage account and I started investing with automatic deposit from my paycheck. I also set aside 401K and Roth.&lt;/p&gt;
+
+&lt;p&gt;I did one 5K run and I finished it with 10:37 /mile. It’s a good start for me.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;goals-for-2018&quot;&gt;Goals for 2018&lt;/h1&gt;
+
+&lt;h2 id=&quot;career&quot;&gt;Career&lt;/h2&gt;
+
+&lt;div style=&quot;max-width:854px&quot;&gt;&lt;div style=&quot;position:relative;height:0;padding-bottom:56.25%&quot;&gt;&lt;iframe src=&quot;https://embed.ted.com/talks/atul_gawande_want_to_get_great_at_something_get_a_coach&quot; width=&quot;854&quot; height=&quot;480&quot; style=&quot;position:absolute;left:0;top:0;width:100%;height:100%&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Atul talked about if you want to be great at something; Get a coach. This talk made me realised that I really wanted to improve my career professionally. More on this later.&lt;/p&gt;
+
+&lt;p&gt;Some of the point that I want to improve upon.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Be more mindful. I realised one thing about myself. When I read or learn something I tend to skim instead of going deep into the subject. This create an illusion that I have learned something. The fact is I didn’t learn anything at all. Also, I’m also going to be more disciplined about using pomodoro.&lt;/li&gt;
+  &lt;li&gt;Read more both technical and soft skills.&lt;/li&gt;
+  &lt;li&gt;Invest more in myself. I’m getting a coach.&lt;/li&gt;
+  &lt;li&gt;Talk at a conference. This is my personal goal that I wanted to get better at public speaking.&lt;/li&gt;
+  &lt;li&gt;Learn Blockchain. 2017 is a big year for Bitcoin but I’m more interested in the technology behind it. I believe it’s going to create something more disruptive and bigger than Bitcoin.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;fitness-physically-and-mentally&quot;&gt;Fitness, physically and mentally&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Run half marathon. I decided to take baby step on this instead of going for a full marathon.&lt;/li&gt;
+  &lt;li&gt;Fix my posture. Many people have told me that I slouch. I need to come up with a plan to fix this.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This post took 2 pomodoros to complete&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Fri, 29 Dec 2017 15:01:06 -0500</pubDate>
+        <link>http://localhost:4000/posts/my-resolutions-for-2018</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/my-resolutions-for-2018</guid>
+      </item>
     
       <item>
         <title>How I learn to love awk</title>
@@ -123,8 +190,8 @@ awk &lt;span class=&quot;s1&quot;&gt;'BEGIN {
 
 </description>
         <pubDate>Sat, 14 Oct 2017 10:24:39 -0400</pubDate>
-        <link>https://www.noppanit.com/posts/how-i-learn-to-love-awk</link>
-        <guid isPermaLink="true">https://www.noppanit.com/posts/how-i-learn-to-love-awk</guid>
+        <link>http://localhost:4000/posts/how-i-learn-to-love-awk</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/how-i-learn-to-love-awk</guid>
       </item>
     
       <item>
@@ -178,8 +245,8 @@ awk &lt;span class=&quot;s1&quot;&gt;'BEGIN {
 &lt;p&gt;We lower our cache node from 16GB to just 3GB.&lt;/p&gt;
 </description>
         <pubDate>Tue, 18 Apr 2017 14:48:38 -0400</pubDate>
-        <link>https://www.noppanit.com/posts/lower-your-redis-memory-footprint-by-a-few-lines-of-code</link>
-        <guid isPermaLink="true">https://www.noppanit.com/posts/lower-your-redis-memory-footprint-by-a-few-lines-of-code</guid>
+        <link>http://localhost:4000/posts/lower-your-redis-memory-footprint-by-a-few-lines-of-code</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/lower-your-redis-memory-footprint-by-a-few-lines-of-code</guid>
       </item>
     
       <item>
@@ -194,8 +261,8 @@ awk &lt;span class=&quot;s1&quot;&gt;'BEGIN {
 &lt;p&gt;If I had paid in US dollar, I would have paid \$0.81 more. It doesn’t seem like a lot but it definitely adds up. I checked my credit card transaction and it showed \$19.33. It’s also good if you can get the card that doesn’t charge foreign transaction fee.&lt;/p&gt;
 </description>
         <pubDate>Sat, 25 Feb 2017 22:20:49 -0500</pubDate>
-        <link>https://www.noppanit.com/posts/pay-in-local-currency-while-you-are-travelling-it-is-cheaper</link>
-        <guid isPermaLink="true">https://www.noppanit.com/posts/pay-in-local-currency-while-you-are-travelling-it-is-cheaper</guid>
+        <link>http://localhost:4000/posts/pay-in-local-currency-while-you-are-travelling-it-is-cheaper</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/pay-in-local-currency-while-you-are-travelling-it-is-cheaper</guid>
       </item>
     
       <item>
@@ -239,8 +306,8 @@ brew install dcraw
 &lt;/ol&gt;
 </description>
         <pubDate>Mon, 20 Feb 2017 13:23:19 +0700</pubDate>
-        <link>https://www.noppanit.com/posts/osx-convert-raw-dng-to-jpg</link>
-        <guid isPermaLink="true">https://www.noppanit.com/posts/osx-convert-raw-dng-to-jpg</guid>
+        <link>http://localhost:4000/posts/osx-convert-raw-dng-to-jpg</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/osx-convert-raw-dng-to-jpg</guid>
       </item>
     
       <item>
@@ -281,8 +348,8 @@ How do I sample the data so that I process just a subset of data but with equal 
 
 </description>
         <pubDate>Mon, 20 Feb 2017 00:00:00 -0500</pubDate>
-        <link>https://www.noppanit.com/posts/reservoir-sampling</link>
-        <guid isPermaLink="true">https://www.noppanit.com/posts/reservoir-sampling</guid>
+        <link>http://localhost:4000/posts/reservoir-sampling</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/reservoir-sampling</guid>
       </item>
     
       <item>
@@ -315,8 +382,8 @@ Host &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 24 Dec 2016 10:53:50 -0500</pubDate>
-        <link>https://www.noppanit.com/posts/python-request-connection-aborted-and-broken-pipe-error</link>
-        <guid isPermaLink="true">https://www.noppanit.com/posts/python-request-connection-aborted-and-broken-pipe-error</guid>
+        <link>http://localhost:4000/posts/python-request-connection-aborted-and-broken-pipe-error</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/python-request-connection-aborted-and-broken-pipe-error</guid>
       </item>
     
       <item>
@@ -359,8 +426,8 @@ Host &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
 &lt;p&gt;During the whole trip, there wasn’t even one occasion where the wifi didn’t work. I got the connection the whole time and the battery lasted for at least from 9am to 7pm. If you have a power bank it can easily last until the end of the day. If you have more devices, I believe you will need to choose the premium one with faster speed.&lt;/p&gt;
 </description>
         <pubDate>Tue, 06 Dec 2016 07:36:29 +0900</pubDate>
-        <link>https://www.noppanit.com/posts/a-must-item-while-travelling-in-japan</link>
-        <guid isPermaLink="true">https://www.noppanit.com/posts/a-must-item-while-travelling-in-japan</guid>
+        <link>http://localhost:4000/posts/a-must-item-while-travelling-in-japan</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/a-must-item-while-travelling-in-japan</guid>
       </item>
     
       <item>
@@ -616,8 +683,8 @@ And the dead cell that's going to come alive
 &lt;p&gt;This is because we want to just loop through the board once and if we change the number of the current cell to be ready for the next state, the later cell will get the wrong count. To &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp; 1&lt;/code&gt; means we just want to get the current state of the cell whether it’s dead or alive regardless of the total count of the surrounding cells.&lt;/p&gt;
 </description>
         <pubDate>Fri, 11 Nov 2016 23:10:25 -0500</pubDate>
-        <link>https://www.noppanit.com/posts/game-of-life-for-dummies</link>
-        <guid isPermaLink="true">https://www.noppanit.com/posts/game-of-life-for-dummies</guid>
+        <link>http://localhost:4000/posts/game-of-life-for-dummies</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/game-of-life-for-dummies</guid>
       </item>
     
       <item>
@@ -818,56 +885,8 @@ Follow this &lt;a href=&quot;https://github.com/v8/v8/wiki/Using%20Git&quot;&gt;
 &lt;/ol&gt;
 </description>
         <pubDate>Tue, 04 Oct 2016 12:41:25 +0700</pubDate>
-        <link>https://www.noppanit.com/posts/what-is-going-on-under-your-javascript-code</link>
-        <guid isPermaLink="true">https://www.noppanit.com/posts/what-is-going-on-under-your-javascript-code</guid>
-      </item>
-    
-      <item>
-        <title>How to change your habit one task at a time</title>
-        <description>&lt;h2 id=&quot;are-you-struggling-to-get-anything-done&quot;&gt;Are you struggling to get anything done?&lt;/h2&gt;
-&lt;p&gt;Now we have this amazing tool that could change your life… I present to you &lt;a href=&quot;https://habitica.com&quot;&gt;Habitica&lt;/a&gt;. If you click now you will get this tool for free. Does that sound like a Direct TV ad?.&lt;/p&gt;
-
-&lt;p&gt;I’d like to write down my experience of how I use Habitica to change my bad habit one task at a time. I was introduced to this tool when I was visiting my friend &lt;a href=&quot;http://scottmuc.com/&quot;&gt;Scott Muc&lt;/a&gt; in Berlin. We were chatting about time management and productivity. He introduced me to &lt;a href=&quot;https://www.coffitivity.com/&quot;&gt;Cofitivity&lt;/a&gt; as well, which is also another great tool to increase your productivity. I guess I don’t have to tell you about pomodoro. After 4 months later, I’ve changed some of my bad habits. One of which is making my bed. It might sounds easy but I make my own bed everyday and even while I’m travelling.&lt;/p&gt;
-
-&lt;h2 id=&quot;how&quot;&gt;How?&lt;/h2&gt;
-&lt;p&gt;Habitica is built around Gamification. If you don’t know what Gamification is, think about badges or number of likes or favourites. People love badges and people are crazy about likes.
-I was once crazy about checking in all the time to earn different badged on Foursquare or give a really detailed reviews just to earn reputation. It is fun and addicting.&lt;/p&gt;
-
-&lt;p&gt;Also if you play video game, you must remember countless of hours you spent on killing monsters to earn XP or rare items. That’s the core idea of Habitica. It keeps your motivating and you won’t get bored easily. I say easily because eventually you will find Habitica too easy. They have a reset button where you can reset your character class or if you’re too overwhelmed by all the habits and dailies.&lt;/p&gt;
-
-&lt;p&gt;Habitica combines the fun of RPG (Role Playing Games) and Gamification. Instead of fighting monsters, you’re fighting with your own habits. After you get something done, you earn XP and gold so you can level up your character or buy cool weapons to show off with your friends.&lt;/p&gt;
-
-&lt;h2 id=&quot;so-how-do-i-use-habitica&quot;&gt;So how do I use Habitica.&lt;/h2&gt;
-&lt;p&gt;Personally, I don’t use Habitica for any of my work tasks. I use Wunderlist instead. If you’re like me my work tasks tend to be really long and sometime I lose track of what needs to be done if I enter every task to Habitica. 
-I use Habitica for anything that I want to make myself doing it or I want to change my bad habit. For example, I have a negative task every time I eat something unhealthy, like cookies or sweet. Every time I eat a cookie I have to click that &lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt; button and I’d lose my health. Or I would create a task to check my plane ticket for my next vacation.&lt;/p&gt;
-
-&lt;p&gt;Another example of how I changed my habit is making my bed. I created a task to make my bed every morning. It might sound too simple but it really did change my habit. Now I make my bed everyday without even knowing it.
-I wake up every morning, make my bed and click the checkbox. I earn XP and I feel good about it.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/wp-content/uploads/2016/03/make-bed.png&quot; alt=&quot;Habitica Habit&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Another example would be that I could finish my Coursera course that I have always wanted to do for a long time. I used to sign up to all the classes on Coursera and I ended up not passing even the first week. Now I can force myself to finish the course week by week. If I don’t do it in time, my character dies, loses all the golds and one rare item.&lt;/p&gt;
-
-&lt;p&gt;Now if you have been playing for quite sometime, your tasks or habits can get really long which you have to scroll up and down. One thing I do is to group tasks together in checklist. For example, if I want to finish a book, I list out all the chapters then I check it off chapter by chapter. This helps you keep track of what else needs to be done.&lt;/p&gt;
-
-&lt;p&gt;You can also set the difficulty of the task. For example, making my bed is easy but learning a chapter on Coursera is hard. I would get more XP on my Coursera task.&lt;/p&gt;
-
-&lt;p&gt;Discipline is really important in Habitica. You can create as many tasks as you like and keep clicking it until you level up which no one will stop you. Eventually the game will be too easy and you will get bored and you won’t change anything. This also means that if you do negative tasks you have to click that &lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt; button. There’s no shame on binge eating on your cheat day. Habitica has reward system where you can create a reward for yourself which you have to use your golds.&lt;/p&gt;
-
-&lt;h2 id=&quot;challenge-accepted&quot;&gt;Challenge accepted!&lt;/h2&gt;
-&lt;p&gt;Habitica has a social aspect that can keep you motivated. You can form a party with your friend and fight the big boss or you can accept a challenge from the community to make your game harder and more engaging. For example, I recently signed up for a Spanish class and I joined the Spanish Duolingo challenge (Now I’m 50% done). Challenges have pre-populated tasks and dallies for you already. You just have to tick them off when you finished the task. If you’re discipline enough you might get diamonds from the owner of the challenge as a reward. This way, you will have other like-minded people to discuss or to encourage each other.&lt;/p&gt;
-
-&lt;h2 id=&quot;its-open-source&quot;&gt;It’s open source&lt;/h2&gt;
-&lt;p&gt;This is the best thing about Habitica. It’s open source. You can fork the repository on Github and create your own version or help the community to make the application better. It’s all open source including iOS and Android.&lt;/p&gt;
-
-&lt;p&gt;Let’s change your bad habit one task at a time! Come and say hi to me on Habitica or let me know how you use Habitica to change your habit.&lt;/p&gt;
-
-&lt;p&gt;All after I finished this post I get to tick it off my list!&lt;/p&gt;
-
-</description>
-        <pubDate>Wed, 02 Mar 2016 08:49:31 -0500</pubDate>
-        <link>https://www.noppanit.com/posts/how-to-change-your-habit-one-task-at-a-time</link>
-        <guid isPermaLink="true">https://www.noppanit.com/posts/how-to-change-your-habit-one-task-at-a-time</guid>
+        <link>http://localhost:4000/posts/what-is-going-on-under-your-javascript-code</link>
+        <guid isPermaLink="true">http://localhost:4000/posts/what-is-going-on-under-your-javascript-code</guid>
       </item>
     
   </channel>
