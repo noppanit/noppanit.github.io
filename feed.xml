@@ -7,6 +7,174 @@
     <atom:link href="https://www.noppanit.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>So, You Want to Understand Recursion - Part one</title>
+        <description>&lt;p&gt;I’m studying recursion as part of my learning about Algorithms and Data Structures. This is my attempt to explain the steps I took to learn the topic and I hope it will benefit anyone who comes across this post in the future.&lt;/p&gt;
+
+&lt;p&gt;For those who are unfamiliar with recursion, here is a good introductory &lt;a href=&quot;https://www.youtube.com/watch?v=HXNhEYqFo0o&amp;amp;t=321s&quot;&gt;video&lt;/a&gt; that really captures the history and core concepts of recursion.&lt;/p&gt;
+
+&lt;p&gt;I have also found this &lt;a href=&quot;http://pythontutor.com/visualize.html#mode=edit&quot;&gt;site&lt;/a&gt; that helps in visualizing the step-by-step process of how a recursive program works. Alternatively, you can use a debugger on your IDE.&lt;/p&gt;
+
+&lt;p&gt;This is an example of the visualization.&lt;/p&gt;
+
+&lt;iframe width=&quot;800&quot; height=&quot;500&quot; frameborder=&quot;0&quot; src=&quot;http://pythontutor.com/iframe-embed.html#code=def%20factorial%28n%29%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20return%20n%20*%20factorial%28n-1%29%0A%20%20%20%20%20%20%20%20%0Afactorial%285%29&amp;amp;codeDivHeight=400&amp;amp;codeDivWidth=350&amp;amp;cumulative=false&amp;amp;curInstr=0&amp;amp;heapPrimitives=false&amp;amp;origin=opt-frontend.js&amp;amp;py=3&amp;amp;rawInputLstJSON=%5B%5D&amp;amp;textReferences=false&quot;&gt; &lt;/iframe&gt;
+
+&lt;p&gt;Of all the books and websites I’ve come across, the most efficient method to learn about recursion is to visualize the execution of the program and practice A LOT.&lt;/p&gt;
+
+&lt;p&gt;Recursion is an important foundational concept for other complex algorithms such as Dynamic Programming, Backtracking or Divide and Conquer, which I’ll cover in the upcoming posts. It will benefit you greatly if you understand the fundamentals of this simple algorithm. So, let’s dive in.&lt;/p&gt;
+
+&lt;h3 id=&quot;types-of-recursions&quot;&gt;&lt;a href=&quot;https://www.amazon.com/Introduction-Recursive-Programming-Manuel-Rubio-Sanchez/dp/1498735282&quot;&gt;Types of Recursions&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Linear recursion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Linear recursion is a function where a method calls itself only once. An example of this type of recursion is the &lt;em&gt;factorial&lt;/em&gt; problem.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tail recursion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tail recursion is the same as Linear recursion, but calling the recursion is the last operation of the function. For example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+def print(n):
+    if n == 0:
+        return
+    print(n)
+    print(n - 1)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Multiple recursion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Multiple recursion happens when a method calls itself multiple times. An example of this type of recursion is the &lt;em&gt;fibonacci&lt;/em&gt; number.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Mutual recursion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Mutual recursion happens when functions call each other.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Nested recursion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Ackermann_function&quot;&gt;Ackermann function&lt;/a&gt; is an example of nested recursion where the argument of the function is the function itself. I won’t go into the details of this function since I haven’t found many cases of this type of recursion except for &lt;a href=&quot;https://www.youtube.com/watch?v=i7sm9dzFtEI&amp;amp;t=758s&quot;&gt;this&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It is not necessary to memorize the different types of recursion as it won’t really help you to solve the problem, however, it is good to know the keywords so that you can use them to do a web-search on the problem later on.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-factorial-problem&quot;&gt;The factorial problem.&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Factorial&quot;&gt;Factorial&lt;/a&gt; is the product of all positive integers less than or equal to &lt;em&gt;n&lt;/em&gt;. For example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+5! = 5 x 4 x 3 x 2 x 1
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It could be written in Python like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The code reads like this: When n equals to 0 we return 1, otherwise, we return a product of &lt;em&gt;n&lt;/em&gt; and &lt;em&gt;factorial(n-1)&lt;/em&gt;, which means we subtract n by 1 and call the function again. We repeat this process until the number equals to 0, when the function will start to unwind.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-solve-recursion&quot;&gt;How to solve recursion.&lt;/h3&gt;
+
+&lt;h4 id=&quot;base-case&quot;&gt;Base case&lt;/h4&gt;
+
+&lt;p&gt;What does base case mean? Every recursion function needs to have at least one base case to end the program. Otherwise, the program will run forever and eventually it will be terminated by your compiler. For example, if you run the following in your IDE:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+def factorial(n):
+    return n * factorial(n-1)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You will get error like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+RecursionError: maximum recursion depth exceeded
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And almost all recursion functions will have a skeleton/template like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+def function(some_arguments):
+    if (base case):
+        // do something
+    else
+        // call itself or other function 
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;sub-problem&quot;&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Overlapping_subproblems&quot;&gt;Sub problem&lt;/a&gt;&lt;/h4&gt;
+
+&lt;p&gt;What does it mean? It means that your problem has to be able to be broken down into smaller problems in order for the problem to be solved recursively.&lt;/p&gt;
+
+&lt;p&gt;For example, in the factorial function, the smaller version of &lt;em&gt;factorial(5)&lt;/em&gt; is &lt;em&gt;factorial(5-1)&lt;/em&gt;. If you want to write a program to sum the values from an array of integers such as:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+nums = [1, 2, 3, 4, 5]
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;, the sub problem of this program would be that we need to make the array smaller by increasing the position/index of the array. When the index hits the end of the array and as the program unwinds we then add up the number being returned from the function.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+def summation(nums, size):
+    if size == 0:
+        return nums[size]
+    return summation(nums, size - 1) + nums[size]
+
+
+if __name__ == '__main__':
+    nums = [1, 2, 3, 4, 5, 6]
+    print(summation(nums, len(nums)))
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In conclusion, when you approach a recursion problem, you need to be thinking: how can I break this problem down into smaller chunks, and as the program unwinds how can I capture the result of each small problem?&lt;/p&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=gl3emqCuueQ&amp;amp;list=PLFE6E58F856038C69&amp;amp;index=8&quot;&gt;Lecture 8 from Stanford&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=uFJhEPrbycQ&amp;amp;list=PLFE6E58F856038C69&amp;amp;index=9&quot;&gt;Lecture 9 from Stanford&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=NdF1QDTRkck&amp;amp;index=10&amp;amp;list=PLFE6E58F856038C69&quot;&gt;Lecture 10 from Stanford&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=p-gpaIGRCQI&amp;amp;list=PLFE6E58F856038C69&amp;amp;index=11&quot;&gt;Lecture 11 from Stanford&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;practice&quot;&gt;Practice&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://codingbat.com/java/Recursion-1&quot;&gt;http://codingbat.com/java/Recursion-1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://codingbat.com/java/Recursion-2&quot;&gt;http://codingbat.com/java/Recursion-2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mirandaio/codingbat/tree/master/java&quot;&gt;Solution for coding bat&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;books&quot;&gt;Books&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Thinking-Recursively-Java-Eric-Roberts/dp/0471701467&quot;&gt;Thinking Recursively&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Programming-Abstractions-C-Eric-Roberts/dp/0133454843&quot;&gt;Programming abstractions in c++&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Introduction-Recursive-Programming-Manuel-Rubio-Sanchez/dp/1498735282&quot;&gt;Introduction to recursive programming&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 02 Jan 2018 21:29:20 -0500</pubDate>
+        <link>https://www.noppanit.com/posts/so-you-want-to-understand-recursion-part-one</link>
+        <guid isPermaLink="true">https://www.noppanit.com/posts/so-you-want-to-understand-recursion-part-one</guid>
+      </item>
+    
+      <item>
         <title>My resolutions for 2018</title>
         <description>&lt;h1 id=&quot;reflections-on-2016&quot;&gt;Reflections on &lt;a href=&quot;https://www.noppanit.com/posts/2016&quot;&gt;2016&lt;/a&gt;&lt;/h1&gt;
 
@@ -685,208 +853,6 @@ And the dead cell that's going to come alive
         <pubDate>Fri, 11 Nov 2016 23:10:25 -0500</pubDate>
         <link>https://www.noppanit.com/posts/game-of-life-for-dummies</link>
         <guid isPermaLink="true">https://www.noppanit.com/posts/game-of-life-for-dummies</guid>
-      </item>
-    
-      <item>
-        <title>What is going on under your JavaScript code</title>
-        <description>&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I’m no expert in this field nor having a PhD in Compiler. This is just my pure curiosity and I hope to share of what I’ve discovered so people can continue their curiosity.&lt;/p&gt;
-
-&lt;h2 id=&quot;why-im-interested-in-this&quot;&gt;Why I’m interested in this.&lt;/h2&gt;
-&lt;p&gt;I was asked once during my technical interview, “What happen when you execute fs.readFileSync(‘’)”. What he meant was that how JavaScript code interacts with the machine under the hood. At the time, I thought I just wrote that code and there you go I got the content of the file.&lt;/p&gt;
-
-&lt;p&gt;I couldn’t answer and I didn’t get the job. I just recently became a JavaScript developer because of my interest in front-end and back-end in the same time. Knowing JavaScript allows me to get the best of both worlds. However, the only thing I know about JavaScript is that it’s something to do with V8 and I had no idea what’s going on under the hood. So, I took the time to really understand how JavaScript works and the history behind it. So, I started with the task a computer does best; executing commands or how does a computer execute a command.&lt;/p&gt;
-
-&lt;h2 id=&quot;how-does-computer-works&quot;&gt;How does computer works?&lt;/h2&gt;
-&lt;p&gt;One of the best movies for me is “The Core” where “Rat” had to hack the Internet to control the flow of information. The hacker claims that he only knew one language, “zeros and ones”. At the time, I understood that it’s something to do with binary number, and I thought that it’s just hollywood talk and these people didn’t know what they were talking. I have to write &lt;code class=&quot;highlighter-rouge&quot;&gt;print('Hello');&lt;/code&gt; to print &lt;code class=&quot;highlighter-rouge&quot;&gt;Hello&lt;/code&gt; on my console, it has nothing to do with zeros or ones.&lt;/p&gt;
-
-&lt;p&gt;So, I started digging and I found &lt;a href=&quot;https://m.reddit.com/r/learnprogramming/comments/1pv40y/for_those_of_you_wondering_how_code_becomes_ones/&quot;&gt;this&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Basically, when we execute a piece of code, the compiler compiles the code to a set of instructions which is Assembly. Then, we have an &lt;a href=&quot;https://en.wikipedia.org/wiki/Assembly_language#Assembler&quot;&gt;assembler&lt;/a&gt; to translate the instructions to their numerical equivalents. For example,&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ADD esp, 8
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;is translated in x86 architecture like this.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Raw Hex &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;zero bytes &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;bold&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:
-
-83C408   
-
-String Literal:
-
-&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;83&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;C4&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\x&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;08&quot;&lt;/span&gt;
-
-Array Literal:
-
-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; 0x83, 0xC4, 0x08 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-Disassembly:
-0:  83 c4 08                add    esp,0x8
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Notice the HEX code &lt;code class=&quot;highlighter-rouge&quot;&gt;83C408&lt;/code&gt; which you can translate to binary number later for the computer to understand.&lt;/p&gt;
-
-&lt;p&gt;You can use this &lt;a href=&quot;https://defuse.ca/online-x86-assembler.htm&quot;&gt;online assembler&lt;/a&gt; to play with it.&lt;/p&gt;
-
-&lt;h2 id=&quot;how-does-javascript-engine-v8-work&quot;&gt;How does JavaScript engine (v8) work?&lt;/h2&gt;
-&lt;p&gt;In a nutshell, V8 &lt;a href=&quot;http://thibaultlaurens.github.io/javascript/2013/04/29/how-the-v8-engine-works/&quot;&gt;translates JavaScript&lt;/a&gt;
-code to machine code with &lt;em&gt;JIT (Just-In-Time) compiler&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;There are &lt;a href=&quot;http://www.mattzeunert.com/2015/08/19/viewing-assembly-code-generated-by-v8.html&quot;&gt;four main stages&lt;/a&gt; of how the code passes through V8.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;JavaScript - Your code&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Hydrogen - Intermediate code&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Lithium - Machine specific code&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Machine Code - This is what your computer understand.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;In this post we’re going to see the assembly code which is the machine specific code.&lt;/p&gt;
-
-&lt;h2 id=&quot;show-me-the-code&quot;&gt;Show me the code&lt;/h2&gt;
-&lt;p&gt;Enough talking. Now show me the code you say. Let’s say you have a simple function to add two numbers together like this.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To view the machine code in Assembly you need to install V8. First you need to install &lt;a href=&quot;https://www.chromium.org/developers/how-tos/install-depot-tools&quot;&gt;depot-tools&lt;/a&gt;. Once you install &lt;code class=&quot;highlighter-rouge&quot;&gt;depot-tools&lt;/code&gt; you can run
-Follow this &lt;a href=&quot;https://github.com/v8/v8/wiki/Using%20Git&quot;&gt;instruction&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Note&lt;/em&gt;: The documentation of how to install V8 is subject to change. So, please refer to &lt;a href=&quot;https://github.com/v8/v8/wiki/Building%20with%20GN&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;In order to get &lt;code class=&quot;highlighter-rouge&quot;&gt;V8&lt;/code&gt; you need to run. You will also need &lt;code class=&quot;highlighter-rouge&quot;&gt;Python 2&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fetch v8
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;v8
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The script will take sometime to finish. It will fetch V8 source code. Then you need to build all the dependencies by running.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gclient sync
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now you need to install D8. The next step is going to take a long time. So, get yourself a nice cup of coffee.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;make x64.release &lt;span class=&quot;nv&quot;&gt;objectprint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;on &lt;span class=&quot;nv&quot;&gt;disassembler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;on
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Once everything is in place, you’re ready to see how your code is communicating with your CPU.&lt;/p&gt;
-
-&lt;p&gt;You can do this to get the assembly code&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;out/x64.release
-./d8 &lt;span class=&quot;nt&quot;&gt;--print-code&lt;/span&gt; ~/Downloads/add.js
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This is what you’re likely going to see.&lt;/p&gt;
-
-&lt;div class=&quot;language-nasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;---&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Raw&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;---&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
-
-
-&lt;span class=&quot;o&quot;&gt;---&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;---&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;source_position&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FUNCTION&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;compiler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;full&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;codegen&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Instructions&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;140&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f3928043e0&lt;/span&gt;     &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;55&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rbp&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f3928043e1&lt;/span&gt;     &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;4889&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e5&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;REX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;W&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;movq&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rbp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rsp&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f3928043e4&lt;/span&gt;     &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;56&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rsi&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f3928043e5&lt;/span&gt;     &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;57&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rdi&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f3928043e6&lt;/span&gt;     &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;488&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b4f2f&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;REX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;W&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;movq&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rcx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rdi&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2f&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f3928043ea&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;488&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b490f&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;REX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;W&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;movq&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rcx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rcx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0xf&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f3928043ee&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;83411&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b01&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;addl&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rcx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x1b&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x1&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f3928043f2&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;49&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ba81bb8a39e52a0000&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;REX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;W&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;movq&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2ae5398abb81&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;;; object: 0x2ae5398abb81 &amp;lt;FixedArray[2]&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f3928043fc&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;28&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;4152&lt;/span&gt;           &lt;span class=&quot;k&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r10&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f3928043fe&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a00&lt;/span&gt;           &lt;span class=&quot;k&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f392804400&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;488&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b45f0&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;REX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;W&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;movq&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rbp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x10&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f392804404&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;36&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;488&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b402f&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;REX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;W&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;movq&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2f&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f392804408&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;488&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b400f&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;REX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;W&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;movq&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0xf&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f39280440c&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;44&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f39280440d&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;45&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;b803000000&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;movl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x3&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f392804412&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;48&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bb80753e1001000000&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;REX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;W&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;movq&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rbx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x1103e7580&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f39280441c&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;e81fffefff&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;call&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x27f392704340&lt;/span&gt;     &lt;span class=&quot;c&quot;&gt;;; code: STUB, CEntryStub, minor: 8&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f392804421&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;65&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;493&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ba5200c0000&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;REX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;W&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cmpq&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rsp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r13&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0xc20&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f392804428&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;72&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;7305&lt;/span&gt;           &lt;span class=&quot;k&quot;&gt;jnc&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;79&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x27f39280442f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f39280442a&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;74&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;e811e6f4ff&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;call&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StackCheck&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x27f392752a40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;;; code: BUILTIN&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f39280442f&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;79&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;498&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b45a0&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;REX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;W&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;movq&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r13&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x60&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f392804433&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;83&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;48&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bba9ba8a39e52a0000&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;REX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;W&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;movq&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rbx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2ae5398abaa9&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;;; object: 0x2ae5398abaa9 Cell for 6144&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f39280443d&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;93&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;83430&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bd1&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;addl&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rbx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0xb&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0xd1&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f392804441&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;97&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;791&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;           &lt;span class=&quot;k&quot;&gt;jns&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;130&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x27f392804462&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f392804443&lt;/span&gt;    &lt;span class=&quot;mi&quot;&gt;99&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f392804444&lt;/span&gt;   &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;e877e5f4ff&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;call&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;InterruptCheck&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x27f3927529c0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;;; code: BUILTIN&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f392804449&lt;/span&gt;   &lt;span class=&quot;mi&quot;&gt;105&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;58&lt;/span&gt;             &lt;span class=&quot;k&quot;&gt;pop&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rax&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f39280444a&lt;/span&gt;   &lt;span class=&quot;mi&quot;&gt;106&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;48&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bba9ba8a39e52a0000&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;REX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;W&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;movq&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rbx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2ae5398abaa9&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;;; object: 0x2ae5398abaa9 Cell for 6144&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f392804454&lt;/span&gt;   &lt;span class=&quot;mi&quot;&gt;116&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;49&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ba0000000000180000&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;REX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;W&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;movq&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x180000000000&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f39280445e&lt;/span&gt;   &lt;span class=&quot;mi&quot;&gt;126&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c895307&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;REX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;W&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;movq&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rbx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x7&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r10&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f392804462&lt;/span&gt;   &lt;span class=&quot;mi&quot;&gt;130&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;c9&lt;/span&gt;             &lt;span class=&quot;n&quot;&gt;leavel&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f392804463&lt;/span&gt;   &lt;span class=&quot;mi&quot;&gt;131&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;c20800&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x8&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f392804466&lt;/span&gt;   &lt;span class=&quot;mi&quot;&gt;134&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;6690&lt;/span&gt;           &lt;span class=&quot;k&quot;&gt;nop&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;Source&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;positions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
- &lt;span class=&quot;n&quot;&gt;pc&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;offset&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;position&lt;/span&gt;
-         &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;         &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-       &lt;span class=&quot;mi&quot;&gt;130&lt;/span&gt;        &lt;span class=&quot;mi&quot;&gt;35&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;statement&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;Deoptimization&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Output&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Data&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deopt&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;points&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;Back&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;edges&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;ast_id&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;pc_offset&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;loop_depth&lt;/span&gt;
-
-&lt;span class=&quot;mh&quot;&gt;0x2ae5398abbb9&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[TypeFeedbackInfo]&lt;/span&gt;
- &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ic_total_count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ic_with_type_info_count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ic_generic_count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;RelocInfo&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f3928043f4&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;embedded&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2ae5398abb81&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FixedArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[2]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f39280441d&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;STUB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x27f392704340&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f39280442b&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BUILTIN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x27f392752a40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f392804435&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;embedded&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2ae5398abaa9&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Cell&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6144&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f392804445&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BUILTIN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x27f3927529c0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;mh&quot;&gt;0x27f39280444c&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;embedded&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x2ae5398abaa9&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Cell&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6144&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;o&quot;&gt;---&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;End&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;---&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;del&gt;Now, in theory you can grab the hex code and run that in C and you should be able to get the same result. I haven’t tried it please let me know if it works or not.&lt;/del&gt; It wouldn’t work because the generated code has fixed memory address from when the program was executed.&lt;/p&gt;
-
-&lt;p&gt;What I learn from this post is how is my JavaScript code executed in my computer and the next time I got asked, I will be able to answer that interview question. Sometimes, it’s nicer to be asked a question like this than how to revert a binary tree on a whiteboard. Don’t you think?&lt;/p&gt;
-
-&lt;p&gt;More info&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://gist.github.com/kevincennis/0cd2138c78a07412ef21&quot;&gt;V8 Cheatsheet&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://wingolog.org/archives/2011/06/08/what-does-v8-do-with-that-loop&quot;&gt;What does V8 do with that loop&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=yOyaJXpAYZQ&quot;&gt;Comparing C to machine language (video)&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://wingolog.org/archives/2011/08/02/a-closer-look-at-crankshaft-v8s-optimizing-compiler&quot;&gt;A closer look at crankshaft v8s optimizing compiler&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        <pubDate>Tue, 04 Oct 2016 12:41:25 +0700</pubDate>
-        <link>https://www.noppanit.com/posts/what-is-going-on-under-your-javascript-code</link>
-        <guid isPermaLink="true">https://www.noppanit.com/posts/what-is-going-on-under-your-javascript-code</guid>
       </item>
     
   </channel>

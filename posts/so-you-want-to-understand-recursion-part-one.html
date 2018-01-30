@@ -1,0 +1,234 @@
+
+<!doctype>
+<html lang="en">
+  <head>
+    <meta content='So, You Want to Understand Recursion - Part one - Noppanit' name='title' />
+    <meta content='So, You Want to Understand Recursion - Part one - Noppanit' name='og:title' />
+    <title>So, You Want to Understand Recursion - Part one - Noppanit</title>
+    <link href='https://www.noppanit.com/images/fav.png' rel='shortcut icon'>
+<link href='https://www.noppanit.com/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='https://www.noppanit.com/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+  <meta content='https://www.noppanit.com/posts/so-you-want-to-understand-recursion-part-one' property='og:url' />
+  <meta content="I’m studying recursion as part of my learning about Algorithms and Data Structures. This is my attempt to explain the..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+
+
+
+
+
+  </head>
+  <body class="lh-copy dark-gray pa0 f6 sans-serif bg-super-white">
+    <header class="tc mt4">
+      <a href="https://www.noppanit.com">
+        <img src="https://www.noppanit.com/images/scribble.png" alt="Home" width="53" height="59">
+      </a>
+      <p>Noppanit</p>
+    </header>
+    <div class="mw7 bg-white mt4 mb3 center br2-ns bt bb ba-ns b--light-gray">
+      <nav class="bb b--light-gray pv4 tc" aria-label="Main">
+        
+      </nav>
+
+      <main class="tl f6 relative pa4 pa5-ns overflow-hidden">
+        
+          <div class="mb4">
+            <div class="fw600 light-silver mt1">02 Jan 2018</div>
+            <h1 class="ttu f3 mt0 lh-title cb mb2">
+              
+              So, You Want to Understand Recursion - Part one
+            </h1>
+            
+          </div>
+        
+        <div class="markdown-body">
+          <p>I’m studying recursion as part of my learning about Algorithms and Data Structures. This is my attempt to explain the steps I took to learn the topic and I hope it will benefit anyone who comes across this post in the future.</p>
+
+<p>For those who are unfamiliar with recursion, here is a good introductory <a href="https://www.youtube.com/watch?v=HXNhEYqFo0o&amp;t=321s">video</a> that really captures the history and core concepts of recursion.</p>
+
+<p>I have also found this <a href="http://pythontutor.com/visualize.html#mode=edit">site</a> that helps in visualizing the step-by-step process of how a recursive program works. Alternatively, you can use a debugger on your IDE.</p>
+
+<p>This is an example of the visualization.</p>
+
+<iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def%20factorial%28n%29%3A%0A%20%20%20%20if%20n%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20return%201%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20return%20n%20*%20factorial%28n-1%29%0A%20%20%20%20%20%20%20%20%0Afactorial%285%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=false&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"> </iframe>
+
+<p>Of all the books and websites I’ve come across, the most efficient method to learn about recursion is to visualize the execution of the program and practice A LOT.</p>
+
+<p>Recursion is an important foundational concept for other complex algorithms such as Dynamic Programming, Backtracking or Divide and Conquer, which I’ll cover in the upcoming posts. It will benefit you greatly if you understand the fundamentals of this simple algorithm. So, let’s dive in.</p>
+
+<h3 id="types-of-recursions"><a href="https://www.amazon.com/Introduction-Recursive-Programming-Manuel-Rubio-Sanchez/dp/1498735282">Types of Recursions</a></h3>
+
+<ul>
+  <li>Linear recursion</li>
+</ul>
+
+<p>Linear recursion is a function where a method calls itself only once. An example of this type of recursion is the <em>factorial</em> problem.</p>
+
+<ul>
+  <li>Tail recursion</li>
+</ul>
+
+<p>Tail recursion is the same as Linear recursion, but calling the recursion is the last operation of the function. For example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+def print(n):
+    if n == 0:
+        return
+    print(n)
+    print(n - 1)
+
+</code></pre></div></div>
+
+<ul>
+  <li>Multiple recursion</li>
+</ul>
+
+<p>Multiple recursion happens when a method calls itself multiple times. An example of this type of recursion is the <em>fibonacci</em> number.</p>
+
+<ul>
+  <li>Mutual recursion</li>
+</ul>
+
+<p>Mutual recursion happens when functions call each other.</p>
+
+<ul>
+  <li>Nested recursion</li>
+</ul>
+
+<p><a href="https://en.wikipedia.org/wiki/Ackermann_function">Ackermann function</a> is an example of nested recursion where the argument of the function is the function itself. I won’t go into the details of this function since I haven’t found many cases of this type of recursion except for <a href="https://www.youtube.com/watch?v=i7sm9dzFtEI&amp;t=758s">this</a></p>
+
+<p>It is not necessary to memorize the different types of recursion as it won’t really help you to solve the problem, however, it is good to know the keywords so that you can use them to do a web-search on the problem later on.</p>
+
+<h3 id="the-factorial-problem">The factorial problem.</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/Factorial">Factorial</a> is the product of all positive integers less than or equal to <em>n</em>. For example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+5! = 5 x 4 x 3 x 2 x 1
+
+</code></pre></div></div>
+
+<p>It could be written in Python like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+</code></pre></div></div>
+
+<p>The code reads like this: When n equals to 0 we return 1, otherwise, we return a product of <em>n</em> and <em>factorial(n-1)</em>, which means we subtract n by 1 and call the function again. We repeat this process until the number equals to 0, when the function will start to unwind.</p>
+
+<h3 id="how-to-solve-recursion">How to solve recursion.</h3>
+
+<h4 id="base-case">Base case</h4>
+
+<p>What does base case mean? Every recursion function needs to have at least one base case to end the program. Otherwise, the program will run forever and eventually it will be terminated by your compiler. For example, if you run the following in your IDE:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+def factorial(n):
+    return n * factorial(n-1)
+
+</code></pre></div></div>
+
+<p>You will get error like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+RecursionError: maximum recursion depth exceeded
+
+</code></pre></div></div>
+
+<p>And almost all recursion functions will have a skeleton/template like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+def function(some_arguments):
+    if (base case):
+        // do something
+    else
+        // call itself or other function 
+
+</code></pre></div></div>
+
+<h4 id="sub-problem"><a href="https://en.wikipedia.org/wiki/Overlapping_subproblems">Sub problem</a></h4>
+
+<p>What does it mean? It means that your problem has to be able to be broken down into smaller problems in order for the problem to be solved recursively.</p>
+
+<p>For example, in the factorial function, the smaller version of <em>factorial(5)</em> is <em>factorial(5-1)</em>. If you want to write a program to sum the values from an array of integers such as:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+nums = [1, 2, 3, 4, 5]
+
+</code></pre></div></div>
+
+<p>, the sub problem of this program would be that we need to make the array smaller by increasing the position/index of the array. When the index hits the end of the array and as the program unwinds we then add up the number being returned from the function.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+def summation(nums, size):
+    if size == 0:
+        return nums[size]
+    return summation(nums, size - 1) + nums[size]
+
+
+if __name__ == '__main__':
+    nums = [1, 2, 3, 4, 5, 6]
+    print(summation(nums, len(nums)))
+
+</code></pre></div></div>
+
+<p>In conclusion, when you approach a recursion problem, you need to be thinking: how can I break this problem down into smaller chunks, and as the program unwinds how can I capture the result of each small problem?</p>
+
+<h3 id="reference">Reference</h3>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=gl3emqCuueQ&amp;list=PLFE6E58F856038C69&amp;index=8">Lecture 8 from Stanford</a></li>
+  <li><a href="https://www.youtube.com/watch?v=uFJhEPrbycQ&amp;list=PLFE6E58F856038C69&amp;index=9">Lecture 9 from Stanford</a></li>
+  <li><a href="https://www.youtube.com/watch?v=NdF1QDTRkck&amp;index=10&amp;list=PLFE6E58F856038C69">Lecture 10 from Stanford</a></li>
+  <li><a href="https://www.youtube.com/watch?v=p-gpaIGRCQI&amp;list=PLFE6E58F856038C69&amp;index=11">Lecture 11 from Stanford</a></li>
+</ul>
+
+<h4 id="practice">Practice</h4>
+
+<ul>
+  <li><a href="http://codingbat.com/java/Recursion-1">http://codingbat.com/java/Recursion-1</a></li>
+  <li><a href="http://codingbat.com/java/Recursion-2">http://codingbat.com/java/Recursion-2</a></li>
+  <li><a href="https://github.com/mirandaio/codingbat/tree/master/java">Solution for coding bat</a></li>
+</ul>
+
+<h4 id="books">Books</h4>
+<ul>
+  <li><a href="https://www.amazon.com/Thinking-Recursively-Java-Eric-Roberts/dp/0471701467">Thinking Recursively</a></li>
+  <li><a href="https://www.amazon.com/Programming-Abstractions-C-Eric-Roberts/dp/0133454843">Programming abstractions in c++</a></li>
+  <li><a href="https://www.amazon.com/Introduction-Recursive-Programming-Manuel-Rubio-Sanchez/dp/1498735282">Introduction to recursive programming</a></li>
+</ul>
+
+        </div>
+        <p class="mt4">
+  Til next time,<br>
+  noppanit
+  <span class="silver">at 21:29</span>
+</p>
+<img src="https://www.noppanit.com/images/scribble3.png" alt="scribble" />
+
+      </main>
+      <section class="fixed-l mw7 center w-100 top-50 tc pb4 nt4">
+  
+    <a href="https://www.noppanit.com/posts/my-resolutions-for-2018" class="no-underline f1 light-blue hover-silver nl5 fl-l ph3">‹</a>
+  
+  
+</section>
+    </div>
+    <footer class="mw7 center tc pt3 pb4 silver">
+      Built with Jekyll using <a href="http://github.com/muan/scribble" class="link silver hover-blue pv1">Scribble</a>.
+      <img src="https://www.noppanit.com/images/scribble2.png" alt="scribble" class="mt4 db center" />
+    </footer>
+  </body>
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</html>
