@@ -1,0 +1,148 @@
+<form class="pure-form pure-form-aligned">
+    <fieldset>
+        <legend>FV = PV &times; (1 + r)<sup>n</sup>
+        </legend>
+        <p>FV(future value) is equal to PV(present value) times 1 plus the interest rate raised to the number of years the investment is compounded</p>
+        <div id="compoundMessage" style="display:none;"></div>
+        <div class="pure-control-group">
+            <label for="pv">PV</label>
+            <input type="text" id="pv" size="5" />
+        </div>
+        <div class="pure-control-group">
+            <label for="r">Rate</label>
+            <input type="text" id="r" size="2" />%</div>
+        <div class="pure-control-group">
+            <label for="n">Years</label>
+            <input type="text" id="n" size="4" />
+        </div>
+        <div class="pure-controls">
+            <input type="button" value="Plot" id="plot" class="pure-button pure-button-primary" />
+        </div>
+    </fieldset>
+    <p id="output"></p>
+</form>
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script>
+    $(function () {
+    // Plot button
+        $('#plot').click(function () {
+            if (isValid()) {
+                calculate();
+                plotValues();
+            }
+        });
+    });
+// Global variables
+var pv = 0;
+var r = 0;
+var n = 0;
+var x = new Array();
+var y = new Array();
+var v = new Array();
+
+function calculateY(pv, r, n) {
+    return pv * (Math.pow((1 + r), n));
+}
+
+function calculate() {
+    pv = Number($('#pv').val());
+    r = Number($('#r').val()) / 100;
+    var xmin = 0;
+    var xmax = Number($('#n').val());
+    var i = 0;
+    v = [];
+    for (xt = xmin; xt <= xmax; xt++) {
+        x[i] = xt;
+        y[i] = calculateY(pv, r, xt);
+        v[i] = [x[i], y[i]];
+        i++;
+    }
+    n = i - 1;
+    console.log(v);
+}
+
+function plotValues() {
+    calculate();
+    chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'container',
+            type: 'line',
+            marginRight: 130,
+            marginBottom: 25
+        },
+        title: {
+            text: 'Compound Interest',
+            x: 0 //center
+        },
+        xAxis: {
+            title: {
+                text: 'Years'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Value'
+            }
+        },
+        plotOptions: {
+            scatter: {
+                marker: {
+                    radius: 5,
+                    states: {
+                        hover: {
+                            enabled: true,
+                            lineColor: 'rgb(100,100,100)'
+                        }
+                    }
+                },
+                states: {
+                    hover: {
+                        marker: {
+                            enabled: false
+                        }
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Years',
+            color: 'rgba(83, 223, 83, .5)',
+            data: v
+        }]
+    });
+    // Make the page go where I want it to go.
+    location.hash = "#";
+    location.hash = "#container";
+    history.pushState("", document.title, window.location.pathname);
+}
+
+function isValid() {
+    var bBool = true;
+    if (bBool) {
+        bBool = $.isNumeric($('#pv').val());
+    }
+    if (bBool) {
+        bBool = $.isNumeric($('#r').val());
+    }
+    if (bBool) {
+        bBool = $.isNumeric($('#n').val());
+    }
+    if (!bBool) {
+        $('#compoundMessage').html('<p>An input is not numeric.</p>');
+        $('#compoundMessage').show();
+        // Make the page go where I want it to go.
+        location.hash = "#";
+        location.hash = "#compoundMessage";
+        history.pushState("", document.title, window.location.pathname);
+    } else {
+        $('#compoundMessage').hide();
+    }
+    return bBool;
+}
+</script>
