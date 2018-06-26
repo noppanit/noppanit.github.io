@@ -3,8 +3,8 @@
   <channel>
     <title>Noppanit</title>
     <description>My personal adventure</description>
-    <link>http://localhost:4000</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <link>https://www.noppanit.com</link>
+    <atom:link href="https://www.noppanit.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>My Minimalist Phone Screen</title>
@@ -51,8 +51,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 25 Jun 2018 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/posts/my-minimalist-phone-screen</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/my-minimalist-phone-screen</guid>
+        <link>https://www.noppanit.com/posts/my-minimalist-phone-screen</link>
+        <guid isPermaLink="true">https://www.noppanit.com/posts/my-minimalist-phone-screen</guid>
       </item>
     
       <item>
@@ -219,8 +219,8 @@ if __name__ == '__main__':
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 02 Jan 2018 21:29:20 -0500</pubDate>
-        <link>http://localhost:4000/posts/so-you-want-to-understand-recursion-part-one</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/so-you-want-to-understand-recursion-part-one</guid>
+        <link>https://www.noppanit.com/posts/so-you-want-to-understand-recursion-part-one</link>
+        <guid isPermaLink="true">https://www.noppanit.com/posts/so-you-want-to-understand-recursion-part-one</guid>
       </item>
     
       <item>
@@ -286,8 +286,8 @@ if __name__ == '__main__':
 &lt;/blockquote&gt;
 </description>
         <pubDate>Fri, 29 Dec 2017 15:01:06 -0500</pubDate>
-        <link>http://localhost:4000/posts/my-resolutions-for-2018</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/my-resolutions-for-2018</guid>
+        <link>https://www.noppanit.com/posts/my-resolutions-for-2018</link>
+        <guid isPermaLink="true">https://www.noppanit.com/posts/my-resolutions-for-2018</guid>
       </item>
     
       <item>
@@ -407,8 +407,8 @@ awk &lt;span class=&quot;s1&quot;&gt;'BEGIN {
 
 </description>
         <pubDate>Sat, 14 Oct 2017 10:24:39 -0400</pubDate>
-        <link>http://localhost:4000/posts/how-i-learn-to-love-awk</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/how-i-learn-to-love-awk</guid>
+        <link>https://www.noppanit.com/posts/how-i-learn-to-love-awk</link>
+        <guid isPermaLink="true">https://www.noppanit.com/posts/how-i-learn-to-love-awk</guid>
       </item>
     
       <item>
@@ -462,8 +462,8 @@ awk &lt;span class=&quot;s1&quot;&gt;'BEGIN {
 &lt;p&gt;We lower our cache node from 16GB to just 3GB.&lt;/p&gt;
 </description>
         <pubDate>Tue, 18 Apr 2017 14:48:38 -0400</pubDate>
-        <link>http://localhost:4000/posts/lower-your-redis-memory-footprint-by-a-few-lines-of-code</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/lower-your-redis-memory-footprint-by-a-few-lines-of-code</guid>
+        <link>https://www.noppanit.com/posts/lower-your-redis-memory-footprint-by-a-few-lines-of-code</link>
+        <guid isPermaLink="true">https://www.noppanit.com/posts/lower-your-redis-memory-footprint-by-a-few-lines-of-code</guid>
       </item>
     
       <item>
@@ -478,8 +478,8 @@ awk &lt;span class=&quot;s1&quot;&gt;'BEGIN {
 &lt;p&gt;If I had paid in US dollar, I would have paid \$0.81 more. It doesn’t seem like a lot but it definitely adds up. I checked my credit card transaction and it showed \$19.33. It’s also good if you can get the card that doesn’t charge foreign transaction fee.&lt;/p&gt;
 </description>
         <pubDate>Sat, 25 Feb 2017 22:20:49 -0500</pubDate>
-        <link>http://localhost:4000/posts/pay-in-local-currency-while-you-are-travelling-it-is-cheaper</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/pay-in-local-currency-while-you-are-travelling-it-is-cheaper</guid>
+        <link>https://www.noppanit.com/posts/pay-in-local-currency-while-you-are-travelling-it-is-cheaper</link>
+        <guid isPermaLink="true">https://www.noppanit.com/posts/pay-in-local-currency-while-you-are-travelling-it-is-cheaper</guid>
       </item>
     
       <item>
@@ -523,8 +523,8 @@ brew install dcraw
 &lt;/ol&gt;
 </description>
         <pubDate>Mon, 20 Feb 2017 13:23:19 +0700</pubDate>
-        <link>http://localhost:4000/posts/osx-convert-raw-dng-to-jpg</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/osx-convert-raw-dng-to-jpg</guid>
+        <link>https://www.noppanit.com/posts/osx-convert-raw-dng-to-jpg</link>
+        <guid isPermaLink="true">https://www.noppanit.com/posts/osx-convert-raw-dng-to-jpg</guid>
       </item>
     
       <item>
@@ -565,8 +565,8 @@ How do I sample the data so that I process just a subset of data but with equal 
 
 </description>
         <pubDate>Mon, 20 Feb 2017 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000/posts/reservoir-sampling</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/reservoir-sampling</guid>
+        <link>https://www.noppanit.com/posts/reservoir-sampling</link>
+        <guid isPermaLink="true">https://www.noppanit.com/posts/reservoir-sampling</guid>
       </item>
     
       <item>
@@ -599,8 +599,8 @@ Host &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 24 Dec 2016 10:53:50 -0500</pubDate>
-        <link>http://localhost:4000/posts/python-request-connection-aborted-and-broken-pipe-error</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/python-request-connection-aborted-and-broken-pipe-error</guid>
+        <link>https://www.noppanit.com/posts/python-request-connection-aborted-and-broken-pipe-error</link>
+        <guid isPermaLink="true">https://www.noppanit.com/posts/python-request-connection-aborted-and-broken-pipe-error</guid>
       </item>
     
       <item>
@@ -643,8 +643,8 @@ Host &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
 &lt;p&gt;During the whole trip, there wasn’t even one occasion where the wifi didn’t work. I got the connection the whole time and the battery lasted for at least from 9am to 7pm. If you have a power bank it can easily last until the end of the day. If you have more devices, I believe you will need to choose the premium one with faster speed.&lt;/p&gt;
 </description>
         <pubDate>Tue, 06 Dec 2016 07:36:29 +0900</pubDate>
-        <link>http://localhost:4000/posts/a-must-item-while-travelling-in-japan</link>
-        <guid isPermaLink="true">http://localhost:4000/posts/a-must-item-while-travelling-in-japan</guid>
+        <link>https://www.noppanit.com/posts/a-must-item-while-travelling-in-japan</link>
+        <guid isPermaLink="true">https://www.noppanit.com/posts/a-must-item-while-travelling-in-japan</guid>
       </item>
     
   </channel>
