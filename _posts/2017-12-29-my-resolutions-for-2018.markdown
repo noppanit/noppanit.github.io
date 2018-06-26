@@ -27,7 +27,7 @@ I didn't become Data Scientist but I did joined Conde Nast as a Data Engineer wh
 
 # Reflections on 2017
 
-2017 was a painful year for me. I didn't stick to my plan and I was completely detailed. One thing that I think I did great was investment. I open a brokerage  account and I started investing with automatic deposit from my paycheck. I also set aside 401K and Roth.
+2017 was a painful year for me. I didn't stick to my plan and I was completely detailed. One thing that I think I did great was investment. I opened a brokerage  account and I started investing with automatic deposit from my paycheck. I also set aside 401K and Roth.
 
 I did one 5K run and I finished it with 10:37 /mile. It's a good start for me.
 
