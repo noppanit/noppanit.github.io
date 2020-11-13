@@ -17,6 +17,7 @@ title: Noppanit
 email: hi@noppanit.com
 description: My personal adventure
 url: "https://www.noppanit.com" # the base hostname & protocol for your site, e.g. http://example.com
+enforce_ssl: www.noppanit.com
 twitter_username: noppanit
 github_username:  noppanit
 signoff: "noppanit" 
