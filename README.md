@@ -129,7 +129,38 @@ Your post content here...
 
 ## Deployment
 
-This site is configured for GitHub Pages. Simply push to the repository and GitHub will automatically build and deploy the site.
+This site uses GitHub Actions to automatically build and deploy to GitHub Pages.
+
+### Setup (One-time)
+
+1. Go to your repository settings: `https://github.com/noppanit/noppanit.github.io/settings/pages`
+2. Under "Build and deployment" → "Source", select **"GitHub Actions"**
+3. Save the settings
+
+### Deploying Changes
+
+Simply push to the `source` branch:
+
+```bash
+git add .
+git commit -m "Your commit message"
+git push origin source
+```
+
+GitHub Actions will automatically:
+- Build the site with Jekyll 4.3
+- Deploy to GitHub Pages
+- Make it live at https://www.noppanit.com
+
+You can monitor the build progress in the "Actions" tab of your GitHub repository.
+
+### Manual Deployment (Alternative)
+
+If you prefer to build locally and deploy manually:
+
+1. Build the site: `bundle exec jekyll build`
+2. The output will be in `_site/`
+3. Deploy the `_site` contents to the `master` branch
 
 ## Configuration
 
