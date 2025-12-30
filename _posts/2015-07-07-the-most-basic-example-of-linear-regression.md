@@ -19,7 +19,7 @@ If you don&#8217;t understand Linear Regression like me before I wrote this post
 
 The idea is that you have two variables. In this case, it&#8217;s **tips** and **total amount of bill**. You should explore the data by plotting the graph of these two variables. From my generated data you will get something like this.
 
-{% img wp-content/uploads/2015/07/Screenshot-2015-07-07-00.54.42.jpg Linear Regression %}
+<img src="wp-content/uploads/2015/07/Screenshot-2015-07-07-00.54.42.jpg" alt="Linear Regression" />
 
 You can clearly see that there&#8217;s a strong correlation between the amount of tip and meal. 
 

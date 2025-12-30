@@ -29,6 +29,15 @@ plugins:
 
 permalink: /posts/:title
 
+# Exclude Octopress-specific directories and files
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - .themes
+  - _templates
+  - _deploy.yml
+  - vendor
+
 defaults:
   - values:
       layout: "default"

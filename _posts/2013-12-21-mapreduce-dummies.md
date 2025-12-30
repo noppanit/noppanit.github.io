@@ -20,7 +20,7 @@ Here&#8217;s my version of what it means. MapReduce consists of two parts. Map a
 
 Map really is like what we know in every language. **Map<Key, Value>** in Java. It has key and value. For example, if your country wants to run an election, you have four parties to choose from Party A, Party B, Party C and Party D. It&#8217;d be like this.
 
-{% img http://www.noppanit.com/wp-content/uploads/2013/12/Screen-Shot-2013-12-21-at-21.34.00.png City eletion scores %}
+<img src="http://www.noppanit.com/wp-content/uploads/2013/12/Screen-Shot-2013-12-21-at-21.34.00.png" alt="City eletion scores" />
 
 The key would be your party name. The value would be the votes for each of the key. So, this is how would you process in your computer. Let&#8217;s go back a little bit and have a look at raw data.
 

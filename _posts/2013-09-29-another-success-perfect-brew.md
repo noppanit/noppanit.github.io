@@ -10,7 +10,7 @@ tags:
   - aeropress
   - coffee
 ---
-{% img http://upload.wikimedia.org/wikipedia/commons/d/d2/Aeropress_setup.jpg AeroPress %}
+<img src="http://upload.wikimedia.org/wikipedia/commons/d/d2/Aeropress_setup.jpg" alt="AeroPress" />
 
 So after my first post [my quest to find my perfect brew][1]. Rather than spending a fortune for a grinder and espresso machine, I decided to go step by step. I ordered my first [AeroPress][2]. After just one sip, I can taste the difference right away. The coffee from this little piece of plastic is amazing. I brewed my coffee with my already grounded coffee from Starbuck and even that the result is remarkable. It&#8217;s very smooth and rich than the french press method. I guess it&#8217;s because of shorter extraction of the coffee and the micro filter which will keep the small particles so you won&#8217;t test the bitterness of the coffee. If you want to take your brew to a different level I highly recommend AeroPress. I&#8217;m not saying to a higher level because some people might like the bitterness of the coffee which sometime I like. But I think you should totally try AeroPress, It&#8217;s totally worth the money. My quest will continue to a grinder and in search of my perfect coffee beans.
 

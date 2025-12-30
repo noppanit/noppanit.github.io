@@ -29,11 +29,11 @@ After a few hours of mangling and munching the csv with Pandas and R. I would no
 
 Here&#8217;s the example.
 
-{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.jpg Parking signs on Qgis %}
+<img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.52.32.jpg" alt="Parking signs on Qgis" />
 
 One thing I learnt was that you cannot just click **Open** and choose the file. What you need to do is to <string>Add Vector Layer</strong>. You can use shortcut **Ctrl+Shift+v**
 
-{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.jpg Add Vector Layer %}
+<img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-12.55.56.jpg" alt="Add Vector Layer" />
 
 ## Export to Google Fusion
 
@@ -41,27 +41,27 @@ Now what we need is to import what we have to Google Fusion Table. How are we go
 
 In QGis you can download the file as CSV. It&#8217;s in **Layer > Save As**. You just need to make sure that **Geometry** has to be set so you get the coordinates.
 
-{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.jpg Save to CSV %}
+<img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.02.06.jpg" alt="Save to CSV" />
 
 ## Import to Google Fusion Table
 
 Now we can use that CSV to import to Google Fusion. It would look something like this.
 
-{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.jpg Google Fusion Table %}
+<img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.04.35.jpg" alt="Google Fusion Table" />
 
 what you need to make sure is that you need to specify which fields are Lat, Long so Google can plot that for you.
 
 Here&#8217;s how you do it.
 
-{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.jpg %}
+<img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.05.41.jpg" />
 
 The click **change** You will see something like this and you can choose which field you want to be Longitude or Latitude. 
 
-{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.jpg Set Location %}
+<img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.06.33.jpg" alt="Set Location" />
 
 Once the coordinates have set we can go to Map tab and see beautiful little dots that show where all the signs are in NYC.
 
-{% img /wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.jpg Parking signs in Google Fusion Table %}
+<img src="/wp-content/uploads/2015/07/Screenshot-2015-07-30-13.07.47.jpg" alt="Parking signs in Google Fusion Table" />
 
 Walla! Now you have something you can build an application on top of it. The next post, I will create an application on top of this map to make use of our data. 
 
@@ -95,7 +95,7 @@ The result is not quite accurate which I think it&#8217;s because I need to find
 
 Python has the same wrapper which is quite what I want as well.
 
-{% codeblock python %}
+```python
 from pyproj import Proj
 import pandas as pd
 
@@ -108,7 +108,7 @@ def cal_long_lat(row):
 
 data['lon'], data['lat'] = zip(data.apply (lambda row: cal_long_lat (row),axis=1))
 data.head()
-{% endcodeblock %}
+```
 
 I will need to learn more about State Pane and what is the correct format.
 

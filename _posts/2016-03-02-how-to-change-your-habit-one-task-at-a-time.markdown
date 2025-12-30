@@ -26,7 +26,7 @@ I use Habitica for anything that I want to make myself doing it or I want to cha
 Another example of how I changed my habit is making my bed. I created a task to make my bed every morning. It might sound too simple but it really did change my habit. Now I make my bed everyday without even knowing it.
 I wake up every morning, make my bed and click the checkbox. I earn XP and I feel good about it. 
 
-{% img /wp-content/uploads/2016/03/make-bed.png Habitica Habit %}
+<img src="/wp-content/uploads/2016/03/make-bed.png" alt="Habitica Habit" />
 
 Another example would be that I could finish my Coursera course that I have always wanted to do for a long time. I used to sign up to all the classes on Coursera and I ended up not passing even the first week. Now I can force myself to finish the course week by week. If I don't do it in time, my character dies, loses all the golds and one rare item. 
 

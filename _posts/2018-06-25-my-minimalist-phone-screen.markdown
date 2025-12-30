@@ -8,7 +8,7 @@ It first started when I decided to delete almost all of my social networks (Face
 ## Apps
 The beginning of all thing; Apps. I'm still experimenting with this setup as I don't want to go to absolute minimum just yet.
 
-{% img /wp-content/uploads/2018/06/iphone-screen.PNG 300 'iPhone Screen 2018' %}
+<img src="/wp-content/uploads/2018/06/iphone-screen.PNG" alt="iPhone Screen 2018" />
 
 These are the only apps I use in day to day life and work. I still download new apps from time to time but if I don't use it for 2 weeks straight I will just delete it immediately. 
 
@@ -19,7 +19,7 @@ I'm thinking of deleting Spotify because I change my habit to listen to podcasts
 ## No notification!
 I turned off all of my notification from every app. If I really need it I will just have the Badge App Icon only. So, I won't get any alert whatsoever. My phone is always on No Disturb mode and on silent.
 
-{% img /wp-content/uploads/2018/06/iphone-notification.PNG 300 'iPhone Notification 2018' %}
+<img src="/wp-content/uploads/2018/06/iphone-notification.PNG" alt="iPhone Notification 2018" />
 
 ## No games
 I decided to delete all of the games I have. I didn't play much anyway and I feel like all the games these days need connection which doesn't make much sense for my commute when I spend most of the time underground. If I'm going to be sitting on the plane for a longer period of time I might download games that I can just kill time. However, I realise that I would rather just catch up on my podcasts.

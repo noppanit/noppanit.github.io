@@ -9,4 +9,4 @@ categories:
 ---
 Finally, I passed the Google Analytics test. 
 
-{% img https://www.noppanit.com/wp-content/uploads/2010/10/Screen-shot-2010-10-16-at-18.05.10-300x231.png %}
+<img src="https://www.noppanit.com/wp-content/uploads/2010/10/Screen-shot-2010-10-16-at-18.05.10-300x231.png" />

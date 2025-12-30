@@ -32,11 +32,11 @@ My surprises would be I&#8217;ve neven thought we&#8217;d come up with all these
 
 Reference : [http://www.designjams.org/wiki/Design\_Jam\_London_1][2]
 
-{% img https://www.noppanit.com/wp-content/uploads/2011/06/Camden-20110623-00022.jpg User Journey %} 
+<img src="https://www.noppanit.com/wp-content/uploads/2011/06/Camden-20110623-00022.jpg" alt="User Journey" /> 
 
-{% img https://www.noppanit.com/wp-content/uploads/2011/06/Westminster-20110623-00024-300x225.jpg Design Jam %}
+<img src="https://www.noppanit.com/wp-content/uploads/2011/06/Westminster-20110623-00024-300x225.jpg" alt="Design Jam" />
 
-{% img https://www.noppanit.com/wp-content/uploads/2011/06/IMG-20110623-00019-300x225.jpg %}
+<img src="https://www.noppanit.com/wp-content/uploads/2011/06/IMG-20110623-00019-300x225.jpg" />
 
  [1]: http://www.eewei.com/
  [2]: http://www.designjams.org/wiki/Design_Jam_London_1

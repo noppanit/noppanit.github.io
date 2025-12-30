@@ -20,4 +20,4 @@ In section vignette you can adjust amount and midpoint. You can choose to darken
 
 Here&#8217;s an example. 
 
-{% img https://www.noppanit.com/wp-content/uploads/2010/04/Screen-shot-2010-04-15-at-01.07.53-300x200.png %}
+<img src="https://www.noppanit.com/wp-content/uploads/2010/04/Screen-shot-2010-04-15-at-01.07.53-300x200.png" />

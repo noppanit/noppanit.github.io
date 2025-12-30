@@ -30,14 +30,14 @@ I ordered online two days before my departure and it only costed me $140 for the
 
 This is what you get in the envelop.
 
-{% img /wp-content/uploads/2016/12/Wifi.jpeg 300px What you get in the envelop %}
+<img src="/wp-content/uploads/2016/12/Wifi.jpeg" alt="300px What you get in the envelop" />
 
 This is the return envelop that you need to drop in a mailbox
 
-{% img /wp-content/uploads/2016/12/Envelop.jpeg 300px Envelop %}
+<img src="/wp-content/uploads/2016/12/Envelop.jpeg" alt="300px Envelop" />
 
 Mailbox at Haneda airport to return the wifi. 
 
-{% img /wp-content/uploads/2016/12/Mailbox.jpeg 300px Mailbox %}
+<img src="/wp-content/uploads/2016/12/Mailbox.jpeg" alt="300px Mailbox" />
 
 During the whole trip, there wasn't even one occasion where the wifi didn't work. I got the connection the whole time and the battery lasted for at least from 9am to 7pm. If you have a power bank it can easily last until the end of the day. If you have more devices, I believe you will need to choose the premium one with faster speed.

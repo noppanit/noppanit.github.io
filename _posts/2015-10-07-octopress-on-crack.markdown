@@ -15,11 +15,11 @@ Once you got out of WordPress now there's much more you can do about your perfor
 
 Here's my before performance from Google PageSpeed.
 
-{% img /wp-content/uploads/2015/10/google-pagespeed-before.jpg Google PageSpeed before performance %}
+<img src="/wp-content/uploads/2015/10/google-pagespeed-before.jpg" alt="Google PageSpeed before performance" />
 
 And from webpagetest.org
 
-{% img /wp-content/uploads/2015/10/before-perf-noppanit-com.jpg Webpagetest before performance %}
+<img src="/wp-content/uploads/2015/10/before-perf-noppanit-com.jpg" alt="Webpagetest before performance" />
 
 In a nutshell, my page starts to render in *2.4s* and finishes in *4s*. Yikes! I wouldn't even want to wait for my site to load. Let's see where's the lowest hanging fruit. 
 
@@ -45,11 +45,11 @@ Going back to what Google PageSpeed tells us again. It complaints about *Leverag
 
 I use [Slash][3] theme and when I look at the CSS, it's only 22K. So why not just inline it and save one more request for the browser. So, in *_includes/head.html* you can change the line that includes your stylesheet to be. 
 
-{% codeblock html %}
+```html
 	<style>
 		{\% include screen.css %} # delete '\' in front of % before you paste this snippet
 	</style>
-{% endcodeblock %}
+```
 
 This might be different from theme to theme but it shouldn't be difficult to find that out. 
 
@@ -59,13 +59,13 @@ Now, let's have a quick look at the after performance.
 
 Here's my after performance from Google PageSpeed.
 
-{% img /wp-content/uploads/2015/10/google-pagespeed-after.jpg Google PageSpeed after %}
+<img src="/wp-content/uploads/2015/10/google-pagespeed-after.jpg" alt="Google PageSpeed after" />
 
 It's a lot better now but there's one tiny problem with mobile which I'll write another blog post about that.
 
 Let's have a look at webpagetest now.
 
-{% img /wp-content/uploads/2015/10/webpagetest-after.jpg Webpagetest After %}
+<img src="/wp-content/uploads/2015/10/webpagetest-after.jpg" alt="Webpagetest After" />
 
 A lot better! It's still not the best but now my page loads within *0.5s* and finishes in *1.9s*. However, there's still a lot to work on mobile.
 

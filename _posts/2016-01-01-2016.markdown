@@ -23,7 +23,7 @@ I'd like to increase every move by at least 25lb by the end of this year.
 
 The most important thing for me this year is my mental hygiene. When I was a monk, I used to meditate 30 minutes a day but once I got out of it I never did it. I'm going to make this my mission to meditate 10-15 minutes a day before going to bed. I added this as my daily habit on my habitica.
 
-{% img /wp-content/uploads/2016/01/habitica.png %}
+<img src="/wp-content/uploads/2016/01/habitica.png" />
 
 This resolution kinda sums everything that I want 2016 to be. I just want to be a happy me. If something's going to create more stress I'm just going to say no. 
 

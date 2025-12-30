@@ -31,7 +31,7 @@ Even without any algorithm we can say that two users like the same movies. But w
 # What's a vector?
 In Pyhsics, a vector has two things; magnitude and direction which can be written as 
 
-{% img /wp-content/uploads/2015/11/vector.png Vector %}
+<img src="/wp-content/uploads/2015/11/vector.png" alt="Vector" />
 
 I'd like to explain what a vector is but this [site][3] explains a lot better. 
 
@@ -41,7 +41,7 @@ Now we know what a vector is but how does it relate to Cosine Similarity. In a n
 
 # Cosine Similarity
 
-{% img /wp-content/uploads/2015/11/cosine_similarity.gif Cosine Similarity %}
+<img src="/wp-content/uploads/2015/11/cosine_similarity.gif" alt="Cosine Similarity" />
 
 In order to find the angle between the two vectors, we need to find the dot product of the two vectors as the formula below.
 
