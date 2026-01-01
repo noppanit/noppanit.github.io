@@ -31,7 +31,7 @@ I don't know when I started believing that. But somewhere along the way, I did.
 
 ## The Pendulum
 
-Somewhere along the way, I also became an engineering manager. This was the harder transition to make sense of. There's this piece by Charity Majors called https://charity.wtf/2017/05/11/the-engineer-manager-pendulum/ that finally gave me language for what I'd been experiencing. The core insight is that management isn't a promotion. It's a career change. And the best leaders are the ones who swing back and forth. Building, then managing, then building again.
+Somewhere along the way, I also became an engineering manager. This was the harder transition to make sense of. There's this piece by Charity Majors called [https://charity.wtf/2017/05/11/the-engineer-manager-pendulum](https://charity.wtf/2017/05/11/the-engineer-manager-pendulum/) that finally gave me language for what I'd been experiencing. The core insight is that management isn't a promotion. It's a career change. And the best leaders are the ones who swing back and forth. Building, then managing, then building again.
 
 What I've learned is that being an engineering manager isn't about "managing people." That framing has always felt incomplete to me. It's really about being a tech lead with people skills. It's about gathering humans to finish a project together. It's about understanding the business domain deeply enough to make the right technical tradeoffs. The skills compound. Time spent as an IC makes you a better manager. Time spent managing makes you a better IC. The pendulum isn't a step backward. It's forward momentum in a different direction.
 
