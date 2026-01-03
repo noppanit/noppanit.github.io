@@ -37,6 +37,9 @@ exclude:
   - _templates
   - _deploy.yml
   - vendor
+  - CLAUDE.md
+  - README.md
+  - Gemfile.github-pages
 
 defaults:
   - values:
