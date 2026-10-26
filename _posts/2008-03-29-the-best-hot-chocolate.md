@@ -10,6 +10,9 @@ categories:
 tags:
   - chocolate
   - hot
+recipe: true
+recipe_type: Drink
+recipe_summary: A simple, rich hot chocolate finished with chocolate mousse.
 ---
 This is the best chocolate I have ever taste.
 

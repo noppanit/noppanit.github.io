@@ -6,6 +6,9 @@ dsq_thread_id:
   - 476874783
 categories:
   - Culinary
+recipe: true
+recipe_type: Main
+recipe_summary: A low-temperature method for exceptionally juicy roast chicken.
 ---
 I have watched Heston Blumenthal and liked him very much. I tried some dishes from the program which is the perfect roast chicken. It was work very well. I used the technique which is called &#8220;low-temperature cooking&#8221;. This technique use low temperature and long time to cook. Moreover, there are some techniques that I used from the program which I&#8217;ll show in this article. This dish use a whole organic chicken and approximately 1 day to cook.
 
