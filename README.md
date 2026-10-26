@@ -1,5 +1,7 @@
 # Noppanit's Blog
 
+[![Deploy Jekyll site to Pages](https://github.com/noppanit/noppanit.github.io/actions/workflows/jekyll.yml/badge.svg?branch=source)](https://github.com/noppanit/noppanit.github.io/actions/workflows/jekyll.yml)
+
 A personal blog built with Jekyll and hosted on GitHub Pages.
 
 ## Prerequisites
