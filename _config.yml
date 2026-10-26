@@ -20,7 +20,14 @@ url: "https://www.noppanit.com" # the base hostname & protocol for your site, e.
 enforce_ssl: www.noppanit.com
 twitter_username: noppanit
 github_username:  noppanit
-signoff: "noppanit" 
+signoff: "noppanit"
+
+# Primary navigation
+links:
+  - name: Journal
+    url: /
+  - name: Recipes
+    url: /recipes/
 
 # Build settings
 markdown: kramdown

@@ -18,7 +18,7 @@
       <nav class="bb b--light-gray pv4 tc" aria-label="Main">
         {% for link in site.links %}
           <a class="link blue hover-mid-gray mh2 pv1"
-             href="{% unless link.external %}{{ site.url }}{% endunless %}{{ link.url }}">
+             href="{% if link.external %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}">
              {{ link.name }}
            </a>
         {% endfor %}

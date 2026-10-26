@@ -9,6 +9,9 @@ categories:
   - Sauces
 tags:
   - korean sauce
+recipe: true
+recipe_type: Sauce
+recipe_summary: A sweet, spicy, and savoury Korean-inspired sauce for grilled food.
 ---
 This is my first dish in the UK. My Korea friend told me how to cook it. It was fantastic. This sauce can go with everything that grilled.
 

@@ -4,6 +4,9 @@ comments: true
 author: Noppanit Charassinvichai
 categories:
   - Thai dishes
+recipe: true
+recipe_type: Main
+recipe_summary: A quick Thai-style stir-fry with fresh ginger, peppers, and garlic.
 ---
 Ingredients
 
