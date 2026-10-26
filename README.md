@@ -2,25 +2,25 @@
 
 [![Deploy Jekyll site to Pages](https://github.com/noppanit/noppanit.github.io/actions/workflows/jekyll.yml/badge.svg?branch=source)](https://github.com/noppanit/noppanit.github.io/actions/workflows/jekyll.yml)
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fwww.noppanit.com)](https://www.noppanit.com)
-![Ruby](https://img.shields.io/badge/Ruby-3.3.6-CC342D?logo=ruby)
-![Jekyll](https://img.shields.io/badge/Jekyll-4.3-CC0000?logo=jekyll)
+![Ruby](https://img.shields.io/badge/Ruby-3.3.13-CC342D?logo=ruby)
+![Jekyll](https://img.shields.io/badge/Jekyll-4.4-CC0000?logo=jekyll)
 
 A personal blog built with Jekyll and hosted on GitHub Pages.
 
 ## Prerequisites
 
-- Ruby 3.0 or higher
+- Ruby 3.3.13
 - Bundler
 
 ## Getting Started
 
 ### 1. Install Ruby
 
-This project uses Ruby 3.3.6. If you have rbenv installed:
+This project uses Ruby 3.3.13. If you have rbenv installed:
 
 ```bash
-rbenv install 3.3.6
-rbenv local 3.3.6
+rbenv install 3.3.13
+rbenv local 3.3.13
 ```
 
 Alternatively, you can use any Ruby version manager (rvm, asdf, etc.) or install Ruby directly.
@@ -50,7 +50,7 @@ Or simply open a new terminal window.
 
 ```bash
 ruby --version
-# Should show: ruby 3.3.6
+# Should show: ruby 3.3.13
 ```
 
 ### 4. Install Dependencies
@@ -103,8 +103,12 @@ bundle exec jekyll serve --livereload
 ├── _site/               # Generated site (do not edit)
 ├── images/              # Site images
 ├── stylesheets/         # CSS files
-├── Gemfile              # Ruby dependencies
-└── index.html           # Homepage
+├── AGENTS.md            # Shared coding-agent instructions
+├── CLAUDE.md            # Imports AGENTS.md for Claude Code
+├── Gemfile              # Ruby dependency constraints
+├── Gemfile.lock         # Locked Ruby dependencies
+├── index.html           # Homepage
+└── recipes.html         # Dynamic recipe index at /recipes/
 ```
 
 ## Writing Posts
@@ -132,9 +136,22 @@ tags:
 Your post content here...
 ```
 
+### Recipes
+
+`recipes.html` dynamically lists every post whose frontmatter includes `recipe: true`. Recipe posts can also provide a type and short summary:
+
+```yaml
+---
+title: My Recipe
+recipe: true
+recipe_type: Dinner
+recipe_summary: A quick weeknight dish.
+---
+```
+
 ## Deployment
 
-This site uses GitHub Actions to automatically build and deploy to GitHub Pages.
+The `source` branch is the default development branch. GitHub Actions builds it and deploys the generated artifact directly to GitHub Pages. The workflow does not update `master`.
 
 ### Setup (One-time)
 
@@ -153,19 +170,11 @@ git push origin source
 ```
 
 GitHub Actions will automatically:
-- Build the site with Jekyll 4.3
-- Deploy to GitHub Pages
+- Build the site with Jekyll 4.4
+- Deploy directly to GitHub Pages
 - Make it live at https://www.noppanit.com
 
 You can monitor the build progress in the "Actions" tab of your GitHub repository.
-
-### Manual Deployment (Alternative)
-
-If you prefer to build locally and deploy manually:
-
-1. Build the site: `bundle exec jekyll build`
-2. The output will be in `_site/`
-3. Deploy the `_site` contents to the `master` branch
 
 ## Configuration
 
@@ -197,15 +206,19 @@ bundle exec jekyll build
 
 ### Update Dependencies
 
-To update all gems to their latest compatible versions:
+Update dependencies intentionally and review the resulting lockfile. For example, to update Jekyll within the Gemfile constraint:
 
 ```bash
-bundle update
+bundle update jekyll
+bundle exec jekyll build
+git diff -- Gemfile.lock
 ```
+
+Commit `Gemfile.lock` with dependency changes so local and deployment builds use the same resolved versions.
 
 ## Tech Stack
 
-- **Jekyll 4.3**: Static site generator
+- **Jekyll 4.4**: Static site generator
 - **Kramdown**: Markdown processor
 - **Jekyll Feed**: RSS feed generation
 

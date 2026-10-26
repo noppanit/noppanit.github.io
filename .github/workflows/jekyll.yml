@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   build:
-    # Ruby 3.3.6 is not available on the Ubuntu 26.04 runner used by ubuntu-latest.
+    # Pin the runner so the selected Ruby version is available consistently.
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
@@ -25,7 +25,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3.6'
+          ruby-version: '3.3.13'
           bundler-cache: true
 
       - name: Setup Pages
