@@ -1,6 +1,9 @@
 # Noppanit's Blog
 
 [![Deploy Jekyll site to Pages](https://github.com/noppanit/noppanit.github.io/actions/workflows/jekyll.yml/badge.svg?branch=source)](https://github.com/noppanit/noppanit.github.io/actions/workflows/jekyll.yml)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fwww.noppanit.com)](https://www.noppanit.com)
+![Ruby](https://img.shields.io/badge/Ruby-3.3.6-CC342D?logo=ruby)
+![Jekyll](https://img.shields.io/badge/Jekyll-4.3-CC0000?logo=jekyll)
 
 A personal blog built with Jekyll and hosted on GitHub Pages.
 
