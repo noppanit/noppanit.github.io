@@ -45,4 +45,4 @@ But that only solves part of the problem. It doesn’t automatically connect the
 
 So that’s where I am. I’ve found enough everyday value to start trusting these assistants with more of my work. I still want to understand their limits and check what matters.
 
-Now I’m trying to figure out how to make them work together without having to explain my life to each one—and without giving every assistant access to all of it.
+Now I’m trying to figure out how to make them work together without having to explain my life to each one, and without giving every assistant access to all of it.
