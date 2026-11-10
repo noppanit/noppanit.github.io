@@ -17,6 +17,12 @@ I pay for Claude, ChatGPT and Grok. After a recent change, usage went up a lot f
 
 Here's [the reset announcement from Grok Bot](https://x.com/bot/status/2119871982946971659): "We've reset weekly limits for all Grok Bot users."
 
+{% include tweet.html
+   url="https://x.com/bot/status/2119871982946971659"
+   author="Grok Bot (@bot)"
+   date="November 9, 2026"
+   text="We've reset weekly limits for all Grok Bot users.<br><br>Enjoy!" %}
+
 That's what started this project. The idea is to keep the paid agent tools as the orchestration layer for heavy work and send small, trivial coding tasks to a local model. If that works, less of my paid usage goes to work a small model can handle.
 
 The first test was deliberately small:
@@ -30,6 +36,13 @@ The response came back:
 Not an impressive answer by itself. But it confirmed that the connection worked: I could ask my existing assistant to call my own service, which could then reach a local model.
 
 One thing I'm watching for later: [Tailscale announced private MCP access](https://x.com/tailscale/status/2119892081581682974), which could let my assistant reach Wrkhorse over a private network instead of the public internet.
+
+{% include tweet.html
+   url="https://x.com/tailscale/status/2119892081581682974"
+   author="Tailscale (@Tailscale)"
+   date="November 9, 2026"
+   widgets=true
+   text='<a href="https://x.com/bot">@bot</a> can now connect to private MCP servers on your tailnet without exposing them to the public internet.<br><br>Powered by Tailscale OAuth apps, now GA, so you can build secure agent integrations, too.<br><br>Read more here: <a href="https://t.co/cmn8tpM6w7">https://t.co/cmn8tpM6w7</a>' %}
 
 ## The setup
 
