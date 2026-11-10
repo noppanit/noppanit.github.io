@@ -1,0 +1,9 @@
+<blockquote class="twitter-tweet">
+  {% if include.text %}
+  <p lang="en" dir="ltr">{{ include.text }}</p>
+  {% endif %}
+  {% if include.author %}{{ include.author }} {% endif %}<a href="{{ include.url }}">{% if include.date %}{{ include.date }}{% else %}{{ include.url }}{% endif %}</a>
+</blockquote>
+{% if include.widgets %}
+<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
+{% endif %}
