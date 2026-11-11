@@ -24,7 +24,7 @@ signoff: "noppanit"
 
 # Google Analytics 4 Measurement ID (G-XXXXXXXXXX). Leave empty to disable.
 # The tag is only emitted in production builds (JEKYLL_ENV=production).
-google_analytics:
+google_analytics: G-K66WSEGX1C
 
 # Primary navigation
 links:
